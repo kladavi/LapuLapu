@@ -23,6 +23,7 @@
 |---|---|---|---|
 | Tier-1 (Company) | `O` | `O` + sequential integer | `O1`, `O2`, `O7` |
 | Tier-2 (Hari Pothakamuri) | `H-` | `H-` + sequential integer | `H-1`, `H-2`, `H-5` |
+| Tier-2 (Debamalya Das) | `D-` | `D-` + sequential integer | `D-1`, `D-2`, `D-3` |
 
 **Rules:**
 - Always check the existing file for the highest current ID before assigning the next one.
@@ -70,11 +71,14 @@ tags: #objective #tier1|#tier2 [additional tags]
 | All objectives | `#objective` |
 | Tier-1 | `#tier1` |
 | Tier-2 (Hari) | `#tier2` `#hari` |
+| Tier-2 (Debamalya) | `#tier2` `#debamalya` |
 | References Moogsoft | `#moogsoft` |
 | References New Relic | `#newrelic` |
 | References Batch automation | `#batch` |
 | References AIOps | `#aiops` |
 | References Unified Support / GOCC | `#unified-support` |
+| References R2R program | `#r2r` |
+| References OMM / Observability Maturity | `#omm` |
 | Discovery-only commitment | `#discovery` |
 
 Add additional system or theme tags only when the source document explicitly names the system or theme.
@@ -85,8 +89,8 @@ Add additional system or theme tags only when the source document explicitly nam
 
 **Pre-conditions:**
 1. You have a named source document and slide number.
-2. The objective belongs to a tier already represented in the file (`Tier-1` or `Tier-2 — Hari Pothakamuri`).
-3. For Tier-2: the owner is explicitly listed in the source document as Hari Pothakamuri (sole or co-owner).
+2. The objective belongs to a tier already represented in the file (`Tier-1` or a named `Tier-2` owner section).
+3. For Tier-2: the owner is explicitly listed in the source document as the named owner (sole or co-owner) for their section.
 
 **Steps:**
 1. Read `objectives.md` in full.

@@ -223,3 +223,74 @@ Centralise and automate support for IaaS cloud applications, starting with ETS-o
 - Prioritise repeatable, routine tasks
 - Build a scalable model extensible to other segments and application types
 - More complex platform and app support to be addressed in subsequent years
+
+---
+
+## Tier-2 — R2R / Observability Objectives (Debamalya Das)
+
+---
+
+### D-1 — Rapid Recovery Plan
+
+tags: #objective #tier2 #debamalya #r2r #resilience #incident-management
+
+**Source**
+- Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
+- Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column, "Deliver on R2R program")
+
+**Parent Objective**
+- O4 (Robust Technical Core), O1 (Frictionless Customer Experience)
+
+**Description**
+Deliver Rapid Recovery Plans as a key R2R deliverable for FY2026. This workstream is managed by the Incident Management team. Plans will define recovery procedures for Gold applications to meet RTO/RPO targets and reduce P1 MTTR.
+
+**Explicit Commitments / Outcomes**
+- Deliver Rapid Recovery Plans as part of the R2R program
+- Managed by Incident Management team
+- Format and template to be confirmed with Rohina
+
+---
+
+### D-2 — Digital Property Dashboarding
+
+tags: #objective #tier2 #debamalya #r2r #digital #newrelic #adobe #monitoring #dashboards
+
+**Source**
+- Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
+- Slide 5 (Refreshed ETS Strategy 2026 — "Frictionless Customer Experience" column, "Implement 360 customer experience monitoring for all top digital properties")
+
+**Parent Objective**
+- O1 (Frictionless Customer Experience)
+
+**Description**
+Deliver digital property dashboarding for customer-facing applications. Metrics have been defined by Deloitte; measurement tooling from Adobe and New Relic is being implemented, with completion targeted by end of FY2026.
+
+**Explicit Commitments / Outcomes**
+- Metrics already chosen by Deloitte
+- Measurement from Adobe and New Relic yet to be completed for all properties by end of year
+- Enables 360 customer experience monitoring and trend analysis for top digital properties
+
+---
+
+### D-3 — Observability Maturity Model (OMM) L2 for Gold Applications
+
+tags: #objective #tier2 #debamalya #r2r #omm #observability #newrelic #moogsoft #xmatters #gocc #cmdb #apm
+
+**Source**
+- Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
+- Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column, "Improve Portfolio Health for Gold Apps ≥80%")
+
+**Parent Objective**
+- O4 (Robust Technical Core), O1 (Frictionless Customer Experience)
+
+**Description**
+Achieve OMM L2 maturity for all Gold applications by mid-FY2027, with implementation activities running through FY2026. OMM L2 requires infrastructure alerts under standard policy with reconciliation in AIOps tools, application transaction alerts routed through xMatters, synthetics monitoring with login checks, and application logging into ADX with pattern alerts. Measurement will be via an in-house tool developed by the architecture team.
+
+**Explicit Commitments / Outcomes**
+- Infrastructure alerts under standard policy, reconciled in AIOps tool (Moogsoft), with xMatters assignment to GOCC or app support teams
+- Application (APM) transaction alerts routed to app support via xMatters, with APM agents updated and distributed tracing enabled
+- Synthetics/URL monitoring with login checks (not just availability)
+- Application logging into ADX with alerts for error patterns
+- OMM L2 completion targeted by mid-FY2027
+- Measurement via in-house tool being developed by architecture team
+- OMM L3 (not mandated): Certificate & Secrets tagged with App CI#; self-recovery automation orchestrated
