@@ -14,6 +14,8 @@ tags: #objective #tier1 #customer #monitoring #digital
 - Slide 3 (Vision, Pillars, Success Measures — "Frictionless Customer Experience" pillar)
 - Slide 5 (Refreshed ETS Strategy 2026 — "Frictionless Customer Experience" column)
 
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Description**
 Reduce Manulife's customer impact in minutes through operational excellence by implementing predictive monitoring and proactive issue resolution, delivering on the Digital Customer Leadership roadmap, and achieving a unified view of the customer with personalisation at scale.
 
@@ -34,6 +36,8 @@ tags: #objective #tier1 #delivery #odf #change-management
 **Source**
 - Slide 3 (Vision, Pillars, Success Measures — "Dynamic Delivery Experience" pillar)
 - Slide 5 (Refreshed ETS Strategy 2026 — "Dynamic Delivery Experience" column)
+
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
 
 **Description**
 Simplify and provide a seamless experience for ETS-owned services by improving time to market, maintaining discipline on project delivery, and evolving the SDLC through AI and automation to ensure speed and consistency of delivery.
@@ -57,6 +61,8 @@ tags: #objective #tier1 #colleague #ai #productivity
 - Slide 3 (Vision, Pillars, Success Measures — "Outstanding Colleague Experience" pillar)
 - Slide 5 (Refreshed ETS Strategy 2026 — "Outstanding Colleague Experience" column)
 
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Description**
 Improve colleague time to market and experience by leveraging AI, modern digital tools, and reducing friction in workflows, while enabling a OneETS model of creative solutioning and removing key colleague technology irritants.
 
@@ -76,6 +82,8 @@ tags: #objective #tier1 #resilience #cloud #cmdb #leanix #finops
 **Source**
 - Slide 3 (Vision, Pillars, Success Measures — "Robust Technical Core" pillar)
 - Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column)
+
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
 
 **Description**
 Architect resilient and adaptive infrastructure through proactive and adaptive risk practices, delivering on the R2R program, completing cloud evergreen commitments, excelling at architectural basics at scale, and maturing FinOps and software licence management.
@@ -100,6 +108,8 @@ tags: #objective #tier1 #talent #upskilling #engagement
 - Slide 3 (Vision, Pillars, Success Measures — "Future Ready Talent" pillar)
 - Slide 5 (Refreshed ETS Strategy 2026 — "Future-Ready Talent" column)
 
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Description**
 Enable a winning culture of innovation through the OneETS model by developing scalable, AI-enhanced shared capabilities, upskilling talent for future career journeys, building fungible talent pools, and investing in global IT development centres.
 
@@ -121,6 +131,8 @@ tags: #objective #tier1 #ai #automation #klo #gocc #agentic-ai
 **Source**
 - Slide 3 (Vision, Pillars, Success Measures — "Foundational Accelerant" section)
 - Slide 5 (Refreshed ETS Strategy 2026 — "Foundational Accelerant" section)
+
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
 
 **Description**
 Apply a principles-led approach to automate KLO, scale capabilities, and deliver incremental value through shared service automation, workforce optimisation, engineering enablement through AI, GOCC automation in incident management, and a platform for Agentic AI governance.
@@ -146,6 +158,8 @@ tags: #objective #tier2 #hari #batch #automation #ai #cloud
 **Source**
 - Slide 6 (ETS 2026 Home Runs — "Batch" theme, Owner: Hari Pothakamuri)
 
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Parent Objective**
 - O6 (Technology Transformation through AI & Automation)
 
@@ -169,6 +183,8 @@ tags: #objective #tier2 #hari #problem-management #discovery
 **Source**
 - Slide 6 (ETS 2026 Home Runs — "Problem" theme, Owner: Hari Pothakamuri)
 
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Parent Objective**
 - O1 (Frictionless Customer Experience)
 
@@ -186,6 +202,8 @@ tags: #objective #tier2 #hari #aiops #moogsoft #newrelic #mttr #mttd #gocc
 
 **Source**
 - Slide 6 (ETS 2026 Home Runs — "AI Ops / Incident Troubleshooting" theme, Owner: Hari Pothakamuri, co-owner: Leslie MacLean)
+
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
 
 **Parent Objective**
 - O1 (Frictionless Customer Experience), O6 (Technology Transformation through AI & Automation)
@@ -209,6 +227,8 @@ tags: #objective #tier2 #hari #unified-support #gocc #iaas #automation #self-ser
 
 **Source**
 - Slide 6 (ETS 2026 Home Runs — "Unified Support" theme, Owner: Hari Pothakamuri, co-owner: Leslie MacLean)
+
+**Source File:** [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
 
 **Parent Objective**
 - O6 (Technology Transformation through AI & Automation), O4 (Robust Technical Core)
@@ -238,6 +258,10 @@ tags: #objective #tier2 #debamalya #r2r #resilience #incident-management
 - Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
 - Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column, "Deliver on R2R program")
 
+**Source Files:**
+- [deb_objectives.md](../90-assets/deb_objectives.md)
+- [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Parent Objective**
 - O4 (Robust Technical Core), O1 (Frictionless Customer Experience)
 
@@ -259,6 +283,10 @@ tags: #objective #tier2 #debamalya #r2r #digital #newrelic #adobe #monitoring #d
 - Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
 - Slide 5 (Refreshed ETS Strategy 2026 — "Frictionless Customer Experience" column, "Implement 360 customer experience monitoring for all top digital properties")
 
+**Source Files:**
+- [deb_objectives.md](../90-assets/deb_objectives.md)
+- [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+
 **Parent Objective**
 - O1 (Frictionless Customer Experience)
 
@@ -279,6 +307,10 @@ tags: #objective #tier2 #debamalya #r2r #omm #observability #newrelic #moogsoft 
 **Source**
 - Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
 - Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column, "Improve Portfolio Health for Gold Apps ≥80%")
+
+**Source Files:**
+- [deb_objectives.md](../90-assets/deb_objectives.md)
+- [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
 
 **Parent Objective**
 - O4 (Robust Technical Core), O1 (Frictionless Customer Experience)
@@ -308,6 +340,8 @@ tags: #objective #tier3 #davidklan #ets-japan #dashboard #production #monitoring
 **Source**
 - LapuLapu Objective and Goals.pdf (Pages 1–4, "Employee Experience Dashboard (Production)", March 13, 2026)
 
+**Source File:** [LapuLapu Objective and Goals.pdf](../90-assets/LapuLapu%20Objective%20and%20Goals.pdf)
+
 **Parent Objective**
 - O4 (Robust Technical Core), O3 (Outstanding Colleague Experience), D-3 (OMM L2 for Gold Applications)
 
@@ -332,6 +366,8 @@ tags: #objective #tier3 #davidklan #ets-japan #dashboard #non-production #monito
 
 **Source**
 - LapuLapu Objective and Goals.pdf (Pages 1, 3, 5, "Developer Experience Dashboard (Non-Production)", March 13, 2026)
+
+**Source File:** [LapuLapu Objective and Goals.pdf](../90-assets/LapuLapu%20Objective%20and%20Goals.pdf)
 
 **Parent Objective**
 - O3 (Outstanding Colleague Experience), O4 (Robust Technical Core)

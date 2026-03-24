@@ -32,7 +32,8 @@ Inbox → Tasks → Weekly Summary
 | `02-work/` | Structured tasks and decision log |
 | `03-reporting/` | Weekly summaries and templates |
 | `04-prompts/` | LLM prompts for intake, reporting, and queries |
-| `99-archive/` | Completed or obsolete items |
+| `90-assets/` | Reference documents, PDFs, and supporting materials |
+| `99-archive/` | Completed or obsolete items archived during operations |
 
 ## Golden Rules
 

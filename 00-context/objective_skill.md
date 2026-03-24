@@ -45,6 +45,8 @@ tags: #objective #tier1|#tier2 [additional tags]
 **Source**
 - Slide X (document name — section name)
 
+**Source File:** [filename](../90-assets/filename) or **Source Files:** (bulleted list if multiple)
+
 **Parent Objective**
 - <ID> (<Title>) [OMIT this field for Tier-1 objectives]
 
@@ -61,6 +63,7 @@ tags: #objective #tier1|#tier2 [additional tags]
 - A `**Parent Objective**` field on a Tier-1 objective.
 - A Tier-2 block without a `**Parent Objective**` field.
 - A `**Source**` field without a slide number.
+- A block without a `**Source File**` link when the source document exists in `90-assets/`.
 - Tags missing `#objective` and either `#tier1` or `#tier2`.
 
 ---
@@ -106,6 +109,7 @@ Add additional system or theme tags only when the source document explicitly nam
 - [ ] ID is next in sequence and not previously used
 - [ ] Tags include `#objective` + tier tag
 - [ ] Source includes slide number
+- [ ] Source File links to the correct file in `90-assets/` (if the source document exists there)
 - [ ] Parent Objective is set (Tier-2 only) and references a valid Tier-1 ID
 
 ---
@@ -129,6 +133,7 @@ When reading `objectives.md` to answer a query:
 | Title | ✅ | Source document reference required |
 | tags | ✅ | Follow tagging rules in Section 4 |
 | Source | ✅ | Only to add additional source references; never remove existing ones |
+| Source File | ✅ | Must link to a file in `90-assets/`; add when source document is added to assets |
 | Parent Objective | ✅ | Source document reference required |
 | Description | ✅ | Must remain source-faithful; note the update with inline comment `<!-- updated YYYY-MM-DD -->` |
 | Explicit Commitments | ✅ (add) | Source document reference required |
