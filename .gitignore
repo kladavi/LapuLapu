@@ -1,0 +1,10 @@
+# LapuLapu — Ignore Rules
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
