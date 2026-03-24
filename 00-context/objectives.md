@@ -294,3 +294,55 @@ Achieve OMM L2 maturity for all Gold applications by mid-FY2027, with implementa
 - OMM L2 completion targeted by mid-FY2027
 - Measurement via in-house tool being developed by architecture team
 - OMM L3 (not mandated): Certificate & Secrets tagged with App CI#; self-recovery automation orchestrated
+
+---
+
+## Tier-3 — ETS Japan Objectives (David Klan)
+
+---
+
+### K-1 — Employee Experience Dashboard (Production)
+
+tags: #objective #tier3 #davidklan #ets-japan #dashboard #production #monitoring #newrelic #observability
+
+**Source**
+- LapuLapu Objective and Goals.pdf (Pages 1–4, "Employee Experience Dashboard (Production)", March 13, 2026)
+
+**Parent Objective**
+- O4 (Robust Technical Core), O3 (Outstanding Colleague Experience), D-3 (OMM L2 for Gold Applications)
+
+**Description**
+Establish a single, authoritative Employee Experience Dashboard providing production application availability and performance visibility from a Japan employee perspective. Coverage spans Bronze, Silver, and Gold applications including critical international dependencies. A core operational goal is daily readiness confirmation before 8:00 AM JST, reducing reactive escalations and executive noise while increasing confidence in Japan operational readiness.
+
+**Explicit Commitments / Outcomes**
+- Single authoritative view of application availability and performance for all employee-facing services used in Japan
+- Coverage across Bronze, Silver, and Gold applications, including international dependencies that materially impact Japan employees
+- Visibility spans URLs, underlying components, and alert routing, aligned with Manulife's observability maturity standards
+- Daily readiness confirmation before 8:00 AM JST — issues known, contextualised, and owned before employees begin work
+- Reduced unnecessary escalations to senior leadership
+- Minimised reactive, ad-hoc inquiries
+- Defensible, data-driven narrative when issues do occur
+- Success measured by 100% coverage of employee-facing URLs, reduced executive noise, and increased confidence in Japan operational readiness
+
+---
+
+### K-2 — Developer Experience Dashboard (Non-Production)
+
+tags: #objective #tier3 #davidklan #ets-japan #dashboard #non-production #monitoring #newrelic #developer-experience
+
+**Source**
+- LapuLapu Objective and Goals.pdf (Pages 1, 3, 5, "Developer Experience Dashboard (Non-Production)", March 13, 2026)
+
+**Parent Objective**
+- O3 (Outstanding Colleague Experience), O4 (Robust Technical Core)
+
+**Description**
+Establish a Developer Experience Dashboard providing holistic visibility into non-production environment health for developers and testers in Japan. The dashboard eliminates time lost discovering whether issues are code-related or environment-related, shifting non-production support from reactive discovery to proactive visibility. A daily pre-8:00 AM JST readiness check ensures issues are surfaced and owned before they block work.
+
+**Explicit Commitments / Outcomes**
+- Holistic view of non-production environment health, including availability of URLs and critical underlying components
+- Immediately clear whether an environment is healthy or degraded, reducing time spent on diagnosis
+- Daily pre-8:00 AM JST non-production readiness check — issues surfaced and owned before they block work
+- Measurable reduction in time lost to environment investigation
+- Improved developer and tester productivity
+- Earlier identification of non-production issues that could otherwise delay testing or releases

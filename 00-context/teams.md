@@ -16,7 +16,7 @@
 - **Members:** David Klan, Kiran Bond, Balaji Ravi, Kinichi Nakatsu, Aleksei Radzeveliuk, Prabu Thiagarajan, Ezhilarasan Mohan, Yegor Pomozoff
 - **Primary Systems:** #newrelic #moogsoft #xmatters #azure #cmdb
 - **Work Types:** Regional technology services, infrastructure operations, monitoring, incident support
-- **Objective Alignment:** O1, O4, D-3
+- **Objective Alignment:** K-1 (Employee Experience Dashboard), K-2 (Developer Experience Dashboard), O1, O3, O4, D-3
 - **Tags:** #team-ets-japan
 
 ---

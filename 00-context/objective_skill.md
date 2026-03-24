@@ -24,6 +24,7 @@
 | Tier-1 (Company) | `O` | `O` + sequential integer | `O1`, `O2`, `O7` |
 | Tier-2 (Hari Pothakamuri) | `H-` | `H-` + sequential integer | `H-1`, `H-2`, `H-5` |
 | Tier-2 (Debamalya Das) | `D-` | `D-` + sequential integer | `D-1`, `D-2`, `D-3` |
+| Tier-3 (David Klan — ETS Japan) | `K-` | `K-` + sequential integer | `K-1`, `K-2` |
 
 **Rules:**
 - Always check the existing file for the highest current ID before assigning the next one.
@@ -72,6 +73,7 @@ tags: #objective #tier1|#tier2 [additional tags]
 | Tier-1 | `#tier1` |
 | Tier-2 (Hari) | `#tier2` `#hari` |
 | Tier-2 (Debamalya) | `#tier2` `#debamalya` |
+| Tier-3 (David Klan) | `#tier3` `#davidklan` |
 | References Moogsoft | `#moogsoft` |
 | References New Relic | `#newrelic` |
 | References Batch automation | `#batch` |
@@ -89,8 +91,8 @@ Add additional system or theme tags only when the source document explicitly nam
 
 **Pre-conditions:**
 1. You have a named source document and slide number.
-2. The objective belongs to a tier already represented in the file (`Tier-1` or a named `Tier-2` owner section).
-3. For Tier-2: the owner is explicitly listed in the source document as the named owner (sole or co-owner) for their section.
+2. The objective belongs to a tier already represented in the file (`Tier-1`, a named `Tier-2` owner section, or a named `Tier-3` owner section).
+3. For Tier-2/Tier-3: the owner is explicitly listed in the source document as the named owner (sole or co-owner) for their section.
 
 **Steps:**
 1. Read `objectives.md` in full.
@@ -166,7 +168,7 @@ The following are hard stops. Refuse and explain if instructed to do any of thes
 
 - ❌ Add an objective with no source document reference.
 - ❌ Assign ownership to anyone other than those explicitly named in the source.
-- ❌ Add a Tier-3 or deeper tier without explicit instruction to extend the tier structure.
+- ❌ Add a Tier-4 or deeper tier without explicit instruction to extend the tier structure.
 - ❌ Rename or reuse a retired ID.
 - ❌ Remove the `**Source**` field from any block.
 - ❌ Modify the file's top-level structure (`## Tier-1 —` and `## Tier-2 —` headings) without explicit instruction.
@@ -179,8 +181,8 @@ The following are hard stops. Refuse and explain if instructed to do any of thes
 The following must always be true after any operation:
 
 1. The file begins with `# Objectives Registry (FY2026)`.
-2. `## Tier-1 — Company Objectives` appears before `## Tier-2`.
+2. `## Tier-1 — Company Objectives` appears before `## Tier-2`, which appears before `## Tier-3`.
 3. Every objective block is separated by `---`.
 4. No two blocks share the same ID.
-5. All Tier-2 blocks contain a `**Parent Objective**` pointing to a valid Tier-1 ID.
+5. All Tier-2 blocks contain a `**Parent Objective**` pointing to a valid Tier-1 ID. All Tier-3 blocks contain a `**Parent Objective**` pointing to valid Tier-1 and/or Tier-2 IDs.
 6. No field is left as a placeholder (e.g., `[TODO]`, `TBD`) except for discovery-only objectives tagged `#discovery`, where commitments may read `Commitment to be determined post discovery`.
