@@ -10,7 +10,7 @@ interface Props {
   onNavigate: (tab: TabId, filter?: NavFilter) => void;
 }
 
-type SectionId = "tier1" | "tier2" | "open" | "closed" | "decisions" | "teams" | "systems";
+type SectionId = "objectives" | "open" | "closed" | "decisions" | "teams" | "systems";
 
 export function DashboardTab({ onNavigate }: Props) {
   const { data } = usePMData();
@@ -20,6 +20,7 @@ export function DashboardTab({ onNavigate }: Props) {
 
   const tier1 = data.objectives.filter((o) => o.tier === 1);
   const tier2 = data.objectives.filter((o) => o.tier === 2);
+  const totalObjectives = tier1.length + tier2.length;
   const openTasks = data.tasks.filter(
     (t) => t.status.toLowerCase() === "open"
   );
@@ -44,22 +45,13 @@ export function DashboardTab({ onNavigate }: Props) {
     tabAction?: () => void;
   }[] = [
     {
-      id: "tier1",
-      label: "Tier-1 Objectives",
-      value: tier1.length,
+      id: "objectives",
+      label: "Objectives",
+      value: totalObjectives,
       icon: "🎯",
       color: "bg-blue-50 text-blue-700 border-blue-200",
       hasTab: true,
-      tabAction: () => onNavigate("objectives", { tier: 1 }),
-    },
-    {
-      id: "tier2",
-      label: "Tier-2 Objectives",
-      value: tier2.length,
-      icon: "🎯",
-      color: "bg-indigo-50 text-indigo-700 border-indigo-200",
-      hasTab: true,
-      tabAction: () => onNavigate("objectives", { tier: 2 }),
+      tabAction: () => onNavigate("objectives"),
     },
     {
       id: "open",
@@ -97,7 +89,7 @@ export function DashboardTab({ onNavigate }: Props) {
     },
     {
       id: "systems",
-      label: "Systems",
+      label: "Systems of Record",
       value: data.systems.length,
       icon: "🖥️",
       color: "bg-rose-50 text-rose-700 border-rose-200",
@@ -155,48 +147,46 @@ export function DashboardTab({ onNavigate }: Props) {
           </div>
 
           <div className="p-4 max-h-96 overflow-auto">
-            {/* Tier-1 Objectives */}
-            {expandedSection === "tier1" && (
-              <div className="space-y-2">
-                {tier1.map((o) => (
-                  <div key={o.id} className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="font-mono text-xs font-bold text-blue-600 bg-blue-100 rounded px-1.5 py-0.5 shrink-0">
-                      {o.id}
-                    </span>
-                    <div className="min-w-0">
-                      <div className="text-sm font-medium text-gray-800">{o.title}</div>
-                      <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{o.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Tier-2 Objectives */}
-            {expandedSection === "tier2" && (
-              <div className="space-y-2">
-                {tier2.map((o) => (
-                  <div key={o.id} className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="font-mono text-xs font-bold text-indigo-600 bg-indigo-100 rounded px-1.5 py-0.5 shrink-0">
-                      {o.id}
-                    </span>
-                    <div className="min-w-0">
-                      <div className="text-sm font-medium text-gray-800">{o.title}</div>
-                      <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{o.description}</p>
-                      {o.parentObjectiveIds.length > 0 && (
-                        <div className="flex gap-1 mt-1">
-                          <span className="text-[10px] text-gray-400">Parent:</span>
-                          {o.parentObjectiveIds.map((pid) => (
-                            <span key={pid} className="text-[10px] font-mono bg-blue-50 text-blue-600 rounded px-1">{pid}</span>
+            {/* Combined Objectives */}
+            {expandedSection === "objectives" && (
+              <div className="space-y-3">
+                <div className="flex gap-3 text-xs text-gray-500 mb-2">
+                  <span className="bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">{tier1.length} Tier-1</span>
+                  <span className="bg-indigo-100 text-indigo-700 rounded-full px-2 py-0.5 font-medium">{tier2.length} Tier-2</span>
+                </div>
+                {tier1.map((o) => {
+                  const children = tier2.filter((t2) => t2.parentObjectiveIds.includes(o.id));
+                  return (
+                    <div key={o.id} className="rounded-lg border border-blue-200 overflow-hidden">
+                      <div className="flex items-start gap-3 p-2 bg-blue-50/50">
+                        <span className="font-mono text-xs font-bold text-blue-600 bg-blue-100 rounded px-1.5 py-0.5 shrink-0">
+                          {o.id}
+                        </span>
+                        <div className="min-w-0">
+                          <div className="text-sm font-medium text-gray-800">{o.title}</div>
+                          <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{o.description}</p>
+                        </div>
+                      </div>
+                      {children.length > 0 && (
+                        <div className="border-t border-blue-100 bg-white">
+                          {children.map((c) => (
+                            <div key={c.id} className="flex items-start gap-3 p-2 pl-8 hover:bg-gray-50 border-b border-gray-50 last:border-b-0">
+                              <span className="font-mono text-xs font-bold text-indigo-600 bg-indigo-100 rounded px-1.5 py-0.5 shrink-0">
+                                {c.id}
+                              </span>
+                              <div className="min-w-0">
+                                <div className="text-sm font-medium text-gray-700">{c.title}</div>
+                                {c.ownerSection && (
+                                  <span className="text-[10px] text-gray-400">👤 {c.ownerSection}</span>
+                                )}
+                              </div>
+                            </div>
                           ))}
                         </div>
                       )}
-                      {o.ownerSection && (
-                        <span className="text-[10px] text-gray-400 mt-0.5 block">Owner: {o.ownerSection}</span>
-                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
 
