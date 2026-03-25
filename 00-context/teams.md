@@ -18,7 +18,7 @@
 - **Members:** David Klan, Kiran Bond, Balaji Ravi, Kinichi Nakatsu, Aleksei Radzeveliuk, Prabu Thiagarajan, Ezhilarasan Mohan, Yegor Pomozoff
 - **Primary Systems:** #newrelic #moogsoft #xmatters #azure #cmdb
 - **Work Types:** Regional technology services, infrastructure operations, monitoring, incident support
-- **Objective Alignment:** K-1 (Employee Experience Dashboard), K-2 (Developer Experience Dashboard), O1, O3, O4, D-3
+- **Objective Alignment:** T006 (Employee Experience Dashboard), T007 (Developer Experience Dashboard), B-1, B-2, B-3, B-4, B-5, B-6, B-7, O1, O3, O4, T005
 - **Tags:** #team-ets-japan
 
 ---
@@ -48,5 +48,5 @@
 - **Members:** Sreelekshmi S, Vignesh M
 - **Primary Systems:** #newrelic #moogsoft #xmatters #adobe #cmdb #apm
 - **Work Types:** Observability maturity (OMM), digital property dashboarding, R2R delivery, alert standardisation, APM onboarding, synthetics monitoring
-- **Objective Alignment:** D-1 (Rapid Recovery Plan), D-2 (Digital Property Dashboarding), D-3 (OMM L2 for Gold Apps), O1, O4
+- **Objective Alignment:** T003 (Rapid Recovery Plan), T004 (Digital Property Dashboarding), T005 (OMM L2 for Gold Apps), O1, O4
 - **Tags:** #team-gocc-observability

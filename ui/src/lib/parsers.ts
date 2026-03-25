@@ -38,20 +38,24 @@ function extractBulletList(block: string, label: string): string[] {
 function extractTags(block: string): string[] {
   const m = block.match(/tags:\s*(.+)/i);
   if (!m) return [];
-  return m[1]
-    .split(/\s+/)
-    .map((t) => t.trim())
-    .filter((t) => t.startsWith("#"));
+  return [
+    ...new Set(
+      m[1]
+        .split(/\s+/)
+        .map((t) => t.trim())
+        .filter((t) => t.startsWith("#"))
+    ),
+  ];
 }
 
 function extractHashtags(line: string): string[] {
-  const tags: string[] = [];
+  const tags = new Set<string>();
   const re = /#[\w-]+/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(line)) !== null) {
-    tags.push(m[0]);
+    tags.add(m[0]);
   }
-  return tags;
+  return [...tags];
 }
 
 // ────────────────────────────────────────────
@@ -60,6 +64,9 @@ function extractHashtags(line: string): string[] {
 
 export function parseObjectives(md: string): Objective[] {
   const objectives: Objective[] = [];
+
+  // Normalise line endings
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
 
   // Split by ### headings
   const blocks = md.split(/(?=^### )/m);
@@ -170,6 +177,10 @@ export function parseObjectives(md: string): Objective[] {
 
 export function parseTeams(md: string): Team[] {
   const teams: Team[] = [];
+
+  // Normalise line endings
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
   const blocks = md.split(/(?=^## )/m);
 
   for (const block of blocks) {
@@ -242,6 +253,10 @@ function parseTeamBlock(block: string, headingLevel: number): Team | null {
 
 export function parseSystems(md: string): SystemOfRecord[] {
   const systems: SystemOfRecord[] = [];
+
+  // Normalise line endings
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
   const lines = md.split("\n");
 
   for (const line of lines) {
@@ -265,6 +280,10 @@ export function parseSystems(md: string): SystemOfRecord[] {
 
 export function parseTasks(md: string): Task[] {
   const tasks: Task[] = [];
+
+  // Normalise line endings
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
   const blocks = md.split(/(?=^## T\d)/m);
 
   for (const block of blocks) {
@@ -317,6 +336,10 @@ export function parseTasks(md: string): Task[] {
 
 export function parseDecisions(md: string): Decision[] {
   const decisions: Decision[] = [];
+
+  // Normalise line endings
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
   const blocks = md.split(/(?=^## D\d)/m);
 
   for (const block of blocks) {

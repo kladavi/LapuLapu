@@ -1,15 +1,45 @@
 // ── Export engine: generates copilot-pack.md or .json ──
 
 import type { PMData, ExportOptions } from "./types";
+import {
+  buildNormalizedPayload,
+  validateExportPayload,
+  generateHumanSnapshot,
+  type NormalizedExportPayload,
+  type ValidationError,
+} from "./exportNormalizer";
 
-export function generateExport(data: PMData, options: ExportOptions): string {
-  if (options.format === "json") {
-    return generateJsonExport(data, options);
-  }
-  return generateMdExport(data, options);
+export type { ValidationError } from "./exportNormalizer";
+
+export interface ExportResult {
+  content: string;
+  errors: ValidationError[];
 }
 
-function generateMdExport(data: PMData, options: ExportOptions): string {
+export function generateExport(data: PMData, options: ExportOptions): ExportResult {
+  const payload = buildNormalizedPayload(
+    data.objectives,
+    data.tasks,
+    data.teams,
+    data.systems,
+    data.weeklySummaries,
+    data.decisions,
+    data.inbox,
+    options
+  );
+
+  const errors = validateExportPayload(payload);
+  if (errors.length > 0) {
+    return { content: "", errors };
+  }
+
+  if (options.format === "json") {
+    return { content: generateJsonExport(data, payload), errors: [] };
+  }
+  return { content: generateMdExport(data, payload, options), errors: [] };
+}
+
+function generateMdExport(data: PMData, payload: NormalizedExportPayload, options: ExportOptions): string {
   const now = new Date().toISOString();
   const sections: string[] = [];
 
@@ -76,113 +106,35 @@ If information is missing, explicitly say so.
 
   sections.push(instructions);
 
-  // 3) DATA section
-  const jsonData = buildJsonPayload(data, options);
+  // 3) DATA section (normalized JSON)
   const dataSection = `
 ## DATA (MACHINE-READABLE)
 
 \`\`\`json
-${JSON.stringify(jsonData, null, 2)}
+${JSON.stringify(payload, null, 2)}
 \`\`\`
 `.trim();
 
   sections.push(dataSection);
 
+  // 4) Human-readable snapshot
+  const snapshot = generateHumanSnapshot(payload);
+  sections.push(snapshot);
+
   return sections.join("\n\n");
 }
 
-function generateJsonExport(data: PMData, options: ExportOptions): string {
-  const jsonData = buildJsonPayload(data, options);
+function generateJsonExport(data: PMData, payload: NormalizedExportPayload): string {
   return JSON.stringify(
     {
       title: "Objective-Driven PM Copilot Pack",
       created: new Date().toISOString(),
       source_repo: data.folderName,
-      ...jsonData,
+      ...payload,
     },
     null,
     2
   );
-}
-
-interface ExportPayload {
-  objectives?: { id: string; title: string; tier: number; tags: string[]; parentObjectiveIds: string[]; description: string; commitments: string[] }[];
-  teams?: { name: string; lead: string; tags: string[]; members?: string[]; primarySystems?: string[] }[];
-  systems?: { name: string; tag: string; purpose: string }[];
-  tasks?: { id: string; title: string; status: string; objectiveChain: string; objectiveIds: string[]; team: string; assigned: string; systems: string[]; relevance?: number; tags: string[]; description: string }[];
-  decisions?: { id: string; title: string; date: string; decision: string; reason: string; tags: string[] }[];
-  weekly_summaries?: { filename: string; content: string }[];
-  inbox?: string;
-}
-
-function buildJsonPayload(data: PMData, options: ExportOptions): ExportPayload {
-  const payload: ExportPayload = {};
-
-  if (options.includeObjectives) {
-    payload.objectives = data.objectives.map((o) => ({
-      id: o.id,
-      title: o.title,
-      tier: o.tier,
-      tags: o.tags,
-      parentObjectiveIds: o.parentObjectiveIds,
-      description: o.description,
-      commitments: o.commitments,
-    }));
-  }
-
-  if (options.includeTeamsSystems) {
-    payload.teams = data.teams.map((t) => ({
-      name: t.name,
-      lead: t.lead,
-      tags: t.tags,
-      members: t.members,
-      primarySystems: t.primarySystems,
-    }));
-    payload.systems = data.systems;
-  }
-
-  if (options.includeTasks) {
-    payload.tasks = data.tasks.map((t) => ({
-      id: t.id,
-      title: t.title,
-      status: t.status,
-      objectiveChain: t.objectiveChain,
-      objectiveIds: t.objectiveIds,
-      team: t.team,
-      assigned: t.assigned,
-      systems: t.systems,
-      relevance: t.relevance,
-      tags: t.tags,
-      description: t.description,
-    }));
-  }
-
-  if (options.includeDecisions) {
-    payload.decisions = data.decisions.map((d) => ({
-      id: d.id,
-      title: d.title,
-      date: d.date,
-      decision: d.decision,
-      reason: d.reason,
-      tags: d.tags,
-    }));
-  }
-
-  if (options.includeWeeklySummaries) {
-    const count = options.weeklySummaryCount || 1;
-    payload.weekly_summaries = data.weeklySummaries
-      .slice(0, count)
-      .map((w) => ({
-        filename: w.filename,
-        content: w.content,
-      }));
-  }
-
-  if (options.includeInbox) {
-    payload.inbox = data.inbox;
-  }
-
-  return payload;
 }
 
 // ────────────────────────────────────────────
@@ -190,11 +142,20 @@ function buildJsonPayload(data: PMData, options: ExportOptions): ExportPayload {
 // ────────────────────────────────────────────
 
 export function estimateExportSize(data: PMData, options: ExportOptions): number {
-  // Quick estimate by building the payload and measuring
-  const payload = buildJsonPayload(data, options);
+  // Quick estimate by building the normalized payload and measuring
+  const payload = buildNormalizedPayload(
+    data.objectives,
+    data.tasks,
+    data.teams,
+    data.systems,
+    data.weeklySummaries,
+    data.decisions,
+    data.inbox,
+    options
+  );
   const jsonStr = JSON.stringify(payload);
-  // Add ~500 bytes for frontmatter + instructions
-  return jsonStr.length + 1500;
+  // Add ~1500 bytes for frontmatter + instructions + snapshot
+  return jsonStr.length + 2000;
 }
 
 // ────────────────────────────────────────────
