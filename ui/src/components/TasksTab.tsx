@@ -1,13 +1,22 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { usePMData } from "../context/PMContext";
 
-export function TasksTab() {
+interface Props {
+  initialStatus?: string;
+}
+
+export function TasksTab({ initialStatus }: Props) {
   const { data } = usePMData();
   const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState<string>("");
+  const [statusFilter, setStatusFilter] = useState<string>(initialStatus ?? "");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setStatusFilter(initialStatus ?? "");
+    setExpandedId(null);
+  }, [initialStatus]);
 
   const filtered = useMemo(() => {
     if (!data) return [];
