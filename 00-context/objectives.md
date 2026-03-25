@@ -246,139 +246,203 @@ Centralise and automate support for IaaS cloud applications, starting with ETS-o
 
 ---
 
-## Tier-2 — R2R / Observability Objectives (Debamalya Das)
+## Tier-2 — ETS Regional Objectives (Kelvin Leung)
+
+<!-- No objectives registered yet. Kelvin Leung is Head of ETS-Region. Add objectives here when source documents are available. -->
 
 ---
 
-### D-1 — Rapid Recovery Plan
+<!-- D-1 retired 2026-03-24: Moved to 02-work/tasks.md as T003. Not a Tier-2 owner objective — Debamalya Das reports to Hari Pothakamuri. -->
+<!-- D-2 retired 2026-03-24: Moved to 02-work/tasks.md as T004. Not a Tier-2 owner objective — Debamalya Das reports to Hari Pothakamuri. -->
+<!-- D-3 retired 2026-03-24: Moved to 02-work/tasks.md as T005. Not a Tier-2 owner objective — Debamalya Das reports to Hari Pothakamuri. -->
 
-tags: #objective #tier2 #debamalya #r2r #resilience #incident-management
+---
+
+## Tier-2 — ETS Japan Objectives (Birger Fjaellman)
+
+---
+
+### B-1 — Endpoint Monitoring & Post-Change Verification
+
+tags: #objective #tier2 #birger #ets-japan #monitoring #newrelic #resilience
 
 **Source**
-- Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
-- Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column, "Deliver on R2R program")
+- 2026_Birger_Plan Ideas.docx ("Enhanced Static Monitoring using laptops" and "Automated Post Change Health Check Laptop" sections)
 
-**Source Files:**
-- [deb_objectives.md](../90-assets/deb_objectives.md)
-- [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
+
+**Parent Objective**
+- O1 (Frictionless Customer Experience), O4 (Robust Technical Core)
+
+**Description**
+Improve service availability detection and post-change verification by deploying monitoring laptops to 2–3 Japan office sites, providing end-user-perspective health checks across wired, wireless, and internet connections. Complement with a portable automated health check device for network and end-user engineers to run pre/post-change validation, reducing extended incidents after changes and removing repetitive manual verification tasks.
+
+**Explicit Commitments / Outcomes**
+- Deploy monitoring laptops to 2–3 Japan sites performing health checks on a loop, uploading results to a centralised data location
+- Laptops connected to wired network, wireless, and wired internet to provide three comparison points
+- Add TCP connection tests for all services for faster availability checks
+- Add request latency tests for all services for performance comparison
+- Create automated post-change health check device for field engineers
+- Device used before and after change work in offices (e.g. power-down, network device replacement)
+- Engineers trigger scripts independently; consistency on post-change checks
+
+---
+
+### B-2 — Operational Standards & Procedure Compliance
+
+tags: #objective #tier2 #birger #ets-japan #compliance #irm #standards
+
+**Source**
+- 2026_Birger_Plan Ideas.docx ("Reliability Engineering Operational Procedure Alignment to Standards" section)
+
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
+
+**Parent Objective**
+- O4 (Robust Technical Core)
+
+**Description**
+Ensure all ETS-Japan services are compliant with Manulife standards by building standard operating procedures (SOPs) based on a revised template. Assign team members to summarise each standard, share with the team, and update SOPs accordingly, starting with a focused initial subset and building out.
+
+**Explicit Commitments / Outcomes**
+- Build SOPs aligned to Manulife standards using a standard template
+- Assign a team member to each standard for summarisation and SOP authoring
+- Standards in scope: MFC-STA-001 (Information Classification), MFC-STA-005 (Operations Security), MFC-STA-010 (Vulnerability Management), MFC-STA-013 (Cryptographic Safeguards), MFC-STA-025 (Logging and Monitoring), MFC-STA-031 (IT Asset Management), MFC-STA-032 (Secure Destruction), MFC-OR-STA-005 (Third-Party Risk Management)
+- Start with smaller initial subset and expand
+
+---
+
+### B-3 — Pipeline Standardization & Secrets Remediation
+
+tags: #objective #tier2 #birger #ets-japan #pipelines #iac #security #azure
+
+**Source**
+- 2026_Birger_Plan Ideas.docx ("Pipeline Component Standardization and consolidation" and "Secret/Password remediation" sections)
+
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
+
+**Parent Objective**
+- O2 (Dynamic Delivery Experience), O4 (Robust Technical Core)
+
+**Description**
+Standardise all elements of deployment pipelines (source code, binary repository, etc.), ensure pipelines are fully parameterised with all logic in a code repository, and establish an infrastructure-as-code review process. Separately, fix all secret and password issues across pipelines and other locations.
+
+**Explicit Commitments / Outcomes**
+- Standardise all deployment pipeline components (source code, binary repositories)
+- Ensure all pipelines are fully parameterised
+- Ensure all deployment logic resides within a code repository
+- Establish an infrastructure-as-code review process
+- Fix all secret/password issues in pipelines and other locations
+
+---
+
+### B-4 — Infrastructure Resilience & Disaster Recovery
+
+tags: #objective #tier2 #birger #ets-japan #resilience #dr #azure #r2r #gocc #monitoring
+
+**Source**
+- 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
+
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
 
 **Parent Objective**
 - O4 (Robust Technical Core), O1 (Frictionless Customer Experience)
 
 **Description**
-Deliver Rapid Recovery Plans as a key R2R deliverable for FY2026. This workstream is managed by the Incident Management team. Plans will define recovery procedures for Gold applications to meet RTO/RPO targets and reduce P1 MTTR.
+Ensure applications and infrastructure are designed to evergreen standards, operationalised within the Resilience Framework, and capable of sustained failover between Japan East and Japan West Azure regions. Remove dependencies on Azure East Asia/HK/China, implement full-stack monitoring, achieve 14-day patching cycles, document backup and archive processes, establish DR test coverage for all untested systems, and leverage GOCC for operational handovers.
 
 **Explicit Commitments / Outcomes**
-- Deliver Rapid Recovery Plans as part of the R2R program
-- Managed by Incident Management team
-- Format and template to be confirmed with Rohina
+- Move all systems within management scope to evergreen standards
+- Identify key dependencies for each system; document HLD/LLD update processes
+- Identify all traffic and dependencies to Azure East Asia/HK/China and replace with Japan East/West assets
+- Full-stack monitoring for all apps and dependencies
+- 14-day patching cycle, ideally on weekdays
+- Backup processes in place and tested regularly; archive restoration tested regularly
+- Record deletion processes for records exceeding retention period
+- Leverage GOCC: restart, health check, unavailability response, recurring tasks (patching, password cycling, certificate replacement) documented and operationalised
+- DR handover to GOCC; basic monitoring with availability, capacity, and event monitoring
+- Applications can run in Japan West or Japan East for extended periods (>1 week) with all dependencies in other region powered down
+- Test all non-tested systems by shutting down Japan West/East in controlled tests
+- Ensure all Japan East systems have ASR reprotect (or equivalent) procedure for replication switch
 
 ---
 
-### D-2 — Digital Property Dashboarding
+### B-5 — Security, Data Integrity & Encryption
 
-tags: #objective #tier2 #debamalya #r2r #digital #newrelic #adobe #monitoring #dashboards
+tags: #objective #tier2 #birger #ets-japan #security #azure #cyber #backup #encryption
 
 **Source**
-- Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
-- Slide 5 (Refreshed ETS Strategy 2026 — "Frictionless Customer Experience" column, "Implement 360 customer experience monitoring for all top digital properties")
+- 2026_Birger_Plan Ideas.docx ("Information Security", "Data Integrity", and "Encryption" sections)
 
-**Source Files:**
-- [deb_objectives.md](../90-assets/deb_objectives.md)
-- [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
 
 **Parent Objective**
-- O1 (Frictionless Customer Experience)
+- O4 (Robust Technical Core)
 
 **Description**
-Deliver digital property dashboarding for customer-facing applications. Metrics have been defined by Deloitte; measurement tooling from Adobe and New Relic is being implemented, with completion targeted by end of FY2026.
+Address the backlog of security issues and bad practices by leveraging GCS tooling, THR, Azure tooling, and CIS Controls. Ensure systems and data can be restored and meet retention requirements by identifying and backing up all critical assets (source code, 3rd-party binaries, configuration data, licensing keys, application data). Ensure all systems and traffic in public cloud are encrypted.
 
 **Explicit Commitments / Outcomes**
-- Metrics already chosen by Deloitte
-- Measurement from Adobe and New Relic yet to be completed for all properties by end of year
-- Enables 360 customer experience monitoring and trend analysis for top digital properties
+- Leverage GCS tools, THR, Azure tooling, and CIS Controls/benchmarks to identify all security issues
+- Address easy-to-fix and serious issues first; maximise use of maintenance windows
+- Identify all assets critical to system restoration (source code, 3rd-party binaries, configuration, licensing keys, application data)
+- Ensure all critical assets are backed up regularly
+- Identify record retention requirements; ensure archives available for expected retention period
+- Ensure records exceeding retention period can be purged
+- Ensure all systems in public cloud are encrypted
+- Ensure all traffic in public cloud is encrypted
 
 ---
 
-### D-3 — Observability Maturity Model (OMM) L2 for Gold Applications
+### B-6 — IT Asset Management & Evergreen Migration
 
-tags: #objective #tier2 #debamalya #r2r #omm #observability #newrelic #moogsoft #xmatters #gocc #cmdb #apm
+tags: #objective #tier2 #birger #ets-japan #cmdb #leanix #evergreen #network
 
 **Source**
-- Email from Debamalya Das (2026-03-19 — "RE: Application Health KPI")
-- Slide 5 (Refreshed ETS Strategy 2026 — "Robust Technical Core" column, "Improve Portfolio Health for Gold Apps ≥80%")
+- 2026_Birger_Plan Ideas.docx ("IT Asset Management", "Evergreen Migration", and "Network Cleanup and Segmentation" sections)
 
-**Source Files:**
-- [deb_objectives.md](../90-assets/deb_objectives.md)
-- [ETS 2026 Strategy and Goals.pdf](../90-assets/ETS%202026%20Strategy%20and%20Goals.pdf)
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
 
 **Parent Objective**
-- O4 (Robust Technical Core), O1 (Frictionless Customer Experience)
+- O4 (Robust Technical Core)
 
 **Description**
-Achieve OMM L2 maturity for all Gold applications by mid-FY2027, with implementation activities running through FY2026. OMM L2 requires infrastructure alerts under standard policy with reconciliation in AIOps tools, application transaction alerts routed through xMatters, synthetics monitoring with login checks, and application logging into ADX with pattern alerts. Measurement will be via an in-house tool developed by the architecture team.
+Ensure Common Service Data Model mapping and service mapping is in place for all services within management scope, working with Information Management and architecture teams. Exit legacy subscriptions completely. Check network traffic for misconfigurations, ensure non-production and production segments are separated, and clean up blocked or misdirected traffic across cloud and non-cloud environments.
 
 **Explicit Commitments / Outcomes**
-- Infrastructure alerts under standard policy, reconciled in AIOps tool (Moogsoft), with xMatters assignment to GOCC or app support teams
-- Application (APM) transaction alerts routed to app support via xMatters, with APM agents updated and distributed tracing enabled
-- Synthetics/URL monitoring with login checks (not just availability)
-- Application logging into ADX with alerts for error patterns
-- OMM L2 completion targeted by mid-FY2027
-- Measurement via in-house tool being developed by architecture team
-- OMM L3 (not mandated): Certificate & Secrets tagged with App CI#; self-recovery automation orchestrated
+- CSDM and service mapping in place for all managed services
+- Application descriptions consistent with process and reality; dependent services correctly associated
+- Exit legacy subscriptions completely
+- Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
+- Ensure non-production and production network segments are separated
 
 ---
 
-## Tier-3 — ETS Japan Objectives (David Klan)
+### B-7 — PPS Service Improvement (AFS & Ingenium)
 
----
-
-### K-1 — Employee Experience Dashboard (Production)
-
-tags: #objective #tier3 #davidklan #ets-japan #dashboard #production #monitoring #newrelic #observability
+tags: #objective #tier2 #birger #ets-japan #pps #modernisation #automation
 
 **Source**
-- LapuLapu Objective and Goals.pdf (Pages 1–4, "Employee Experience Dashboard (Production)", March 13, 2026)
+- 2026_Birger_Plan Ideas.docx ("PPS Service Improvement" section)
 
-**Source File:** [LapuLapu Objective and Goals.pdf](../90-assets/LapuLapu%20Objective%20and%20Goals.pdf)
-
-**Parent Objective**
-- O4 (Robust Technical Core), O3 (Outstanding Colleague Experience), D-3 (OMM L2 for Gold Applications)
-
-**Description**
-Establish a single, authoritative Employee Experience Dashboard providing production application availability and performance visibility from a Japan employee perspective. Coverage spans Bronze, Silver, and Gold applications including critical international dependencies. A core operational goal is daily readiness confirmation before 8:00 AM JST, reducing reactive escalations and executive noise while increasing confidence in Japan operational readiness.
-
-**Explicit Commitments / Outcomes**
-- Single authoritative view of application availability and performance for all employee-facing services used in Japan
-- Coverage across Bronze, Silver, and Gold applications, including international dependencies that materially impact Japan employees
-- Visibility spans URLs, underlying components, and alert routing, aligned with Manulife's observability maturity standards
-- Daily readiness confirmation before 8:00 AM JST — issues known, contextualised, and owned before employees begin work
-- Reduced unnecessary escalations to senior leadership
-- Minimised reactive, ad-hoc inquiries
-- Defensible, data-driven narrative when issues do occur
-- Success measured by 100% coverage of employee-facing URLs, reduced executive noise, and increased confidence in Japan operational readiness
-
----
-
-### K-2 — Developer Experience Dashboard (Non-Production)
-
-tags: #objective #tier3 #davidklan #ets-japan #dashboard #non-production #monitoring #newrelic #developer-experience
-
-**Source**
-- LapuLapu Objective and Goals.pdf (Pages 1, 3, 5, "Developer Experience Dashboard (Non-Production)", March 13, 2026)
-
-**Source File:** [LapuLapu Objective and Goals.pdf](../90-assets/LapuLapu%20Objective%20and%20Goals.pdf)
+**Source File:** [2026_Birger_Plan Ideas.docx](../90-assets/2026_Birger_Plan%20Ideas.docx)
 
 **Parent Objective**
-- O3 (Outstanding Colleague Experience), O4 (Robust Technical Core)
+- O4 (Robust Technical Core), O6 (Technology Transformation through AI & Automation)
 
 **Description**
-Establish a Developer Experience Dashboard providing holistic visibility into non-production environment health for developers and testers in Japan. The dashboard eliminates time lost discovering whether issues are code-related or environment-related, shifting non-production support from reactive discovery to proactive visibility. A daily pre-8:00 AM JST readiness check ensures issues are surfaced and owned before they block work.
+Operationalise the AFS service with backup, archiving, immutable backup, retention policy implementation, access control, and data loss protection. Address Ingenium by rearchitecting to split database from application layer, replace expensive one-off software with modern options, containerise the system, replace the messaging system with MQ or similar, and address EUC systems by creating UI to replace screen scrapers.
 
 **Explicit Commitments / Outcomes**
-- Holistic view of non-production environment health, including availability of URLs and critical underlying components
-- Immediately clear whether an environment is healthy or degraded, reducing time spent on diagnosis
-- Daily pre-8:00 AM JST non-production readiness check — issues surfaced and owned before they block work
-- Measurable reduction in time lost to environment investigation
-- Improved developer and tester productivity
-- Earlier identification of non-production issues that could otherwise delay testing or releases
+- AFS: implement backup, archiving, and immutable backup
+- AFS: implement retention policy (tag folders with record classification numbers; enforce purge after maximum period)
+- AFS: implement access control policy and data loss protection policy
+- AFS: if data are records, add immutability controls (read-only or copy to read-only folder)
+- Ingenium: split database from application layer
+- Ingenium: replace expensive/one-off software with modern options
+- Ingenium: containerise the system
+- Ingenium: replace messaging system with MQ or similar technologies
+- Ingenium: create UI to replace screen scrapers (address EUC systems)
+
+
+<!-- K-1 retired 2026-03-24: Moved to 02-work/tasks.md as T006. David Klan is Tier-3 — not registered as Tier-2 objective. -->
+<!-- K-2 retired 2026-03-24: Moved to 02-work/tasks.md as T007. David Klan is Tier-3 — not registered as Tier-2 objective. -->
