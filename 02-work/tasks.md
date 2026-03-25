@@ -83,3 +83,55 @@
 - **Systems:** #newrelic
 - **Tags:** #ets-japan #dashboard #non-production #monitoring #developer-experience
 - **Description:** Establish a Developer Experience Dashboard providing holistic visibility into non-production environment health for developers and testers in Japan. Daily pre-8:00 AM JST readiness check ensures issues are surfaced and owned before they block work. Measurable reduction in time lost to environment investigation. Improved developer and tester productivity. Previously registered as objective K-2.
+
+---
+
+## T008 — Epsilon Upgrade POT: Server Provisioning & Environment Setup
+- **Status:** Open
+- **Created:** 2026-03-25
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team-ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #ingenium #azure
+- **Relevance:** 85/100
+- **Tags:** #epsilon #ingenium #modernisation #infrastructure #pot
+- **Description:** Provision POT servers and configure the three-tier architecture (presentation, middleware, database layers) for the Epsilon Upgrade proof of technology. Includes POT subscription and access setup, server provisioning, and base infrastructure readiness. Requires coordination with ETS Unix and DB Engineering teams. Source: 90-assets/epsilon_project.md.
+
+---
+
+## T009 — Epsilon Upgrade POT: Database & Middleware Installation
+- **Status:** Open
+- **Created:** 2026-03-25
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team-ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #ingenium #azure
+- **Relevance:** 85/100
+- **Tags:** #epsilon #ingenium #modernisation #database #middleware #pot
+- **Description:** Install and configure the database layer and all middleware components (WAS, CICS, CTG, COBOL, Batch, SFTP) for the Epsilon three-tier architecture POT. Configure ALB setup and VCS/DB native HA. Deploy application and verify baseline functionality. Source: 90-assets/epsilon_project.md.
+
+---
+
+## T010 — Epsilon Upgrade POT: Validation & Failover Testing
+- **Status:** Open
+- **Created:** 2026-03-25
+- **Objective Chain:** B-7 (PPS Service Improvement) → B-4 (Infrastructure Resilience & DR) → O4 (Robust Technical Core)
+- **Team:** #team-ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #ingenium #azure
+- **Relevance:** 88/100
+- **Tags:** #epsilon #ingenium #modernisation #testing #ha #pot
+- **Description:** Execute the full POT validation plan: application and policy-level workflow testing, zone-level failover testing across presentation, middleware, and data layers, VCS and Pacemaker verification, batch execution testing, and online patching testing. Analyse POT feedback and produce recommendations for Q3/Q4 planning. Source: 90-assets/epsilon_project.md.
+
+---
+
+## T011 — Epsilon Upgrade: Stakeholder Alignment & Formal Announcement
+- **Status:** Open
+- **Created:** 2026-03-25
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team-ets-japan
+- **Assigned:** David Klan
+- **Systems:** #ingenium
+- **Relevance:** 75/100
+- **Tags:** #epsilon #ingenium #modernisation #stakeholder #coordination
+- **Description:** Formally announce the Epsilon POT plan to the wider team. Secure stakeholder commitment from ETS Unix, DB Engineering/BAU, and Ingenium Infrastructure (Modernization) teams. Drive alignment on timelines for VM provisioning and resource availability. Source: 90-assets/epsilon_project.md.

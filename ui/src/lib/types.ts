@@ -66,6 +66,32 @@ export interface WeeklySummary {
   content: string;
 }
 
+export type AdvisoryKind =
+  | "orphaned-tier2"       // Tier-2 with no Tier-1 parent
+  | "invalid-parent"       // Tier-2 with a non-Tier-1 parent
+  | "task-skips-tier2"     // Task links directly to Tier-1 only
+  | "missing-objective";   // Task references an objective ID that doesn't exist
+
+export interface RelationshipAdvisory {
+  kind: AdvisoryKind;
+  subject: string;          // ID of the objective or task with the issue
+  message: string;          // Human-readable description
+  resolution: string;       // Concrete suggestion for how to fix it
+  relatedIds: string[];     // IDs mentioned in the issue (parents, refs, etc.)
+}
+
+export interface RelationshipMap {
+  // Tier-1 → Tier-2: one-to-many (a Tier-1 can have many Tier-2 children;
+  //   a Tier-2 may reference one or more Tier-1 parents for cross-cutting objectives)
+  tier1ToTier2: Record<string, string[]>;
+  // Tier-2 → Tasks: many-to-many (tier2_id → [task_ids])
+  tier2ToTasks: Record<string, string[]>;
+  // Task → Tier-2: many-to-many (task_id → [tier2_ids])
+  taskToTier2: Record<string, string[]>;
+  // Relationship advisory notes
+  violations: RelationshipAdvisory[];
+}
+
 export interface PMData {
   objectives: Objective[];
   teams: Team[];
@@ -78,6 +104,7 @@ export interface PMData {
   loadedAt: string;
   folderName: string;
   warnings: string[];
+  relationships: RelationshipMap;
 }
 
 export interface ExportOptions {

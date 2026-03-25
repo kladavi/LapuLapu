@@ -10,6 +10,7 @@ import {
   parseDecisions,
   parseWeeklySummaries,
 } from "../lib/parsers";
+import { buildRelationshipMap } from "../lib/relationships";
 
 interface PMContextType {
   data: PMData | null;
@@ -65,6 +66,14 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
         const weeklySummaries = parseWeeklySummaries(files);
         const inbox = inboxPath ? files[inboxPath] : "";
 
+        // Build and enforce relationships
+        const relationships = buildRelationshipMap(objectives, tasks);
+
+        // Add relationship advisory messages to warnings
+        if (relationships.violations.length > 0) {
+          warnings.push(...relationships.violations.map((v) => v.message));
+        }
+
         setData({
           objectives,
           teams,
@@ -77,6 +86,7 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
           loadedAt: new Date().toISOString(),
           folderName,
           warnings,
+          relationships,
         });
       } catch (err) {
         console.error("Failed to parse files:", err);
