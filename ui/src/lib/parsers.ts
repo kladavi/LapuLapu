@@ -233,17 +233,17 @@ function parseTeamBlock(block: string, headingLevel: number): Team | null {
   // Remove parenthetical descriptions
   const name = nameRaw.replace(/\s*\(.+?\)\s*$/, "").trim();
 
-  const lead = extractField(block, "Lead") || "";
-  const reportsTo = extractField(block, "Reports to") || undefined;
-  const membersLine = extractField(block, "Members") || "";
+  const lead = extractBulletField(block, "Lead") || "";
+  const reportsTo = extractBulletField(block, "Reports to") || undefined;
+  const membersLine = extractBulletField(block, "Members") || "";
   const members = membersLine
     ? membersLine.split(",").map((m) => m.trim()).filter(Boolean)
     : undefined;
-  const systemsLine = extractField(block, "Primary Systems") || "";
+  const systemsLine = extractBulletField(block, "Primary Systems") || "";
   const primarySystems = systemsLine ? extractHashtags(systemsLine) : undefined;
-  const workTypes = extractField(block, "Work Types") || undefined;
+  const workTypes = extractBulletField(block, "Work Types") || undefined;
   const objectiveAlignment =
-    extractField(block, "Objective Alignment") || undefined;
+    extractBulletField(block, "Objective Alignment") || undefined;
   const tags = extractHashtags(
     block
       .split("\n")
