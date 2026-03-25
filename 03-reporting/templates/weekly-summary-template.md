@@ -35,3 +35,9 @@
 1. [Priority 1 — tied to objective]
 2. [Priority 2 — tied to objective]
 3. [Priority 3 — tied to objective]
+
+## Clarifying Questions for Next Week
+
+- [Question 1: what information would improve the next report?]
+- [Question 2: what decision is pending that blocks progress?]
+- [Question 3: what dependency needs to be confirmed?]

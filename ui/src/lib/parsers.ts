@@ -58,14 +58,14 @@ function extractTags(block: string): string[] {
       m[1]
         .split(/\s+/)
         .map((t) => t.trim())
-        .filter((t) => t.startsWith("#"))
+        .filter((t) => t.startsWith("#") && t.length > 1)
     ),
   ];
 }
 
 function extractHashtags(line: string): string[] {
   const tags = new Set<string>();
-  const re = /#[\w-]+/g;
+  const re = /#[\w-]+(?::[\w-]+)*/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(line)) !== null) {
     tags.add(m[0]);
@@ -164,11 +164,14 @@ export function parseObjectives(md: string): Objective[] {
     // Description
     const description = extractField(block, "Description");
 
-    // Commitments
-    const commitments = extractBulletList(
+    // Commitments (supports both legacy and new field names)
+    let commitments = extractBulletList(
       block,
       "Explicit Commitments / Outcomes"
     );
+    if (commitments.length === 0) {
+      commitments = extractBulletList(block, "Commitments");
+    }
 
     objectives.push({
       id,
@@ -277,8 +280,8 @@ export function parseSystems(md: string): SystemOfRecord[] {
   const lines = md.split("\n");
 
   for (const line of lines) {
-    // Match table rows: | Name | #tag | Purpose |
-    const m = line.match(/^\|\s*([^|]+?)\s*\|\s*(#[\w-]+)\s*\|\s*(.+?)\s*\|$/);
+    // Match table rows: | Name | #tag | Purpose | (supports namespaced tags like #system:azure)
+    const m = line.match(/^\|\s*([^|]+?)\s*\|\s*(#[\w:-]+)\s*\|\s*(.+?)\s*\|$/);
     if (m && !m[1].match(/^-+$/) && m[1] !== "System") {
       systems.push({
         name: m[1].trim(),
@@ -370,7 +373,11 @@ export function parseDecisions(md: string): Decision[] {
     const request = extractField(block, "Request") || "";
     const decision = extractField(block, "Decision") || "";
     const reason = extractField(block, "Reason") || "";
-    const tags = extractHashtags(extractField(block, "Tags") || "");
+    // Support both **Tags:** field and tags: line format
+    let tags = extractHashtags(extractField(block, "Tags") || "");
+    if (tags.length === 0) {
+      tags = extractTags(block);
+    }
 
     decisions.push({
       id,

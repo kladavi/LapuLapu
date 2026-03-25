@@ -30,12 +30,15 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
     options
   );
 
+  // Run pre-export validation
+  const validationWarnings = runPreExportValidation(data);
+
   const errors = validateExportPayload(payload);
   if (errors.length > 0) {
     return { content: "", errors, warnings: [] };
   }
 
-  const warnings = payload.exportWarnings || [];
+  const warnings = [...(payload.exportWarnings || []), ...validationWarnings];
 
   if (options.format === "json") {
     return { content: generateJsonExport(data, payload), errors: [], warnings };
@@ -65,6 +68,13 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
     'title: "Objective-Driven PM Copilot Pack"',
     `created: "${now}"`,
     `source_repo: "${data.folderName}"`,
+    "distribution:",
+    '  - "Birger"',
+    '  - "Hari"',
+    '  - "Kelvin"',
+    '  - "Jonan"',
+    '  - "Deb"',
+    '  - "Balaji"',
     "included_sections:",
     ...includedSections.map((s) => `  - ${s}`),
     "exclusions:",
@@ -80,6 +90,12 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
   ].join("\n");
 
   sections.push(frontmatter);
+
+  // 1.5) Context contract from pack-config.md (if available)
+  const contractSection = extractPackConfigContract(data.rawFiles);
+  if (contractSection) {
+    sections.push(contractSection);
+  }
 
   // 2) Copilot instructions
   const instructions = `
@@ -217,4 +233,143 @@ export function downloadFile(content: string, filename: string): void {
   a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+// ────────────────────────────────────────────
+// Pack-config contract extraction
+// ────────────────────────────────────────────
+
+/**
+ * Extract the context contract from pack-config.md and render it
+ * as a CONTEXT CONTRACT section for the export.
+ */
+function extractPackConfigContract(rawFiles: Record<string, string>): string | null {
+  // Find the pack-config file
+  const key = Object.keys(rawFiles).find((k) =>
+    k.replace(/\\/g, "/").endsWith("00-context/pack-config.md")
+  );
+  if (!key) return null;
+
+  const md = rawFiles[key].replace(/\r\n/g, "\n");
+
+  // Extract sections by heading (partial match — heading must start with the given text)
+  const extractSection = (heading: string): string => {
+    const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(
+      `^##\\s+${escaped}[^\\n]*\\n([\\s\\S]*?)(?=^## |$)`,
+      "m"
+    );
+    const m = md.match(re);
+    return m ? m[1].trim() : "";
+  };
+
+  const audience = extractSection("Intended Audience");
+  const contract = extractSection("Context Contract");
+  const behavior = extractSection("How Copilot Should Behave");
+  const prompts = extractSection("Starter Prompts");
+
+  if (!audience && !contract && !behavior) return null;
+
+  const lines: string[] = [];
+  lines.push("## CONTEXT CONTRACT (READ FIRST)\n");
+
+  if (audience) {
+    lines.push("### Intended Audience\n");
+    lines.push(audience);
+    lines.push("");
+  }
+  if (contract) {
+    lines.push("### Context Contract\n");
+    lines.push(contract);
+    lines.push("");
+  }
+  if (behavior) {
+    lines.push("### How Copilot Should Behave\n");
+    lines.push(behavior);
+    lines.push("");
+  }
+  if (prompts) {
+    lines.push("### Starter Prompts\n");
+    lines.push(prompts);
+    lines.push("");
+  }
+
+  return lines.join("\n");
+}
+
+// ────────────────────────────────────────────
+// Pre-export validation (Task 9)
+// ────────────────────────────────────────────
+
+/**
+ * Run pre-export validation on source data. Returns export warnings
+ * (soft failures) rather than blocking errors.
+ */
+function runPreExportValidation(data: PMData): ExportWarning[] {
+  const warnings: ExportWarning[] = [];
+  const objectiveIds = new Set(data.objectives.map((o) => o.id));
+
+  // 1. Check tasks reference valid objective IDs
+  for (const task of data.tasks) {
+    for (const oid of task.objectiveIds) {
+      if (!objectiveIds.has(oid) && !task.tags.some((t) => t.includes("objective:external"))) {
+        warnings.push({
+          type: "VALIDATION_MISSING_OBJECTIVE",
+          taskId: task.id,
+          objectiveId: oid,
+          message: `Task references objective "${oid}" which does not exist in objectives.md and is not tagged #objective:external.`,
+        });
+      }
+    }
+  }
+
+  // 2. Check systems tags start with #system: (in export normalizer this is already handled,
+  //    but warn on source data)
+  for (const task of data.tasks) {
+    for (const sys of task.systems) {
+      const normalized = sys.startsWith("#") ? sys : `#${sys}`;
+      if (!normalized.startsWith("#system:") && !normalized.match(/^#(moogsoft|newrelic|azure|cmdb|xmatters|leanix|adobe|apm|adx|ingenium)$/i)) {
+        warnings.push({
+          type: "VALIDATION_SYSTEM_TAG",
+          taskId: task.id,
+          objectiveId: "",
+          message: `System tag "${sys}" is not namespaced. Expected format: #system:<name>.`,
+        });
+      }
+    }
+  }
+
+  // 3. Check decisions have Date and Decision fields
+  for (const dec of data.decisions) {
+    if (!dec.date) {
+      warnings.push({
+        type: "VALIDATION_DECISION_FIELD",
+        taskId: dec.id,
+        objectiveId: "",
+        message: `Decision "${dec.id}" is missing a Date field.`,
+      });
+    }
+    if (!dec.decision) {
+      warnings.push({
+        type: "VALIDATION_DECISION_FIELD",
+        taskId: dec.id,
+        objectiveId: "",
+        message: `Decision "${dec.id}" is missing a Decision field.`,
+      });
+    }
+  }
+
+  // 4. Check notes/description fields don't exceed 500 chars (warn, don't block)
+  for (const task of data.tasks) {
+    if (task.description.length > 500) {
+      warnings.push({
+        type: "VALIDATION_NOTES_LENGTH",
+        taskId: task.id,
+        objectiveId: "",
+        message: `Task description exceeds 500 chars (${task.description.length}). Will be trimmed in export.`,
+      });
+    }
+  }
+
+  return warnings;
 }

@@ -113,6 +113,7 @@ const SYSTEM_TAG_MAP: Record<string, string> = {
   "adobe":     "#system:adobe",
   "apm":       "#system:apm",
   "adx":       "#system:adx",
+  "ingenium":  "#system:ingenium",
 };
 
 /** Known team name -> normalized tag mapping */
@@ -590,8 +591,8 @@ function normalizeStatus(raw: string): "Open" | "Closed" | "Deferred" | null {
 function extractTeamName(raw: string): string | null {
   const clean = sanitizeText(raw).replace(/^#\S+\s*/, "").trim();
   if (!clean) {
-    // Try to extract team tag and convert
-    const tagMatch = raw.match(/#(team[-\w]*)/i);
+    // Try to extract team tag and convert (supports both #team-xxx and #team:xxx)
+    const tagMatch = raw.match(/#(team[:\-][\w-]*)/i);
     if (tagMatch) {
       const tag = normalizeTag(tagMatch[1]);
       // Convert #team:gocc back to "GOCC" style name
@@ -717,11 +718,10 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
       }
       lines.push("");
     }
-    // Only show Hari (H-*) objectives in the snapshot Tier-2 section
-    const hariTier2 = tier2.filter((o) => /^H-\d+$/.test(o.id));
-    if (hariTier2.length > 0) {
-      lines.push("**Tier-2 (Hari)**");
-      for (const o of hariTier2) {
+    // Show all Tier-2 objectives grouped by owner prefix
+    if (tier2.length > 0) {
+      lines.push("**Tier-2**");
+      for (const o of tier2) {
         lines.push(`- ${o.id}: ${o.title} → ${o.parentObjectiveIds.join(", ") || "none"}`);
       }
       lines.push("");
