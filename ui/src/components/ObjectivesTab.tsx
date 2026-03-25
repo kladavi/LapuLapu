@@ -1,28 +1,42 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { usePMData } from "../context/PMContext";
 import type { Objective } from "../lib/types";
 
 const OWNER_FILTERS = [
   { label: "All", value: "" },
   { label: "Hari", value: "#hari" },
-  { label: "Debamalya", value: "#debamalya" },
-  { label: "David", value: "#davidklan" },
   { label: "Birger", value: "#birger" },
   { label: "Kelvin", value: "#kelvin" },
-  { label: "Jonan", value: "#jonan" },
 ];
 
-export function ObjectivesTab() {
+interface Props {
+  initialTier?: number;
+  initialOwnerTag?: string;
+}
+
+export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
   const { data } = usePMData();
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [ownerFilter, setOwnerFilter] = useState("");
+  const [tierFilter, setTierFilter] = useState<number | undefined>(initialTier);
+  const [ownerFilter, setOwnerFilter] = useState(initialOwnerTag ?? "");
   const [tagFilter, setTagFilter] = useState("");
+
+  // Re-apply filter whenever navigated here from dashboard
+  useEffect(() => {
+    setTierFilter(initialTier);
+    setOwnerFilter(initialOwnerTag ?? "");
+    setSelectedId(null);
+  }, [initialTier, initialOwnerTag]);
 
   const filtered = useMemo(() => {
     if (!data) return [];
     let objs = data.objectives;
+
+    if (tierFilter !== undefined) {
+      objs = objs.filter((o) => o.tier === tierFilter);
+    }
 
     if (ownerFilter) {
       objs = objs.filter((o) =>
@@ -41,7 +55,7 @@ export function ObjectivesTab() {
     }
 
     return objs;
-  }, [data, ownerFilter, tagFilter]);
+  }, [data, tierFilter, ownerFilter, tagFilter]);
 
   const tiers = useMemo(() => {
     const grouped: Record<number, Objective[]> = { 1: [], 2: [], 3: [] };
@@ -75,6 +89,23 @@ export function ObjectivesTab() {
         <div className="p-4 space-y-4">
           {/* Filters */}
           <div className="flex flex-wrap gap-3 items-center">
+            {/* Tier filter */}
+            <div className="flex gap-1">
+              {([undefined, 1, 2] as const).map((t) => (
+                <button
+                  key={t ?? "all"}
+                  onClick={() => setTierFilter(t)}
+                  className={`px-3 py-1 text-xs rounded-full border cursor-pointer transition-colors ${
+                    tierFilter === t
+                      ? "bg-blue-600 text-white border-blue-600"
+                      : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                  }`}
+                >
+                  {t === undefined ? "All Tiers" : `Tier-${t}`}
+                </button>
+              ))}
+            </div>
+            {/* Owner filter */}
             <div className="flex gap-1">
               {OWNER_FILTERS.map((f) => (
                 <button
@@ -82,8 +113,8 @@ export function ObjectivesTab() {
                   onClick={() => setOwnerFilter(f.value)}
                   className={`px-3 py-1 text-xs rounded-full border cursor-pointer transition-colors ${
                     ownerFilter === f.value
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"
+                      ? "bg-indigo-600 text-white border-indigo-600"
+                      : "bg-white text-gray-600 border-gray-300 hover:border-indigo-400"
                   }`}
                 >
                   {f.label}
@@ -100,7 +131,7 @@ export function ObjectivesTab() {
           </div>
 
           {/* Tier groups */}
-          {([1, 2, 3] as const).map((tier) => {
+          {([1, 2] as const).map((tier) => {
             const objs = tiers[tier] || [];
             if (objs.length === 0) return null;
             return (

@@ -22,10 +22,25 @@ function extractField(block: string, label: string): string {
   return m ? m[1].trim() : "";
 }
 
+/**
+ * Extract a field from a bullet-formatted block like:
+ *   - **Status:** Open
+ *   - **Created:** 2026-03-20
+ * Returns just the value after the label on the same line.
+ */
+function extractBulletField(block: string, label: string): string {
+  const regex = new RegExp(
+    `^\\s*-\\s*\\*\\*${label}:?\\*\\*\\s*(.+)$`,
+    "m"
+  );
+  const m = block.match(regex);
+  return m ? m[1].trim() : "";
+}
+
 function extractBulletList(block: string, label: string): string[] {
   const regex = new RegExp(
-    `\\*\\*${label}\\*\\*\\s*\\n((?:\\s*-\\s+.+\\n?)*)`,
-    "s"
+    `\\*\\*${label}\\*\\*\\s*\\n((?:[ \\t]*-\\s+.+\\n?)*)`,
+    "m"
   );
   const m = block.match(regex);
   if (!m) return [];
@@ -136,11 +151,13 @@ export function parseObjectives(md: string): Objective[] {
     );
     const sourceFile = sourceFileMatch ? sourceFileMatch[1] || "" : "";
 
-    // Parent objective
+    // Parent objective — only match registered objective ID formats:
+    //   Tier-1: O followed by digits (O1, O6)
+    //   Tier-2: single letter + dash + digits (H-1, B-3, KL-1)
     const parentLines = extractBulletList(block, "Parent Objective");
     const parentIds: string[] = [];
     for (const pl of parentLines) {
-      const idMatches = pl.match(/[A-Z]-?\d+/g);
+      const idMatches = pl.match(/\bO\d+\b|\b[A-Z]{1,2}-\d+\b/g);
       if (idMatches) parentIds.push(...idMatches);
     }
 
@@ -292,22 +309,22 @@ export function parseTasks(md: string): Task[] {
 
     const id = headingMatch[1].trim();
     const title = headingMatch[2].trim();
-    const status = extractField(block, "Status") || "Open";
-    const created = extractField(block, "Created") || "";
-    const objectiveChain = extractField(block, "Objective Chain") || "";
-    const team = extractField(block, "Team") || "";
-    const assigned = extractField(block, "Assigned") || "";
-    const systemsLine = extractField(block, "Systems") || "";
+    const status = extractBulletField(block, "Status") || "Open";
+    const created = extractBulletField(block, "Created") || "";
+    const objectiveChain = extractBulletField(block, "Objective Chain") || "";
+    const team = extractBulletField(block, "Team") || "";
+    const assigned = extractBulletField(block, "Assigned") || "";
+    const systemsLine = extractBulletField(block, "Systems") || "";
     const systems = extractHashtags(systemsLine);
-    const relevanceStr = extractField(block, "Relevance") || "";
+    const relevanceStr = extractBulletField(block, "Relevance") || "";
     const relevanceMatch = relevanceStr.match(/(\d+)/);
     const relevance = relevanceMatch ? parseInt(relevanceMatch[1]) : undefined;
-    const tags = extractHashtags(extractField(block, "Tags") || "");
-    const description = extractField(block, "Description") || "";
+    const tags = extractHashtags(extractBulletField(block, "Tags") || "");
+    const description = extractBulletField(block, "Description") || "";
 
     // Extract all objective IDs from the chain
     const objIds: string[] = [];
-    const objIdMatches = objectiveChain.match(/[A-Z]-?\d+/g);
+    const objIdMatches = objectiveChain.match(/\bO\d+\b|\b[A-Z]{1,2}-\d+\b/g);
     if (objIdMatches) objIds.push(...objIdMatches);
 
     tasks.push({

@@ -8,8 +8,8 @@ import type { Objective, Task, Team, SystemOfRecord, WeeklySummary } from "./typ
 // ISSUE 2 — Objective ID validation & marker normalization
 // ────────────────────────────────────────────
 
-/** Valid exported objective ID patterns (Tier-1 + Hari Tier-2 only) */
-const VALID_OBJ_ID_RE = /^(O\d+|H-\d+)$/;
+/** Valid exported objective ID patterns (Tier-1 + all Tier-2 owners) */
+const VALID_OBJ_ID_RE = /^(O\d+|[A-Z]{1,2}-\d+)$/;
 
 /** Check if a string is a valid objective ID present in the allowed set */
 export function validateObjectiveId(id: string, allowedIds: Set<string>): boolean {
@@ -379,9 +379,9 @@ export function buildNormalizedPayload(
 ): NormalizedExportPayload {
   const payload: NormalizedExportPayload = {};
 
-  // ── Filter objectives: Tier-1 (O*) + Hari Tier-2 (H-*) only (Issue 1, already resolved) ──
+  // ── Filter objectives: Tier-1 (O*) + all Tier-2 owners ──
   const exportedObjectives = objectives.filter(
-    (o) => /^O\d+$/.test(o.id) || /^H-\d+$/.test(o.id)
+    (o) => VALID_OBJ_ID_RE.test(o.id)
   );
 
   // Build allowed-IDs set for validation

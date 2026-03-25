@@ -23,12 +23,20 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]["id"];
 
+export type NavFilter = { status?: string; tier?: number; ownerTag?: string };
+
 export default function Home() {
   const { data, loading, loadFiles } = usePMData();
   const [activeTab, setActiveTab] = useState<TabId>("dashboard");
+  const [navFilter, setNavFilter] = useState<NavFilter>({});
   const [dragOver, setDragOver] = useState(false);
   const [hasFolderPicker, setHasFolderPicker] = useState(false);
   const [autoLoadAttempted, setAutoLoadAttempted] = useState(false);
+
+  const handleNavigate = useCallback((tab: TabId, filter: NavFilter = {}) => {
+    setNavFilter(filter);
+    setActiveTab(tab);
+  }, []);
 
   // Detect File System Access API on client only to avoid hydration mismatch
   useEffect(() => {
@@ -207,9 +215,9 @@ export default function Home() {
 
       {/* Tab content */}
       <main className="flex-1 overflow-auto">
-        {activeTab === "dashboard" && <DashboardTab />}
-        {activeTab === "objectives" && <ObjectivesTab />}
-        {activeTab === "tasks" && <TasksTab />}
+        {activeTab === "dashboard" && <DashboardTab onNavigate={handleNavigate} />}
+        {activeTab === "objectives" && <ObjectivesTab initialTier={navFilter.tier} initialOwnerTag={navFilter.ownerTag} />}
+        {activeTab === "tasks" && <TasksTab initialStatus={navFilter.status} />}
         {activeTab === "weekly" && <WeeklyTab />}
         {activeTab === "export" && <ExportTab />}
       </main>
