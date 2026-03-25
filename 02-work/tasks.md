@@ -3,7 +3,7 @@
 ## T001 — Audit Moogsoft Correlation Rules for Payment Services
 - **Status:** Open
 - **Created:** 2026-03-20
-- **Objective Chain:** O6 (Monitoring Quality) → O3 (Platform Stability) → O1 (Operational Resilience)
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
 - **Team:** #team-obs
 - **Assigned:** J. Santos
 - **Systems:** #moogsoft #newrelic
@@ -16,7 +16,7 @@
 ## T002 — Investigate Orphan Azure VMs and CMDB Gaps
 - **Status:** Open
 - **Created:** 2026-03-22
-- **Objective Chain:** O8 (IaC Adoption) → O3 (Platform Stability) → O1 (Operational Resilience)
+- **Objective Chain:** B-6 (IT Asset Management & Evergreen Migration) → O4 (Robust Technical Core)
 - **Team:** #team-infra
 - **Assigned:** A. Delgado
 - **Systems:** #azure #cmdb
@@ -29,7 +29,7 @@
 ## T003 — Rapid Recovery Plan (R2R Deliverable)
 - **Status:** Open
 - **Created:** 2026-03-24
-- **Objective Chain:** O4 (Robust Technical Core) → O1 (Frictionless Customer Experience)
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-observability
 - **Assigned:** Debamalya Das
 - **Systems:** #cmdb
@@ -41,7 +41,7 @@
 ## T004 — Digital Property Dashboarding
 - **Status:** Open
 - **Created:** 2026-03-24
-- **Objective Chain:** O1 (Frictionless Customer Experience)
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
 - **Team:** #team-gocc-observability
 - **Assigned:** Debamalya Das
 - **Systems:** #newrelic #adobe
@@ -53,7 +53,7 @@
 ## T005 — OMM L2 for Gold Applications
 - **Status:** Open
 - **Created:** 2026-03-24
-- **Objective Chain:** O4 (Robust Technical Core) → O1 (Frictionless Customer Experience)
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
 - **Team:** #team-gocc-observability
 - **Assigned:** Debamalya Das
 - **Systems:** #newrelic #moogsoft #xmatters #cmdb #apm
@@ -65,7 +65,7 @@
 ## T006 — Employee Experience Dashboard (Production)
 - **Status:** Open
 - **Created:** 2026-03-24
-- **Objective Chain:** O4 (Robust Technical Core) → O3 (Outstanding Colleague Experience)
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
 - **Team:** #team-ets-japan
 - **Assigned:** David Klan
 - **Systems:** #newrelic
@@ -77,7 +77,7 @@
 ## T007 — Developer Experience Dashboard (Non-Production)
 - **Status:** Open
 - **Created:** 2026-03-24
-- **Objective Chain:** O3 (Outstanding Colleague Experience) → O4 (Robust Technical Core)
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
 - **Team:** #team-ets-japan
 - **Assigned:** David Klan
 - **Systems:** #newrelic

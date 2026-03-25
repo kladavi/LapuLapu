@@ -107,6 +107,13 @@ export interface PMData {
   relationships: RelationshipMap;
 }
 
+export interface ExportWarning {
+  type: string;
+  taskId: string;
+  objectiveId: string;
+  message: string;
+}
+
 export interface ExportOptions {
   includeObjectives: boolean;
   includeTeamsSystems: boolean;

@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { usePMData } from "../context/PMContext";
 import type { ExportOptions } from "../lib/types";
-import type { ValidationError } from "../lib/exporter";
+import type { ValidationError, ExportWarning } from "../lib/exporter";
 import {
   generateExport,
   estimateExportSize,
@@ -26,6 +26,7 @@ export function ExportTab() {
 
   const [preview, setPreview] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
+  const [exportWarnings, setExportWarnings] = useState<ExportWarning[]>([]);
 
   const estimatedSize = useMemo(() => {
     if (!data) return 0;
@@ -72,11 +73,13 @@ export function ExportTab() {
   const handleExport = () => {
     if (!data) return;
     setValidationErrors([]);
+    setExportWarnings([]);
     const result = generateExport(data, options);
     if (result.errors.length > 0) {
       setValidationErrors(result.errors);
       return;
     }
+    setExportWarnings(result.warnings);
     const ext = options.format === "json" ? "json" : "md";
     downloadFile(result.content, `copilot-pack.${ext}`);
   };
@@ -84,11 +87,13 @@ export function ExportTab() {
   const handlePreview = () => {
     if (!data) return;
     setValidationErrors([]);
+    setExportWarnings([]);
     const result = generateExport(data, options);
     if (result.errors.length > 0) {
       setValidationErrors(result.errors);
       return;
     }
+    setExportWarnings(result.warnings);
     setPreview(result.content);
   };
 
@@ -255,6 +260,26 @@ export function ExportTab() {
           </ul>
           <p className="text-xs text-red-600 mt-1">
             Fix the source data and reload before exporting.
+          </p>
+        </div>
+      )}
+
+      {/* Export warnings (soft — export still succeeds) */}
+      {exportWarnings.length > 0 && (
+        <div className="rounded-xl border border-amber-300 bg-amber-50 p-4 space-y-2">
+          <h3 className="text-sm font-semibold text-amber-800">
+            ⚠️ Export warnings ({exportWarnings.length})
+          </h3>
+          <ul className="text-xs text-amber-700 space-y-1 max-h-48 overflow-auto">
+            {exportWarnings.map((w, i) => (
+              <li key={i} className="flex gap-2">
+                <span className="font-mono text-amber-600">{w.taskId} → {w.objectiveId}</span>
+                <span>{w.message}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-amber-600 mt-1">
+            Export completed. These tasks reference objectives outside the exported scope.
           </p>
         </div>
       )}

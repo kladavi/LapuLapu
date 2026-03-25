@@ -2,7 +2,7 @@
 // Fixes: Issue 2 (parentObjectiveIds), Issue 3 (task normalization),
 //        Issue 4 (weekly summaries), Issue 5 (tag standardization)
 
-import type { Objective, Task, Team, SystemOfRecord, WeeklySummary } from "./types";
+import type { Objective, Task, Team, SystemOfRecord, WeeklySummary, ExportWarning } from "./types";
 
 // ────────────────────────────────────────────
 // ISSUE 2 — Objective ID validation & marker normalization
@@ -166,6 +166,17 @@ export function normalizeTag(raw: string): string {
   if (s === "tier1") return "#tier:1";
   if (s === "tier2") return "#tier:2";
   if (s === "tier3") return "#tier:3";
+
+  // Generic tag → namespaced tag tightening (Issue improvement #4)
+  const GENERIC_TAG_MAP: Record<string, string> = {
+    "monitoring":  "#worktype:monitoring",
+    "resilience":  "#outcome:resilience",
+    "dashboard":   "#artifact:dashboard",
+    "dashboards":  "#artifact:dashboard",
+    "digital":     "#domain:digital",
+    "automation":  "#capability:automation",
+  };
+  if (GENERIC_TAG_MAP[s]) return GENERIC_TAG_MAP[s];
 
   // "objective" meta-tag — drop it (redundant in objectives array)
   if (s === "objective") return "";
@@ -348,6 +359,7 @@ export interface NormalizedExportPayload {
   decisions?: { id: string; title: string; date: string; decision: string; reason: string; tags: string[] }[];
   weekly_summaries?: NormalizedWeeklySummary[];
   inbox?: string;
+  exportWarnings?: ExportWarning[];
 }
 
 // ────────────────────────────────────────────
@@ -435,10 +447,29 @@ export function buildNormalizedPayload(
   }
 
   // ── Tasks normalization (Issue 2 + Issue 3 + Issue 5) ──
+  // Collect export warnings for tasks referencing out-of-scope objectives
+  const exportWarnings: ExportWarning[] = [];
+
   if (options.includeTasks) {
     payload.tasks = tasks.map((t) => {
       // Split objective IDs vs markers
       const { validIds, convertedTags } = splitIdsAndMarkers(t.objectiveIds, allowedIds);
+
+      // Soft validation: detect objective IDs that are syntactically valid
+      // but not present in the exported objective set
+      const externalObjTags: string[] = [];
+      for (const rawId of t.objectiveIds) {
+        const id = rawId.trim();
+        if (VALID_OBJ_ID_RE.test(id) && !allowedIds.has(id)) {
+          exportWarnings.push({
+            type: "TASK_OBJECTIVE_OUT_OF_SCOPE",
+            taskId: t.id,
+            objectiveId: id,
+            message: `Task references an objective not included in this export scope.`,
+          });
+          externalObjTags.push("#objective:external");
+        }
+      }
 
       // Separate system tags from non-system tags in the systems field
       const { systemTags, otherTags: systemFieldOtherTags } = partitionSystemTags(t.systems);
@@ -446,11 +477,12 @@ export function buildNormalizedPayload(
       // Normalize the task's own tags
       const rawTags = normalizeTags(t.tags);
 
-      // Merge: task tags + converted markers + non-system tags that were in the systems field
+      // Merge: task tags + converted markers + non-system tags + external objective tags
       const allTags = normalizeTags([
         ...rawTags,
         ...convertedTags,
         ...systemFieldOtherTags,
+        ...externalObjTags,
       ]);
 
       // Normalize status
@@ -472,12 +504,16 @@ export function buildNormalizedPayload(
       // Created date normalization
       const created = extractDate(t.created);
 
+      // Keep ALL objective IDs (including out-of-scope) in objectiveIds
+      // but only validIds are "in-scope"; externalIds are kept for traceability
+      const allObjectiveIds = [...new Set([...validIds, ...t.objectiveIds.filter(id => VALID_OBJ_ID_RE.test(id.trim())).map(id => id.trim())])];
+
       return {
         id: t.id,
         title: sanitizeText(t.title),
         created,
         status: statusClean,
-        objectiveIds: validIds,
+        objectiveIds: allObjectiveIds,
         assignee: assignee && assignee !== "" ? assignee : null,
         team: teamName,
         systems: systemTags,
@@ -500,17 +536,34 @@ export function buildNormalizedPayload(
     }));
   }
 
-  // ── Weekly summaries (Issue 4) ──
+  // ── Weekly summaries (Issue 4) + auto-seed (Improvement #3) ──
   if (options.includeWeeklySummaries) {
     const count = options.weeklySummaryCount || 1;
     // weeklySummaries are already sorted newest-first by the parser
     const selected = weeklySummaries.slice(0, count);
-    payload.weekly_summaries = selected.map(normalizeWeeklySummary);
+    const normalized = selected.map(normalizeWeeklySummary);
+
+    if (normalized.length === 0) {
+      // Auto-generate a synthetic seed weekly summary
+      const seedSummary = generateSeedWeeklySummary(
+        payload.tasks || [],
+        payload.objectives || [],
+        payload.decisions || []
+      );
+      payload.weekly_summaries = [seedSummary];
+    } else {
+      payload.weekly_summaries = normalized;
+    }
   }
 
   // ── Inbox ──
   if (options.includeInbox) {
     payload.inbox = inbox;
+  }
+
+  // ── Attach export warnings ──
+  if (exportWarnings.length > 0) {
+    payload.exportWarnings = exportWarnings;
   }
 
   return payload;
@@ -586,18 +639,8 @@ export function validateExportPayload(payload: NormalizedExportPayload): Validat
     }
   }
 
-  // Validate task objectiveIds all exist in the exported set
-  for (const task of payload.tasks || []) {
-    for (const oid of task.objectiveIds) {
-      if (!objIds.has(oid)) {
-        errors.push({
-          field: "objectiveIds",
-          entity: task.id,
-          message: `Objective "${oid}" not found in exported objectives`,
-        });
-      }
-    }
-  }
+  // Task objectiveIds referencing out-of-scope objectives are now handled
+  // via soft warnings (exportWarnings) rather than blocking validation errors.
 
   // Validate system tags start with #system:
   for (const sys of payload.systems || []) {
@@ -674,9 +717,11 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
       }
       lines.push("");
     }
-    if (tier2.length > 0) {
+    // Only show Hari (H-*) objectives in the snapshot Tier-2 section
+    const hariTier2 = tier2.filter((o) => /^H-\d+$/.test(o.id));
+    if (hariTier2.length > 0) {
       lines.push("**Tier-2 (Hari)**");
-      for (const o of tier2) {
+      for (const o of hariTier2) {
         lines.push(`- ${o.id}: ${o.title} → ${o.parentObjectiveIds.join(", ") || "none"}`);
       }
       lines.push("");
@@ -715,5 +760,67 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
     lines.push("");
   }
 
+  // Export warnings
+  if (payload.exportWarnings && payload.exportWarnings.length > 0) {
+    lines.push("### Export Warnings\n");
+    for (const w of payload.exportWarnings) {
+      lines.push(`- ⚠️ ${w.taskId} → ${w.objectiveId}: ${w.message}`);
+    }
+    lines.push("");
+  }
+
   return lines.join("\n");
+}
+
+// ────────────────────────────────────────────
+// Auto-seed weekly summary (Improvement #3)
+// ────────────────────────────────────────────
+
+/**
+ * Generate a synthetic seed weekly summary when no weekly files exist.
+ * Uses task and decision data to produce a reasonable starting point.
+ * Does NOT hallucinate risks — only infers from decisions.
+ */
+function generateSeedWeeklySummary(
+  tasks: NormalizedTask[],
+  objectives: NormalizedObjective[],
+  decisions: { id: string; title: string; date: string; decision: string; reason: string; tags: string[] }[]
+): NormalizedWeeklySummary {
+  // Highlights: top 5 tasks by relevance (or first 5 if no relevance)
+  const sortedTasks = [...tasks].sort(
+    (a, b) => (b.relevance ?? 0) - (a.relevance ?? 0)
+  );
+  const topTasks = sortedTasks.slice(0, 5);
+  const highlights = topTasks.map(
+    (t) => `${t.id}: ${t.title} [${t.status || "Open"}]`
+  );
+
+  // Risks: inferred ONLY from decisions (deferred/rejected work)
+  const risks = decisions.map(
+    (d) => `${d.id}: ${d.title} — ${d.decision || d.reason}`
+  );
+
+  // Next focus: top 3 objectives by task count
+  const objTaskCount: Record<string, number> = {};
+  for (const t of tasks) {
+    for (const oid of t.objectiveIds) {
+      objTaskCount[oid] = (objTaskCount[oid] || 0) + 1;
+    }
+  }
+  const sortedObjs = objectives
+    .map((o) => ({ id: o.id, title: o.title, count: objTaskCount[o.id] || 0 }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 3);
+  const nextFocus = sortedObjs.map(
+    (o) => `${o.id}: ${o.title} (${o.count} active tasks)`
+  );
+
+  return {
+    weekId: "AUTO",
+    fileName: "auto-generated-seed.md",
+    highlights,
+    risks,
+    nextFocus,
+    rawText: "Auto-generated seed summary — no weekly report files were found under 03-reporting/weekly/. This summary was synthesized from current tasks, objectives, and decisions to enable Copilot to produce a report without additional uploads.",
+  };
 }

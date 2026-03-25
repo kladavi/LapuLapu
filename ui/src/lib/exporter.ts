@@ -1,6 +1,6 @@
 // ── Export engine: generates copilot-pack.md or .json ──
 
-import type { PMData, ExportOptions } from "./types";
+import type { PMData, ExportOptions, ExportWarning } from "./types";
 import {
   buildNormalizedPayload,
   validateExportPayload,
@@ -10,10 +10,12 @@ import {
 } from "./exportNormalizer";
 
 export type { ValidationError } from "./exportNormalizer";
+export type { ExportWarning } from "./types";
 
 export interface ExportResult {
   content: string;
   errors: ValidationError[];
+  warnings: ExportWarning[];
 }
 
 export function generateExport(data: PMData, options: ExportOptions): ExportResult {
@@ -30,13 +32,15 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
 
   const errors = validateExportPayload(payload);
   if (errors.length > 0) {
-    return { content: "", errors };
+    return { content: "", errors, warnings: [] };
   }
 
+  const warnings = payload.exportWarnings || [];
+
   if (options.format === "json") {
-    return { content: generateJsonExport(data, payload), errors: [] };
+    return { content: generateJsonExport(data, payload), errors: [], warnings };
   }
-  return { content: generateMdExport(data, payload, options), errors: [] };
+  return { content: generateMdExport(data, payload, options), errors: [], warnings };
 }
 
 function generateMdExport(data: PMData, payload: NormalizedExportPayload, options: ExportOptions): string {
@@ -121,6 +125,10 @@ ${JSON.stringify(payload, null, 2)}
   const snapshot = generateHumanSnapshot(payload);
   sections.push(snapshot);
 
+  // 5) Export diagnostics block (Improvement #5)
+  const diagnostics = generateDiagnosticsBlock(payload, now);
+  sections.push(diagnostics);
+
   return sections.join("\n\n");
 }
 
@@ -135,6 +143,45 @@ function generateJsonExport(data: PMData, payload: NormalizedExportPayload): str
     null,
     2
   );
+}
+
+// ────────────────────────────────────────────
+// Export diagnostics (Improvement #5)
+// ────────────────────────────────────────────
+
+function generateDiagnosticsBlock(payload: NormalizedExportPayload, timestamp: string): string {
+  const objectives = payload.objectives || [];
+  const tasks = payload.tasks || [];
+  const warnings = payload.exportWarnings || [];
+
+  const tier1Count = objectives.filter((o) => o.tier === 1).length;
+  const tier2Count = objectives.filter((o) => o.tier === 2).length;
+  const tier3Count = objectives.filter((o) => o.tier === 3).length;
+
+  const tasksWithExternal = new Set(
+    warnings
+      .filter((w) => w.type === "TASK_OBJECTIVE_OUT_OF_SCOPE")
+      .map((w) => w.taskId)
+  ).size;
+
+  const lines: string[] = [];
+  lines.push("## EXPORT DIAGNOSTICS\n");
+  lines.push("<!-- This section is for debugging. Parsers should ignore it. -->\n");
+  lines.push(`- **Export timestamp:** ${timestamp}`);
+  lines.push(`- **Objectives:** ${objectives.length} total (Tier-1: ${tier1Count}, Tier-2: ${tier2Count}${tier3Count > 0 ? `, Tier-3: ${tier3Count}` : ""})`);
+  lines.push(`- **Tasks:** ${tasks.length}`);
+  lines.push(`- **Tasks with external objectives:** ${tasksWithExternal}`);
+  lines.push(`- **Warnings:** ${warnings.length}`);
+
+  if (warnings.length > 0) {
+    lines.push("");
+    lines.push("**Warning details:**");
+    for (const w of warnings) {
+      lines.push(`- \`${w.type}\` ${w.taskId} → ${w.objectiveId}: ${w.message}`);
+    }
+  }
+
+  return lines.join("\n");
 }
 
 // ────────────────────────────────────────────
