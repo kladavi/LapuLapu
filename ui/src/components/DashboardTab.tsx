@@ -102,7 +102,7 @@ export function DashboardTab({ onNavigate }: Props) {
       <h2 className="text-xl font-bold text-gray-800">Dashboard</h2>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {cards.map((c) => (
           <button
             key={c.id}
@@ -314,10 +314,10 @@ export function DashboardTab({ onNavigate }: Props) {
               <div className="space-y-1">
                 {data.systems.map((s) => (
                   <div key={s.tag} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 rounded px-2 py-0.5 shrink-0 w-24 text-center">
+                    <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 rounded px-2 py-0.5 shrink-0 whitespace-nowrap">
                       {s.tag}
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <span className="text-sm font-medium text-gray-800">{s.name}</span>
                       <span className="text-xs text-gray-400 ml-2">— {s.purpose}</span>
                     </div>
