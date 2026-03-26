@@ -140,3 +140,115 @@
 - **Relevance:** 75/100
 - **Tags:** #program:epsilon #system:ingenium #domain:modernisation #worktype:stakeholder #worktype:coordination
 - **Description:** Formally announce the Epsilon POT plan to the wider team. Secure stakeholder commitment from ETS Unix, DB Engineering/BAU, and Ingenium Infrastructure teams. Drive alignment on timelines for VM provisioning and resource availability.
+
+---
+
+## T012 — Obtain ePOS Health Check Script Details from PS Team
+- **Status:** Open
+- **Created:** 2026-03-26
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic #system:cmdb
+- **Relevance:** 85/100
+- **Tags:** #worktype:monitoring #domain:gocc-handover #system:epos #worktype:observability
+- **Description:** Obtain details of the ePOS health check script used by PS (Manulink batch process). Follow up with Yamamoto-san, Murata-san, and Nakatsu-san. GOCC will need visibility or access to this process for sustainable monitoring handover. Deliver documentation of script purpose, authentication flow, and frequency.
+- **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action item for David
+
+---
+
+## T013 — Share Non-Prod Monitoring Status Email and Highlight ePOS Gap
+- **Status:** Open
+- **Created:** 2026-03-26
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Kiran Mohandas
+- **Systems:** #system:newrelic
+- **Relevance:** 80/100
+- **Tags:** #worktype:monitoring #domain:non-production #system:epos #worktype:observability
+- **Description:** Share the daily non-production monitoring status email with David and highlight the ePOS gap. ePOS is not currently included in the daily non-prod monitoring alert email sent by TEM. ePOS alone has ~17 non-prod environments contributing to operational burden. Confirm non-prod monitoring parameters with TEM (Sangram).
+- **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action items for Kiran Mohandas
+
+---
+
+## T014 — Connect David with Chetan for ePOS Environment Refresh Process
+- **Status:** Open
+- **Created:** 2026-03-26
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Kiran Mohandas
+- **Systems:** #system:azure
+- **Relevance:** 75/100
+- **Tags:** #worktype:coordination #domain:non-production #system:epos #domain:environment-management
+- **Description:** Connect David with Chetan to discuss on-demand ePOS environment refresh and spin-up/spin-down process. Environment and DB scaling is currently ad hoc. Opportunity to improve on-demand enablement, automated refresh to latest codebase, and spin-up/down of environments and databases.
+- **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action item for Kiran Mohandas
+
+---
+
+## T015 — Confirm Non-Prod Monitoring Parameters with TEM
+- **Status:** Open
+- **Created:** 2026-03-26
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #worktype:monitoring #domain:non-production #worktype:observability
+- **Description:** Confirm non-production monitoring parameters with TEM (Sangram). Define the standard set of monitoring checks for non-prod environments to ensure the Developer Experience Dashboard has correct coverage and alerting thresholds. Joint action with Kiran Mohandas.
+- **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action item for David / Kiran Mohandas
+
+---
+
+## T016 — GOCC ePOS Monitoring Onboarding — Service Account & Authentication Setup
+- **Status:** Open
+- **Created:** 2026-03-26
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:newrelic #system:cmdb #system:xmatters
+- **Relevance:** 82/100
+- **Tags:** #worktype:monitoring #domain:gocc-handover #system:epos #worktype:observability #domain:authentication
+- **Description:** Establish GOCC monitoring for ePOS including: service account provisioning with key-based authentication through Manulink, ServiceNow CMDB relationship mapping (application → application services → components), xMatters registration, and runbook-driven first response procedures. ePOS access path uses SSO/LTPA token + cookie-based authorization via Manulink. PII guardrails confirmed: no PII in New Relic or ADX, debug logging disabled in production.
+- **Source:** GOCC 2026-03-26 New Relic Monitoring meeting
+
+---
+
+## T017 — Document End-to-End Patching Process and Challenges for Japan
+- **Status:** Open
+- **Created:** 2026-03-17
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Kanagaraj Ramasamy
+- **Systems:** #system:azure
+- **Relevance:** 82/100
+- **Tags:** #worktype:hygiene #domain:patching #domain:documentation #outcome:resilience
+- **Description:** Prepare documentation outlining the patching challenges and the end-to-end patching process for Japan servers (Linux). Document the current manpower constraints, Ansible automation gaps, and server categorisation windows. Goal is to simplify the process so it can be handed to GOCC for execution, reducing dependency on ETS engineering resources. Supports the broader objective of achieving 14-day patching cycles on weekdays.
+- **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Kanagaraj
+
+---
+
+## T018 — Prepare Standard Template and Server List for Japan Production Patching
+- **Status:** Open
+- **Created:** 2026-03-17
+- **Objective Chain:** B-6 (IT Asset Management & Evergreen Migration) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Kanagaraj Ramasamy
+- **Systems:** #system:azure #system:cmdb
+- **Relevance:** 78/100
+- **Tags:** #worktype:hygiene #domain:patching #domain:asset-management #domain:cmdb
+- **Description:** Share updated list of Linux and Windows production servers with Hideo Hasegawa, who will assist in mapping application names. Sreekanth Dogiparthy to provide the Windows server list. Prepare the standard template for Japan production servers to enable transition of patching to Standard BAU Change. Joint effort: Kanagaraj (Linux), Sreekanth (Windows), Hideo (application mapping).
+- **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Kanagaraj, Sreekanth, Hideo
+
+---
+
+## T019 — Schedule Non-Production Patching Follow-Up with HK and Indonesia
+- **Status:** Open
+- **Created:** 2026-03-17
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Karen Escalona
+- **Systems:** #system:azure
+- **Relevance:** 70/100
+- **Tags:** #worktype:coordination #domain:patching #domain:non-production
+- **Description:** Schedule a meeting with Hong Kong (Karen Leung) and Indonesia (Glenn Jay) representatives to discuss next steps for non-production environment patching alignment. Extends the Japan patching standardisation work to other Asia regions.
+- **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Karen Escalona
