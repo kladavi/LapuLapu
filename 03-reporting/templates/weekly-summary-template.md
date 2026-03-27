@@ -1,43 +1,53 @@
-# Weekly Summary — [YYYY-WNN]
+# Weekly Project Status Report
 
-**Period:** [Start Date] – [End Date]
-**Author:** [Name]
-**Distribution:** [Executive stakeholders]
+**Project:** Lapu Lapu
+**Week Ending:** [Date]
 
 ---
 
-## Objectives Advanced
+## Executive Summary
 
-| Objective | ID | Progress This Week | Status |
-|---|---|---|---|
-| [Objective name] | [O#] | [Concrete outcome] | 🟢 On Track / 🟡 At Risk / 🔴 Blocked |
+**Frictionless Customer Experience:** [1–2 sentence summary of O1 progress this week.]
 
-## Key Outcomes
+**Robust Technical Core:** [1–2 sentence summary of O4 progress this week.]
 
-- [Outcome 1: what was delivered or completed]
-- [Outcome 2: measurable result]
-- [Outcome 3: dependency resolved or milestone hit]
+**Outstanding Colleague Experience:** [1–2 sentence summary of O3 progress this week.]
 
-## Risks & Escalations
+> [Optional footnote — e.g. codename explanations, clarifications.]
 
-| Risk | Impact | Mitigation | Owner |
-|---|---|---|---|
-| [Risk description] | [H/M/L] | [Action taken or planned] | [Name] |
+---
 
-## Work Rejected or Deferred
+## Key Accomplishments (This Week)
 
-| Request | Decision | Reason |
-|---|---|---|
-| [Request summary] | Rejected / Deferred | [Objective misalignment or capacity reason] |
+[Accomplishment 1 — outcome language, reference task or workstream.]
+[Accomplishment 2 — outcome language, reference task or workstream.]
+[Accomplishment 3 — outcome language, reference task or workstream.]
 
-## Next-Week Focus
+---
 
-1. [Priority 1 — tied to objective]
-2. [Priority 2 — tied to objective]
-3. [Priority 3 — tied to objective]
+## Top Risks & Issues
 
-## Clarifying Questions for Next Week
+[Risk] · [Risk description] | [Mitigation action] | [Owner] |
+[Risk] · [Risk description] | [Mitigation action] | [Owner] |
 
-- [Question 1: what information would improve the next report?]
-- [Question 2: what decision is pending that blocks progress?]
-- [Question 3: what dependency needs to be confirmed?]
+---
+
+## Planned for Next Week
+
+[Priority 1 — tied to objective]
+[Priority 2 — tied to objective, with optional (O#): prefix for the specific objective action]
+
+---
+
+## Project Resources
+
+🔗 Confluence — GOCC Japan (Lapu-Lapu)
+🧩 Jira — LPLP Project Board
+📊 Ops Dashboard — Power BI
+📁 SharePoint — ETS Japan Program Delivery
+📈 New Relic — GOCC Dashboard
+📈 New Relic — Observability Dashboard
+
+---
+
+Prepared by: David Klan · Manulife Enterprise Technology Services

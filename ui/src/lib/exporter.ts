@@ -103,12 +103,13 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
 
 You are given an exported snapshot of an objective-driven PM system.
 
-1) Produce an executive-ready 1-page weekly report:
-   - Objectives advanced (by Tier-1 and Tier-2)
-   - Key outcomes delivered
-   - Risks / blockers
-   - Work deferred or rejected (and why)
-   - Next-week focus
+1) Produce an executive-ready 1-page Weekly Project Status Report with these sections:
+   a) **Executive Summary** — 1–2 sentences per Tier-1 objective with progress (use objective names as bold headings, e.g. **Frictionless Customer Experience:**)
+   b) **Key Accomplishments (This Week)** — Top 3–5 outcomes as standalone lines (no bullets)
+   c) **Top Risks & Issues** — Format: [Risk] · description | mitigation | owner |
+   d) **Planned for Next Week** — Top 2–4 priorities as standalone lines, optionally prefixed with (O#):
+   e) **Project Resources** — Standard links footer with emoji prefixes
+   f) **Prepared by** line
 2) Then ask me 5 clarifying questions to deepen the report.
 3) Offer an index of the objectives and top workstreams by relevance.
 

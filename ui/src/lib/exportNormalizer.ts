@@ -132,6 +132,17 @@ const TEAM_TAG_MAP: Record<string, string> = {
   "team-infra":          "#team:infra",
 };
 
+/** Exact name corrections applied during export */
+const NAME_NORMALIZATION_MAP: Record<string, string> = {
+  "Kiran Bond": "Kiran Bonde",
+};
+
+/** Normalize a team member name using the exact-match correction map */
+function normalizeMemberName(name: string): string {
+  const trimmed = name.trim();
+  return NAME_NORMALIZATION_MAP[trimmed] ?? trimmed;
+}
+
 /** Known owner aliases */
 const OWNER_TAG_MAP: Record<string, string> = {
   "hari":       "#owner:hari",
@@ -244,6 +255,7 @@ export function partitionSystemTags(tags: string[]): {
 export interface NormalizedWeeklySummary {
   weekId: string;
   fileName: string;
+  executiveSummary: string[];
   highlights: string[];
   risks: string[];
   nextFocus: string[];
@@ -258,7 +270,15 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
   const weekId = fileName.replace(/\.md$/i, "");
   const md = ws.content.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
 
-  const highlights = extractSectionBullets(md, [
+  // Executive Summary — bold objective-name paragraphs
+  const executiveSummary = extractSectionLines(md, [
+    "Executive Summary",
+  ]);
+
+  // Key Accomplishments — standalone lines (no bullets)
+  const highlights = extractSectionLines(md, [
+    "Key Accomplishments",
+    "Key Accomplishments (This Week)",
     "Objectives Advanced",
     "Highlights",
     "Key Outcomes",
@@ -266,14 +286,21 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
     "Progress",
   ]);
 
-  const risks = extractSectionBullets(md, [
+  // Top Risks & Issues — pipe-separated format: [Risk] · desc | mitigation | owner |
+  const risks = extractSectionLines(md, [
+    "Top Risks & Issues",
+    "Risks & Issues",
+    "Risks & Escalations",
     "Risks",
     "Blockers",
     "Risks / Blockers",
     "Issues",
   ]);
 
-  const nextFocus = extractSectionBullets(md, [
+  // Planned for Next Week — standalone lines
+  const nextFocus = extractSectionLines(md, [
+    "Planned for Next Week",
+    "Next-Week Focus",
     "Next Week Focus",
     "Next Week",
     "Focus",
@@ -284,24 +311,97 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
   // Raw text fallback: first 1500 chars stripped of markdown
   const rawText = sanitizeText(md).slice(0, 1500);
 
-  return { weekId, fileName, highlights, risks, nextFocus, rawText };
+  // Provide default placeholders if sections were not found
+  const finalRisks = risks.length > 0 ? risks : ["No explicit risks captured in weekly file."];
+  const finalNextFocus = nextFocus.length > 0 ? nextFocus : ["No explicit next-week focus captured in weekly file."];
+
+  return { weekId, fileName, executiveSummary, highlights, risks: finalRisks, nextFocus: finalNextFocus, rawText };
 }
 
-/** Extract bullet items under any of the candidate heading names */
-function extractSectionBullets(md: string, headingNames: string[]): string[] {
+/**
+ * Extract content lines from a section — supports bullets, numbered lists,
+ * table rows, pipe-separated risk lines, and plain standalone lines.
+ */
+function extractSectionLines(md: string, headingNames: string[]): string[] {
   for (const name of headingNames) {
-    // Match ## or ### heading with the name (case-insensitive)
+    const escaped = escapeRegExp(name);
+    // Match heading, then capture everything until the next heading or horizontal rule.
+    // Uses a greedy match that stops at the next ## heading or --- rule boundary.
     const re = new RegExp(
-      `^#{1,4}\\s*${escapeRegExp(name)}\\s*\\n((?:[-*]\\s+.+\\n?)*)`,
+      `^#{1,4}\\s*${escaped}[^\\n]*\\n([\\s\\S]+?)(?=\\n#{1,4}\\s|\\n---\\s*\\n|\\n---\\s*$)`,
       "im"
     );
-    const m = md.match(re);
-    if (m && m[1]) {
-      return m[1]
-        .split("\n")
-        .map((l) => sanitizeText(l.replace(/^[-*]\s+/, "")))
-        .filter(Boolean);
+    let m = md.match(re);
+    // Fallback: if no next boundary, capture to end of string
+    if (!m) {
+      const reFallback = new RegExp(
+        `^#{1,4}\\s*${escaped}[^\\n]*\\n([\\s\\S]+)$`,
+        "im"
+      );
+      m = md.match(reFallback);
     }
+    if (!m || !m[1]) continue;
+
+    const body = m[1].trim();
+    if (!body) continue;
+
+    const items: string[] = [];
+    const bodyLines = body.split("\n");
+
+    // Detect if body is a markdown table
+    const isTable = bodyLines.some((l) => l.trim().startsWith("|") && l.includes("|"));
+
+    if (isTable) {
+      for (const line of bodyLines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith("|")) continue;
+        if (/^\|[\s-|]+\|$/.test(trimmed)) continue;
+        const cells = trimmed.split("|").map((c) => c.trim()).filter(Boolean);
+        if (cells.length === 0) continue;
+        if (cells[0].toLowerCase() === "risk" || cells[0].toLowerCase() === "request" || cells[0].toLowerCase() === "objective") continue;
+        if (cells[0].toLowerCase().includes("none")) continue;
+        const summary = cells.filter((c) => c !== "—" && c !== "-").join(" — ");
+        if (summary) items.push(sanitizeText(summary));
+      }
+    } else {
+      for (const line of bodyLines) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+        // Skip blockquote footnotes (> lines)
+        if (trimmed.startsWith(">")) {
+          items.push(sanitizeText(trimmed.replace(/^>\s*/, "")));
+          continue;
+        }
+        // Bullet item
+        const bulletMatch = trimmed.match(/^[-*]\s+(.+)/);
+        if (bulletMatch) {
+          items.push(sanitizeText(bulletMatch[1]));
+          continue;
+        }
+        // Numbered item
+        const numberMatch = trimmed.match(/^\d+[.):]\s*(.+)/);
+        if (numberMatch) {
+          items.push(sanitizeText(numberMatch[1]));
+          continue;
+        }
+        // Pipe-separated risk line: [Risk] · desc | mitigation | owner |
+        if (trimmed.startsWith("[Risk]") || trimmed.startsWith("[Issue]")) {
+          items.push(sanitizeText(trimmed));
+          continue;
+        }
+        // Bold objective heading line (Executive Summary style)
+        if (/^\*\*[^*]+\*\*/.test(trimmed)) {
+          items.push(sanitizeText(trimmed));
+          continue;
+        }
+        // Plain standalone line (not empty, not a heading marker)
+        if (trimmed.length > 5) {
+          items.push(sanitizeText(trimmed));
+        }
+      }
+    }
+
+    if (items.length > 0) return items;
   }
   return [];
 }
@@ -432,9 +532,9 @@ export function buildNormalizedPayload(
       const { systemTags } = partitionSystemTags(t.primarySystems || []);
       return {
         name: t.name,
-        lead: t.lead,
+        lead: normalizeMemberName(t.lead),
         tags: normalizeTags(t.tags),
-        members: t.members,
+        members: t.members?.map(normalizeMemberName),
         primarySystems: systemTags,
       };
     });
@@ -718,13 +818,33 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
       }
       lines.push("");
     }
-    // Show all Tier-2 objectives grouped by owner prefix
+    // Show Tier-2 objectives grouped by owner prefix
     if (tier2.length > 0) {
-      lines.push("**Tier-2**");
+      // Group by ID prefix (e.g. H- = Hari, B- = Birger)
+      const ownerGroups: Record<string, NormalizedObjective[]> = {};
       for (const o of tier2) {
-        lines.push(`- ${o.id}: ${o.title} → ${o.parentObjectiveIds.join(", ") || "none"}`);
+        const prefixMatch = o.id.match(/^([A-Z]{1,2})(?=-\d)/);
+        const prefix = prefixMatch ? prefixMatch[1] : "Other";
+        if (!ownerGroups[prefix]) ownerGroups[prefix] = [];
+        ownerGroups[prefix].push(o);
       }
-      lines.push("");
+
+      const OWNER_PREFIX_LABEL: Record<string, string> = {
+        "H": "Hari",
+        "B": "Birger",
+        "KL": "Kelvin",
+        "D": "Deb",
+        "J": "Jonan",
+      };
+
+      for (const [prefix, objs] of Object.entries(ownerGroups)) {
+        const ownerLabel = OWNER_PREFIX_LABEL[prefix] || prefix;
+        lines.push(`**Tier-2 (${ownerLabel})**`);
+        for (const o of objs) {
+          lines.push(`- ${o.id}: ${o.title} → ${o.parentObjectiveIds.join(", ") || "none"}`);
+        }
+        lines.push("");
+      }
     }
   }
 
@@ -740,14 +860,38 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
 
   // Weekly summaries
   if (payload.weekly_summaries) {
-    lines.push("### Weekly Summaries\n");
+    lines.push("### Weekly Status Reports\n");
     if (payload.weekly_summaries.length === 0) {
-      lines.push("No weekly summary files found under 03-reporting/weekly/.\n");
+      lines.push("No weekly report files found under 03-reporting/weekly/.\n");
     } else {
       for (const ws of payload.weekly_summaries) {
-        lines.push(`- ${ws.weekId} (${ws.fileName})`);
+        lines.push(`**${ws.weekId}** (${ws.fileName})`);
+        if (ws.executiveSummary && ws.executiveSummary.length > 0) {
+          lines.push("Executive Summary:");
+          for (const s of ws.executiveSummary) {
+            lines.push(`  ${s}`);
+          }
+        }
+        if (ws.highlights.length > 0) {
+          lines.push("Accomplishments:");
+          for (const h of ws.highlights) {
+            lines.push(`  ${h}`);
+          }
+        }
+        if (ws.risks.length > 0) {
+          lines.push("Risks:");
+          for (const r of ws.risks) {
+            lines.push(`  ${r}`);
+          }
+        }
+        if (ws.nextFocus.length > 0) {
+          lines.push("Next Week:");
+          for (const n of ws.nextFocus) {
+            lines.push(`  ${n}`);
+          }
+        }
+        lines.push("");
       }
-      lines.push("");
     }
   }
 
@@ -815,9 +959,21 @@ function generateSeedWeeklySummary(
     (o) => `${o.id}: ${o.title} (${o.count} active tasks)`
   );
 
+  // Executive Summary: group top tasks by their Tier-1 objective
+  const tier1Objs = objectives.filter((o) => o.tier === 1);
+  const execSummary: string[] = [];
+  for (const obj of tier1Objs) {
+    const relatedTasks = tasks.filter((t) => t.objectiveIds.includes(obj.id));
+    if (relatedTasks.length > 0) {
+      const taskSummaries = relatedTasks.slice(0, 3).map((t) => t.title).join("; ");
+      execSummary.push(`${obj.title}: ${taskSummaries}.`);
+    }
+  }
+
   return {
     weekId: "AUTO",
     fileName: "auto-generated-seed.md",
+    executiveSummary: execSummary,
     highlights,
     risks,
     nextFocus,
