@@ -92,20 +92,20 @@ export function WeeklyTab() {
   if (summaries.length === 0) {
     return (
       <div className="p-6 max-w-5xl mx-auto">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">
+        <h2 className="text-xl font-bold text-th-text mb-4">
           Weekly Reporting
         </h2>
-        <div className="rounded-xl border border-gray-200 bg-white p-8 text-center">
+        <div className="rounded-xl border border-th-border bg-th-surface p-8 text-center">
           <div className="text-4xl mb-3">📅</div>
-          <p className="text-gray-500">
+          <p className="text-th-text-muted">
             No weekly summary files found in{" "}
-            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded">
+            <code className="text-xs bg-th-surface-alt px-1 py-0.5 rounded">
               03-reporting/weekly/
             </code>
           </p>
-          <p className="text-sm text-gray-400 mt-2">
+          <p className="text-sm text-th-text-faint mt-2">
             Weekly summaries should be named like{" "}
-            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded">
+            <code className="text-xs bg-th-surface-alt px-1 py-0.5 rounded">
               YYYY-WNN.md
             </code>
           </p>
@@ -119,9 +119,9 @@ export function WeeklyTab() {
   return (
     <div className="flex flex-1 h-full">
       {/* File list */}
-      <div className="w-64 border-r border-gray-200 overflow-auto bg-white">
+      <div className="w-64 border-r border-th-border overflow-auto bg-th-surface">
         <div className="p-4">
-          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">
+          <h3 className="text-sm font-bold text-th-text-muted uppercase tracking-wider mb-3">
             Weekly Summaries ({summaries.length})
           </h3>
           <div className="space-y-1">
@@ -131,8 +131,8 @@ export function WeeklyTab() {
                 onClick={() => handleSelectFile(i)}
                 className={`w-full text-left px-3 py-2 text-sm rounded-lg cursor-pointer transition-colors ${
                   selectedIndex === i
-                    ? "bg-blue-50 text-blue-700 font-medium"
-                    : "text-gray-600 hover:bg-gray-50"
+                    ? "bg-th-accent-light text-th-accent-text font-medium"
+                    : "text-th-text-secondary hover:bg-th-surface-alt"
                 }`}
               >
                 📄 {s.filename}
@@ -146,18 +146,18 @@ export function WeeklyTab() {
       <div className="flex-1 overflow-auto p-6">
         {/* Header with title and action buttons */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-gray-800">
+          <h2 className="text-lg font-bold text-th-text">
             {selected.filename}
           </h2>
           <div className="flex items-center gap-2">
             {/* Save state indicator */}
             {saveState === "saved" && (
-              <span className="text-sm text-green-600 flex items-center gap-1">
+              <span className="text-sm text-th-success flex items-center gap-1">
                 ✓ Saved
               </span>
             )}
             {saveState === "error" && (
-              <span className="text-sm text-red-600 flex items-center gap-1">
+              <span className="text-sm text-th-danger flex items-center gap-1">
                 ✗ Save failed
               </span>
             )}
@@ -166,14 +166,14 @@ export function WeeklyTab() {
               <>
                 <button
                   onClick={handleCancel}
-                  className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors cursor-pointer"
+                  className="px-3 py-1.5 text-sm text-th-text-secondary bg-th-surface-alt hover:bg-th-border rounded-lg transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSave}
                   disabled={saveState === "saving"}
-                  className="px-3 py-1.5 text-sm text-white bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="px-3 py-1.5 text-sm text-white bg-th-accent hover:bg-th-accent-hover disabled:bg-th-accent/50 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
                 >
                   {saveState === "saving" ? (
                     <>
@@ -188,7 +188,7 @@ export function WeeklyTab() {
             ) : (
               <button
                 onClick={handleEdit}
-                className="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-3 py-1.5 text-sm text-th-text-secondary bg-th-surface-alt hover:bg-th-border rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
               >
                 ✏️ Edit
               </button>
@@ -202,12 +202,12 @@ export function WeeklyTab() {
             ref={textareaRef}
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
-            className="w-full h-[calc(100vh-200px)] text-sm text-gray-700 bg-white rounded-xl p-4 border border-blue-300 font-mono leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+            className="w-full h-[calc(100vh-200px)] text-sm text-th-text-secondary bg-th-surface rounded-xl p-4 border border-th-accent font-mono leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-th-accent focus:border-th-accent"
             spellCheck={false}
           />
         ) : (
           <div className="prose prose-sm max-w-none">
-            <pre className="whitespace-pre-wrap text-sm text-gray-700 bg-gray-50 rounded-xl p-4 border border-gray-200 font-sans leading-relaxed">
+            <pre className="whitespace-pre-wrap text-sm text-th-text-secondary bg-th-surface-alt rounded-xl p-4 border border-th-border font-sans leading-relaxed">
               {selected.content}
             </pre>
           </div>

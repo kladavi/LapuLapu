@@ -7,7 +7,7 @@ import type { AppSettings } from "../../lib/settings";
 import { DEFAULT_SETTINGS, validateSettings } from "../../lib/settings";
 
 const inputCls =
-  "block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none";
+  "block w-full rounded-md border border-th-border-strong bg-th-surface px-3 py-1.5 text-sm text-th-text shadow-sm focus:border-th-accent focus:ring-1 focus:ring-th-accent outline-none";
 
 type Toast = { message: string; type: "success" | "error" | "info" };
 
@@ -100,8 +100,8 @@ export default function AdminPage() {
     return (
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center space-y-4">
-          <p className="text-gray-500">No data loaded. Go back and load a project first.</p>
-          <Link href="/" className="text-blue-600 hover:underline">← Back to Dashboard</Link>
+          <p className="text-th-text-muted">No data loaded. Go back and load a project first.</p>
+          <Link href="/" className="text-th-accent hover:underline">← Back to Dashboard</Link>
         </div>
       </div>
     );
@@ -110,25 +110,25 @@ export default function AdminPage() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
+      <header className="bg-th-surface border-b border-th-border px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Link href="/" className="text-blue-600 hover:text-blue-800 text-sm">
+          <Link href="/" className="text-th-accent hover:text-th-accent-hover text-sm">
             ← Back
           </Link>
           <span className="text-xl">⚙️</span>
-          <h1 className="text-lg font-semibold text-gray-800">Settings</h1>
+          <h1 className="text-lg font-semibold text-th-text">Settings</h1>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={handleReset}
-            className="text-sm text-gray-500 hover:text-gray-700 cursor-pointer"
+            className="text-sm text-th-text-muted hover:text-th-text-secondary cursor-pointer"
           >
             ↺ Reset to Defaults
           </button>
           <button
             onClick={handleSave}
             disabled={saving || validationErrors.length > 0}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-th-accent px-4 py-2 text-sm text-white font-medium hover:bg-th-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
           >
             {saving ? "Saving…" : "💾 Save Settings"}
           </button>
@@ -140,10 +140,10 @@ export default function AdminPage() {
         <div
           className={`mx-6 mt-3 rounded-lg px-4 py-2 text-sm font-medium ${
             toast.type === "success"
-              ? "bg-green-100 text-green-800"
+              ? "bg-th-success-light text-th-success"
               : toast.type === "error"
-              ? "bg-red-100 text-red-800"
-              : "bg-blue-100 text-blue-800"
+              ? "bg-th-danger-light text-th-danger"
+              : "bg-th-accent-light text-th-accent-text"
           }`}
         >
           {toast.message}
@@ -152,9 +152,9 @@ export default function AdminPage() {
 
       {/* Validation errors */}
       {validationErrors.length > 0 && (
-        <div className="mx-6 mt-3 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm">
-          <p className="font-medium text-red-700 mb-1">Validation Errors</p>
-          <ul className="list-disc list-inside text-red-600 space-y-0.5">
+        <div className="mx-6 mt-3 rounded-lg bg-th-danger-light border border-th-danger/30 px-4 py-3 text-sm">
+          <p className="font-medium text-th-danger mb-1">Validation Errors</p>
+          <ul className="list-disc list-inside text-th-danger/80 space-y-0.5">
             {validationErrors.map((e, i) => (
               <li key={i}>{e}</li>
             ))}
@@ -168,24 +168,24 @@ export default function AdminPage() {
         <Section title="Config Status" icon="📋">
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span className="text-gray-500">Loaded from</span>
-              <p className="font-mono text-gray-800">00-context/settings.json</p>
+              <span className="text-th-text-muted">Loaded from</span>
+              <p className="font-mono text-th-text">00-context/settings.json</p>
             </div>
             <div>
-              <span className="text-gray-500">Last saved</span>
-              <p className="font-mono text-gray-800">
+              <span className="text-th-text-muted">Last saved</span>
+              <p className="font-mono text-th-text">
                 {draft.meta.lastSaved
                   ? new Date(draft.meta.lastSaved).toLocaleString()
                   : "Never"}
               </p>
             </div>
             <div>
-              <span className="text-gray-500">Schema version</span>
-              <p className="font-mono text-gray-800">{draft.meta.version}</p>
+              <span className="text-th-text-muted">Schema version</span>
+              <p className="font-mono text-th-text">{draft.meta.version}</p>
             </div>
             <div>
-              <span className="text-gray-500">Folder</span>
-              <p className="font-mono text-gray-800">{data.folderName}</p>
+              <span className="text-th-text-muted">Folder</span>
+              <p className="font-mono text-th-text">{data.folderName}</p>
             </div>
           </div>
         </Section>
@@ -413,13 +413,14 @@ export default function AdminPage() {
             <select
               value={draft.ui.theme}
               onChange={(e) =>
-                updateUI("theme", e.target.value as "light" | "dark" | "system")
+                updateUI("theme", e.target.value as "light" | "dark" | "woodland" | "system")
               }
               className={inputCls}
             >
               <option value="system">System</option>
               <option value="light">Light</option>
               <option value="dark">Dark</option>
+              <option value="woodland">🌲 Woodland Green</option>
             </select>
           </Field>
           <Field label="Default Tab">
@@ -445,7 +446,7 @@ export default function AdminPage() {
 
         {/* Raw JSON preview */}
         <Section title="Raw JSON" icon="🔍">
-          <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-xs font-mono overflow-auto max-h-64 whitespace-pre-wrap">
+          <pre className="bg-th-surface-alt border border-th-border rounded-lg p-4 text-xs font-mono overflow-auto max-h-64 whitespace-pre-wrap text-th-text-secondary">
             {JSON.stringify(draft, null, 2)}
           </pre>
         </Section>
@@ -466,8 +467,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="bg-white rounded-xl border border-gray-200 p-5 space-y-4">
-      <h2 className="text-base font-semibold text-gray-800 flex items-center gap-2">
+    <section className="bg-th-surface rounded-xl border border-th-border p-5 space-y-4">
+      <h2 className="text-base font-semibold text-th-text flex items-center gap-2">
         <span>{icon}</span> {title}
       </h2>
       {children}
@@ -484,7 +485,7 @@ function Field({
 }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-medium text-gray-600">{label}</span>
+      <span className="text-sm font-medium text-th-text-secondary">{label}</span>
       {children}
     </label>
   );
@@ -505,9 +506,9 @@ function Toggle({
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-4 h-4 cursor-pointer"
+        className="rounded border-th-border-strong text-th-accent focus:ring-th-accent w-4 h-4 cursor-pointer"
       />
-      <span className="text-sm text-gray-700">{label}</span>
+      <span className="text-sm text-th-text-secondary">{label}</span>
     </label>
   );
 }

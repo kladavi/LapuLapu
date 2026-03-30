@@ -41,7 +41,7 @@ export interface AppSettings {
     };
   };
   ui: {
-    theme: "light" | "dark" | "system";
+    theme: "light" | "dark" | "woodland" | "system";
     defaultTab: "dashboard" | "objectives" | "tasks" | "weekly" | "export" | "intake";
     compactMode: boolean;
   };
@@ -124,7 +124,7 @@ export interface SettingsValidationError {
 const VALID_FORMATS = new Set(["md", "json"]);
 const VALID_WEEK_DAYS = new Set(["monday", "sunday"]);
 const VALID_CADENCES = new Set(["weekly", "biweekly", "monthly"]);
-const VALID_THEMES = new Set(["light", "dark", "system"]);
+const VALID_THEMES = new Set(["light", "dark", "woodland", "system"]);
 const VALID_TABS = new Set(["dashboard", "objectives", "tasks", "weekly", "export", "intake"]);
 const VALID_LINT_MODES = new Set(["warn", "fail"]);
 

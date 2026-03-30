@@ -119,28 +119,28 @@ export default function Home() {
         <div
           className={`max-w-lg w-full text-center space-y-6 rounded-2xl border-2 border-dashed p-12 transition-colors ${
             dragOver
-              ? "border-blue-500 bg-blue-50"
-              : "border-gray-300 bg-white"
+              ? "border-th-accent bg-th-accent-light"
+              : "border-th-border-strong bg-th-surface"
           }`}
         >
           <div className="text-5xl">🗂️</div>
-          <h1 className="text-2xl font-bold text-gray-800">
+          <h1 className="text-2xl font-bold text-th-text">
             LapuLapu PM Dashboard
           </h1>
-          <p className="text-gray-500">
+          <p className="text-th-text-muted">
             Load your objective-driven PM repo to get started.
           </p>
 
           {hasFolderPicker && (
             <button
               onClick={handleFolderPick}
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white font-medium hover:bg-blue-700 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-lg bg-th-accent px-6 py-3 text-white font-medium hover:bg-th-accent-hover transition-colors cursor-pointer"
             >
               📁 Select Folder
             </button>
           )}
 
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-th-text-faint">
             {hasFolderPicker
               ? "Or drag & drop your project folder here"
               : "Drag & drop your project folder here (folder picker not supported in this browser)"}
@@ -155,7 +155,7 @@ export default function Home() {
       <div className="flex-1 flex items-center justify-center">
         <div className="text-center space-y-4">
           <div className="text-4xl animate-spin">⏳</div>
-          <p className="text-gray-500">Loading and parsing files…</p>
+          <p className="text-th-text-muted">Loading and parsing files…</p>
         </div>
       </div>
     );
@@ -164,16 +164,16 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
+      <header className="bg-th-surface border-b border-th-border px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="text-xl">🗂️</span>
-          <h1 className="text-lg font-semibold text-gray-800">LapuLapu</h1>
-          <span className="text-xs bg-gray-100 text-gray-500 rounded px-2 py-0.5">
+          <h1 className="text-lg font-semibold text-th-text">LapuLapu</h1>
+          <span className="text-xs bg-th-surface-alt text-th-text-muted rounded px-2 py-0.5">
             {data?.folderName}
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-th-text-faint">
             Loaded:{" "}
             {data?.loadedAt
               ? new Date(data.loadedAt).toLocaleString()
@@ -181,21 +181,21 @@ export default function Home() {
           </span>
           <button
             onClick={handleReload}
-            className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
+            className="text-sm text-th-accent hover:text-th-accent-hover cursor-pointer"
           >
             ↻ Reload
           </button>
           {hasFolderPicker && (
             <button
               onClick={handleFolderPick}
-              className="text-sm text-gray-500 hover:text-gray-700 cursor-pointer"
+              className="text-sm text-th-text-muted hover:text-th-text-secondary cursor-pointer"
             >
               📁 Change Folder
             </button>
           )}
           <Link
             href="/admin"
-            className="text-sm text-gray-500 hover:text-gray-700"
+            className="text-sm text-th-text-muted hover:text-th-text-secondary"
           >
             ⚙️ Settings
           </Link>
@@ -203,7 +203,7 @@ export default function Home() {
       </header>
 
       {/* Tab nav */}
-      <nav className="bg-white border-b border-gray-200 px-6">
+      <nav className="bg-th-surface border-b border-th-border px-6">
         <div className="flex gap-1">
           {TABS.map((tab) => (
             <button
@@ -211,8 +211,8 @@ export default function Home() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors cursor-pointer ${
                 activeTab === tab.id
-                  ? "border-blue-600 text-blue-600"
-                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  ? "border-th-accent text-th-accent"
+                  : "border-transparent text-th-text-muted hover:text-th-text-secondary hover:border-th-border-strong"
               }`}
             >
               <span className="mr-1.5">{tab.icon}</span>

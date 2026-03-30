@@ -134,20 +134,20 @@ export function ExportTab() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto space-y-6">
-      <h2 className="text-xl font-bold text-gray-800">
+      <h2 className="text-xl font-bold text-th-text">
         Export Copilot Pack
       </h2>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-th-text-muted">
         Generate a single compact file for upload to GitHub Copilot, ChatGPT, or
         any LLM. Archives and binary files are automatically excluded.
       </p>
 
       {/* No-projects warning */}
       {data.projects.length === 0 && (
-        <div className="rounded-xl border border-amber-300 bg-amber-50 p-4">
-          <h3 className="text-sm font-semibold text-amber-800">⚠️ No projects found</h3>
-          <p className="text-xs text-amber-700 mt-1">
-            Create <code className="bg-amber-100 px-1 rounded">00-context/projects.md</code> to
+        <div className="rounded-xl border border-th-warn bg-th-warn-light p-4">
+          <h3 className="text-sm font-semibold text-th-warn">⚠️ No projects found</h3>
+          <p className="text-xs text-th-warn/80 mt-1">
+            Create <code className="bg-th-warn/20 px-1 rounded">00-context/projects.md</code> to
             define project scopes. Falling back to
             <strong> {data.settings?.project?.defaultProjectSlug || "lapu-lapu"}</strong> from settings.
           </p>
@@ -156,11 +156,11 @@ export function ExportTab() {
 
       {/* Project selector */}
       {data.projects.length > 0 && (
-        <div className="rounded-xl border border-gray-200 bg-white p-4">
-          <h3 className="text-sm font-semibold text-gray-700 mb-2">
+        <div className="rounded-xl border border-th-border bg-th-surface p-4">
+          <h3 className="text-sm font-semibold text-th-text-secondary mb-2">
             Project Scope
           </h3>
-          <p className="text-xs text-gray-400 mb-3">
+          <p className="text-xs text-th-text-faint mb-3">
             Export will only include tasks, decisions, and weekly reports tagged to this project.
           </p>
           <div className="flex gap-2">
@@ -169,8 +169,8 @@ export function ExportTab() {
                 key={p.slug}
                 className={`flex-1 flex items-center gap-3 rounded-lg border p-3 cursor-pointer ${
                   options.projectSlug === p.slug
-                    ? "border-blue-500 bg-blue-50"
-                    : "border-gray-200 hover:bg-gray-50"
+                    ? "border-th-accent bg-th-accent-light"
+                    : "border-th-border hover:bg-th-surface-alt"
                 }`}
               >
                 <input
@@ -181,11 +181,11 @@ export function ExportTab() {
                   onChange={() =>
                     setOptions({ ...options, projectSlug: p.slug })
                   }
-                  className="text-blue-600"
+                  className="text-th-accent"
                 />
                 <div>
-                  <div className="text-sm font-medium">{p.name}</div>
-                  <div className="text-xs text-gray-400">{p.description}</div>
+                  <div className="text-sm font-medium text-th-text">{p.name}</div>
+                  <div className="text-xs text-th-text-faint">{p.description}</div>
                 </div>
               </label>
             ))}
@@ -194,17 +194,17 @@ export function ExportTab() {
       )}
 
       {/* Toggles */}
-      <div className="rounded-xl border border-gray-200 bg-white divide-y divide-gray-100">
+      <div className="rounded-xl border border-th-border bg-th-surface divide-y divide-th-border">
         {toggles.map((toggle) => (
           <label
             key={toggle.key}
-            className="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+            className="flex items-center justify-between p-4 cursor-pointer hover:bg-th-surface-alt"
           >
             <div>
-              <div className="text-sm font-medium text-gray-800">
+              <div className="text-sm font-medium text-th-text">
                 {toggle.label}
               </div>
-              <div className="text-xs text-gray-400">{toggle.description}</div>
+              <div className="text-xs text-th-text-faint">{toggle.description}</div>
             </div>
             <input
               type="checkbox"
@@ -212,7 +212,7 @@ export function ExportTab() {
               onChange={(e) =>
                 setOptions({ ...options, [toggle.key]: e.target.checked })
               }
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4 rounded border-th-border-strong text-th-accent focus:ring-th-accent"
             />
           </label>
         ))}
@@ -221,10 +221,10 @@ export function ExportTab() {
         {options.includeWeeklySummaries && (
           <div className="flex items-center justify-between p-4">
             <div>
-              <div className="text-sm font-medium text-gray-800">
+              <div className="text-sm font-medium text-th-text">
                 Include last N weeks
               </div>
-              <div className="text-xs text-gray-400">
+              <div className="text-xs text-th-text-faint">
                 {data.weeklySummaries.length} summary files available
               </div>
             </div>
@@ -239,23 +239,23 @@ export function ExportTab() {
                   weeklySummaryCount: parseInt(e.target.value) || 1,
                 })
               }
-              className="w-16 text-sm border border-gray-300 rounded px-2 py-1 text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-16 text-sm border border-th-border-strong rounded px-2 py-1 text-center bg-th-surface text-th-text focus:outline-none focus:ring-2 focus:ring-th-accent"
             />
           </div>
         )}
       </div>
 
       {/* Format */}
-      <div className="rounded-xl border border-gray-200 bg-white p-4">
-        <h3 className="text-sm font-semibold text-gray-700 mb-3">
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="text-sm font-semibold text-th-text-secondary mb-3">
           Export Format
         </h3>
         <div className="flex gap-3">
           <label
             className={`flex-1 flex items-center gap-3 rounded-lg border p-3 cursor-pointer ${
               options.format === "md"
-                ? "border-blue-500 bg-blue-50"
-                : "border-gray-200"
+                ? "border-th-accent bg-th-accent-light"
+                : "border-th-border"
             }`}
           >
             <input
@@ -264,11 +264,11 @@ export function ExportTab() {
               value="md"
               checked={options.format === "md"}
               onChange={() => setOptions({ ...options, format: "md" })}
-              className="text-blue-600"
+              className="text-th-accent"
             />
             <div>
-              <div className="text-sm font-medium">Copilot Pack (.md)</div>
-              <div className="text-xs text-gray-400">
+              <div className="text-sm font-medium text-th-text">Copilot Pack (.md)</div>
+              <div className="text-xs text-th-text-faint">
                 YAML frontmatter + instructions + JSON data
               </div>
             </div>
@@ -276,8 +276,8 @@ export function ExportTab() {
           <label
             className={`flex-1 flex items-center gap-3 rounded-lg border p-3 cursor-pointer ${
               options.format === "json"
-                ? "border-blue-500 bg-blue-50"
-                : "border-gray-200"
+                ? "border-th-accent bg-th-accent-light"
+                : "border-th-border"
             }`}
           >
             <input
@@ -286,11 +286,11 @@ export function ExportTab() {
               value="json"
               checked={options.format === "json"}
               onChange={() => setOptions({ ...options, format: "json" })}
-              className="text-blue-600"
+              className="text-th-accent"
             />
             <div>
-              <div className="text-sm font-medium">Copilot Pack (.json)</div>
-              <div className="text-xs text-gray-400">
+              <div className="text-sm font-medium text-th-text">Copilot Pack (.json)</div>
+              <div className="text-xs text-th-text-faint">
                 Pure structured JSON data
               </div>
             </div>
@@ -299,23 +299,23 @@ export function ExportTab() {
       </div>
 
       {/* Size estimate + actions */}
-      <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-white p-4">
+      <div className="flex items-center justify-between rounded-xl border border-th-border bg-th-surface p-4">
         <div>
-          <div className="text-sm text-gray-500">Estimated export size</div>
-          <div className="text-lg font-bold text-gray-800">
+          <div className="text-sm text-th-text-muted">Estimated export size</div>
+          <div className="text-lg font-bold text-th-text">
             {formatBytes(estimatedSize)}
           </div>
         </div>
         <div className="flex gap-3">
           <button
             onClick={handlePreview}
-            className="px-4 py-2 text-sm border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 cursor-pointer"
+            className="px-4 py-2 text-sm border border-th-border-strong rounded-lg text-th-text-secondary hover:bg-th-surface-alt cursor-pointer"
           >
             Preview
           </button>
           <button
             onClick={handleExport}
-            className="px-6 py-2 text-sm bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 cursor-pointer"
+            className="px-6 py-2 text-sm bg-th-accent text-white rounded-lg font-medium hover:bg-th-accent-hover cursor-pointer"
           >
             📦 Export
           </button>
@@ -324,19 +324,19 @@ export function ExportTab() {
 
       {/* Validation errors */}
       {validationErrors.length > 0 && (
-        <div className="rounded-xl border border-red-300 bg-red-50 p-4 space-y-2">
-          <h3 className="text-sm font-semibold text-red-800">
+        <div className="rounded-xl border border-th-danger bg-th-danger-light p-4 space-y-2">
+          <h3 className="text-sm font-semibold text-th-danger">
             ⚠️ Export validation failed ({validationErrors.length} issue{validationErrors.length > 1 ? "s" : ""})
           </h3>
-          <ul className="text-xs text-red-700 space-y-1 max-h-48 overflow-auto">
+          <ul className="text-xs text-th-danger/80 space-y-1 max-h-48 overflow-auto">
             {validationErrors.map((err, i) => (
               <li key={i} className="flex gap-2">
-                <span className="font-mono text-red-500">{err.entity}.{err.field}</span>
+                <span className="font-mono text-th-danger">{err.entity}.{err.field}</span>
                 <span>{err.message}</span>
               </li>
             ))}
           </ul>
-          <p className="text-xs text-red-600 mt-1">
+          <p className="text-xs text-th-danger/80 mt-1">
             Fix the source data and reload before exporting.
           </p>
         </div>
@@ -347,13 +347,13 @@ export function ExportTab() {
         <div
           className={`rounded-xl border p-4 space-y-2 ${
             lintResult.blocked
-              ? "border-red-300 bg-red-50"
-              : "border-amber-300 bg-amber-50"
+              ? "border-th-danger bg-th-danger-light"
+              : "border-th-warn bg-th-warn-light"
           }`}
         >
           <h3
             className={`text-sm font-semibold ${
-              lintResult.blocked ? "text-red-800" : "text-amber-800"
+              lintResult.blocked ? "text-th-danger" : "text-th-warn"
             }`}
           >
             {lintResult.blocked ? "🚫" : "⚠️"} Lint{" "}
@@ -363,14 +363,14 @@ export function ExportTab() {
           </h3>
           <ul
             className={`text-xs space-y-1 max-h-48 overflow-auto ${
-              lintResult.blocked ? "text-red-700" : "text-amber-700"
+              lintResult.blocked ? "text-th-danger/80" : "text-th-warn/80"
             }`}
           >
             {lintResult.violations.slice(0, 20).map((v, i) => (
               <li key={i} className="flex gap-2">
                 <span
                   className={`font-mono ${
-                    v.severity === "error" ? "text-red-600" : "text-amber-600"
+                    v.severity === "error" ? "text-th-danger" : "text-th-warn"
                   }`}
                 >
                   [{v.rule}] {v.entity}
@@ -386,7 +386,7 @@ export function ExportTab() {
           </ul>
           <p
             className={`text-xs mt-1 ${
-              lintResult.blocked ? "text-red-600" : "text-amber-600"
+              lintResult.blocked ? "text-th-danger/80" : "text-th-warn/80"
             }`}
           >
             {lintResult.blocked
@@ -398,19 +398,19 @@ export function ExportTab() {
 
       {/* Export warnings (soft — export still succeeds) */}
       {exportWarnings.length > 0 && (
-        <div className="rounded-xl border border-amber-300 bg-amber-50 p-4 space-y-2">
-          <h3 className="text-sm font-semibold text-amber-800">
+        <div className="rounded-xl border border-th-warn bg-th-warn-light p-4 space-y-2">
+          <h3 className="text-sm font-semibold text-th-warn">
             ⚠️ Export warnings ({exportWarnings.length})
           </h3>
-          <ul className="text-xs text-amber-700 space-y-1 max-h-48 overflow-auto">
+          <ul className="text-xs text-th-warn/80 space-y-1 max-h-48 overflow-auto">
             {exportWarnings.map((w, i) => (
               <li key={i} className="flex gap-2">
-                <span className="font-mono text-amber-600">{w.taskId} → {w.objectiveId}</span>
+                <span className="font-mono text-th-warn">{w.taskId} → {w.objectiveId}</span>
                 <span>{w.message}</span>
               </li>
             ))}
           </ul>
-          <p className="text-xs text-amber-600 mt-1">
+          <p className="text-xs text-th-warn/80 mt-1">
             Export completed. These tasks reference objectives outside the exported scope.
           </p>
         </div>
@@ -418,17 +418,17 @@ export function ExportTab() {
 
       {/* Preview */}
       {preview && (
-        <div className="rounded-xl border border-gray-200 bg-white overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-b border-gray-200">
-            <span className="text-sm font-medium text-gray-600">Preview</span>
+        <div className="rounded-xl border border-th-border bg-th-surface overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-2 bg-th-surface-alt border-b border-th-border">
+            <span className="text-sm font-medium text-th-text-secondary">Preview</span>
             <button
               onClick={() => setPreview(null)}
-              className="text-xs text-gray-400 hover:text-gray-600 cursor-pointer"
+              className="text-xs text-th-text-faint hover:text-th-text-muted cursor-pointer"
             >
               Close
             </button>
           </div>
-          <pre className="p-4 text-xs text-gray-700 overflow-auto max-h-96 font-mono whitespace-pre-wrap">
+          <pre className="p-4 text-xs text-th-text-secondary overflow-auto max-h-96 font-mono whitespace-pre-wrap">
             {preview}
           </pre>
         </div>

@@ -99,7 +99,7 @@ export function DashboardTab({ onNavigate }: Props) {
 
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">
-      <h2 className="text-xl font-bold text-gray-800">Dashboard</h2>
+      <h2 className="text-xl font-bold text-th-text">Dashboard</h2>
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -121,10 +121,10 @@ export function DashboardTab({ onNavigate }: Props) {
 
       {/* Expanded detail section */}
       {expandedSection && (
-        <div className="rounded-xl border border-gray-200 bg-white overflow-hidden">
+        <div className="rounded-xl border border-th-border bg-th-surface overflow-hidden">
           {/* Header with optional tab link */}
-          <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-700">
+          <div className="flex items-center justify-between px-4 py-3 bg-th-surface-alt border-b border-th-border">
+            <h3 className="font-semibold text-th-text-secondary">
               {cards.find((c) => c.id === expandedSection)?.icon}{" "}
               {cards.find((c) => c.id === expandedSection)?.label}
             </h3>
@@ -132,14 +132,14 @@ export function DashboardTab({ onNavigate }: Props) {
               {cards.find((c) => c.id === expandedSection)?.hasTab && (
                 <button
                   onClick={() => cards.find((c) => c.id === expandedSection)?.tabAction?.()}
-                  className="text-xs text-blue-600 hover:text-blue-800 font-medium cursor-pointer"
+                  className="text-xs text-th-accent hover:text-th-accent-hover font-medium cursor-pointer"
                 >
                   Open in tab →
                 </button>
               )}
               <button
                 onClick={() => setExpandedSection(null)}
-                className="text-xs text-gray-400 hover:text-gray-600 cursor-pointer"
+                className="text-xs text-th-text-faint hover:text-th-text-muted cursor-pointer"
               >
                 ✕
               </button>
@@ -157,27 +157,27 @@ export function DashboardTab({ onNavigate }: Props) {
                 {tier1.map((o) => {
                   const children = tier2.filter((t2) => t2.parentObjectiveIds.includes(o.id));
                   return (
-                    <div key={o.id} className="rounded-lg border border-blue-200 overflow-hidden">
-                      <div className="flex items-start gap-3 p-2 bg-blue-50/50">
-                        <span className="font-mono text-xs font-bold text-blue-600 bg-blue-100 rounded px-1.5 py-0.5 shrink-0">
+                    <div key={o.id} className="rounded-lg border border-th-border overflow-hidden">
+                      <div className="flex items-start gap-3 p-2 bg-th-accent-light">
+                        <span className="font-mono text-xs font-bold text-th-accent bg-th-accent-light rounded px-1.5 py-0.5 shrink-0">
                           {o.id}
                         </span>
                         <div className="min-w-0">
-                          <div className="text-sm font-medium text-gray-800">{o.title}</div>
-                          <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{o.description}</p>
+                          <div className="text-sm font-medium text-th-text">{o.title}</div>
+                          <p className="text-xs text-th-text-muted mt-0.5 line-clamp-2">{o.description}</p>
                         </div>
                       </div>
                       {children.length > 0 && (
-                        <div className="border-t border-blue-100 bg-white">
+                        <div className="border-t border-th-border bg-th-surface">
                           {children.map((c) => (
-                            <div key={c.id} className="flex items-start gap-3 p-2 pl-8 hover:bg-gray-50 border-b border-gray-50 last:border-b-0">
-                              <span className="font-mono text-xs font-bold text-indigo-600 bg-indigo-100 rounded px-1.5 py-0.5 shrink-0">
+                            <div key={c.id} className="flex items-start gap-3 p-2 pl-8 hover:bg-th-surface-alt border-b border-th-border/30 last:border-b-0">
+                              <span className="font-mono text-xs font-bold text-indigo-500 bg-indigo-500/10 rounded px-1.5 py-0.5 shrink-0">
                                 {c.id}
                               </span>
                               <div className="min-w-0">
-                                <div className="text-sm font-medium text-gray-700">{c.title}</div>
+                                <div className="text-sm font-medium text-th-text-secondary">{c.title}</div>
                                 {c.ownerSection && (
-                                  <span className="text-[10px] text-gray-400">👤 {c.ownerSection}</span>
+                                  <span className="text-[10px] text-th-text-faint">👤 {c.ownerSection}</span>
                                 )}
                               </div>
                             </div>
@@ -193,24 +193,24 @@ export function DashboardTab({ onNavigate }: Props) {
             {/* Open Tasks */}
             {expandedSection === "open" && (
               <div className="space-y-2">
-                {openTasks.length === 0 && <p className="text-sm text-gray-400 italic">No open tasks.</p>}
+                {openTasks.length === 0 && <p className="text-sm text-th-text-faint italic">No open tasks.</p>}
                 {openTasks.map((t) => (
-                  <div key={t.id} className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="font-mono text-xs font-bold text-green-700 bg-green-50 rounded px-1.5 py-0.5 shrink-0">
+                  <div key={t.id} className="flex items-start gap-3 p-2 rounded-lg hover:bg-th-surface-alt">
+                    <span className="font-mono text-xs font-bold text-th-success bg-th-success-light rounded px-1.5 py-0.5 shrink-0">
                       {t.id}
                     </span>
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-gray-800">{t.title}</div>
-                      <div className="flex flex-wrap gap-2 mt-1 text-xs text-gray-500">
+                      <div className="text-sm font-medium text-th-text">{t.title}</div>
+                      <div className="flex flex-wrap gap-2 mt-1 text-xs text-th-text-muted">
                         {t.assigned && <span>👤 {t.assigned}</span>}
                         {t.team && <span>👥 {t.team}</span>}
                         {t.created && <span>📅 {t.created}</span>}
                       </div>
                       {t.objectiveIds.length > 0 && (
                         <div className="flex gap-1 mt-1">
-                          <span className="text-[10px] text-gray-400">Objectives:</span>
+                          <span className="text-[10px] text-th-text-faint">Objectives:</span>
                           {t.objectiveIds.map((oid) => (
-                            <span key={oid} className="text-[10px] font-mono bg-blue-50 text-blue-600 rounded px-1">{oid}</span>
+                            <span key={oid} className="text-[10px] font-mono bg-th-accent-light text-th-accent-text rounded px-1">{oid}</span>
                           ))}
                         </div>
                       )}
@@ -223,16 +223,16 @@ export function DashboardTab({ onNavigate }: Props) {
             {/* Closed Tasks */}
             {expandedSection === "closed" && (
               <div className="space-y-2">
-                {closedTasks.length === 0 && <p className="text-sm text-gray-400 italic">No closed tasks.</p>}
+                {closedTasks.length === 0 && <p className="text-sm text-th-text-faint italic">No closed tasks.</p>}
                 {closedTasks.map((t) => (
-                  <div key={t.id} className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="font-mono text-xs font-bold text-gray-500 bg-gray-100 rounded px-1.5 py-0.5 shrink-0">
+                  <div key={t.id} className="flex items-start gap-3 p-2 rounded-lg hover:bg-th-surface-alt">
+                    <span className="font-mono text-xs font-bold text-th-text-muted bg-th-surface-alt rounded px-1.5 py-0.5 shrink-0">
                       {t.id}
                     </span>
                     <div className="min-w-0">
-                      <div className="text-sm font-medium text-gray-800">{t.title}</div>
-                      <div className="flex flex-wrap gap-2 mt-1 text-xs text-gray-500">
-                        <span className="bg-gray-100 rounded px-1.5 py-0.5">{t.status}</span>
+                      <div className="text-sm font-medium text-th-text">{t.title}</div>
+                      <div className="flex flex-wrap gap-2 mt-1 text-xs text-th-text-muted">
+                        <span className="bg-th-surface-alt rounded px-1.5 py-0.5">{t.status}</span>
                         {t.assigned && <span>👤 {t.assigned}</span>}
                         {t.created && <span>📅 {t.created}</span>}
                       </div>
@@ -245,26 +245,26 @@ export function DashboardTab({ onNavigate }: Props) {
             {/* Decisions */}
             {expandedSection === "decisions" && (
               <div className="space-y-2">
-                {data.decisions.length === 0 && <p className="text-sm text-gray-400 italic">No decisions recorded.</p>}
+                {data.decisions.length === 0 && <p className="text-sm text-th-text-faint italic">No decisions recorded.</p>}
                 {data.decisions.map((d) => (
-                  <div key={d.id} className="p-2 rounded-lg hover:bg-gray-50">
+                  <div key={d.id} className="p-2 rounded-lg hover:bg-th-surface-alt">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-amber-700 bg-amber-100 rounded px-1.5 py-0.5 shrink-0">
+                      <span className="font-mono text-xs font-bold text-th-warn bg-th-warn-light rounded px-1.5 py-0.5 shrink-0">
                         {d.id}
                       </span>
-                      <span className="text-sm font-medium text-gray-800">{d.title}</span>
-                      {d.date && <span className="text-xs text-gray-400 ml-auto">{d.date}</span>}
+                      <span className="text-sm font-medium text-th-text">{d.title}</span>
+                      {d.date && <span className="text-xs text-th-text-faint ml-auto">{d.date}</span>}
                     </div>
                     {d.decision && (
-                      <p className="text-xs text-gray-600 mt-1 ml-10"><span className="font-medium">Decision:</span> {d.decision}</p>
+                      <p className="text-xs text-th-text-secondary mt-1 ml-10"><span className="font-medium">Decision:</span> {d.decision}</p>
                     )}
                     {d.reason && (
-                      <p className="text-xs text-gray-500 mt-0.5 ml-10"><span className="font-medium">Reason:</span> {d.reason}</p>
+                      <p className="text-xs text-th-text-muted mt-0.5 ml-10"><span className="font-medium">Reason:</span> {d.reason}</p>
                     )}
                     {d.tags.length > 0 && (
                       <div className="flex gap-1 mt-1 ml-10">
                         {d.tags.map((tag) => (
-                          <span key={tag} className="text-[10px] bg-gray-100 text-gray-500 rounded px-1.5 py-0.5">{tag}</span>
+                          <span key={tag} className="text-[10px] bg-th-surface-alt text-th-text-muted rounded px-1.5 py-0.5">{tag}</span>
                         ))}
                       </div>
                     )}
@@ -277,7 +277,7 @@ export function DashboardTab({ onNavigate }: Props) {
             {expandedSection === "teams" && (
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-xs text-gray-400 border-b border-gray-100">
+                  <tr className="text-left text-xs text-th-text-faint border-b border-th-border">
                     <th className="pb-2 font-medium">Team</th>
                     <th className="pb-2 font-medium">Lead</th>
                     <th className="pb-2 font-medium text-center">Members</th>
@@ -287,20 +287,20 @@ export function DashboardTab({ onNavigate }: Props) {
                 <tbody>
                   {data.teams.map((team) => (
                     <React.Fragment key={team.name}>
-                      <tr className="border-b border-gray-50 hover:bg-gray-50">
-                        <td className="py-2 font-semibold text-gray-800">{team.name}</td>
-                        <td className="py-2 text-gray-600">{team.lead}</td>
-                        <td className="py-2 text-center text-gray-500">{team.members?.length ?? "—"}</td>
-                        <td className="py-2 text-gray-400 text-xs">{team.reportsTo ?? "—"}</td>
+                      <tr className="border-b border-th-border/30 hover:bg-th-surface-alt">
+                        <td className="py-2 font-semibold text-th-text">{team.name}</td>
+                        <td className="py-2 text-th-text-secondary">{team.lead}</td>
+                        <td className="py-2 text-center text-th-text-muted">{team.members?.length ?? "—"}</td>
+                        <td className="py-2 text-th-text-faint text-xs">{team.reportsTo ?? "—"}</td>
                       </tr>
                       {team.subTeams && team.subTeams.map((sub) => (
-                        <tr key={sub.name} className="border-b border-gray-50 hover:bg-gray-50">
-                          <td className="py-1.5 pl-5 text-gray-700">
-                            <span className="text-gray-300 mr-1">└</span>{sub.name}
+                        <tr key={sub.name} className="border-b border-th-border/30 hover:bg-th-surface-alt">
+                          <td className="py-1.5 pl-5 text-th-text-secondary">
+                            <span className="text-th-text-faint mr-1">└</span>{sub.name}
                           </td>
-                          <td className="py-1.5 text-gray-600">{sub.lead}</td>
-                          <td className="py-1.5 text-center text-gray-500">{sub.members?.length ?? "—"}</td>
-                          <td className="py-1.5 text-gray-400 text-xs">{sub.reportsTo ?? "—"}</td>
+                          <td className="py-1.5 text-th-text-secondary">{sub.lead}</td>
+                          <td className="py-1.5 text-center text-th-text-muted">{sub.members?.length ?? "—"}</td>
+                          <td className="py-1.5 text-th-text-faint text-xs">{sub.reportsTo ?? "—"}</td>
                         </tr>
                       ))}
                     </React.Fragment>
@@ -313,13 +313,13 @@ export function DashboardTab({ onNavigate }: Props) {
             {expandedSection === "systems" && (
               <div className="space-y-1">
                 {data.systems.map((s) => (
-                  <div key={s.tag} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 rounded px-2 py-0.5 shrink-0 whitespace-nowrap">
+                  <div key={s.tag} className="flex items-center gap-3 p-2 rounded-lg hover:bg-th-surface-alt">
+                    <span className="text-xs font-mono font-bold text-th-danger bg-th-danger-light rounded px-2 py-0.5 shrink-0 whitespace-nowrap">
                       {s.tag}
                     </span>
                     <div className="min-w-0">
-                      <span className="text-sm font-medium text-gray-800">{s.name}</span>
-                      <span className="text-xs text-gray-400 ml-2">— {s.purpose}</span>
+                      <span className="text-sm font-medium text-th-text">{s.name}</span>
+                      <span className="text-xs text-th-text-faint ml-2">— {s.purpose}</span>
                     </div>
                   </div>
                 ))}
@@ -330,21 +330,21 @@ export function DashboardTab({ onNavigate }: Props) {
       )}
 
       {/* Latest weekly */}
-      <div className="rounded-xl border border-gray-200 bg-white p-4">
-        <h3 className="font-semibold text-gray-700 mb-2">
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">
           Latest Weekly Summary
         </h3>
         {latestWeekly ? (
           <div>
             <button
               onClick={() => onNavigate("weekly")}
-              className="text-sm text-blue-600 hover:text-blue-800 cursor-pointer"
+              className="text-sm text-th-accent hover:text-th-accent-hover cursor-pointer"
             >
               📄 {latestWeekly.filename} →
             </button>
           </div>
         ) : (
-          <p className="text-sm text-gray-400 italic">
+          <p className="text-sm text-th-text-faint italic">
             No weekly summaries found in 03-reporting/weekly/
           </p>
         )}
@@ -352,11 +352,11 @@ export function DashboardTab({ onNavigate }: Props) {
 
       {/* Warnings */}
       {data.warnings.length > 0 && (
-        <div className="rounded-xl border border-amber-300 bg-amber-50 p-4">
-          <h3 className="font-semibold text-amber-800 mb-2">⚠️ Warnings</h3>
+        <div className="rounded-xl border border-th-warn bg-th-warn-light p-4">
+          <h3 className="font-semibold text-th-warn mb-2">⚠️ Warnings</h3>
           <ul className="space-y-1">
             {data.warnings.map((w, i) => (
-              <li key={i} className="text-sm text-amber-700">
+              <li key={i} className="text-sm text-th-warn">
                 {w}
               </li>
             ))}
@@ -365,9 +365,9 @@ export function DashboardTab({ onNavigate }: Props) {
       )}
 
       {/* Files loaded */}
-      <div className="rounded-xl border border-gray-200 bg-white p-4">
-        <h3 className="font-semibold text-gray-700 mb-2">Files Loaded</h3>
-        <div className="text-sm text-gray-500 space-y-0.5 max-h-48 overflow-auto font-mono">
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">Files Loaded</h3>
+        <div className="text-sm text-th-text-muted space-y-0.5 max-h-48 overflow-auto font-mono">
           {Object.keys(data.rawFiles)
             .sort()
             .map((f) => (

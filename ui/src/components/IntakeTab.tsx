@@ -89,18 +89,18 @@ export function IntakeTab() {
     <div className="p-6 max-w-5xl mx-auto space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+        <h2 className="text-lg font-semibold text-th-text flex items-center gap-2">
           📥 Intake — Tag Suggestions
         </h2>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-th-text-muted mt-1">
           Paste raw notes below. Tags are suggested automatically from keyword maps configured in{" "}
-          <span className="font-mono text-xs bg-gray-100 px-1 rounded">Settings → Tag Suggestions</span>.
+          <span className="font-mono text-xs bg-th-surface-alt px-1 rounded">Settings → Tag Suggestions</span>.
         </p>
       </div>
 
       {/* Text area */}
       <div>
-        <label className="block text-sm font-medium text-gray-600 mb-1">
+        <label className="block text-sm font-medium text-th-text-secondary mb-1">
           Raw Notes
         </label>
         <textarea
@@ -108,9 +108,9 @@ export function IntakeTab() {
           onChange={(e) => setRawText(e.target.value)}
           placeholder="Paste meeting notes, email content, or any raw input here…"
           rows={10}
-          className="block w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none resize-y font-mono"
+          className="block w-full rounded-lg border border-th-border-strong bg-th-surface px-4 py-3 text-sm text-th-text shadow-sm focus:border-th-accent focus:ring-1 focus:ring-th-accent outline-none resize-y font-mono"
         />
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="text-xs text-th-text-faint mt-1">
           {rawText.length > 0 ? `${rawText.length} chars` : "No text entered"}
         </p>
       </div>
@@ -119,20 +119,20 @@ export function IntakeTab() {
       {suggestions.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-700">
+            <h3 className="text-sm font-semibold text-th-text-secondary">
               Suggested Tags ({suggestions.length})
             </h3>
             <div className="flex gap-2">
               <button
                 onClick={acceptAll}
-                className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer"
+                className="text-xs text-th-accent hover:text-th-accent-hover cursor-pointer"
               >
                 Accept All
               </button>
-              <span className="text-gray-300">|</span>
+              <span className="text-th-text-faint">|</span>
               <button
                 onClick={clearAll}
-                className="text-xs text-gray-500 hover:text-gray-700 cursor-pointer"
+                className="text-xs text-th-text-muted hover:text-th-text-secondary cursor-pointer"
               >
                 Clear All
               </button>
@@ -150,8 +150,8 @@ export function IntakeTab() {
                   title={`Matched keyword: "${s.source}" (${s.confidence} confidence)`}
                   className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border transition-all cursor-pointer select-none ${
                     isOn
-                      ? `${colors.bg} ${colors.border} ${colors.text} ring-2 ring-offset-1 ring-blue-400`
-                      : `bg-gray-50 border-gray-200 text-gray-500 hover:bg-gray-100`
+                      ? `${colors.bg} ${colors.border} ${colors.text} ring-2 ring-offset-1 ring-th-accent`
+                      : `bg-th-surface-alt border-th-border text-th-text-muted hover:bg-th-border`
                   }`}
                 >
                   {isOn ? "✓" : "○"}{" "}
@@ -167,7 +167,7 @@ export function IntakeTab() {
       )}
 
       {rawText.trim() && suggestions.length === 0 && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
+        <div className="rounded-lg border border-th-warn bg-th-warn-light p-3 text-sm text-th-warn">
           ⚠️ No keyword matches found. Try the <strong>Copy Copilot Prompt</strong> button for AI-assisted tagging, or update keyword maps in Settings.
         </div>
       )}
@@ -177,7 +177,7 @@ export function IntakeTab() {
         {accepted.size > 0 && (
           <button
             onClick={handleCopyTagged}
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white font-medium hover:bg-blue-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-lg bg-th-accent px-4 py-2 text-sm text-white font-medium hover:bg-th-accent-hover transition-colors cursor-pointer"
           >
             📋 Copy Tagged Text
           </button>
@@ -186,13 +186,13 @@ export function IntakeTab() {
         <button
           onClick={handleCopyPrompt}
           disabled={!rawText.trim()}
-          className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 font-medium hover:bg-gray-50 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 rounded-lg border border-th-border-strong bg-th-surface px-4 py-2 text-sm text-th-text-secondary font-medium hover:bg-th-surface-alt transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
         >
           🤖 Copy Copilot Prompt
         </button>
 
         {copyFeedback && (
-          <span className="text-sm text-emerald-600 font-medium animate-pulse">
+          <span className="text-sm text-th-success font-medium animate-pulse">
             {copyFeedback}
           </span>
         )}
@@ -201,16 +201,16 @@ export function IntakeTab() {
       {/* Preview */}
       {accepted.size > 0 && taggedText && (
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-700">Preview — Tagged Text</h3>
-          <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-xs font-mono overflow-auto max-h-48 whitespace-pre-wrap text-gray-700">
+          <h3 className="text-sm font-semibold text-th-text-secondary">Preview — Tagged Text</h3>
+          <pre className="bg-th-surface-alt border border-th-border rounded-lg p-4 text-xs font-mono overflow-auto max-h-48 whitespace-pre-wrap text-th-text-secondary">
             {taggedText}
           </pre>
         </div>
       )}
 
       {/* Legend */}
-      <div className="border-t border-gray-100 pt-4">
-        <p className="text-xs text-gray-400">
+      <div className="border-t border-th-border pt-4">
+        <p className="text-xs text-th-text-faint">
           <strong>Chip colours:</strong>{" "}
           <span className="text-purple-600">■ project</span>{" · "}
           <span className="text-blue-600">■ system</span>{" · "}
