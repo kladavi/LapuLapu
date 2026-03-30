@@ -33,9 +33,16 @@ export interface AppSettings {
     autoGenerateWeekly: boolean;
     reportCadence: "weekly" | "biweekly" | "monthly";
   };
+  tags: {
+    keywordMap: {
+      systems: Record<string, string[]>;
+      projects: Record<string, string[]>;
+      teams: Record<string, string[]>;
+    };
+  };
   ui: {
     theme: "light" | "dark" | "system";
-    defaultTab: "dashboard" | "objectives" | "tasks" | "weekly" | "export";
+    defaultTab: "dashboard" | "objectives" | "tasks" | "weekly" | "export" | "intake";
     compactMode: boolean;
   };
 }
@@ -73,6 +80,33 @@ export const DEFAULT_SETTINGS: AppSettings = {
     autoGenerateWeekly: false,
     reportCadence: "weekly",
   },
+  tags: {
+    keywordMap: {
+      systems: {
+        "#system:newrelic":  ["New Relic", "newrelic", "synthetics", "APM onboarding"],
+        "#system:moogsoft":  ["Moogsoft", "moogsoft", "AIOps", "alert correlation"],
+        "#system:cmdb":      ["CMDB", "cmdb", "configuration management", "asset inventory"],
+        "#system:leanix":    ["LeanIX", "leanix", "enterprise architecture"],
+        "#system:xmatters":  ["xMatters", "xmatters", "on-call", "escalation"],
+        "#system:ingenium":  ["Ingenium", "ingenium", "policy admin"],
+        "#system:azure":     ["Azure", "azure", "ADX", "cloud infrastructure"],
+        "#system:adx":       ["ADX", "Data Explorer", "log analytics"],
+        "#system:adobe":     ["Adobe", "adobe", "digital experience"],
+        "#system:apm":       ["APM", "application performance"],
+      },
+      projects: {
+        "#project:lapu-lapu": ["Lapu-Lapu", "lapu-lapu", "GOCC transition", "Employee Experience", "Developer Experience"],
+        "#project:epsilon":   ["Epsilon", "epsilon", "POT", "3-tier", "HA", "Ingenium upgrade"],
+      },
+      teams: {
+        "#team:ets-japan":        ["ETS Japan", "ETS-Japan", "Birger"],
+        "#team:gocc":             ["GOCC", "gocc", "Hari"],
+        "#team:gocc-monitoring":  ["GOCC Monitoring", "Jonan", "L0", "L1 triage"],
+        "#team:gocc-observability": ["Observability", "Deb", "Debamalya", "OMM", "R2R"],
+        "#team:ets-region":       ["ETS Region", "ETS-Region", "Kelvin"],
+      },
+    },
+  },
   ui: {
     theme: "system",
     defaultTab: "dashboard",
@@ -91,7 +125,7 @@ const VALID_FORMATS = new Set(["md", "json"]);
 const VALID_WEEK_DAYS = new Set(["monday", "sunday"]);
 const VALID_CADENCES = new Set(["weekly", "biweekly", "monthly"]);
 const VALID_THEMES = new Set(["light", "dark", "system"]);
-const VALID_TABS = new Set(["dashboard", "objectives", "tasks", "weekly", "export"]);
+const VALID_TABS = new Set(["dashboard", "objectives", "tasks", "weekly", "export", "intake"]);
 const VALID_LINT_MODES = new Set(["warn", "fail"]);
 
 function expectType(
@@ -225,6 +259,23 @@ export function validateSettings(settings: unknown): SettingsValidationError[] {
     errors.push({ path: "ui", message: "Missing or invalid ui section" });
   }
 
+  // tags
+  if (s.tags && typeof s.tags === "object") {
+    const tags = s.tags as Record<string, unknown>;
+    if (tags.keywordMap && typeof tags.keywordMap === "object") {
+      const km = tags.keywordMap as Record<string, unknown>;
+      for (const key of ["systems", "projects", "teams"] as const) {
+        if (km[key] !== undefined && (typeof km[key] !== "object" || km[key] === null)) {
+          errors.push({ path: `tags.keywordMap.${key}`, message: "Must be an object (tag → keyword[])" });
+        }
+      }
+    } else {
+      errors.push({ path: "tags.keywordMap", message: "Missing or invalid keywordMap" });
+    }
+  } else {
+    errors.push({ path: "tags", message: "Missing or invalid tags section" });
+  }
+
   return errors;
 }
 
@@ -271,6 +322,22 @@ export function mergeWithDefaults(partial: Partial<AppSettings>): AppSettings {
     ui: {
       ...DEFAULT_SETTINGS.ui,
       ...(partial.ui ?? {}),
+    },
+    tags: {
+      keywordMap: {
+        systems: {
+          ...DEFAULT_SETTINGS.tags.keywordMap.systems,
+          ...(partial.tags?.keywordMap?.systems ?? {}),
+        },
+        projects: {
+          ...DEFAULT_SETTINGS.tags.keywordMap.projects,
+          ...(partial.tags?.keywordMap?.projects ?? {}),
+        },
+        teams: {
+          ...DEFAULT_SETTINGS.tags.keywordMap.teams,
+          ...(partial.tags?.keywordMap?.teams ?? {}),
+        },
+      },
     },
   };
 }

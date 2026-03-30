@@ -13,12 +13,14 @@ import { ObjectivesTab } from "../components/ObjectivesTab";
 import { TasksTab } from "../components/TasksTab";
 import { WeeklyTab } from "../components/WeeklyTab";
 import { ExportTab } from "../components/ExportTab";
+import { IntakeTab } from "../components/IntakeTab";
 
 const TABS = [
   { id: "dashboard", label: "Dashboard", icon: "📊" },
   { id: "objectives", label: "Objectives", icon: "🎯" },
   { id: "tasks", label: "Tasks", icon: "✅" },
   { id: "weekly", label: "Weekly", icon: "📅" },
+  { id: "intake", label: "Intake", icon: "📥" },
   { id: "export", label: "Export", icon: "📦" },
 ] as const;
 
@@ -226,6 +228,7 @@ export default function Home() {
         {activeTab === "objectives" && <ObjectivesTab initialTier={navFilter.tier} initialOwnerTag={navFilter.ownerTag} />}
         {activeTab === "tasks" && <TasksTab initialStatus={navFilter.status} />}
         {activeTab === "weekly" && <WeeklyTab />}
+        {activeTab === "intake" && <IntakeTab />}
         {activeTab === "export" && <ExportTab />}
       </main>
     </div>

@@ -74,6 +74,28 @@ export default function AdminPage() {
   const updateLint = (key: keyof AppSettings["lint"], value: unknown) =>
     setDraft((prev) => ({ ...prev, lint: { ...prev.lint, [key]: value } }));
 
+  const updateTagsMap = useCallback(
+    (category: "systems" | "projects" | "teams", json: string) => {
+      try {
+        const parsed = JSON.parse(json);
+        if (typeof parsed !== "object" || parsed === null) return;
+        setDraft((prev) => ({
+          ...prev,
+          tags: {
+            ...prev.tags,
+            keywordMap: {
+              ...prev.tags.keywordMap,
+              [category]: parsed,
+            },
+          },
+        }));
+      } catch {
+        // ignore invalid JSON while user is typing
+      }
+    },
+    []
+  );
+
   if (!data) {
     return (
       <div className="flex-1 flex items-center justify-center p-8">
@@ -316,6 +338,38 @@ export default function AdminPage() {
           />
         </Section>
 
+        {/* Tag Suggestions */}
+        <Section title="Tag Suggestions (Intake Keyword Maps)" icon="🏷️">
+          <p className="text-xs text-gray-400">
+            Maps of <code className="bg-gray-100 px-1 rounded">tag → keyword[]</code> used by the
+            Intake tab to suggest tags when pasting raw notes. Edit each category as JSON.
+          </p>
+          <Field label="Systems">
+            <textarea
+              value={JSON.stringify(draft.tags.keywordMap.systems, null, 2)}
+              onChange={(e) => updateTagsMap("systems", e.target.value)}
+              rows={6}
+              className={`${inputCls} font-mono text-xs`}
+            />
+          </Field>
+          <Field label="Projects">
+            <textarea
+              value={JSON.stringify(draft.tags.keywordMap.projects, null, 2)}
+              onChange={(e) => updateTagsMap("projects", e.target.value)}
+              rows={4}
+              className={`${inputCls} font-mono text-xs`}
+            />
+          </Field>
+          <Field label="Teams">
+            <textarea
+              value={JSON.stringify(draft.tags.keywordMap.teams, null, 2)}
+              onChange={(e) => updateTagsMap("teams", e.target.value)}
+              rows={6}
+              className={`${inputCls} font-mono text-xs`}
+            />
+          </Field>
+        </Section>
+
         {/* Reporting */}
         <Section title="Reporting" icon="📅">
           <Field label="Week Start Day">
@@ -378,6 +432,7 @@ export default function AdminPage() {
               <option value="objectives">Objectives</option>
               <option value="tasks">Tasks</option>
               <option value="weekly">Weekly</option>
+              <option value="intake">Intake</option>
               <option value="export">Export</option>
             </select>
           </Field>
