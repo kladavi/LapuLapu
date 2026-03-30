@@ -29,17 +29,22 @@ function resolveProject(data: PMData, slug: string): Project | null {
   return data.projects.find((p) => p.slug === slug) || null;
 }
 
+export interface FilteredProjectData {
+  tasks: PMData["tasks"];
+  decisions: PMData["decisions"];
+  weeklySummaries: PMData["weeklySummaries"];
+  teams: PMData["teams"];
+  systems: PMData["systems"];
+  warnings: ExportWarning[];
+}
+
 /**
  * Filter PMData to only include items matching the given project slug.
  * Tasks and decisions must have #project:<slug> in their tags.
  * Weekly summaries must have a matching project field.
+ * Teams/systems are filtered to only those referenced by included tasks.
  */
-function filterByProject(data: PMData, slug: string): {
-  tasks: typeof data.tasks;
-  decisions: typeof data.decisions;
-  weeklySummaries: typeof data.weeklySummaries;
-  warnings: ExportWarning[];
-} {
+export function filterByProject(data: PMData, slug: string): FilteredProjectData {
   const projectTag = `#project:${slug}`;
   const warnings: ExportWarning[] = [];
 
@@ -51,12 +56,35 @@ function filterByProject(data: PMData, slug: string): {
     d.tags.some((tag) => tag.toLowerCase() === projectTag)
   );
 
-  // Weekly summaries: match by project field or if no project field, include for the default project
+  // Weekly summaries: match by project field, filename slug, or legacy fallback
   const weeklySummaries = data.weeklySummaries.filter((ws) => {
     if (ws.project) return ws.project.toLowerCase() === slug.toLowerCase();
+    // Check if filename contains the project slug (e.g. 2026-W13—epsilon.md)
+    if (ws.filename.toLowerCase().includes(slug.toLowerCase())) return true;
     // Legacy files without project field: only include for lapu-lapu (backward compat)
     return slug === "lapu-lapu" && !ws.project;
   });
+
+  // Filter teams to those referenced by included tasks
+  const referencedTeams = new Set(
+    tasks.map((t) => t.team.toLowerCase()).filter(Boolean)
+  );
+  const teams = referencedTeams.size > 0
+    ? data.teams.filter((t) => referencedTeams.has(t.name.toLowerCase()))
+    : data.teams; // If no team refs, include all (safer default)
+
+  // Filter systems to those referenced by included tasks
+  const referencedSystems = new Set(
+    tasks.flatMap((t) => t.systems.map((s) => s.toLowerCase()))
+  );
+  const systems = referencedSystems.size > 0
+    ? data.systems.filter(
+        (s) =>
+          referencedSystems.has(s.tag.toLowerCase()) ||
+          referencedSystems.has(s.name.toLowerCase()) ||
+          referencedSystems.has(`#system:${s.name.toLowerCase().replace(/\s+/g, "")}`)
+      )
+    : data.systems;
 
   // Validation: warn about untagged tasks/decisions
   for (const t of data.tasks) {
@@ -82,7 +110,7 @@ function filterByProject(data: PMData, slug: string): {
     }
   }
 
-  return { tasks, decisions, weeklySummaries, warnings };
+  return { tasks, decisions, weeklySummaries, teams, systems, warnings };
 }
 
 export function generateExport(data: PMData, options: ExportOptions): ExportResult {
@@ -129,8 +157,8 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
   const payload = buildNormalizedPayload(
     data.objectives,
     filtered.tasks,
-    data.teams,
-    data.systems,
+    filtered.teams,
+    filtered.systems,
     filtered.weeklySummaries,
     filtered.decisions,
     data.inbox,

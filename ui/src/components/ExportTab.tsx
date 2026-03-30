@@ -29,13 +29,24 @@ export function ExportTab() {
   const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
   const [exportWarnings, setExportWarnings] = useState<ExportWarning[]>([]);
   const [lintResult, setLintResult] = useState<LintResult | null>(null);
+  const [initialized, setInitialized] = useState(false);
 
-  // Set default project slug when data loads
+  // Initialize options from settings when data first loads
   React.useEffect(() => {
-    if (data && data.projects.length > 0 && !options.projectSlug) {
-      setOptions((prev) => ({ ...prev, projectSlug: data.projects[0].slug }));
+    if (data && !initialized) {
+      const s = data.settings;
+      const defaultSlug =
+        s?.project?.defaultProjectSlug ||
+        (data.projects.length > 0 ? data.projects[0].slug : "");
+      setOptions((prev) => ({
+        ...prev,
+        projectSlug: defaultSlug,
+        format: s?.export?.defaultFormat || prev.format,
+        weeklySummaryCount: s?.export?.weeklySummaryCount || prev.weeklySummaryCount,
+      }));
+      setInitialized(true);
     }
-  }, [data, options.projectSlug]);
+  }, [data, initialized]);
 
   const estimatedSize = useMemo(() => {
     if (!data) return 0;
@@ -130,6 +141,18 @@ export function ExportTab() {
         Generate a single compact file for upload to GitHub Copilot, ChatGPT, or
         any LLM. Archives and binary files are automatically excluded.
       </p>
+
+      {/* No-projects warning */}
+      {data.projects.length === 0 && (
+        <div className="rounded-xl border border-amber-300 bg-amber-50 p-4">
+          <h3 className="text-sm font-semibold text-amber-800">⚠️ No projects found</h3>
+          <p className="text-xs text-amber-700 mt-1">
+            Create <code className="bg-amber-100 px-1 rounded">00-context/projects.md</code> to
+            define project scopes. Falling back to
+            <strong> {data.settings?.project?.defaultProjectSlug || "lapu-lapu"}</strong> from settings.
+          </p>
+        </div>
+      )}
 
       {/* Project selector */}
       {data.projects.length > 0 && (
