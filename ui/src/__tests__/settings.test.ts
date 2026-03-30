@@ -32,6 +32,7 @@ describe("validateSettings", () => {
     expect(paths).toContain("meta");
     expect(paths).toContain("project");
     expect(paths).toContain("export");
+    expect(paths).toContain("lint");
     expect(paths).toContain("reporting");
     expect(paths).toContain("ui");
   });

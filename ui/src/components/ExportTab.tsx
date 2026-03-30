@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { usePMData } from "../context/PMContext";
 import type { ExportOptions } from "../lib/types";
-import type { ValidationError, ExportWarning } from "../lib/exporter";
+import type { ValidationError, ExportWarning, LintResult } from "../lib/exporter";
 import {
   generateExport,
   estimateExportSize,
@@ -28,6 +28,7 @@ export function ExportTab() {
   const [preview, setPreview] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
   const [exportWarnings, setExportWarnings] = useState<ExportWarning[]>([]);
+  const [lintResult, setLintResult] = useState<LintResult | null>(null);
 
   // Set default project slug when data loads
   React.useEffect(() => {
@@ -82,7 +83,9 @@ export function ExportTab() {
     if (!data) return;
     setValidationErrors([]);
     setExportWarnings([]);
+    setLintResult(null);
     const result = generateExport(data, options);
+    setLintResult(result.lintResult);
     if (result.errors.length > 0) {
       setValidationErrors(result.errors);
       return;
@@ -99,7 +102,9 @@ export function ExportTab() {
     if (!data) return;
     setValidationErrors([]);
     setExportWarnings([]);
+    setLintResult(null);
     const result = generateExport(data, options);
+    setLintResult(result.lintResult);
     if (result.errors.length > 0) {
       setValidationErrors(result.errors);
       return;
@@ -310,6 +315,60 @@ export function ExportTab() {
           </ul>
           <p className="text-xs text-red-600 mt-1">
             Fix the source data and reload before exporting.
+          </p>
+        </div>
+      )}
+
+      {/* Lint results */}
+      {lintResult && lintResult.violations.length > 0 && (
+        <div
+          className={`rounded-xl border p-4 space-y-2 ${
+            lintResult.blocked
+              ? "border-red-300 bg-red-50"
+              : "border-amber-300 bg-amber-50"
+          }`}
+        >
+          <h3
+            className={`text-sm font-semibold ${
+              lintResult.blocked ? "text-red-800" : "text-amber-800"
+            }`}
+          >
+            {lintResult.blocked ? "🚫" : "⚠️"} Lint{" "}
+            {lintResult.blocked ? "blocked export" : "warnings"} ({lintResult.errorCount} error
+            {lintResult.errorCount !== 1 ? "s" : ""}, {lintResult.warningCount} warning
+            {lintResult.warningCount !== 1 ? "s" : ""})
+          </h3>
+          <ul
+            className={`text-xs space-y-1 max-h-48 overflow-auto ${
+              lintResult.blocked ? "text-red-700" : "text-amber-700"
+            }`}
+          >
+            {lintResult.violations.slice(0, 20).map((v, i) => (
+              <li key={i} className="flex gap-2">
+                <span
+                  className={`font-mono ${
+                    v.severity === "error" ? "text-red-600" : "text-amber-600"
+                  }`}
+                >
+                  [{v.rule}] {v.entity}
+                </span>
+                <span>{v.message}</span>
+              </li>
+            ))}
+            {lintResult.violations.length > 20 && (
+              <li className="italic">
+                … and {lintResult.violations.length - 20} more
+              </li>
+            )}
+          </ul>
+          <p
+            className={`text-xs mt-1 ${
+              lintResult.blocked ? "text-red-600" : "text-amber-600"
+            }`}
+          >
+            {lintResult.blocked
+              ? "Fix the issues above or set lint.mode to \"warn\" in Settings."
+              : "Export completed with lint warnings. Review issues in Settings → Lint."}
           </p>
         </div>
       )}

@@ -71,6 +71,9 @@ export default function AdminPage() {
   const updateUI = (key: keyof AppSettings["ui"], value: unknown) =>
     setDraft((prev) => ({ ...prev, ui: { ...prev.ui, [key]: value } }));
 
+  const updateLint = (key: keyof AppSettings["lint"], value: unknown) =>
+    setDraft((prev) => ({ ...prev, lint: { ...prev.lint, [key]: value } }));
+
   if (!data) {
     return (
       <div className="flex-1 flex items-center justify-center p-8">
@@ -254,6 +257,53 @@ export default function AdminPage() {
               onChange={(v) => updateExport("includeInbox", v)}
             />
           </div>
+          <Field label="Max Notes Length (0 = no limit)">
+            <input
+              type="number"
+              min={0}
+              max={10000}
+              value={draft.export.maxNotesLength}
+              onChange={(e) =>
+                updateExport("maxNotesLength", parseInt(e.target.value, 10) || 0)
+              }
+              className={`${inputCls} w-28`}
+            />
+          </Field>
+        </Section>
+
+        {/* Lint */}
+        <Section title="Lint (Pre-Export Safety Gate)" icon="🔍">
+          <p className="text-xs text-gray-400">
+            Runs lint checks before each export. In <strong>warn</strong> mode violations are shown
+            but export proceeds. In <strong>fail</strong> mode the export is blocked.
+          </p>
+          <Toggle
+            label="Enabled"
+            checked={draft.lint.enabled}
+            onChange={(v) => updateLint("enabled", v)}
+          />
+          <Field label="Mode">
+            <select
+              value={draft.lint.mode}
+              onChange={(e) =>
+                updateLint("mode", e.target.value as "warn" | "fail")
+              }
+              className={inputCls}
+            >
+              <option value="warn">Warn (non-blocking)</option>
+              <option value="fail">Fail (block export)</option>
+            </select>
+          </Field>
+          <Toggle
+            label="Require #project: tag on tasks &amp; decisions"
+            checked={draft.lint.requireProjectTag}
+            onChange={(v) => updateLint("requireProjectTag", v)}
+          />
+          <Toggle
+            label="Require namespaced tags (#ns:value)"
+            checked={draft.lint.requireNamespacedTags}
+            onChange={(v) => updateLint("requireNamespacedTags", v)}
+          />
         </Section>
 
         {/* Reporting */}

@@ -8,14 +8,17 @@ import {
   type NormalizedExportPayload,
   type ValidationError,
 } from "./exportNormalizer";
+import { lintRepo, type LintResult, type LintViolation } from "./linter";
 
 export type { ValidationError } from "./exportNormalizer";
 export type { ExportWarning } from "./types";
+export type { LintResult, LintViolation } from "./linter";
 
 export interface ExportResult {
   content: string;
   errors: ValidationError[];
   warnings: ExportWarning[];
+  lintResult: LintResult | null;
 }
 
 /**
@@ -83,6 +86,28 @@ function filterByProject(data: PMData, slug: string): {
 }
 
 export function generateExport(data: PMData, options: ExportOptions): ExportResult {
+  // ── Lint gate ──
+  const lr = lintRepo(data, data.settings);
+  if (lr.blocked) {
+    // lint.mode === "fail" and there are error-level violations → block export
+    const top10 = lr.violations.slice(0, 10);
+    const remaining = lr.violations.length - top10.length;
+    const summary = top10
+      .map((v) => `[${v.rule}] ${v.entity}: ${v.message}`)
+      .join("\n");
+    const suffix = remaining > 0 ? `\n… and ${remaining} more issues.` : "";
+    return {
+      content: "",
+      errors: [{
+        field: "lint",
+        entity: "repo",
+        message: `Lint blocked export (${lr.errorCount} errors, ${lr.warningCount} warnings):\n${summary}${suffix}`,
+      }],
+      warnings: [],
+      lintResult: lr,
+    };
+  }
+
   // Resolve project
   const project = resolveProject(data, options.projectSlug);
   if (!project) {
@@ -94,6 +119,7 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
         message: `Project "${options.projectSlug}" not found in projects registry. Available: ${data.projects.map(p => p.slug).join(", ")}`,
       }],
       warnings: [],
+      lintResult: lr,
     };
   }
 
@@ -116,7 +142,7 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
 
   const errors = validateExportPayload(payload);
   if (errors.length > 0) {
-    return { content: "", errors, warnings: [] };
+    return { content: "", errors, warnings: [], lintResult: lr };
   }
 
   const warnings = [
@@ -126,9 +152,9 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
   ];
 
   if (options.format === "json") {
-    return { content: generateJsonExport(data, payload, project), errors: [], warnings };
+    return { content: generateJsonExport(data, payload, project), errors: [], warnings, lintResult: lr };
   }
-  return { content: generateMdExport(data, payload, options, project), errors: [], warnings };
+  return { content: generateMdExport(data, payload, options, project), errors: [], warnings, lintResult: lr };
 }
 
 function generateMdExport(data: PMData, payload: NormalizedExportPayload, options: ExportOptions, project: Project): string {
@@ -467,15 +493,18 @@ function runPreExportValidation(data: PMData, projectSlug: string): ExportWarnin
     }
   }
 
-  // 4. Check notes/description fields don't exceed 500 chars (warn, don't block)
-  for (const task of projectTasks) {
-    if (task.description.length > 500) {
-      warnings.push({
-        type: "VALIDATION_NOTES_LENGTH",
-        taskId: task.id,
-        objectiveId: "",
-        message: `Task description exceeds 500 chars (${task.description.length}). Will be trimmed in export.`,
-      });
+  // 4. Check notes/description fields don't exceed maxNotesLength (warn, don't block)
+  const maxNotes = data.settings?.export?.maxNotesLength ?? 500;
+  if (maxNotes > 0) {
+    for (const task of projectTasks) {
+      if (task.description.length > maxNotes) {
+        warnings.push({
+          type: "VALIDATION_NOTES_LENGTH",
+          taskId: task.id,
+          objectiveId: "",
+          message: `Task description exceeds ${maxNotes} chars (${task.description.length}). Will be trimmed in export.`,
+        });
+      }
     }
   }
 

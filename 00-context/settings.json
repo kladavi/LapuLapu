@@ -1,1 +1,37 @@
-{"meta":{"version":1,"lastSaved":"2026-03-28T10:00:00.000Z"},"project":{"repoRoot":"","defaultProjectSlug":"lapu-lapu"},"export":{"defaultFormat":"md","weeklySummaryCount":2,"includeObjectives":true,"includeTeamsSystems":true,"includeTasks":true,"includeDecisions":true,"includeWeeklySummaries":true,"includeInbox":false},"reporting":{"weekStartDay":"monday","autoGenerateWeekly":false,"reportCadence":"weekly"},"ui":{"theme":"system","defaultTab":"dashboard","compactMode":false}}
+{
+  "meta": {
+    "version": 1,
+    "lastSaved": "2026-03-28T10:00:00.000Z"
+  },
+  "project": {
+    "repoRoot": "",
+    "defaultProjectSlug": "lapu-lapu"
+  },
+  "export": {
+    "defaultFormat": "md",
+    "weeklySummaryCount": 2,
+    "maxNotesLength": 500,
+    "includeObjectives": true,
+    "includeTeamsSystems": true,
+    "includeTasks": true,
+    "includeDecisions": true,
+    "includeWeeklySummaries": true,
+    "includeInbox": false
+  },
+  "lint": {
+    "enabled": true,
+    "mode": "warn",
+    "requireProjectTag": true,
+    "requireNamespacedTags": false
+  },
+  "reporting": {
+    "weekStartDay": "monday",
+    "autoGenerateWeekly": false,
+    "reportCadence": "weekly"
+  },
+  "ui": {
+    "theme": "system",
+    "defaultTab": "dashboard",
+    "compactMode": false
+  }
+}

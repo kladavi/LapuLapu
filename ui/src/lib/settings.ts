@@ -12,12 +12,19 @@ export interface AppSettings {
   export: {
     defaultFormat: "md" | "json";
     weeklySummaryCount: number;
+    maxNotesLength: number;  // 0 = no limit
     includeObjectives: boolean;
     includeTeamsSystems: boolean;
     includeTasks: boolean;
     includeDecisions: boolean;
     includeWeeklySummaries: boolean;
     includeInbox: boolean;
+  };
+  lint: {
+    enabled: boolean;
+    mode: "warn" | "fail";
+    requireProjectTag: boolean;
+    requireNamespacedTags: boolean;
   };
   reporting: {
     weekStartDay: "monday" | "sunday";
@@ -43,12 +50,19 @@ export const DEFAULT_SETTINGS: AppSettings = {
   export: {
     defaultFormat: "md",
     weeklySummaryCount: 2,
+    maxNotesLength: 500,
     includeObjectives: true,
     includeTeamsSystems: true,
     includeTasks: true,
     includeDecisions: true,
     includeWeeklySummaries: true,
     includeInbox: false,
+  },
+  lint: {
+    enabled: true,
+    mode: "warn",
+    requireProjectTag: true,
+    requireNamespacedTags: false,
   },
   reporting: {
     weekStartDay: "monday",
@@ -74,6 +88,7 @@ const VALID_WEEK_DAYS = new Set(["monday", "sunday"]);
 const VALID_CADENCES = new Set(["weekly", "biweekly", "monthly"]);
 const VALID_THEMES = new Set(["light", "dark", "system"]);
 const VALID_TABS = new Set(["dashboard", "objectives", "tasks", "weekly", "export"]);
+const VALID_LINT_MODES = new Set(["warn", "fail"]);
 
 function expectType(
   obj: unknown,
@@ -166,8 +181,22 @@ export function validateSettings(settings: unknown): SettingsValidationError[] {
     expectBoolean(exp.includeDecisions, "export.includeDecisions", errors);
     expectBoolean(exp.includeWeeklySummaries, "export.includeWeeklySummaries", errors);
     expectBoolean(exp.includeInbox, "export.includeInbox", errors);
+    if (typeof exp.maxNotesLength !== "number" || exp.maxNotesLength < 0 || !Number.isInteger(exp.maxNotesLength)) {
+      errors.push({ path: "export.maxNotesLength", message: "Must be a non-negative integer" });
+    }
   } else {
     errors.push({ path: "export", message: "Missing or invalid export section" });
+  }
+
+  // lint
+  if (s.lint && typeof s.lint === "object") {
+    const lint = s.lint as Record<string, unknown>;
+    expectBoolean(lint.enabled, "lint.enabled", errors);
+    expectOneOf(lint.mode, "lint.mode", VALID_LINT_MODES, errors);
+    expectBoolean(lint.requireProjectTag, "lint.requireProjectTag", errors);
+    expectBoolean(lint.requireNamespacedTags, "lint.requireNamespacedTags", errors);
+  } else {
+    errors.push({ path: "lint", message: "Missing or invalid lint section" });
   }
 
   // reporting
@@ -224,6 +253,10 @@ export function mergeWithDefaults(partial: Partial<AppSettings>): AppSettings {
     export: {
       ...DEFAULT_SETTINGS.export,
       ...(partial.export ?? {}),
+    },
+    lint: {
+      ...DEFAULT_SETTINGS.lint,
+      ...(partial.lint ?? {}),
     },
     reporting: {
       ...DEFAULT_SETTINGS.reporting,
