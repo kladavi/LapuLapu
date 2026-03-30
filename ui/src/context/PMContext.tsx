@@ -9,6 +9,7 @@ import {
   parseTasks,
   parseDecisions,
   parseWeeklySummaries,
+  parseProjects,
 } from "../lib/parsers";
 import { buildRelationshipMap } from "../lib/relationships";
 
@@ -47,13 +48,18 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
         const tasksPath = findFile("02-work/tasks.md");
         const decisionsPath = findFile("02-work/decisions.md");
         const inboxPath = findFile("01-inbox/inbox.md");
+        const projectsPath = findFile("00-context/projects.md");
 
         if (!objectivesPath) warnings.push("Missing: 00-context/objectives.md");
         if (!teamsPath) warnings.push("Missing: 00-context/teams.md");
         if (!systemsPath) warnings.push("Missing: 00-context/systems.md");
         if (!tasksPath) warnings.push("Missing: 02-work/tasks.md");
         if (!decisionsPath) warnings.push("Missing: 02-work/decisions.md");
+        if (!projectsPath) warnings.push("Missing: 00-context/projects.md");
 
+        const projects = projectsPath
+          ? parseProjects(files[projectsPath])
+          : [];
         const objectives = objectivesPath
           ? parseObjectives(files[objectivesPath])
           : [];
@@ -75,6 +81,7 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
         }
 
         setData({
+          projects,
           objectives,
           teams,
           systems,

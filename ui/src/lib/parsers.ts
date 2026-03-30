@@ -7,6 +7,7 @@ import type {
   Task,
   Decision,
   WeeklySummary,
+  Project,
 } from "./types";
 
 // ────────────────────────────────────────────
@@ -396,6 +397,49 @@ export function parseDecisions(md: string): Decision[] {
 }
 
 // ────────────────────────────────────────────
+// Projects parser
+// ────────────────────────────────────────────
+
+export function parseProjects(md: string): Project[] {
+  const projects: Project[] = [];
+
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+  const blocks = md.split(/(?=^## P-)/m);
+
+  for (const block of blocks) {
+    const headingMatch = block.match(/^## (P-\S+)\s*[—–-]\s*(.+?)(?:\n|$)/);
+    if (!headingMatch) continue;
+
+    const id = headingMatch[1].trim();
+    const name = headingMatch[2].trim();
+    const tags = extractTags(block);
+    const slug = tags.find((t) => t.startsWith("#project:"))?.replace("#project:", "") || id.toLowerCase();
+    const description = extractBulletField(block, "Description") || "";
+    const audienceLine = extractBulletField(block, "Primary Audience") || "";
+    const primaryAudience = audienceLine ? audienceLine.split(",").map((s) => s.trim()).filter(Boolean) : [];
+    const systemsLine = extractBulletField(block, "Primary Systems") || "";
+    const primarySystems = extractHashtags(systemsLine);
+    const reportCadence = extractBulletField(block, "Report Cadence") || "Weekly";
+    const defaultPackName = extractBulletField(block, "Default Pack Name") || `copilot-pack_${slug}.md`;
+
+    projects.push({
+      id,
+      slug,
+      name,
+      description,
+      primaryAudience,
+      primarySystems,
+      reportCadence,
+      defaultPackName,
+      tags,
+    });
+  }
+
+  return projects;
+}
+
+// ────────────────────────────────────────────
 // Weekly summary parser
 // ────────────────────────────────────────────
 
@@ -412,7 +456,21 @@ export function parseWeeklySummaries(
       !normalised.endsWith(".gitkeep")
     ) {
       const filename = normalised.split("/").pop() || path;
-      summaries.push({ filename, content });
+
+      // Extract project from YAML frontmatter (project: "slug")
+      let project: string | undefined;
+      const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+      if (fmMatch) {
+        const projMatch = fmMatch[1].match(/^project:\s*"?([^"\n]+)"?\s*$/m);
+        if (projMatch) project = projMatch[1].trim();
+      }
+      // Fallback: extract from filename like 2026-W13—epsilon.md
+      if (!project) {
+        const fnMatch = filename.match(/\d{4}-W\d+[—–-](\S+)\.md$/i);
+        if (fnMatch) project = fnMatch[1].toLowerCase();
+      }
+
+      summaries.push({ filename, content, project });
     }
   }
 

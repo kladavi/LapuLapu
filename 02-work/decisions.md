@@ -2,7 +2,7 @@
 
 ## D001 — Deferred: Ad-Hoc Dashboard Request from Marketing
 
-tags: #domain:rejected #system:newrelic #outcome:unaligned
+tags: #project:lapu-lapu #domain:rejected #system:newrelic #outcome:unaligned
 
 **Date:** 2026-03-18
 **Decision:** Deferred
@@ -14,7 +14,7 @@ tags: #domain:rejected #system:newrelic #outcome:unaligned
 
 ## D002 — Agreed: GOCC Delivery Model for Japan Monitoring
 
-tags: #domain:gocc-handover #system:newrelic #system:cmdb #system:xmatters #outcome:resilience
+tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:cmdb #system:xmatters #outcome:resilience
 
 **Date:** 2026-03-26
 **Decision:** Approved
@@ -27,7 +27,7 @@ tags: #domain:gocc-handover #system:newrelic #system:cmdb #system:xmatters #outc
 
 ## D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution
 
-tags: #domain:patching #system:azure #outcome:resilience #domain:gocc-handover
+tags: #project:lapu-lapu #domain:patching #system:azure #outcome:resilience #domain:gocc-handover
 
 **Date:** 2026-03-17
 **Decision:** Approved (directional)

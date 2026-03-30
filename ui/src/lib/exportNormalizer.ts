@@ -255,6 +255,7 @@ export function partitionSystemTags(tags: string[]): {
 export interface NormalizedWeeklySummary {
   weekId: string;
   fileName: string;
+  project?: string;
   executiveSummary: string[];
   highlights: string[];
   risks: string[];
@@ -315,7 +316,7 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
   const finalRisks = risks.length > 0 ? risks : ["No explicit risks captured in weekly file."];
   const finalNextFocus = nextFocus.length > 0 ? nextFocus : ["No explicit next-week focus captured in weekly file."];
 
-  return { weekId, fileName, executiveSummary, highlights, risks: finalRisks, nextFocus: finalNextFocus, rawText };
+  return { weekId, fileName, project: ws.project, executiveSummary, highlights, risks: finalRisks, nextFocus: finalNextFocus, rawText };
 }
 
 /**

@@ -1,6 +1,6 @@
 // ── Export engine: generates copilot-pack.md or .json ──
 
-import type { PMData, ExportOptions, ExportWarning } from "./types";
+import type { PMData, ExportOptions, ExportWarning, Project } from "./types";
 import {
   buildNormalizedPayload,
   validateExportPayload,
@@ -18,35 +18,120 @@ export interface ExportResult {
   warnings: ExportWarning[];
 }
 
+/**
+ * Resolve the selected project from PMData.
+ * Returns null if the project slug is not found.
+ */
+function resolveProject(data: PMData, slug: string): Project | null {
+  return data.projects.find((p) => p.slug === slug) || null;
+}
+
+/**
+ * Filter PMData to only include items matching the given project slug.
+ * Tasks and decisions must have #project:<slug> in their tags.
+ * Weekly summaries must have a matching project field.
+ */
+function filterByProject(data: PMData, slug: string): {
+  tasks: typeof data.tasks;
+  decisions: typeof data.decisions;
+  weeklySummaries: typeof data.weeklySummaries;
+  warnings: ExportWarning[];
+} {
+  const projectTag = `#project:${slug}`;
+  const warnings: ExportWarning[] = [];
+
+  const tasks = data.tasks.filter((t) =>
+    t.tags.some((tag) => tag.toLowerCase() === projectTag)
+  );
+
+  const decisions = data.decisions.filter((d) =>
+    d.tags.some((tag) => tag.toLowerCase() === projectTag)
+  );
+
+  // Weekly summaries: match by project field or if no project field, include for the default project
+  const weeklySummaries = data.weeklySummaries.filter((ws) => {
+    if (ws.project) return ws.project.toLowerCase() === slug.toLowerCase();
+    // Legacy files without project field: only include for lapu-lapu (backward compat)
+    return slug === "lapu-lapu" && !ws.project;
+  });
+
+  // Validation: warn about untagged tasks/decisions
+  for (const t of data.tasks) {
+    const hasAnyProjectTag = t.tags.some((tag) => tag.toLowerCase().startsWith("#project:"));
+    if (!hasAnyProjectTag) {
+      warnings.push({
+        type: "MISSING_PROJECT_TAG",
+        taskId: t.id,
+        objectiveId: "",
+        message: `Task "${t.id}" has no #project: tag — it will be excluded from all project exports.`,
+      });
+    }
+  }
+  for (const d of data.decisions) {
+    const hasAnyProjectTag = d.tags.some((tag) => tag.toLowerCase().startsWith("#project:"));
+    if (!hasAnyProjectTag) {
+      warnings.push({
+        type: "MISSING_PROJECT_TAG",
+        taskId: d.id,
+        objectiveId: "",
+        message: `Decision "${d.id}" has no #project: tag — it will be excluded from all project exports.`,
+      });
+    }
+  }
+
+  return { tasks, decisions, weeklySummaries, warnings };
+}
+
 export function generateExport(data: PMData, options: ExportOptions): ExportResult {
+  // Resolve project
+  const project = resolveProject(data, options.projectSlug);
+  if (!project) {
+    return {
+      content: "",
+      errors: [{
+        field: "projectSlug",
+        entity: options.projectSlug,
+        message: `Project "${options.projectSlug}" not found in projects registry. Available: ${data.projects.map(p => p.slug).join(", ")}`,
+      }],
+      warnings: [],
+    };
+  }
+
+  // Filter data by project
+  const filtered = filterByProject(data, options.projectSlug);
+
   const payload = buildNormalizedPayload(
     data.objectives,
-    data.tasks,
+    filtered.tasks,
     data.teams,
     data.systems,
-    data.weeklySummaries,
-    data.decisions,
+    filtered.weeklySummaries,
+    filtered.decisions,
     data.inbox,
     options
   );
 
-  // Run pre-export validation
-  const validationWarnings = runPreExportValidation(data);
+  // Run pre-export validation (project-scoped)
+  const validationWarnings = runPreExportValidation(data, options.projectSlug);
 
   const errors = validateExportPayload(payload);
   if (errors.length > 0) {
     return { content: "", errors, warnings: [] };
   }
 
-  const warnings = [...(payload.exportWarnings || []), ...validationWarnings];
+  const warnings = [
+    ...(payload.exportWarnings || []),
+    ...validationWarnings,
+    ...filtered.warnings,
+  ];
 
   if (options.format === "json") {
-    return { content: generateJsonExport(data, payload), errors: [], warnings };
+    return { content: generateJsonExport(data, payload, project), errors: [], warnings };
   }
-  return { content: generateMdExport(data, payload, options), errors: [], warnings };
+  return { content: generateMdExport(data, payload, options, project), errors: [], warnings };
 }
 
-function generateMdExport(data: PMData, payload: NormalizedExportPayload, options: ExportOptions): string {
+function generateMdExport(data: PMData, payload: NormalizedExportPayload, options: ExportOptions, project: Project): string {
   const now = new Date().toISOString();
   const sections: string[] = [];
 
@@ -62,19 +147,16 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
   if (options.includeWeeklySummaries) includedSections.push("weekly_summaries");
   if (options.includeInbox) includedSections.push("inbox");
 
-  // 1) YAML frontmatter
+  // 1) YAML frontmatter — project-scoped
   const frontmatter = [
     "---",
-    'title: "Objective-Driven PM Copilot Pack"',
+    `title: "Objective-Driven PM Copilot Pack — ${project.name}"`,
+    `project: "${project.slug}"`,
+    `projectName: "${project.name}"`,
     `created: "${now}"`,
     `source_repo: "${data.folderName}"`,
     "distribution:",
-    '  - "Birger"',
-    '  - "Hari"',
-    '  - "Kelvin"',
-    '  - "Jonan"',
-    '  - "Deb"',
-    '  - "Balaji"',
+    ...project.primaryAudience.map((a) => `  - "${a}"`),
     "included_sections:",
     ...includedSections.map((s) => `  - ${s}`),
     "exclusions:",
@@ -92,7 +174,7 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
   sections.push(frontmatter);
 
   // 1.5) Context contract from pack-config.md (if available)
-  const contractSection = extractPackConfigContract(data.rawFiles);
+  const contractSection = extractPackConfigContract(data.rawFiles, project);
   if (contractSection) {
     sections.push(contractSection);
   }
@@ -149,10 +231,12 @@ ${JSON.stringify(payload, null, 2)}
   return sections.join("\n\n");
 }
 
-function generateJsonExport(data: PMData, payload: NormalizedExportPayload): string {
+function generateJsonExport(data: PMData, payload: NormalizedExportPayload, project: Project): string {
   return JSON.stringify(
     {
-      title: "Objective-Driven PM Copilot Pack",
+      title: `Objective-Driven PM Copilot Pack — ${project.name}`,
+      project: project.slug,
+      projectName: project.name,
       created: new Date().toISOString(),
       source_repo: data.folderName,
       ...payload,
@@ -206,14 +290,25 @@ function generateDiagnosticsBlock(payload: NormalizedExportPayload, timestamp: s
 // ────────────────────────────────────────────
 
 export function estimateExportSize(data: PMData, options: ExportOptions): number {
-  // Quick estimate by building the normalized payload and measuring
+  const projectTag = `#project:${options.projectSlug}`;
+  const filteredTasks = data.tasks.filter((t) =>
+    t.tags.some((tag) => tag.toLowerCase() === projectTag)
+  );
+  const filteredDecisions = data.decisions.filter((d) =>
+    d.tags.some((tag) => tag.toLowerCase() === projectTag)
+  );
+  const filteredWeeklies = data.weeklySummaries.filter((ws) => {
+    if (ws.project) return ws.project.toLowerCase() === options.projectSlug.toLowerCase();
+    return options.projectSlug === "lapu-lapu" && !ws.project;
+  });
+
   const payload = buildNormalizedPayload(
     data.objectives,
-    data.tasks,
+    filteredTasks,
     data.teams,
     data.systems,
-    data.weeklySummaries,
-    data.decisions,
+    filteredWeeklies,
+    filteredDecisions,
     data.inbox,
     options
   );
@@ -244,11 +339,16 @@ export function downloadFile(content: string, filename: string): void {
  * Extract the context contract from pack-config.md and render it
  * as a CONTEXT CONTRACT section for the export.
  */
-function extractPackConfigContract(rawFiles: Record<string, string>): string | null {
-  // Find the pack-config file
-  const key = Object.keys(rawFiles).find((k) =>
-    k.replace(/\\/g, "/").endsWith("00-context/pack-config.md")
-  );
+function extractPackConfigContract(rawFiles: Record<string, string>, project: Project): string | null {
+  // Try project-specific pack-config first, then fall back to generic
+  const findKey = (suffix: string) =>
+    Object.keys(rawFiles).find((k) =>
+      k.replace(/\\/g, "/").endsWith(suffix)
+    );
+
+  const projectKey = findKey(`00-context/pack-config_${project.slug}.md`);
+  const genericKey = findKey("00-context/pack-config.md");
+  const key = projectKey || genericKey;
   if (!key) return null;
 
   const md = rawFiles[key].replace(/\r\n/g, "\n");
@@ -273,6 +373,7 @@ function extractPackConfigContract(rawFiles: Record<string, string>): string | n
 
   const lines: string[] = [];
   lines.push("## CONTEXT CONTRACT (READ FIRST)\n");
+  lines.push(`> **This pack is scoped to #project:${project.slug} (${project.name}).** Other projects are excluded.\n`);
 
   if (audience) {
     lines.push("### Intended Audience\n");
@@ -306,12 +407,18 @@ function extractPackConfigContract(rawFiles: Record<string, string>): string | n
  * Run pre-export validation on source data. Returns export warnings
  * (soft failures) rather than blocking errors.
  */
-function runPreExportValidation(data: PMData): ExportWarning[] {
+function runPreExportValidation(data: PMData, projectSlug: string): ExportWarning[] {
   const warnings: ExportWarning[] = [];
   const objectiveIds = new Set(data.objectives.map((o) => o.id));
+  const projectTag = `#project:${projectSlug}`;
+
+  // Filter to only tasks in this project for objective checks
+  const projectTasks = data.tasks.filter((t) =>
+    t.tags.some((tag) => tag.toLowerCase() === projectTag)
+  );
 
   // 1. Check tasks reference valid objective IDs
-  for (const task of data.tasks) {
+  for (const task of projectTasks) {
     for (const oid of task.objectiveIds) {
       if (!objectiveIds.has(oid) && !task.tags.some((t) => t.includes("objective:external"))) {
         warnings.push({
@@ -326,7 +433,7 @@ function runPreExportValidation(data: PMData): ExportWarning[] {
 
   // 2. Check systems tags start with #system: (in export normalizer this is already handled,
   //    but warn on source data)
-  for (const task of data.tasks) {
+  for (const task of projectTasks) {
     for (const sys of task.systems) {
       const normalized = sys.startsWith("#") ? sys : `#${sys}`;
       if (!normalized.startsWith("#system:") && !normalized.match(/^#(moogsoft|newrelic|azure|cmdb|xmatters|leanix|adobe|apm|adx|ingenium)$/i)) {
@@ -361,7 +468,7 @@ function runPreExportValidation(data: PMData): ExportWarning[] {
   }
 
   // 4. Check notes/description fields don't exceed 500 chars (warn, don't block)
-  for (const task of data.tasks) {
+  for (const task of projectTasks) {
     if (task.description.length > 500) {
       warnings.push({
         type: "VALIDATION_NOTES_LENGTH",

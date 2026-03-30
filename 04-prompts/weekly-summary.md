@@ -8,9 +8,12 @@ You are an executive communications analyst. Your job is to produce a concise, o
 
 Read the following files:
 
-1. `00-context/objectives.md` — the objective hierarchy
-2. `02-work/tasks.md` — all current tasks with status and objective mappings
-3. `02-work/decisions.md` — rejected or deferred work this week
+1. `00-context/projects.md` — the project registry (determines scope)
+2. `00-context/objectives.md` — the objective hierarchy
+3. `02-work/tasks.md` — all current tasks with status, objective mappings, and `#project:` tags
+4. `02-work/decisions.md` — rejected or deferred work this week (with `#project:` tags)
+
+**Project scoping:** Only include tasks and decisions tagged with the target project's `#project:<slug>` tag. Do not co-mingle content from other projects.
 
 ## Instructions
 

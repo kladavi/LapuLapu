@@ -1,6 +1,13 @@
-# Weekly Project Status Report
+---
+project: "<slug>"
+weekId: "YYYY-W##"
+period: "Start – End"
+distribution: ["Name1","Name2"]
+---
 
-**Project:** Lapu Lapu
+# Weekly Project Status Report — [Project Name]
+
+**Project:** [Project Name]
 **Week Ending:** [Date]
 
 ---

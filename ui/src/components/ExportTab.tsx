@@ -14,6 +14,7 @@ export function ExportTab() {
   const { data } = usePMData();
 
   const [options, setOptions] = useState<ExportOptions>({
+    projectSlug: "",
     includeObjectives: true,
     includeTeamsSystems: true,
     includeTasks: true,
@@ -27,6 +28,13 @@ export function ExportTab() {
   const [preview, setPreview] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
   const [exportWarnings, setExportWarnings] = useState<ExportWarning[]>([]);
+
+  // Set default project slug when data loads
+  React.useEffect(() => {
+    if (data && data.projects.length > 0 && !options.projectSlug) {
+      setOptions((prev) => ({ ...prev, projectSlug: data.projects[0].slug }));
+    }
+  }, [data, options.projectSlug]);
 
   const estimatedSize = useMemo(() => {
     if (!data) return 0;
@@ -80,8 +88,11 @@ export function ExportTab() {
       return;
     }
     setExportWarnings(result.warnings);
+    const selectedProject = data.projects.find((p) => p.slug === options.projectSlug);
+    const packName = selectedProject?.defaultPackName || `copilot-pack_${options.projectSlug}.${options.format === "json" ? "json" : "md"}`;
     const ext = options.format === "json" ? "json" : "md";
-    downloadFile(result.content, `copilot-pack.${ext}`);
+    const filename = packName.endsWith(`.${ext}`) ? packName : packName.replace(/\.\w+$/, `.${ext}`);
+    downloadFile(result.content, filename);
   };
 
   const handlePreview = () => {
@@ -114,6 +125,45 @@ export function ExportTab() {
         Generate a single compact file for upload to GitHub Copilot, ChatGPT, or
         any LLM. Archives and binary files are automatically excluded.
       </p>
+
+      {/* Project selector */}
+      {data.projects.length > 0 && (
+        <div className="rounded-xl border border-gray-200 bg-white p-4">
+          <h3 className="text-sm font-semibold text-gray-700 mb-2">
+            Project Scope
+          </h3>
+          <p className="text-xs text-gray-400 mb-3">
+            Export will only include tasks, decisions, and weekly reports tagged to this project.
+          </p>
+          <div className="flex gap-2">
+            {data.projects.map((p) => (
+              <label
+                key={p.slug}
+                className={`flex-1 flex items-center gap-3 rounded-lg border p-3 cursor-pointer ${
+                  options.projectSlug === p.slug
+                    ? "border-blue-500 bg-blue-50"
+                    : "border-gray-200 hover:bg-gray-50"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="project"
+                  value={p.slug}
+                  checked={options.projectSlug === p.slug}
+                  onChange={() =>
+                    setOptions({ ...options, projectSlug: p.slug })
+                  }
+                  className="text-blue-600"
+                />
+                <div>
+                  <div className="text-sm font-medium">{p.name}</div>
+                  <div className="text-xs text-gray-400">{p.description}</div>
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Toggles */}
       <div className="rounded-xl border border-gray-200 bg-white divide-y divide-gray-100">
