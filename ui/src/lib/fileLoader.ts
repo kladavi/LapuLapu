@@ -83,7 +83,7 @@ async function readDirectoryRecursive(
     } else if (entry.kind === "file") {
       if (isExcludedPath(relativePath)) continue;
       if (isBinaryFile(entry.name)) continue;
-      if (!entry.name.endsWith(".md")) continue;
+      if (!entry.name.endsWith(".md") && !entry.name.endsWith(".json")) continue;
 
       try {
         const file = await entry.getFile();
@@ -143,7 +143,7 @@ async function processEntry(
   } else if (entry.isFile) {
     if (isExcludedPath(relativePath)) return;
     if (isBinaryFile(entry.name)) return;
-    if (!entry.name.endsWith(".md")) return;
+    if (!entry.name.endsWith(".md") && !entry.name.endsWith(".json")) return;
 
     const file = await new Promise<File>((resolve, reject) => {
       (entry as FileSystemFileEntry).file(resolve, reject);

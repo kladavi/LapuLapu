@@ -118,6 +118,7 @@ export interface PMData {
   loadedAt: string;
   folderName: string;
   warnings: string[];
+  settings: import("./settings").AppSettings;
   relationships: RelationshipMap;
 }
 

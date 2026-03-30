@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useEffect, DragEvent } from "react";
+import Link from "next/link";
 import { usePMData } from "../context/PMContext";
 import {
   loadFromFolderPicker,
@@ -190,6 +191,12 @@ export default function Home() {
               📁 Change Folder
             </button>
           )}
+          <Link
+            href="/admin"
+            className="text-sm text-gray-500 hover:text-gray-700"
+          >
+            ⚙️ Settings
+          </Link>
         </div>
       </header>
 

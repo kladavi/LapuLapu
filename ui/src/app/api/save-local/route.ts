@@ -34,10 +34,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Only allow .md files
-    if (!fullPath.endsWith(".md")) {
+    // Only allow .md and .json files
+    if (!fullPath.endsWith(".md") && !fullPath.endsWith(".json")) {
       return NextResponse.json(
-        { error: "Only .md files can be saved" },
+        { error: "Only .md and .json files can be saved" },
         { status: 403 }
       );
     }

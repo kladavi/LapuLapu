@@ -62,7 +62,7 @@ async function readDirRecursive(
     } else if (entry.isFile()) {
       if (isExcluded(relativePath)) continue;
       if (isBinary(entry.name)) continue;
-      if (!entry.name.endsWith(".md")) continue;
+      if (!entry.name.endsWith(".md") && !entry.name.endsWith(".json")) continue;
 
       try {
         const content = await fs.readFile(path.join(dirPath, entry.name), "utf-8");
