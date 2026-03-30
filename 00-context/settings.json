@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "lastSaved": "2026-03-28T10:00:00.000Z"
+    "lastSaved": "2026-03-30T01:59:45.414Z"
   },
   "project": {
     "repoRoot": "",
@@ -16,7 +16,9 @@
     "includeTasks": true,
     "includeDecisions": true,
     "includeWeeklySummaries": true,
-    "includeInbox": false
+    "includeInbox": false,
+    "includeHowToUse": true,
+    "includeRolePrompts": true
   },
   "lint": {
     "enabled": true,
@@ -30,7 +32,7 @@
     "reportCadence": "weekly"
   },
   "ui": {
-    "theme": "system",
+    "theme": "light",
     "defaultTab": "dashboard",
     "compactMode": false
   }

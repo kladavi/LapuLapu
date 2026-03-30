@@ -19,6 +19,8 @@ export interface AppSettings {
     includeDecisions: boolean;
     includeWeeklySummaries: boolean;
     includeInbox: boolean;
+    includeHowToUse: boolean;
+    includeRolePrompts: boolean;
   };
   lint: {
     enabled: boolean;
@@ -57,6 +59,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
     includeDecisions: true,
     includeWeeklySummaries: true,
     includeInbox: false,
+    includeHowToUse: true,
+    includeRolePrompts: true,
   },
   lint: {
     enabled: true,
@@ -181,6 +185,8 @@ export function validateSettings(settings: unknown): SettingsValidationError[] {
     expectBoolean(exp.includeDecisions, "export.includeDecisions", errors);
     expectBoolean(exp.includeWeeklySummaries, "export.includeWeeklySummaries", errors);
     expectBoolean(exp.includeInbox, "export.includeInbox", errors);
+    expectBoolean(exp.includeHowToUse, "export.includeHowToUse", errors);
+    expectBoolean(exp.includeRolePrompts, "export.includeRolePrompts", errors);
     if (typeof exp.maxNotesLength !== "number" || exp.maxNotesLength < 0 || !Number.isInteger(exp.maxNotesLength)) {
       errors.push({ path: "export.maxNotesLength", message: "Must be a non-negative integer" });
     }

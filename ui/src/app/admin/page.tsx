@@ -256,6 +256,16 @@ export default function AdminPage() {
               checked={draft.export.includeInbox}
               onChange={(v) => updateExport("includeInbox", v)}
             />
+            <Toggle
+              label='Include "How to Use" guide'
+              checked={draft.export.includeHowToUse}
+              onChange={(v) => updateExport("includeHowToUse", v)}
+            />
+            <Toggle
+              label="Include Role-Based Starter Prompts"
+              checked={draft.export.includeRolePrompts}
+              onChange={(v) => updateExport("includeRolePrompts", v)}
+            />
           </div>
           <Field label="Max Notes Length (0 = no limit)">
             <input

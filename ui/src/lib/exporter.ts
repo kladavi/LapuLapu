@@ -205,6 +205,16 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
     sections.push(contractSection);
   }
 
+  // 1.6) How To Use block (recipient onboarding)
+  if (data.settings?.export?.includeHowToUse !== false) {
+    sections.push(generateHowToUse());
+  }
+
+  // 1.7) Role-based starter prompts
+  if (data.settings?.export?.includeRolePrompts !== false) {
+    sections.push(generateRolePrompts());
+  }
+
   // 2) Copilot instructions
   const instructions = `
 ## COPILOT INSTRUCTIONS (READ FIRST)
@@ -355,6 +365,48 @@ export function downloadFile(content: string, filename: string): void {
   a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+// ────────────────────────────────────────────
+// Recipient usability sections
+// ────────────────────────────────────────────
+
+function generateHowToUse(): string {
+  return `
+## HOW TO USE THIS PACK (FOR RECIPIENTS)
+
+1. Open M365 Copilot Chat
+2. Upload this file
+3. Ask questions about status, risks, owners, and next steps
+
+Copilot will respond only using data in this pack.
+`.trim();
+}
+
+function generateRolePrompts(): string {
+  return `
+## STARTER PROMPTS BY ROLE
+
+### For Birger (ETS Japan)
+- "Summarize top risks and decisions this week for ETS Japan."
+- "What blockers require leadership escalation?"
+
+### For Hari / Jonan (GOCC)
+- "What tasks require GOCC onboarding or access changes?"
+- "List handover readiness gaps (runbooks, routing, accounts)."
+
+### For Deb (Observability)
+- "Which tasks relate to observability maturity and monitoring instrumentation?"
+- "Which systems have incomplete coverage?"
+
+### For Kelvin (ETS Region)
+- "What cross-region dependencies or escalations exist this week?"
+- "Summarize progress by Tier-1 objective."
+
+### For Balaji (Architecture)
+- "Summarize Epsilon/POT architecture work and required stakeholders."
+- "List tasks requiring infra provisioning or HA validation."
+`.trim();
 }
 
 // ────────────────────────────────────────────
