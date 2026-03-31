@@ -252,3 +252,45 @@
 - **Tags:** #project:lapu-lapu #worktype:coordination #domain:patching #domain:non-production
 - **Description:** Schedule a meeting with Hong Kong (Karen Leung) and Indonesia (Glenn Jay) representatives to discuss next steps for non-production environment patching alignment. Extends the Japan patching standardisation work to other Asia regions.
 - **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Karen Escalona
+
+---
+
+## T020 — Enable Thursday Weekday Patching for Non-Batch Applications
+- **Status:** Open
+- **Created:** 2026-03-26
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:azure
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #domain:patching #outcome:resilience #worktype:hygiene
+- **Description:** Applications that do not have batch jobs running can be patched on Thursday night, instead of waiting for the weekend when releases and upgrades are prioritised. Identify and maintain a list of non-batch applications eligible for Thursday patching. Implement the Thursday patching window to relieve pressure on the weekend schedule. Coordinate with Kanagaraj (Linux) and Sreekanth (Windows) for server categorisation.
+- **Source:** 2026-03-26 Incident Review Meeting
+
+---
+
+## T021 — Add 3 External/Internal URLs to Employee Experience Dashboard
+- **Status:** Open
+- **Created:** 2026-03-31
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Mary Kris Cabunilas
+- **Systems:** #system:newrelic #system:azure
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #artifact:dashboard #worktype:monitoring #worktype:observability
+- **Description:** Add three new URLs to the Employee Experience Dashboard URL monitoring list (JIRA: LPLP-99): (1) Azure Databricks — https://adb-290394047047427.7.azuredatabricks.net/ (external service), (2) Pathwise endpoint from Aon — https://manulife.pathwise.aon.com/logon/LogonPoint/index.html (Manulife internal), (3) DORA app from Manulife AI team — https://dora.manulife.com/ (Manulife internal). Confirm all three are in scope before adding. To be included in Employee Experience Dashboard.
+- **Source:** Inbox — Add3URLtodashboard.md
+
+---
+
+## T022 — Register GOCC-Monitoring Team Member Assignments for LapuLapu
+- **Status:** Open
+- **Created:** 2026-03-31
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:newrelic #system:moogsoft #system:xmatters
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #worktype:coordination #domain:gocc-handover
+- **Description:** Register and track the GOCC-Monitoring team member assignments for LapuLapu work streams as confirmed by Jonan: Mary Kris, Rae, Yam — Dashboard; Edward and team (12 members) — actual instrumentation; Dennis/Mark — server build implementation of patching for Ingenium; George/Angelo — gathering of rapid recovery items. Update teams.md member roles accordingly and ensure alignment with T003, T006, T016 assignments.
+- **Source:** Inbox — TeamUpdate.md (message from Jonan)

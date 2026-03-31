@@ -4,8 +4,9 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
-- **2026-03-26 — Incident Review Meeting** #raw
+- **2026-03-26 — Incident Review Meeting** #processed
   - Applications that do not have batch jobs running can be patched on Thursday night, instead of waiting for the weekend when other Releases and upgrades are prioritized.  This will relieve some pressure on the weekend schedule.
+  - **Actions extracted → T020**
 
 - **2026-03-26 — New Relic Monitoring (GOCC) Meeting** #processed
   - **Source:** GOCC-20260326 - New Relic Monitoring-260326-035913.pdf
@@ -39,3 +40,28 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
     6. Karen to schedule follow-up with HK and Indonesia representatives for non-production environments
   - **Actions extracted → T017, T018, T019**
   - **Decision extracted → D003**
+
+- **2026-03-31 — GOCC-Monitoring Team Assignments (from Jonan)** #processed
+  - **Source:** TeamUpdate.md
+  - **From:** Jonan Tan Pangan (GOCC-Monitoring Lead)
+  - **Focus:** Team member work stream assignments for LapuLapu
+  - **Key outcomes:**
+    1. Mary Kris, Rae, Yam — Dashboard
+    2. Edward and team (12 members) — actual instrumentation
+    3. Dennis/Mark — server build implementation of patching for Ingenium
+    4. George/Angelo — gathering of rapid recovery items
+  - **Actions extracted → T022**
+
+- **2026-03-31 — Add 3 URLs to Employee Experience Dashboard** #processed
+  - **Source:** Add3URLtodashboard.md (JIRA: LPLP-99)
+  - **From:** David Klan → Mary Kris Cabunilas
+  - **Focus:** 3 new application URLs to include in Employee Experience Dashboard monitoring
+  - **Key outcomes:**
+    1. Azure Databricks: https://adb-290394047047427.7.azuredatabricks.net/ (external service)
+    2. Pathwise from Aon: https://manulife.pathwise.aon.com/logon/LogonPoint/index.html (internal)
+    3. DORA app from AI team: https://dora.manulife.com/ (internal)
+  - **Actions extracted → T021**
+
+- **2026-03-31 — GOCC Monitoring Discussion** #raw
+  - **Source:** GOCC-20260331 - Monitoring Discussion-310326-070126.pdf
+  - **Note:** PDF file in inbox — needs manual review and extraction.
