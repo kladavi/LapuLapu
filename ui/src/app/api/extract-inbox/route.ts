@@ -1,12 +1,15 @@
 // ── API route: extract text from binary inbox files (PDF, DOCX, EML, MSG) ──
 // Reads files from 01-inbox/ and returns extracted plain text.
+// PDF extraction uses pdfplumber (Python) for superior table/layout support.
 
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import { execFile } from "child_process";
 
 const DEFAULT_ROOT = "C:\\Users\\kladavi\\Projects\\LapuLapu";
 const INBOX_DIR = path.join(DEFAULT_ROOT, "01-inbox");
+const EXTRACT_PDF_SCRIPT = path.join(DEFAULT_ROOT, "ui", "scripts", "extract-pdf.py");
 
 interface ExtractedFile {
   filename: string;
@@ -16,11 +19,20 @@ interface ExtractedFile {
 }
 
 async function extractPdf(filePath: string): Promise<string> {
-  const { PDFParse } = await import("pdf-parse");
-  const buffer = await fs.readFile(filePath);
-  const parser = new PDFParse({ data: buffer });
-  const result = await parser.getText();
-  return result.text;
+  return new Promise((resolve, reject) => {
+    execFile(
+      "python",
+      [EXTRACT_PDF_SCRIPT, filePath],
+      { maxBuffer: 10 * 1024 * 1024, encoding: "utf8" },
+      (err, stdout, stderr) => {
+        if (err) {
+          reject(new Error(stderr?.trim() || err.message));
+        } else {
+          resolve(stdout.trim());
+        }
+      }
+    );
+  });
 }
 
 async function extractDocx(filePath: string): Promise<string> {
