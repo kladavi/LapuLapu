@@ -215,6 +215,36 @@ export function IntakeTab() {
         summary.push(`${selectedInbox.size} inbox item(s) marked as #processed`);
       }
 
+      // Archive selected extracted files (move to 01-inbox/archive/)
+      if (selectedExtracted.size > 0) {
+        const filesToArchive: string[] = [];
+        for (const idx of selectedExtracted) {
+          const f = extractedFiles[idx];
+          if (f) filesToArchive.push(f.filename);
+        }
+        if (filesToArchive.length > 0) {
+          try {
+            const res = await fetch("/api/archive-inbox", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ filenames: filesToArchive }),
+            });
+            if (res.ok) {
+              const { moved, errors } = await res.json() as { moved: string[]; errors: string[] };
+              if (moved.length > 0) {
+                summary.push(`${moved.length} file(s) archived`);
+              }
+              if (errors.length > 0) {
+                summary.push(`${errors.length} file(s) failed to archive`);
+              }
+            }
+          } catch {
+            // Non-critical — files remain in inbox
+            summary.push("File archiving skipped (API error)");
+          }
+        }
+      }
+
       const rejected = results.filter((r) => !r.approved).length;
       if (rejected > 0) {
         summary.push(`${rejected} item(s) skipped (not approved)`);
@@ -239,7 +269,7 @@ export function IntakeTab() {
     } finally {
       setApplying(false);
     }
-  }, [data, results, selectedInbox, rawEntries, loadFiles]);
+  }, [data, results, selectedInbox, rawEntries, selectedExtracted, extractedFiles, loadFiles]);
 
   // ── Reset to start over ──
   const handleReset = useCallback(() => {

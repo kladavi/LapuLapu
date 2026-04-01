@@ -89,11 +89,16 @@ async function extractMsg(filePath: string): Promise<string> {
   return "[.msg file — Outlook proprietary format. Open in Outlook and save as .eml or paste content manually.]";
 }
 
+async function extractTxt(filePath: string): Promise<string> {
+  return (await fs.readFile(filePath, "utf-8")).trim();
+}
+
 const SUPPORTED_EXTENSIONS: Record<string, (fp: string) => Promise<string>> = {
   ".pdf": extractPdf,
   ".docx": extractDocx,
   ".eml": extractEml,
   ".msg": extractMsg,
+  ".txt": extractTxt,
 };
 
 export async function GET() {
