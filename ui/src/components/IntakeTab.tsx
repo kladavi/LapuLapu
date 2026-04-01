@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { usePMData } from "../context/PMContext";
 import {
   buildIntakePrompt,
@@ -9,6 +9,13 @@ import {
   type IntakeResult,
   type InboxEntry,
 } from "../lib/intakeProcessor";
+
+interface ExtractedFile {
+  filename: string;
+  text: string;
+  type: string;
+  error?: string;
+}
 
 type Phase = "input" | "prompt" | "review" | "done";
 
@@ -45,6 +52,31 @@ export function IntakeTab() {
   const [feedback, setFeedback] = useState<string | null>(null);
   const [applying, setApplying] = useState(false);
 
+  // Extracted binary files from inbox
+  const [extractedFiles, setExtractedFiles] = useState<ExtractedFile[]>([]);
+  const [extractedLoading, setExtractedLoading] = useState(false);
+  const [selectedExtracted, setSelectedExtracted] = useState<Set<number>>(new Set());
+
+  // Fetch extracted files on mount
+  useEffect(() => {
+    let cancelled = false;
+    async function fetchExtracted() {
+      setExtractedLoading(true);
+      try {
+        const res = await fetch("/api/extract-inbox");
+        if (!res.ok) return;
+        const { files } = await res.json() as { files: ExtractedFile[] };
+        if (!cancelled) setExtractedFiles(files);
+      } catch {
+        // Non-critical — binary extraction is optional
+      } finally {
+        if (!cancelled) setExtractedLoading(false);
+      }
+    }
+    fetchExtracted();
+    return () => { cancelled = true; };
+  }, []);
+
   // Parse inbox entries from loaded data
   const inboxEntries = useMemo<InboxEntry[]>(() => {
     if (!data?.inbox) return [];
@@ -56,7 +88,7 @@ export function IntakeTab() {
     [inboxEntries]
   );
 
-  // Build combined input from textarea + selected inbox entries
+  // Build combined input from textarea + selected inbox entries + selected extracted files
   const combinedInput = useMemo(() => {
     const parts: string[] = [];
     if (rawText.trim()) parts.push(rawText.trim());
@@ -65,8 +97,14 @@ export function IntakeTab() {
         parts.push(rawEntries[idx].text);
       }
     }
+    for (const idx of selectedExtracted) {
+      const f = extractedFiles[idx];
+      if (f && f.text) {
+        parts.push(`[Source: ${f.filename}]\n${f.text}`);
+      }
+    }
     return parts.join("\n\n---\n\n");
-  }, [rawText, selectedInbox, rawEntries]);
+  }, [rawText, selectedInbox, rawEntries, selectedExtracted, extractedFiles]);
 
   const hasInput = combinedInput.trim().length > 0;
 
@@ -208,6 +246,7 @@ export function IntakeTab() {
     setPhase("input");
     setRawText("");
     setSelectedInbox(new Set());
+    setSelectedExtracted(new Set());
     setGeneratedPrompt("");
     setLlmResponse("");
     setResults([]);
@@ -228,6 +267,22 @@ export function IntakeTab() {
   const selectAllRaw = useCallback(() => {
     setSelectedInbox(new Set(rawEntries.map((_, i) => i)));
   }, [rawEntries]);
+
+  // Toggle extracted file selection
+  const toggleExtracted = useCallback((idx: number) => {
+    setSelectedExtracted((prev) => {
+      const next = new Set(prev);
+      if (next.has(idx)) next.delete(idx);
+      else next.add(idx);
+      return next;
+    });
+  }, []);
+
+  const selectAllExtracted = useCallback(() => {
+    setSelectedExtracted(
+      new Set(extractedFiles.filter((f) => f.text && !f.error).map((_, i) => i))
+    );
+  }, [extractedFiles]);
 
   if (!data) return null;
 
@@ -319,8 +374,77 @@ export function IntakeTab() {
             </div>
           )}
 
+          {/* Extracted binary files */}
+          {extractedLoading && (
+            <div className="text-sm text-th-text-muted animate-pulse">
+              Scanning inbox for PDF, DOCX, EML files…
+            </div>
+          )}
+          {!extractedLoading && extractedFiles.length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-th-text-secondary">
+                  📎 Inbox Files ({extractedFiles.length})
+                </h3>
+                <button
+                  onClick={selectAllExtracted}
+                  className="text-xs text-th-accent hover:text-th-accent-hover cursor-pointer"
+                >
+                  Select All
+                </button>
+              </div>
+              <div className="space-y-2">
+                {extractedFiles.map((file, idx) => {
+                  const isSelected = selectedExtracted.has(idx);
+                  const hasError = !!file.error || !file.text;
+                  const typeLabel = file.type.toUpperCase();
+                  const typeBg =
+                    file.type === "pdf" ? "bg-red-100 text-red-700"
+                    : file.type === "docx" ? "bg-blue-100 text-blue-700"
+                    : file.type === "eml" ? "bg-green-100 text-green-700"
+                    : "bg-gray-100 text-gray-600";
+
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => !hasError && toggleExtracted(idx)}
+                      disabled={hasError}
+                      className={`w-full text-left rounded-lg border p-3 transition-colors ${
+                        hasError
+                          ? "border-th-border bg-th-surface opacity-50 cursor-not-allowed"
+                          : isSelected
+                            ? "border-th-accent bg-th-accent/5 ring-1 ring-th-accent cursor-pointer"
+                            : "border-th-border bg-th-surface hover:border-th-border-strong cursor-pointer"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className={`text-sm ${isSelected ? "text-th-accent" : "text-th-text-muted"}`}>
+                          {hasError ? "✗" : isSelected ? "✓" : "○"}
+                        </span>
+                        <span className="text-sm font-medium text-th-text">{file.filename}</span>
+                        <span className={`ml-auto text-xs px-2 py-0.5 rounded-full ${typeBg}`}>
+                          {typeLabel}
+                        </span>
+                      </div>
+                      {hasError && (
+                        <p className="mt-1 text-xs text-red-500 ml-6">
+                          {file.error || "No text extracted"}
+                        </p>
+                      )}
+                      {isSelected && !hasError && (
+                        <pre className="mt-2 text-xs text-th-text-secondary font-mono whitespace-pre-wrap max-h-32 overflow-auto border-t border-th-border pt-2">
+                          {file.text.slice(0, 500)}{file.text.length > 500 ? "..." : ""}
+                        </pre>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Divider when both sections are present */}
-          {rawEntries.length > 0 && (
+          {(rawEntries.length > 0 || extractedFiles.length > 0) && (
             <div className="flex items-center gap-3">
               <div className="flex-1 border-t border-th-border" />
               <span className="text-xs text-th-text-faint">and / or</span>
@@ -343,6 +467,7 @@ export function IntakeTab() {
             <p className="text-xs text-th-text-faint mt-1">
               {rawText.length > 0 ? `${rawText.length} characters` : "No text entered"}
               {selectedInbox.size > 0 && ` · ${selectedInbox.size} inbox item(s) selected`}
+              {selectedExtracted.size > 0 && ` · ${selectedExtracted.size} file(s) selected`}
             </p>
           </div>
 
