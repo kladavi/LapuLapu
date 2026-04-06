@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "version": 1,
+    "lastSaved": "2026-03-30T04:00:25.928Z"
+  },
+  "project": {
+    "repoRoot": "",
+    "defaultProjectSlug": "lapu-lapu"
+  },
+  "export": {
+    "defaultFormat": "md",
+    "weeklySummaryCount": 2,
+    "maxNotesLength": 500,
+    "includeObjectives": true,
+    "includeTeamsSystems": true,
+    "includeTasks": true,
+    "includeDecisions": true,
+    "includeWeeklySummaries": true,
+    "includeInbox": false,
+    "includeHowToUse": true,
+    "includeRolePrompts": true
+  },
+  "lint": {
+    "enabled": true,
+    "mode": "warn",
+    "requireProjectTag": true,
+    "requireNamespacedTags": false
+  },
+  "reporting": {
+    "weekStartDay": "monday",
+    "autoGenerateWeekly": false,
+    "reportCadence": "weekly"
+  },
+  "ui": {
+    "theme": "woodland",
+    "defaultTab": "dashboard",
+    "compactMode": false
+  },
+  "tags": {
+    "keywordMap": {
+      "systems": {
+        "#system:newrelic": [
+          "New Relic",
+          "newrelic",
+          "synthetics",
+          "APM onboarding"
+        ],
+        "#system:moogsoft": [
+          "Moogsoft",
+          "moogsoft",
+          "AIOps",
+          "alert correlation"
+        ],
+        "#system:cmdb": [
+          "CMDB",
+          "cmdb",
+          "configuration management",
+          "asset inventory"
+        ],
+        "#system:leanix": [
+          "LeanIX",
+          "leanix",
+          "enterprise architecture"
+        ],
+        "#system:xmatters": [
+          "xMatters",
+          "xmatters",
+          "on-call",
+          "escalation"
+        ],
+        "#system:ingenium": [
+          "Ingenium",
+          "ingenium",
+          "policy admin"
+        ],
+        "#system:azure": [
+          "Azure",
+          "azure",
+          "ADX",
+          "cloud infrastructure"
+        ],
+        "#system:adx": [
+          "ADX",
+          "Data Explorer",
+          "log analytics"
+        ],
+        "#system:adobe": [
+          "Adobe",
+          "adobe",
+          "digital experience"
+        ],
+        "#system:apm": [
+          "APM",
+          "application performance"
+        ]
+      },
+      "projects": {
+        "#project:lapu-lapu": [
+          "Lapu-Lapu",
+          "lapu-lapu",
+          "GOCC transition",
+          "Employee Experience",
+          "Developer Experience"
+        ],
+        "#project:epsilon": [
+          "Epsilon",
+          "epsilon",
+          "POT",
+          "3-tier",
+          "HA",
+          "Ingenium upgrade"
+        ]
+      },
+      "teams": {
+        "#team:ets-japan": [
+          "ETS Japan",
+          "ETS-Japan",
+          "Birger"
+        ],
+        "#team:gocc": [
+          "GOCC",
+          "gocc",
+          "Hari"
+        ],
+        "#team:gocc-monitoring": [
+          "GOCC Monitoring",
+          "Jonan",
+          "L0",
+          "L1 triage"
+        ],
+        "#team:gocc-observability": [
+          "Observability",
+          "Deb",
+          "Debamalya",
+          "OMM",
+          "R2R"
+        ],
+        "#team:ets-region": [
+          "ETS Region",
+          "ETS-Region",
+          "Kelvin"
+        ]
+      }
+    }
+  }
+}

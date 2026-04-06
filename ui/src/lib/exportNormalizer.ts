@@ -2,7 +2,7 @@
 // Fixes: Issue 2 (parentObjectiveIds), Issue 3 (task normalization),
 //        Issue 4 (weekly summaries), Issue 5 (tag standardization)
 
-import type { Objective, Task, Team, SystemOfRecord, WeeklySummary } from "./types";
+import type { Objective, Task, Team, SystemOfRecord, WeeklySummary, ExportWarning } from "./types";
 
 // ────────────────────────────────────────────
 // ISSUE 2 — Objective ID validation & marker normalization
@@ -113,6 +113,7 @@ const SYSTEM_TAG_MAP: Record<string, string> = {
   "adobe":     "#system:adobe",
   "apm":       "#system:apm",
   "adx":       "#system:adx",
+  "ingenium":  "#system:ingenium",
 };
 
 /** Known team name -> normalized tag mapping */
@@ -130,6 +131,17 @@ const TEAM_TAG_MAP: Record<string, string> = {
   "team-obs":            "#team:obs",
   "team-infra":          "#team:infra",
 };
+
+/** Exact name corrections applied during export */
+const NAME_NORMALIZATION_MAP: Record<string, string> = {
+  "Kiran Bond": "Kiran Bonde",
+};
+
+/** Normalize a team member name using the exact-match correction map */
+function normalizeMemberName(name: string): string {
+  const trimmed = name.trim();
+  return NAME_NORMALIZATION_MAP[trimmed] ?? trimmed;
+}
 
 /** Known owner aliases */
 const OWNER_TAG_MAP: Record<string, string> = {
@@ -166,6 +178,17 @@ export function normalizeTag(raw: string): string {
   if (s === "tier1") return "#tier:1";
   if (s === "tier2") return "#tier:2";
   if (s === "tier3") return "#tier:3";
+
+  // Generic tag → namespaced tag tightening (Issue improvement #4)
+  const GENERIC_TAG_MAP: Record<string, string> = {
+    "monitoring":  "#worktype:monitoring",
+    "resilience":  "#outcome:resilience",
+    "dashboard":   "#artifact:dashboard",
+    "dashboards":  "#artifact:dashboard",
+    "digital":     "#domain:digital",
+    "automation":  "#capability:automation",
+  };
+  if (GENERIC_TAG_MAP[s]) return GENERIC_TAG_MAP[s];
 
   // "objective" meta-tag — drop it (redundant in objectives array)
   if (s === "objective") return "";
@@ -232,6 +255,8 @@ export function partitionSystemTags(tags: string[]): {
 export interface NormalizedWeeklySummary {
   weekId: string;
   fileName: string;
+  project?: string;
+  executiveSummary: string[];
   highlights: string[];
   risks: string[];
   nextFocus: string[];
@@ -246,7 +271,15 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
   const weekId = fileName.replace(/\.md$/i, "");
   const md = ws.content.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
 
-  const highlights = extractSectionBullets(md, [
+  // Executive Summary — bold objective-name paragraphs
+  const executiveSummary = extractSectionLines(md, [
+    "Executive Summary",
+  ]);
+
+  // Key Accomplishments — standalone lines (no bullets)
+  const highlights = extractSectionLines(md, [
+    "Key Accomplishments",
+    "Key Accomplishments (This Week)",
     "Objectives Advanced",
     "Highlights",
     "Key Outcomes",
@@ -254,14 +287,21 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
     "Progress",
   ]);
 
-  const risks = extractSectionBullets(md, [
+  // Top Risks & Issues — pipe-separated format: [Risk] · desc | mitigation | owner |
+  const risks = extractSectionLines(md, [
+    "Top Risks & Issues",
+    "Risks & Issues",
+    "Risks & Escalations",
     "Risks",
     "Blockers",
     "Risks / Blockers",
     "Issues",
   ]);
 
-  const nextFocus = extractSectionBullets(md, [
+  // Planned for Next Week — standalone lines
+  const nextFocus = extractSectionLines(md, [
+    "Planned for Next Week",
+    "Next-Week Focus",
     "Next Week Focus",
     "Next Week",
     "Focus",
@@ -272,24 +312,97 @@ export function normalizeWeeklySummary(ws: WeeklySummary): NormalizedWeeklySumma
   // Raw text fallback: first 1500 chars stripped of markdown
   const rawText = sanitizeText(md).slice(0, 1500);
 
-  return { weekId, fileName, highlights, risks, nextFocus, rawText };
+  // Provide default placeholders if sections were not found
+  const finalRisks = risks.length > 0 ? risks : ["No explicit risks captured in weekly file."];
+  const finalNextFocus = nextFocus.length > 0 ? nextFocus : ["No explicit next-week focus captured in weekly file."];
+
+  return { weekId, fileName, project: ws.project, executiveSummary, highlights, risks: finalRisks, nextFocus: finalNextFocus, rawText };
 }
 
-/** Extract bullet items under any of the candidate heading names */
-function extractSectionBullets(md: string, headingNames: string[]): string[] {
+/**
+ * Extract content lines from a section — supports bullets, numbered lists,
+ * table rows, pipe-separated risk lines, and plain standalone lines.
+ */
+function extractSectionLines(md: string, headingNames: string[]): string[] {
   for (const name of headingNames) {
-    // Match ## or ### heading with the name (case-insensitive)
+    const escaped = escapeRegExp(name);
+    // Match heading, then capture everything until the next heading or horizontal rule.
+    // Uses a greedy match that stops at the next ## heading or --- rule boundary.
     const re = new RegExp(
-      `^#{1,4}\\s*${escapeRegExp(name)}\\s*\\n((?:[-*]\\s+.+\\n?)*)`,
+      `^#{1,4}\\s*${escaped}[^\\n]*\\n([\\s\\S]+?)(?=\\n#{1,4}\\s|\\n---\\s*\\n|\\n---\\s*$)`,
       "im"
     );
-    const m = md.match(re);
-    if (m && m[1]) {
-      return m[1]
-        .split("\n")
-        .map((l) => sanitizeText(l.replace(/^[-*]\s+/, "")))
-        .filter(Boolean);
+    let m = md.match(re);
+    // Fallback: if no next boundary, capture to end of string
+    if (!m) {
+      const reFallback = new RegExp(
+        `^#{1,4}\\s*${escaped}[^\\n]*\\n([\\s\\S]+)$`,
+        "im"
+      );
+      m = md.match(reFallback);
     }
+    if (!m || !m[1]) continue;
+
+    const body = m[1].trim();
+    if (!body) continue;
+
+    const items: string[] = [];
+    const bodyLines = body.split("\n");
+
+    // Detect if body is a markdown table
+    const isTable = bodyLines.some((l) => l.trim().startsWith("|") && l.includes("|"));
+
+    if (isTable) {
+      for (const line of bodyLines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith("|")) continue;
+        if (/^\|[\s-|]+\|$/.test(trimmed)) continue;
+        const cells = trimmed.split("|").map((c) => c.trim()).filter(Boolean);
+        if (cells.length === 0) continue;
+        if (cells[0].toLowerCase() === "risk" || cells[0].toLowerCase() === "request" || cells[0].toLowerCase() === "objective") continue;
+        if (cells[0].toLowerCase().includes("none")) continue;
+        const summary = cells.filter((c) => c !== "—" && c !== "-").join(" — ");
+        if (summary) items.push(sanitizeText(summary));
+      }
+    } else {
+      for (const line of bodyLines) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+        // Skip blockquote footnotes (> lines)
+        if (trimmed.startsWith(">")) {
+          items.push(sanitizeText(trimmed.replace(/^>\s*/, "")));
+          continue;
+        }
+        // Bullet item
+        const bulletMatch = trimmed.match(/^[-*]\s+(.+)/);
+        if (bulletMatch) {
+          items.push(sanitizeText(bulletMatch[1]));
+          continue;
+        }
+        // Numbered item
+        const numberMatch = trimmed.match(/^\d+[.):]\s*(.+)/);
+        if (numberMatch) {
+          items.push(sanitizeText(numberMatch[1]));
+          continue;
+        }
+        // Pipe-separated risk line: [Risk] · desc | mitigation | owner |
+        if (trimmed.startsWith("[Risk]") || trimmed.startsWith("[Issue]")) {
+          items.push(sanitizeText(trimmed));
+          continue;
+        }
+        // Bold objective heading line (Executive Summary style)
+        if (/^\*\*[^*]+\*\*/.test(trimmed)) {
+          items.push(sanitizeText(trimmed));
+          continue;
+        }
+        // Plain standalone line (not empty, not a heading marker)
+        if (trimmed.length > 5) {
+          items.push(sanitizeText(trimmed));
+        }
+      }
+    }
+
+    if (items.length > 0) return items;
   }
   return [];
 }
@@ -348,6 +461,7 @@ export interface NormalizedExportPayload {
   decisions?: { id: string; title: string; date: string; decision: string; reason: string; tags: string[] }[];
   weekly_summaries?: NormalizedWeeklySummary[];
   inbox?: string;
+  exportWarnings?: ExportWarning[];
 }
 
 // ────────────────────────────────────────────
@@ -419,9 +533,9 @@ export function buildNormalizedPayload(
       const { systemTags } = partitionSystemTags(t.primarySystems || []);
       return {
         name: t.name,
-        lead: t.lead,
+        lead: normalizeMemberName(t.lead),
         tags: normalizeTags(t.tags),
-        members: t.members,
+        members: t.members?.map(normalizeMemberName),
         primarySystems: systemTags,
       };
     });
@@ -435,10 +549,29 @@ export function buildNormalizedPayload(
   }
 
   // ── Tasks normalization (Issue 2 + Issue 3 + Issue 5) ──
+  // Collect export warnings for tasks referencing out-of-scope objectives
+  const exportWarnings: ExportWarning[] = [];
+
   if (options.includeTasks) {
     payload.tasks = tasks.map((t) => {
       // Split objective IDs vs markers
       const { validIds, convertedTags } = splitIdsAndMarkers(t.objectiveIds, allowedIds);
+
+      // Soft validation: detect objective IDs that are syntactically valid
+      // but not present in the exported objective set
+      const externalObjTags: string[] = [];
+      for (const rawId of t.objectiveIds) {
+        const id = rawId.trim();
+        if (VALID_OBJ_ID_RE.test(id) && !allowedIds.has(id)) {
+          exportWarnings.push({
+            type: "TASK_OBJECTIVE_OUT_OF_SCOPE",
+            taskId: t.id,
+            objectiveId: id,
+            message: `Task references an objective not included in this export scope.`,
+          });
+          externalObjTags.push("#objective:external");
+        }
+      }
 
       // Separate system tags from non-system tags in the systems field
       const { systemTags, otherTags: systemFieldOtherTags } = partitionSystemTags(t.systems);
@@ -446,11 +579,12 @@ export function buildNormalizedPayload(
       // Normalize the task's own tags
       const rawTags = normalizeTags(t.tags);
 
-      // Merge: task tags + converted markers + non-system tags that were in the systems field
+      // Merge: task tags + converted markers + non-system tags + external objective tags
       const allTags = normalizeTags([
         ...rawTags,
         ...convertedTags,
         ...systemFieldOtherTags,
+        ...externalObjTags,
       ]);
 
       // Normalize status
@@ -472,12 +606,16 @@ export function buildNormalizedPayload(
       // Created date normalization
       const created = extractDate(t.created);
 
+      // Keep ALL objective IDs (including out-of-scope) in objectiveIds
+      // but only validIds are "in-scope"; externalIds are kept for traceability
+      const allObjectiveIds = [...new Set([...validIds, ...t.objectiveIds.filter(id => VALID_OBJ_ID_RE.test(id.trim())).map(id => id.trim())])];
+
       return {
         id: t.id,
         title: sanitizeText(t.title),
         created,
         status: statusClean,
-        objectiveIds: validIds,
+        objectiveIds: allObjectiveIds,
         assignee: assignee && assignee !== "" ? assignee : null,
         team: teamName,
         systems: systemTags,
@@ -500,17 +638,34 @@ export function buildNormalizedPayload(
     }));
   }
 
-  // ── Weekly summaries (Issue 4) ──
+  // ── Weekly summaries (Issue 4) + auto-seed (Improvement #3) ──
   if (options.includeWeeklySummaries) {
     const count = options.weeklySummaryCount || 1;
     // weeklySummaries are already sorted newest-first by the parser
     const selected = weeklySummaries.slice(0, count);
-    payload.weekly_summaries = selected.map(normalizeWeeklySummary);
+    const normalized = selected.map(normalizeWeeklySummary);
+
+    if (normalized.length === 0) {
+      // Auto-generate a synthetic seed weekly summary
+      const seedSummary = generateSeedWeeklySummary(
+        payload.tasks || [],
+        payload.objectives || [],
+        payload.decisions || []
+      );
+      payload.weekly_summaries = [seedSummary];
+    } else {
+      payload.weekly_summaries = normalized;
+    }
   }
 
   // ── Inbox ──
   if (options.includeInbox) {
     payload.inbox = inbox;
+  }
+
+  // ── Attach export warnings ──
+  if (exportWarnings.length > 0) {
+    payload.exportWarnings = exportWarnings;
   }
 
   return payload;
@@ -537,8 +692,8 @@ function normalizeStatus(raw: string): "Open" | "Closed" | "Deferred" | null {
 function extractTeamName(raw: string): string | null {
   const clean = sanitizeText(raw).replace(/^#\S+\s*/, "").trim();
   if (!clean) {
-    // Try to extract team tag and convert
-    const tagMatch = raw.match(/#(team[-\w]*)/i);
+    // Try to extract team tag and convert (supports both #team-xxx and #team:xxx)
+    const tagMatch = raw.match(/#(team[:\-][\w-]*)/i);
     if (tagMatch) {
       const tag = normalizeTag(tagMatch[1]);
       // Convert #team:gocc back to "GOCC" style name
@@ -586,18 +741,8 @@ export function validateExportPayload(payload: NormalizedExportPayload): Validat
     }
   }
 
-  // Validate task objectiveIds all exist in the exported set
-  for (const task of payload.tasks || []) {
-    for (const oid of task.objectiveIds) {
-      if (!objIds.has(oid)) {
-        errors.push({
-          field: "objectiveIds",
-          entity: task.id,
-          message: `Objective "${oid}" not found in exported objectives`,
-        });
-      }
-    }
-  }
+  // Task objectiveIds referencing out-of-scope objectives are now handled
+  // via soft warnings (exportWarnings) rather than blocking validation errors.
 
   // Validate system tags start with #system:
   for (const sys of payload.systems || []) {
@@ -674,12 +819,33 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
       }
       lines.push("");
     }
+    // Show Tier-2 objectives grouped by owner prefix
     if (tier2.length > 0) {
-      lines.push("**Tier-2 (Hari)**");
+      // Group by ID prefix (e.g. H- = Hari, B- = Birger)
+      const ownerGroups: Record<string, NormalizedObjective[]> = {};
       for (const o of tier2) {
-        lines.push(`- ${o.id}: ${o.title} → ${o.parentObjectiveIds.join(", ") || "none"}`);
+        const prefixMatch = o.id.match(/^([A-Z]{1,2})(?=-\d)/);
+        const prefix = prefixMatch ? prefixMatch[1] : "Other";
+        if (!ownerGroups[prefix]) ownerGroups[prefix] = [];
+        ownerGroups[prefix].push(o);
       }
-      lines.push("");
+
+      const OWNER_PREFIX_LABEL: Record<string, string> = {
+        "H": "Hari",
+        "B": "Birger",
+        "KL": "Kelvin",
+        "D": "Deb",
+        "J": "Jonan",
+      };
+
+      for (const [prefix, objs] of Object.entries(ownerGroups)) {
+        const ownerLabel = OWNER_PREFIX_LABEL[prefix] || prefix;
+        lines.push(`**Tier-2 (${ownerLabel})**`);
+        for (const o of objs) {
+          lines.push(`- ${o.id}: ${o.title} → ${o.parentObjectiveIds.join(", ") || "none"}`);
+        }
+        lines.push("");
+      }
     }
   }
 
@@ -695,14 +861,38 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
 
   // Weekly summaries
   if (payload.weekly_summaries) {
-    lines.push("### Weekly Summaries\n");
+    lines.push("### Weekly Status Reports\n");
     if (payload.weekly_summaries.length === 0) {
-      lines.push("No weekly summary files found under 03-reporting/weekly/.\n");
+      lines.push("No weekly report files found under 03-reporting/weekly/.\n");
     } else {
       for (const ws of payload.weekly_summaries) {
-        lines.push(`- ${ws.weekId} (${ws.fileName})`);
+        lines.push(`**${ws.weekId}** (${ws.fileName})`);
+        if (ws.executiveSummary && ws.executiveSummary.length > 0) {
+          lines.push("Executive Summary:");
+          for (const s of ws.executiveSummary) {
+            lines.push(`  ${s}`);
+          }
+        }
+        if (ws.highlights.length > 0) {
+          lines.push("Accomplishments:");
+          for (const h of ws.highlights) {
+            lines.push(`  ${h}`);
+          }
+        }
+        if (ws.risks.length > 0) {
+          lines.push("Risks:");
+          for (const r of ws.risks) {
+            lines.push(`  ${r}`);
+          }
+        }
+        if (ws.nextFocus.length > 0) {
+          lines.push("Next Week:");
+          for (const n of ws.nextFocus) {
+            lines.push(`  ${n}`);
+          }
+        }
+        lines.push("");
       }
-      lines.push("");
     }
   }
 
@@ -715,5 +905,79 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
     lines.push("");
   }
 
+  // Export warnings
+  if (payload.exportWarnings && payload.exportWarnings.length > 0) {
+    lines.push("### Export Warnings\n");
+    for (const w of payload.exportWarnings) {
+      lines.push(`- ⚠️ ${w.taskId} → ${w.objectiveId}: ${w.message}`);
+    }
+    lines.push("");
+  }
+
   return lines.join("\n");
+}
+
+// ────────────────────────────────────────────
+// Auto-seed weekly summary (Improvement #3)
+// ────────────────────────────────────────────
+
+/**
+ * Generate a synthetic seed weekly summary when no weekly files exist.
+ * Uses task and decision data to produce a reasonable starting point.
+ * Does NOT hallucinate risks — only infers from decisions.
+ */
+function generateSeedWeeklySummary(
+  tasks: NormalizedTask[],
+  objectives: NormalizedObjective[],
+  decisions: { id: string; title: string; date: string; decision: string; reason: string; tags: string[] }[]
+): NormalizedWeeklySummary {
+  // Highlights: top 5 tasks by relevance (or first 5 if no relevance)
+  const sortedTasks = [...tasks].sort(
+    (a, b) => (b.relevance ?? 0) - (a.relevance ?? 0)
+  );
+  const topTasks = sortedTasks.slice(0, 5);
+  const highlights = topTasks.map(
+    (t) => `${t.id}: ${t.title} [${t.status || "Open"}]`
+  );
+
+  // Risks: inferred ONLY from decisions (deferred/rejected work)
+  const risks = decisions.map(
+    (d) => `${d.id}: ${d.title} — ${d.decision || d.reason}`
+  );
+
+  // Next focus: top 3 objectives by task count
+  const objTaskCount: Record<string, number> = {};
+  for (const t of tasks) {
+    for (const oid of t.objectiveIds) {
+      objTaskCount[oid] = (objTaskCount[oid] || 0) + 1;
+    }
+  }
+  const sortedObjs = objectives
+    .map((o) => ({ id: o.id, title: o.title, count: objTaskCount[o.id] || 0 }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 3);
+  const nextFocus = sortedObjs.map(
+    (o) => `${o.id}: ${o.title} (${o.count} active tasks)`
+  );
+
+  // Executive Summary: group top tasks by their Tier-1 objective
+  const tier1Objs = objectives.filter((o) => o.tier === 1);
+  const execSummary: string[] = [];
+  for (const obj of tier1Objs) {
+    const relatedTasks = tasks.filter((t) => t.objectiveIds.includes(obj.id));
+    if (relatedTasks.length > 0) {
+      const taskSummaries = relatedTasks.slice(0, 3).map((t) => t.title).join("; ");
+      execSummary.push(`${obj.title}: ${taskSummaries}.`);
+    }
+  }
+
+  return {
+    weekId: "AUTO",
+    fileName: "auto-generated-seed.md",
+    executiveSummary: execSummary,
+    highlights,
+    risks,
+    nextFocus,
+    rawText: "Auto-generated seed summary — no weekly report files were found under 03-reporting/weekly/. This summary was synthesized from current tasks, objectives, and decisions to enable Copilot to produce a report without additional uploads.",
+  };
 }

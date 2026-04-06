@@ -1,5 +1,17 @@
 // ── Data types parsed from Markdown files ──
 
+export interface Project {
+  id: string;         // e.g. "P-LPLP"
+  slug: string;       // e.g. "lapu-lapu"
+  name: string;       // e.g. "Lapu-Lapu"
+  description: string;
+  primaryAudience: string[];
+  primarySystems: string[];
+  reportCadence: string;
+  defaultPackName: string;
+  tags: string[];
+}
+
 export interface Objective {
   id: string;
   title: string;
@@ -64,6 +76,7 @@ export interface Decision {
 export interface WeeklySummary {
   filename: string;
   content: string;
+  project?: string;  // extracted from frontmatter or filename
 }
 
 export type AdvisoryKind =
@@ -93,6 +106,7 @@ export interface RelationshipMap {
 }
 
 export interface PMData {
+  projects: Project[];
   objectives: Objective[];
   teams: Team[];
   systems: SystemOfRecord[];
@@ -104,10 +118,19 @@ export interface PMData {
   loadedAt: string;
   folderName: string;
   warnings: string[];
+  settings: import("./settings").AppSettings;
   relationships: RelationshipMap;
 }
 
+export interface ExportWarning {
+  type: string;
+  taskId: string;
+  objectiveId: string;
+  message: string;
+}
+
 export interface ExportOptions {
+  projectSlug: string;  // required — scopes the export to one project
   includeObjectives: boolean;
   includeTeamsSystems: boolean;
   includeTasks: boolean;

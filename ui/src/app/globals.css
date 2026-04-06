@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Theme tokens ──
+   Every surface, text, border colour is driven by custom properties so
+   switching themes only requires changing the data-theme attribute on <html>.
+*/
+
+/* ── Light (default) ── */
+:root,
+[data-theme="light"] {
+  --th-bg:           #f9fafb;   /* page background */
+  --th-surface:      #ffffff;   /* cards, panels */
+  --th-surface-alt:  #f3f4f6;   /* secondary panels, code blocks */
+  --th-border:       #e5e7eb;
+  --th-border-strong:#d1d5db;
+
+  --th-text:         #1f2937;   /* primary text — gray-800 */
+  --th-text-secondary:#4b5563;  /* secondary — gray-600 */
+  --th-text-muted:   #6b7280;   /* muted — gray-500 */
+  --th-text-faint:   #9ca3af;   /* hints — gray-400 */
+
+  --th-accent:       #2563eb;   /* primary action */
+  --th-accent-hover: #1d4ed8;
+  --th-accent-light: #eff6ff;   /* accent surface */
+  --th-accent-text:  #1e40af;
+
+  --th-success:      #16a34a;
+  --th-success-light:#f0fdf4;
+  --th-warn:         #d97706;
+  --th-warn-light:   #fffbeb;
+  --th-danger:       #dc2626;
+  --th-danger-light: #fef2f2;
+
+  color-scheme: light;
+}
+
+/* ── Woodland Green ── */
+[data-theme="woodland"] {
+  --th-bg:           #1a2316;   /* deep forest floor */
+  --th-surface:      #232e1f;   /* mossy card */
+  --th-surface-alt:  #2c3a25;   /* lighter panel */
+  --th-border:       #3d5233;
+  --th-border-strong:#5a7a4a;
+
+  --th-text:         #e8efe4;   /* primary — warm parchment */
+  --th-text-secondary:#c5d4bc;  /* secondary */
+  --th-text-muted:   #9db892;   /* muted — sage */
+  --th-text-faint:   #7a9e6d;   /* faint — fern */
+
+  --th-accent:       #6abf69;   /* leaf green */
+  --th-accent-hover: #52a352;
+  --th-accent-light: #2a4023;   /* accent surface */
+  --th-accent-text:  #8ed98e;
+
+  --th-success:      #6abf69;
+  --th-success-light:#263a22;
+  --th-warn:         #e0a54a;
+  --th-warn-light:   #3a3018;
+  --th-danger:       #e06060;
+  --th-danger-light: #3a2020;
+
+  color-scheme: dark;
+}
+
+/* ── Dark ── */
+[data-theme="dark"] {
+  --th-bg:           #0f1117;
+  --th-surface:      #1a1d27;
+  --th-surface-alt:  #252830;
+  --th-border:       #2e3240;
+  --th-border-strong:#3c4150;
+
+  --th-text:         #e2e4e9;
+  --th-text-secondary:#b0b5c0;
+  --th-text-muted:   #8b92a0;
+  --th-text-faint:   #6b7280;
+
+  --th-accent:       #60a5fa;
+  --th-accent-hover: #3b82f6;
+  --th-accent-light: #1e293b;
+  --th-accent-text:  #93c5fd;
+
+  --th-success:      #4ade80;
+  --th-success-light:#14291d;
+  --th-warn:         #fbbf24;
+  --th-warn-light:   #312e1a;
+  --th-danger:       #f87171;
+  --th-danger-light: #2d1a1a;
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--th-bg);
+  --color-foreground: var(--th-text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Expose theme tokens as Tailwind colours */
+  --color-th-bg:           var(--th-bg);
+  --color-th-surface:      var(--th-surface);
+  --color-th-surface-alt:  var(--th-surface-alt);
+  --color-th-border:       var(--th-border);
+  --color-th-border-strong:var(--th-border-strong);
+  --color-th-text:         var(--th-text);
+  --color-th-text-secondary:var(--th-text-secondary);
+  --color-th-text-muted:   var(--th-text-muted);
+  --color-th-text-faint:   var(--th-text-faint);
+  --color-th-accent:       var(--th-accent);
+  --color-th-accent-hover: var(--th-accent-hover);
+  --color-th-accent-light: var(--th-accent-light);
+  --color-th-accent-text:  var(--th-accent-text);
+  --color-th-success:      var(--th-success);
+  --color-th-success-light:var(--th-success-light);
+  --color-th-warn:         var(--th-warn);
+  --color-th-warn-light:   var(--th-warn-light);
+  --color-th-danger:       var(--th-danger);
+  --color-th-danger-light: var(--th-danger-light);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--th-bg);
+  color: var(--th-text);
   font-family: Arial, Helvetica, sans-serif;
 }

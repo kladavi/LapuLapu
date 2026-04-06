@@ -27,7 +27,7 @@ function StatusBadge({ status }: { status: string }) {
       className={`text-[10px] font-medium rounded-full px-2 py-0.5 ${
         isOpen
           ? "bg-green-100 text-green-700"
-          : "bg-gray-200 text-gray-600"
+          : "bg-th-surface-alt text-th-text-muted"
       }`}
     >
       {status}
@@ -184,19 +184,19 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
   return (
     <div className="flex flex-1 h-full">
       {/* Main panel */}
-      <div className={`${selected ? "w-1/2" : "w-full"} border-r border-gray-200 overflow-auto`}>
+      <div className={`${selected ? "w-1/2" : "w-full"} border-r border-th-border overflow-auto`}>
         <div className="p-4 space-y-4">
           {/* Controls bar */}
           <div className="flex flex-wrap gap-3 items-center justify-between">
             <div className="flex flex-wrap gap-3 items-center">
               {/* View mode toggle */}
-              <div className="flex gap-1 bg-gray-100 rounded-lg p-0.5">
+              <div className="flex gap-1 bg-th-surface-alt rounded-lg p-0.5">
                 <button
                   onClick={() => setViewMode("tree")}
                   className={`px-3 py-1.5 text-xs rounded-md font-medium transition-colors cursor-pointer ${
                     viewMode === "tree"
-                      ? "bg-white text-gray-800 shadow-sm"
-                      : "text-gray-500 hover:text-gray-700"
+                      ? "bg-th-surface text-th-text shadow-sm"
+                      : "text-th-text-muted hover:text-th-text-secondary"
                   }`}
                 >
                   🌳 Tree View
@@ -205,8 +205,8 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                   onClick={() => setViewMode("diagram")}
                   className={`px-3 py-1.5 text-xs rounded-md font-medium transition-colors cursor-pointer ${
                     viewMode === "diagram"
-                      ? "bg-white text-gray-800 shadow-sm"
-                      : "text-gray-500 hover:text-gray-700"
+                      ? "bg-th-surface text-th-text shadow-sm"
+                      : "text-th-text-muted hover:text-th-text-secondary"
                   }`}
                 >
                   🔗 Relationship Diagram
@@ -222,7 +222,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                     className={`px-3 py-1 text-xs rounded-full border cursor-pointer transition-colors ${
                       ownerFilter === f.value
                         ? "bg-indigo-600 text-white border-indigo-600"
-                        : "bg-white text-gray-600 border-gray-300 hover:border-indigo-400"
+                        : "bg-th-surface text-th-text-secondary border-th-border-strong hover:border-indigo-400"
                     }`}
                   >
                     {f.label}
@@ -235,7 +235,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                 placeholder="Filter by tag or keyword…"
                 value={tagFilter}
                 onChange={(e) => setTagFilter(e.target.value)}
-                className="text-sm border border-gray-300 rounded-lg px-3 py-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-sm border border-th-border-strong rounded-lg px-3 py-1.5 w-48 bg-th-surface text-th-text focus:outline-none focus:ring-2 focus:ring-th-accent"
               />
             </div>
 
@@ -243,14 +243,14 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
               <div className="flex gap-2">
                 <button
                   onClick={expandAll}
-                  className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer"
+                  className="text-xs text-th-accent hover:text-th-accent-hover cursor-pointer"
                 >
                   Expand All
                 </button>
-                <span className="text-gray-300">|</span>
+                <span className="text-th-text-faint">|</span>
                 <button
                   onClick={collapseAll}
-                  className="text-xs text-blue-600 hover:text-blue-800 cursor-pointer"
+                  className="text-xs text-th-accent hover:text-th-accent-hover cursor-pointer"
                 >
                   Collapse All
                 </button>
@@ -295,28 +295,28 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                 const directTasks = data.tasks.filter((t) => t.objectiveIds.includes(t1.id));
 
                 return (
-                  <div key={t1.id} className="rounded-lg border border-gray-200 bg-white overflow-hidden">
+                  <div key={t1.id} className="rounded-lg border border-th-border bg-th-surface overflow-hidden">
                     {/* Tier-1 row */}
-                    <div className="flex items-center gap-2 px-3 py-2.5 hover:bg-blue-50/50 transition-colors">
+                    <div className="flex items-center gap-2 px-3 py-2.5 hover:bg-th-accent-light/50 transition-colors">
                       <button
                         onClick={() => toggleT1(t1.id)}
                         className="flex items-center gap-2 flex-1 text-left cursor-pointer"
                       >
-                        <Chevron open={isT1Open} className="text-blue-500 shrink-0" />
-                        <span className="text-xs font-mono font-bold text-blue-600 bg-blue-100 rounded px-1.5 py-0.5 shrink-0">
+                        <Chevron open={isT1Open} className="text-th-accent shrink-0" />
+                        <span className="text-xs font-mono font-bold text-th-accent-text bg-th-accent-light rounded px-1.5 py-0.5 shrink-0">
                           {t1.id}
                         </span>
-                        <span className="font-semibold text-sm text-gray-800">
+                        <span className="font-semibold text-sm text-th-text">
                           {t1.title}
                         </span>
                       </button>
                       <div className="flex items-center gap-2 shrink-0">
-                        <span className="text-[10px] text-gray-400">
+                        <span className="text-[10px] text-th-text-faint">
                           {children.length} sub-obj · {allChildTasks.length + directTasks.length} tasks
                         </span>
                         <button
                           onClick={() => setSelectedId(selectedId === t1.id ? null : t1.id)}
-                          className="text-xs text-blue-500 hover:text-blue-700 cursor-pointer px-1"
+                          className="text-xs text-th-accent hover:text-th-accent-hover cursor-pointer px-1"
                           title="View details"
                         >
                           ℹ️
@@ -326,10 +326,10 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
 
                     {/* Expanded: Tier-2 children */}
                     {isT1Open && (
-                      <div className="border-t border-gray-100 bg-gray-50/50">
+                      <div className="border-t border-th-border bg-th-surface-alt/50">
                         {/* Direct tasks under Tier-1 (if any) */}
                         {directTasks.length > 0 && (
-                          <div className="ml-6 border-l-2 border-blue-200">
+                          <div className="ml-6 border-l-2 border-th-accent/20">
                             <div className="pl-4 py-1">
                               <button
                                 onClick={() => toggleTaskGroup(`${t1.id}-direct`)}
@@ -337,7 +337,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                               >
                                 <Chevron open={expandedTaskGroup.has(`${t1.id}-direct`)} className="text-gray-400" />
                                 <span className="font-medium">Direct Tasks (cross-cutting)</span>
-                                <span className="text-gray-400">({directTasks.length})</span>
+                                <span className="text-th-text-faint">({directTasks.length})</span>
                               </button>
                               {expandedTaskGroup.has(`${t1.id}-direct`) && (
                                 <TaskList tasks={directTasks} />
@@ -366,7 +366,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                             <div key={t2.id} className="ml-6 border-l-2 border-indigo-200">
                               <div className="pl-4">
                                 {/* Tier-2 row */}
-                                <div className="flex items-center gap-2 py-2 hover:bg-indigo-50/50 transition-colors rounded-r">
+                                <div className="flex items-center gap-2 py-2 hover:bg-indigo-500/10 transition-colors rounded-r">
                                   <button
                                     onClick={() => toggleT2(t2.id)}
                                     className="flex items-center gap-2 flex-1 text-left cursor-pointer"
@@ -375,7 +375,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                                     <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-100 rounded px-1.5 py-0.5 shrink-0">
                                       {t2.id}
                                     </span>
-                                    <span className="text-sm font-medium text-gray-700">
+                                    <span className="text-sm font-medium text-th-text-secondary">
                                       {t2.title}
                                     </span>
                                   </button>
@@ -386,12 +386,12 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                                       </span>
                                     )}
                                     {closedTasks.length > 0 && (
-                                      <span className="text-[10px] bg-gray-200 text-gray-600 rounded-full px-2 py-0.5">
+                                      <span className="text-[10px] bg-th-surface-alt text-th-text-muted rounded-full px-2 py-0.5">
                                         {closedTasks.length} closed
                                       </span>
                                     )}
                                     {t2.ownerSection && (
-                                      <span className="text-[10px] text-gray-400">
+                                      <span className="text-[10px] text-th-text-faint">
                                         {t2.ownerSection}
                                       </span>
                                     )}
@@ -455,7 +455,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                                             open={expandedTaskGroup.has(`${t2.id}-closed`)}
                                             className="text-gray-400"
                                           />
-                                          <span className="font-medium text-gray-600">
+                                          <span className="font-medium text-th-text-secondary">
                                             Closed Tasks
                                           </span>
                                           <span className="text-gray-500 bg-gray-100 rounded-full px-1.5 py-0.5 text-[10px]">
@@ -500,7 +500,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
         <div className="w-1/2 overflow-auto p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-mono font-bold text-blue-600 bg-blue-100 rounded px-2 py-1">
+              <span className="text-sm font-mono font-bold text-th-accent-text bg-th-accent-light rounded px-2 py-1">
                 {selected.id}
               </span>
               <span className="text-xs bg-purple-100 text-purple-700 rounded px-2 py-0.5">
@@ -511,11 +511,11 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
               onClick={() => setSelectedId(null)}
               className="text-gray-400 hover:text-gray-600 cursor-pointer"
             >
-              ✕
+              ✁E
             </button>
           </div>
 
-          <h2 className="text-lg font-bold text-gray-800">{selected.title}</h2>
+          <h2 className="text-lg font-bold text-th-text">{selected.title}</h2>
 
           {/* Parent objectives */}
           {selected.parentObjectiveIds.length > 0 && (
@@ -530,10 +530,10 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                     <button
                       key={pid}
                       onClick={() => setSelectedId(pid)}
-                      className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded px-2 py-1 hover:bg-blue-100 cursor-pointer"
+                      className="text-xs bg-th-accent-light text-th-accent-text border border-th-accent/30 rounded px-2 py-1 hover:bg-th-accent-light cursor-pointer"
                     >
                       {pid}
-                      {parent ? ` — ${parent.title}` : ""}
+                      {parent ? `  E${parent.title}` : ""}
                     </button>
                   );
                 })}
@@ -559,7 +559,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                         onClick={() => setSelectedId(c.id)}
                         className="text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 rounded px-2 py-1 hover:bg-indigo-100 cursor-pointer"
                       >
-                        {c.id} — {c.title}
+                        {c.id}  E{c.title}
                       </button>
                     ))}
                   </div>
@@ -601,7 +601,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
               {selected.tags.map((t) => (
                 <span
                   key={t}
-                  className="text-xs bg-gray-100 text-gray-600 rounded-full px-2 py-0.5"
+                  className="text-xs bg-th-surface-alt text-th-text-muted rounded-full px-2 py-0.5"
                 >
                   {t}
                 </span>
@@ -615,7 +615,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
               <h4 className="text-xs font-bold text-gray-500 uppercase mb-1">
                 Source
               </h4>
-              <ul className="text-xs text-gray-500 space-y-0.5">
+              <ul className="text-xs text-th-text-muted space-y-0.5">
                 {selected.source.map((s, i) => (
                   <li key={i}>• {s}</li>
                 ))}
@@ -633,12 +633,12 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
                 {relatedTasks.map((t) => (
                   <div
                     key={t.id}
-                    className="text-sm border border-gray-200 rounded-lg p-2 bg-gray-50"
+                    className="text-sm border border-th-border rounded-lg p-2 bg-th-surface-alt"
                   >
                     <span className="font-mono text-xs font-bold text-green-700">
                       {t.id}
                     </span>{" "}
-                    <span className="text-gray-700">{t.title}</span>
+                    <span className="text-th-text-secondary">{t.title}</span>
                     <div className="text-xs text-gray-400 mt-0.5">
                       {t.status} · {t.assigned} · {t.team}
                     </div>
@@ -661,7 +661,7 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
 const KIND_META: Record<RelationshipAdvisory["kind"], { icon: string; label: string; color: string; border: string; bg: string }> = {
   "orphaned-tier2":  { icon: "🔗", label: "Orphaned Tier-2",     color: "text-amber-800",  border: "border-amber-200", bg: "bg-amber-50" },
   "invalid-parent":  { icon: "⛓️",  label: "Invalid Parent",      color: "text-orange-800", border: "border-orange-200", bg: "bg-orange-50" },
-  "task-skips-tier2":{ icon: "⤵️",  label: "Task Skips Tier-2",  color: "text-blue-800",   border: "border-blue-200",  bg: "bg-blue-50" },
+  "task-skips-tier2":{ icon: "⤵️",  label: "Task Skips Tier-2",  color: "text-th-accent",   border: "border-th-accent/20",  bg: "bg-th-accent-light" },
   "missing-objective":{ icon: "❓", label: "Missing Objective",   color: "text-red-800",    border: "border-red-200",   bg: "bg-red-50" },
 };
 
@@ -677,7 +677,7 @@ function AdvisoryPanel({ advisories }: { advisories: RelationshipAdvisory[] }) {
 
   return (
     <div className="rounded-lg border border-amber-300 overflow-hidden">
-      {/* Header — always visible */}
+      {/* Header  Ealways visible */}
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between px-3 py-2 bg-amber-50 hover:bg-amber-100 transition-colors cursor-pointer"
@@ -717,17 +717,17 @@ function AdvisoryPanel({ advisories }: { advisories: RelationshipAdvisory[] }) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className={`text-[10px] font-bold uppercase tracking-wide ${meta.color}`}>{meta.label}</span>
-                      <span className="font-mono text-[10px] bg-white/60 rounded px-1 py-0.5 text-gray-600">{advisory.subject}</span>
+                      <span className="font-mono text-[10px] bg-th-surface/60 rounded px-1 py-0.5 text-th-text-secondary">{advisory.subject}</span>
                     </div>
                     <p className={`text-xs mt-0.5 ${meta.color}`}>{advisory.message}</p>
                     {isExpanded && (
-                      <div className="mt-2 rounded border border-current/20 bg-white/50 px-3 py-2">
+                      <div className="mt-2 rounded border border-current/20 bg-th-surface/50 px-3 py-2">
                         <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">💡 Suggested Resolution</div>
                         <p className="text-xs text-gray-700 leading-relaxed">{advisory.resolution}</p>
                         {advisory.relatedIds.length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-2">
                             {advisory.relatedIds.map((id) => (
-                              <span key={id} className="text-[10px] font-mono bg-gray-100 text-gray-600 rounded px-1.5 py-0.5">{id}</span>
+                              <span key={id} className="text-[10px] font-mono bg-th-surface-alt text-th-text-muted rounded px-1.5 py-0.5">{id}</span>
                             ))}
                           </div>
                         )}
@@ -752,7 +752,7 @@ function TaskList({ tasks }: { tasks: Task[] }) {
       {tasks.map((t) => (
         <div
           key={t.id}
-          className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-white/80 transition-colors text-sm"
+          className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-th-surface-alt transition-colors text-sm"
         >
           <span className="font-mono text-[11px] font-bold text-green-700 bg-green-50 rounded px-1.5 py-0.5 shrink-0">
             {t.id}
@@ -857,7 +857,7 @@ function RelationshipDiagram({
 
   // Color palette for Tier-1 nodes
   const t1Colors = [
-    { bg: "bg-blue-500", light: "bg-blue-100", text: "text-blue-700", border: "border-blue-300", line: "#3b82f6" },
+    { bg: "bg-th-accent", light: "bg-blue-100", text: "text-th-accent-text", border: "border-th-accent/30", line: "#3b82f6" },
     { bg: "bg-purple-500", light: "bg-purple-100", text: "text-purple-700", border: "border-purple-300", line: "#8b5cf6" },
     { bg: "bg-teal-500", light: "bg-teal-100", text: "text-teal-700", border: "border-teal-300", line: "#14b8a6" },
     { bg: "bg-orange-500", light: "bg-orange-100", text: "text-orange-700", border: "border-orange-300", line: "#f97316" },
@@ -890,7 +890,7 @@ function RelationshipDiagram({
           <span>Open Tasks</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded bg-gray-300"></div>
+          <div className="w-3 h-3 rounded bg-th-text-faint"></div>
           <span>Closed Tasks</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -912,7 +912,7 @@ function RelationshipDiagram({
             <div
               className={`relative rounded-xl border-2 ${color.border} ${
                 isHovered ? "shadow-lg scale-[1.01]" : "shadow-sm"
-              } bg-white overflow-hidden transition-all duration-200`}
+              } bg-th-surface overflow-hidden transition-all duration-200`}
               onMouseEnter={() => setHoveredNode(t1.id)}
               onMouseLeave={() => setHoveredNode(null)}
             >
@@ -923,7 +923,7 @@ function RelationshipDiagram({
               >
                 <div className="flex items-center gap-2">
                   <span className="text-lg">🎯</span>
-                  <span className="font-mono text-xs font-bold bg-white/20 rounded px-2 py-0.5">
+                  <span className="font-mono text-xs font-bold bg-th-surface/20 rounded px-2 py-0.5">
                     {t1.id}
                   </span>
                   <span className="font-semibold text-sm">{t1.title}</span>
@@ -937,7 +937,7 @@ function RelationshipDiagram({
               {t1.children.length > 0 && (
                 <div className="p-4">
                   {/* Connection line from header */}
-                  <div className="flex items-center gap-1 mb-3 text-xs text-gray-400">
+                  <div className="flex items-center gap-1 mb-3 text-xs text-th-text-faint">
                     <svg width="20" height="20" viewBox="0 0 20 20">
                       <line x1="10" y1="0" x2="10" y2="20" stroke={color.line} strokeWidth="2" strokeDasharray="4,2" />
                     </svg>
@@ -1004,7 +1004,7 @@ function RelationshipDiagram({
                                   <span className="text-green-600">
                                     {t2.openTasks.length} open
                                   </span>
-                                  <span className="text-gray-500">
+                                  <span className="text-th-text-muted">
                                     {t2.closedTasks.length} closed
                                   </span>
                                 </div>
@@ -1022,14 +1022,14 @@ function RelationshipDiagram({
                                   {t2.closedTasks.slice(0, 3).map((tk) => (
                                     <span
                                       key={tk.id}
-                                      className="text-[9px] font-mono bg-gray-100 text-gray-500 rounded px-1 py-0.5 line-through"
+                                      className="text-[9px] font-mono bg-th-surface-alt text-th-text-muted rounded px-1 py-0.5 line-through"
                                       title={tk.title}
                                     >
                                       {tk.id}
                                     </span>
                                   ))}
                                   {totalTasks > 8 && (
-                                    <span className="text-[9px] text-gray-400">
+                                    <span className="text-[9px] text-th-text-faint">
                                       +{totalTasks - 8} more
                                     </span>
                                   )}
@@ -1059,12 +1059,12 @@ function RelationshipDiagram({
       })}
 
       {/* Summary stats */}
-      <div className="flex flex-wrap gap-4 text-xs text-gray-500 border-t border-gray-200 pt-4">
+      <div className="flex flex-wrap gap-4 text-xs text-gray-500 border-t border-th-border pt-4">
         <span>
-          <strong className="text-gray-700">{tier1.length}</strong> Tier-1 objectives
+          <strong className="text-th-text-secondary">{tier1.length}</strong> Tier-1 objectives
         </span>
         <span>
-          <strong className="text-gray-700">
+          <strong className="text-th-text-secondary">
             {hierarchy.reduce((acc, t1) => acc + t1.children.length, 0)}
           </strong>{" "}
           Tier-2 objectives
@@ -1080,7 +1080,7 @@ function RelationshipDiagram({
           open tasks
         </span>
         <span>
-          <strong className="text-gray-600">
+          <strong className="text-th-text-secondary">
             {hierarchy.reduce(
               (acc, t1) =>
                 acc + t1.children.reduce((a, t2) => a + t2.closedTasks.length, 0),

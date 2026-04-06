@@ -1,0 +1,106 @@
+From:	George Francis Fermo
+Sent:	Monday, March 30, 2026 10:56 AM
+To:	Rohina Emerson; Keiichi Yamamoto （山本 恵一）; Makoto Murata （村田 真）; Christopher 
+Bond （ボンド クリストファー）; Hideo Hasegawa （長谷川 秀生）; David Klan; Birger Fjaellman （フィエル
+マン ビルイェル）; Jonan Tan Pangan; Angelo Tiu Mariano; Debamalya Das; Mary Kris Cabunilas
+Cc:	Rasheersh Jha （ジャ ラシーシュ）
+Subject:	RE: Japan Team - Global Incident Management w/ Rohina (Placeholder)
+
+Hi All,
+
+Sharing every the meeting minutes below. Please let me know of any correction and/or if I missed 
+anything, thank you.
+
+Items discussed
+*	Agreed to create a dedicated problem ticket for recurring Japan incident use cases.
+*	Standardization of templates, CI identification, and escalation procedures to reduce 
+resolution time.
+*	Alignment on ownership, tooling enhancements, and dashboard delivery timelines.
+*	A standardized structured template from the Knowledge Management / Base R2R deck will 
+be used for all Japan incident documentation.
+*	All documentation must be: 
+o	Searchable by Configuration Items (CIs)
+o	Include Key Contacts and Rapid Response (RR) Contacts
+*	Japan incidents will explicitly identify: 
+o	Primary CI
+o	Supporting CI components
+o	CI(s) designed for rapid recovery execution
+*	Employee Experience Dashboard 
+o	To be completed within 2 weeks
+o	Developed in collaboration with the OAR team
+o	Provides visibility into user impact and incident trends
+*	Tooling Updates 
+o	ADS and xMatters groups to be added for enhanced alerting and escalation
+*	Vendor Escalation 
+o	A standardized escalation procedure format will be defined for application vendor 
+support to ensure consistent, timely engagement
+Ownership & Accountability
+*	Chris: Share problem ticket and Japan use cases with Rohina and Hans
+*	Rohina: Share R2R deck and standardized template
+*	Hasegawa-san: Distribute template to Incident Management teams
+*	Deb: Deliver Employee Experience Dashboard
+*	Incident Management / IT Ops: 
+o	Finalize Japan CI structure
+o	Add tooling groups
+o	Define vendor escalation format
+Next Steps
+*	Distribute and adopt the standardized Japan incident template
+*	Validate CI and component mapping for rapid recovery
+*	Track dashboard delivery against the 2-week timeline
+*	Review and operationalize the vendor escalation format
+
+
+Sincerely,
+ 
+George Fermo
+Director, Global Operations Command Center (GOCC)
+Application Operations & Delivery
+
+
+ 
+
+
+INTERNAL
+-----Original Appointment----- 
+From: George Francis Fermo  
+Sent: Monday, March 16, 2026 1:15 PM 
+To: George Francis Fermo; Rohina Emerson; Keiichi Yamamoto （山本 恵一）; Makoto Murata 
+（村田 真）; Christopher Bond （ボンド クリストファー）; Hideo Hasegawa （長谷川 秀生）; David 
+Klan; Birger Fjaellman （フィエルマン ビルイェル）; Jonan Tan Pangan; Angelo Tiu Mariano; 
+Debamalya Das; Mary Kris Cabunilas 
+Cc: Rasheersh Jha （ジャ ラシーシュ） 
+Subject: Japan Team - Global Incident Management w/ Rohina (Placeholder) 
+When: Tuesday, March 24, 2026 1:30 PM-2:30 PM (UTC+08:00) Kuala Lumpur, Singapore. 
+Where: Microsoft Teams Meeting; Manila Bldg A FL04 GOCC War Room 2
+
+Added Deb to also discuss the private location site plan for Japan.
+
+Hi All,
+
+Setting up this placeholder meeting with Rohina to discuss any incident management 
+concerns/items for Japan including the Rapid Recovery status & expectations.
+
+
+Regards,
+George
+________________________________________________________________________________
+Microsoft Teams meeting 
+Join: 
+https://teams.microsoft.com/meet/27764464072032?p=Q8bXQWym5r
+o0r1wnwi 
+Meeting ID: 277 644 640 720 32 
+Passcode: 7k2Df7aw 
+ 
+Need help? | System reference 
+Dial in by phone 
++1 857-327-8562,,98243810# United States, Boston 
+(844) 303-4325,,98243810# United States (Toll-free) 
+Find a local number 
+Phone conference ID: 982 438 10# 
+Join on a video conferencing device 
+Tenant key: teams@vc.mfcgd.com 
+Video ID: 113 325 116 2 
+More info 
+For organizers: Meeting options | Reset dial-in PIN 
+________________________________________________________________________________
+

@@ -1,0 +1,2 @@
+From Jonan: Hi David good afternoon, following is my team working with Japan on LapuLapu - Mary , Rae, Yam (Dashboard), Edward and team who are 12 members are working on the actual instrumentation, Dennis/Mark is working on the server build implementation of patching for Ingenium, and George/Angelo will be working on the gathering of rapid recovery items. 
+ 
