@@ -61,6 +61,7 @@ function makePMData(settingsOverrides: Partial<AppSettings["export"]> = {}): PMD
       },
     ],
     decisions: [],
+    keyResults: [],
     weeklySummaries: [
       {
         filename: "2026-W13.md",

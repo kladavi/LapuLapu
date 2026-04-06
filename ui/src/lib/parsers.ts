@@ -8,6 +8,10 @@ import type {
   Decision,
   WeeklySummary,
   Project,
+  KeyResult,
+  KeyResultProgressEntry,
+  KeyResultChangeEntry,
+  KeyResultStatus,
 } from "./types";
 
 // ────────────────────────────────────────────
@@ -477,4 +481,172 @@ export function parseWeeklySummaries(
   // Sort by filename descending (newest first)
   summaries.sort((a, b) => b.filename.localeCompare(a.filename));
   return summaries;
+}
+
+// ────────────────────────────────────────────
+// Key Results parser
+// ────────────────────────────────────────────
+
+const VALID_KR_STATUSES: KeyResultStatus[] = [
+  "Not Started", "On Track", "At Risk", "Behind", "Complete",
+];
+
+function parseMarkdownTable(block: string, headerLabel: string): string[][] {
+  // Find the section starting with ### <headerLabel>
+  const sectionRegex = new RegExp(
+    `### ${headerLabel}\\s*\\n\\|[^\\n]+\\|\\s*\\n\\|[-| :]+\\|\\s*\\n((?:\\|[^\\n]+\\|\\s*\\n?)*)`,
+    "m"
+  );
+  const m = block.match(sectionRegex);
+  if (!m) return [];
+
+  return m[1]
+    .split("\n")
+    .filter((l) => l.trim().startsWith("|"))
+    .map((row) =>
+      row
+        .split("|")
+        .slice(1, -1)
+        .map((cell) => cell.trim())
+    );
+}
+
+export function parseKeyResults(md: string): KeyResult[] {
+  const results: KeyResult[] = [];
+
+  // Normalise line endings
+  md = md.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+  const blocks = md.split(/(?=^## KR\d)/m);
+
+  for (const block of blocks) {
+    const headingMatch = block.match(/^## (KR\d+)\s*[—–-]\s*(.+?)(?:\n|$)/);
+    if (!headingMatch) continue;
+
+    const id = headingMatch[1].trim();
+    const title = headingMatch[2].trim();
+    const objectiveField = extractBulletField(block, "Objective") || "";
+    // Extract just the objective ID from field like "H-3 (AI Ops / Incident Troubleshooting)"
+    const objIdMatch = objectiveField.match(/^(O\d+|[A-Z]{1,2}-\d+)/);
+    const objectiveId = objIdMatch ? objIdMatch[1] : objectiveField;
+
+    const metricTypeRaw = (extractBulletField(block, "Metric Type") || "numeric").toLowerCase();
+    const metricType: "numeric" | "boolean" = metricTypeRaw === "boolean" ? "boolean" : "numeric";
+
+    const startValue = parseFloat(extractBulletField(block, "Start Value") || "0") || 0;
+    const targetValue = parseFloat(extractBulletField(block, "Target Value") || (metricType === "boolean" ? "1" : "100")) || (metricType === "boolean" ? 1 : 100);
+    const currentValue = parseFloat(extractBulletField(block, "Current Value") || "0") || 0;
+    const targetDate = extractBulletField(block, "Target Date") || "";
+    const statusRaw = extractBulletField(block, "Status") || "Not Started";
+    const status: KeyResultStatus = VALID_KR_STATUSES.includes(statusRaw as KeyResultStatus)
+      ? (statusRaw as KeyResultStatus)
+      : "Not Started";
+    const created = extractBulletField(block, "Created") || "";
+    const tags = extractHashtags(extractBulletField(block, "Tags") || "");
+    const description = extractBulletField(block, "Description") || "";
+
+    // Parse progress log table
+    const progressRows = parseMarkdownTable(block, "Progress Log");
+    const progressLog: KeyResultProgressEntry[] = progressRows.map((row) => ({
+      date: row[0] || "",
+      value: parseFloat(row[1] || "0") || 0,
+      comment: row[2] || "",
+    }));
+
+    // Parse change log table
+    const changeRows = parseMarkdownTable(block, "Change Log");
+    const changeLog: KeyResultChangeEntry[] = changeRows.map((row) => ({
+      date: row[0] || "",
+      change: row[1] || "",
+    }));
+
+    results.push({
+      id,
+      title,
+      objectiveId,
+      metricType,
+      startValue,
+      targetValue,
+      currentValue,
+      targetDate,
+      status,
+      created,
+      tags,
+      description,
+      progressLog,
+      changeLog,
+      raw: block.trim(),
+    });
+  }
+
+  return results;
+}
+
+// ────────────────────────────────────────────
+// Key Results serializer
+// ────────────────────────────────────────────
+
+export function serializeKeyResult(kr: KeyResult): string {
+  const lines: string[] = [];
+  lines.push(`## ${kr.id} — ${kr.title}`);
+  lines.push(`- **Objective:** ${kr.objectiveId}`);
+  lines.push(`- **Metric Type:** ${kr.metricType === "boolean" ? "Boolean" : "Numeric"}`);
+  lines.push(`- **Start Value:** ${kr.startValue}`);
+  lines.push(`- **Target Value:** ${kr.targetValue}`);
+  lines.push(`- **Current Value:** ${kr.currentValue}`);
+  lines.push(`- **Target Date:** ${kr.targetDate}`);
+  lines.push(`- **Status:** ${kr.status}`);
+  lines.push(`- **Created:** ${kr.created}`);
+  lines.push(`- **Tags:** ${kr.tags.join(" ")}`);
+  lines.push(`- **Description:** ${kr.description}`);
+  lines.push("");
+
+  // Progress log
+  lines.push("### Progress Log");
+  lines.push("| Date | Value | Comment |");
+  lines.push("|------|-------|---------|");
+  for (const entry of kr.progressLog) {
+    lines.push(`| ${entry.date} | ${entry.value} | ${entry.comment} |`);
+  }
+  lines.push("");
+
+  // Change log
+  lines.push("### Change Log");
+  lines.push("| Date | Change |");
+  lines.push("|------|--------|");
+  for (const entry of kr.changeLog) {
+    lines.push(`| ${entry.date} | ${entry.change} |`);
+  }
+
+  return lines.join("\n");
+}
+
+export function serializeKeyResults(krs: KeyResult[]): string {
+  const header = "# Key Results\n";
+  if (krs.length === 0) return header;
+  return header + "\n" + krs.map(serializeKeyResult).join("\n\n---\n\n") + "\n";
+}
+
+/**
+ * Compute progress percentage for a key result (clamped 0–100).
+ */
+export function computeKRProgress(kr: KeyResult): number {
+  if (kr.metricType === "boolean") {
+    return kr.currentValue >= 1 ? 100 : 0;
+  }
+  const range = kr.targetValue - kr.startValue;
+  if (range === 0) return kr.currentValue >= kr.targetValue ? 100 : 0;
+  const progress = ((kr.currentValue - kr.startValue) / range) * 100;
+  return Math.max(0, Math.min(100, Math.round(progress)));
+}
+
+/**
+ * Generate the next KR ID given existing key results.
+ */
+export function nextKRId(existing: KeyResult[]): string {
+  if (existing.length === 0) return "KR001";
+  const maxNum = Math.max(
+    ...existing.map((kr) => parseInt(kr.id.replace("KR", ""), 10) || 0)
+  );
+  return `KR${String(maxNum + 1).padStart(3, "0")}`;
 }

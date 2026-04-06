@@ -11,6 +11,7 @@ import {
   parseDecisions,
   parseWeeklySummaries,
   parseProjects,
+  parseKeyResults,
 } from "../lib/parsers";
 import { buildRelationshipMap } from "../lib/relationships";
 import { DEFAULT_SETTINGS, parseSettings } from "../lib/settings";
@@ -55,6 +56,7 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
         const decisionsPath = findFile("02-work/decisions.md");
         const inboxPath = findFile("01-inbox/inbox.md");
         const projectsPath = findFile("00-context/projects.md");
+        const keyResultsPath = findFile("02-work/key-results.md");
 
         if (!objectivesPath) warnings.push("Missing: 00-context/objectives.md");
         if (!teamsPath) warnings.push("Missing: 00-context/teams.md");
@@ -74,6 +76,9 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
         const tasks = tasksPath ? parseTasks(files[tasksPath]) : [];
         const decisions = decisionsPath
           ? parseDecisions(files[decisionsPath])
+          : [];
+        const keyResults = keyResultsPath
+          ? parseKeyResults(files[keyResultsPath])
           : [];
         const weeklySummaries = parseWeeklySummaries(files);
         const inbox = inboxPath ? files[inboxPath] : "";
@@ -109,6 +114,7 @@ export function PMProvider({ children }: { children: React.ReactNode }) {
           systems,
           tasks,
           decisions,
+          keyResults,
           weeklySummaries,
           inbox,
           rawFiles: files,

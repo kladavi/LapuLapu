@@ -26,6 +26,7 @@ function makePMData(overrides: Partial<PMData> = {}): PMData {
       { id: "D001", title: "Dec One", date: "2026-03-18", requestor: "", request: "", decision: "", reason: "", tags: [], raw: "" },
       { id: "D003", title: "Dec Three", date: "2026-03-26", requestor: "", request: "", decision: "", reason: "", tags: [], raw: "" },
     ],
+    keyResults: [],
     weeklySummaries: [],
     inbox: "",
     rawFiles: {

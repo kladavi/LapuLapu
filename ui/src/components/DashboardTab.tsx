@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { usePMData } from "../context/PMContext";
 import type { NavFilter } from "../app/page";
 
-type TabId = "dashboard" | "objectives" | "tasks" | "weekly" | "export";
+type TabId = "dashboard" | "objectives" | "keyresults" | "tasks" | "weekly" | "export";
 
 interface Props {
   onNavigate: (tab: TabId, filter?: NavFilter) => void;
 }
 
-type SectionId = "objectives" | "open" | "closed" | "decisions" | "teams" | "systems";
+type SectionId = "objectives" | "keyresults" | "open" | "closed" | "decisions" | "teams" | "systems";
 
 export function DashboardTab({ onNavigate }: Props) {
   const { data } = usePMData();
@@ -52,6 +52,15 @@ export function DashboardTab({ onNavigate }: Props) {
       color: "bg-blue-50 text-blue-700 border-blue-200",
       hasTab: true,
       tabAction: () => onNavigate("objectives"),
+    },
+    {
+      id: "keyresults",
+      label: "Key Results",
+      value: data.keyResults.length,
+      icon: "📈",
+      color: "bg-purple-50 text-purple-700 border-purple-200",
+      hasTab: true,
+      tabAction: () => onNavigate("keyresults"),
     },
     {
       id: "open",

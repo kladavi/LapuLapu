@@ -10,6 +10,7 @@ import {
 } from "../lib/fileLoader";
 import { DashboardTab } from "../components/DashboardTab";
 import { ObjectivesTab } from "../components/ObjectivesTab";
+import { KeyResultsTab } from "../components/KeyResultsTab";
 import { TasksTab } from "../components/TasksTab";
 import { WeeklyTab } from "../components/WeeklyTab";
 import { ExportTab } from "../components/ExportTab";
@@ -18,6 +19,7 @@ import { IntakeTab } from "../components/IntakeTab";
 const TABS = [
   { id: "dashboard", label: "Dashboard", icon: "📊" },
   { id: "objectives", label: "Objectives", icon: "🎯" },
+  { id: "keyresults", label: "Key Results", icon: "📈" },
   { id: "tasks", label: "Tasks", icon: "✅" },
   { id: "weekly", label: "Weekly", icon: "📅" },
   { id: "intake", label: "Intake", icon: "📥" },
@@ -226,6 +228,7 @@ export default function Home() {
       <main className="flex-1 overflow-auto">
         {activeTab === "dashboard" && <DashboardTab onNavigate={handleNavigate} />}
         {activeTab === "objectives" && <ObjectivesTab initialTier={navFilter.tier} initialOwnerTag={navFilter.ownerTag} />}
+        {activeTab === "keyresults" && <KeyResultsTab />}
         {activeTab === "tasks" && <TasksTab initialStatus={navFilter.status} />}
         {activeTab === "weekly" && <WeeklyTab />}
         {activeTab === "intake" && <IntakeTab />}

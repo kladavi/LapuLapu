@@ -16,6 +16,7 @@ function makePMData(overrides: Partial<PMData> = {}): PMData {
     systems: [],
     tasks: [],
     decisions: [],
+    keyResults: [],
     weeklySummaries: [],
     inbox: "",
     rawFiles: {},

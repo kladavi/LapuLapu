@@ -20,6 +20,7 @@ function makePMData(overrides: Partial<PMData> = {}): PMData {
       },
     ],
     objectives: [],
+    keyResults: [],
     teams: [
       { name: "GOCC", lead: "Jonan", tags: [], raw: "" },
       { name: "ETS Japan", lead: "Birger", tags: [], raw: "" },
