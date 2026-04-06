@@ -62,6 +62,40 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
     3. DORA app from AI team: https://dora.manulife.com/ (internal)
   - **Actions extracted → T021**
 
-- **2026-03-31 — GOCC Monitoring Discussion** #raw
+- **2026-03-31 — GOCC Monitoring Discussion** #processed
   - **Source:** GOCC-20260331 - Monitoring Discussion-310326-070126.pdf
-  - **Note:** PDF file in inbox — needs manual review and extraction.
+  - **Note:** Detailed meeting agenda for 2026-03-31 monitoring session. Actions already captured in T023–T035 from the intake LLM processing pass. PDF confirms action owners, deliverables, and risk register items. No additional tasks beyond T023–T035 required.
+
+- **2026-04-02 — Re: Epsilon – POT - Ingenium Modernization** #processed
+  - **Source:** Re_ Epsilon– POT - Ingenium Modernization .eml
+  - **From:** Balaji Ravi (Lead Infrastructure Architect – ETS Management Arch)
+  - **To:** Prabu Thiagarajan, Ezhilarasan Mohan, David Klan
+  - **Focus:** Epsilon POT prerequisite progress, low-level plan need, VCS setup, subscription access
+  - **Key outcomes:**
+    1. Prerequisite activities already started: subscription, resource group (CC9153), initial server provisioning
+    2. Grey areas around prerequisite dependencies identified — need low-level implementation plan
+    3. VCS setup: Kana agreed ETS BAU team will screen-share with VCS team; Kana to document VCS process
+    4. Subscription access: Sanjeev needs contributor access to POT subscription
+    5. Prabu to continue tracking SR requests in Ingenium Modernization activity tracker
+    6. David Klan to facilitate and coordinate Epsilon POT execution after prerequisites firmed up
+  - **Actions extracted → T036, T037, T038**
+
+- **2026-03-30 — Japan Team - Global Incident Management w/ Rohina** #processed
+  - **Source:** RE Japan Team - Global Incident Management w Rohina (Placeholder).txt
+  - **From:** George Francis Fermo (Director, GOCC Application Operations & Delivery)
+  - **Attendees:** Rohina Emerson, Keiichi Yamamoto, Makoto Murata, Christopher Bond, Hideo Hasegawa, David Klan, Birger Fjaellman, Jonan Tan Pangan, Angelo Tiu Mariano, Debamalya Das, Mary Kris Cabunilas
+  - **Focus:** Japan incident management concerns, Rapid Recovery status, template standardisation
+  - **Key outcomes:**
+    1. Dedicated problem ticket for recurring Japan incident use cases to be created
+    2. Standardized structured template from R2R Knowledge Management deck
+    3. Documentation must be searchable by CIs, include Key Contacts and RR Contacts
+    4. Japan incidents to explicitly identify Primary CI, Supporting CI components, and CIs for rapid recovery
+    5. Employee Experience Dashboard to be completed within 2 weeks (Deb, with OAR team)
+    6. ADS and xMatters groups to be added for enhanced alerting/escalation
+    7. Standardized vendor escalation procedure format to be defined
+  - **Actions extracted → T039, T040, T041, T042, T043**
+  - **Decision extracted → D004**
+
+- **2026-03-30 — Japan Team - Global Incident Management (MSG duplicate)** #processed
+  - **Source:** RE_ Japan Team - Global Incident Management w_ Rohina (Placeholder).msg
+  - **Note:** Outlook .msg binary format — same content as the .txt version. No additional actions required.

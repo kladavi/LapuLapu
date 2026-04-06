@@ -10,6 +10,7 @@ import { execFile } from "child_process";
 const DEFAULT_ROOT = "C:\\Users\\kladavi\\Projects\\LapuLapu";
 const INBOX_DIR = path.join(DEFAULT_ROOT, "01-inbox");
 const EXTRACT_PDF_SCRIPT = path.join(DEFAULT_ROOT, "ui", "scripts", "extract-pdf.py");
+const EXTRACT_PPTX_SCRIPT = path.join(DEFAULT_ROOT, "ui", "scripts", "extract-pptx.py");
 
 interface ExtractedFile {
   filename: string;
@@ -89,6 +90,23 @@ async function extractMsg(filePath: string): Promise<string> {
   return "[.msg file — Outlook proprietary format. Open in Outlook and save as .eml or paste content manually.]";
 }
 
+async function extractPptx(filePath: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    execFile(
+      "python",
+      [EXTRACT_PPTX_SCRIPT, filePath],
+      { maxBuffer: 10 * 1024 * 1024, encoding: "utf8" },
+      (err, stdout, stderr) => {
+        if (err) {
+          reject(new Error(stderr?.trim() || err.message));
+        } else {
+          resolve(stdout.trim());
+        }
+      }
+    );
+  });
+}
+
 async function extractTxt(filePath: string): Promise<string> {
   return (await fs.readFile(filePath, "utf-8")).trim();
 }
@@ -98,6 +116,7 @@ const SUPPORTED_EXTENSIONS: Record<string, (fp: string) => Promise<string>> = {
   ".docx": extractDocx,
   ".eml": extractEml,
   ".msg": extractMsg,
+  ".pptx": extractPptx,
   ".txt": extractTxt,
 };
 

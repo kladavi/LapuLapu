@@ -294,3 +294,284 @@
 - **Tags:** #project:lapu-lapu #worktype:coordination #domain:gocc-handover
 - **Description:** Register and track the GOCC-Monitoring team member assignments for LapuLapu work streams as confirmed by Jonan: Mary Kris, Rae, Yam — Dashboard; Edward and team (12 members) — actual instrumentation; Dennis/Mark — server build implementation of patching for Ingenium; George/Angelo — gathering of rapid recovery items. Update teams.md member roles accordingly and ensure alignment with T003, T006, T016 assignments.
 - **Source:** Inbox — TeamUpdate.md (message from Jonan)
+
+---
+
+## T023 — JP Employee Experience Dashboard (Prod) Enhancement
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:newrelic #system:powerbi
+- **Relevance:** 92/100
+- **Tags:** #dashboard #employee-experience #japan
+- **Description:** Improve Japan-focused Employee Experience Dashboard in Production by enhancing visibility, impact-driven drilldowns, and Japan-specific filtering aligned to real user experience. Incorporate PS Team Morning Health Check data as an input source.
+
+---
+
+## T024 — Developer Experience Dashboard for Non-Prod Environments
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:newrelic #system:apm
+- **Relevance:** 88/100
+- **Tags:** #dashboard #developer-experience #nonprod
+- **Description:** Establish Developer Experience Dashboard coverage for DEV/SIT/UAT environments to improve non-prod health visibility and accelerate troubleshooting for Japan application teams.
+
+---
+
+## T025 — Deploy Branch Office Laptop Monitoring (Japan)
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic
+- **Relevance:** 85/100
+- **Tags:** #synthetics #end-user-monitoring #japan
+- **Description:** Deploy and validate monitoring on five Japan branch office laptops to capture real end-user connectivity and experience signals, with defined success criteria and deployment schedule.
+
+---
+
+## T026 — JP East/West Synthetic Monitoring Enablement
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:azure
+- **Relevance:** 93/100
+- **Tags:** #synthetics #japan-hosting #observability
+- **Description:** Enable Japan-hosted synthetic monitoring via Azure JP East/West to close regional visibility gaps and detect Japan-only incidents early.
+
+---
+
+## T027 — Achieve OMM L2 for Major Japan Applications
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:apm
+- **Relevance:** 95/100
+- **Tags:** #omm #gold-apps #japan
+- **Description:** Drive Observability Maturity Model Level 2 compliance for all major Japan applications, including APM installation, tracing enablement, tagging, and alert coverage validation.
+
+---
+
+## T028 — Japan APM & Distributed Tracing Rollout Confirmation
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:apm
+- **Relevance:** 90/100
+- **Tags:** #apm #distributed-tracing #aks
+- **Description:** Confirm APM and distributed tracing rollout status for Japan AKS-hosted applications, with evidence-based install confirmation and documented ownership.
+
+---
+
+## T029 — Japan Tagging Standards & Bulk Tagging Guidance
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:azure #system:cmdb
+- **Relevance:** 91/100
+- **Tags:** #tagging #data-quality #japan
+- **Description:** Define and publish minimum tagging standards (including country=JP) and bulk tagging guidance for Azure and New Relic to enable accurate Japan filtering and reporting.
+
+---
+
+## T030 — JP Monitoring Coverage Power BI Report
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:powerbi #system:newrelic
+- **Relevance:** 87/100
+- **Tags:** #coverage-report #powerbi #japan
+- **Description:** Produce a Japan-filtered monitoring coverage report in Power BI, mapping applications to observability criteria and highlighting gaps.
+
+---
+
+## T031 — Observability-as-Code Policy & Inner-Source Repo Enablement
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic
+- **Relevance:** 82/100
+- **Tags:** #observability-as-code #innersource #automation
+- **Description:** Enable inner-source collaboration for observability-as-code, including repo access, contribution workflow, and standardized policy structure for APM services.
+
+---
+
+## T032 — Inventory JP Alert Coverage Gaps & Recommendations
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:moogsoft
+- **Relevance:** 89/100
+- **Tags:** #alerts #gap-analysis #japan
+- **Description:** Identify Japan resources lacking alert coverage and provide prioritized remediation recommendations to reduce blind spots and improve incident detection.
+
+---
+
+## T033 — Modularize Monitoring Scripts in Docker
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic
+- **Relevance:** 75/100
+- **Tags:** #docker #automation #synthetics
+- **Description:** Containerize and modularize monitoring scripts using Docker to support scalable deployment and reuse, coordinated with observability counterparts.
+
+---
+
+## T034 — Obtain ePOS Health Check Script Details (PS Team)
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium
+- **Relevance:** 70/100
+- **Tags:** #epos #health-check #dependencies
+- **Description:** Obtain details, access path, and ownership of the ePOS health check script used by PS Team to align monitoring and close observability gaps.
+
+---
+
+## T035 — Establish Recurring Japan Monitoring Governance Cadence
+- **Status:** Open
+- **Created:** 2026-04-01
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc
+- **Assigned:** Hari Pothakamuri
+- **Systems:** #system:confluence
+- **Relevance:** 78/100
+- **Tags:** #governance #cadence #japan
+- **Description:** Formalize a recurring Japan monitoring forum with shared artifacts and dashboards as the governance baseline to ensure sustained alignment and progress tracking.
+
+---
+
+## T036 — Prepare Low-Level Implementation Plan for Epsilon POT
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:ingenium #system:azure
+- **Relevance:** 88/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #worktype:planning
+- **Description:** Derive a low-level implementation plan from the high-level Epsilon POT project plan. Must clearly capture detailed prerequisite steps, ownership and dependencies across teams, sequencing and timelines, and constraints or assumptions requiring validation. Once finalised, update the overall project plan and align all stakeholders on execution expectations. David Klan to facilitate and coordinate the POT execution end-to-end after the plan is firmed up.
+- **Source:** Re: Epsilon – POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
+
+---
+
+## T037 — Document VCS Setup Process for Epsilon POT
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Kanagaraj Ramasamy
+- **Systems:** #system:ingenium
+- **Relevance:** 72/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #worktype:documentation
+- **Description:** ETS BAU team to share screen with VCS team to complete VCS setup for Epsilon POT. Kanagaraj agreed to create documentation on the VCS setup process, as this has not been handled by the team previously. Documentation to be reusable for future environments.
+- **Source:** Re: Epsilon – POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
+
+---
+
+## T038 — Obtain POT Subscription Contributor Access for Sanjeev
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:azure
+- **Relevance:** 65/100
+- **Tags:** #project:lapu-lapu #project:epsilon #worktype:access-management
+- **Description:** Request Azure contributor access to the Epsilon POT subscription (tagged CC9153) for Sanjeev, so he is ready to support infrastructure work when required. Resource group has already been provisioned.
+- **Source:** Re: Epsilon – POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
+
+---
+
+## T039 — Create Dedicated Problem Ticket for Recurring Japan Incident Use Cases
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Christopher Bond
+- **Systems:** #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #domain:problem-management #worktype:incident-management #outcome:mttr
+- **Description:** Create a dedicated problem ticket for recurring Japan incident use cases. Share the problem ticket and Japan use cases with Rohina Emerson and Hans for review and alignment. Enables structured root cause tracking and prevention for Japan-specific repeat incidents.
+- **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
+
+---
+
+## T040 — Define & Distribute Standardized Japan Incident Template
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Rohina Emerson
+- **Systems:** #system:cmdb
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #domain:incident-management #worktype:documentation #program:r2r
+- **Description:** Share the R2R Knowledge Management deck and standardized structured template for Japan incident documentation. Template must be searchable by Configuration Items (CIs), include Key Contacts and Rapid Response (RR) contacts. Hasegawa-san to distribute template to Incident Management teams once received.
+- **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
+
+---
+
+## T041 — Finalize Japan CI Structure & Component Mapping for Rapid Recovery
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** George Francis Fermo
+- **Systems:** #system:cmdb
+- **Relevance:** 83/100
+- **Tags:** #project:lapu-lapu #program:r2r #outcome:resilience #worktype:incident-management
+- **Description:** Finalize Japan CI structure with explicit identification of Primary CI, Supporting CI components, and CI(s) designed for rapid recovery execution. Validate component mapping against CMDB to enable structured incident response and rapid recovery workflows.
+- **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
+
+---
+
+## T042 — Add ADS & xMatters Groups for Japan Alerting and Escalation
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** George Francis Fermo
+- **Systems:** #system:xmatters
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #worktype:incident-management #outcome:mttd
+- **Description:** Add ADS and xMatters groups for enhanced Japan alerting and escalation capabilities. Ensures Japan incidents trigger the correct notification chains and on-call groups for faster response.
+- **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
+
+---
+
+## T043 — Define Standardized Vendor Escalation Procedure Format
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** George Francis Fermo
+- **Systems:** #system:cmdb
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #worktype:incident-management #worktype:documentation
+- **Description:** Define a standardized escalation procedure format for application vendor support to ensure consistent, timely engagement during Japan incidents. Format to be reviewed and operationalized by Incident Management / IT Ops teams.
+- **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)

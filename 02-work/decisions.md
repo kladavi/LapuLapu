@@ -35,3 +35,16 @@ tags: #project:lapu-lapu #domain:patching #system:azure #outcome:resilience #dom
 **Related Objectives:** B-4 (Infrastructure Resilience & Disaster Recovery), H-4 (Unified Support), O4 (Robust Technical Core)
 **Owner:** Birger Fjaellman
 **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting
+
+---
+
+## D004 — Agreed: Japan Incident Documentation & CI Standards
+
+tags: #project:lapu-lapu #domain:incident-management #program:r2r #system:cmdb #outcome:mttr
+
+**Date:** 2026-03-30
+**Decision:** Approved
+**Summary:** Agreed to standardize Japan incident documentation using a structured template from the Knowledge Management / Base R2R deck. All documentation must be searchable by Configuration Items (CIs) and include Key Contacts and Rapid Response (RR) contacts. Japan incidents will explicitly identify Primary CI, Supporting CI components, and CI(s) designed for rapid recovery execution. Employee Experience Dashboard to be completed within 2 weeks in collaboration with OAR team to provide visibility into user impact and incident trends. ADS and xMatters groups to be added for enhanced alerting/escalation. A standardized vendor escalation procedure format will be defined.
+**Related Objectives:** H-3 (AI Ops / Incident Troubleshooting), B-4 (Infrastructure Resilience & Disaster Recovery), B-1 (Endpoint Monitoring & Post-Change Verification), O1 (Frictionless Customer Experience)
+**Owner:** George Francis Fermo
+**Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting
