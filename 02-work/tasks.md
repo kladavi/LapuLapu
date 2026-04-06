@@ -575,3 +575,147 @@
 - **Tags:** #project:lapu-lapu #worktype:incident-management #worktype:documentation
 - **Description:** Define a standardized escalation procedure format for application vendor support to ensure consistent, timely engagement during Japan incidents. Format to be reviewed and operationalized by Incident Management / IT Ops teams.
 - **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
+
+---
+
+## T044 — Investigate Capacity Alerts on Employee Experience Dashboard Servers
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:newrelic #system:azure
+- **Relevance:** 92/100
+- **Tags:** #tier:3 #worktype:monitoring #domain:colleague #outcome:resilience #system:newrelic #system:azure
+- **Description:** Analyze the recurring capacity alerts surfaced on the Employee Experience dashboard (Workloads → New Relic) to identify timing/process patterns and isolate impacted servers or Azure components. Determine whether the capacity conditions correlate with measurable performance degradation (e.g., latency/error rate) and summarize findings with recommended remediation actions (threshold tuning, resource right-sizing, or workload/process changes).[1](https://outlook.office365.com/owa/?ItemID=AAMkAGE0MDZmMWQ4LTlhMjYtNDgwOC04NDU0LWJlNDMyYjBiOWU5MABGAAAAAACMAj2e%2bqGZQIqeJfW7yylQBwAuotlxTt1MQqfgeJ1kKHXfAAA3uQIlAAAuotlxTt1MQqfgeJ1kKHXfAAX7bd3fAAA%3d&exvsurl=1&viewmodel=ReadMessageItem)
+
+---
+
+## T045 — Ingenium BAU Stability Maintained During Transition
+- **Status:** Approved
+- **Created:** 2026-04-06
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium #system:cmdb
+- **Relevance:** 88/100
+- **Tags:** #bau #stability #transition
+- **Description:** Maintain current Ingenium Infra team BAU support to ensure operational stability and close non‑business‑hours support gaps while transition activities progress. **Plan reviewed and explicitly approved by Birger Fjaellman.**
+
+---
+
+## T046 — Standardise and Automate High‑Frequency Ingenium BAU Tasks
+- **Status:** Approved
+- **Created:** 2026-04-06
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:ingenium #system:cmdb
+- **Relevance:** 94/100
+- **Tags:** #automation #runbooks #omm
+- **Description:** Identify and automate high‑frequency repeatable Ingenium BAU tasks across WAS and DB layers, reducing manual intervention and engineering dependency. **Approach confirmed as reasonable and approved by ETS Japan lead.**
+
+---
+
+## T047 — Finalise and Validate Ingenium Runbooks for GOCC Handover
+- **Status:** Approved
+- **Created:** 2026-04-06
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:xmatters #system:ingenium
+- **Relevance:** 91/100
+- **Tags:** #runbooks #incident-response #go-live
+- **Description:** Create, standardise, and validate end‑to‑end Ingenium operational runbooks to support incident detection, recovery, and escalation by GOCC. **Plan acknowledged and approved by Birger Fjaellman.**
+
+---
+
+## T048 — Establish Weekly Ingenium Transition Review Cadence
+- **Status:** Approved
+- **Created:** 2026-04-06
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium
+- **Relevance:** 76/100
+- **Tags:** #governance #tracking #transition
+- **Description:** Set up and run a weekly review forum to track Ingenium KT progress, automation delivery, runbook readiness, and transition risks. **Cadence and governance approach approved by ETS Japan leadership.**
+
+---
+
+## T049 — Progressive GOCC KT for Ingenium Operations
+- **Status:** Approved
+- **Created:** 2026-04-06
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:newrelic #system:moogsoft #system:ingenium
+- **Relevance:** 85/100
+- **Tags:** #kt #capability-building #gocc
+- **Description:** Involve ~6 core GOCC members in ongoing Ingenium KT sessions to build system knowledge in parallel with automation and documentation. **Phased KT approach explicitly endorsed by Birger Fjaellman.**
+
+---
+
+## T050 — Execute Reverse-Shadow Linux Patching Validation (Non‑Prod)
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:azure #system:ingenium #system:cmdb
+- **Relevance:** 92/100
+- **Tags:** #linux #patching #kt #r2r #resilience
+- **Description:** Execute the reverse‑shadow Linux patching pre‑ and post‑validation in the Non‑Production environment under guidance of the Ingenium Infra team. This activity builds operational readiness and strengthens recovery and control validation capabilities aligned to R2R objectives.
+-----------------------
+
+---
+
+## T051 — Prepare PROD Reverse-Shadow Linux Patching Change
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium #system:cmdb #system:azure
+- **Relevance:** 85/100
+- **Tags:** #linux #patching #change-management #prod #kt
+- **Description:** Finalise preparation for the PROD reverse‑shadow Linux patching validation, including receipt and review of the PROD CHG ticket, access confirmation, and alignment of validation checkpoints. Note: PROD change date is tentative and pending formal CHG details.
+
+---
+
+## T052 — Rename Japan Non‑Prod Dashboard to Developer Experience
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic
+- **Relevance:** 92/100
+- **Tags:** #dashboard #developer-experience #naming #non-prod
+- **Description:** Rename the current “GOCC Japan Employee Experience Dashboard” for non‑production workloads to “GOCC Japan Developer Experience Dashboard” to accurately reflect audience and intent. Ensure consistency across dashboard titles, descriptions, and references for the 16 listed non‑prod systems.
+
+---
+
+## T053 — Introduce Grouped & Pivoted Views for Japan Non‑Prod Monitoring
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic
+- **Relevance:** 90/100
+- **Tags:** #dashboard #observability #filtering #ux
+- **Description:** Enhance the Japan non‑prod dashboards to support grouping and pivoting by environment, application, and alert status. Enable multiple filtered views to manage scale across many environments and improve rapid situational awareness.
+
+---
+
+## T054 — Evaluate & Apply Team Ownership Metadata in Honeycomb Views
+- **Status:** Open
+- **Created:** 2026-04-06
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #metadata #ownership #honeycomb #governance
+- **Description:** Assess the “Team Ownership” setting available in honeycomb views and determine standard usage guidelines. If viable, implement ownership tagging to improve accountability, filtering, and collaboration across GOCC and ETS Japan teams.
