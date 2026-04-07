@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback, useEffect, DragEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePMData } from "../context/PMContext";
 import {
   loadFromFolderPicker,
@@ -168,7 +169,14 @@ export default function Home() {
       {/* Header */}
       <header className="bg-th-surface border-b border-th-border px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <span className="text-xl">🗂️</span>
+          <Image
+            src="/Lapu-Lapu.png"
+            alt="Lapu-Lapu"
+            width={36}
+            height={36}
+            className="w-9 h-9 rounded object-cover border border-th-border"
+            priority
+          />
           <h1 className="text-lg font-semibold text-th-text">LapuLapu</h1>
           <span className="text-xs bg-th-surface-alt text-th-text-muted rounded px-2 py-0.5">
             {data?.folderName}
