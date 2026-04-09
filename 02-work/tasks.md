@@ -719,3 +719,172 @@
 - **Relevance:** 78/100
 - **Tags:** #metadata #ownership #honeycomb #governance
 - **Description:** Assess the “Team Ownership” setting available in honeycomb views and determine standard usage guidelines. If viable, implement ownership tagging to improve accountability, filtering, and collaboration across GOCC and ETS Japan teams.
+
+---
+
+## T055 — Define KT Scope for Ingenium Transition
+- **Status:** Open
+- **Created:** 2026-04-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium #system:cmdb
+- **Relevance:** 92/100
+- **Tags:** #kt #transition #support-model
+- **Description:** Define the Knowledge Transfer (KT) scope for Ingenium based on the approved WBS and project schedule to ensure aligned expectations between ETS Asia and GOCC. Scope definition will act as the baseline for transition planning and acceptance.
+
+---
+
+## T056 — Execute Shadow and Reverse-Shadow Support Transition (Apr–Jun)
+- **Status:** Open
+- **Created:** 2026-04-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:ingenium #system:xmatters
+- **Relevance:** 95/100
+- **Tags:** #kt #handover #lifecycle
+- **Description:** Execute a 3‑month shadow and reverse‑shadow support transition with GOCC from April to June to validate readiness for full L0–L2 ownership. Track issues and gaps during the transition for remediation.
+
+---
+
+## T057 — Finalize Ingenium KT Documentation
+- **Status:** Open
+- **Created:** 2026-04-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium #system:cmdb
+- **Relevance:** 88/100
+- **Tags:** #documentation #kt
+- **Description:** Finalize all Ingenium KT documentation, covering operational procedures, DB2, and middleware, with clear responsibility split between ETS Asia and GOCC. Documentation will be used as the formal handover artifact.
+
+---
+
+## T058 — Confirm GOCC Leads for Ingenium KT Target Audience
+- **Status:** Open
+- **Created:** 2026-04-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc
+- **Assigned:** Hari Pothakamuri
+- **Systems:** #system:ingenium
+- **Relevance:** 75/100
+- **Tags:** #governance #roles
+- **Description:** Confirm the six GOCC core leads assigned to the Japan segment for the Ingenium KT to establish the official target audience. This ensures accountability and effective knowledge absorption.
+
+---
+
+## T059 — Establish KT Governance Cadence
+- **Status:** Open
+- **Created:** 2026-04-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium
+- **Relevance:** 70/100
+- **Tags:** #governance #cadence
+- **Description:** Set up weekly progress calls to address KT issues and concerns, and a monthly deliverable review to track transition health. Governance ensures risks are surfaced early and resolved.
+
+---
+
+## T060 — Prepare and Publish Ingenium KT Plan and Schedule
+- **Status:** Open
+- **Created:** 2026-04-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:ingenium
+- **Relevance:** 90/100
+- **Tags:** #planning #kt
+- **Description:** Prepare and publish the detailed Ingenium KT plan and schedule in coordination with GOCC Monitoring, covering sequencing, milestones, and acceptance criteria to support full L0–L2 ownership.
+
+---
+
+## T061 — Define Operations-Focused Application & Capacity Dashboard (New Relic)
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:azure #system:apm
+- **Relevance:** 95/100
+- **Tags:** #observability #capacity #apm #dashboarding #operations
+- **Description:** Design and validate an operations-focused New Relic dashboard that correlates Azure infrastructure components, capacity saturation signals, and application performance (latency, errors, Apdex). The dashboard will support pattern analysis (daily/weekly, batch vs workload-driven) and serve as the primary tool for root cause and performance correlation for Japan operations.
+
+---
+
+## T062 — Executive Trend Summary for Capacity & Performance (Power BI)
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team-ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:powerbi #system:newrelic
+- **Relevance:** 82/100
+- **Tags:** #executive-reporting #trends #capacity #colleague-experience
+- **Description:** Produce a Power BI summary view that distills insights from New Relic capacity and performance analysis into clear trends for leadership consumption. This dashboard will complement (not replace) New Relic, enabling business users and executives to understand recurring capacity risks and their impact without deep operational tooling knowledge.
+
+---
+
+## T063 — GOCC Shadow Session for Windows Patching Validation (JP Non-Prod)
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:azure #system:cmdb
+- **Relevance:** 88/100
+- **Tags:** #worktype:kt #worktype:patching #outcome:resilience #domain:operations
+- **Description:** Conduct a GOCC shadow session for Windows patching pre- and post-validation activities in the Japan Non-Production environment to reinforce operational controls and validation checkpoints. Session will support R2R readiness and operational resilience, aligned to CHG01354108 scheduled for 2026-04-16.
+
+---
+
+## T064 — Prepare Ingenium KT Plan and Phased Schedule
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team-ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #ingenium #cmdb
+- **Relevance:** 95/100
+- **Tags:** #kt #transition #risk-managed #lapu-lapu
+- **Description:** Develop and publish a detailed, phase-wise Ingenium knowledge transfer plan covering non-production, production readiness, and full BAU operations. The plan must define clear KT targets, milestones, and risk controls to ensure a controlled transition to GOCC support.
+
+---
+
+## T065 — Enable GOCC L2 Support Readiness for Ingenium by End of Q2
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** H-4 (Unified Support) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc
+- **Assigned:** Hari Pothakamuri
+- **Systems:** #ingenium #newrelic #moogsoft
+- **Relevance:** 92/100
+- **Tags:** #l2-readiness #support-model #kt
+- **Description:** Coordinate onboarding or alignment of GOCC resources to achieve L2 support capability for Ingenium by end of June. Readiness must be validated against defined production incident scenarios and escalation workflows.
+
+---
+
+## T066 — Establish Ingenium KT Governance and Cadence
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** H-4 (Unified Support) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #jira #cmdb
+- **Relevance:** 85/100
+- **Tags:** #governance #kt #milestones
+- **Description:** Formalise and run the agreed KT governance model, including weekly status calls, monthly milestone reviews, and a final Q2 takeover readiness review. Track risks, dependencies, and readiness feedback via a central JIRA tracker.
+
+---
+
+## T067 — Align GOCC 24x7 Support Coverage to Ingenium KT Schedule
+- **Status:** Open
+- **Created:** 2026-04-08
+- **Objective Chain:** H-4 (Unified Support) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc
+- **Assigned:** Hari Pothakamuri
+- **Systems:** #xmatters #ingenium
+- **Relevance:** 78/100
+- **Tags:** #support-coverage #kt #operations
+- **Description:** Confirm and align 24x7 GOCC DB, Middleware, and Infrastructure support availability with the approved Ingenium KT plan. Ensure on-call coverage and escalation paths are validated for each KT phase.

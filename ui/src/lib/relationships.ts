@@ -10,6 +10,12 @@
  */
 
 import type { Objective, Task, RelationshipMap, RelationshipAdvisory } from "./types";
+import {
+  makeObjectiveIndexes,
+  collectTaskObjectiveRefs,
+  pushTier2ParentViolations,
+  pushTaskRelationshipViolations,
+} from "./relationshipValidators";
 
 /**
  * Builds and validates the relationship map for objectives and tasks.
@@ -24,96 +30,28 @@ export function buildRelationshipMap(
   const taskToTier2: Record<string, string[]> = {};
   const violations: RelationshipAdvisory[] = [];
 
-  const tier1Map = new Map(objectives.filter((o) => o.tier === 1).map((o) => [o.id, o]));
-  const tier2Map = new Map(objectives.filter((o) => o.tier === 2).map((o) => [o.id, o]));
-  const allObjMap = new Map(objectives.map((o) => [o.id, o]));
+  const indexes = makeObjectiveIndexes(objectives);
 
-  tier1Map.forEach((_, id) => { tier1ToTier2[id] = []; });
+  indexes.tier1Map.forEach((_, id) => { tier1ToTier2[id] = []; });
 
   // Build Tier-1 → Tier-2 (a Tier-2 may have one or more Tier-1 parents)
-  tier2Map.forEach((tier2, tier2Id) => {
-    const tier1Parents = tier2.parentObjectiveIds.filter((pid) => tier1Map.has(pid));
-
-    if (tier1Parents.length === 0) {
-      // Determine what parents exist (if any) to give a precise resolution
-      const knownParents = tier2.parentObjectiveIds.filter((pid) => allObjMap.has(pid));
-      violations.push({
-        kind: "orphaned-tier2",
-        subject: tier2Id,
-        relatedIds: [],
-        message: `"${tier2.title}" (${tier2Id}) has no Tier-1 parent.`,
-        resolution: knownParents.length > 0
-          ? `Add a Tier-1 parent ID (e.g. O1–O6) to the **Parent Objective** list in objectives.md for ${tier2Id}. Current entries (${knownParents.join(", ")}) are not Tier-1 objectives.`
-          : `Add a **Parent Objective** line to ${tier2Id} in objectives.md, e.g. \`- O1 (Frictionless Customer Experience)\`.`,
-      });
-    } else {
-      tier1Parents.forEach((parentId) => {
-        if (!tier1ToTier2[parentId].includes(tier2Id)) {
-          tier1ToTier2[parentId].push(tier2Id);
-        }
-      });
-    }
-
-    // Warn about non-Tier-1 parents
-    const invalidParents = tier2.parentObjectiveIds.filter(
-      (pid) => !tier1Map.has(pid) && allObjMap.has(pid)
-    );
-    if (invalidParents.length > 0) {
-      const invalidObjs = invalidParents.map((pid) => {
-        const o = allObjMap.get(pid)!;
-        return `${pid} (Tier-${o.tier})`;
-      });
-      violations.push({
-        kind: "invalid-parent",
-        subject: tier2Id,
-        relatedIds: invalidParents,
-        message: `"${tier2.title}" (${tier2Id}) references non-Tier-1 parent(s): ${invalidObjs.join(", ")}.`,
-        resolution: `In objectives.md, replace the **Parent Objective** entries for ${tier2Id} with Tier-1 IDs (O1–O6). If this is intentional cross-cutting, add the appropriate Tier-1 ID alongside the existing entry.`,
-      });
-    }
+  indexes.tier2Map.forEach((tier2, tier2Id) => {
+    pushTier2ParentViolations(tier2, tier2Id, indexes, tier1ToTier2, violations);
   });
 
-  tier2Map.forEach((_, id) => { tier2ToTasks[id] = []; });
+  indexes.tier2Map.forEach((_, id) => { tier2ToTasks[id] = []; });
 
   // Build Tier-2 → Tasks (many-to-many)
   tasks.forEach((task) => {
-    const tier2Refs = task.objectiveIds.filter((oid) => tier2Map.has(oid));
-    const tier1Refs = task.objectiveIds.filter((oid) => tier1Map.has(oid));
-    const invalidRefs = task.objectiveIds.filter((oid) => !allObjMap.has(oid));
+    const refs = collectTaskObjectiveRefs(task, indexes);
 
-    tier2Refs.forEach((tier2Id) => {
+    refs.tier2Refs.forEach((tier2Id) => {
       if (!tier2ToTasks[tier2Id].includes(task.id)) tier2ToTasks[tier2Id].push(task.id);
       if (!taskToTier2[task.id]) taskToTier2[task.id] = [];
       if (!taskToTier2[task.id].includes(tier2Id)) taskToTier2[task.id].push(tier2Id);
     });
 
-    // Task only links to Tier-1, skipping Tier-2
-    if (tier1Refs.length > 0 && tier2Refs.length === 0) {
-      // Find Tier-2 children of the referenced Tier-1s as concrete suggestions
-      const suggestions = tier1Refs
-        .flatMap((t1id) => (tier1ToTier2[t1id] || []))
-        .slice(0, 3);
-      violations.push({
-        kind: "task-skips-tier2",
-        subject: task.id,
-        relatedIds: tier1Refs,
-        message: `"${task.title}" (${task.id}) links only to Tier-1 objective(s): ${tier1Refs.join(", ")} — no Tier-2 link.`,
-        resolution: suggestions.length > 0
-          ? `Update the **Objective Chain** in tasks.md for ${task.id} to include a Tier-2 objective. Candidates under ${tier1Refs.join(", ")}: ${suggestions.join(", ")}.`
-          : `Update the **Objective Chain** in tasks.md for ${task.id} to include a Tier-2 objective ID between the Tier-1 reference and this task.`,
-      });
-    }
-
-    // References non-existent objective IDs
-    if (invalidRefs.length > 0) {
-      violations.push({
-        kind: "missing-objective",
-        subject: task.id,
-        relatedIds: invalidRefs,
-        message: `"${task.title}" (${task.id}) references objective ID(s) that don't exist: ${invalidRefs.join(", ")}.`,
-        resolution: `In tasks.md, correct the **Objective Chain** for ${task.id}. Check for typos — valid IDs are Tier-1 (O1–O6) or Tier-2 (e.g. H-1, B-1, KL-1). Remove or replace: ${invalidRefs.join(", ")}.`,
-      });
-    }
+    pushTaskRelationshipViolations(task, refs, tier1ToTier2, violations);
   });
 
   return { tier1ToTier2, tier2ToTasks, taskToTier2, violations };

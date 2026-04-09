@@ -198,3 +198,25 @@ describe("Export: Both sections together", () => {
     expect(result.content).not.toContain("## STARTER PROMPTS BY ROLE");
   });
 });
+
+describe("Export: relationship lint enforcement", () => {
+  it("blocks export in fail mode when task links only Tier-1 objective", () => {
+    const data = makePMData();
+    data.settings = {
+      ...data.settings,
+      lint: {
+        ...data.settings.lint,
+        enabled: true,
+        mode: "fail",
+        requireProjectTag: false,
+        requireNamespacedTags: false,
+      },
+    };
+
+    const result = generateExport(data, BASE_OPTIONS);
+    expect(result.content).toBe("");
+    expect(result.errors.length).toBeGreaterThan(0);
+    expect(result.errors[0].field).toBe("lint");
+    expect(result.lintResult?.violations.some((v) => v.rule === "relationship-task-skips-tier2")).toBe(true);
+  });
+});

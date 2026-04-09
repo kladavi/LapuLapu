@@ -78,6 +78,18 @@ function extractHashtags(line: string): string[] {
   return [...tags];
 }
 
+function uniqueInOrder(values: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const value of values) {
+    if (!seen.has(value)) {
+      seen.add(value);
+      out.push(value);
+    }
+  }
+  return out;
+}
+
 // ────────────────────────────────────────────
 // Objectives parser
 // ────────────────────────────────────────────
@@ -341,7 +353,7 @@ export function parseTasks(md: string): Task[] {
       status,
       created,
       objectiveChain,
-      objectiveIds: objIds,
+      objectiveIds: uniqueInOrder(objIds),
       team,
       assigned,
       systems,

@@ -9,7 +9,7 @@ GOCC
 Tier-3
 ETS-Japan reports to Birger Fjaellman
   David Klan
-  Kiran Bond
+  Kiran Bonde
   Balaji Ravi
   Kinichi Nakatsu
   Aleksei Radzeveliuk
