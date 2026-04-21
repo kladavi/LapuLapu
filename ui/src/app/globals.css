@@ -23,13 +23,17 @@
   --th-accent-hover: #1d4ed8;
   --th-accent-light: #eff6ff;   /* accent surface */
   --th-accent-text:  #1e40af;
+  --th-on-accent:    #ffffff;   /* text on accent-filled controls */
 
   --th-success:      #16a34a;
   --th-success-light:#f0fdf4;
+  --th-on-success:   #ffffff;
   --th-warn:         #d97706;
   --th-warn-light:   #fffbeb;
+  --th-on-warn:      #1f2937;
   --th-danger:       #dc2626;
   --th-danger-light: #fef2f2;
+  --th-on-danger:    #ffffff;
 
   color-scheme: light;
 }
@@ -51,13 +55,17 @@
   --th-accent-hover: #52a352;
   --th-accent-light: #2a4023;   /* accent surface */
   --th-accent-text:  #8ed98e;
+  --th-on-accent:    #11250f;   /* darker label for light green accent */
 
   --th-success:      #6abf69;
   --th-success-light:#263a22;
+  --th-on-success:   #11250f;
   --th-warn:         #e0a54a;
   --th-warn-light:   #3a3018;
+  --th-on-warn:      #24180a;
   --th-danger:       #e06060;
   --th-danger-light: #3a2020;
+  --th-on-danger:    #2b0d0d;
 
   color-scheme: dark;
 }
@@ -79,13 +87,17 @@
   --th-accent-hover: #3b82f6;
   --th-accent-light: #1e293b;
   --th-accent-text:  #93c5fd;
+  --th-on-accent:    #0b1b33;
 
   --th-success:      #4ade80;
   --th-success-light:#14291d;
+  --th-on-success:   #06210f;
   --th-warn:         #fbbf24;
   --th-warn-light:   #312e1a;
+  --th-on-warn:      #2a1f05;
   --th-danger:       #f87171;
   --th-danger-light: #2d1a1a;
+  --th-on-danger:    #3a0d0d;
 
   color-scheme: dark;
 }
@@ -110,12 +122,16 @@
   --color-th-accent-hover: var(--th-accent-hover);
   --color-th-accent-light: var(--th-accent-light);
   --color-th-accent-text:  var(--th-accent-text);
+  --color-th-on-accent:    var(--th-on-accent);
   --color-th-success:      var(--th-success);
   --color-th-success-light:var(--th-success-light);
+  --color-th-on-success:   var(--th-on-success);
   --color-th-warn:         var(--th-warn);
   --color-th-warn-light:   var(--th-warn-light);
+  --color-th-on-warn:      var(--th-on-warn);
   --color-th-danger:       var(--th-danger);
   --color-th-danger-light: var(--th-danger-light);
+  --color-th-on-danger:    var(--th-on-danger);
 }
 
 body {
@@ -123,3 +139,55 @@ body {
   color: var(--th-text);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Keep form fields legible in every theme, even when a component forgets explicit colors. */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
+textarea,
+select {
+  background-color: var(--th-surface);
+  color: var(--th-text);
+  border-color: var(--th-border-strong);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--th-text-faint);
+  opacity: 1;
+}
+
+select option {
+  background-color: var(--th-surface);
+  color: var(--th-text);
+}
+
+/* Browser autofill can force low-contrast yellow/white combinations. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--th-text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--th-surface) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Legacy hard-coded gray utility classes mapped to theme-aware tokens. */
+[data-theme] .bg-white { background-color: var(--th-surface) !important; }
+[data-theme] .bg-gray-50,
+[data-theme] .bg-gray-100 { background-color: var(--th-surface-alt) !important; }
+[data-theme] .bg-gray-300 { background-color: var(--th-border-strong) !important; }
+[data-theme] .text-gray-400 { color: var(--th-text-faint) !important; }
+[data-theme] .text-gray-500 { color: var(--th-text-muted) !important; }
+[data-theme] .text-gray-600,
+[data-theme] .text-gray-700,
+[data-theme] .text-gray-800 { color: var(--th-text-secondary) !important; }
+[data-theme] .border-gray-200 { border-color: var(--th-border) !important; }
+[data-theme] .border-gray-300 { border-color: var(--th-border-strong) !important; }
+
+/* Ensure accent/success filled controls use readable foreground text. */
+[data-theme] .bg-th-accent.text-white { color: var(--th-on-accent) !important; }
+[data-theme] .bg-th-success.text-white { color: var(--th-on-success) !important; }
+[data-theme] .bg-th-warn.text-white { color: var(--th-on-warn) !important; }
+[data-theme] .bg-th-danger.text-white { color: var(--th-on-danger) !important; }

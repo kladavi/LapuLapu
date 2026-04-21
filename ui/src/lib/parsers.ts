@@ -662,3 +662,25 @@ export function nextKRId(existing: KeyResult[]): string {
   );
   return `KR${String(maxNum + 1).padStart(3, "0")}`;
 }
+
+export function ensureProjectTag(tags: string[], projectSlug: string): string[] {
+  const normalizedTags = [...new Set(tags.map((tag) => tag.trim()).filter(Boolean))];
+  const normalizedSlug = projectSlug
+    .trim()
+    .replace(/^#project:/i, "")
+    .toLowerCase();
+
+  if (!normalizedSlug) {
+    return normalizedTags;
+  }
+
+  const hasProjectTag = normalizedTags.some((tag) =>
+    tag.toLowerCase().startsWith("#project:")
+  );
+
+  if (hasProjectTag) {
+    return normalizedTags;
+  }
+
+  return [`#project:${normalizedSlug}`, ...normalizedTags];
+}

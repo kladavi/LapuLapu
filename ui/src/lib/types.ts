@@ -168,6 +168,7 @@ export interface ExportOptions {
   includeObjectives: boolean;
   includeTeamsSystems: boolean;
   includeTasks: boolean;
+  includeKeyResults: boolean;
   includeDecisions: boolean;
   includeWeeklySummaries: boolean;
   weeklySummaryCount: number;

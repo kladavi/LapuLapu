@@ -1,0 +1,614 @@
+Date: Fri, 17 Apr 2026 03:44:30 +0000 (UTC)
+Message-ID: <848936410.31.1776397470172@7a6f1d6a36fb>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_30_1312353018.1776397470171"
+
+------=_Part_30_1312353018.1776397470171
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Rapid Recovery Information Hub</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Rapid Recovery Information Hub</h1>
+    <div class=3D"Section1">
+        <p local-id=3D"4947d24636b2"><a class=3D"external-link" data-card-a=
+ppearance=3D"inline" href=3D"https://mfc.sharepoint.com/:f:/r/sites/ets-jap=
+an/Program%20Delivery/Lapu-Lapu/02_Technical_SOP/Rapid_Recovery?csf=3D1&amp=
+;web=3D1&amp;e=3DOgbs1U" local-id=3D"226e808aab33" rel=3D"nofollow">https:/=
+/mfc.sharepoint.com/:f:/r/sites/ets-japan/Program%20Delivery/Lapu-Lapu/02_T=
+echnical_SOP/Rapid_Recovery?csf=3D1&amp;web=3D1&amp;e=3DOgbs1U</a></p>
+<p local-id=3D"a42390b87aab"><strong>Purpose</strong>: This page is the aut=
+horitative, Confluence-ready hub for <strong>Rapid Recovery Plans (RRP)</st=
+rong> for <strong>Ingenium</strong> and other <strong>MLJ Internal Applicat=
+ions</strong> supported by the Prod Support (PS) Team.</p>
+<p local-id=3D"69a8f7c19d11">It explains <strong>when Rapid Recovery is inv=
+oked</strong>, <strong>how it is executed</strong>, and <strong>how RRPs mu=
+st be documented and registered</strong>. Ingenium is the reference impleme=
+ntation; all other MLJ internal apps should follow the same standard.</p>
+<hr local-id=3D"9541bd77-d961-4999-be79-c6043f1cd1e0">
+<h2 local-id=3D"eaf2912d6107" id=3D"RapidRecoveryInformationHub-1.Scope">1.=
+ Scope</h2>
+<p local-id=3D"26fcf9ab18db"><strong>In scope</strong></p>
+<ul local-id=3D"0a8c0e32-fdef-43a6-b5e2-8ce1d82b5b37">
+<li local-id=3D"7cb0a09f-9798-4a1f-98a9-f2708d975926">
+<p local-id=3D"74e073986ba4">Ingenium =E2=80=93 App =E2=80=93 Japan (refere=
+nce / first standard)</p></li>
+<li local-id=3D"71fe99d3-a680-42f2-8735-2fddb0b1ab0a">
+<p local-id=3D"e6dbcd764b51">All other MLJ Internal Applications supported =
+by Prod Support</p></li>
+</ul>
+<p local-id=3D"6c31d02d47b8"><strong>Out of scope</strong></p>
+<ul local-id=3D"5486cc7c-77a6-447b-ad02-17b0fee9f17d">
+<li local-id=3D"2aabc447-4c70-477b-abfb-3e141c3e4c83">
+<p local-id=3D"f75cfa48075b">Non-MLJ applications not supported by PS</p></=
+li>
+<li local-id=3D"468ca000-52b4-46f5-9834-10d346053d69">
+<p local-id=3D"67967051aeb4">Standard incidents where Rapid Recovery criter=
+ia are not met</p></li>
+</ul>
+<hr local-id=3D"1bbbf174-931d-48bf-8d88-46fd7f07c203">
+<h2 local-id=3D"a9e6d54e92ee" id=3D"RapidRecoveryInformationHub-2.WhatisRap=
+idRecovery?">2. What is Rapid Recovery?</h2>
+<p local-id=3D"cf6ab697f9f9">Rapid Recovery is a <strong>pre-approved, step=
+-driven recovery process</strong> used during <strong>Severity 1 or Severit=
+y 2</strong> incidents to restore service as quickly as possible using <str=
+ong>known, rehearsed recovery actions</strong>.</p>
+<p local-id=3D"b768a6c2d622">Key characteristics:</p>
+<ul local-id=3D"8214374b-2f7d-49ba-8619-c186c7129d26">
+<li local-id=3D"f4a6174d-27ac-4f59-be20-a01a53b5556e">
+<p local-id=3D"360a32106418">Executed only under defined <strong>Sev1 / Sev=
+2</strong> conditions</p></li>
+<li local-id=3D"89273948-9a16-4170-8e92-968bf9b0be1b">
+<p local-id=3D"db3fc6a76645"><strong>All numbered steps must be executed</s=
+trong> in sequence</p></li>
+<li local-id=3D"42c77dfd-da26-46b5-bf1b-a20635d86b86">
+<p local-id=3D"2225f9bc9a15">Explicit communications when the <strong>Rapid=
+ Recovery process is invoked</strong></p></li>
+<li local-id=3D"ae6eb5cf-82d9-4cd3-9e95-56797497b08f">
+<p local-id=3D"966553001b46">Focused on <strong>service restoration</strong=
+>, not root-cause resolution</p></li>
+<li local-id=3D"8503f12d-5dc2-4b0d-8ade-dfd450458a23">
+<p local-id=3D"314bf12458dc">Followed by <strong>post-incident change docum=
+entation</strong></p></li>
+</ul>
+<blockquote local-id=3D"51f26b82-933b-4e4a-bad2-c99c6a0e8aaa">
+<p local-id=3D"ea58c25c70d0">If recovery actions deviate from the defined s=
+teps, standard Incident / Change processes apply instead.</p>
+</blockquote>
+<hr local-id=3D"3020256a-4e8c-4c6a-a121-c20643f6c198">
+<h2 local-id=3D"62ba874ff9b2" id=3D"RapidRecoveryInformationHub-3.WhentoInv=
+okeRapidRecovery(Ingeniumexample)">3. When to Invoke Rapid Recovery (Ingeni=
+um example)</h2>
+<p local-id=3D"b454f3ac2b87">Rapid Recovery may be invoked for Ingenium whe=
+n service impact is broad or time=E2=80=91critical, including but not limit=
+ed to:</p>
+<ul local-id=3D"df1cdc92-15ae-4021-b317-adae02ae13d3">
+<li local-id=3D"74063e58-ba6a-47bd-b3db-515d538f097d">
+<p local-id=3D"29dfc34f6d53">System-wide unavailability or severe degradati=
+on</p></li>
+<li local-id=3D"b351f509-d5c4-4d97-93cd-0e8fb585e4b9">
+<p local-id=3D"e6e477180701">DB or data-related incidents requiring restore=
+/recovery</p></li>
+<li local-id=3D"1a9302e9-7ceb-4bd6-b0a8-c7ef95dfc5fe">
+<p local-id=3D"bf127d73e017">Batch or job failures blocking business proces=
+sing</p></li>
+<li local-id=3D"a467dd4c-8ff2-484a-8267-974af9fc608a">
+<p local-id=3D"5951d13469e6">Configuration or deployment failures requiring=
+ rollback</p></li>
+<li local-id=3D"0f796848-0873-4cce-882d-448539a9e9c3">
+<p local-id=3D"64ebd5594886">External dependency or vendor-related failures=
+</p></li>
+<li local-id=3D"331643ef-631b-4efe-8236-3b15a8a125b4">
+<p local-id=3D"9085aebabdf0">Access, credential, or certificate failures</p=
+></li>
+</ul>
+<p local-id=3D"c7046f52fcf6">Rapid Recovery is <strong>not</strong> used fo=
+r minor, localized, or non-production issues.</p>
+<hr local-id=3D"e5f71839-af04-44ac-982d-b7a0f0bdd871">
+<h2 local-id=3D"a3b1196f5bcb" id=3D"RapidRecoveryInformationHub-4.RapidReco=
+veryExecution=E2=80=93StandardFlow">4. Rapid Recovery Execution =E2=80=93 S=
+tandard Flow</h2>
+<p local-id=3D"875dca4015f7">This execution backbone applies to <strong>Ing=
+enium and all MLJ internal apps</strong>.</p>
+<ol start=3D"1" local-id=3D"bbcd82b7-954d-457e-b6fa-0fe0508c2656">
+<li local-id=3D"d954f6a3-f49a-449b-a796-7de4ae355568">
+<p local-id=3D"eb15832c4c0b"><strong>Escalate to Severity 1 / 2</strong></p=
+>
+<ul local-id=3D"18260c7d-902c-43da-bdb9-a4ea7f6e7fca">
+<li local-id=3D"0d32c3ff-4b54-45d5-adfe-77a59c4f04a0">
+<p local-id=3D"a91b54b15f5b">Incident raised and correctly categorized</p><=
+/li>
+</ul></li>
+<li local-id=3D"de571a08-f9bc-4351-bc5e-45dfd9bd1f26">
+<p local-id=3D"8426e11829b1"><strong>Engage required support teams</strong>=
+</p>
+<ul local-id=3D"6f5149a6-86f9-4364-9844-78fc3a47b8fe">
+<li local-id=3D"07d031ff-04a6-4707-bc62-b247112dc083">
+<p local-id=3D"9d1b384b0959">Prod Support</p></li>
+<li local-id=3D"287f32ac-c625-4a2d-b70c-873d26cfb908">
+<p local-id=3D"ac4ad99e5766">Infrastructure</p></li>
+<li local-id=3D"1deb5c1f-eb17-4f84-a2c6-791544615d1f">
+<p local-id=3D"1cb0dcb8fe85">Vendors / third parties (as applicable)</p></l=
+i>
+</ul></li>
+<li local-id=3D"bb0c11d8-f2b7-4217-899e-beaff03947de">
+<p local-id=3D"0d06f48407b8"><strong>Initial communication sent</strong></p=
+>
+<ul local-id=3D"0f9725ee-6f60-4556-9090-15fce5681d56">
+<li local-id=3D"68fce49e-4da6-4f7e-a3c9-451ccce3856b">
+<p local-id=3D"cb150566a5eb">Scope and impact communicated once known</p></=
+li>
+</ul></li>
+<li local-id=3D"0a40738b-be2d-451b-899e-836a83723e1d">
+<p local-id=3D"94a70f9d38d0"><strong>Open conference bridge</strong></p>
+<ul local-id=3D"31cf3dc7-d2d3-477a-94c9-98e1045df55f">
+<li local-id=3D"e7bc007b-cd5c-40d7-9ea8-6ab0d07baf87">
+<p local-id=3D"b6e9be68cec5">All required technical and coordination roles =
+join</p></li>
+</ul></li>
+<li local-id=3D"5a70cce4-e854-4ff6-af1b-c18902b57683">
+<p local-id=3D"0a3113a6a573"><strong>Assess system state &amp; decide recov=
+ery action</strong></p>
+<ul local-id=3D"a81d426e-ef7e-406a-a5a7-0a486ca79467">
+<li local-id=3D"9f8b2c06-72ab-4a76-83b0-259701a31197">
+<p local-id=3D"8eaec45dbab3">Rolling restart / hard restart / restore / rol=
+lback</p></li>
+</ul></li>
+<li local-id=3D"d6280966-b1b2-451d-8d64-cfb56196da07">
+<p local-id=3D"c974b712a29c"><strong>Invoke Rapid Recovery (explicit comms)=
+</strong></p>
+<ul local-id=3D"e23d9dca-58d8-497c-b987-e82813c60a9d">
+<li local-id=3D"256bcb25-26ca-4398-985c-008fc0f2fba1">
+<p local-id=3D"e1a1fa29503c">Notification states that <em>Rapid Recovery is=
+ being invoked</em></p></li>
+</ul></li>
+<li local-id=3D"b8e41837-46c0-4b66-841b-649f34dbf0ee">
+<p local-id=3D"51f7b8fc42e3"><strong>Execute recovery steps</strong></p>
+<ul local-id=3D"c6253892-83bf-43f9-a73b-d7e4ce776309">
+<li local-id=3D"d4b9ea45-41e9-4041-88b7-8a856dd3a69a">
+<p local-id=3D"2b3c9c294de2">Follow the RRP runbook exactly</p></li>
+</ul></li>
+<li local-id=3D"b2fcf4c2-09dd-463c-b87a-aff19e93436a">
+<p local-id=3D"7ad34a3bcc41"><strong>Validate service restoration</strong><=
+/p>
+<ul local-id=3D"ffa8d24e-5c98-4d68-b249-93cac8408b73">
+<li local-id=3D"e4f47580-53c2-44f8-b249-618086ab0b99">
+<p local-id=3D"357ab899d691">Basic functional and technical checks</p></li>
+</ul></li>
+<li local-id=3D"1ebd128c-5515-4819-985b-b92ae4fcfe5f">
+<p local-id=3D"f24a835fed6b"><strong>Confirm recovery time</strong></p>
+<ul local-id=3D"335958b9-5486-4d7d-833c-8fa9e7b9c8e6">
+<li local-id=3D"077fafb6-7973-441c-92b5-ce7cefba5bec">
+<p local-id=3D"adf4454c9080">Update incident record</p></li>
+</ul></li>
+<li local-id=3D"9b82e521-2988-4d0e-bc70-3b0971d72821">
+<p local-id=3D"119a8c0b5e97"><strong>Send recovery notification</strong></p=
+></li>
+<li local-id=3D"43a8fea8-207e-4d38-ae26-4efea07dc619">
+<p local-id=3D"53893d31dd72"><strong>Close bridge</strong></p></li>
+<li local-id=3D"e89a3b71-4eee-4357-ba13-0aa2a2c3c838">
+<p local-id=3D"2529ad4a004f"><strong>Post-incident activity</strong></p>
+<ul local-id=3D"d9fdebf4-f104-4663-b580-150677288696">
+<li local-id=3D"aae7ed35-8304-4249-ac3c-445f71dbc892">
+<p local-id=3D"10472da9d9a7">Create or update Change record (as required)</=
+p></li>
+</ul></li>
+</ol>
+<hr local-id=3D"3d2f7bb7-697a-4246-9b6b-e57d262f758c">
+<h2 local-id=3D"bbda57869dfd" id=3D"RapidRecoveryInformationHub-5.Ingenium=
+=E2=80=93ReferenceRRPCoverage">5. Ingenium =E2=80=93 Reference RRP Coverage=
+</h2>
+<p local-id=3D"41b469d48fe4">Ingenium RRPs must be <strong>runbook-style</s=
+trong> and cover the following recovery scenarios:</p>
+<ul local-id=3D"89f4eebd-184c-4986-a3fc-e71f994972da">
+<li local-id=3D"0200b289-7b28-43c7-9ed8-78ad674860e8">
+<p local-id=3D"529548eb5751"><strong>Data incidents</strong></p></li>
+</ul>
+<p local-id=3D"6d516516ed67">Backup, restore, reconciliation (DB2 full + in=
+cremental restores)</p>
+<ul local-id=3D"58d3a6ef-d70c-4124-9b2c-12e7bb94f67c">
+<li local-id=3D"0f77f202-9703-4bb7-a42f-c7884dd23476">
+<p local-id=3D"31e0ed3e339a"><strong>Batch / job failures</strong></p></li>
+</ul>
+<p local-id=3D"89c669879b51">Controlled restarts, reruns, checkpoint-based =
+recovery</p>
+<ul local-id=3D"97483534-7bb9-48a7-8490-c21bdf15d1b3">
+<li local-id=3D"42e2ea24-0f7f-4a66-b758-e90426885e0a">
+<p local-id=3D"76a5868dbd08"><strong>Configuration / deployment failures</s=
+trong></p></li>
+</ul>
+<p local-id=3D"2ff4ebd10318">Rollback to last known good state</p>
+<ul local-id=3D"89bd0661-74a4-4521-8da9-4ee3c474dcc1">
+<li local-id=3D"f957a001-ee67-419e-bd0e-b016a30cbf88">
+<p local-id=3D"69799daf413b"><strong>Integration &amp; dependency failures<=
+/strong></p></li>
+</ul>
+<p local-id=3D"bcf9dfa0debf">Vendor escalation, mitigation, or workaround</=
+p>
+<ul local-id=3D"bb6b4135-761d-4d7f-b6be-64aed8b55a72">
+<li local-id=3D"4bb0a13c-6388-497b-9bcd-2d24751e9c53">
+<p local-id=3D"e64ef7bc1063"><strong>Access / credential issues</strong></p=
+></li>
+</ul>
+<p local-id=3D"68db79ff6d7e">Break-glass access and remediation steps</p>
+<ul local-id=3D"e88874ce-310d-4f1d-b1dd-4bb9aa2dc084">
+<li local-id=3D"e20786f1-f6b6-4656-848a-368538f31d2f">
+<p local-id=3D"509ad3cb747b"><strong>Release-related instability</strong></=
+p></li>
+</ul>
+<p local-id=3D"ff4893ea9442">Partial rollback or stabilization actions</p>
+<p local-id=3D"360383817603">These scenarios form the baseline for other ML=
+J internal applications.</p>
+<hr local-id=3D"63af85a2-2cb4-4f7d-bcbc-2a6a5a04c70d">
+<h2 local-id=3D"9c8bb27fcbd8" id=3D"RapidRecoveryInformationHub-6.WhatanRRP=
+DocumentMustContain">6. What an RRP Document Must Contain</h2>
+<p local-id=3D"92ce287ff4c4">Each Rapid Recovery Plan must include:</p>
+<h3 local-id=3D"a964c2f1e6b7" id=3D"RapidRecoveryInformationHub-6.1CoreReco=
+veryTable">6.1 Core Recovery Table</h3>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"e403c070-6607-43d0-a520-d0c=
+a11d2fb7a" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"9400d157-0d6e-411e-a57c-16b20d8dd6bc">
+<td data-local-id=3D"7e80bebb-b9f1-4d37-a3e7-8b675e856415" class=3D"conflue=
+nceTd">
+<p local-id=3D"ad09b77803e0">Step</p></td>
+<td data-local-id=3D"0d3d32cf-d289-46f0-b265-8a58c50dc7b2" class=3D"conflue=
+nceTd">
+<p local-id=3D"f8ae7480eef8">Action</p></td>
+<td data-local-id=3D"42cae046-caae-4f46-a6cd-28038da689a1" class=3D"conflue=
+nceTd">
+<p local-id=3D"282c23c7f6a1">Owner</p></td>
+<td data-local-id=3D"f8da3986-8a5b-4ff0-9080-903f4de52220" class=3D"conflue=
+nceTd">
+<p local-id=3D"8bf6786b1c3e">Expected Time</p></td>
+</tr>
+<tr data-local-id=3D"072726a5-6ca4-43e5-bc0f-d63f615bec7b">
+<td data-local-id=3D"93d641db-8ecd-4c90-ae81-9acab8e91e6d" class=3D"conflue=
+nceTd">
+<p local-id=3D"ceba5710a041">1</p></td>
+<td data-local-id=3D"76466664-800a-4555-8839-4d04264b7bcd" class=3D"conflue=
+nceTd">
+<p local-id=3D"3c28bc397929">Example: Escalate to Sev2</p></td>
+<td data-local-id=3D"7a14128c-dd46-4616-b434-02030d78d7a8" class=3D"conflue=
+nceTd">
+<p local-id=3D"d5eea3acf313">IPC / PS</p></td>
+<td data-local-id=3D"440ec927-fe43-40ae-9e61-d158dea2c071" class=3D"conflue=
+nceTd">
+<p local-id=3D"9afb0f057371">=E2=89=A415 mins</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"e16bf7a8cdae">All steps must be explicit, actionable, and or=
+dered.</p>
+<h3 local-id=3D"52d0f190662b" id=3D"RapidRecoveryInformationHub-6.2Required=
+ContentSections">6.2 Required Content Sections</h3>
+<ul local-id=3D"a977219c-901d-49b5-bc65-2c18bcb3f664">
+<li local-id=3D"34f16e08-1401-43cf-a442-94cacd5920f5">
+<p local-id=3D"213d7be0942c">Application taxonomy &amp; integrations</p></l=
+i>
+<li local-id=3D"58f15e0e-c6e0-4ad6-a028-c9ea0e512002">
+<p local-id=3D"db3aac6a3e4b">Technology stack and support groups</p></li>
+<li local-id=3D"8d20ed63-5057-46bf-9dbb-617da1794adf">
+<p local-id=3D"ee61addaf3e2">Detailed triage and recovery sequence</p></li>
+<li local-id=3D"92fe4d91-2b4e-484c-82b9-37cfdbbe2aeb">
+<p local-id=3D"18cb969cc3bd">Vendor and third=E2=80=91party coordination</p=
+></li>
+<li local-id=3D"137f59ea-7267-42c9-8de9-269666bb291e">
+<p local-id=3D"4e84e964f631">RTO and impact considerations</p></li>
+<li local-id=3D"a08c55e5-1461-4f92-85ca-3369575a5ade">
+<p local-id=3D"324481f3e62d">Contacts and appendices</p></li>
+</ul>
+<h3 local-id=3D"45a7f42fd281" id=3D"RapidRecoveryInformationHub-6.3Document=
+Control">6.3 Document Control</h3>
+<ul local-id=3D"d813c853-e4dd-4932-b75e-1e798d35e258">
+<li local-id=3D"6d95edf4-e369-4904-927f-928528acfd69">
+<p local-id=3D"5b0cb048ebf7">Version history</p></li>
+<li local-id=3D"59572075-78fc-43dd-be7d-85804a4f0f55">
+<p local-id=3D"af0ff2529dbf">Review cadence</p></li>
+<li local-id=3D"ce2bb0bf-24ba-4aba-8c9c-e7be983840ff">
+<p local-id=3D"61e78e2df81c">Identification of major / medium / minor updat=
+es</p></li>
+</ul>
+<hr local-id=3D"d746eb1c-7817-4e48-8009-c1417ed8df62">
+<h2 local-id=3D"523feecb5550" id=3D"RapidRecoveryInformationHub-7.Registeri=
+ngtheRRP(Mandatory)">7. Registering the RRP (Mandatory)</h2>
+<p local-id=3D"fbe1f8a0f142">Once prepared, <strong>every RRP must be regis=
+tered</strong> as a <strong>ServiceNow Knowledge Article</strong> using:</p=
+>
+<blockquote local-id=3D"6e950a62-8615-4926-8b7b-db21ef93e023">
+<p local-id=3D"775687b4177e"><strong>Create Rapid Recovery Plan (RRP) Knowl=
+edge Article =E2=80=93 myServices</strong></p>
+</blockquote>
+<p local-id=3D"a00bd7f30c5d">Minimum registration requirements:</p>
+<ul local-id=3D"86c1cabe-b482-4f14-963e-6c48150b15ef">
+<li local-id=3D"48f6ea67-fafd-468c-83c8-f2e1ec4999e5">
+<p local-id=3D"56f2c9c5f572">Correct <strong>Application / CI reference</st=
+rong></p></li>
+<li local-id=3D"1b78994d-9f17-4777-998e-a5f47ece0e77">
+<p local-id=3D"d256e8dac540">Knowledge Base =3D ITIL Knowledge</p></li>
+<li local-id=3D"2b45110f-782e-4e53-bce6-d45a812d9d42">
+<p local-id=3D"2a6a5e29086b">Category =3D Global RRP</p></li>
+<li local-id=3D"58cac800-72e9-44b7-99a2-b8bb0020b037">
+<p local-id=3D"a0b9db94e26e">Valid Through date set</p></li>
+<li local-id=3D"f221756d-78c9-4a84-860b-d66974a63573">
+<p local-id=3D"f8286ec11781">All required sections populated (not placehold=
+ers)</p></li>
+</ul>
+<p local-id=3D"4ed5343e75f0">The Knowledge Article is the <strong>system of=
+ record</strong> for RRP compliance and reporting.</p>
+<hr local-id=3D"50e0b034-28a6-4d7e-ab0f-bf36ec757fd7">
+<h2 local-id=3D"2221c9e885c3" id=3D"RapidRecoveryInformationHub-8.UsingInge=
+niumasthePattern">8. Using Ingenium as the Pattern</h2>
+<p local-id=3D"d9b8eee2c18d">Ingenium is the <strong>first standardized imp=
+lementation</strong>. For other MLJ internal applications:</p>
+<ol start=3D"1" local-id=3D"6c45fed9-b37a-4581-90fa-a1a326c14e6e">
+<li local-id=3D"e437d383-268f-4602-9c32-ee18397474d8">
+<p local-id=3D"2fa0e1db8d52">Reuse the same structure and level of detail</=
+p></li>
+<li local-id=3D"5a217f61-7085-4f7b-89a9-4c5301522bf9">
+<p local-id=3D"5cea15f12e15">Adapt recovery steps to the application=E2=80=
+=99s architecture</p></li>
+<li local-id=3D"ad004436-1014-45ae-9b78-f8d0611be0a5">
+<p local-id=3D"67f1f9bf1b1a">Register each RRP individually</p></li>
+<li local-id=3D"af9b504a-db81-4ed4-9ea6-6ec61bb68a85">
+<p local-id=3D"1b4f94ed7b3f">Keep recovery instructions operational (not th=
+eoretical)</p></li>
+</ol>
+<p local-id=3D"46aa5c5e462f">Consistency across apps is critical for scale,=
+ governance, and future automation.</p>
+<hr local-id=3D"893301fe-fc45-4f47-930c-1d9fc4896d9e">
+<h2 local-id=3D"0a50e9f3015f" id=3D"RapidRecoveryInformationHub-9.Ownership=
+&amp;Expectations">9. Ownership &amp; Expectations</h2>
+<ul local-id=3D"14bd3043-f4ac-4b9f-a6e9-a31e5706fd5b">
+<li local-id=3D"9c89f607-c980-40cb-9906-74b723b83624">
+<p local-id=3D"47f4c7105191"><strong>Prod Support</strong>: Execute Rapid R=
+ecovery during incidents</p></li>
+<li local-id=3D"2bc35d45-e870-4da2-8006-154ff8bb7f9f">
+<p local-id=3D"268ad3e00a2b"><strong>Application Owners / SMEs</strong>: De=
+fine accurate recovery steps</p></li>
+<li local-id=3D"e7382ea2-9eee-40d7-b7fc-a97aa386561a">
+<p local-id=3D"68d8ad1e6dbf"><strong>Registrars</strong>: Ensure RRP Knowle=
+dge Articles are complete and current</p></li>
+</ul>
+<p local-id=3D"0adfcbe58ccb">Rapid Recovery documentation is <strong>operat=
+ional infrastructure</strong>, not optional documentation.</p>
+<hr local-id=3D"0b6fc72a-20ad-466e-9b78-c4e0e71a2f67">
+<h2 local-id=3D"535384711d70" id=3D"RapidRecoveryInformationHub-10.RelatedL=
+inks(tobeupdated)">10. Related Links (to be updated)</h2>
+<ul local-id=3D"89a71609-cfa8-4d50-80fb-d064602282ba">
+<li local-id=3D"695f99ce-66d8-44b4-9193-d8010bb391e5">
+<p local-id=3D"655b51bb6b7d">Ingenium RRP =E2=80=93 Knowledge Article</p></=
+li>
+<li local-id=3D"05807266-28b3-43a5-9c63-d1df9db16e96">
+<p local-id=3D"caac75c54bd1">DB Restore Procedures</p></li>
+<li local-id=3D"4d74fb2e-b323-4535-8629-c53c059bb24b">
+<p local-id=3D"a80de712a9d5">Rapid Recovery SOP Folder</p></li>
+<li local-id=3D"937282f3-3647-401b-a1fa-baea7d61a0d2">
+<p local-id=3D"4029fabb3a44">RRP Automation (future state)</p></li>
+</ul>
+<p local-id=3D"71c7071d8837"></p>
+    </div>
+</body>
+</html>
+------=_Part_30_1312353018.1776397470171--

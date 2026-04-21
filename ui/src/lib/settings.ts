@@ -16,6 +16,7 @@ export interface AppSettings {
     includeObjectives: boolean;
     includeTeamsSystems: boolean;
     includeTasks: boolean;
+    includeKeyResults: boolean;
     includeDecisions: boolean;
     includeWeeklySummaries: boolean;
     includeInbox: boolean;
@@ -63,6 +64,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
     includeObjectives: true,
     includeTeamsSystems: true,
     includeTasks: true,
+    includeKeyResults: true,
     includeDecisions: true,
     includeWeeklySummaries: true,
     includeInbox: false,
@@ -216,6 +218,7 @@ export function validateSettings(settings: unknown): SettingsValidationError[] {
     expectBoolean(exp.includeObjectives, "export.includeObjectives", errors);
     expectBoolean(exp.includeTeamsSystems, "export.includeTeamsSystems", errors);
     expectBoolean(exp.includeTasks, "export.includeTasks", errors);
+    expectBoolean(exp.includeKeyResults, "export.includeKeyResults", errors);
     expectBoolean(exp.includeDecisions, "export.includeDecisions", errors);
     expectBoolean(exp.includeWeeklySummaries, "export.includeWeeklySummaries", errors);
     expectBoolean(exp.includeInbox, "export.includeInbox", errors);

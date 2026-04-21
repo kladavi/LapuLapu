@@ -4,6 +4,7 @@ import {
   serializeKeyResult,
   serializeKeyResults,
   computeKRProgress,
+  ensureProjectTag,
   nextKRId,
 } from "../lib/parsers";
 import type { KeyResult } from "../lib/types";
@@ -387,6 +388,29 @@ describe("computeKRProgress", () => {
   it("handles zero range with current below target", () => {
     const kr = makeKR({ startValue: 50, targetValue: 50, currentValue: 40 });
     expect(computeKRProgress(kr)).toBe(0);
+  });
+});
+
+describe("ensureProjectTag", () => {
+  it("adds the default project tag when none exists", () => {
+    expect(ensureProjectTag(["#domain:cloud"], "lapu-lapu")).toEqual([
+      "#project:lapu-lapu",
+      "#domain:cloud",
+    ]);
+  });
+
+  it("preserves an existing project tag", () => {
+    expect(ensureProjectTag(["#project:epsilon", "#domain:cloud"], "lapu-lapu")).toEqual([
+      "#project:epsilon",
+      "#domain:cloud",
+    ]);
+  });
+
+  it("deduplicates and ignores blank tags", () => {
+    expect(ensureProjectTag(["", "#domain:cloud", "#domain:cloud"], "lapu-lapu")).toEqual([
+      "#project:lapu-lapu",
+      "#domain:cloud",
+    ]);
   });
 });
 

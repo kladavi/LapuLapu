@@ -43,9 +43,9 @@
 
 ### GOCC-Observability
 
-- **Lead:** Debamalya Das
+- **Lead:** Joan Lee
 - **Reports to:** Hari Pothakamuri
-- **Members:** Sreelekshmi S, Vignesh M
+- **Members:** Debamalya Das, Sreelekshmi S, Vignesh M
 - **Primary Systems:** #system:newrelic #system:moogsoft #system:xmatters #system:adobe #system:cmdb #system:apm
 - **Work Types:** Observability maturity (OMM), digital property dashboarding, R2R delivery, alert standardisation, APM onboarding, synthetics monitoring
 - **Objective Alignment:** T003 (Rapid Recovery Plan), T004 (Digital Property Dashboarding), T005 (OMM L2 for Gold Apps), O1, O4

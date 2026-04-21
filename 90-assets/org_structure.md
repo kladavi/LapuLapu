@@ -19,7 +19,7 @@ ETS-Japan reports to Birger Fjaellman
 
 GOCC reports to Hari Pothakamuri
   Jonan Tan Pangan
-  Debamalya Das
+  Joan Lee
 
 Tier-4
 GOCC-Monitoring reports to Jonan Tan Pangan
@@ -28,6 +28,7 @@ GOCC-Monitoring reports to Jonan Tan Pangan
   Dennis Talento
   Yam Villanueva
   Rae Judavar
-GOCC-Observability reports to Debamalya Das
+GOCC-Observability reports to Joan Lee
+  Debamalya Das
   Sreelekshmi S
   Vignesh M

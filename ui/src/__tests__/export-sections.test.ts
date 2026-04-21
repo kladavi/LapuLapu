@@ -61,7 +61,25 @@ function makePMData(settingsOverrides: Partial<AppSettings["export"]> = {}): PMD
       },
     ],
     decisions: [],
-    keyResults: [],
+    keyResults: [
+      {
+        id: "KR001",
+        title: "Reduce P1 MTTR",
+        objectiveId: "O1",
+        metricType: "numeric",
+        startValue: 10,
+        targetValue: 5,
+        currentValue: 7,
+        targetDate: "2026-06-30",
+        status: "On Track",
+        created: "2026-03-01",
+        tags: ["#project:lapu-lapu"],
+        description: "Lower MTTR through automation",
+        progressLog: [],
+        changeLog: [],
+        raw: "",
+      },
+    ],
     weeklySummaries: [
       {
         filename: "2026-W13.md",
@@ -89,6 +107,7 @@ const BASE_OPTIONS: ExportOptions = {
   includeObjectives: true,
   includeTeamsSystems: false,
   includeTasks: true,
+  includeKeyResults: true,
   includeDecisions: false,
   includeWeeklySummaries: true,
   weeklySummaryCount: 1,
@@ -196,6 +215,14 @@ describe("Export: Both sections together", () => {
     expect(result.errors).toEqual([]);
     expect(result.content).not.toContain("## HOW TO USE THIS PACK");
     expect(result.content).not.toContain("## STARTER PROMPTS BY ROLE");
+  });
+
+  it("includes key_results payload when includeKeyResults is true", () => {
+    const data = makePMData();
+    const result = generateExport(data, { ...BASE_OPTIONS, format: "json" });
+    expect(result.errors).toEqual([]);
+    expect(result.content).toContain('"key_results"');
+    expect(result.content).toContain('"KR001"');
   });
 });
 

@@ -5,6 +5,7 @@ import { usePMData } from "../context/PMContext";
 import type { KeyResult, KeyResultStatus } from "../lib/types";
 import {
   computeKRProgress,
+  ensureProjectTag,
   nextKRId,
   serializeKeyResults,
 } from "../lib/parsers";
@@ -100,6 +101,8 @@ export function KeyResultsTab() {
   const [progressDate, setProgressDate] = useState(today);
   const [progressValue, setProgressValue] = useState("");
   const [progressComment, setProgressComment] = useState("");
+  const defaultProjectSlug =
+    data?.settings?.project?.defaultProjectSlug || data?.projects?.[0]?.slug || "";
 
   // Objectives for dropdown
   const objectives = useMemo(() => data?.objectives ?? [], [data]);
@@ -194,9 +197,12 @@ export function KeyResultsTab() {
   // ── Create / Update KR ──
   const handleSaveForm = useCallback(async () => {
     if (!data) return;
-    const tags = formTags
-      .split(/\s+/)
-      .filter((t) => t.startsWith("#") && t.length > 1);
+    const tags = ensureProjectTag(
+      formTags
+        .split(/\s+/)
+        .filter((t) => t.startsWith("#") && t.length > 1),
+      defaultProjectSlug
+    );
     const isEdit = editingKR !== null;
 
     const kr: KeyResult = {
@@ -255,7 +261,7 @@ export function KeyResultsTab() {
     setShowForm(false);
     setEditingKR(null);
     setSelectedId(kr.id);
-  }, [data, formData, formTags, editingKR, today, saveKeyResults]);
+  }, [data, defaultProjectSlug, formData, formTags, editingKR, today, saveKeyResults]);
 
   // ── Add Progress Entry ──
   const handleAddProgress = useCallback(async () => {
@@ -306,21 +312,21 @@ export function KeyResultsTab() {
         tags: kr.tags,
         description: kr.description,
       });
-      setFormTags(kr.tags.join(" "));
+      setFormTags(ensureProjectTag(kr.tags, defaultProjectSlug).join(" "));
       setEditingKR(kr);
       setShowForm(true);
     },
-    []
+    [defaultProjectSlug]
   );
 
   // ── Open create form ──
   const openCreateForm = useCallback(() => {
     const id = nextKRId(data?.keyResults ?? []);
     setFormData(emptyKRForm(id, today));
-    setFormTags("");
+    setFormTags(ensureProjectTag([], defaultProjectSlug).join(" "));
     setEditingKR(null);
     setShowForm(true);
-  }, [data, today]);
+  }, [data, defaultProjectSlug, today]);
 
   if (!data) return null;
 
