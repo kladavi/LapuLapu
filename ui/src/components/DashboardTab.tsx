@@ -2,15 +2,16 @@
 
 import React, { useState } from "react";
 import { usePMData } from "../context/PMContext";
+import { computeKRProgress } from "../lib/parsers";
 import type { NavFilter } from "../app/page";
 
-type TabId = "dashboard" | "objectives" | "tasks" | "weekly" | "export";
+type TabId = "dashboard" | "objectives" | "keyresults" | "tasks" | "weekly" | "export";
 
 interface Props {
   onNavigate: (tab: TabId, filter?: NavFilter) => void;
 }
 
-type SectionId = "objectives" | "open" | "closed" | "decisions" | "teams" | "systems";
+type SectionId = "objectives" | "keyresults" | "open" | "closed" | "decisions" | "teams" | "systems";
 
 export function DashboardTab({ onNavigate }: Props) {
   const { data } = usePMData();
@@ -52,6 +53,15 @@ export function DashboardTab({ onNavigate }: Props) {
       color: "bg-blue-50 text-blue-700 border-blue-200",
       hasTab: true,
       tabAction: () => onNavigate("objectives"),
+    },
+    {
+      id: "keyresults",
+      label: "Key Results",
+      value: data.keyResults.length,
+      icon: "📈",
+      color: "bg-purple-50 text-purple-700 border-purple-200",
+      hasTab: true,
+      tabAction: () => onNavigate("keyresults"),
     },
     {
       id: "open",
@@ -323,6 +333,52 @@ export function DashboardTab({ onNavigate }: Props) {
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Key Results */}
+            {expandedSection === "keyresults" && (
+              <div className="space-y-2">
+                {data.keyResults.length === 0 && <p className="text-sm text-th-text-faint italic">No key results registered.</p>}
+                {data.keyResults.map((kr) => {
+                  const progress = computeKRProgress(kr);
+                  const progressColor =
+                    progress >= 75 ? "bg-green-500" :
+                    progress >= 50 ? "bg-yellow-500" :
+                    progress >= 25 ? "bg-orange-500" : "bg-red-500";
+                  const statusColor: Record<string, string> = {
+                    "Not Started": "bg-gray-100 text-gray-600",
+                    "On Track": "bg-green-100 text-green-700",
+                    "At Risk": "bg-yellow-100 text-yellow-700",
+                    "Behind": "bg-red-100 text-red-700",
+                    "Complete": "bg-blue-100 text-blue-700",
+                  };
+                  const obj = data.objectives.find((o) => o.id === kr.objectiveId);
+                  return (
+                    <div key={kr.id} className="p-2 rounded-lg hover:bg-th-surface-alt">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-xs font-bold text-purple-700 bg-purple-100 rounded px-1.5 py-0.5 shrink-0">
+                          {kr.id}
+                        </span>
+                        <span className="text-sm font-medium text-th-text">{kr.title}</span>
+                        <span className={`text-[10px] font-medium rounded-full px-2 py-0.5 ml-auto shrink-0 ${statusColor[kr.status] || "bg-gray-100 text-gray-600"}`}>
+                          {kr.status}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 ml-10">
+                        <div className="flex-1 bg-th-surface-alt rounded-full h-2">
+                          <div className={`h-2 rounded-full transition-all ${progressColor}`} style={{ width: `${Math.min(progress, 100)}%` }} />
+                        </div>
+                        <span className="text-xs text-th-text-muted w-10 text-right">{progress}%</span>
+                      </div>
+                      <div className="flex flex-wrap gap-3 mt-1 ml-10 text-xs text-th-text-muted">
+                        <span>🎯 {kr.objectiveId}{obj ? ` — ${obj.title}` : ""}</span>
+                        <span>📅 {kr.targetDate || "—"}</span>
+                        <span>{kr.metricType === "boolean" ? "☑️ Boolean" : `📊 ${kr.currentValue} / ${kr.targetValue}`}</span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>

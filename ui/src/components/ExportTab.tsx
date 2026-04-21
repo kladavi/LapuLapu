@@ -18,6 +18,7 @@ export function ExportTab() {
     includeObjectives: true,
     includeTeamsSystems: true,
     includeTasks: true,
+    includeKeyResults: true,
     includeDecisions: true,
     includeWeeklySummaries: true,
     weeklySummaryCount: 1,
@@ -43,6 +44,7 @@ export function ExportTab() {
         projectSlug: defaultSlug,
         format: s?.export?.defaultFormat || prev.format,
         weeklySummaryCount: s?.export?.weeklySummaryCount || prev.weeklySummaryCount,
+        includeKeyResults: s?.export?.includeKeyResults ?? prev.includeKeyResults,
       }));
       setInitialized(true);
     }
@@ -72,6 +74,11 @@ export function ExportTab() {
       key: "includeTasks",
       label: "Tasks",
       description: "All tasks from 02-work/tasks.md",
+    },
+    {
+      key: "includeKeyResults",
+      label: "Key Results",
+      description: "Objective-linked outcomes from 02-work/key-results.md",
     },
     {
       key: "includeDecisions",

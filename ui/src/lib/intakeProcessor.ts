@@ -1,6 +1,11 @@
 // ── Intake processor: builds LLM prompts and parses LLM responses ──
 
 import type { PMData } from "./types";
+import type { RelationshipAdvisory } from "./types";
+import type { LintResult } from "./linter";
+import { parseTasks, parseDecisions } from "./parsers";
+import { buildRelationshipMap } from "./relationships";
+import { lintRepo } from "./linter";
 
 /**
  * A parsed result item from LLM output — either a task or a decision.
@@ -11,6 +16,54 @@ export interface IntakeResult {
   title: string;
   raw: string;           // full markdown block
   approved: boolean;     // user toggle — default true
+}
+
+export interface IntakePreflightResult {
+  lintResult: LintResult;
+  relationshipViolations: RelationshipAdvisory[];
+  approvedTaskCount: number;
+  approvedDecisionCount: number;
+}
+
+export function validateApprovedIntakeResults(
+  results: IntakeResult[],
+  data: PMData
+): IntakePreflightResult {
+  const approvedTasks = results
+    .filter((r) => r.approved && r.type === "task")
+    .map((r) => r.raw)
+    .join("\n\n---\n\n");
+
+  const approvedDecisions = results
+    .filter((r) => r.approved && r.type === "decision")
+    .map((r) => r.raw)
+    .join("\n\n---\n\n");
+
+  const parsedTasks = approvedTasks.trim()
+    ? parseTasks(approvedTasks)
+    : [];
+
+  const parsedDecisions = approvedDecisions.trim()
+    ? parseDecisions(approvedDecisions)
+    : [];
+
+  const stagedTasks = [...data.tasks, ...parsedTasks];
+  const stagedDecisions = [...data.decisions, ...parsedDecisions];
+  const stagedRelationships = buildRelationshipMap(data.objectives, stagedTasks);
+
+  const stagedData: PMData = {
+    ...data,
+    tasks: stagedTasks,
+    decisions: stagedDecisions,
+    relationships: stagedRelationships,
+  };
+
+  return {
+    lintResult: lintRepo(stagedData, data.settings),
+    relationshipViolations: stagedRelationships.violations,
+    approvedTaskCount: parsedTasks.length,
+    approvedDecisionCount: parsedDecisions.length,
+  };
 }
 
 // ────────────────────────────────────────────

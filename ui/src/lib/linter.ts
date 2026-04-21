@@ -6,6 +6,7 @@
 
 import type { PMData } from "./types";
 import type { AppSettings } from "./settings";
+import { buildRelationshipMap } from "./relationships";
 
 export type LintSeverity = "error" | "warning";
 
@@ -132,6 +133,17 @@ export function lintRepo(data: PMData, settings: AppSettings): LintResult {
         });
       }
     }
+  }
+
+  // ── Check 5: Objective relationship advisories (Tier hierarchy + missing IDs) ──
+  const relationshipMap = buildRelationshipMap(data.objectives, data.tasks);
+  for (const advisory of relationshipMap.violations) {
+    violations.push({
+      rule: `relationship-${advisory.kind}`,
+      severity,
+      entity: advisory.subject,
+      message: advisory.message,
+    });
   }
 
   const errorCount = violations.filter((v) => v.severity === "error").length;

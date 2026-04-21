@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { usePMData } from "../context/PMContext";
 import type { Objective, Task, RelationshipAdvisory, RelationshipMap } from "../lib/types";
+import { computeKRProgress } from "../lib/parsers";
 
 // ── Chevron icon component ──
 function Chevron({ open, className = "" }: { open: boolean; className?: string }) {
@@ -622,6 +623,68 @@ export function ObjectivesTab({ initialTier, initialOwnerTag }: Props) {
               </ul>
             </div>
           )}
+
+          {/* Key Results linked to this objective */}
+          {data.keyResults && (() => {
+            const linkedKRs = data.keyResults.filter(
+              (kr) => kr.objectiveId === selected.id
+            );
+            return (
+              <div>
+                <h4 className="text-xs font-bold text-gray-500 uppercase mb-1">
+                  Key Results ({linkedKRs.length})
+                </h4>
+                {linkedKRs.length > 0 ? (
+                  <div className="space-y-2">
+                    {linkedKRs.map((kr) => {
+                      const progress = computeKRProgress(kr);
+                      return (
+                        <div
+                          key={kr.id}
+                          className="text-sm border border-th-border rounded-lg p-2 bg-th-surface-alt"
+                        >
+                          <div className="flex items-center justify-between mb-1">
+                            <div>
+                              <span className="font-mono text-xs font-bold text-purple-700">
+                                {kr.id}
+                              </span>{" "}
+                              <span className="text-th-text-secondary">
+                                {kr.title}
+                              </span>
+                            </div>
+                            <span className="text-xs text-th-text-muted">
+                              {progress}%
+                            </span>
+                          </div>
+                          <div className="w-full bg-th-surface rounded-full h-1.5">
+                            <div
+                              className={`h-1.5 rounded-full transition-all ${
+                                progress >= 75
+                                  ? "bg-green-500"
+                                  : progress >= 50
+                                    ? "bg-yellow-500"
+                                    : progress >= 25
+                                      ? "bg-orange-500"
+                                      : "bg-red-500"
+                              }`}
+                              style={{ width: `${Math.min(progress, 100)}%` }}
+                            />
+                          </div>
+                          <div className="text-xs text-gray-400 mt-0.5">
+                            {kr.status} · {kr.metricType === "boolean" ? "Boolean" : `${kr.currentValue} / ${kr.targetValue}`} · 📅 {kr.targetDate || "—"}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-xs text-gray-400 italic">
+                    No key results linked to this objective.
+                  </p>
+                )}
+              </div>
+            );
+          })()}
 
           {/* Related tasks */}
           <div>

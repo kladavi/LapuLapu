@@ -9,10 +9,27 @@ param(
     [int]$Port = 3000
 )
 
-$ErrorActionPreference = "Continue"
-$uiDir = "c:\Users\kladavi\Projects\LapuLapu\ui"
+$ErrorActionPreference = "Stop"
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$uiDir = (Resolve-Path (Join-Path $scriptDir ".." )).Path
+$packageJsonPath = Join-Path $uiDir "package.json"
+$lockFilePath = Join-Path $uiDir "package-lock.json"
+$nodeModulesDir = Join-Path $uiDir "node_modules"
+$nextBin = Join-Path $uiDir "node_modules\.bin\next.cmd"
 
 Write-Host "`n=== LapuLapu Dev Server Restart ===" -ForegroundColor Cyan
+
+if (-not (Test-Path $packageJsonPath)) {
+    Write-Host "       ERROR: package.json not found at $packageJsonPath" -ForegroundColor Red
+    exit 1
+}
+
+$nodeCommand = Get-Command node -ErrorAction SilentlyContinue
+$npmCommand = Get-Command npm -ErrorAction SilentlyContinue
+if (-not $nodeCommand -or -not $npmCommand) {
+    Write-Host "       ERROR: node and npm must be available on PATH." -ForegroundColor Red
+    exit 1
+}
 
 # ── 1) Kill any existing node processes ──
 Write-Host "[1/4] Stopping existing node processes..." -ForegroundColor Yellow
@@ -59,12 +76,23 @@ Write-Host "       Working directory: $uiDir" -ForegroundColor Gray
 Write-Host ""
 
 Set-Location $uiDir
-# Use the full path to the next binary to avoid CWD resolution issues
-# when this script is invoked via powershell -File from another directory.
-$nextBin = Join-Path $uiDir "node_modules\.bin\next.ps1"
-if (Test-Path $nextBin) {
-    & $nextBin dev -p $Port
-} else {
-    # Fallback: use npx (works when CWD is correct)
-    npx next dev -p $Port
+if (-not (Test-Path $nodeModulesDir) -or -not (Test-Path $nextBin)) {
+    Write-Host "       Dependencies missing; installing..." -ForegroundColor Yellow
+    if (Test-Path $lockFilePath) {
+        & $npmCommand.Source ci
+    } else {
+        & $npmCommand.Source install
+    }
+
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "       ERROR: dependency install failed." -ForegroundColor Red
+        exit 1
+    }
 }
+
+if (-not (Test-Path $nextBin)) {
+    Write-Host "       ERROR: next.cmd not found after dependency install." -ForegroundColor Red
+    exit 1
+}
+
+& $nextBin dev -p $Port

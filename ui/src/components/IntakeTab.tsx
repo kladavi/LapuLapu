@@ -6,6 +6,7 @@ import {
   buildIntakePrompt,
   parseIntakeResponse,
   parseInboxEntries,
+  validateApprovedIntakeResults,
   type IntakeResult,
   type InboxEntry,
 } from "../lib/intakeProcessor";
@@ -108,6 +109,11 @@ export function IntakeTab() {
 
   const hasInput = combinedInput.trim().length > 0;
 
+  const reviewPreflight = useMemo(() => {
+    if (!data || phase !== "review") return null;
+    return validateApprovedIntakeResults(results, data);
+  }, [data, phase, results]);
+
   // ── Phase 1 → 2: Generate prompt ──
   const handleGeneratePrompt = useCallback(() => {
     if (!data || !hasInput) return;
@@ -151,6 +157,19 @@ export function IntakeTab() {
   // ── Phase 3 → 4: Apply approved changes ──
   const handleApply = useCallback(async () => {
     if (!data) return;
+    const preflight = validateApprovedIntakeResults(results, data);
+    if (preflight.lintResult.blocked) {
+      const top3 = preflight.lintResult.violations
+        .slice(0, 3)
+        .map((v) => `${v.entity}: ${v.message}`)
+        .join(" | ");
+      setFeedback(
+        `Apply blocked by lint rules (${preflight.lintResult.errorCount} errors). ${top3}`
+      );
+      setTimeout(() => setFeedback(null), 7000);
+      return;
+    }
+
     setApplying(true);
     const summary: string[] = [];
 
@@ -246,6 +265,9 @@ export function IntakeTab() {
       }
 
       const rejected = results.filter((r) => !r.approved).length;
+      if (preflight.lintResult.warningCount > 0) {
+        summary.push(`${preflight.lintResult.warningCount} lint warning(s) detected in approved items`);
+      }
       if (rejected > 0) {
         summary.push(`${rejected} item(s) skipped (not approved)`);
       }
@@ -591,6 +613,23 @@ export function IntakeTab() {
               Toggle items to approve or skip them before applying.
             </p>
           </div>
+
+          {reviewPreflight && (reviewPreflight.lintResult.violations.length > 0 || reviewPreflight.relationshipViolations.length > 0) && (
+            <div className={`rounded-lg border p-3 ${reviewPreflight.lintResult.blocked ? "border-th-danger bg-th-danger-light" : "border-th-warn bg-th-warn-light"}`}>
+              <div className={`text-xs font-semibold ${reviewPreflight.lintResult.blocked ? "text-th-danger" : "text-th-warn"}`}>
+                {reviewPreflight.lintResult.blocked ? "🚫 Apply will be blocked by lint" : "⚠️ Rules check warnings"}
+                {` (${reviewPreflight.lintResult.errorCount} errors, ${reviewPreflight.lintResult.warningCount} warnings)`}
+              </div>
+              <ul className={`mt-2 text-xs space-y-1 max-h-32 overflow-auto ${reviewPreflight.lintResult.blocked ? "text-th-danger/80" : "text-th-warn/80"}`}>
+                {reviewPreflight.lintResult.violations.slice(0, 5).map((v, i) => (
+                  <li key={i}>[{v.rule}] {v.entity}: {v.message}</li>
+                ))}
+                {reviewPreflight.lintResult.violations.length > 5 && (
+                  <li className="italic">… and {reviewPreflight.lintResult.violations.length - 5} more</li>
+                )}
+              </ul>
+            </div>
+          )}
 
           <div className="space-y-3">
             {results.map((item, idx) => (

@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback, useEffect, DragEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePMData } from "../context/PMContext";
 import {
   loadFromFolderPicker,
@@ -10,6 +11,7 @@ import {
 } from "../lib/fileLoader";
 import { DashboardTab } from "../components/DashboardTab";
 import { ObjectivesTab } from "../components/ObjectivesTab";
+import { KeyResultsTab } from "../components/KeyResultsTab";
 import { TasksTab } from "../components/TasksTab";
 import { WeeklyTab } from "../components/WeeklyTab";
 import { ExportTab } from "../components/ExportTab";
@@ -18,6 +20,7 @@ import { IntakeTab } from "../components/IntakeTab";
 const TABS = [
   { id: "dashboard", label: "Dashboard", icon: "📊" },
   { id: "objectives", label: "Objectives", icon: "🎯" },
+  { id: "keyresults", label: "Key Results", icon: "📈" },
   { id: "tasks", label: "Tasks", icon: "✅" },
   { id: "weekly", label: "Weekly", icon: "📅" },
   { id: "intake", label: "Intake", icon: "📥" },
@@ -166,7 +169,14 @@ export default function Home() {
       {/* Header */}
       <header className="bg-th-surface border-b border-th-border px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <span className="text-xl">🗂️</span>
+          <Image
+            src="/Lapu-Lapu.png"
+            alt="Lapu-Lapu"
+            width={36}
+            height={36}
+            className="w-9 h-9 rounded object-cover border border-th-border"
+            priority
+          />
           <h1 className="text-lg font-semibold text-th-text">LapuLapu</h1>
           <span className="text-xs bg-th-surface-alt text-th-text-muted rounded px-2 py-0.5">
             {data?.folderName}
@@ -226,6 +236,7 @@ export default function Home() {
       <main className="flex-1 overflow-auto">
         {activeTab === "dashboard" && <DashboardTab onNavigate={handleNavigate} />}
         {activeTab === "objectives" && <ObjectivesTab initialTier={navFilter.tier} initialOwnerTag={navFilter.ownerTag} />}
+        {activeTab === "keyresults" && <KeyResultsTab />}
         {activeTab === "tasks" && <TasksTab initialStatus={navFilter.status} />}
         {activeTab === "weekly" && <WeeklyTab />}
         {activeTab === "intake" && <IntakeTab />}

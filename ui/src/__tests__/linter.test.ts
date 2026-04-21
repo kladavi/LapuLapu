@@ -16,6 +16,7 @@ function makePMData(overrides: Partial<PMData> = {}): PMData {
     systems: [],
     tasks: [],
     decisions: [],
+    keyResults: [],
     weeklySummaries: [],
     inbox: "",
     rawFiles: {},
@@ -236,5 +237,36 @@ describe("lintRepo", () => {
     expect(rules.has("weekly-missing-project")).toBe(true);
     expect(result.blocked).toBe(true);
     expect(result.errorCount).toBeGreaterThanOrEqual(4);
+  });
+
+  it("includes relationship violations for tasks that skip Tier-2", () => {
+    const settings = makeSettings({
+      lint: { enabled: true, mode: "warn", requireProjectTag: false, requireNamespacedTags: false },
+    });
+    const data = makePMData({
+      objectives: [
+        {
+          id: "O1", title: "Frictionless Customer Experience", tier: 1,
+          tags: [], source: [], parentObjectiveIds: [], description: "", commitments: [], raw: "",
+        },
+        {
+          id: "H-3", title: "AI Ops / Incident Troubleshooting", tier: 2,
+          tags: [], source: [], parentObjectiveIds: ["O1"], description: "", commitments: [], raw: "",
+        },
+      ],
+      tasks: [
+        {
+          id: "T900", title: "Tier1 only", status: "Open", created: "2026-04-09",
+          objectiveChain: "O1", objectiveIds: ["O1"], team: "", assigned: "",
+          systems: [], tags: [], description: "", raw: "",
+        },
+      ],
+    });
+
+    const result = lintRepo(data, settings);
+    const relViolations = result.violations.filter((v) => v.rule === "relationship-task-skips-tier2");
+    expect(relViolations.length).toBe(1);
+    expect(relViolations[0].entity).toBe("T900");
+    expect(relViolations[0].message).toContain("no Tier-2 link");
   });
 });

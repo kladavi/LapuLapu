@@ -31,6 +31,7 @@ function resolveProject(data: PMData, slug: string): Project | null {
 
 export interface FilteredProjectData {
   tasks: PMData["tasks"];
+  keyResults: PMData["keyResults"];
   decisions: PMData["decisions"];
   weeklySummaries: PMData["weeklySummaries"];
   teams: PMData["teams"];
@@ -45,12 +46,23 @@ export interface FilteredProjectData {
  * Teams/systems are filtered to only those referenced by included tasks.
  */
 export function filterByProject(data: PMData, slug: string): FilteredProjectData {
-  const projectTag = `#project:${slug}`;
+  const normalizedSlug = slug.toLowerCase();
+  const projectTag = `#project:${normalizedSlug}`;
   const warnings: ExportWarning[] = [];
+  const includeUntaggedKeyResults =
+    (data.settings?.project?.defaultProjectSlug || "").toLowerCase() === normalizedSlug;
 
   const tasks = data.tasks.filter((t) =>
     t.tags.some((tag) => tag.toLowerCase() === projectTag)
   );
+
+  const keyResults = data.keyResults.filter((kr) => {
+    const normalizedTags = kr.tags.map((tag) => tag.toLowerCase());
+    const hasMatchingProjectTag = normalizedTags.includes(projectTag);
+    const hasAnyProjectTag = normalizedTags.some((tag) => tag.startsWith("#project:"));
+
+    return hasMatchingProjectTag || (includeUntaggedKeyResults && !hasAnyProjectTag);
+  });
 
   const decisions = data.decisions.filter((d) =>
     d.tags.some((tag) => tag.toLowerCase() === projectTag)
@@ -110,7 +122,19 @@ export function filterByProject(data: PMData, slug: string): FilteredProjectData
     }
   }
 
-  return { tasks, decisions, weeklySummaries, teams, systems, warnings };
+  for (const kr of data.keyResults) {
+    const hasAnyProjectTag = kr.tags.some((tag) => tag.toLowerCase().startsWith("#project:"));
+    if (!hasAnyProjectTag) {
+      warnings.push({
+        type: "MISSING_PROJECT_TAG",
+        taskId: kr.id,
+        objectiveId: kr.objectiveId,
+        message: `Key Result "${kr.id}" has no #project: tag — it will be excluded from all project exports.`,
+      });
+    }
+  }
+
+  return { tasks, keyResults, decisions, weeklySummaries, teams, systems, warnings };
 }
 
 export function generateExport(data: PMData, options: ExportOptions): ExportResult {
@@ -157,6 +181,7 @@ export function generateExport(data: PMData, options: ExportOptions): ExportResu
   const payload = buildNormalizedPayload(
     data.objectives,
     filtered.tasks,
+    filtered.keyResults,
     filtered.teams,
     filtered.systems,
     filtered.weeklySummaries,
@@ -197,6 +222,7 @@ function generateMdExport(data: PMData, payload: NormalizedExportPayload, option
     includedSections.push("systems");
   }
   if (options.includeTasks) includedSections.push("tasks");
+  if (options.includeKeyResults) includedSections.push("key_results");
   if (options.includeDecisions) includedSections.push("decisions");
   if (options.includeWeeklySummaries) includedSections.push("weekly_summaries");
   if (options.includeInbox) includedSections.push("inbox");
@@ -252,6 +278,7 @@ You are given an exported snapshot of an objective-driven PM system.
 1) Produce an executive-ready 1-page Weekly Project Status Report with these sections:
    a) **Executive Summary** — 1–2 sentences per Tier-1 objective with progress (use objective names as bold headings, e.g. **Frictionless Customer Experience:**)
    b) **Key Accomplishments (This Week)** — Top 3–5 outcomes as standalone lines (no bullets)
+  b.1) **Key Results Snapshot** — 3–5 lines showing KR progress and status shifts where data exists
    c) **Top Risks & Issues** — Format: [Risk] · description | mitigation | owner |
    d) **Planned for Next Week** — Top 2–4 priorities as standalone lines, optionally prefixed with (O#):
    e) **Project Resources** — Standard links footer with emoji prefixes
@@ -317,6 +344,7 @@ function generateJsonExport(data: PMData, payload: NormalizedExportPayload, proj
 function generateDiagnosticsBlock(payload: NormalizedExportPayload, timestamp: string): string {
   const objectives = payload.objectives || [];
   const tasks = payload.tasks || [];
+  const keyResults = payload.key_results || [];
   const warnings = payload.exportWarnings || [];
 
   const tier1Count = objectives.filter((o) => o.tier === 1).length;
@@ -335,6 +363,7 @@ function generateDiagnosticsBlock(payload: NormalizedExportPayload, timestamp: s
   lines.push(`- **Export timestamp:** ${timestamp}`);
   lines.push(`- **Objectives:** ${objectives.length} total (Tier-1: ${tier1Count}, Tier-2: ${tier2Count}${tier3Count > 0 ? `, Tier-3: ${tier3Count}` : ""})`);
   lines.push(`- **Tasks:** ${tasks.length}`);
+  lines.push(`- **Key Results:** ${keyResults.length}`);
   lines.push(`- **Tasks with external objectives:** ${tasksWithExternal}`);
   lines.push(`- **Warnings:** ${warnings.length}`);
 
@@ -358,6 +387,9 @@ export function estimateExportSize(data: PMData, options: ExportOptions): number
   const filteredTasks = data.tasks.filter((t) =>
     t.tags.some((tag) => tag.toLowerCase() === projectTag)
   );
+  const filteredKeyResults = data.keyResults.filter((kr) =>
+    kr.tags.some((tag) => tag.toLowerCase() === projectTag)
+  );
   const filteredDecisions = data.decisions.filter((d) =>
     d.tags.some((tag) => tag.toLowerCase() === projectTag)
   );
@@ -369,6 +401,7 @@ export function estimateExportSize(data: PMData, options: ExportOptions): number
   const payload = buildNormalizedPayload(
     data.objectives,
     filteredTasks,
+    filteredKeyResults,
     data.teams,
     data.systems,
     filteredWeeklies,

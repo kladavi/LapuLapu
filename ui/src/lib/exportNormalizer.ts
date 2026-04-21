@@ -2,7 +2,7 @@
 // Fixes: Issue 2 (parentObjectiveIds), Issue 3 (task normalization),
 //        Issue 4 (weekly summaries), Issue 5 (tag standardization)
 
-import type { Objective, Task, Team, SystemOfRecord, WeeklySummary, ExportWarning } from "./types";
+import type { Objective, Task, Team, SystemOfRecord, WeeklySummary, ExportWarning, KeyResult } from "./types";
 
 // ────────────────────────────────────────────
 // ISSUE 2 — Objective ID validation & marker normalization
@@ -453,11 +453,28 @@ export interface NormalizedSystem {
   purpose: string;
 }
 
+export interface NormalizedKeyResult {
+  id: string;
+  title: string;
+  objectiveId: string;
+  metricType: "numeric" | "boolean";
+  startValue: number;
+  targetValue: number;
+  currentValue: number;
+  progressPct: number;
+  targetDate: string | null;
+  status: "Not Started" | "On Track" | "At Risk" | "Behind" | "Complete";
+  created: string | null;
+  tags: string[];
+  notes: string;
+}
+
 export interface NormalizedExportPayload {
   objectives?: NormalizedObjective[];
   teams?: NormalizedTeam[];
   systems?: NormalizedSystem[];
   tasks?: NormalizedTask[];
+  key_results?: NormalizedKeyResult[];
   decisions?: { id: string; title: string; date: string; decision: string; reason: string; tags: string[] }[];
   weekly_summaries?: NormalizedWeeklySummary[];
   inbox?: string;
@@ -476,6 +493,7 @@ export interface NormalizedExportPayload {
 export function buildNormalizedPayload(
   objectives: Objective[],
   tasks: Task[],
+  keyResults: KeyResult[],
   teams: Team[],
   systems: SystemOfRecord[],
   weeklySummaries: WeeklySummary[],
@@ -485,6 +503,7 @@ export function buildNormalizedPayload(
     includeObjectives: boolean;
     includeTeamsSystems: boolean;
     includeTasks: boolean;
+    includeKeyResults: boolean;
     includeDecisions: boolean;
     includeWeeklySummaries: boolean;
     weeklySummaryCount: number;
@@ -626,6 +645,41 @@ export function buildNormalizedPayload(
     });
   }
 
+  // ── Key Results normalization ──
+  if (options.includeKeyResults) {
+    payload.key_results = keyResults.map((kr) => {
+      const objectiveId = kr.objectiveId.trim();
+      const normalizedTags = normalizeTags(kr.tags);
+
+      if (VALID_OBJ_ID_RE.test(objectiveId) && !allowedIds.has(objectiveId)) {
+        exportWarnings.push({
+          type: "KEY_RESULT_OBJECTIVE_OUT_OF_SCOPE",
+          taskId: kr.id,
+          objectiveId,
+          message: "Key Result references an objective not included in this export scope.",
+        });
+      }
+
+      const progressPct = computeKRProgress(kr);
+
+      return {
+        id: kr.id,
+        title: sanitizeText(kr.title),
+        objectiveId,
+        metricType: kr.metricType,
+        startValue: kr.startValue,
+        targetValue: kr.targetValue,
+        currentValue: kr.currentValue,
+        progressPct,
+        targetDate: extractDate(kr.targetDate),
+        status: kr.status,
+        created: extractDate(kr.created),
+        tags: normalizedTags,
+        notes: capNotesLength(kr.description),
+      };
+    });
+  }
+
   // ── Decisions ──
   if (options.includeDecisions) {
     payload.decisions = decisions.map((d) => ({
@@ -708,6 +762,20 @@ function extractTeamName(raw: string): string | null {
 function extractDate(raw: string): string | null {
   const m = raw.match(/(\d{4}-\d{2}-\d{2})/);
   return m ? m[1] : null;
+}
+
+function computeKRProgress(kr: KeyResult): number {
+  if (kr.metricType === "boolean") {
+    return kr.currentValue >= 1 ? 100 : 0;
+  }
+
+  const range = kr.targetValue - kr.startValue;
+  if (range === 0) {
+    return kr.currentValue >= kr.targetValue ? 100 : 0;
+  }
+
+  const pct = ((kr.currentValue - kr.startValue) / range) * 100;
+  return Math.max(0, Math.min(100, Math.round(pct)));
 }
 
 // ────────────────────────────────────────────
@@ -855,6 +923,17 @@ export function generateHumanSnapshot(payload: NormalizedExportPayload): string 
     for (const t of payload.tasks) {
       const status = t.status || "Unknown";
       lines.push(`- ${t.id}: ${t.title} [${status}] → ${t.objectiveIds.join(", ") || "unaligned"}`);
+    }
+    lines.push("");
+  }
+
+  // Key Results summary
+  if (payload.key_results && payload.key_results.length > 0) {
+    lines.push("### Key Results\n");
+    for (const kr of payload.key_results) {
+      lines.push(
+        `- ${kr.id}: ${kr.title} [${kr.status}] ${kr.currentValue}/${kr.targetValue} (${kr.progressPct}%) → ${kr.objectiveId || "unmapped"}`
+      );
     }
     lines.push("");
   }

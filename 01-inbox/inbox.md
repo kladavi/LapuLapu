@@ -99,3 +99,91 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 - **2026-03-30 — Japan Team - Global Incident Management (MSG duplicate)** #processed
   - **Source:** RE_ Japan Team - Global Incident Management w_ Rohina (Placeholder).msg
   - **Note:** Outlook .msg binary format — same content as the .txt version. No additional actions required.
+
+- **2026-04-13 — FW: [R2R] JP IACB OSCS Follow-Up Meeting with AWS** #processed
+  - **Source:** archive/FW_ [R2R] JP IACB OSCS Follow-Up Meeting with AWS.eml
+  - **From:** Vaibhav Singh (forwarding Glenn Ku / AWS follow-up thread)
+  - **Focus:** Review AWS-updated IACB/OSCS assessment package (v0.2), capture concerns, and provide sign-off or priority feedback.
+  - **Key outcomes:**
+    1. AWS shared updated package (v0.2) after previous discussion.
+    2. Team requested to review and respond with concerns, especially on priority items.
+    3. Decision/feedback readiness required to avoid downstream execution delays.
+  - **Actions extracted → T068**
+
+- **2026-04-13 — FW: [R2R] JP SSW Follow-Up Meeting with AWS** #processed
+  - **Source:** archive/FW_ [R2R] JP SSW Follow-Up Meeting with AWS.eml
+  - **From:** Vaibhav Singh (forwarding Glenn Ku / AWS follow-up thread)
+  - **Focus:** Time-bound feedback request on SSW reports to ensure updates are incorporated before AWS support window closes.
+  - **Key outcomes:**
+    1. Reminder sent to provide feedback on SSW reports.
+    2. AWS support available only until month-end; feedback after cutoff may not be incorporated.
+    3. Prompt review and response is required to lock report quality and next-step planning.
+  - **Actions extracted → T069**
+
+- **2026-04-16 — Lapu-Lapu GOCC and Japan** #processed
+  - **Source:** archive/20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
+  - **Focus:** Dashboard progress, PS-to-GOCC transition tracking, impact-based alerting, and rapid recovery enablement.
+  - **Key outcomes:**
+    1. Employee Experience Dashboard reached 66/88 Japan application systems; Developer Experience Dashboard reached 45/60 non-prod environment groups.
+    2. PS-to-GOCC transition stands at 16/65 completed with 9 applications in progress, with the Phase-1 checklist accepted as the handover source of truth.
+    3. Branch laptop monitoring is live and non-prod HTTP 500 errors plus workload-health noise were called out as active issues.
+    4. Parallel monitoring, impact-based alerting, and a bilingual rapid recovery alignment session were accepted as operating direction.
+  - **Actions extracted → T070, T071, T072, T073, T074**
+  - **Decision extracted → D005**
+
+- **2026-04-16 — LapuLapu Team Direction and Execution** #processed
+  - **Source:** archive/20260416+-+LapuLapu+Team+Direction+and+Execution.doc
+  - **Focus:** Alert routing, non-prod monitoring blockers, operational side quests, and asset cleanup.
+  - **Key outcomes:**
+    1. Team needs a clear answer for New Relic-to-Moogsoft alert routing and support-team registration settings.
+    2. Non-prod monitoring sequencing remains alert workflow first, then environment spin up or down and rapid recovery follow-up.
+    3. Orphaned asset cleanup should be driven by category, starting with servers.
+    4. File share, MFT ownership, and approval automation ideas remain outside the current objective-scoped workset.
+  - **Actions extracted → T075, T076**
+  - **Decision extracted → D006**
+
+- **2026-04-16 — Rapid Recovery Information Hub** #processed
+  - **Source:** archive/Rapid+Recovery+Information+Hub.doc
+  - **Note:** Reference standard for Rapid Recovery Plans across Ingenium and other MLJ internal applications. Content aligns to existing work in T003, T040, T041, and the April 16 enablement follow-up captured in T074. No additional standalone task created.
+
+- **2026-04-16 — Side Quests** #processed
+  - **Source:** archive/Side+Quests.doc
+  - **Focus:** Weekday patching details, approval-workflow optimization ideas, and reminder escalation patterns.
+  - **Key outcomes:**
+    1. Weekday patching detail aligns to the existing tracked work in T020.
+    2. Approval reminder and escalation ideas were reviewed but deferred pending objective alignment and confirmed sponsoring ownership.
+  - **Decision extracted → D006**
+
+- **2026-04-16 — Lapu-Lapu GOCC and Japan** #processed
+  - **Source:** archive/20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
+  - **Focus:** Dashboard progress, PS-to-GOCC transition tracking, impact-based alerting, and rapid recovery enablement.
+  - **Key outcomes:**
+    1. Employee Experience Dashboard reached 66/88 Japan application systems; Developer Experience Dashboard reached 45/60 non-prod environment groups.
+    2. PS-to-GOCC transition stands at 16/65 completed with 9 applications in progress, with the Phase-1 checklist accepted as the handover source of truth.
+    3. Branch laptop monitoring is live and non-prod HTTP 500 errors plus workload-health noise were called out as active issues.
+    4. Parallel monitoring, impact-based alerting, and a bilingual rapid recovery alignment session were accepted as operating direction.
+  - **Actions extracted → T070, T071, T072, T073, T074**
+  - **Decision extracted → D005**
+
+- **2026-04-16 — LapuLapu Team Direction and Execution** #processed
+  - **Source:** archive/20260416+-+LapuLapu+Team+Direction+and+Execution.doc
+  - **Focus:** Alert routing, non-prod monitoring blockers, operational side quests, and asset cleanup.
+  - **Key outcomes:**
+    1. Team needs a clear answer for New Relic-to-Moogsoft alert routing and support-team registration settings.
+    2. Non-prod monitoring sequencing remains alert workflow first, then environment spin up or down and rapid recovery follow-up.
+    3. Orphaned asset cleanup should be driven by category, starting with servers.
+    4. File share, MFT ownership, and approval automation ideas remain outside the current objective-scoped workset.
+  - **Actions extracted → T075, T076**
+  - **Decision extracted → D006**
+
+- **2026-04-16 — Rapid Recovery Information Hub** #processed
+  - **Source:** archive/Rapid+Recovery+Information+Hub.doc
+  - **Note:** Reference standard for Rapid Recovery Plans across Ingenium and other MLJ internal applications. Content aligns to existing work in T003, T040, T041, and the April 16 enablement follow-up captured in T074. No additional standalone task created.
+
+- **2026-04-16 — Side Quests** #processed
+  - **Source:** archive/Side+Quests.doc
+  - **Focus:** Weekday patching details, approval-workflow optimization ideas, and reminder escalation patterns.
+  - **Key outcomes:**
+    1. Weekday patching detail aligns to the existing tracked work in T020.
+    2. Approval reminder and escalation ideas were reviewed but deferred pending objective alignment and confirmed sponsoring ownership.
+  - **Decision extracted → D006**

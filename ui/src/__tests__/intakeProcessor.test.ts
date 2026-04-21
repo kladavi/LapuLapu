@@ -5,6 +5,7 @@ import {
   buildIntakePrompt,
   parseIntakeResponse,
   parseInboxEntries,
+  validateApprovedIntakeResults,
   type IntakeResult,
 } from "../lib/intakeProcessor";
 import type { PMData } from "../lib/types";
@@ -26,6 +27,7 @@ function makePMData(overrides: Partial<PMData> = {}): PMData {
       { id: "D001", title: "Dec One", date: "2026-03-18", requestor: "", request: "", decision: "", reason: "", tags: [], raw: "" },
       { id: "D003", title: "Dec Three", date: "2026-03-26", requestor: "", request: "", decision: "", reason: "", tags: [], raw: "" },
     ],
+    keyResults: [],
     weeklySummaries: [],
     inbox: "",
     rawFiles: {
@@ -270,5 +272,58 @@ Items below are raw and unprocessed.
     const entries = parseInboxEntries(single);
     expect(entries).toHaveLength(1);
     expect(entries[0].status).toBe("raw");
+  });
+});
+
+describe("validateApprovedIntakeResults", () => {
+  it("blocks in fail mode when approved tasks skip Tier-2", () => {
+    const data = makePMData({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        lint: {
+          ...DEFAULT_SETTINGS.lint,
+          enabled: true,
+          mode: "fail",
+          requireProjectTag: false,
+          requireNamespacedTags: false,
+        },
+      },
+      objectives: [
+        {
+          id: "O1", title: "Customer Experience", tier: 1,
+          tags: [], source: [], parentObjectiveIds: [], description: "", commitments: [], raw: "",
+        },
+        {
+          id: "H-3", title: "AI Ops", tier: 2,
+          tags: [], source: [], parentObjectiveIds: ["O1"], description: "", commitments: [], raw: "",
+        },
+      ],
+    });
+
+    const results: IntakeResult[] = [
+      {
+        id: "T020",
+        type: "task",
+        title: "Tier-1 only task",
+        approved: true,
+        raw: `## T020 — Tier-1 only task
+- **Status:** Open
+- **Created:** 2026-04-09
+- **Objective Chain:** O1 (Customer Experience)
+- **Team:** #team:gocc
+- **Assigned:** Test
+- **Systems:** #system:newrelic
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu
+- **Description:** Test task`,
+      },
+    ];
+
+    const preflight = validateApprovedIntakeResults(results, data);
+    expect(preflight.approvedTaskCount).toBe(1);
+    expect(preflight.lintResult.blocked).toBe(true);
+    expect(
+      preflight.lintResult.violations.some((v) => v.rule === "relationship-task-skips-tier2")
+    ).toBe(true);
   });
 });

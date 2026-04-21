@@ -48,3 +48,55 @@ tags: #project:lapu-lapu #domain:incident-management #program:r2r #system:cmdb #
 **Related Objectives:** H-3 (AI Ops / Incident Troubleshooting), B-4 (Infrastructure Resilience & Disaster Recovery), B-1 (Endpoint Monitoring & Post-Change Verification), O1 (Frictionless Customer Experience)
 **Owner:** George Francis Fermo
 **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting
+
+---
+
+## D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition
+
+tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:moogsoft #outcome:resilience
+
+**Date:** 2026-04-16
+**Decision:** Approved
+**Summary:** PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. Alerting must prioritize customer and application impact, and host-level noise must not drive workload health or incident posture. Rapid recovery enablement will include a bilingual alignment session with Japan Production Support.
+**Related Objectives:** H-3 (AI Ops / Incident Troubleshooting), H-4 (Unified Support), B-4 (Infrastructure Resilience & Disaster Recovery)
+**Owner:** David Klan
+**Source:** 2026-04-16 Lapu-Lapu GOCC and Japan meeting
+
+---
+
+## D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests
+
+tags: #project:lapu-lapu #domain:workflow-automation #domain:service-management #outcome:unaligned
+
+**Date:** 2026-04-16
+**Decision:** Deferred
+**Summary:** April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a registered objective, supported system-of-record tag set, or confirmed sponsoring team in this repository.
+**Related Objectives:** none
+**Owner:** David Klan
+**Source:** 2026-04-16 Side Quests and Team Direction notes
+
+---
+
+## D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition
+
+tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:moogsoft #outcome:resilience
+
+**Date:** 2026-04-16
+**Decision:** Approved
+**Summary:** PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. Alerting must prioritize customer and application impact, and host-level noise must not drive workload health or incident posture. Rapid recovery enablement will include a bilingual alignment session with Japan Production Support.
+**Related Objectives:** H-3 (AI Ops / Incident Troubleshooting), H-4 (Unified Support), B-4 (Infrastructure Resilience & Disaster Recovery)
+**Owner:** David Klan
+**Source:** 2026-04-16 Lapu-Lapu GOCC and Japan meeting
+
+---
+
+## D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests
+
+tags: #project:lapu-lapu #domain:workflow-automation #domain:service-management #outcome:unaligned
+
+**Date:** 2026-04-16
+**Decision:** Deferred
+**Summary:** April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a registered objective, supported system-of-record tag set, or confirmed sponsoring team in this repository.
+**Related Objectives:** none
+**Owner:** David Klan
+**Source:** 2026-04-16 Side Quests and Team Direction notes

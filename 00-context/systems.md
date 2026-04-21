@@ -12,3 +12,4 @@
 | Adobe | #system:adobe | Digital experience and analytics platform |
 | APM | #system:apm | Application performance management tooling |
 | ADX | #system:adx | Azure Data Explorer, log analytics and pattern alerting |
+| Jira | #system:jira | Work tracking, milestone management, dependency and readiness tracking |

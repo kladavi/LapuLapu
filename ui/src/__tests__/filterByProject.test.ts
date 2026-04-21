@@ -20,6 +20,59 @@ function makePMData(overrides: Partial<PMData> = {}): PMData {
       },
     ],
     objectives: [],
+    keyResults: [
+      {
+        id: "KR001",
+        title: "Lapu KR",
+        objectiveId: "O1",
+        metricType: "numeric",
+        startValue: 0,
+        targetValue: 100,
+        currentValue: 10,
+        targetDate: "2026-12-31",
+        status: "On Track",
+        created: "2026-03-01",
+        tags: ["#project:lapu-lapu"],
+        description: "",
+        progressLog: [],
+        changeLog: [],
+        raw: "",
+      },
+      {
+        id: "KR002",
+        title: "Epsilon KR",
+        objectiveId: "O2",
+        metricType: "numeric",
+        startValue: 0,
+        targetValue: 100,
+        currentValue: 20,
+        targetDate: "2026-12-31",
+        status: "On Track",
+        created: "2026-03-01",
+        tags: ["#project:epsilon"],
+        description: "",
+        progressLog: [],
+        changeLog: [],
+        raw: "",
+      },
+      {
+        id: "KR003",
+        title: "Untagged KR",
+        objectiveId: "O1",
+        metricType: "numeric",
+        startValue: 0,
+        targetValue: 100,
+        currentValue: 5,
+        targetDate: "2026-12-31",
+        status: "Not Started",
+        created: "2026-03-01",
+        tags: [],
+        description: "",
+        progressLog: [],
+        changeLog: [],
+        raw: "",
+      },
+    ],
     teams: [
       { name: "GOCC", lead: "Jonan", tags: [], raw: "" },
       { name: "ETS Japan", lead: "Birger", tags: [], raw: "" },
@@ -132,6 +185,42 @@ describe("filterByProject", () => {
     });
   });
 
+  describe("key result filtering", () => {
+    it("includes only lapu-lapu key results", () => {
+      const data = makePMData();
+      const result = filterByProject(data, "lapu-lapu");
+      const ids = result.keyResults.map((kr) => kr.id);
+      expect(ids).toEqual(["KR001", "KR003"]);
+    });
+
+    it("includes only epsilon key results", () => {
+      const data = makePMData();
+      const result = filterByProject(data, "epsilon");
+      const ids = result.keyResults.map((kr) => kr.id);
+      expect(ids).toEqual(["KR002"]);
+    });
+
+    it("includes untagged key results only for the default project", () => {
+      const data = makePMData({
+        settings: {
+          ...DEFAULT_SETTINGS,
+          project: {
+            ...DEFAULT_SETTINGS.project,
+            defaultProjectSlug: "epsilon",
+          },
+        },
+      });
+
+      expect(filterByProject(data, "epsilon").keyResults.map((kr) => kr.id)).toEqual([
+        "KR002",
+        "KR003",
+      ]);
+      expect(filterByProject(data, "lapu-lapu").keyResults.map((kr) => kr.id)).toEqual([
+        "KR001",
+      ]);
+    });
+  });
+
   describe("weekly summary filtering", () => {
     it("includes lapu-lapu weeklies (by frontmatter + legacy fallback)", () => {
       const data = makePMData();
@@ -195,6 +284,15 @@ describe("filterByProject", () => {
       const result = filterByProject(data, "lapu-lapu");
       const missingTagWarnings = result.warnings.filter(
         (w) => w.type === "MISSING_PROJECT_TAG" && w.taskId === "D003"
+      );
+      expect(missingTagWarnings.length).toBe(1);
+    });
+
+    it("warns about key results missing #project: tag", () => {
+      const data = makePMData();
+      const result = filterByProject(data, "lapu-lapu");
+      const missingTagWarnings = result.warnings.filter(
+        (w) => w.type === "MISSING_PROJECT_TAG" && w.taskId === "KR003"
       );
       expect(missingTagWarnings.length).toBe(1);
     });

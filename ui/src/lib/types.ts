@@ -112,6 +112,7 @@ export interface PMData {
   systems: SystemOfRecord[];
   tasks: Task[];
   decisions: Decision[];
+  keyResults: KeyResult[];
   weeklySummaries: WeeklySummary[];
   inbox: string;
   rawFiles: Record<string, string>;
@@ -120,6 +121,39 @@ export interface PMData {
   warnings: string[];
   settings: import("./settings").AppSettings;
   relationships: RelationshipMap;
+}
+
+// ── Key Result types ──
+
+export interface KeyResultProgressEntry {
+  date: string;
+  value: number;
+  comment: string;
+}
+
+export interface KeyResultChangeEntry {
+  date: string;
+  change: string;
+}
+
+export type KeyResultStatus = "Not Started" | "On Track" | "At Risk" | "Behind" | "Complete";
+
+export interface KeyResult {
+  id: string;
+  title: string;
+  objectiveId: string;
+  metricType: "numeric" | "boolean";
+  startValue: number;
+  targetValue: number;
+  currentValue: number;
+  targetDate: string;
+  status: KeyResultStatus;
+  created: string;
+  tags: string[];
+  description: string;
+  progressLog: KeyResultProgressEntry[];
+  changeLog: KeyResultChangeEntry[];
+  raw: string;
 }
 
 export interface ExportWarning {
@@ -134,6 +168,7 @@ export interface ExportOptions {
   includeObjectives: boolean;
   includeTeamsSystems: boolean;
   includeTasks: boolean;
+  includeKeyResults: boolean;
   includeDecisions: boolean;
   includeWeeklySummaries: boolean;
   weeklySummaryCount: number;

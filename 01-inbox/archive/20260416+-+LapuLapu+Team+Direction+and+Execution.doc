@@ -1,0 +1,288 @@
+Date: Fri, 17 Apr 2026 03:43:07 +0000 (UTC)
+Message-ID: <1668913484.5.1776397387668@8cfc1b57ac91>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_4_1427923363.1776397387668"
+
+------=_Part_4_1427923363.1776397387668
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260416 - LapuLapu Team Direction and Execution</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260416 - LapuLapu Team Direction and Execution</h1>
+    <div class=3D"Section1">
+        <h2 local-id=3D"25e42c8101db" id=3D"id-20260416-LapuLapuTeamDirecti=
+onandExecution-ExecutiveAgenda(30minutes)=E2=80=94TeamDirection&amp;Executi=
+on(withBirgerFjaellman)">Executive Agenda (30 minutes) =E2=80=94 Team Direc=
+tion &amp; Execution (with Birger Fjaellman )</h2>
+<p local-id=3D"1d9d05d376e6"><strong>Objective:</strong> Align on <em>direc=
+tion</em>, confirm <em>execution path</em>, and leave with <em>3=E2=80=935 =
+explicit decisions/asks</em> that unblock delivery this week.</p>
+<hr local-id=3D"5c54f34e-d87d-40de-aba0-63f5194b0d44">
+<ul local-id=3D"0c2761b5-e872-42ca-bb2a-2ff104449ee9">
+<li local-id=3D"66cec025-7f0d-496e-8864-d30a0109b1b8">
+<p local-id=3D"ff61627b837c">Where do <strong>New Relic-&gt;Moogsoft Alerts=
+/Incidents</strong> go? Can we find the setting that registers the support =
+team?</p></li>
+<li local-id=3D"90f9ed58-e0ca-4175-9cfe-6635f6fcc0d8">
+<p local-id=3D"0856fd509785">Working on <strong>Non-Prod Monitoring workloa=
+d</strong>. Next steps - Alert response workflow (Sangram/Rupesh/Rae), foll=
+owed by Environment spin-up/down and Rapid Recovery</p></li>
+<li local-id=3D"2396d95f-6ee7-4ac6-95cc-1a46da769508">
+<p local-id=3D"e1fe3a205022"><strong>Capacity monitoring setup</strong> - C=
+onfirm the settings (Balaji)</p></li>
+<li local-id=3D"c72005b5-cad9-469d-a5f0-c44d4fd19b8c">
+<p local-id=3D"bbf0db0df422"><strong>Side Quest Transfer Ownership for Serv=
+erF</strong></p>
+<ul local-id=3D"52c29b30-f33a-43b0-8f78-d91fbb98f4e5">
+<li local-id=3D"73305ddd-8bc1-4037-a47f-bff4a7710545">
+<p local-id=3D"e6d76c4803d5">File Share: Jonan(GOCC), JB Villegas(GAM) task=
+ed to set up a Fileshare management service</p></li>
+<li local-id=3D"51a92413-624e-495b-8c97-406d0d0dca5b">
+<p local-id=3D"db603a6cfd15">File transfer: Joan Lee (GBO, MW), JB Villegas=
+(GAM) has MFT team to work on FTP and MFT activities</p></li>
+</ul></li>
+<li local-id=3D"a3a156c9-fc45-4f26-be2d-5b17e422a639">
+<p local-id=3D"3da59f9cb533"><strong>Side Quest Patching - Weekday</strong>=
+</p>
+<ul local-id=3D"09ba7970-96ef-4daf-ac69-0f06088a793d">
+<li local-id=3D"c325160e-b2d8-465e-96a0-5ce7ef5ba939">
+<p local-id=3D"e0bc200dc23c">Pull all systems that are not on the main list=
+ (David)</p></li>
+</ul></li>
+<li local-id=3D"1e275b03-0592-4190-9d18-bac89de3d6ab">
+<p local-id=3D"ac61647451fd"><strong>Side Quest</strong> <strong>Setup Goph=
+er</strong> to annoy ETS Japan - Keni, Birger (Nakatsu)</p>
+<ul local-id=3D"928b477c-14e9-4957-bcb5-7c878de7169d">
+<li local-id=3D"45261ca3-6bef-4b92-8b24-e18116c78659">
+<p local-id=3D"d06e20db8d86">Teams, email 2x / day</p></li>
+<li local-id=3D"55d3c21c-bda9-4d86-b727-d58c8712eb24">
+<p local-id=3D"5c7ebfd097ab">Add manager after 24 hours</p></li>
+</ul></li>
+<li local-id=3D"db8f5061-4388-4c25-9ef3-ec1b311e4e3a">
+<p local-id=3D"d41d714b04ff"><strong>Orphaned assets list</strong> burn it =
+down by category and start with servers (Yegor)</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_4_1427923363.1776397387668--
