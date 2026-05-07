@@ -1096,3 +1096,73 @@
 - **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #incident-followup #recovery-readiness
 - **Description:** Use the SRM incident as the first focused Rapid Recovery onboarding case by registering SRM for recovery coverage, scheduling follow-up and knowledge-transfer sessions with the application team, and standardizing production validation, restart, and recovery SOPs. The work should also coordinate RCA review and close the operational gap where incidents can stall because restart authority, validation steps, and recovery procedures are unclear.
 - **Source:** Inbox — Meeting+Summary_+SRM+Certificate+Incident,+Operational+Gaps,+and+Rapid+Recovery+Onboarding.doc
+
+---
+
+## T083 — Baseline Japan xMatters Rosters and Escalation Model
+- **Status:** Open
+- **Created:** 2026-05-07
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:xmatters #system:cmdb
+- **Relevance:** 84/100
+- **Tags:** #project:lapu-lapu #domain:gocc-handover #xmatters #escalation #support-model
+- **Description:** Generate a current roster report for all Japan xMatters groups, reconcile it against ServiceNow support-group routing, and define the target L1, L2, and L3 escalation structure needed for Ingenium onboarding and wider Japan incident handling. Share the baseline with David and Birger so static single-level rosters can be corrected before additional applications go live in GOCC.
+- **Source:** Inbox — 20260507+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T084 — Resolve CMDB Mapping Gaps for Rapid Recovery Plan Automation
+- **Status:** Open
+- **Created:** 2026-03-17
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:cmdb
+- **Relevance:** 87/100
+- **Tags:** #project:lapu-lapu #program:r2r #automation #cmdb #data-quality
+- **Description:** Resolve CI-number discrepancies between CMDB V9 and the source spreadsheets, confirm field mappings for all six Rapid Recovery Plan sections, and establish a pilot-ready data set for automated plan generation. This is the primary blocker called out in the automation deck and must be closed before generated RRPs can be trusted or scaled.
+- **Source:** Inbox — Rapid Recovery Planning Automation Process.pdf
+
+---
+
+## T085 — Pilot Automated Rapid Recovery Plan Generation Workflow
+- **Status:** Open
+- **Created:** 2026-03-17
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:cmdb
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #program:r2r #automation #runbooks #workflow
+- **Description:** Build and pilot a workflow that extracts CMDB and ServiceNow data, maps it into the six-section Rapid Recovery Plan template, generates sample RRPs, routes them for SME review, and documents the ongoing generation runbook. Use the pilot to segment the 134-app scope, validate sample outputs, and close remaining gaps in contacts, triage content, and dependency data before scale-out.
+- **Source:** Inbox — Rapid Recovery Planning Automation Process.pdf
+
+---
+
+## T086 — Standardize Ingenium Source Control and CI/CD for 3-Tier Delivery
+- **Status:** Open
+- **Created:** 2026-04-21
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:ingenium
+- **Relevance:** 86/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #cicd #github #automation
+- **Description:** Complete the Version Manager to GitHub migration plan and establish standard Jenkins-based CI/CD pipelines for Ingenium services in the new 3-tier architecture. The target state is a repeatable build, test, package, and non-production deployment flow with review discipline, auditability, and lower release risk.
+- **Source:** Inbox — Epsilon_Ingenium-Modernization.pdf
+
+---
+
+## T087 — Validate Ingenium 3-Tier Production Rollout Readiness
+- **Status:** Open
+- **Created:** 2026-04-21
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:ingenium #system:azure
+- **Relevance:** 89/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #production-readiness #testing
+- **Description:** Coordinate the DEV and AQA validation needed before promoting the new 3-tier Ingenium platform into production, including end-to-end sanity checks, config and integration verification, rollback readiness, batch and non-functional testing, and pipeline gate evidence. The deliverable is a production-readiness decision backed by validated runbooks, smoke tests, and defect-triage evidence.
+- **Source:** Inbox — Epsilon_Ingenium-Modernization.pdf

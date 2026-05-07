@@ -4,6 +4,40 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-05-07 — Lapu-Lapu GOCC and Japan** #processed
+  - **Source:** archive/20260507+-+Lapu-Lapu+GOCC+and+Japan.doc
+  - **Focus:** Confirm operational scope, alert and incident workflow, and escalation-readiness for Japan application onboarding into GOCC.
+  - **Key outcomes:**
+    1. Japan monitoring coverage reached 68/88 application systems in production and 50/60 non-production environment groups, while GOCC L0/L1 go-live stood at 25/65 applications.
+    2. The meeting reaffirmed that only onboarded applications are routed into GOCC alert handling and that non-onboarded applications will continue to have slower or missing detection paths.
+    3. Rapid Recovery plans are expected to be accessible from ServiceNow-linked runbooks, with manual upload as a fallback until the integration path is finalized.
+    4. Japan xMatters groups still need a cleaner roster baseline and a defined L1/L2/L3 escalation structure before broader onboarding can scale.
+  - **Actions extracted → T083**
+  - **Actions referenced → T042, T077, T079, T080, T081**
+  - **Decision referenced → D005**
+
+- **2026-04-21 — Epsilon Ingenium Modernization Executive Update** #processed
+  - **Source:** archive/Epsilon_Ingenium-Modernization.pdf
+  - **Focus:** Executive status update on the Ingenium modernization roadmap, including 3-tier architecture rollout, GitHub and CI/CD enablement, KT progress, and Q3 production-readiness asks.
+  - **Key outcomes:**
+    1. The modernization plan continues to center on the validated 3-tier architecture, GitHub source-control migration, Jenkins-driven CI/CD, Ingenium KT to GOCC, and BAU automation.
+    2. Q2 work focuses on POT and DEV implementation, pipeline creation, Version Manager exit, KT progression, and documentation improvements.
+    3. The next execution gate is production rollout readiness, which requires DEV and AQA support across end-to-end validation, configuration checks, rollback preparation, batch validation, and non-functional testing.
+    4. The roadmap also positions the modernization for lower run cost, more predictable releases, and reduced dependency on the Ingenium infrastructure team as GOCC ownership expands.
+  - **Actions extracted → T086, T087**
+  - **Actions referenced → T008, T010, T046, T064, T065**
+
+- **2026-03-17 — Rapid Recovery Planning Automation Process** #processed
+  - **Source:** archive/Rapid Recovery Planning Automation Process.pdf
+  - **Focus:** Automate Rapid Recovery Plan generation from CMDB and ServiceNow data so the gold-application RRP backlog can be scaled without manual copy-paste.
+  - **Key outcomes:**
+    1. Manual RRP creation for 134 gold applications is not sustainable because the current process depends on fragmented CMDB, spreadsheet, and email data.
+    2. A proof of concept can already generate six-section RRP documents from CMDB data, but CMDB CI mismatches remain the primary blocker to trusted output.
+    3. Integration maps, vendor contacts, and triage steps still need SME input or better source-of-truth coverage before automation can fully replace manual effort.
+    4. The proposed next steps are to validate sample RRPs, resolve CMDB discrepancies, segment the application scope, and run a staged pilot before handoff and scale-out.
+  - **Actions extracted → T084, T085**
+  - **Actions referenced → T003, T041**
+
 - **2026-04-24 — SRM Incident, Operational Gaps, and Rapid Recovery Onboarding** #processed
   - **Source:** archive/Meeting+Summary_+SRM+Certificate+Incident,+Operational+Gaps,+and+Rapid+Recovery+Onboarding.doc
   - **Focus:** Review the SRM incident, close the validation and recovery-readiness gaps, and use SRM as a focused Rapid Recovery onboarding case.

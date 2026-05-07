@@ -1,0 +1,489 @@
+Date: Thu, 7 May 2026 06:55:41 +0000 (UTC)
+Message-ID: <384373851.123.1778136941285@70b37b082b4d>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_122_574802466.1778136941285"
+
+------=_Part_122_574802466.1778136941285
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260507 - Lapu-Lapu GOCC and Japan</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260507 - Lapu-Lapu GOCC and Japan</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"a7b3c1b16d7e" id=3D"id-20260507-Lapu-LapuGOCCandJap=
+an-ApplicationMonitoringOnboarding&amp;DashboardReview=E2=80=93MeetingNotes=
+">Application Monitoring Onboarding &amp; Dashboard Review =E2=80=93 Meetin=
+g Notes</h1>
+<p local-id=3D"ab4e4fb8021d"></p>
+<p local-id=3D"b3d40f75806c"><strong><u>Implementation Plan</u></strong></p=
+>
+<p local-id=3D"6e5bfd8916b7"><a class=3D"external-link" href=3D"https://one=
+.newrelic.com/dashboards/detail/MTczNzcwNXxWSVp8REFTSEJPQVJEfGRhOjEyMDUxOTg=
+y?account=3D1737705&amp;state=3D95432be6-14bc-fb31-5335-6225a8c7d447" rel=
+=3D"nofollow">GOCC &lt; New Relic</a> - GOCC Japan Application Dashboard wi=
+th synthetic, APM and metrics</p>
+<p local-id=3D"d0fb5458ee43">Prod - <strong>Employee Experience Dashboard <=
+/strong></p>
+<ul local-id=3D"6455ceb2c69d">
+<li local-id=3D"a731cde5115a">
+<p local-id=3D"2a7af7596e06">Decision to escalate non-standard monitoring a=
+pps rather than workaround - If PS Team already has ID set up thru New Reli=
+c then use as-is, otherwise escalate for Dev-team resolution. [<em>opportun=
+ity</em>] Old dashboards may contain URLs that have already been set up.</p=
+></li>
+<li local-id=3D"4a02a1a90860">
+<p local-id=3D"61517e5129f2">68/88 Japan Application Systems complete (77%)=
+</p>
+<ul local-id=3D"dc95b90c978e">
+<li local-id=3D"803cf5dc24b2">
+<p local-id=3D"215b183eeda1">Confirm alerting/incident workflows</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"fdd5dbc8bef3">Non-Prod -<strong> Developer Experience Dashbo=
+ard</strong></p>
+<ul local-id=3D"20a8e8746464">
+<li local-id=3D"c499b4cdbc57">
+<p local-id=3D"8dfa48c3718b">50/60 Groups of App Environments (83%)</p>
+<ul local-id=3D"9ff368b82029">
+<li local-id=3D"251c1bb3-34fc-48dd-89f8-a309d1faac1e">
+<p local-id=3D"5fdb7443475f">Confirm alerting/incident workflows</p></li>
+<li local-id=3D"76a83110-d472-4a78-a0ff-a6b2095ffa73">
+<p local-id=3D"10ff46d4ed73">APM/metrics based monitoring</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"8043234373e5"><strong>Transition App Monitoring and BAU Oper=
+ations to GOCC</strong></p>
+<ul local-id=3D"e8767fd65eca">
+<li local-id=3D"6596ac3b9314">
+<p local-id=3D"6b36084452c7">25/65 - Go-Live L0/L1 in GOCC</p></li>
+</ul>
+<h1 local-id=3D"79a3808603d3" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Walkt=
+hruAlert/IncidentManagement(Jonan,George)"><strong>Walkthru Alert/Incident =
+Management </strong>(Jonan, George)</h1>
+<h1 local-id=3D"28a63d71a200" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Decis=
+ions">Decisions</h1>
+<ul local-id=3D"77f4eca1-3d81-4fcf-b2eb-5870c64b8da5">
+<li local-id=3D"35304ffa-9e52-4874-b9af-bfcecd147abd">
+<p local-id=3D"bd9566b2c045">Onboarded applications included in GOCC alert =
+handling, priority by application tier.</p></li>
+<li local-id=3D"8c7e3bdb-73e7-43e3-89bc-2a090a83c24b">
+<p local-id=3D"0c256e6c03eb">Rapid recovery plans must be integrated into S=
+erviceNow for incident management.</p></li>
+<li local-id=3D"0a0ea437-5321-4d62-9397-1922a73cbcb6">
+<p local-id=3D"0e5aad9c2ea4">Recurring incidents mapped to existing problem=
+ tickets for tracking and management.</p></li>
+<li local-id=3D"5481a112-b308-4f35-9303-eac743db5bcc">
+<p local-id=3D"6ef338c1b65a">XMatters group rosters for Japan reviewed and =
+escalation flows configured.</p></li>
+</ul>
+<h1 local-id=3D"2ba5e160f76d" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Openq=
+uestions">Open questions</h1>
+<ul local-id=3D"9fde06cc-f777-4e0c-8ced-145cb9736c4c">
+<li local-id=3D"f73ad223-bb32-4faa-98cb-198c81dcf412">
+<p local-id=3D"feec11353663">Detection time for non-onboarded applications =
+may be longer or missed entirely.</p></li>
+<li local-id=3D"eaebf8b3-4831-471f-b814-33deea772eba">
+<p local-id=3D"740d038b62a4">Integration process for rapid recovery plans i=
+nto ServiceNow is not finalized.</p></li>
+<li local-id=3D"8aee741a-179f-4771-881a-b507cfbb3ed8">
+<p local-id=3D"5c0579819e14">Automating correlation of incidents to problem=
+ records is still under consideration.</p></li>
+<li local-id=3D"69867926-bef8-43d4-b978-a35bca4cf5f6">
+<p local-id=3D"5c4c4fbe76d8">Optimal structure for L1, L2, L3 escalation gr=
+oups is undetermined.</p></li>
+</ul>
+<h1 local-id=3D"df1100905de5" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Agend=
+a">Agenda</h1>
+<p local-id=3D"ae4cc5ff4919">Operational Resilience objective review - Scop=
+e</p>
+<p local-id=3D"45e5954e53fd">Shared collaboration space (Jira, SP, Confluen=
+ce, Planner)</p>
+<p local-id=3D"4390727b7ce0">Agree on source(s) of truth</p>
+<p local-id=3D"cd1725535e87">Establish baseline metrics for monitoring</p>
+<h1 local-id=3D"e5c045a8dc32" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Meeti=
+ngnotes">Meeting notes</h1>
+<h3 local-id=3D"356582aef48f" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Alert=
+processoverview">Alert process overview</h3>
+<ul local-id=3D"17c2fadd-7033-4c0f-9b60-33d01ae50949">
+<li local-id=3D"76cd6245-8300-46b2-bb8c-9c6c99bfcfc2">
+<p local-id=3D"b80c0aef3bae">George explained that the alert response workf=
+low for onboarded applications involves the team assessing and validating a=
+lerts according to the runbook.</p></li>
+<li local-id=3D"c5d8b4be-3e8d-4982-9320-6884c522d38a">
+<p local-id=3D"f557d068ef39">Jonan clarified that applications not yet onbo=
+arded do not have alert policies routed to GOCC, making them technically ou=
+t of scope for GOCC's alert response.</p></li>
+<li local-id=3D"58049886-d507-4494-9010-2fa68f38d8ad">
+<p local-id=3D"a3e1e6f5f9f2">Jonan stated that unmonitored events from non-=
+onboarded applications may be reported through service desk, customer incid=
+ents, or application teams, resulting in longer detection times or no GOCC =
+involvement.</p></li>
+</ul>
+<h3 local-id=3D"aaab8d7cc819" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Alert=
+processscope">Alert process scope</h3>
+<ul local-id=3D"37836c97-288c-414d-baa0-71f2237e0f64">
+<li local-id=3D"47080745-1a31-4022-a90e-90db409778ed">
+<p local-id=3D"4d6d6aa7b73f">Jonan explained that applications not onboarde=
+d to GOCC may generate alerts, but these are not routed to GOCC and are ins=
+tead reported through service desk, customer incidents, or application team=
+s, leading to longer detection times or no GOCC involvement.</p></li>
+</ul>
+<h3 local-id=3D"402b441b2eee" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Incid=
+entprioritization">Incident prioritization</h3>
+<ul local-id=3D"36e4c4e7-a398-48d3-baf2-0f7cfedd2015">
+<li local-id=3D"e8d85b99-7907-40c1-8483-a7d65a89e16c">
+<p local-id=3D"ac970759b876">George described that incident priority differ=
+s by application tier: gold applications are assigned P1 or P2, silver are =
+P2 or P3, and bronze are P3 during business hours.</p></li>
+<li local-id=3D"89a55a17-7d32-41e9-9ac8-467ec7146c1a">
+<p local-id=3D"5c398d07fd3b">Jonan and George described that managed P3 inc=
+idents are raised to prevent major incidents and typically require a techni=
+cal bridge, while normal P3 incidents have minimal impact and do not requir=
+e a bridge.</p></li>
+<li local-id=3D"aeb10ef0-7597-4ee7-88db-854687bd4d05">
+<p local-id=3D"8333cb6ea0f1">Jonan explained that managed P3 incidents are =
+raised to prevent major incidents and typically require a technical bridge,=
+ while normal P3 incidents have minimal impact and do not require a bridge.=
+</p></li>
+</ul>
+<h3 local-id=3D"5007df7f7257" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Runbo=
+okandrecoveryplans">Runbook and recovery plans</h3>
+<ul local-id=3D"869c63db-2f0e-4107-a7ff-04988b856242">
+<li local-id=3D"90bd8795-c8d7-447b-8da7-ab09903916e6">
+<p local-id=3D"a290d65ee07d">Jonan and George clarified that the rapid reco=
+very action plan, if available, should be included in the runbook provided =
+by the application team and accessible to the incident response team.</p></=
+li>
+<li local-id=3D"013c6b39-f1ed-4cb9-9652-bb2ac846ac15">
+<p local-id=3D"87604529c273">Jonan explained that rapid recovery plans shou=
+ld be included in the runbook provided by the application team and accessib=
+le in ServiceNow for each business application.</p></li>
+<li local-id=3D"6b2efe0f-bf46-4905-96ee-601f14fbfe27">
+<p local-id=3D"ecea30fd1666">Jonan clarified that if the automated upload o=
+f rapid recovery plans to ServiceNow does not work, the team will manually =
+upload the plans to ensure they are available in the CI record.</p></li>
+</ul>
+<h3 local-id=3D"a281bc811c32" id=3D"id-20260507-Lapu-LapuGOCCandJapan-AIand=
+automation">AI and automation</h3>
+<ul local-id=3D"2add756d-89b4-48ce-92da-4d3ff47a0275">
+<li local-id=3D"5af28c43-1176-456d-936f-c81dc34c7083">
+<p local-id=3D"99278943c1fe">Birger shared that a pilot for chat-based ITSM=
+ is currently in testing, but AI investigation is not yet used in the incid=
+ent management process.</p></li>
+</ul>
+<h3 local-id=3D"1aea57d44372" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Incid=
+entandproblemcorrelation">Incident and problem correlation</h3>
+<ul local-id=3D"28c35483-5e9a-4f08-aecc-d51159870b02">
+<li local-id=3D"0cafc2e2-d6d8-4d3e-8839-827f2f281944">
+<p local-id=3D"2f970b2d6fe9">George stated that when an incident is related=
+ to an existing problem, the incident management team links the incident ti=
+cket to the open problem ticket in ServiceNow.</p></li>
+</ul>
+<h3 local-id=3D"917eb5414f55" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Incid=
+entresponseworkflow">Incident response workflow</h3>
+<ul local-id=3D"f4da1f06-67b0-4211-8907-f46d450e9877">
+<li local-id=3D"ac140509-ef13-40ce-ba15-db712f199f30">
+<p local-id=3D"1eef0d1a25b2">Jonan described that the ServiceNow support gr=
+oup label should match the XMatters group to ensure seamless engagement dur=
+ing incident response, and discrepancies are corrected during onboarding.</=
+p></li>
+<li local-id=3D"eb251cc0-2d9c-4442-8a6c-7b5b08a03ac4">
+<p local-id=3D"f7cb421411fb">George confirmed that contact information for =
+support groups is updated in both ServiceNow and XMatters during applicatio=
+n onboarding to ensure accurate routing.</p></li>
+<li local-id=3D"fa7a49fa-4650-48d9-82b9-49e9333eaa5e">
+<p local-id=3D"c0d598bc802e">Birger mentioned that Yegor and Tada are worki=
+ng on cleaning up XMatters group rosters, and previously Dennis provided a =
+roster dump for Japan.</p></li>
+<li local-id=3D"2185c0b6-47ac-4c90-b984-778713ff4d1c">
+<p local-id=3D"4e2a4f82e3e0">Birger highlighted the need to set up escalati=
+on flows (L1, L2, L3) in XMatters for proper incident escalation, as curren=
+t Japan groups lack escalation beyond initial contacts.</p></li>
+<li local-id=3D"ae1b9589-b059-4a6c-9b1f-c2174c62b98c">
+<p local-id=3D"d4a23f399d1f">Jonan explained that most Japan groups in XMat=
+ters currently lack escalation beyond the initial contact, resulting in sta=
+tic, single-level rosters.</p></li>
+<li local-id=3D"73808139-3233-41cf-94b7-4e4cd460c020">
+<p local-id=3D"0410da8f568f">Birger and Jonan discussed that escalation flo=
+ws (L1, L2, L3) can be configured in XMatters by adding groups as escalatio=
+n members, allowing for multi-level incident escalation.</p></li>
+</ul>
+<h1 local-id=3D"b22d90f8b3b5" id=3D"id-20260507-Lapu-LapuGOCCandJapan-Follo=
+w-uptasks">Follow-up tasks</h1>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"5631af6b-1cef-4172-9711-6ca=
+939653bdd" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"3544269c-722f-4898-83c1-fe21e459681a">
+<td data-local-id=3D"77e458c5-726f-4d31-8a89-351311f1fff0" class=3D"conflue=
+nceTd">
+<p local-id=3D"55794e68d35e">Task</p></td>
+<td data-local-id=3D"1cc4d519-f87b-4eab-8adf-df2a9ed6b8bb" class=3D"conflue=
+nceTd">
+<p local-id=3D"7b95d200998b">Assigned to</p></td>
+<td data-local-id=3D"37f38b16-c142-4018-8b01-5d8b2c6d6aaa" class=3D"conflue=
+nceTd">
+<p local-id=3D"c09c76e59988">Due date</p></td>
+<td data-local-id=3D"dae42855-44cf-462c-8e10-8c8e59c7d149" class=3D"conflue=
+nceTd">
+<p local-id=3D"da8f9e38071b">Bucket</p></td>
+</tr>
+<tr data-local-id=3D"2d59cbb2-902a-4c35-b7f9-2b549a2e02a3">
+<td data-local-id=3D"0eb8d440-acea-4610-aec7-bb3fcdf26f5a" class=3D"conflue=
+nceTd">
+<p local-id=3D"a33728f7e19e">Generate XMatters roster report for all Japan =
+groups and share with David (Jonan)</p></td>
+<td data-local-id=3D"a84aa41b-d29e-42b6-8d06-829eee4cd684" class=3D"conflue=
+nceTd">
+<p local-id=3D"642905a63664">Jonan</p></td>
+<td data-local-id=3D"59636f96-07c7-4a6a-81d5-f4f1e53da98e" class=3D"conflue=
+nceTd">
+<p local-id=3D"f0341aad5440"></p></td>
+<td data-local-id=3D"6e928d62-7873-4a67-881d-dbca20394279" class=3D"conflue=
+nceTd">
+<p local-id=3D"36173657f360"></p></td>
+</tr>
+<tr data-local-id=3D"66cda1fa-94c5-4737-8880-8d63744026c9">
+<td data-local-id=3D"54ef0ffe-3567-41e4-9d3f-525720c83863" class=3D"conflue=
+nceTd">
+<p local-id=3D"4e5eaa2b9f6b">Define the L1, L2, L3 escalation structure for=
+ Ingenium onboarding and identify necessary support groups (Birger, Jonan)<=
+/p></td>
+<td data-local-id=3D"0325ca08-06f9-4ec5-83e0-0f6ee6a382d1" class=3D"conflue=
+nceTd">
+<p local-id=3D"744bcda94c70"></p></td>
+<td data-local-id=3D"11cbc2c2-7861-40f5-b7de-7576fae7857d" class=3D"conflue=
+nceTd">
+<p local-id=3D"043c18a61888"></p></td>
+<td data-local-id=3D"5b5bb19c-a870-4c0c-a6f7-ed9f114c0426" class=3D"conflue=
+nceTd">
+<p local-id=3D"af60d3c46625"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"39cc541d04b6"></p>
+    </div>
+</body>
+</html>
+------=_Part_122_574802466.1778136941285--
