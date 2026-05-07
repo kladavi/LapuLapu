@@ -1,0 +1,377 @@
+Date: Thu, 23 Apr 2026 05:10:46 +0000 (UTC)
+Message-ID: <1614989080.109.1776921046114@6e74081a3222>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_108_1277199150.1776921046114"
+
+------=_Part_108_1277199150.1776921046114
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260423 - LapuLapu Team Direction and Execution</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260423 - LapuLapu Team Direction and Execution</h1>
+    <div class=3D"Section1">
+        <h2 local-id=3D"97c652cfce08" id=3D"id-20260423-LapuLapuTeamDirecti=
+onandExecution-A)Previousmeetingnotes(whatwehaveonrecord)">A) Previous meet=
+ing notes (what we have on record)</h2>
+<h3 local-id=3D"1f001436ee50" id=3D"id-20260423-LapuLapuTeamDirectionandExe=
+cution-1)ExecutiveAgenda+Objective(baselineforthisseries)">1) Executive Age=
+nda + Objective (baseline for this series)</h3>
+<p local-id=3D"6dd08da65000"><strong>Executive Agenda (30 minutes) =E2=80=
+=94 Team Direction &amp; Execution (with Birger Fjaellman )</strong> <br><s=
+trong>Objective:</strong> Align on direction, confirm execution path, and l=
+eave with <strong>3=E2=80=935 explicit decisions/asks that unblock delivery=
+ this week</strong>.</p>
+<h3 local-id=3D"86fb288a42d2" id=3D"id-20260423-LapuLapuTeamDirectionandExe=
+cution-2)The=E2=80=9Cdecision/ask=E2=80=9Dbacklogcarriedintheagendaemail">2=
+) The =E2=80=9Cdecision/ask=E2=80=9D backlog carried in the agenda email</h=
+3>
+<p local-id=3D"d79ca20de6cc">These are the explicit items you listed as the=
+ working queue:</p>
+<ul local-id=3D"d49f89a1-1031-4c34-a8ad-f189c6777539">
+<li local-id=3D"13cc51fe-a940-43a2-b67f-efb3d42a24fc">
+<p local-id=3D"227bc9c147a5"><strong>Employee Experience Dashboard</strong>=
+: Decision to escalate non-standard monitoring apps rather than workaround =
+- If PS Team already has ID set up thru New Relic then use as-is. [opportun=
+ity] Old dashboards may contain URLs that are currently being figured out.<=
+/p></li>
+<li local-id=3D"e2089dc922a0">
+<p local-id=3D"1a0dad54dd87"><strong>New Relic =E2=86=92 Moogsoft routing:<=
+/strong> Where alerts/incidents go; find the setting that registers the sup=
+port team. <a data-card-appearance=3D"inline" href=3D"https://manulife-ets.=
+atlassian.net/wiki/x/TACsMQM" local-id=3D"19e5de7f9b19" rel=3D"nofollow">ht=
+tps://manulife-ets.atlassian.net/wiki/x/TACsMQM</a></p>
+<ul local-id=3D"803afd098edd">
+<li local-id=3D"450bcce4d19f">
+<p local-id=3D"7adea72f59d5">Nakatsu-san and Naveen have access to Moogsoft=
+</p></li>
+</ul></li>
+<li local-id=3D"1fa7bd18b536">
+<p local-id=3D"b96a1d3041c5"><strong>Application Health Status</strong>: <a=
+ class=3D"external-link" href=3D"https://app.powerbi.com/Redirect?action=3D=
+OpenReport&amp;appId=3D72d14b52-f202-40df-90b9-471ed07a8531&amp;reportObjec=
+tId=3De5c359a8-3011-43ad-9a73-dff4306dcb18&amp;ctid=3D5d3e2773-e07f-4432-a6=
+30-1a0f68a28a05&amp;reportPage=3D5dfbaedb0e81cb1cd103&amp;pbi_source=3DappS=
+hareLink&amp;portalSessionId=3D836416cf-5604-4656-87a8-e5b7f43dc5c3" rel=3D=
+"nofollow">PBI Super Ops</a></p></li>
+<li local-id=3D"e61e21e59572">
+<p local-id=3D"9bcb9968460f"><strong>Rapid Recovery</strong>: GOCC+Rohina c=
+onsult with Server Team on each application=E2=80=99s reboot/restore proced=
+ures</p></li>
+<li local-id=3D"b7ca5422-f481-4ce6-b9f6-47d30d8b105c">
+<p local-id=3D"226f41a769de"><strong>Non=E2=80=91Prod Monitoring workload:<=
+/strong> Next steps are <strong>alert response workflow</strong> (Sangram/R=
+upesh/Rae Judavar) =E2=86=92 then <strong>environment spin=E2=80=91up/down<=
+/strong> =E2=86=92 then <strong>Rapid Recovery</strong>.</p></li>
+<li local-id=3D"4f07878b-cb20-43ff-abfc-c09eb90f084c">
+<p local-id=3D"7d14b2ffae70"><strong>Capacity monitoring:</strong> Confirm =
+the settings (<strong>Balaji Ravi =EF=BC=88=E3=83=A9=E3=83=B4=E3=82=A3 =E3=
+=83=90=E3=83=A9=E3=82=B8=EF=BC=89</strong>).</p></li>
+<li local-id=3D"03a7ee04-f1fb-4d08-a488-516fe91538cf">
+<p local-id=3D"ac81dbb17846"><strong>Side quest:</strong> Transfer ownershi=
+p for <strong>ServerF and fileshares</strong>.</p>
+<ul local-id=3D"46f1c536e9bf">
+<li local-id=3D"47aa13e8-0069-47e8-bb5a-65dfc9d4abc7">
+<p local-id=3D"80659b0ab3b5"><strong>File share:</strong> Jonan Tan Pangan =
+(GOCC) + JB Villegas (GAM) tasked to set up a fileshare management service.=
+</p></li>
+<li local-id=3D"ee15b026-8b5a-4162-8cf8-f97639dd9ad7">
+<p local-id=3D"a412210e375f"><strong>File transfer:</strong> Joan Lee (GBO,=
+ MW) + JB Villegas (GAM) has MFT team to work on FTP and MFT activities.</p=
+></li>
+<li local-id=3D"ef06f0e4-66a9-4bca-b165-bafbf8dc3702">
+<p local-id=3D"7efe312ccc4c"><strong>patching:</strong> Weekday/weekend lis=
+t shared, Business Operation windows are being defined. <strong>Pull system=
+s not on the main list:</strong> David Klan - Applications listed up but se=
+rver/component level mapping ongoing</p></li>
+<li local-id=3D"68ffe0ee-c276-496e-a208-c5812b51959a">
+<p local-id=3D"c75fa8c96e1a"><strong>=E2=80=9CGopher=E2=80=9D setup:</stron=
+g> Keni, Birger Fjaellman =EF=BC=88=E3=83=95=E3=82=A3=E3=82=A8=E3=83=AB=E3=
+=83=9E=E3=83=B3 =E3=83=93=E3=83=AB=E3=82=A4=E3=82=A7=E3=83=AB=EF=BC=89 (req=
+uirements communicated to Kinichi Nakatsu =EF=BC=88=E4=B8=AD=E6=B4=A5 =E6=
+=AC=BD=E4=B8=80=EF=BC=89). - <a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16307683332/Gopher+-+PRD" data-linked-resource-id=3D=
+"16307683332" data-linked-resource-version=3D"1" data-linked-resource-type=
+=3D"page">Gopher - PRD</a> POC will be ready by Monday</p></li>
+<li local-id=3D"83458dda-a69c-4a72-b852-2a92b7aabf8c">
+<p local-id=3D"935f83125573"><strong>Orphaned assets:</strong> Burn down by=
+ category; start with servers (Yegor).</p></li>
+</ul></li>
+</ul>
+<h3 local-id=3D"48300b66f78b" id=3D"id-20260423-LapuLapuTeamDirectionandExe=
+cution-3)Relatedfollow=E2=80=91uptaskscapturedintheemailthread(GOCCtransiti=
+onscaffolding)">3) Related follow=E2=80=91up tasks captured in the email th=
+read (GOCC transition scaffolding)</h3>
+<p local-id=3D"a44d3d67b58e">A separate =E2=80=9CKey Follow=E2=80=91Up Task=
+s=E2=80=9D block in the same subject thread captured these explicit deliver=
+ables:</p>
+<ul local-id=3D"df684185-20e5-4477-ac1c-94b8a8c6fb28">
+<li local-id=3D"269355f7-c549-415b-902b-bff1cddb5855">
+<p local-id=3D"43a03010356d">Jonan Tan Pangan to share <strong>inventory te=
+mplates/samples</strong> and a <strong>transition project plan</strong> (ex=
+ample given: rapid recovery) for Japan to study.</p></li>
+<li local-id=3D"e10fc858-2196-45e3-8483-5a36f3f03c7e">
+<p local-id=3D"7034d79be99f">Jonan Tan Pangan + Dennis Talento to compile a=
+ <strong>definitions dictionary / service catalog</strong> explaining each =
+ServiceNow item and support level.</p></li>
+<li local-id=3D"303d2072-45b6-4396-8f20-4a70c707847c">
+<p local-id=3D"40cfa065f856">Jonan Tan Pangan + David Klan to co=E2=80=91de=
+velop a <strong>prioritized checklist</strong> of services to transition (b=
+iggest wins + unclear areas flagged). Lists created based on metal and # of=
+ incidents/downtime</p></li>
+</ul>
+<h3 local-id=3D"f8cdc781ff8c" id=3D"id-20260423-LapuLapuTeamDirectionandExe=
+cution-4)Patching/orphanserverdetailseeninmeetingchat/messageartifact">4) P=
+atching / orphan server detail seen in meeting chat/message artifact</h3>
+<p local-id=3D"1a7020a2c4d7">From the related [Lapu-Lapu] Team Direction an=
+d Execution artifact:</p>
+<ul local-id=3D"36eed279-52c4-4f3e-bb58-b73543e9e5d5">
+<li local-id=3D"2e451e88-7f32-4f50-8ad3-609262380dbe">
+<p local-id=3D"30ba8f36cfec"><strong>Weekday server patching:</strong> Plan=
+ to patch on Thursday (ETS 4=E2=80=936 hours). Identify servers not using b=
+atches (mostly DB servers). Batch Ops team has a list of servers running CA=
+ agent.</p></li>
+<li local-id=3D"d9172a02-5daa-4a34-af1a-192177d3aae5">
+<p local-id=3D"8033487cc7aa">Business communication from PS to DBM required=
+ to implement this stability improvement.</p></li>
+<li local-id=3D"ecf9f969-26fe-4105-a6a2-398ab28def5a">
+<p local-id=3D"e2aa3f707490">Start with Omori-san=E2=80=99s MPS Guardia, DF=
+S, and Ingenium.</p></li>
+<li local-id=3D"c681d26a-f95e-494d-9302-057bf441baa4">
+<p local-id=3D"96a709735dcd">Action callout: Kiran Bonde to find orphan ser=
+vers with Yegor.</p></li>
+</ul>
+<blockquote local-id=3D"ecc25100-6ca0-4a50-8030-ea3b61d193cb">
+<p local-id=3D"d80cfca976a4">Note: several past instances of <a class=3D"ex=
+ternal-link" href=3D"https://teams.microsoft.com/l/meetup-join/19%3ameeting=
+_Y2UwNWVjMjctNGFhNi00ZjU3LTk2OGMtNWI1NzhkMDczZTU2%40thread.v2/0?context=3D%=
+7b%22Tid%22%3a%225d3e2773-e07f-4432-a630-1a0f68a28a05%22%2c%22Oid%22%3a%228=
+b44df3f-571b-40d4-8c11-6c7d37f35e93%22%7d" rel=3D"nofollow">[Lapu-Lapu] Tea=
+m Direction and Execution</a> appear <strong>not transcribed</strong>, so d=
+etailed =E2=80=9Cwhat was said=E2=80=9D recap isn=E2=80=99t available=E2=80=
+=94what we <em>can</em> rely on are the agenda/follow=E2=80=91up emails and=
+ the captured chat/message artifacts above.</p>
+</blockquote>
+    </div>
+</body>
+</html>
+------=_Part_108_1277199150.1776921046114--

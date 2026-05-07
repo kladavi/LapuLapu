@@ -1,0 +1,419 @@
+Date: Tue, 21 Apr 2026 06:34:26 +0000 (UTC)
+Message-ID: <949723732.89.1776753266427@1d870a789007>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_88_1960465568.1776753266427"
+
+------=_Part_88_1960465568.1776753266427
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260421 - LapuLapu ETS Japan, GOCC, and Obs Team</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260421 - LapuLapu ETS Japan, GOCC, and Obs Team</h1>
+    <div class=3D"Section1">
+        <p local-id=3D"5798e76dd94d">Objectives and Key Results</p>
+<ul local-id=3D"791ccf3018e6">
+<li local-id=3D"659e5589fd2d">
+<p local-id=3D"9c14ec3e7844"><strong>Transition App Monitoring and BAU Oper=
+ations to GOCC</strong></p>
+<ul local-id=3D"a122b959c4d7">
+<li local-id=3D"67c8f8700687">
+<p local-id=3D"aecc2bab2a84">16 / 65 : 9 in-progress, epos/wodm/solace wait=
+ing for access service id. 6 Applications can go live</p></li>
+</ul></li>
+<li local-id=3D"ea17e237e4d5">
+<p local-id=3D"ca7833bffcf2"><strong>Dashboards &amp; Tagging (New Relic)</=
+strong></p>
+<ul local-id=3D"c871f7925397">
+<li local-id=3D"889a29bdc125">
+<p local-id=3D"d7d3e73ae298">Employee Experience Dashboard: 66 / 88. Update=
+ from Deb on minion setup (ETA)</p>
+<ul local-id=3D"85275e3e952e">
+<li local-id=3D"c216ed05d476">
+<p local-id=3D"f2812db5990a">Architecture Team maintain cron job to sync na=
+ming with LeanIX. Utilize for Silver and Bronze Apps, as well</p></li>
+</ul></li>
+<li local-id=3D"8392ea8fd905">
+<p local-id=3D"7c6092a27147">Developer Experience Dashboard: 45 / 60</p></l=
+i>
+<li local-id=3D"70dc7e0d13bc">
+<p local-id=3D"24681ba80138">Japan Business Capability: Add =E2=80=9CAlerts=
+: nn=E2=80=9D to specify what the # is counting. Submit to Leadership revie=
+w (Hari, Kelvin, Birger) and next steps</p></li>
+</ul></li>
+<li local-id=3D"9479cf1a-e6d2-42b5-8f10-f077f9400619">
+<p local-id=3D"fa55e874f5d9"><strong>OMM L2 Application Coverage (Japan)</s=
+trong></p>
+<ul local-id=3D"50eaa6d1e90a">
+<li local-id=3D"39ef0aa058ff">
+<p local-id=3D"742c508afa5c">Update from Deb expected early May</p></li>
+<li local-id=3D"fbfe9afd93c8">
+<p local-id=3D"e580a4dbe55b">Kickoff this morning with template showing sco=
+pe of monitoring (OMM L2 Entity Mapping) - Japan start verifying immediatel=
+y</p></li>
+<li local-id=3D"60ababadd877">
+<p local-id=3D"a5ad8a2e07bd">Vignesh has list of Japan synthetic monitors -=
+ Japan Synthetic Monitors List - sent into Sorting folder, MK and GOCC will=
+ review this list</p></li>
+</ul></li>
+<li local-id=3D"9049cc5f2fd8">
+<p local-id=3D"174ecc9a8a5b"><strong>Laptop + JPE/JPW Monitoring / Minions<=
+/strong></p>
+<ul local-id=3D"567c375b91ab">
+<li local-id=3D"4a5044a7a46a">
+<p local-id=3D"df079067e04f">2 laptops delivered, one is working and the ot=
+her requires network configuration</p></li>
+<li local-id=3D"6f7ca73f2c54">
+<p local-id=3D"61d511c97bd5">New vNET needs to be created and it=E2=80=99s =
+being ridiculous</p></li>
+<li local-id=3D"3c0923574c7b">
+<p local-id=3D"c4e29f1b3fb0">Raise another request for existing minions</p>=
+</li>
+</ul></li>
+<li local-id=3D"a29c0bf8-a820-44b6-b592-fee21f8fd7b4">
+<p local-id=3D"c5bc5a377c5d"><strong>Rapid Recovery enablement</strong></p>
+<ul local-id=3D"dbb7729ed560">
+<li local-id=3D"0e1d3706c8c6">
+<p local-id=3D"a36a124b9972">Ingenium in-progress</p></li>
+<li local-id=3D"cebf93aad9c0">
+<p local-id=3D"794252cdd11f">As a follow up from =E2=80=9CA bilingual infor=
+mation=E2=80=91sharing session with Japan Production Support is required to=
+ align on rapid recovery responsibilities and information flow.=E2=80=9C <s=
+trong>Rohina </strong>will initiate event in early May for RR explanation s=
+ession to PS Team</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"933cf46a1d78"><strong>Credential Management</strong></p>
+<ul local-id=3D"d236c943c75d">
+<li local-id=3D"dc733cab5709">
+<p local-id=3D"0a0549de57cc">Jesus and team document standards for NR Secur=
+e Credentials</p></li>
+<li local-id=3D"6fcd705539d2">
+<p local-id=3D"9e589a97c21d">Workaround is being done for MLK/ePOS/BPM/etc =
+applications based on logging into the Portal with a Service ID to access t=
+he application endpoint.</p>
+<ul local-id=3D"12224feea048">
+<li local-id=3D"96b17325d1a5">
+<p local-id=3D"98dc1e370237">Notify user if they are using non-standard</p>=
+</li>
+</ul></li>
+</ul>
+<h2 local-id=3D"8dfe623fe36d" id=3D"id-20260421-LapuLapuETSJapan,GOCC,andOb=
+sTeam-COMMITTEDACTIONS">COMMITTED ACTIONS</h2>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"4e=
+7a0810-4528-401b-9dcd-e5555eb0f324" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"ac8796b5-3756-4288-9f4e-a21b66122ae9">
+<th data-highlight-colour=3D"#f0f1f2" data-local-id=3D"ab87e2e0-370b-44ab-a=
+a97-e4f9dafdc1c4" class=3D"confluenceTh">
+<p local-id=3D"5fda478142b1">Decision Outcome</p></th>
+<th data-highlight-colour=3D"#f0f1f2" data-local-id=3D"f3897a18-62ba-4e08-9=
+770-ef8e71bc8302" class=3D"confluenceTh">
+<p local-id=3D"c9d4fcdd87b8">Owner</p></th>
+</tr>
+<tr data-local-id=3D"a5558370-befc-438d-992b-d4b3c075dbdf">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"7a2f4b65-a509-4b0c-b=
+a44-0c6b892de23c" class=3D"confluenceTd">
+<p local-id=3D"ef5f21b19307">Share PS =E2=86=92 GOCC transition checklist</=
+p>
+<ul local-id=3D"bfd488cadf92">
+<li local-id=3D"9110016b2c1c">
+<p local-id=3D"ea8e3e598696">provided, follow up required for GOCC to track=
+ status</p></li>
+</ul></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"9669a3c6-a1aa-4737-b=
+62e-117c97ab8e38" class=3D"confluenceTd">
+<p local-id=3D"dcfb273e6809">Yam</p></td>
+</tr>
+<tr data-local-id=3D"c5083c61-e8d2-482d-bad2-7d324c236481">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"16dc9909-4105-49ae-a=
+a98-34ae8849f0ac" class=3D"confluenceTd">
+<p local-id=3D"e879e8679837">Publish weekly list of transitioned applicatio=
+ns</p></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"f19ce60c-c389-4f0a-a=
+574-ac262761950a" class=3D"confluenceTd">
+<p local-id=3D"39389fc4aade">David (Done)</p></td>
+</tr>
+<tr data-local-id=3D"5d8404b9-0f05-413b-8b81-257be333b216">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"f347334e-93e3-4e02-9=
+36a-9b2beb4ff54d" class=3D"confluenceTd">
+<p local-id=3D"ba616af0dab7">Confirm availability of rapid recovery templat=
+es</p></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"62bbb254-bd44-41ec-b=
+237-32f571010a91" class=3D"confluenceTd">
+<p local-id=3D"86add186e340">Jonan (Done)</p></td>
+</tr>
+<tr data-local-id=3D"578d87ad-bb01-48fd-bdaa-29e7d050babb">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"0cd15a5f-60b7-421e-9=
+dbb-d32348e30a3c" class=3D"confluenceTd">
+<p local-id=3D"b378f00d02d7">Define credential management standards for syn=
+thetics</p>
+<ul local-id=3D"703f201cf535">
+<li local-id=3D"9254c6731dd4">
+<p local-id=3D"8a392a5d04c9">Using New Relic Secure Credentials</p></li>
+<li local-id=3D"7ba376b44b13">
+<p local-id=3D"34604b9d35b4">Manulife Standard for NR Secure Credentials ba=
+sed on existing</p></li>
+</ul></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"daef9afb-22e0-448a-a=
+a20-7db2a701cf4e" class=3D"confluenceTd">
+<p local-id=3D"de86b99df364">Jesus, Angelito, Edward Ian HV</p></td>
+</tr>
+<tr data-local-id=3D"45d47038-ca59-4cdf-ad13-f94f9ffac301">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"2619ceda-193e-4b86-b=
+45c-1901ca6ec92d" class=3D"confluenceTd">
+<p local-id=3D"74707fa33269">Consolidate non=E2=80=91prod 500 errors with e=
+vidence</p></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"4f43b675-c416-452c-b=
+b4d-cd97f85b1ec8" class=3D"confluenceTd">
+<p local-id=3D"5e5256835102">Rae (Done)</p></td>
+</tr>
+<tr data-local-id=3D"1350f751-394d-4d9a-ba9f-e9e771b85f32">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"813d1fb4-199a-477b-a=
+b2b-a8d761989dd4" class=3D"confluenceTd">
+<p local-id=3D"65bdcdfcc69f">Engage EPOS team on observed errors</p>
+<ul local-id=3D"50a73e68ff02">
+<li local-id=3D"41860b30653a">
+<p local-id=3D"dec61836cc2c">Waiting for response from ePOS/CWS Teams</p></=
+li>
+</ul></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"a1e676f3-5251-46b6-9=
+fea-7e35858c99d9" class=3D"confluenceTd">
+<p local-id=3D"e6b5191d0082">Rae, David (In-Progress)</p></td>
+</tr>
+<tr data-local-id=3D"d22017a3-5852-45cc-83a7-159d43c5513f">
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"4d51f4e5-1233-44be-b=
+2ee-4f598def3bb8" class=3D"confluenceTd">
+<p local-id=3D"1c5a090fbd0f">Implement workload=E2=80=91status noise=E2=80=
+=91reduction policy</p></td>
+<td data-highlight-colour=3D"#ffffff" data-local-id=3D"25f9c748-2f36-4214-8=
+df4-8d533fd3153e" class=3D"confluenceTd">
+<p local-id=3D"d467aacd4892">Rae</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_88_1960465568.1776753266427--

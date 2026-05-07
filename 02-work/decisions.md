@@ -77,26 +77,39 @@ tags: #project:lapu-lapu #domain:workflow-automation #domain:service-management 
 
 ---
 
-## D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition
+## D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds
 
-tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:moogsoft #outcome:resilience
+tags: #project:lapu-lapu #domain:monitoring #system:newrelic #outcome:resilience
 
-**Date:** 2026-04-16
+**Date:** 2026-04-23
 **Decision:** Approved
-**Summary:** PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. Alerting must prioritize customer and application impact, and host-level noise must not drive workload health or incident posture. Rapid recovery enablement will include a bilingual alignment session with Japan Production Support.
-**Related Objectives:** H-3 (AI Ops / Incident Troubleshooting), H-4 (Unified Support), B-4 (Infrastructure Resilience & Disaster Recovery)
+**Summary:** For Japan dashboard onboarding, non-standard monitoring applications should be escalated to the owning application or development team instead of creating new ad hoc workaround patterns. If Production Support already has an application ID configured in New Relic, GOCC should reuse it as-is; otherwise the gap is treated as an escalation item. Legacy dashboards may still provide reusable URLs, but workaround creation is no longer the default path.
+**Related Objectives:** B-1 (Endpoint Monitoring & Post-Change Verification), H-3 (AI Ops / Incident Troubleshooting), O1 (Frictionless Customer Experience)
 **Owner:** David Klan
-**Source:** 2026-04-16 Lapu-Lapu GOCC and Japan meeting
+**Source:** 2026-04-23 Lapu-Lapu GOCC and Japan meeting
 
 ---
 
-## D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests
+## D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset
 
-tags: #project:lapu-lapu #domain:workflow-automation #domain:service-management #outcome:unaligned
+tags: #project:lapu-lapu #domain:service-management #outcome:unaligned
 
-**Date:** 2026-04-16
+**Date:** 2026-04-23
 **Decision:** Deferred
-**Summary:** April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a registered objective, supported system-of-record tag set, or confirmed sponsoring team in this repository.
+**Reason:** The "Gopher" PRD proof-of-concept called out in the Team Direction notes is a live operational ask, but it is not mapped to a registered Tier-2 or Tier-3 objective and the repository does not contain enough system-of-record context to classify or assign it cleanly. Revisit once the sponsoring objective, owning team, and required system tags are explicit.
 **Related Objectives:** none
+**Owner:** Birger Fjaellman
+**Source:** 2026-04-23 Team Direction and Execution notes
+
+---
+
+## D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness
+
+tags: #project:lapu-lapu #domain:incident-management #program:r2r #outcome:resilience
+
+**Date:** 2026-04-24
+**Decision:** Approved
+**Summary:** The SRM incident review concluded that production support needs explicit validation steps, enforceable runbooks, and a clear restart or recovery path when incidents require application restart. Rapid Recovery onboarding will be used to close authority, documentation, and recovery-readiness gaps for SRM and similar applications while RCA work continues on the underlying cause.
+**Related Objectives:** B-4 (Infrastructure Resilience & Disaster Recovery), H-4 (Unified Support), O4 (Robust Technical Core)
 **Owner:** David Klan
-**Source:** 2026-04-16 Side Quests and Team Direction notes
+**Source:** Meeting Summary: SRM Certificate Incident, Operational Gaps, and Rapid Recovery Onboarding

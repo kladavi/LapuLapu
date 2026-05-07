@@ -4,6 +4,64 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-04-24 — SRM Incident, Operational Gaps, and Rapid Recovery Onboarding** #processed
+  - **Source:** archive/Meeting+Summary_+SRM+Certificate+Incident,+Operational+Gaps,+and+Rapid+Recovery+Onboarding.doc
+  - **Focus:** Review the SRM incident, close the validation and recovery-readiness gaps, and use SRM as a focused Rapid Recovery onboarding case.
+  - **Key outcomes:**
+    1. The incident required an application restart during business hours in Japan, but the exact underlying cause remains unconfirmed.
+    2. Current runbooks, validation steps, and explicit restart or recovery procedures need tightening so similar incidents can be recovered faster and with clearer authority.
+    3. SRM and similar applications were asked to register for Rapid Recovery, with follow-up and knowledge-transfer sessions to close ownership and recovery-readiness gaps.
+    4. CMDB and ServiceNow data quality, integration mapping, and contact quality remain blockers to auto-generated recovery plans and still require SME input.
+  - **Actions extracted → T082**
+  - **Actions referenced → T079**
+  - **Decision extracted → D009**
+
+- **2026-04-23 — RE: [Lapu-Lapu] Weekly Status Update** #processed
+  - **Source:** archive/RE_ [Lapu-Lapu] Weekly Status Update.eml
+  - **Focus:** Leadership follow-up on the April 17 weekly report, specifically asking for the standard PS-to-GOCC handover task types across the 65-application scope.
+  - **Key outcomes:**
+    1. Kelvin requested an explicit breakdown of the work PS will transition to GOCC for the 65 applications.
+    2. David responded with the tracking-sheet categories used for handover: CMDB reconciliation, support-group and xMatters coverage, monitored URLs, infrastructure thresholds, business-operation timing, alert validation, and GOCC ORR sign-off.
+    3. The thread confirms the transition-scaffolding work already captured for weekly reporting and onboarding standardization rather than creating a new standalone workstream.
+  - **Actions referenced → T070, T081**
+
+- **2026-04-23 — LapuLapu Team Direction and Execution** #processed
+  - **Source:** archive/20260423+-+LapuLapu+Team+Direction+and+Execution.doc
+  - **Focus:** Unblocking asks for non-prod workflow, rapid recovery onboarding, GOCC transition scaffolding, and operational side quests.
+  - **Key outcomes:**
+    1. Non-production monitoring needs an explicit alert-response workflow before environment lifecycle or rapid recovery steps are invoked.
+    2. GOCC and Rohina need per-application reboot and restore procedures from the Server Team to widen Rapid Recovery registration.
+    3. Transition scaffolding needs to be published as reusable templates, a support-level definitions pack, and a prioritized onboarding checklist.
+    4. Fileshare and MFT ownership follow-ups remain outside the current objective-scoped workset, and the Gopher PRD POC remains unaligned pending clearer sponsorship.
+  - **Actions extracted → T079, T080, T081**
+  - **Actions referenced → T020, T044, T075, T076**
+  - **Decision referenced → D006**
+  - **Decision extracted → D008**
+
+- **2026-04-23 — Lapu-Lapu GOCC and Japan** #processed
+  - **Source:** archive/20260423+-+Lapu-Lapu+GOCC+and+Japan.doc
+  - **Focus:** Dashboard onboarding, alerting flow, rapid recovery onboarding, and the operating model for the PS-to-GOCC transition.
+  - **Key outcomes:**
+    1. Production and non-production dashboards remain in flight and need explicit alerting and incident workflow confirmation.
+    2. Non-standard monitoring applications will be escalated to the owning application team instead of being handled through new workaround patterns.
+    3. Rapid Recovery onboarding needs reboot and restore procedure capture so more applications can be registered.
+    4. Accepted April 16 transition decisions remain in force for checklist reporting, credential standards, workload-noise reduction, 500-error escalation, and bilingual rapid recovery enablement.
+  - **Actions extracted → T077, T079**
+  - **Actions referenced → T070, T071, T072, T073, T074**
+  - **Decision extracted → D007**
+  - **Decision referenced → D005**
+
+- **2026-04-21 — LapuLapu ETS Japan, GOCC, and Obs Team** #processed
+  - **Source:** archive/20260421+-+LapuLapu+ETS+Japan,+GOCC,+and+Obs+Team.doc
+  - **Focus:** Transition checkpoint across dashboard coverage, rapid recovery enablement, and synthetic credential standards.
+  - **Key outcomes:**
+    1. PS-to-GOCC transition remained at 16/65 completed, with access-service-ID blockers called out for ePOS, WODM, and Solace.
+    2. Dashboard coverage, OMM L2 entity mapping, and rapid recovery follow-up remained consistent with the April 16 workset.
+    3. The Japan Business Capability dashboard needs clearer alert-count labeling before leadership review.
+    4. Credential, workload-noise, and non-production error actions were already being executed under the accepted transition model.
+  - **Actions extracted → T078**
+  - **Actions referenced → T070, T071, T072, T073, T074**
+
 - **2026-03-26 — Incident Review Meeting** #processed
   - Applications that do not have batch jobs running can be patched on Thursday night, instead of waiting for the weekend when other Releases and upgrades are prioritized.  This will relieve some pressure on the weekend schedule.
   - **Actions extracted → T020**
@@ -124,41 +182,7 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
   - **Source:** archive/20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
   - **Focus:** Dashboard progress, PS-to-GOCC transition tracking, impact-based alerting, and rapid recovery enablement.
   - **Key outcomes:**
-    1. Employee Experience Dashboard reached 66/88 Japan application systems; Developer Experience Dashboard reached 45/60 non-prod environment groups.
-    2. PS-to-GOCC transition stands at 16/65 completed with 9 applications in progress, with the Phase-1 checklist accepted as the handover source of truth.
-    3. Branch laptop monitoring is live and non-prod HTTP 500 errors plus workload-health noise were called out as active issues.
-    4. Parallel monitoring, impact-based alerting, and a bilingual rapid recovery alignment session were accepted as operating direction.
-  - **Actions extracted → T070, T071, T072, T073, T074**
-  - **Decision extracted → D005**
-
-- **2026-04-16 — LapuLapu Team Direction and Execution** #processed
-  - **Source:** archive/20260416+-+LapuLapu+Team+Direction+and+Execution.doc
-  - **Focus:** Alert routing, non-prod monitoring blockers, operational side quests, and asset cleanup.
-  - **Key outcomes:**
-    1. Team needs a clear answer for New Relic-to-Moogsoft alert routing and support-team registration settings.
-    2. Non-prod monitoring sequencing remains alert workflow first, then environment spin up or down and rapid recovery follow-up.
-    3. Orphaned asset cleanup should be driven by category, starting with servers.
-    4. File share, MFT ownership, and approval automation ideas remain outside the current objective-scoped workset.
-  - **Actions extracted → T075, T076**
-  - **Decision extracted → D006**
-
-- **2026-04-16 — Rapid Recovery Information Hub** #processed
-  - **Source:** archive/Rapid+Recovery+Information+Hub.doc
-  - **Note:** Reference standard for Rapid Recovery Plans across Ingenium and other MLJ internal applications. Content aligns to existing work in T003, T040, T041, and the April 16 enablement follow-up captured in T074. No additional standalone task created.
-
-- **2026-04-16 — Side Quests** #processed
-  - **Source:** archive/Side+Quests.doc
-  - **Focus:** Weekday patching details, approval-workflow optimization ideas, and reminder escalation patterns.
-  - **Key outcomes:**
-    1. Weekday patching detail aligns to the existing tracked work in T020.
-    2. Approval reminder and escalation ideas were reviewed but deferred pending objective alignment and confirmed sponsoring ownership.
-  - **Decision extracted → D006**
-
-- **2026-04-16 — Lapu-Lapu GOCC and Japan** #processed
-  - **Source:** archive/20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
-  - **Focus:** Dashboard progress, PS-to-GOCC transition tracking, impact-based alerting, and rapid recovery enablement.
-  - **Key outcomes:**
-    1. Employee Experience Dashboard reached 66/88 Japan application systems; Developer Experience Dashboard reached 45/60 non-prod environment groups.
+    1. Employee Experience Dashboard reached 66/81 systems used by Japan users; Developer Experience Dashboard reached 45/60 non-prod environment groups.
     2. PS-to-GOCC transition stands at 16/65 completed with 9 applications in progress, with the Phase-1 checklist accepted as the handover source of truth.
     3. Branch laptop monitoring is live and non-prod HTTP 500 errors plus workload-health noise were called out as active issues.
     4. Parallel monitoring, impact-based alerting, and a bilingual rapid recovery alignment session were accepted as operating direction.

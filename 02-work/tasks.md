@@ -1012,3 +1012,87 @@
 - **Tags:** #project:lapu-lapu #asset-management #cleanup #servers
 - **Description:** Break down the orphaned asset inventory by category, start with servers, and work through ownership validation and cleanup in a structured sequence. The goal is to reduce unmanaged assets that block accurate service mapping and evergreen migration decisions.
 - **Source:** Inbox — 20260416+-+LapuLapu+Team+Direction+and+Execution.doc
+
+---
+
+## T077 — Confirm Japan Dashboard Alerting and Incident Workflow
+- **Status:** Open
+- **Created:** 2026-04-23
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:newrelic #system:moogsoft #system:xmatters
+- **Relevance:** 84/100
+- **Tags:** #project:lapu-lapu #alerting #incident-workflow #support-model
+- **Description:** Confirm and document the end-to-end alerting and incident workflow for Japan production and non-production monitoring, including how dashboard alerts flow into incident handling and which teams respond at each step. The outcome should remove ambiguity across GOCC, ETS Japan, and TEM-aligned responders before additional applications are onboarded.
+- **Source:** Inbox — 20260423+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T078 — Add Alert Count Context to Japan Business Capability Dashboard
+- **Status:** Open
+- **Created:** 2026-04-21
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 69/100
+- **Tags:** #project:lapu-lapu #dashboard #leadership-reporting #monitoring
+- **Description:** Update the Japan Business Capability dashboard so alert counts explicitly state what is being counted, then circulate the revised view for leadership review with Hari, Kelvin, and Birger. The source notes do not clearly name the producing team, so ETS Japan should close the labeling gap and confirm the final review path with GOCC dashboard contributors.
+- **Source:** Inbox — 20260421+-+LapuLapu+ETS+Japan,+GOCC,+and+Obs+Team.doc
+
+---
+
+## T079 — Capture Reboot/Restore Procedures for Japan Rapid Recovery Onboarding
+- **Status:** Open
+- **Created:** 2026-04-23
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:cmdb #system:azure
+- **Relevance:** 83/100
+- **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #domain:gocc-handover
+- **Description:** Work with Rohina and the Server Team to document per-application reboot and restore procedures and use the result to register additional applications for Rapid Recovery coverage. The deliverable should clarify recovery actions, ownership, and information flow needed for GOCC-assisted recovery execution.
+- **Source:** Inbox — 20260423+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T080 — Define Non-Production Alert Response Workflow for Japan Monitoring
+- **Status:** Open
+- **Created:** 2026-04-23
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Rae Judavar
+- **Systems:** #system:newrelic #system:xmatters
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #nonprod #incident-workflow #developer-experience
+- **Description:** Define the response workflow for non-production monitoring alerts in Japan, with the first decision point on alert handling before environment spin-up or spin-down and rapid recovery follow-up. The workflow must capture cross-team handoffs with Sangram, Rupesh, and GOCC responders so non-prod incidents do not stall in ambiguous ownership.
+- **Source:** Inbox — 20260423+-+LapuLapu+Team+Direction+and+Execution.doc
+
+---
+
+## T081 — Publish Japan GOCC Transition Scaffolding Pack
+- **Status:** Open
+- **Created:** 2026-04-23
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:cmdb #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #domain:gocc-handover #service-inventory #transition-planning
+- **Description:** Publish a reusable Japan transition scaffolding pack covering inventory templates, a sample transition project plan, a support-level definitions dictionary, and a prioritized checklist of services to transition next. The pack should explicitly capture the handover categories Kelvin asked for in the weekly status review: CMDB reconciliation, support-group and xMatters coverage, monitored URLs, infrastructure thresholds, business-operation timing, alert validation by PS, and GOCC ORR sign-off. Co-develop the pack with David so the Japan onboarding backlog can be sequenced by impact, downtime history, and ownership clarity rather than ad hoc requests.
+- **Source:** Inbox — 20260423+-+LapuLapu+Team+Direction+and+Execution.doc
+
+---
+
+## T082 — Onboard SRM to Rapid Recovery from Incident Review
+- **Status:** Open
+- **Created:** 2026-04-24
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Relevance:** 88/100
+- **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #incident-followup #recovery-readiness
+- **Description:** Use the SRM incident as the first focused Rapid Recovery onboarding case by registering SRM for recovery coverage, scheduling follow-up and knowledge-transfer sessions with the application team, and standardizing production validation, restart, and recovery SOPs. The work should also coordinate RCA review and close the operational gap where incidents can stall because restart authority, validation steps, and recovery procedures are unclear.
+- **Source:** Inbox — Meeting+Summary_+SRM+Certificate+Incident,+Operational+Gaps,+and+Rapid+Recovery+Onboarding.doc

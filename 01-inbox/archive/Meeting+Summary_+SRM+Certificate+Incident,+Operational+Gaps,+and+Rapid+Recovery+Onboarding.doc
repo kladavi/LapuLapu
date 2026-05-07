@@ -1,0 +1,409 @@
+Date: Fri, 24 Apr 2026 07:01:42 +0000 (UTC)
+Message-ID: <2034434207.107.1777014102731@facd2feb9b3d>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_106_1125259608.1777014102731"
+
+------=_Part_106_1125259608.1777014102731
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Meeting Summary: SRM Certificate Incident, Operational Gaps, and=
+ Rapid Recovery Onboarding</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Meeting Summary: SRM Certificate Incident, Operational Gaps, and Ra=
+pid Recovery Onboarding</h1>
+    <div class=3D"Section1">
+        <h2 local-id=3D"5363dea76c27" id=3D"MeetingSummary:SRMCertificateIn=
+cident,OperationalGaps,andRapidRecoveryOnboarding-MeetingSummary=E2=80=93SR=
+MCertificateIncident&amp;RapidRecovery">Meeting Summary =E2=80=93 SRM Certi=
+ficate Incident &amp; Rapid Recovery</h2>
+<h3 local-id=3D"1265982e3d7a" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-Purpose">Purpose</h3>
+<p local-id=3D"94b96c71cb51">Review the SRM certificate incident, identify =
+operational gaps, and accelerate <strong>Rapid Recovery onboarding</strong>=
+ for SRM and other applications.</p>
+<hr local-id=3D"14841f63-71cb-4fba-847a-cb40172f382f">
+<h3 local-id=3D"5b59fb2786bf" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-KeyIncidentFindings">Key Incident=
+ Findings</h3>
+<ul local-id=3D"6196e1f0-384d-4dee-ba96-f41b072f66bc">
+<li local-id=3D"ed0e0479-6c8f-4c49-80d7-dfdb54c459ab">
+<p local-id=3D"50c179ac4417"><strong>Root Cause</strong>: SRM certificate r=
+enewal required an application restart that was <strong>not executed</stron=
+g>, causing <strong>business=E2=80=91hour impact in Japan</strong>.</p></li=
+>
+<li local-id=3D"30f235eb-f04b-4e8c-b4af-2bc2131908f9">
+<p local-id=3D"a63acc5cb3c6"><strong>Recovery</strong>: A restart resolved =
+the issue; however, <strong>why the restart was required post=E2=80=91renew=
+al remains unconfirmed</strong>.</p></li>
+<li local-id=3D"75ae0027-5436-47aa-b70a-8e24dd402408">
+<p local-id=3D"2d79a011de0d"><strong>Operational Gap</strong>: Missing or s=
+kipped <strong>post=E2=80=91certificate validation</strong>, which is norma=
+lly expected during PS sanity testing.</p></li>
+</ul>
+<hr local-id=3D"f4381586-a8eb-4b2b-ab52-abc39d0aac64">
+<h3 local-id=3D"072e870cad50" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-MajorGapsIdentified">Major Gaps I=
+dentified</h3>
+<ul local-id=3D"51b7ab35-b74a-4fdd-9853-fb6a656baa1d">
+<li local-id=3D"ed1a1579-41cb-42fa-8e82-7ac668c6ba69">
+<p local-id=3D"cc710707230a"><strong>Change Hygiene</strong>: Certificate r=
+enewals lack enforced post-change validation (prod-specific).</p></li>
+<li local-id=3D"9453f343-a11e-4992-a6ca-361469198532">
+<p local-id=3D"801a7112bc40"><strong>Ownership &amp; Authority</strong>:</p=
+>
+<ul local-id=3D"e392e486-0507-4255-8d47-8a784261e02a">
+<li local-id=3D"3f0ddad1-0fd4-4121-9323-b5fcfdd033b5">
+<p local-id=3D"480483c51817">Middleware does not support SRM.</p></li>
+<li local-id=3D"5724b543-3140-4c14-a018-ff1ff4793ea5">
+<p local-id=3D"9749336f5a9f">GOCC lacks restart authority.</p></li>
+<li local-id=3D"1c063a5b-0bd7-411c-bfcc-503609da20e1">
+<p local-id=3D"c6fd1228b44d">Restart ownership is fragmented, delaying reco=
+very.</p></li>
+</ul></li>
+<li local-id=3D"fa4b5174-2ac9-4c04-b414-ab5a2e329035">
+<p local-id=3D"efb4cea818f1"><strong>Runbooks &amp; Documentation</strong>:=
+ Incomplete or outdated step=E2=80=91by=E2=80=91step procedures for certifi=
+cate renewal, validation, and recovery.</p></li>
+</ul>
+<hr local-id=3D"b5aa3099-e97c-40d8-9aa9-8827cdcbb8b5">
+<h3 local-id=3D"5de94e3f1b80" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-RapidRecoveryDiscussion&amp;Outco=
+me">Rapid Recovery Discussion &amp; Outcome</h3>
+<ul local-id=3D"640a7411-eebd-47f3-831d-4e15d42b8327">
+<li local-id=3D"75ad3108-eb30-4e6b-87e9-a53f0573ee67">
+<p local-id=3D"a55a6f448623"><strong>Rapid Recovery Explained</strong>:</p>
+<ul local-id=3D"2e10e451-5b2e-4ac2-8963-bdcff789c3da">
+<li local-id=3D"3586bdfe-0e06-4172-b710-3f56b4fd57d3">
+<p local-id=3D"9d9ddec924fd">Pre=E2=80=91approved, step-driven recovery pro=
+cess focused on <strong>restart + validation</strong> to reduce repeat inci=
+dents and MTTR.</p></li>
+</ul></li>
+<li local-id=3D"7b5cdac8-5de9-4a5a-a5a9-cb0c8293481b">
+<p local-id=3D"ac4b942d6d6b"><strong>Eligibility Clarified</strong>:</p>
+<ul local-id=3D"d5fdf716-b28c-4bfd-a2a4-56728d317b20">
+<li local-id=3D"1f2f69b0-9222-4a7b-b6e1-faab1844b9dd">
+<p local-id=3D"20c0b12d48eb">Gold prioritized, but <strong>Silver and Bronz=
+e are eligible</strong>; no hard restrictions.</p></li>
+</ul></li>
+<li local-id=3D"329ffa88-27c9-40b7-a99e-e5f070790167">
+<p local-id=3D"4c67fc6f8f25"><strong>Ask to App Team</strong>:</p>
+<ul local-id=3D"b7e7b207-3beb-4879-849c-2e2d5c03cac4">
+<li local-id=3D"ebdf89ee-dc4e-4bc2-81db-b1095dcc6423">
+<p local-id=3D"838a320a1f4d">Commit to registering <strong>SRM and other ap=
+plications</strong> for Rapid Recovery.</p></li>
+</ul></li>
+<li local-id=3D"c321605b-d193-457d-8293-358dd496d771">
+<p local-id=3D"13d9e65afe15"><strong>Response</strong>:</p>
+<ul local-id=3D"a5b668d9-4a3c-4141-b088-a943a7c37a9d">
+<li local-id=3D"71c1c867-714b-4e06-8f84-b6dba06d06bb">
+<p local-id=3D"20365cd3d767">Understanding and support confirmed (Sudharsha=
+n, Dileep, Prabu).</p></li>
+<li local-id=3D"c16e7bb0-f75b-4e8b-81e0-76904e912037">
+<p local-id=3D"2a4a215d043b">Knowledge transfer sessions offered if needed.=
+</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"46fea937-54bb-4690-a659-90ffbaa70260">
+<h3 local-id=3D"adc19f83a8e5" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-CertificateRenewal&amp;Validation=
+Improvements">Certificate Renewal &amp; Validation Improvements</h3>
+<ul local-id=3D"23d444b3-2988-41ee-82bc-72f2afc51b78">
+<li local-id=3D"61c73572-24af-4970-bf53-f03361758b89">
+<p local-id=3D"f39d36984786">Agreement that <strong>lower environment valid=
+ation is insufficient</strong>.</p></li>
+<li local-id=3D"e7fa342e-2b08-4a38-83c3-2d5c012921af">
+<p local-id=3D"98bef69546db">Mandatory steps proposed:</p>
+<ul local-id=3D"1c3c6a13-058a-4f15-b802-85281cbdfe4f">
+<li local-id=3D"e87b5657-636b-4336-92ad-228c54ee4798">
+<p local-id=3D"719a4cf383f3">Force expiry of old certificate.</p></li>
+<li local-id=3D"063d889b-ed5f-4a82-9422-ec04b40d9394">
+<p local-id=3D"394cd3a4738d">Validate new certificate <strong>in production=
+ context</strong>.</p></li>
+</ul></li>
+<li local-id=3D"ee56fab4-0b12-4daa-a85f-ef16d031b153">
+<p local-id=3D"bb506c06513b">Emphasis on maintaining <strong>current, enfor=
+ceable runbooks</strong>.</p></li>
+</ul>
+<hr local-id=3D"ca810ccb-a85c-4b13-b961-def6dee66b58">
+<h3 local-id=3D"12ca4bc2565d" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-Automation&amp;DataChallenges(Rap=
+idRecoveryPlanning)">Automation &amp; Data Challenges (Rapid Recovery Plann=
+ing)</h3>
+<ul local-id=3D"a6c61a3f-7658-4dc5-959a-6bc06011a94a">
+<li local-id=3D"8dcdd7a1-87de-4afa-8133-80fc4ae8bbc9">
+<p local-id=3D"8fb808a6d335">Recovery plans can be auto-generated from <str=
+ong>CMDB / ServiceNow</strong>, but blockers include:</p>
+<ul local-id=3D"18237a61-0e8b-4f06-a157-13a2473a7d82">
+<li local-id=3D"c1ad1330-730d-4f7d-88de-f04a56671b2a">
+<p local-id=3D"be273fa8c32d">Inconsistent CI data.</p></li>
+<li local-id=3D"373267a7-4ec4-40b6-8716-02d4275b9050">
+<p local-id=3D"6d644a2cc326">Missing integration maps.</p></li>
+<li local-id=3D"6117680f-482a-4c5f-b5d7-fc51e14e72da">
+<p local-id=3D"054d9690c33d">Scattered vendor and escalation contacts.</p><=
+/li>
+</ul></li>
+<li local-id=3D"cfbb162e-d71c-4910-8328-015628bd46ee">
+<p local-id=3D"87c59406ee8c">SME input remains critical to close data gaps.=
+</p></li>
+</ul>
+<hr local-id=3D"89f247f4-4424-4061-96a1-b709b65d7d4f">
+<h3 local-id=3D"ee2b3bb59c77" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-Decisions&amp;NextSteps">Decision=
+s &amp; Next Steps</h3>
+<ul local-id=3D"b500e83c-9080-43b1-a819-be8e321d195d">
+<li local-id=3D"9da056e3-4dc5-469c-bd22-c9a32a20a0ee">
+<p local-id=3D"0ee9b1608348"><strong>Follow-up sessions</strong> to be sche=
+duled to review SRM first and transfer knowledge to GOCC.</p></li>
+<li local-id=3D"7298e69f-9b82-40e4-b62d-b876887c8770">
+<p local-id=3D"87f1ce5368bb">App teams to be involved in <strong>RCA review=
+</strong> once ready.</p></li>
+</ul>
+<hr local-id=3D"2ea52e98-39f6-491f-b2ff-6837efa5595b">
+<h2 local-id=3D"0f2203c541c8" id=3D"MeetingSummary:SRMCertificateIncident,O=
+perationalGaps,andRapidRecoveryOnboarding-ActionItems">Action Items</h2>
+<ul local-id=3D"3c491952-5d44-47c7-b2a2-635a8cd99900">
+<li local-id=3D"c793771b-8227-4dc9-8d9c-7cb283e723ae">
+<p local-id=3D"87f6fac74e2c"><strong>Register SRM (and others) for Rapid Re=
+covery</strong> =E2=80=93 <em>Sudharshan, Dileep</em></p></li>
+<li local-id=3D"8323c959-e277-467d-93c9-0be6918beeea">
+<p local-id=3D"735508dff528"><strong>Participate in Rapid Recovery KT sessi=
+ons</strong> (if needed) =E2=80=93 <em>Sudharshan, Dileep</em></p></li>
+<li local-id=3D"b9bae320-c498-4df8-8d46-bf6c339edcd0">
+<p local-id=3D"b09d2b6684ec"><strong>Access Rapid Recovery documentation</s=
+trong> and flag access issues =E2=80=93 <em>Sudharshan, Dileep</em></p></li=
+>
+<li local-id=3D"642e848a-4f4a-4fc6-9f33-8c68e14c2ef2">
+<p local-id=3D"d08f2d15537c"><strong>Attend follow-up sessions to finalize =
+plans (SRM first)</strong> =E2=80=93 <em>Dileep, Sudharshan, Vanaraj</em></=
+p></li>
+<li local-id=3D"c7b9e789-4344-4819-a00f-7b0cfa45badc">
+<p local-id=3D"fd95501b1649"><strong>Prepare SOPs for monitoring and recove=
+ry</strong> =E2=80=93 <em>PS Team</em></p></li>
+<li local-id=3D"8553e4c6-526f-4e5d-b9af-55d6854a2e6d">
+<p local-id=3D"a82ba400425a"><strong>Coordinate RCA review</strong> =E2=80=
+=93 <em>David</em></p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_106_1125259608.1777014102731--
