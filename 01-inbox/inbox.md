@@ -4,6 +4,14 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-04-24 — [Lapu-Lapu] Weekly Status Update W17** #processed
+  - **Source:** archive/[Lapu-Lapu] Weekly Status Update W17.eml
+  - **Focus:** Sent copy of the W17 weekly status report distributed to leadership on April 24.
+  - **Key outcomes:**
+    1. The email is the distribution copy of the W17 report already captured in 03-reporting/weekly/2026-W17.md.
+    2. No new actionable content beyond the filed report; dashboard metrics, risks, and planned items match the existing record.
+  - **Actions extracted → none (report-only artifact)**
+
 - **2026-05-07 — Lapu-Lapu GOCC and Japan** #processed
   - **Source:** archive/20260507+-+Lapu-Lapu+GOCC+and+Japan.doc
   - **Focus:** Confirm operational scope, alert and incident workflow, and escalation-readiness for Japan application onboarding into GOCC.
