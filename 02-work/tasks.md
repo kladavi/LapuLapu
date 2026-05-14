@@ -1166,3 +1166,216 @@
 - **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #production-readiness #testing
 - **Description:** Coordinate the DEV and AQA validation needed before promoting the new 3-tier Ingenium platform into production, including end-to-end sanity checks, config and integration verification, rollback readiness, batch and non-functional testing, and pipeline gate evidence. The deliverable is a production-readiness decision backed by validated runbooks, smoke tests, and defect-triage evidence.
 - **Source:** Inbox — Epsilon_Ingenium-Modernization.pdf
+
+---
+
+## T088 — Define AQA Testing Scope and Strategy for 3-Tier Architecture
+- **Status:** Open
+- **Created:** 2026-05-11
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:ingenium
+- **Relevance:** 88/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #testing #aqa
+- **Description:** AQA must define the full QA scope and engagement model for the Ingenium 3-tier architecture, covering infrastructure/failover testing, cross-tier integration, regression, and performance validation. QA scope expansion is understood conceptually but not operationally defined; this is the biggest execution blocker identified in the AQA alignment session. Prerequisite for T087.
+- **Source:** Inbox — Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)
+
+---
+
+## T089 — Validate Load Balancer Impact on Cross-System Integrations
+- **Status:** Open
+- **Created:** 2026-05-11
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:ingenium
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #testing #integration
+- **Description:** Validate load balancer connection changes introduced by the 3-tier architecture against all external system integrations to avoid integration breaks. The LB impact on external systems is currently unclear, and data consistency validation across tiers needs a defined approach. Supports T010 and T087.
+- **Source:** Inbox — Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)
+
+---
+
+## T090 — Onboard AQA Test Automation into Ingenium CI/CD Pipeline
+- **Status:** Open
+- **Created:** 2026-05-11
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:ingenium
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #cicd #automation #aqa
+- **Description:** Integrate AQA automation scripts into the Asia Jenkins pipeline for Ingenium, covering smoke, regression, and performance testing with direct pipeline-to-environment integration. This is a locked decision from the AQA alignment session and a core transformation lever. Delta project test cases will be reused for Epsilon migration testing. Extends T086.
+- **Source:** Inbox — Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)
+
+---
+
+## T091 — Conduct Test Environment Provisioning Optimization Session
+- **Status:** Open
+- **Created:** 2026-05-11
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:ingenium #system:azure
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #environment #provisioning
+- **Description:** Set up and run a session on test environment optimization to reduce provisioning friction for Epsilon environments. Currently provisioning is partially manual (Terraform + requests) and the Jenkins-to-GitHub-Actions transition path is undefined. Target is to unblock AQA automation and CI/CD integration.
+- **Source:** Inbox — Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)
+
+---
+
+## T092 — Register Epsilon Modernization in Value Stream Epic for PI Planning
+- **Status:** Open
+- **Created:** 2026-05-11
+- **Objective Chain:** B-7 (PPS Service Improvement) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:ingenium
+- **Relevance:** 70/100
+- **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #planning
+- **Description:** Check whether the Epsilon AQA automation and testing work is registered as a Value Stream Epic and include it in PI Planning estimates. Ensures the resourcing and timeline for the expanded QA scope is visible in the planning cycle.
+- **Source:** Inbox — Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)
+
+---
+
+## T093 — Implement User ID Login Workaround for Dashboards
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T004 (Digital Property Dashboarding) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:newrelic #system:apm
+- **Relevance:** 90/100
+- **Tags:** #monitoring #dashboard #access
+- **Description:** Implement a workaround using existing user IDs for dashboard login to avoid dependency on application endpoint exposure. Ensure compatibility with existing authentication models and validate usability across Japan dashboards.
+
+---
+
+## T094 — Create CI to APM ID Mapping Table
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:cmdb #system:newrelic #system:leanix
+- **Relevance:** 95/100
+- **Tags:** #cmdb #mapping #apm
+- **Description:** Create a standardized mapping table linking application CIs to APM IDs to resolve inconsistencies caused by LeanIX integration gaps. This will enable accurate service mapping and consistent tagging across monitoring systems.
+
+---
+
+## T095 — Establish Japan-Specific Runbook Repository
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T003 (Rapid Recovery Plan) → O4 (Robust Technical Core)
+- **Team:** #team-gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:cmdb
+- **Relevance:** 85/100
+- **Tags:** #runbook #incident-response #japan
+- **Description:** Create a dedicated runbook repository for Japan operations to support localized incident response. Ensure alignment with Rapid Recovery Plan standards and maintain visibility for ETS Japan stakeholders.
+
+---
+
+## T096 — Execute MMM Level 2 Implementation for Japan Applications
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:newrelic #system:apm #system:cmdb
+- **Relevance:** 100/100
+- **Tags:** #mmm #omm #monitoring
+- **Description:** Implement Monitoring Maturity Matrix (MMM) Level 2 for Japan applications, including tagging, APM onboarding, and policy setup. Coordinate with application owners to validate entity mappings and ensure monitoring coverage.
+
+---
+
+## T097 — Develop APM Policies for Ingenium System
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:apm #system:newrelic
+- **Relevance:** 92/100
+- **Tags:** #apm #ingenium #policy
+- **Description:** Define and implement APM alert policies for the Ingenium system in coordination with infrastructure and engineering teams. Ensure coverage aligns with MMM Level 2 standards and supports proactive monitoring.
+
+---
+
+## T098 — Deploy Minions and Standardize Monitoring Scripts
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T004 (Digital Property Dashboarding) → O1 (Frictionless Customer Experience)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:newrelic
+- **Relevance:** 95/100
+- **Tags:** #synthetics #minions #monitoring
+- **Description:** Set up synthetic monitoring minions across Japan environments and align PowerShell scripts with GOCC standards. Ensure consistent attribute naming and data formatting to support dashboard integration.
+
+---
+
+## T099 — Resolve APM Configuration Gaps in Ingenium Test Environment
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:apm #system:newrelic
+- **Relevance:** 90/100
+- **Tags:** #apm #troubleshooting #ingenium
+- **Description:** Address issues with APM metric collection in the Ingenium test environment across regions. Work with observability teams to resolve configuration gaps and validate end-to-end data visibility.
+
+---
+
+## T100 — Onboard Logs to ADX and Integrate with Moogsoft
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T003 (Rapid Recovery Plan) → O4 (Robust Technical Core)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:adx #system:moogsoft
+- **Relevance:** 88/100
+- **Tags:** #logs #adx #aiops
+- **Description:** Enable centralized log ingestion into Azure Data Explorer (ADX) and integrate with Moogsoft via webhook for incident conversion. Coordinate with GCS team for onboarding and validate ingestion pipeline.
+
+---
+
+## T101 — Resolve Confluence Access Issue for Dashboard Documentation
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** O3 (Outstanding Colleague Experience)
+- **Team:** #team-ets-japan
+- **Assigned:** Birger Fjaellman
+- **Systems:** #system:jira
+- **Relevance:** 70/100
+- **Tags:** #access #documentation #confluence
+- **Description:** Restore write access to the Confluence page for dashboard documentation to eliminate workflow friction. Ensure proper permissions and prevent future access disruptions.
+
+---
+
+## T102 — Add Missing Applications to LeanIX with Ownership and URLs
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:leanix #system:cmdb
+- **Relevance:** 92/100
+- **Tags:** #leanix #cmdb #ownership
+- **Description:** Register missing Japan applications (e.g., BPM, EMC) in LeanIX with correct ownership and URLs. Ensure alignment with CMDB and enable accurate service mapping and monitoring onboarding.
+
+---
+
+## T103 — Standardize Script Attributes and Share Integration Logic
+- **Status:** Open
+- **Created:** 2026-05-14
+- **Objective Chain:** T004 (Digital Property Dashboarding) → O2 (Dynamic Delivery Experience)
+- **Team:** #team-gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:newrelic
+- **Relevance:** 85/100
+- **Tags:** #automation #scripts #integration
+- **Description:** Align attribute naming conventions and data formats in monitoring scripts across teams and share integration scripts for dashboard data collection. Improve maintainability and consistency for dashboard pipelines.

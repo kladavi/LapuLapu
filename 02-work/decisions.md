@@ -113,3 +113,16 @@ tags: #project:lapu-lapu #domain:incident-management #program:r2r #outcome:resil
 **Related Objectives:** B-4 (Infrastructure Resilience & Disaster Recovery), H-4 (Unified Support), O4 (Robust Technical Core)
 **Owner:** David Klan
 **Source:** Meeting Summary: SRM Certificate Incident, Operational Gaps, and Rapid Recovery Onboarding
+
+---
+
+## D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon
+
+tags: #project:lapu-lapu #project:epsilon #domain:modernisation #cicd #automation #aqa
+
+**Date:** 2026-05-11
+**Decision:** Approved (locked)
+**Summary:** Two key decisions were locked in the AQA Information Sharing Session: (1) AQA automation scripts will be onboarded into the Asia Jenkins pipeline for Ingenium CI/CD, standardizing on Jenkins as the short-term CI/CD platform; (2) Delta project test cases will be reused for Epsilon migration testing, accelerating test coverage without writing from scratch. A planned transition to GitHub Actions is acknowledged but not yet ready or fully functional; the migration path remains unclear.
+**Related Objectives:** B-7 (PPS Service Improvement), B-3 (Pipeline Standardization & Secrets Remediation), O4 (Robust Technical Core)
+**Owner:** Balaji Ravi
+**Source:** Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)

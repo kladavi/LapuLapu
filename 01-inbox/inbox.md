@@ -4,6 +4,23 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-05-11 — Epsilon Kickoff Review: AQA Information Sharing Session** #processed
+  - **Source:** archive/Re_ Epsilon Kickoff Review_ AQA Information Sharing Session.eml
+  - **From:** David Klan (meeting summary reply to original invite)
+  - **To:** AQA team (Manish Kumar Kapil, Sangram Keshari Swain, Rupesh Mishra), Balaji Ravi, Prabu Thiagarajan, Birger Fjaellman
+  - **Focus:** Align AQA team on the Ingenium 3-tier architecture transformation, confirm CI/CD and automated testing direction, and define QA engagement model for Epsilon.
+  - **Key outcomes:**
+    1. Two decisions locked: AQA automation scripts will be onboarded into Jenkins pipeline for Ingenium; Delta project test cases will be reused for Epsilon migration testing.
+    2. QA scope expands significantly from app-level to end-to-end validation including infrastructure, failover, integration, regression, and performance testing across all tiers.
+    3. Architecture shifting to 3-tier model (presentation with load balancer, middleware with active-passive cluster, data layer with HA under evaluation) introduces new failure modes and cross-system integration risks.
+    4. Short-term CI/CD standardized on Asia Jenkins; planned GitHub Actions transition not yet ready. Target is zero-manual testing with standardized pipelines.
+    5. Business impact: ~¥54M annual licensing savings (¥240M → ¥187M), release cycle reduction from 4–5 hours to 1–2 hours with automation.
+    6. Biggest risk: QA scope expansion is understood conceptually but not operationally defined yet.
+    7. POT in progress, CI/CD + GitHub migration targeted Q2 2026, production rollout targeted Mar/Apr 2027.
+  - **Actions extracted → T088, T089, T090, T091, T092**
+  - **Actions referenced → T008, T010, T086, T087**
+  - **Decision extracted → D010**
+
 - **2026-04-24 — [Lapu-Lapu] Weekly Status Update W17** #processed
   - **Source:** archive/[Lapu-Lapu] Weekly Status Update W17.eml
   - **Focus:** Sent copy of the W17 weekly status report distributed to leadership on April 24.
