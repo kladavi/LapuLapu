@@ -1242,7 +1242,7 @@
 ## T093 — Implement User ID Login Workaround for Dashboards
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T004 (Digital Property Dashboarding) → O1 (Frictionless Customer Experience)
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:newrelic #system:apm
@@ -1255,7 +1255,7 @@
 ## T094 — Create CI to APM ID Mapping Table
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Objective Chain:** B-6 (IT Asset Management & Evergreen Migration) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:cmdb #system:newrelic #system:leanix
@@ -1268,7 +1268,7 @@
 ## T095 — Establish Japan-Specific Runbook Repository
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T003 (Rapid Recovery Plan) → O4 (Robust Technical Core)
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-monitoring
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:cmdb
@@ -1281,7 +1281,7 @@
 ## T096 — Execute MMM Level 2 Implementation for Japan Applications
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O1 (Frictionless Customer Experience)
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:newrelic #system:apm #system:cmdb
@@ -1294,7 +1294,7 @@
 ## T097 — Develop APM Policies for Ingenium System
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:apm #system:newrelic
@@ -1307,7 +1307,7 @@
 ## T098 — Deploy Minions and Standardize Monitoring Scripts
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T004 (Digital Property Dashboarding) → O1 (Frictionless Customer Experience)
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:newrelic
@@ -1320,7 +1320,7 @@
 ## T099 — Resolve APM Configuration Gaps in Ingenium Test Environment
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:apm #system:newrelic
@@ -1333,7 +1333,7 @@
 ## T100 — Onboard Logs to ADX and Integrate with Moogsoft
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T003 (Rapid Recovery Plan) → O4 (Robust Technical Core)
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:adx #system:moogsoft
@@ -1346,7 +1346,7 @@
 ## T101 — Resolve Confluence Access Issue for Dashboard Documentation
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** O3 (Outstanding Colleague Experience)
+- **Objective Chain:** B-2 (Operational Standards & Procedure Compliance) → O4 (Robust Technical Core)
 - **Team:** #team-ets-japan
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:jira
@@ -1359,7 +1359,7 @@
 ## T102 — Add Missing Applications to LeanIX with Ownership and URLs
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T005 (OMM L2 for Gold Apps) → O4 (Robust Technical Core)
+- **Objective Chain:** B-6 (IT Asset Management & Evergreen Migration) → O4 (Robust Technical Core)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:leanix #system:cmdb
@@ -1372,7 +1372,7 @@
 ## T103 — Standardize Script Attributes and Share Integration Logic
 - **Status:** Open
 - **Created:** 2026-05-14
-- **Objective Chain:** T004 (Digital Property Dashboarding) → O2 (Dynamic Delivery Experience)
+- **Objective Chain:** B-3 (Pipeline Standardization & Secrets Remediation) → O2 (Dynamic Delivery Experience)
 - **Team:** #team-gocc-observability
 - **Assigned:** Joan Lee
 - **Systems:** #system:newrelic
