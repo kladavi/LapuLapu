@@ -116,7 +116,7 @@
 - **Metric Type:** Numeric
 - **Start Value:** 16
 - **Target Value:** 65
-- **Current Value:** 16
+- **Current Value:** 25
 - **Target Date:** 2026-07-31
 - **Status:** On Track
 - **Created:** 2026-04-16
@@ -127,6 +127,7 @@
 | Date | Value | Comment |
 |------|-------|---------|
 | 2026-04-16 | 16 |  |
+| 2026-05-15 | 25 |  |
 
 ### Change Log
 | Date | Change |
