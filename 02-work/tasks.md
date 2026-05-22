@@ -1379,3 +1379,29 @@
 - **Relevance:** 85/100
 - **Tags:** #automation #scripts #integration
 - **Description:** Align attribute naming conventions and data formats in monitoring scripts across teams and share integration scripts for dashboard data collection. Improve maintainability and consistency for dashboard pipelines.
+
+---
+
+## T104 — Develop Outbound Messaging Mis-send Runbook
+- **Status:** Open
+- **Created:** 2026-05-22
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:moogsoft #system:xmatters
+- **Relevance:** 88/100
+- **Tags:** #project:lapu-lapu #program:r2r #worktype:incident-management #outcome:resilience
+- **Description:** Create a dedicated "Outbound Messaging Mis-send / Mass Notification" runbook covering containment (stop sends, activate suppression), stakeholder notification, and volume-baseline validation. The existing batch failure runbook (KB0033382) does not cover scenarios where the batch succeeded but produced wrong outbound communications. Triggered by INC08574374 incident analysis.
+
+---
+
+## T105 — Implement Batch-to-Notification Volume Anomaly Detection
+- **Status:** Open
+- **Created:** 2026-05-22
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:newrelic #system:moogsoft
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #worktype:monitoring #outcome:mttd #outcome:resilience
+- **Description:** Implement automated pre-send validation and volume anomaly detection for batch-to-notification flows. Include outbound message rate and unique-recipient spike alerts, pre-flight recipient count vs historical baseline checks, and batch input delta monitoring. Addresses the detection gap identified in INC08574374 where 70,000 unintended SMS/LINE messages were sent without any automated alert firing.

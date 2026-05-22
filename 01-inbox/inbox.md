@@ -4,6 +4,36 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-05-22 — Incident Analysis: Unintended SMS/LINE Messages Sent to 70,000 Customers (INC08574374)** #processed
+  - **Source:** Incident+Analysis_+Unintended+SMS_LINE+Messages+Sent+to+70,000+Customers+Due+to+Data+Update+Error.doc
+  - **From:** Confluence export (incident analysis page)
+  - **Focus:** Root cause analysis and Lapu-Lapu alignment assessment for INC08574374 — mass SMS/LINE messaging caused by incorrect batch data update without validation gates.
+  - **Key outcomes:**
+    1. Root cause: bad customer data update entered batch input; batch-to-notification flow had no recipient eligibility or volume validation, allowing mass outbound messages.
+    2. Detection was reactive (business/customer signals), not automated; no volume anomaly or data integrity alerts fired.
+    3. Historical problem records (PRB00023122, PRB00022754) show recurring gaps in batch ordering, logging, and integrity checks.
+    4. Immediate fix needed: message suppression / circuit breaker and recipient-volume guardrails before next batch window.
+    5. Strategic improvement: end-to-end observability for batch → data integrity → message generation with actionable alerts and L1/L2 runbooks.
+    6. Existing batch failure runbook (KB0033382) does not cover "batch succeeded but produced wrong outbound communications" — a dedicated outbound messaging mis-send runbook is needed.
+    7. Lapu-Lapu alignment: batch jobs monitored for failure but not bad outcomes; missing controls for abnormal data updates; missing end-to-end telemetry for outbound messaging.
+  - **Actions extracted → T104, T105**
+
+- **2026-05-22 — W21 Weekly Breakdown (Pre-Analysis)** #processed
+  - **Source:** W21_Breakdown.md
+  - **From:** David Klan (weekly activity analysis)
+  - **Focus:** Consolidated W21 activity breakdown across all Lapu-Lapu workstreams for weekly report generation.
+  - **Key outcomes:**
+    1. RRP formally transitioned from planning to active execution with Ingenium as the pilot dataset; incident pattern analysis files created (Ing_INC_6Months).
+    2. 11 new monitoring/observability tasks registered (APM policies, MMM L2, Minion deployment, ADX log onboarding) — already captured in T096–T103.
+    3. Dashboards functionally complete (68/88 EE, 50/60 DE), entering usability/coverage refinement with Service ID workarounds in design.
+    4. Minion strategy expanded to branch-level cross-location observability with GOCC-compatible deployment standards.
+    5. GOCC onboarding stalled at 25/65 applications with no new completions — velocity risk flagged.
+    6. CMDB data quality confirmed as critical-path dependency for RRP scaling.
+    7. xMatters escalation model nearing definition; roster reconciliation and coverage-gap remediation continuing.
+    8. Confluence access issue resolved during the week.
+  - **Actions extracted → none (activity summary; tasks already registered)**
+  - **Actions referenced → T003, T006, T007, T093, T096, T097, T098, T100, T101, T102, T103**
+
 - **2026-05-11 — Epsilon Kickoff Review: AQA Information Sharing Session** #processed
   - **Source:** archive/Re_ Epsilon Kickoff Review_ AQA Information Sharing Session.eml
   - **From:** David Klan (meeting summary reply to original invite)

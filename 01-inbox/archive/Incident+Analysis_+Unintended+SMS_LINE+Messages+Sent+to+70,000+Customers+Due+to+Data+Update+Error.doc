@@ -1,0 +1,847 @@
+Date: Wed, 20 May 2026 00:33:05 +0000 (UTC)
+Message-ID: <1553210649.15.1779237185207@80157b391467>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_14_1535792291.1779237185206"
+
+------=_Part_14_1535792291.1779237185206
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Incident Analysis: Unintended SMS/LINE Messages Sent to 70,000 C=
+ustomers Due to Data Update Error</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Incident Analysis: Unintended SMS/LINE Messages Sent to 70,000 Cust=
+omers Due to Data Update Error</h1>
+    <div class=3D"Section1">
+        <h2 local-id=3D"b0d6eb198a00" id=3D"IncidentAnalysis:UnintendedSMS/=
+LINEMessagesSentto70,000CustomersDuetoDataUpdateError-Executivesummary(max5=
+bullets)">Executive summary (max 5 bullets)</h2>
+<ul local-id=3D"4afc9076f858">
+<li local-id=3D"b9d48c462105">
+<p local-id=3D"d572e4c09235"><strong>Root cause (most likely):</strong> A <=
+strong>bad customer data update</strong> entered the batch input, and the b=
+atch-to-notification flow <strong>did not validate recipient eligibility/vo=
+lume</strong>, allowing mass outbound messages to be generated.</p></li>
+<li local-id=3D"bc8184d3dd62">
+<p local-id=3D"6981865fe592"><strong>Detection gap:</strong> The incident a=
+ppears <strong>more consistent with reactive detection</strong> (business/c=
+ustomer signals) than automated detection; similar historical records show =
+<strong>missing/insufficient ordering, logging, and integrity checks</stron=
+g> in batch/SMS pipelines (see <a class=3D"external-link" href=3D"https://m=
+anulife.service-now.com/problem.do?sysparm_query=3Dnumber=3DPRB00023122" re=
+l=3D"nofollow"><strong>PRB00023122</strong></a>, <a class=3D"external-link"=
+ href=3D"https://manulife.service-now.com/problem.do?sysparm_query=3Dnumber=
+=3DPRB00022754" rel=3D"nofollow"><strong>PRB00022754</strong></a>).</p></li=
+>
+<li local-id=3D"cce57de5c497">
+<p local-id=3D"5330d3a60f79"><strong>Key risk:</strong> Without automated p=
+re-send validation and suppression, the <strong>next batch run can re-trigg=
+er</strong> mass messaging from another incorrect update.</p></li>
+<li local-id=3D"1845e28846e8">
+<p local-id=3D"d3222a1efb57"><strong>Immediate fix:</strong> Add a <strong>=
+hard =E2=80=9Cmessage suppression / circuit breaker=E2=80=9D</strong> and <=
+strong>recipient-volume guardrails</strong> before the next batch window.</=
+p></li>
+<li local-id=3D"bf1df85df571">
+<p local-id=3D"1dc74fc01249"><strong>Strategic improvement:</strong> Implem=
+ent <strong>end-to-end observability</strong> for batch =E2=86=92 data inte=
+grity =E2=86=92 message generation with <strong>actionable alerts</strong> =
+and <strong>L1/L2 runbooks</strong> aligned to =E2=80=9Cshift from user-rep=
+orted to automated detection=E2=80=9D.</p></li>
+</ul>
+<hr local-id=3D"d5e3a73a46a1">
+<h2 local-id=3D"f68a7f2898f0" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-1)Incidentcontext(fromyourbri=
+ef)">1) Incident context (from your brief)</h2>
+<ul local-id=3D"735c5f594e08">
+<li local-id=3D"cd997e0d1e82">
+<p local-id=3D"1a994c30761c"><strong>Incident:</strong> <a class=3D"externa=
+l-link" href=3D"https://manulife.service-now.com/incident.do?sysparm_query=
+=3Dnumber=3DINC08574374" rel=3D"nofollow">INC08574374</a></p></li>
+<li local-id=3D"0508654343ca">
+<p local-id=3D"991360386480"><strong>Summary:</strong> Unintended SMS/LINE =
+messages sent to ~70,000 customers due to incorrect data update during batc=
+h processing</p></li>
+<li local-id=3D"630920984d06">
+<p local-id=3D"cc6c4f9d8b40"><strong>Impact:</strong> Customer confusion, c=
+all center congestion, service degradation</p></li>
+<li local-id=3D"6b1623e41503">
+<p local-id=3D"0ff5748b10df"><strong>Current status:</strong> Data correcte=
+d; root cause under investigation</p></li>
+</ul>
+<hr local-id=3D"083dea28f9c1">
+<h2 local-id=3D"d90496059e6e" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-2)MTTxanalysis(best-effortwit=
+havailableevidence)">2) MTTx analysis (best-effort with available evidence)=
+</h2>
+<h3 local-id=3D"b270412312e6" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-MTTD(Detection)">MTTD (Detect=
+ion)</h3>
+<p local-id=3D"99b8f0168b59"><strong>Detection timeline (table)</strong></p=
+>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"14=
+914ff55dd9" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"2078dd5fb949">
+<th data-local-id=3D"7477108123ee" class=3D"confluenceTh">
+<p local-id=3D"48e06dca1413">Step</p></th>
+<th data-local-id=3D"e9c071e74881" class=3D"confluenceTh">
+<p local-id=3D"4675afde9482">What happened</p></th>
+<th data-local-id=3D"f108a773614a" class=3D"confluenceTh">
+<p local-id=3D"fca6222e5ca0">Evidence available</p></th>
+</tr>
+<tr data-local-id=3D"46128097ebdf">
+<td data-local-id=3D"956ddb095d07" class=3D"confluenceTd">
+<p local-id=3D"de2eadd6f475">Fault injection</p></td>
+<td data-local-id=3D"38497c652560" class=3D"confluenceTd">
+<p local-id=3D"9bef9f2787f9">Incorrect data update enters batch input</p></=
+td>
+<td data-local-id=3D"bffc89fc024a" class=3D"confluenceTd">
+<p local-id=3D"cfa18c9d1022">From incident summary</p></td>
+</tr>
+<tr data-local-id=3D"c13065f40ce2">
+<td data-local-id=3D"17642d148b51" class=3D"confluenceTd">
+<p local-id=3D"af69ab61901d">Propagation</p></td>
+<td data-local-id=3D"50baef134239" class=3D"confluenceTd">
+<p local-id=3D"9254146c92d1">Batch generates outbound SMS/LINE at scale</p>=
+</td>
+<td data-local-id=3D"d159524101af" class=3D"confluenceTd">
+<p local-id=3D"839eb490e067">From incident summary</p></td>
+</tr>
+<tr data-local-id=3D"7ca768be12cf">
+<td data-local-id=3D"5c7b42b69887" class=3D"confluenceTd">
+<p local-id=3D"d82195015f6d">Detection</p></td>
+<td data-local-id=3D"b0c200dfc7b9" class=3D"confluenceTd">
+<p local-id=3D"1d00a23a8daf">Detected after messages were sent (likely via =
+business/customer impact)</p></td>
+<td data-local-id=3D"116aa4eebd38" class=3D"confluenceTd">
+<p local-id=3D"774663feceb5">No monitoring alert evidence found in retrieve=
+d sources</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"74e2c0ab245b"><strong>Detection failure points</strong></p>
+<ul local-id=3D"ef02eb7d7ccd">
+<li local-id=3D"bbc2ce9fbe1c">
+<p local-id=3D"e26502fdab46"><strong>No automated =E2=80=9Cvolume anomaly=
+=E2=80=9D detection</strong> on outbound messages (e.g., sudden spike to te=
+ns of thousands).</p></li>
+<li local-id=3D"e5c16b8def89">
+<p local-id=3D"22f48e60b1de"><strong>No automated =E2=80=9Cdata integrity=
+=E2=80=9D detection</strong> on the upstream customer dataset change that f=
+ed the batch.</p></li>
+<li local-id=3D"9f2be076935c">
+<p local-id=3D"33befbe58032"><strong>Insufficient traceability</strong> bet=
+ween batch records and outbound notifications (a recurring theme in <a clas=
+s=3D"external-link" href=3D"https://manulife.service-now.com/problem.do?sys=
+parm_query=3Dnumber=3DPRB00023122" rel=3D"nofollow"><strong>PRB00023122</st=
+rong></a>: recommendation to include notification IDs in logs and enforce d=
+eterministic ordering).</p></li>
+</ul>
+<p local-id=3D"55063f697d02"><strong>Required monitoring signals not in pla=
+ce (to meet =E2=80=9Cshift from user-reported to automated detection=E2=80=
+=9D)</strong></p>
+<ul local-id=3D"a62034a973a1">
+<li local-id=3D"835f50f17f98">
+<p local-id=3D"c4433fd58c17"><strong>Outbound message rate + unique-recipie=
+nt spike alert</strong> (per channel: SMS, LINE).</p></li>
+<li local-id=3D"bea1c3192c44">
+<p local-id=3D"419b589e1c61"><strong>Pre-send validation failure metric</st=
+rong> (count of blocked messages, reasons).</p></li>
+<li local-id=3D"3ac76110c6cd">
+<p local-id=3D"022e8d6f4e1c"><strong>Batch input delta checks</strong> (une=
+xpected changes in recipient flags/segments).</p></li>
+<li local-id=3D"15f5c5c8acb8">
+<p local-id=3D"7835e72c73b4"><strong>Correlation IDs</strong> from batch re=
+cord =E2=86=92 notification ID =E2=86=92 delivery provider response (explic=
+itly recommended in <a class=3D"external-link" href=3D"https://manulife.ser=
+vice-now.com/problem.do?sysparm_query=3Dnumber=3DPRB00023122" rel=3D"nofoll=
+ow"><strong>PRB00023122</strong></a>).</p></li>
+</ul>
+<hr local-id=3D"564b1097e084">
+<h3 local-id=3D"98de1321c7d5" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-MTTC(Containment)">MTTC (Cont=
+ainment)</h3>
+<p local-id=3D"646004576cd3"><strong>Containment steps &amp; timing (table)=
+</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"f4=
+4ffc577462" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"cafa16c686a4">
+<th data-local-id=3D"353ee684540f" class=3D"confluenceTh">
+<p local-id=3D"86c178c2c205">Step</p></th>
+<th data-local-id=3D"49bc0840ac5b" class=3D"confluenceTh">
+<p local-id=3D"d03485a5ec96">Containment action</p></th>
+<th data-local-id=3D"9ae1a1ede5dd" class=3D"confluenceTh">
+<p local-id=3D"37a88f0b817f">Manual vs automated</p></th>
+<th data-local-id=3D"5b4305dbb0b9" class=3D"confluenceTh">
+<p local-id=3D"3f5235ad92b6">Evidence available</p></th>
+</tr>
+<tr data-local-id=3D"f6205cb0600c">
+<td data-local-id=3D"3fb916544e4d" class=3D"confluenceTd">
+<p local-id=3D"fdfe230074d4">Stop further sends</p></td>
+<td data-local-id=3D"d2df1290630a" class=3D"confluenceTd">
+<p local-id=3D"cccf48ab7d17">Suppress/stop message generation or downstream=
+ dispatch</p></td>
+<td data-local-id=3D"a52c2b4d723f" class=3D"confluenceTd">
+<p local-id=3D"5a7e326ad34e">Likely manual</p></td>
+<td data-local-id=3D"55d4fcc86d6d" class=3D"confluenceTd">
+<p local-id=3D"52dd4d8a9021">Not evidenced in sources; inferred from =E2=80=
+=9Cdata corrected=E2=80=9D status</p></td>
+</tr>
+<tr data-local-id=3D"4208badabf58">
+<td data-local-id=3D"e2930981433c" class=3D"confluenceTd">
+<p local-id=3D"2a9d5e171805">Limit blast radius</p></td>
+<td data-local-id=3D"6427632ee056" class=3D"confluenceTd">
+<p local-id=3D"90e7a0ac4f0b">Disable specific campaign/template or recipien=
+t segment</p></td>
+<td data-local-id=3D"34eeb722f69e" class=3D"confluenceTd">
+<p local-id=3D"b3f82752a298">Likely manual</p></td>
+<td data-local-id=3D"1d655e4f4669" class=3D"confluenceTd">
+<p local-id=3D"a6fd820a5399">Not evidenced</p></td>
+</tr>
+<tr data-local-id=3D"abfb174444db">
+<td data-local-id=3D"71b51b2474b7" class=3D"confluenceTd">
+<p local-id=3D"e2833e22dc7d">Escalation</p></td>
+<td data-local-id=3D"62a06081a66b" class=3D"confluenceTd">
+<p local-id=3D"49ee58f31daf">Engage app/data/batch owners</p></td>
+<td data-local-id=3D"ee5ea94a5976" class=3D"confluenceTd">
+<p local-id=3D"54156f044c20">Manual</p></td>
+<td data-local-id=3D"d58d57231ead" class=3D"confluenceTd">
+<p local-id=3D"c52e11da4f62">Not evidenced</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"19136d7e23f7"><strong>Escalation bottlenecks (likely)</stron=
+g></p>
+<ul local-id=3D"9df9e36eb8ad">
+<li local-id=3D"7eb12bb733c5">
+<p local-id=3D"1f2c455655ee">If detection was customer-driven, escalation s=
+tarts <strong>after impact</strong>, increasing containment time.</p></li>
+<li local-id=3D"46a4eb286ce4">
+<p local-id=3D"64a8deee4c16">Lack of a standardized =E2=80=9Cmessage suppre=
+ssion=E2=80=9D runbook forces <strong>ad-hoc coordination</strong> across b=
+atch + messaging teams.</p></li>
+</ul>
+<hr local-id=3D"3a8c3b53df69">
+<h3 local-id=3D"ea8d441a3108" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-MTTR(Recovery)">MTTR (Recover=
+y)</h3>
+<p local-id=3D"651ede9e31f2"><strong>Recovery timeline (table)</strong></p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"7b=
+84d1390285" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"cf8082a417a9">
+<th data-local-id=3D"98e42a4af32b" class=3D"confluenceTh">
+<p local-id=3D"c0ea2b8120f4">Step</p></th>
+<th data-local-id=3D"957a53fa234b" class=3D"confluenceTh">
+<p local-id=3D"515eff6cc84c">Recovery action</p></th>
+<th data-local-id=3D"ca0310a4d067" class=3D"confluenceTh">
+<p local-id=3D"bc2d6d526e3d">Systems involved (from your brief)</p></th>
+<th data-local-id=3D"7242398c293e" class=3D"confluenceTh">
+<p local-id=3D"48ecc9235bfd">Evidence available</p></th>
+</tr>
+<tr data-local-id=3D"2261c9a63103">
+<td data-local-id=3D"9357033cba5f" class=3D"confluenceTd">
+<p local-id=3D"418ac202be4d">Correct data</p></td>
+<td data-local-id=3D"b8fcd4b426fe" class=3D"confluenceTd">
+<p local-id=3D"45d277e54e83">Fix incorrect customer data update</p></td>
+<td data-local-id=3D"50da42e24f85" class=3D"confluenceTd">
+<p local-id=3D"d714005b4dab">Data store / batch input</p></td>
+<td data-local-id=3D"95f5ef803a91" class=3D"confluenceTd">
+<p local-id=3D"f81bb9f30289">Confirmed (=E2=80=9CData corrected=E2=80=9D)</=
+p></td>
+</tr>
+<tr data-local-id=3D"78ab176d3d25">
+<td data-local-id=3D"5940a18bf9cb" class=3D"confluenceTd">
+<p local-id=3D"b344252ed1c7">Stabilize operations</p></td>
+<td data-local-id=3D"40264f3e8a51" class=3D"confluenceTd">
+<p local-id=3D"debe4311c146">Reduce call center congestion / service degrad=
+ation</p></td>
+<td data-local-id=3D"4ef8a14b4074" class=3D"confluenceTd">
+<p local-id=3D"a92980da6285">Contact center + downstream services</p></td>
+<td data-local-id=3D"25d77d333da0" class=3D"confluenceTd">
+<p local-id=3D"12f2d7a1d61f">Not evidenced</p></td>
+</tr>
+<tr data-local-id=3D"79fd39006c3d">
+<td data-local-id=3D"4f6ec654da6f" class=3D"confluenceTd">
+<p local-id=3D"4f2748073fe9">Prevent re-run</p></td>
+<td data-local-id=3D"7711c886b386" class=3D"confluenceTd">
+<p local-id=3D"7689f843fb3d">Ensure next batch won=E2=80=99t resend</p></td=
+>
+<td data-local-id=3D"13ba6fa187de" class=3D"confluenceTd">
+<p local-id=3D"b7472c9e3684">Batch job + messaging service</p></td>
+<td data-local-id=3D"a3be2ab832f6" class=3D"confluenceTd">
+<p local-id=3D"36febfecbd2a">Not evidenced</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"3b503b84636b"><strong>Runbook alignment</strong></p>
+<ul local-id=3D"abed905f90b6">
+<li local-id=3D"c2a53295b8a1">
+<p local-id=3D"f14c2c3fc8f4">A published SD-facing batch failure process ex=
+ists (<a class=3D"external-link" href=3D"https://manulife.service-now.com/k=
+b_knowledge.do?sysparm_query=3Dnumber=3DKB0033382" rel=3D"nofollow"><strong=
+>KB0033382</strong></a><strong>: Global Batch Job Failure =E2=80=93 SD Proc=
+ess</strong>), but it is oriented to <strong>batch failures</strong>, not <=
+strong>=E2=80=9Cbatch succeeded but produced wrong outbound communications.=
+=E2=80=9D</strong></p></li>
+<li local-id=3D"c39bf18e9dc9">
+<p local-id=3D"a4685da78d39">This incident needs a dedicated <strong>=E2=80=
+=9COutbound Messaging Mis-send / Mass Notification=E2=80=9D</strong> runboo=
+k (containment + suppression + validation).</p></li>
+</ul>
+<p local-id=3D"6fda50cdb674"><strong>L1/L2 recovery feasibility</strong></p=
+>
+<ul local-id=3D"cf97d05995e2">
+<li local-id=3D"42d87c839b7b">
+<p local-id=3D"bd85ef7f97a7">With the right controls, L1/L2 can execute: <s=
+trong>pause outbound sends</strong>, <strong>activate suppression</strong>,=
+ <strong>notify stakeholders</strong>, <strong>confirm message volume retur=
+ns to baseline</strong>=E2=80=94but those controls must exist and be safe.<=
+/p></li>
+</ul>
+<hr local-id=3D"3fc423c3e74f">
+<h3 local-id=3D"76037120fa59" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-MTTV(Validation)">MTTV (Valid=
+ation)</h3>
+<p local-id=3D"2b37bfdb83f4"><strong>Validation approach (table)</strong></=
+p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"a3=
+1c6b058bd0" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"18911b0b4d79">
+<th data-local-id=3D"bc20befcd8be" class=3D"confluenceTh">
+<p local-id=3D"52467e7a6625">Step</p></th>
+<th data-local-id=3D"b352ff0de45a" class=3D"confluenceTh">
+<p local-id=3D"9563a642c41a">Validation method</p></th>
+<th data-local-id=3D"307611ccba2a" class=3D"confluenceTh">
+<p local-id=3D"1a479e3d5e7b">What =E2=80=9Cgood=E2=80=9D looks like</p></th=
+>
+<th data-local-id=3D"6191a32d2110" class=3D"confluenceTh">
+<p local-id=3D"6a775e41d583">Gap</p></th>
+</tr>
+<tr data-local-id=3D"33a073b5f753">
+<td data-local-id=3D"28076d424b25" class=3D"confluenceTd">
+<p local-id=3D"02d569745223">Confirm no further sends</p></td>
+<td data-local-id=3D"495a365bf89c" class=3D"confluenceTd">
+<p local-id=3D"aa66cd23bda6">Monitor outbound volume + queue depth</p></td>
+<td data-local-id=3D"dea9ba106fc6" class=3D"confluenceTd">
+<p local-id=3D"1f56c62109f3">Back to normal baseline</p></td>
+<td data-local-id=3D"b770ca429510" class=3D"confluenceTd">
+<p local-id=3D"a8f5af258ebf">Needs automated dashboards/alerts</p></td>
+</tr>
+<tr data-local-id=3D"af69854b7946">
+<td data-local-id=3D"7240b7061c25" class=3D"confluenceTd">
+<p local-id=3D"18449d09b7f3">Confirm data correctness</p></td>
+<td data-local-id=3D"aa78c8fd52f1" class=3D"confluenceTd">
+<p local-id=3D"529dc46132d9">Reconcile recipient population vs expected</p>=
+</td>
+<td data-local-id=3D"a5a910e5eceb" class=3D"confluenceTd">
+<p local-id=3D"dfd36bfb77af">Matches expected counts/segments</p></td>
+<td data-local-id=3D"2f0739c0a8eb" class=3D"confluenceTd">
+<p local-id=3D"7b3ffd852771">Needs automated batch validation</p></td>
+</tr>
+<tr data-local-id=3D"140d5cac5179">
+<td data-local-id=3D"c510baeb834d" class=3D"confluenceTd">
+<p local-id=3D"2b60ecd25324">Confirm recurrence risk</p></td>
+<td data-local-id=3D"d31e617622c6" class=3D"confluenceTd">
+<p local-id=3D"28a17665f4f9">Pre-run =E2=80=9Cdry run=E2=80=9D / sampling</=
+p></td>
+<td data-local-id=3D"e07d26ea4c54" class=3D"confluenceTd">
+<p local-id=3D"8eab53238630">No abnormal recipient expansion</p></td>
+<td data-local-id=3D"4c907324580a" class=3D"confluenceTd">
+<p local-id=3D"80d40ec60984">Needs automated pre-flight checks</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"14e1bf0259d8"><strong>Required automated validation checks</=
+strong></p>
+<ul local-id=3D"8d6a7d2cf027">
+<li local-id=3D"2ffeff4934b9">
+<p local-id=3D"46dbe50f7c97"><strong>Pre-flight recipient count</strong> vs=
+ historical baseline (block if above threshold).</p></li>
+<li local-id=3D"c6ae23b5fafa">
+<p local-id=3D"b5b7241f4bf6"><strong>Template/channel eligibility validatio=
+n</strong> (block if required flags missing/changed unexpectedly).</p></li>
+<li local-id=3D"64bbad2e15e0">
+<p local-id=3D"6a6cb4a87a80"><strong>Post-run reconciliation</strong>: expe=
+cted vs actual sends, with automated sign-off criteria.</p></li>
+</ul>
+<hr local-id=3D"7e1f9e90dbe5">
+<h2 local-id=3D"ee017fba9940" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-3)Lapu=E2=80=91Lapualignmenta=
+nalysis">3) Lapu=E2=80=91Lapu alignment analysis</h2>
+<h3 local-id=3D"92365a946cfa" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-A)Observabilitycoverage(gapan=
+alysis)">A) Observability coverage (gap analysis)</h3>
+<ul local-id=3D"28e4c553ff26">
+<li local-id=3D"b225c0f41c06">
+<p local-id=3D"98fbd685d7e2"><strong>Batch jobs:</strong> likely monitored =
+for <em>failure</em>, but not for <em>bad outcomes</em> (wrong recipients).=
+</p></li>
+<li local-id=3D"ae3278f6ed99">
+<p local-id=3D"81d91e27f6d6"><strong>Data integrity:</strong> missing contr=
+ols to detect abnormal customer data updates feeding the batch.</p></li>
+<li local-id=3D"8efcc59f0850">
+<p local-id=3D"e9ddd8a6535c"><strong>Outbound messaging:</strong> missing e=
+nd-to-end telemetry (volume, recipient uniqueness, template usage, suppress=
+ion state).</p></li>
+</ul>
+<h3 local-id=3D"75b2761dc0ae" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-B)Signalquality/noise">B) Sig=
+nal quality / noise</h3>
+<ul local-id=3D"dc8c4b699389">
+<li local-id=3D"fb03b13e0205">
+<p local-id=3D"82da3bafb465">No evidence of actionable alerts firing for th=
+is scenario.</p></li>
+<li local-id=3D"63ae5f997558">
+<p local-id=3D"d0f52b7488e7">Needed: <strong>few high-signal alerts</strong=
+> (recipient spike, template spike, suppression disabled while volume abnor=
+mal) rather than many low-value batch logs.</p></li>
+</ul>
+<h3 local-id=3D"d5df63d2adc6" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-C)L1/L2operability(rapidrecov=
+ery)">C) L1/L2 operability (rapid recovery)</h3>
+<ul local-id=3D"56a2cd006792">
+<li local-id=3D"583b1eda64df">
+<p local-id=3D"e72796a72ac7">Current state appears to require <strong>L3/da=
+ta team involvement</strong> to correct data and ensure safety.</p></li>
+<li local-id=3D"7730853eabb1">
+<p local-id=3D"6368599c723f">Target state: L1/L2 can <strong>contain</stron=
+g> (stop sends) and <strong>validate</strong> (volume back to baseline) usi=
+ng a runbook + automation.</p></li>
+</ul>
+<h3 local-id=3D"bacf28632c46" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-D)Automationpotential(rankedb=
+yimpact)">D) Automation potential (ranked by impact)</h3>
+<ol start=3D"1" local-id=3D"e19971651e70">
+<li local-id=3D"beef02c5fba4">
+<p local-id=3D"ca96def7c215"><strong>Message suppression / circuit breaker<=
+/strong> (highest impact): automatic stop when volume/recipient spike detec=
+ted.</p></li>
+<li local-id=3D"23515afe75bb">
+<p local-id=3D"55978b5adbf3"><strong>Pre-send validation gate</strong>: blo=
+ck batch output if recipient count deviates beyond threshold.</p></li>
+<li local-id=3D"5f5ddc70251f">
+<p local-id=3D"cfd1c51e563f"><strong>Automated rollback / quarantine</stron=
+g> of the specific data update (where feasible).</p></li>
+<li local-id=3D"3446e80a3b95">
+<p local-id=3D"a78a6dc3277c"><strong>Auto-create incident + page correct te=
+am</strong> when anomaly triggers (reduce time to engage).</p></li>
+</ol>
+<hr local-id=3D"402218ee0996">
+<h2 local-id=3D"ca2e5f092a87" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-4)Rootcause+failurechain(caus=
+alchain)">4) Root cause + failure chain (causal chain)</h2>
+<p local-id=3D"b50a542d062a"><strong>DATA CHANGE =E2=86=92 BATCH EXECUTION =
+=E2=86=92 MESSAGE GENERATION =E2=86=92 CUSTOMER IMPACT</strong></p>
+<ul local-id=3D"edd5c57b70b3">
+<li local-id=3D"5b69f85b19a1">
+<p local-id=3D"b072262e4324"><strong>Primary root cause (most likely):</str=
+ong> Incorrect customer data update used by the batch, causing unintended r=
+ecipients to be selected.</p></li>
+<li local-id=3D"115bf6829330">
+<p local-id=3D"ff9cd322485d"><strong>Contributing factors (controls/monitor=
+ing/process):</strong></p></li>
+<li local-id=3D"9735178868b0">
+<p local-id=3D"929a70c7553c">Missing <strong>recipient-volume guardrails</s=
+trong> before sending.</p></li>
+<li local-id=3D"ee2574139022">
+<p local-id=3D"fb9e2b829ccc">Missing <strong>data integrity checks</strong>=
+ on the upstream update.</p></li>
+<li local-id=3D"eed831682d78">
+<p local-id=3D"4bbcb8a1d947">Weak <strong>traceability/logging</strong> bet=
+ween batch records and outbound notifications (similar control gaps noted i=
+n <a class=3D"external-link" href=3D"https://manulife.service-now.com/probl=
+em.do?sysparm_query=3Dnumber=3DPRB00023122" rel=3D"nofollow"><strong>PRB000=
+23122</strong></a>).</p></li>
+<li local-id=3D"6cd1bcac8bc4">
+<p local-id=3D"d396bba26ff1"><strong>Where controls should have stopped pro=
+pagation:</strong></p></li>
+</ul>
+<ol start=3D"1" local-id=3D"61b370ed1224">
+<li local-id=3D"90499da6ed09">
+<p local-id=3D"57a493e06cd5"><strong>At data change time:</strong> validati=
+on + approval for high-risk mass-impact updates.</p></li>
+<li local-id=3D"b4d495389eee">
+<p local-id=3D"0a248903b43e"><strong>At batch pre-flight:</strong> recipien=
+t count anomaly detection (block).</p></li>
+<li local-id=3D"1c1ae71e7458">
+<p local-id=3D"96f10c4bf90c"><strong>At message dispatch:</strong> circuit =
+breaker / suppression when volume spikes.</p></li>
+</ol>
+<hr local-id=3D"c075807e39ba">
+<h2 local-id=3D"e95934413734" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-5)Recommendedactions(prioriti=
+zed)">5) Recommended actions (prioritized)</h2>
+<h3 local-id=3D"ecf075567058" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-Tier1=E2=80=94Immediate(befor=
+enextbatch)">Tier 1 =E2=80=94 Immediate (before next batch)</h3>
+<ol start=3D"1" local-id=3D"d72667aab1e3">
+<li local-id=3D"10c47f3a50c5">
+<p local-id=3D"dae0e47c27bd"><strong>Enable a =E2=80=9Ckill switch=E2=80=9D=
+ for outbound SMS/LINE</strong> (suppression toggle) with clear ownership a=
+nd audit trail.</p></li>
+<li local-id=3D"582d5b23417a">
+<p local-id=3D"da0cf0576a5c"><strong>Add a hard recipient-volume threshold<=
+/strong> (block or require explicit approval when exceeded).</p></li>
+<li local-id=3D"5b64dce8cb71">
+<p local-id=3D"1924d51394a6"><strong>Run a pre-batch =E2=80=9Cdry run=E2=80=
+=9D recipient count report</strong> and require sign-off when counts deviat=
+e materially.</p></li>
+</ol>
+<h3 local-id=3D"2a8bc57ffd73" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-Tier2=E2=80=94Short-term(impr=
+oveMTTD/MTTC/MTTR/MTTV)">Tier 2 =E2=80=94 Short-term (improve MTTD/MTTC/MTT=
+R/MTTV)</h3>
+<ol start=3D"1" local-id=3D"ec2656f824b2">
+<li local-id=3D"fb04b2e0fccb">
+<p local-id=3D"ef390ff3c63a"><strong>Automated alerting</strong> on outboun=
+d message spikes (rate + unique recipients + template/channel).</p></li>
+<li local-id=3D"bbec93125110">
+<p local-id=3D"450f4232e558"><strong>Correlation IDs + logging improvements=
+</strong> (batch record =E2=86=92 notification ID =E2=86=92 provider respon=
+se), aligned to recommendations seen in <a class=3D"external-link" href=3D"=
+https://manulife.service-now.com/problem.do?sysparm_query=3Dnumber=3DPRB000=
+23122" rel=3D"nofollow"><strong>PRB00023122</strong></a>.</p></li>
+<li local-id=3D"1dbbec6be6d6">
+<p local-id=3D"25962b1fa397"><strong>Create an =E2=80=9COutbound Mis-send=
+=E2=80=9D runbook</strong> (containment, comms, validation steps) and make =
+it executable by L1/L2.</p></li>
+<li local-id=3D"0dc2107c7fff">
+<p local-id=3D"7efa00bb9512"><strong>Post-run reconciliation automation</st=
+rong> (expected vs actual sends; auto-flag anomalies).</p></li>
+</ol>
+<h3 local-id=3D"65c61909a97e" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-Tier3=E2=80=94Strategic(Lapu=
+=E2=80=91Lapualignment)">Tier 3 =E2=80=94 Strategic (Lapu=E2=80=91Lapu alig=
+nment)</h3>
+<ol start=3D"1" local-id=3D"c1f407d25b07">
+<li local-id=3D"4139870e06e2">
+<p local-id=3D"9f4254aaa1bc"><strong>End-to-end observability</strong> for =
+batch/data/messaging with SLO-style objectives (detect without customers, c=
+ontain within minutes).</p></li>
+<li local-id=3D"bb9ec79ac048">
+<p local-id=3D"98188336dbd9"><strong>Data change governance for mass-impact=
+ fields</strong> (validation rules, approvals, automated rollback/quarantin=
+e).</p></li>
+<li local-id=3D"3d2166fed37c">
+<p local-id=3D"9ec1eb1ec1bc"><strong>Automated incident creation + routing<=
+/strong> from observability signals (reduce human latency).</p></li>
+</ol>
+<hr local-id=3D"920cc6fd773a">
+<h2 local-id=3D"a9d606016262" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-6)Timelines(tables)">6) Timel=
+ines (tables)</h2>
+<h3 local-id=3D"0fe116af5536" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-Target-stateMTTxtimeline(what=
+=E2=80=9Cgood=E2=80=9Dshouldlooklike)">Target-state MTTx timeline (what =E2=
+=80=9Cgood=E2=80=9D should look like)</h3>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"6c=
+9b77428967" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"d9b11386f2e4">
+<th data-local-id=3D"b5dba2ce05eb" class=3D"confluenceTh">
+<p local-id=3D"12e8ef8213bd">Metric</p></th>
+<th data-local-id=3D"be863a590956" class=3D"confluenceTh">
+<p local-id=3D"a57d28139805">Target behavior</p></th>
+<th data-local-id=3D"552c1a4daffb" class=3D"confluenceTh">
+<p local-id=3D"e27f56663001">Mechanism</p></th>
+</tr>
+<tr data-local-id=3D"514607dd5d93">
+<td data-local-id=3D"c11a0d88e900" class=3D"confluenceTd">
+<p local-id=3D"ad9bcddd4e31"><strong>MTTD</strong></p></td>
+<td data-local-id=3D"76c68e0fb42e" class=3D"confluenceTd">
+<p local-id=3D"240960096aa3">Detect within minutes of abnormal send pattern=
+</p></td>
+<td data-local-id=3D"f4869bdb5b51" class=3D"confluenceTd">
+<p local-id=3D"abd0e4b8e521">Spike alerts + pre-flight validation failures<=
+/p></td>
+</tr>
+<tr data-local-id=3D"edb2cc7fa6cd">
+<td data-local-id=3D"d0139bc170a3" class=3D"confluenceTd">
+<p local-id=3D"a500c0296928"><strong>MTTC</strong></p></td>
+<td data-local-id=3D"c336cfbb72b2" class=3D"confluenceTd">
+<p local-id=3D"4bf3a6e8ea0e">Contain immediately (auto-stop)</p></td>
+<td data-local-id=3D"2997bc5d4bc8" class=3D"confluenceTd">
+<p local-id=3D"32e39bc05de4">Circuit breaker / suppression</p></td>
+</tr>
+<tr data-local-id=3D"66f506fd4af0">
+<td data-local-id=3D"c798272dee51" class=3D"confluenceTd">
+<p local-id=3D"fb3037fec401"><strong>MTTR</strong></p></td>
+<td data-local-id=3D"e93e7133d823" class=3D"confluenceTd">
+<p local-id=3D"f31a2979cad3">Restore by correcting data + safe re-run</p></=
+td>
+<td data-local-id=3D"93038203a50c" class=3D"confluenceTd">
+<p local-id=3D"15878691f35f">Runbook + automated rollback/quarantine</p></t=
+d>
+</tr>
+<tr data-local-id=3D"db11a9f9c58e">
+<td data-local-id=3D"a71a65ae117c" class=3D"confluenceTd">
+<p local-id=3D"787a19691060"><strong>MTTV</strong></p></td>
+<td data-local-id=3D"cfeb5da33f25" class=3D"confluenceTd">
+<p local-id=3D"03214c413873">Validate automatically</p></td>
+<td data-local-id=3D"2241cdafdd17" class=3D"confluenceTd">
+<p local-id=3D"94d54a4678fb">Reconciliation + baseline checks</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"6fcfdf970d25">
+<h2 local-id=3D"d4bb173db9a7" id=3D"IncidentAnalysis:UnintendedSMS/LINEMess=
+agesSentto70,000CustomersDuetoDataUpdateError-Evidenceused(relatedhistorica=
+lrecords)">Evidence used (related historical records)</h2>
+<ul local-id=3D"bf1e51d1d4d2">
+<li local-id=3D"ed8eed6b246a">
+<p local-id=3D"1444bae0f6fa"><a class=3D"external-link" href=3D"https://man=
+ulife.service-now.com/problem.do?sysparm_query=3Dnumber=3DPRB00022754" rel=
+=3D"nofollow"><strong>PRB00022754</strong></a> =E2=80=94 Wrong SMS sent due=
+ to data issues in customer data matching/ETL context (pattern: data qualit=
+y =E2=86=92 wrong outbound comms).</p></li>
+<li local-id=3D"f1b50bc1b285">
+<p local-id=3D"a1ab2a1f32e2"><a class=3D"external-link" href=3D"https://man=
+ulife.service-now.com/problem.do?sysparm_query=3Dnumber=3DPRB00023122" rel=
+=3D"nofollow"><strong>PRB00023122</strong></a> =E2=80=94 SMS pipeline issue=
+s; recommends deterministic ordering and adding notification IDs to logs (p=
+attern: traceability/controls).</p></li>
+<li local-id=3D"2985e9aba0ec">
+<p local-id=3D"d8dd2cec1551"><a class=3D"external-link" href=3D"https://man=
+ulife.service-now.com/kb_knowledge.do?sysparm_query=3Dnumber=3DKB0033382" r=
+el=3D"nofollow"><strong>KB0033382</strong></a> =E2=80=94 =E2=80=9CGlobal Ba=
+tch Job Failure =E2=80=93 SD Process=E2=80=9D (useful baseline, but needs e=
+xtension for =E2=80=9Cbad outcome=E2=80=9D batches).</p></li>
+</ul>
+<hr local-id=3D"f23086ef34bf">
+    </div>
+</body>
+</html>
+------=_Part_14_1535792291.1779237185206--

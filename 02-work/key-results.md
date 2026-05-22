@@ -133,3 +133,27 @@
 | Date | Change |
 |------|--------|
 | 2026-04-16 | Created |
+
+---
+
+## KR006 — Branch Experience Dashboard
+- **Objective:** O1
+- **Metric Type:** Numeric
+- **Start Value:** 0
+- **Target Value:** 30
+- **Current Value:** 7
+- **Target Date:** 2026-08-28
+- **Status:** On Track
+- **Created:** 2026-05-22
+- **Tags:** #project:lapu-lapu #minion #branch #NewRelic
+- **Description:** Laptops and Minions perform URL and synthetic monitoring
+
+### Progress Log
+| Date | Value | Comment |
+|------|-------|---------|
+| 2026-05-22 | 7 |  |
+
+### Change Log
+| Date | Change |
+|------|--------|
+| 2026-05-22 | Created |
