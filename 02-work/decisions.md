@@ -126,3 +126,16 @@ tags: #project:lapu-lapu #project:epsilon #domain:modernisation #cicd #automatio
 **Related Objectives:** B-7 (PPS Service Improvement), B-3 (Pipeline Standardization & Secrets Remediation), O4 (Robust Technical Core)
 **Owner:** Balaji Ravi
 **Source:** Re: Epsilon Kickoff Review: AQA Information Sharing Session (2026-05-11)
+
+---
+
+## D011 — Agreed: Mandatory RRP Template with Controlled Publishing
+
+tags: #project:lapu-lapu #program:r2r #domain:rapid-recovery #outcome:resilience #priority:regulatory
+
+**Date:** 2026-05-26
+**Decision:** Approved
+**Summary:** All Rapid Recovery Plans must use the approved standard template covering triage steps, recovery sequences, and scenario-based documentation (3 scenario types: restart-based, workaround+restart, non-restart). No self-publishing — all RRPs must be submitted to Thabani for validation and KB publishing. RRPs are living documents with continuous updates expected. Production readiness gate requires RRP + SRD + DR before go-live (Infra intake process). GOCC (George/Jonan) acts as extension of app support driving triage speed; post-incident RRP updates will be triggered via Incident/Problem Management with Rohina team covering Problem + Change alignment.
+**Related Objectives:** B-4 (Infrastructure Resilience & Disaster Recovery), H-4 (Unified Support), O4 (Robust Technical Core)
+**Owner:** Balaji Ravi
+**Source:** 20260526 - RRP Touchpoint (Confluence export)

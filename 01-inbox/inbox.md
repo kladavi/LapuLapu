@@ -4,6 +4,33 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-05-26 — RRP Touchpoint: Gold Application Rapid Recovery Execution** #processed
+  - **Source:** 20260526+-+RRP+Touchpoint.doc
+  - **From:** Confluence export (RRP touchpoint meeting notes)
+  - **Focus:** Lock execution approach, timeline, and ownership for delivering scenario-based Rapid Recovery Plans for 6 Gold applications under regulatory priority.
+  - **Key outcomes:**
+    1. Mandatory standard template adopted for all RRPs, covering triage steps, recovery sequences, and scenario-based documentation (restart, workaround+restart, non-restart).
+    2. Controlled publishing process: all RRPs must be submitted to Thabani for validation and KB publishing — no self-publishing allowed.
+    3. Hard milestone: reboot/restart sequences for 6 Gold apps due June 10; full audit-ready RRP completion due June 30.
+    4. Gold apps are not yet fully compliant with architecture standards (local redundancy, LB, DR) — remediation planned separately.
+    5. GOCC (George/Jonan) acts as extension of app support, driving triage speed during incidents; ITSM integration confirmed with post-incident RRP updates triggered via Incident/Problem Management.
+    6. Restart runbooks from Kanagaraj's team must be integrated as critical baseline before RRP scenarios can be authored.
+    7. RRPs are linked via PEM to CIs in Knowledge Base; production readiness gate requires RRP + SRD + DR.
+    8. Thabani validation bottleneck flagged as risk for the tight June timeline.
+  - **Actions extracted → T106, T107**
+  - **Actions referenced → T003, T041, T084, T085**
+  - **Decision extracted → D011**
+
+- **2026-05-27 — 2026 Plan Ideas (David Klan Copy)** #processed
+  - **Source:** 2026 Plan Ideas_DK.docx
+  - **From:** David Klan (plan ideas document)
+  - **Focus:** David Klan's copy of the 2026 ETS-Japan plan ideas covering reliability engineering, operational standards, pipelines, infrastructure, security, asset management, PPS service improvement, and Ingenium modernization.
+  - **Key outcomes:**
+    1. Content aligns to the existing Tier-2 objectives B-1 through B-7 already registered from Birger Fjaellman's source document (2026_Birger_Plan Ideas.docx).
+    2. Includes a "Ring-Fence MITDC Team" proposal (5–6 person L2 team with Ingenium/Pathfinder/WAS/DB2/Microfocus/TX-Gateway skills to proactively support Japan IT) — not yet committed or sponsored.
+    3. No new standalone objectives or tasks beyond what is already captured; MITDC team ringfencing noted for future consideration.
+  - **Actions extracted → none (reference copy; objectives already registered)**
+
 - **2026-05-22 — Incident Analysis: Unintended SMS/LINE Messages Sent to 70,000 Customers (INC08574374)** #processed
   - **Source:** Incident+Analysis_+Unintended+SMS_LINE+Messages+Sent+to+70,000+Customers+Due+to+Data+Update+Error.doc
   - **From:** Confluence export (incident analysis page)

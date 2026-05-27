@@ -1405,3 +1405,29 @@
 - **Relevance:** 90/100
 - **Tags:** #project:lapu-lapu #worktype:monitoring #outcome:mttd #outcome:resilience
 - **Description:** Implement automated pre-send validation and volume anomaly detection for batch-to-notification flows. Include outbound message rate and unique-recipient spike alerts, pre-flight recipient count vs historical baseline checks, and batch input delta monitoring. Addresses the detection gap identified in INC08574374 where 70,000 unintended SMS/LINE messages were sent without any automated alert firing.
+
+---
+
+## T106 — Deliver Scenario-Based RRPs for 6 Gold Applications
+- **Status:** Open
+- **Created:** 2026-05-26
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:cmdb
+- **Relevance:** 92/100
+- **Tags:** #project:lapu-lapu #program:r2r #worktype:disaster-recovery #outcome:resilience #priority:regulatory
+- **Description:** Complete Rapid Recovery Plans for the 6 regulatory-priority Gold applications using the mandatory standard template with 3 scenario types (restart-based, workaround+restart, non-restart). Reboot/restart sequences due June 10; full audit-ready RRP completion due June 30. RRPs must be submitted to Thabani for validation and KB publishing — no self-publishing. RRPs linked via PEM to CIs in Knowledge Base; production readiness gate requires RRP + SRD + DR.
+
+---
+
+## T107 — Integrate Restart Runbooks into RRP Baseline
+- **Status:** Open
+- **Created:** 2026-05-26
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:cmdb
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #program:r2r #worktype:documentation #outcome:resilience
+- **Description:** Pull and integrate restart runbooks from Kanagaraj's team into the RRP baseline for Gold applications. Restart procedures are a critical prerequisite — restart-based recovery scenarios cannot be authored without validated reboot/restart sequences. Identify restart-resolvable failure patterns from existing incident analysis for each Gold app. Dependency for T106.

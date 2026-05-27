@@ -1,0 +1,567 @@
+Date: Tue, 26 May 2026 01:50:40 +0000 (UTC)
+Message-ID: <560055950.201.1779760240021@e67ebc702df9>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_200_1840679257.1779760240021"
+
+------=_Part_200_1840679257.1779760240021
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260526 - RRP Touchpoint</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260526 - RRP Touchpoint</h1>
+    <div class=3D"Section1">
+        <h2 local-id=3D"4b50eb0aef69" id=3D"id-20260526-RRPTouchpoint-1.Key=
+Decisions">1. Key Decisions</h2>
+<ul local-id=3D"9db51b32-6344-4a07-8849-0f863ee75369">
+<li local-id=3D"7c4a2a9d-b497-48c2-9852-62fcdf7ae0c2">
+<p local-id=3D"0c58be7500cc"><strong>Standard Template Mandatory</strong></=
+p>
+<ul local-id=3D"3c994ede-86cd-4309-9c1d-9b20fc6fc432">
+<li local-id=3D"edccf3d7-ce25-4e3e-bc86-c8cee727f4fb">
+<p local-id=3D"2b27471842e4">All Rapid Recovery Plans (RRP) must use the ap=
+proved template.</p></li>
+<li local-id=3D"8da34868-0ef4-4230-98e7-3dd26781e7df">
+<p local-id=3D"224e4a06fc37">Template includes: triage steps, recovery sequ=
+ences, and scenario-based documentation.</p></li>
+</ul></li>
+<li local-id=3D"01a2930c-67fa-4a27-981d-75f7c0982caf">
+<p local-id=3D"5d926d1e5ad8"><strong>Scenario-Based Documentation Model Ado=
+pted</strong><br>
+Each application must document 3 scenario types:</p>
+<ol start=3D"1" local-id=3D"b962bfdf-00f2-41ae-92a2-7de8901fd3bc">
+<li local-id=3D"42b52493-3b91-401a-bcf6-d20501a62e8b">
+<p local-id=3D"63ad0d75fbf5">Restart-based recovery</p></li>
+<li local-id=3D"1ac220f2-9a9b-4c58-b84e-8e920bc6dd68">
+<p local-id=3D"825e0e7e8042">Workaround + restart</p></li>
+<li local-id=3D"405bc37f-6aa2-4bb2-9a6f-758b5f00e39a">
+<p local-id=3D"23d823c1a3e7">Non-restart (e.g., data correction)</p></li>
+</ol></li>
+<li local-id=3D"f9765345-434a-417e-8a8a-0381e1df4787">
+<p local-id=3D"2575c94bbffd"><strong>Controlled Publishing Process</strong>=
+</p>
+<ul local-id=3D"208367e9-ba44-479e-b1b8-e16000b8e30d">
+<li local-id=3D"8bc28ad0-178c-48ea-8d5e-4d354100400c">
+<p local-id=3D"82b8a2968ed2">No self-publishing.</p></li>
+<li local-id=3D"f5e4a790-39e8-4af5-9728-3ceb5d1743be">
+<p local-id=3D"cdd7f326abe0">All RRPs must be <strong>submitted to Thabani =
+for validation and KB publishing</strong>.</p></li>
+<li local-id=3D"72e292c5-a360-4961-b098-53a592a7270a">
+<p local-id=3D"3f63f15081d9">RRPs are <strong>living documents</strong> (co=
+ntinuous updates expected).</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"9bb64203-e3ee-4b02-8988-f0c6b3679a24">
+<h2 local-id=3D"ecbcefdb42df" id=3D"id-20260526-RRPTouchpoint-2.Priority&am=
+p;Timeline(Critical)">2. Priority &amp; Timeline (Critical)</h2>
+<ul local-id=3D"d71d2a91-2a81-46a7-8b32-c4da61f65663">
+<li local-id=3D"b9e3d9ab-73e0-49c8-8181-7b8d93a8aad8">
+<p local-id=3D"891151905a18"><strong>Scope:</strong> 6 Gold Applications (r=
+egulatory priority)</p></li>
+<li local-id=3D"32910565-0c83-48d9-a01d-165d2e76a321">
+<p local-id=3D"e61f9264b89a"><strong>June 10:</strong></p>
+<ul local-id=3D"2264c70e-af29-4d01-95be-d0e4db66a76d">
+<li local-id=3D"7657a30b-ae30-49a4-ad45-8e793172fda4">
+<p local-id=3D"3bd5895064a9">Reboot / restart sequences completed for all 6=
+ apps</p></li>
+</ul></li>
+<li local-id=3D"1f8264f6-d120-4bef-8a67-fec5f9da3f1f">
+<p local-id=3D"610da21f086d"><strong>June 30:</strong></p>
+<ul local-id=3D"38ec0ca7-79cc-4f42-a8f3-d104b9a07125">
+<li local-id=3D"80ebb8da-0445-4bfe-8eb1-66d2196cfb42">
+<p local-id=3D"7a8d331884b2">Full RRP completion (audit-ready)</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"0f07aff45e2f">=E2=9A=A0=EF=B8=8F Gold apps currently <strong=
+>not fully compliant</strong> with architecture standards<br>
+(local redundancy, LB, DR) =E2=86=92 remediation planned separately</p>
+<hr local-id=3D"c698ce35-b6c1-44ac-8030-73de1d925ab2">
+<h2 local-id=3D"6e58338fdde1" id=3D"id-20260526-RRPTouchpoint-3.ExecutionAp=
+proach">3. Execution Approach</h2>
+<h3 local-id=3D"11972801e229" id=3D"id-20260526-RRPTouchpoint-A.Application=
+OnboardingStrategy">A. Application Onboarding Strategy</h3>
+<ul local-id=3D"3edf07ad-d3fb-4679-bd23-582a5b952507">
+<li local-id=3D"ed5e6ec3-dba1-4668-aa6c-0103e484ead7">
+<p local-id=3D"a7fe2fc8a5af">Prioritize:</p>
+<ul local-id=3D"e031e960-b130-495c-806b-766f3622f09e">
+<li local-id=3D"4ab56efb-19bd-44be-a185-78c82358d6ca">
+<p local-id=3D"5898b87568a9">Apps with <strong>recent major incidents</stro=
+ng> (faster stakeholder engagement)</p></li>
+<li local-id=3D"88cff50c-4780-4d30-aee0-1152281bc1b3">
+<p local-id=3D"0db8e3b48ec7"><strong>Easier apps first</strong> for momentu=
+m</p></li>
+</ul></li>
+<li local-id=3D"dc8e11e1-3d54-43d5-90fc-0567ec0894d0">
+<p local-id=3D"b6f43e4eefed">Parallel track:</p>
+<ul local-id=3D"23e31440-5d95-47c5-a41b-0f1faa097a54">
+<li local-id=3D"780bc29d-1231-4f90-8452-b6e1f8c28e14">
+<p local-id=3D"d4bde3ce7468">Begin coverage for <strong>all in-scope applic=
+ations</strong></p></li>
+</ul></li>
+</ul>
+<h3 local-id=3D"8ad37d31a4eb" id=3D"id-20260526-RRPTouchpoint-B.BaselineSta=
+ndardization">B. Baseline Standardization</h3>
+<ul local-id=3D"1bf3bc03-6b4c-432a-a780-3ed7efcd8dee">
+<li local-id=3D"d09f1781-4825-44f0-8578-2f30abb9175f">
+<p local-id=3D"a19c7a64913e"><strong>Mandatory integration of restart runbo=
+oks</strong><br>
+(source: Kanagaraj=E2=80=99s team)</p></li>
+<li local-id=3D"369b81be-4966-4050-9fb0-4de879d12968">
+<p local-id=3D"1c96e51ff042">Use:</p>
+<ul local-id=3D"4acd8685-a19b-45ea-99f7-1280417d328e">
+<li local-id=3D"684529ac-d192-4a43-8c20-e36ed4e5f056">
+<p local-id=3D"351b92a4165c">Existing <strong>incident analysis for Gold ap=
+ps</strong></p></li>
+<li local-id=3D"412ddd80-ab6c-4cd2-90ae-09d2f148e554">
+<p local-id=3D"6ca766a6bfc1">Identify restart-resolvable failure patterns</=
+p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"f55213dd-11d6-460d-8620-a7a1456791df">
+<h2 local-id=3D"8186044af56a" id=3D"id-20260526-RRPTouchpoint-4.KnowledgeBa=
+se&amp;Compliance">4. Knowledge Base &amp; Compliance</h2>
+<ul local-id=3D"f7de5b1f-a2b1-42d9-abe0-7b4e5740364e">
+<li local-id=3D"93897c23-e1df-4014-9e27-cd90f1542ed4">
+<p local-id=3D"492342435896">RRPs linked via <strong>PEM Link to CIs</stron=
+g> in Knowledge Base</p></li>
+<li local-id=3D"5bbe482e-7279-4846-bbc0-8345d5fc0f18">
+<p local-id=3D"d88709b0e976">Mandatory for:</p>
+<ul local-id=3D"7f2b8001-ca10-4c1f-9bfe-0de444a766fe">
+<li local-id=3D"e1a2384d-f901-4205-91e8-72960ac0fa80">
+<p local-id=3D"344389e3ab3e"><strong>All Gold applications (current regulat=
+ory requirement)</strong></p></li>
+<li local-id=3D"7daf855b-6203-494d-8d33-8d24c1fa9125">
+<p local-id=3D"ba0d0f6bd97e">Future: <strong>all applications</strong></p><=
+/li>
+</ul></li>
+<li local-id=3D"abc2f853-ecbf-4f97-8bc6-d4606df85294">
+<p local-id=3D"0be11d4da324"><strong>Production readiness gate:</strong></p=
+>
+<ul local-id=3D"27a824be-546d-4153-bc7f-60cc7647970b">
+<li local-id=3D"bea01eee-7631-4a74-916e-2c7e790131e1">
+<p local-id=3D"cb317e5d95a6">RRP + SRD + DR required before go-live (Infra =
+intake process)</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"8f13e38c-9779-42c4-9e20-4c69b910aa18">
+<h2 local-id=3D"5b760613ee14" id=3D"id-20260526-RRPTouchpoint-5.OperatingMo=
+del(GOCC&amp;ITSMIntegration)">5. Operating Model (GOCC &amp; ITSM Integrat=
+ion)</h2>
+<ul local-id=3D"74561827-de25-49d1-b820-9a68f0875e36">
+<li local-id=3D"b4613e63-9788-49de-96d7-1325abd562c8">
+<p local-id=3D"e824a7d6aecd"><strong>GOCC (George / Jonan team)</strong></p=
+>
+<ul local-id=3D"8e858bd1-1196-4185-9fb0-c370a607ef50">
+<li local-id=3D"b5e5705c-2b53-49f4-b41e-06e5b8e98869">
+<p local-id=3D"88174b4d5950">Acts as extension of app support</p></li>
+<li local-id=3D"8dfdb617-cdf4-4a1f-8368-9b4b6a09eccb">
+<p local-id=3D"c122c366d58d">Drives triage speed and execution during incid=
+ents</p></li>
+</ul></li>
+<li local-id=3D"9b1854ec-bb1a-41d5-8b8a-529cece863c0">
+<p local-id=3D"bf460dec7e51"><strong>ITSM Integration (Confirmed)</strong><=
+/p>
+<ul local-id=3D"af882f75-fff4-43bf-90da-d294c1c8d3c9">
+<li local-id=3D"0e7e8228-83d7-4f1a-b1b7-61fd55db1045">
+<p local-id=3D"8933458e33fd">Post-incident: =E2=86=92 RRP updates will be t=
+riggered via Incident/Problem Management</p></li>
+<li local-id=3D"fee3cf06-eb64-4899-bd3d-ebf972e7e029">
+<p local-id=3D"83e982d5ba53">Ownership: =E2=86=92 Rohina team covers Proble=
+m + Change alignment</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"6b83be56-48df-4d27-8914-8fc1fd8acab6">
+<h2 local-id=3D"7a73d342749d" id=3D"id-20260526-RRPTouchpoint-6.Clarificati=
+onsonTemplateUsage">6. Clarifications on Template Usage</h2>
+<ul local-id=3D"8fccb73e-75f2-43b9-b3e3-7dc3129eac02">
+<li local-id=3D"04cb55ca-0158-46a4-a102-35141b62d284">
+<p local-id=3D"13c5af6dc336">Template questions =3D <strong>guidance, not y=
+es/no</strong></p></li>
+<li local-id=3D"ff4171b7-b1fc-4d74-bf55-cfdb9fda37cd">
+<p local-id=3D"269b27db3a22">Expected input:</p>
+<ul local-id=3D"3546a978-dc4e-4f31-9d66-681db6ccfb0a">
+<li local-id=3D"c14fa937-2b41-4700-8d54-8b2b76220870">
+<p local-id=3D"e585d0fc0b5a">Detailed, descriptive operational steps</p></l=
+i>
+<li local-id=3D"b0bb9bbf-fa1d-4d81-bd69-74c516a19322">
+<p local-id=3D"9a1990ada98c">Explicit configs, sequences, and recovery logi=
+c</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"b2176897-6f4f-4239-af7f-5a4e19fe347f">
+<h2 local-id=3D"468ffcd8ebbf" id=3D"id-20260526-RRPTouchpoint-7.Risks/Const=
+raints">7. Risks / Constraints</h2>
+<ul local-id=3D"67c1d200-4a4a-414b-be54-59cadae6cad7">
+<li local-id=3D"e1df0e53-b5bd-4022-b45a-6373cb2ef1f0">
+<p local-id=3D"a596f4db21d2">Gold app architecture gaps (DR, redundancy)</p=
+></li>
+<li local-id=3D"208dc0c3-b815-4e85-91e9-fdec7fba11cb">
+<p local-id=3D"c361ef466c47">Dependency on:</p>
+<ul local-id=3D"4b3818c0-715e-49b6-9b93-6e8c5af9daff">
+<li local-id=3D"30108a97-27e7-43e5-a644-1d15e979d4e4">
+<p local-id=3D"983f99bf0bbb">Restart runbooks (Kanagaraj team)</p></li>
+<li local-id=3D"04cdbee5-ae89-4645-8171-049678b1d747">
+<p local-id=3D"b7def8fc1e22">Timely validation (Thabani bottleneck risk)</p=
+></li>
+</ul></li>
+<li local-id=3D"550b0d2d-ba2e-4d4f-9d4c-15d53539930e">
+<p local-id=3D"2042d1be5123">Tight timeline (June 10 milestone)</p></li>
+</ul>
+<hr local-id=3D"47e6e45b-1370-4c35-b381-1a1f767b32d9">
+<h1 local-id=3D"51f10178838a" id=3D"id-20260526-RRPTouchpoint-8.ActionTrack=
+er(ClearOwnership)">8. Action Tracker (Clear Ownership)</h1>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"1e=
+4f3018-3e02-40c7-89fa-9844acd4097d" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"7d1e9344-9d14-406d-a81b-7fc074670699">
+<th data-local-id=3D"584a9875-6125-43bb-b204-bebf4de38a5d" class=3D"conflue=
+nceTh">
+<p local-id=3D"32a9ff95a98f">Action</p></th>
+<th data-local-id=3D"046ead05-56ea-49d4-b78d-a2839a81cc53" class=3D"conflue=
+nceTh">
+<p local-id=3D"51cecd7fbf20">Owner</p></th>
+<th data-local-id=3D"25e4e7da-095a-49a0-ae98-b303fbb57241" class=3D"conflue=
+nceTh">
+<p local-id=3D"4a3dcf99e7ed">Due</p></th>
+<th data-local-id=3D"5c665471-00b6-474e-8c52-116b3b73a328" class=3D"conflue=
+nceTh">
+<p local-id=3D"e7171cab8b81">Notes</p></th>
+</tr>
+<tr data-local-id=3D"fcb57a1b-2815-4d80-be0b-ac85bb212233">
+<td data-local-id=3D"0469f38c-3142-478e-96a5-61f6febe59f1" class=3D"conflue=
+nceTd">
+<p local-id=3D"ed7b51c998c5">Complete RRP using template (all scenarios)</p=
+></td>
+<td data-local-id=3D"eb838b7d-060b-4502-867a-f35c535b8128" class=3D"conflue=
+nceTd">
+<p local-id=3D"8aec6c2332a3">Balaji, Prabu</p></td>
+<td data-local-id=3D"b95d15b6-420e-4b69-9d58-fc2525625687" class=3D"conflue=
+nceTd">
+<p local-id=3D"6d09c6079bb8">Ongoing</p></td>
+<td data-local-id=3D"807a6d7d-4e04-42be-8701-737d5a1a9bc8" class=3D"conflue=
+nceTd">
+<p local-id=3D"2250c8192675">Submit per app</p></td>
+</tr>
+<tr data-local-id=3D"d85a1395-d56e-4eda-86cc-f25c885706cf">
+<td data-local-id=3D"dbbe982a-ba41-4384-8dc1-f1ad15d75160" class=3D"conflue=
+nceTd">
+<p local-id=3D"8de5ef50cb46">Submit RRPs for validation &amp; publishing</p=
+></td>
+<td data-local-id=3D"d4af7ed4-ae29-46e3-9c30-2b3e7ab09902" class=3D"conflue=
+nceTd">
+<p local-id=3D"e5f9af6b7639">Balaji =E2=86=92 Thabani</p></td>
+<td data-local-id=3D"57ec79d7-0171-40a7-9d43-9e50c7e3d670" class=3D"conflue=
+nceTd">
+<p local-id=3D"2fc6dfae3907">Rolling</p></td>
+<td data-local-id=3D"9e61a2af-ef84-4f64-99ab-af6db8360ae3" class=3D"conflue=
+nceTd">
+<p local-id=3D"3d03e2f84db8">No self-publish</p></td>
+</tr>
+<tr data-local-id=3D"37fbef5d-d9a5-4054-8f91-d0774466b77e">
+<td data-local-id=3D"791406ad-36fd-4178-a926-4b4b966719f7" class=3D"conflue=
+nceTd">
+<p local-id=3D"5d1af6876c15">Integrate restart procedures</p></td>
+<td data-local-id=3D"b0a06771-6793-42a9-9cb5-934000719d4b" class=3D"conflue=
+nceTd">
+<p local-id=3D"a12ebd0dcd55">Balaji, Kanagaraj</p></td>
+<td data-local-id=3D"cc5192f9-7a98-4914-9603-71446d21cdc5" class=3D"conflue=
+nceTd">
+<p local-id=3D"cbdb5a3dc593">ASAP</p></td>
+<td data-local-id=3D"9fc9e597-9b9c-401a-80b8-00eecd624363" class=3D"conflue=
+nceTd">
+<p local-id=3D"06833936c8e2">Critical baseline</p></td>
+</tr>
+<tr data-local-id=3D"20b680dd-96f5-4ca1-98f2-4358dd018c68">
+<td data-local-id=3D"628d2b2d-49f2-4454-92bb-ef5247e0a286" class=3D"conflue=
+nceTd">
+<p local-id=3D"df079f9c2e6c">Deliver reboot sequences (6 Gold apps)</p></td=
+>
+<td data-local-id=3D"a17676f7-70d4-4e4d-8793-f520c8c2f6b4" class=3D"conflue=
+nceTd">
+<p local-id=3D"2d226e94ecbc">Balaji + Team</p></td>
+<td data-local-id=3D"32171a66-c441-46d4-bb72-87ca00d3f2b1" class=3D"conflue=
+nceTd">
+<p local-id=3D"ace9959e1c08"><strong>June 10</strong></p></td>
+<td data-local-id=3D"daac2d5d-26ea-40ff-ba45-1c50c0c4425c" class=3D"conflue=
+nceTd">
+<p local-id=3D"4a5c46610788">Hard milestone</p></td>
+</tr>
+<tr data-local-id=3D"e676ebb5-9a5b-4d37-8f14-971f914bd0c5">
+<td data-local-id=3D"44133809-307d-4404-91d7-2332a5fb1558" class=3D"conflue=
+nceTd">
+<p local-id=3D"04df6e706de8">Request detailed feedback on submissions</p></=
+td>
+<td data-local-id=3D"ae4e46a5-9164-4eba-8f48-c15a2d2d4ca4" class=3D"conflue=
+nceTd">
+<p local-id=3D"a260161301c7">Balaji, Thabani</p></td>
+<td data-local-id=3D"658f8259-0153-4032-94cc-402847ab5991" class=3D"conflue=
+nceTd">
+<p local-id=3D"fbc5b044a3b4">Ongoing</p></td>
+<td data-local-id=3D"63d29ec2-9af4-4800-9c7e-905897c313b3" class=3D"conflue=
+nceTd">
+<p local-id=3D"247b9072e168">Improve quality</p></td>
+</tr>
+<tr data-local-id=3D"5d258419-a2f7-4b9f-9d4d-29e5650a83f5">
+<td data-local-id=3D"9d8fca88-2620-4707-b5bf-740adc94ec8e" class=3D"conflue=
+nceTd">
+<p local-id=3D"c5b662176a6f">Maintain comms / escalation channel</p></td>
+<td data-local-id=3D"6c5b78a4-1f61-4fac-ac64-037f6ef49961" class=3D"conflue=
+nceTd">
+<p local-id=3D"ff37ab9264d2">Balaji (CC Thabani)</p></td>
+<td data-local-id=3D"fedc0695-e8c6-4766-b8b4-7d8f01f1ebf3" class=3D"conflue=
+nceTd">
+<p local-id=3D"4e20af4b614b">Continuous</p></td>
+<td data-local-id=3D"6dafe271-d638-4066-8780-9c8b6db0f1c5" class=3D"conflue=
+nceTd">
+<p local-id=3D"f01f6ba8b504">Ensure follow-up</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"60418690-093b-4d02-a56e-8cd7b9fd8e9a">
+<h1 local-id=3D"a16f509e56ea" id=3D"id-20260526-RRPTouchpoint-9.ImmediateNe=
+xtSteps(ThisWeekFocus)">9. Immediate Next Steps (This Week Focus)</h1>
+<ul local-id=3D"894f0da9-7249-44bd-ab6d-0827b4a04efe">
+<li local-id=3D"44f493b6-796b-4a15-afe6-c045120fdf96">
+<p local-id=3D"212d6337004c">Pull restart runbooks from Kanagaraj team</p><=
+/li>
+<li local-id=3D"2a2f136d-01d5-4fe4-b4c0-2d6fd3a6d8b0">
+<p local-id=3D"eb0c00abf1e2">Start with <strong>1=E2=80=932 Gold apps (fast=
+ completion)</strong></p></li>
+<li local-id=3D"b437a3c5-fbfc-41c0-875e-2d0052e95cb3">
+<p local-id=3D"4af3f3c034d9">Draft:</p>
+<ul local-id=3D"9821dbe5-9214-451d-b559-c62e3c0e9ab3">
+<li local-id=3D"9e2cf881-e5c5-41bb-9b9c-ff93064f4dcb">
+<p local-id=3D"6fd8030a51db">Restart scenario first (baseline)</p></li>
+<li local-id=3D"cd841bb3-11d0-4990-af12-dc3006472719">
+<p local-id=3D"d42ed71641d4">Then add workaround / non-restart scenarios</p=
+></li>
+</ul></li>
+<li local-id=3D"5a3d85d4-00fa-4f4b-8abe-7cb87eef2ddd">
+<p local-id=3D"29c061f4b102">Submit first RRP early =E2=86=92 <strong>valid=
+ate template interpretation quickly</strong></p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_200_1840679257.1779760240021--
