@@ -1,0 +1,629 @@
+Date: Fri, 29 May 2026 01:18:37 +0000 (UTC)
+Message-ID: <2085935134.17.1780017517882@a61101d08c85>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_16_1627125230.1780017517882"
+
+------=_Part_16_1627125230.1780017517882
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Japan Batch/MFT Opportunities Meeting Notes and Key Outcomes</ti=
+tle>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Japan Batch/MFT Opportunities Meeting Notes and Key Outcomes</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"b1b8592f0d67" id=3D"JapanBatch/MFTOpportunitiesMeet=
+ingNotesandKeyOutcomes-=F0=9F=93=84JapanBatch/MFTOpportunities=E2=80=93Meet=
+ingNotes">=F0=9F=93=84 Japan Batch / MFT Opportunities =E2=80=93 Meeting No=
+tes</h1>
+<h2 local-id=3D"7e705879e727" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=F0=9F=93=85MeetingDetails">=F0=9F=93=85 Meeting Details</h2=
+>
+<ul local-id=3D"de020a85-8bd2-4bab-865f-5f22b07f7a16">
+<li local-id=3D"5608225d-6bed-47fd-a545-2df557e30966">
+<p local-id=3D"df315bb8d4d5"><strong>Meeting:</strong> <a class=3D"external=
+-link" href=3D"https://teams.microsoft.com/l/meetup-join/19%3ameeting_NDc2Y=
+TczMzAtMjA4My00ODAxLTkzMWItNGJjZDhjNjY5OWNh%40thread.v2/0?context=3D%7b%22T=
+id%22%3a%225d3e2773-e07f-4432-a630-1a0f68a28a05%22%2c%22Oid%22%3a%22ccb0904=
+5-b513-448f-aadc-df66468b835e%22%7d" rel=3D"nofollow">Japan Batch/MFT oppor=
+tunities</a> <a class=3D"external-link" href=3D"https://teams.microsoft.com=
+/l/meeting/details?eventId=3DAQMkAGE0MDZmMWQ4LTlhMjYtNDgwOC04NDU0LWJlNDMyYj=
+BiOWU5MABGAAADjAI9nvqhmUCKniX1u8spUAcALqLZcU7dTEKn4HidZCh13wAAAgENAAAALqLZc=
+U7dTEKn4HidZCh13wAHMD4z1AAAAA%3d%3d" rel=3D"nofollow">[Japan Batc...ortunit=
+ies | Meeting]</a></p></li>
+<li local-id=3D"53f3e9c2-98f1-4ffb-9f11-6986be2da038">
+<p local-id=3D"af106235e7f5"><strong>Date:</strong> May 28, 2026 (JST) <a c=
+lass=3D"external-link" href=3D"https://teams.microsoft.com/l/meeting/detail=
+s?eventId=3DAQMkAGE0MDZmMWQ4LTlhMjYtNDgwOC04NDU0LWJlNDMyYjBiOWU5MABGAAADjAI=
+9nvqhmUCKniX1u8spUAcALqLZcU7dTEKn4HidZCh13wAAAgENAAAALqLZcU7dTEKn4HidZCh13w=
+AHMD4z1AAAAA%3d%3d" rel=3D"nofollow">[Japan Batc...ortunities | Meeting]</a=
+></p></li>
+<li local-id=3D"a0dda54d-d19c-446b-9c7a-6b8588e9a9b3">
+<p local-id=3D"9ea115bc0ed0"><strong>Organizer:</strong> Joan Lee <a class=
+=3D"external-link" href=3D"https://teams.microsoft.com/l/meeting/details?ev=
+entId=3DAQMkAGE0MDZmMWQ4LTlhMjYtNDgwOC04NDU0LWJlNDMyYjBiOWU5MABGAAADjAI9nvq=
+hmUCKniX1u8spUAcALqLZcU7dTEKn4HidZCh13wAAAgENAAAALqLZcU7dTEKn4HidZCh13wAHMD=
+4z1AAAAA%3d%3d" rel=3D"nofollow">[Japan Batc...ortunities | Meeting]</a></p=
+></li>
+<li local-id=3D"f1477d7f-236d-4fa2-95c2-860c1e3207d8">
+<p local-id=3D"e19fce1389f9"><strong>Participants:</strong></p>
+<ul local-id=3D"358f3f1b-720d-4fc1-bfa0-111af201b631">
+<li local-id=3D"53fb49b1-f2ce-4193-9a90-70c3ca1be5cf">
+<p local-id=3D"0665afe6d206">Birger Fjaellman =EF=BC=88=E3=83=95=E3=82=A3=
+=E3=82=A8=E3=83=AB=E3=83=9E=E3=83=B3 =E3=83=93=E3=83=AB=E3=82=A4=E3=82=A7=
+=E3=83=AB=EF=BC=89</p></li>
+<li local-id=3D"6d295956-8a83-4e88-af42-14fc8b3a13b2">
+<p local-id=3D"642391b5ad46">Eric J Vaughan</p></li>
+<li local-id=3D"51154d4c-5f24-4ece-b796-2d91026a7fea">
+<p local-id=3D"a0a37c476fd9">Christine E Scribner</p></li>
+<li local-id=3D"7c9fe390-eef0-4733-a097-748c0e3c634b">
+<p local-id=3D"e89e69f0a710">Rowena San Juan Zulueta</p></li>
+<li local-id=3D"743c210a-efff-43e1-a8f7-b627c020da2c">
+<p local-id=3D"f68f3469ea3a">Izza Rynavet Medrano Ilagan</p></li>
+<li local-id=3D"a9017019-b4ac-4ba5-a462-c72a03f0c2ff">
+<p local-id=3D"592d9cbb0d89">Balaji Ravi =EF=BC=88=E3=83=A9=E3=83=B4=E3=82=
+=A3 =E3=83=90=E3=83=A9=E3=82=B8=EF=BC=89 (Optional)</p></li>
+<li local-id=3D"575310f4-33d3-4582-8cb3-db2781d5ab6b">
+<p local-id=3D"3366f8d3b6dd">David Klan (Optional) <a class=3D"external-lin=
+k" href=3D"https://teams.microsoft.com/l/meeting/details?eventId=3DAQMkAGE0=
+MDZmMWQ4LTlhMjYtNDgwOC04NDU0LWJlNDMyYjBiOWU5MABGAAADjAI9nvqhmUCKniX1u8spUAc=
+ALqLZcU7dTEKn4HidZCh13wAAAgENAAAALqLZcU7dTEKn4HidZCh13wAHMD4z1AAAAA%3d%3d" =
+rel=3D"nofollow">[Japan Batc...ortunities | Meeting]</a></p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"015aff31-9d8b-4ee0-85cb-2e70cc2d94ff">
+<h2 local-id=3D"249c3d561fc1" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=F0=9F=A7=ADAgenda">=F0=9F=A7=AD Agenda</h2>
+<ol start=3D"1" local-id=3D"1b24baa4-d42b-42fb-9126-60101f4d3f62">
+<li local-id=3D"9c7677d8-6732-4329-8744-98c0e58275e7">
+<p local-id=3D"f89b1eb09551">Batch operations structure in Japan</p></li>
+<li local-id=3D"59976f85-d9c2-475a-a417-ee139754728d">
+<p local-id=3D"3d3d367344f6">Opportunities and constraints for transition</=
+p></li>
+</ol>
+<hr local-id=3D"4741c88b-5dc9-4f7d-9ba7-dcc309e31244">
+<h2 local-id=3D"795a2347492e" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=E2=9C=85KeyOutcomes(ExecutiveSummary)">=E2=9C=85 Key Outcom=
+es (Executive Summary)</h2>
+<ul local-id=3D"2633274c-fb2e-41fb-8763-1ea1a1cc7640">
+<li local-id=3D"ed5497b0-8200-44d1-b57c-d7fb9eb085d3">
+<p local-id=3D"21068ed338aa"><strong>INFORMED:</strong> Current batch opera=
+tions depend on a <strong>multi-vendor model</strong> (Geantec, Cognizant, =
+Tech Mahindra) with fragmented ownership and processes. <a class=3D"externa=
+l-link" href=3D"https://teams.microsoft.com/l/message/19:8b44df3f-571b-40d4=
+-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780=
+016842567?context=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofollow">[B=
+irger Fja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p></li>
+<li local-id=3D"78fe3326-3295-4a96-9cd2-8087972631d9">
+<p local-id=3D"1ad30510b2e1"><strong>INFORMED:</strong> Technical and proce=
+ss constraints exist for transition, requiring <strong>careful planning and=
+ phased execution</strong>. <a class=3D"external-link" href=3D"https://team=
+s.microsoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e93_f3178e31-=
+dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780016842567?context=3D%7B%22co=
+ntextType%22:%22chat%22%7D" rel=3D"nofollow">[Birger Fja...=E3=83=AB=EF=BC=
+=89 in chat | Teams]</a></p></li>
+<li local-id=3D"75b62d9e-2697-47dc-9ca9-d004249e4eb1">
+<p local-id=3D"c7c38290184c"><strong>ACCEPTED:</strong> Need for <strong>pa=
+rallel monitoring setup in current year</strong> and <strong>formal transit=
+ion next year</strong>. <a class=3D"external-link" href=3D"https://teams.mi=
+crosoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e93_f3178e31-dbcd=
+-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780016842567?context=3D%7B%22contex=
+tType%22:%22chat%22%7D" rel=3D"nofollow">[Birger Fja...=E3=83=AB=EF=BC=89 i=
+n chat | Teams]</a></p></li>
+<li local-id=3D"ba98f091-e145-4b17-8e97-49d431ccb555">
+<p local-id=3D"79ad24de29e1"><strong>ACCEPTED:</strong> Priority focus on <=
+strong>reducing delays in batch execution and file transfers (MFT)</strong>=
+. <a class=3D"external-link" href=3D"https://teams.microsoft.com/l/message/=
+19:8b44df3f-571b-40d4-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc=
+8@unq.gbl.spaces/1780016842567?context=3D%7B%22contextType%22:%22chat%22%7D=
+" rel=3D"nofollow">[Birger Fja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p=
+></li>
+<li local-id=3D"90ce44b4-7516-4b6c-b35f-33c8e7fdff73">
+<p local-id=3D"ae8251b21e2e"><strong>DECIDED:</strong> Collect structured q=
+uestions from teams to clarify <strong>manual batch processes and MFT uncer=
+tainties</strong> prior to transition. <a class=3D"external-link" href=3D"h=
+ttps://teams.microsoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e9=
+3_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780016842567?context=
+=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofollow">[Birger Fja...=E3=
+=83=AB=EF=BC=89 in chat | Teams]</a></p></li>
+</ul>
+<hr local-id=3D"4f781081-968f-43f7-9f97-3978fc5fb322">
+<h2 local-id=3D"b5c19589af91" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=F0=9F=94=8DDiscussionSummary(Condensed)">=F0=9F=94=8D Discu=
+ssion Summary (Condensed)</h2>
+<h3 local-id=3D"56ac6fac639c" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-1.CurrentBatchOperationsLandscape">1. Current Batch Operatio=
+ns Landscape</h3>
+<ul local-id=3D"1d2592af-b7d3-47e0-97f4-0fe90c7dbf82">
+<li local-id=3D"42f8b63e-e616-466f-9d0f-fe7491ba8e5a">
+<p local-id=3D"63b64388d919">Reviewed <strong>existing vendor ecosystem</st=
+rong> and operational responsibilities. <a class=3D"external-link" href=3D"=
+https://teams.microsoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e=
+93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780016842567?contex=
+t=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofollow">[Birger Fja...=E3=
+=83=AB=EF=BC=89 in chat | Teams]</a></p></li>
+<li local-id=3D"e738da4c-afa6-49fc-85a1-a1ab9c182d2e">
+<p local-id=3D"d253de5c590f">Identified <strong>dependency on manual proces=
+ses</strong> and distributed ownership.</p></li>
+</ul>
+<h3 local-id=3D"5b3da885280a" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-2.TransitionOpportunities&amp;Constraints">2. Transition Opp=
+ortunities &amp; Constraints</h3>
+<ul local-id=3D"84f8903a-5466-4850-836f-d041bae47e44">
+<li local-id=3D"5d876914-d3db-42ec-8b1b-19244ff76e39">
+<p local-id=3D"4b3a3695919c">Opportunities:</p>
+<ul local-id=3D"2a0420dc-f545-426e-a43e-0b48a01ec53e">
+<li local-id=3D"cd30ded1-b22b-463f-ac0f-12bb43bb2692">
+<p local-id=3D"59077d064600">Standardization of batch operations</p></li>
+<li local-id=3D"0758ccb0-439e-44ba-93db-79c3a37a461f">
+<p local-id=3D"1f20c08d9dc3">Automation of repetitive/manual activities</p>=
+</li>
+<li local-id=3D"7861ab1f-0f97-46d0-b1d2-7c053505883e">
+<p local-id=3D"9d6a9fe6963e">Consolidation of ownership into regional teams=
+ (GOCC/GBO)</p></li>
+</ul></li>
+<li local-id=3D"63e4b9ce-6712-4064-a1f1-194a0513bd15">
+<p local-id=3D"b7033f454210">Constraints:</p>
+<ul local-id=3D"7bbf7756-db56-4ba3-ab8e-9b25c800c40b">
+<li local-id=3D"da050ad2-4044-4ed9-9a90-6f4672aedd3d">
+<p local-id=3D"0507dba63712">Timeline sensitivity</p></li>
+<li local-id=3D"9bc01310-fe14-4bea-a084-aa3181cfb7f1">
+<p local-id=3D"aff61d7bb125">Need for preparation across teams</p></li>
+<li local-id=3D"15846f64-e178-4985-bd92-32eb5d5bf894">
+<p local-id=3D"4f92cf77c7f2">Existing complexity in vendor and application =
+structure <a class=3D"external-link" href=3D"https://teams.microsoft.com/l/=
+message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8=
+fd0fe6dc8@unq.gbl.spaces/1780016842567?context=3D%7B%22contextType%22:%22ch=
+at%22%7D" rel=3D"nofollow">[Birger Fja...=E3=83=AB=EF=BC=89 in chat | Teams=
+]</a></p></li>
+</ul></li>
+</ul>
+<h3 local-id=3D"5c1707e1cc1c" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-3.TechnicalClarifications">3. Technical Clarifications</h3>
+<ul local-id=3D"ab9547d6-7006-49a3-a593-1c2ad4623d15">
+<li local-id=3D"6b12be5e-0882-4ed1-8e34-ae38bc95b9b7">
+<p local-id=3D"7df294957046">Confirmed:</p>
+<ul local-id=3D"40084132-bccc-41c6-a501-473692a5745d">
+<li local-id=3D"928da20b-817f-41a5-b8f8-836ad626a212">
+<p local-id=3D"7c7a6c475670">Use of <strong>CA workload automation</strong>=
+ for job execution and monitoring</p></li>
+<li local-id=3D"20aaa866-409d-4cdb-94bd-917dbcc49f52">
+<p local-id=3D"5e8fc1382255">Responsibility demarcation for monitoring acti=
+vities</p></li>
+</ul></li>
+<li local-id=3D"5e701969-e244-4163-ba52-ff4781456313">
+<p local-id=3D"741ee7bf8488">Addressed:</p>
+<ul local-id=3D"b44beddc-f9b5-4f47-a33f-ddf42f28d33d">
+<li local-id=3D"575177ba-fd4b-4fda-a70f-f68a2c0d152c">
+<p local-id=3D"8c0b85c54732">Prior <strong>language barrier challenges</str=
+ong> affecting coordination <a class=3D"external-link" href=3D"https://team=
+s.microsoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e93_f3178e31-=
+dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780016842567?context=3D%7B%22co=
+ntextType%22:%22chat%22%7D" rel=3D"nofollow">[Birger Fja...=E3=83=AB=EF=BC=
+=89 in chat | Teams]</a></p></li>
+</ul></li>
+</ul>
+<h3 local-id=3D"86de0e5182f7" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-4.TransitionReadinessGaps">4. Transition Readiness Gaps</h3>
+<ul local-id=3D"4c7bfe4b-6547-45dc-add1-9d98134f05d3">
+<li local-id=3D"b6489b4e-7eb0-41b9-a601-623074514eac">
+<p local-id=3D"bafa365b87e1">Lack of clarity on:</p>
+<ul local-id=3D"392e847f-2a26-4385-9809-6740417799bf">
+<li local-id=3D"a0bb4c32-dfa7-4765-b15b-541bb2367711">
+<p local-id=3D"29ad4c7f0f65">Manual batch processes</p></li>
+<li local-id=3D"4b3fa6fa-4fc5-43e1-a427-8416c7f92336">
+<p local-id=3D"abc22ab5c9c3">MFT integration details</p></li>
+<li local-id=3D"990caf92-0ee7-4017-b8f7-49de5222b643">
+<p local-id=3D"2c82cfdc5613">End-to-end ownership</p></li>
+</ul></li>
+<li local-id=3D"294b5ae4-e00b-4d1e-98da-84dc3325889f">
+<p local-id=3D"bcd3986951c1">Need to <strong>aggregate team-level inputs an=
+d concerns</strong> before next phase <a class=3D"external-link" href=3D"ht=
+tps://teams.microsoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6c7d37f35e93=
+_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/1780016842567?context=
+=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofollow">[Birger Fja...=E3=
+=83=AB=EF=BC=89 in chat | Teams]</a></p></li>
+</ul>
+<hr local-id=3D"d77bb198-db97-4232-9e53-f002a2c55f15">
+<h2 local-id=3D"9feef44f71e5" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=E2=9A=A0=EF=B8=8FKeyRisks/Gaps">=E2=9A=A0=EF=B8=8F Key Risk=
+s / Gaps</h2>
+<ul local-id=3D"9557e073-091e-42a3-9d81-3b1d4355faab">
+<li local-id=3D"dda964eb-9b4f-4dc6-9d8c-9ec8b1d3fb38">
+<p local-id=3D"2c1d54fdc938">Incomplete visibility into <strong>manual batc=
+h execution flows</strong></p></li>
+<li local-id=3D"6fa1e15a-9919-49e2-9dd2-7a5813a12dcc">
+<p local-id=3D"609e3a5b0865">Fragmented ownership across vendors and teams<=
+/p></li>
+<li local-id=3D"0154f703-f4b5-4d4c-93f5-f160ea0c406f">
+<p local-id=3D"813e5561a6c6">Unclear <strong>MFT process flow and dependenc=
+ies</strong></p></li>
+<li local-id=3D"17f0c729-eec4-4de5-865b-f5a0abe02d51">
+<p local-id=3D"9bbf4d8a01ea">Risk of <strong>transition delays without stru=
+ctured intake of questions</strong></p></li>
+</ul>
+<hr local-id=3D"3e9914e2-3ba9-4831-8163-4c35aec57ea6">
+<h2 local-id=3D"046afe326b45" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=E2=9C=85ActionItems">=E2=9C=85 Action Items</h2>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"df=
+d37a93-d1e7-44e8-b2b3-e46ccf68596c" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"5df12491-5b26-4d4b-8b64-777802e1cc7a">
+<th data-local-id=3D"ec884383-0e67-4703-9d01-9ab23b529780" class=3D"conflue=
+nceTh">
+<p local-id=3D"25a2d5154686">Action</p></th>
+<th data-local-id=3D"df30e962-770e-4dbc-ac94-459b0630b42e" class=3D"conflue=
+nceTh">
+<p local-id=3D"50c0b900697a">Owner</p></th>
+<th data-local-id=3D"281512ed-0db7-4292-b8e6-5df99c4f4e64" class=3D"conflue=
+nceTh">
+<p local-id=3D"ce0555012bcf">Status</p></th>
+<th data-local-id=3D"5eb0a156-4d4d-4fcd-90c9-23c2ef8d2939" class=3D"conflue=
+nceTh">
+<p local-id=3D"a7573651dde2">Notes</p></th>
+</tr>
+<tr data-local-id=3D"418da50f-3333-4c7c-8e84-102180b4cf09">
+<td data-local-id=3D"ea0fe260-cfde-4472-bfd4-d6f161b74f54" class=3D"conflue=
+nceTd">
+<p local-id=3D"9d5beeed5c63">Finalize consolidated list of batch-related qu=
+estions (manual processes, ownership)</p></td>
+<td data-local-id=3D"10001a94-167e-4fab-ae01-93d508a51a64" class=3D"conflue=
+nceTd">
+<p local-id=3D"2893db3eb6b0">All teams</p></td>
+<td data-local-id=3D"243688c1-84f2-44e8-bc4d-87380982a3a6" class=3D"conflue=
+nceTd">
+<p local-id=3D"f02aed3f0ea3">OPEN</p></td>
+<td data-local-id=3D"1772c675-3e80-48cf-9b7a-c251c6695863" class=3D"conflue=
+nceTd">
+<p local-id=3D"22bac3f34982">Required for transition planning <a class=3D"e=
+xternal-link" href=3D"https://teams.microsoft.com/l/message/19:8b44df3f-571=
+b-40d4-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.space=
+s/1780016842567?context=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofoll=
+ow">[Birger Fja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p></td>
+</tr>
+<tr data-local-id=3D"a694a697-23a1-49dd-9ad3-dacd8ae67ff1">
+<td data-local-id=3D"0a4fa5aa-1593-4c43-8dbb-e1fbe0a5bbe0" class=3D"conflue=
+nceTd">
+<p local-id=3D"146412dd390f">Define and confirm follow-up process for batch=
+ inquiries</p></td>
+<td data-local-id=3D"174b2cd2-17b0-4dbd-a5ac-4fbedb094dbc" class=3D"conflue=
+nceTd">
+<p local-id=3D"3b88c5d46e8e">Core team</p></td>
+<td data-local-id=3D"842d2e90-4b60-4d69-9923-146c4b9ad85a" class=3D"conflue=
+nceTd">
+<p local-id=3D"11b1b0bb5cf6">OPEN</p></td>
+<td data-local-id=3D"2db1730e-1912-46ab-b7a4-52185a7eb6e5" class=3D"conflue=
+nceTd">
+<p local-id=3D"8e163377195b">Governance required <a class=3D"external-link"=
+ href=3D"https://teams.microsoft.com/l/message/19:8b44df3f-571b-40d4-8c11-6=
+c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/17800168425=
+67?context=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofollow">[Birger F=
+ja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p></td>
+</tr>
+<tr data-local-id=3D"0ee0dcc8-71b7-47a2-ac34-5b08da570ec8">
+<td data-local-id=3D"85d2384b-7c21-4764-8e68-da4f7b109100" class=3D"conflue=
+nceTd">
+<p local-id=3D"7fd9a562f000">Clarify MFT review approach and scope</p></td>
+<td data-local-id=3D"d32d43ed-5036-4166-9460-89473a0851ef" class=3D"conflue=
+nceTd">
+<p local-id=3D"0710ce246873">Core team</p></td>
+<td data-local-id=3D"25ff69c5-e393-46a7-b52e-42540e4e7be6" class=3D"conflue=
+nceTd">
+<p local-id=3D"a4d49a9d3978">OPEN</p></td>
+<td data-local-id=3D"123af855-cc95-4183-be7e-4aeb28598436" class=3D"conflue=
+nceTd">
+<p local-id=3D"2a2e8a425fbd">Include technical + process layers <a class=3D=
+"external-link" href=3D"https://teams.microsoft.com/l/message/19:8b44df3f-5=
+71b-40d4-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spa=
+ces/1780016842567?context=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofo=
+llow">[Birger Fja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p></td>
+</tr>
+<tr data-local-id=3D"3d938a4b-7bb2-478d-a382-2ba375974abc">
+<td data-local-id=3D"5ea246ba-7211-4c6b-b819-1286fc5858c7" class=3D"conflue=
+nceTd">
+<p local-id=3D"e73a86ec6a99">Identify owner for MFT internal huddle</p></td=
+>
+<td data-local-id=3D"ef30d9d0-2ffa-423b-8689-337e16b9ec4b" class=3D"conflue=
+nceTd">
+<p local-id=3D"2999e1f5a287">TBD</p></td>
+<td data-local-id=3D"03378550-5de2-4434-8657-2b19ac3a2cc7" class=3D"conflue=
+nceTd">
+<p local-id=3D"76ba239b7845">OPEN</p></td>
+<td data-local-id=3D"171478cb-05ef-4957-a502-b2b345db1aa9" class=3D"conflue=
+nceTd">
+<p local-id=3D"5e98c1579727">Critical for next-step alignment <a class=3D"e=
+xternal-link" href=3D"https://teams.microsoft.com/l/message/19:8b44df3f-571=
+b-40d4-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.space=
+s/1780016842567?context=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofoll=
+ow">[Birger Fja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p></td>
+</tr>
+<tr data-local-id=3D"20c56d00-dd38-43dd-b865-1c413a2f9875">
+<td data-local-id=3D"4b263b83-36b6-41f8-85b8-a7ec01dd7c90" class=3D"conflue=
+nceTd">
+<p local-id=3D"70e4205db148">Define communication method for MFT findings</=
+p></td>
+<td data-local-id=3D"e718a725-d213-46e7-ae2a-ecb37b381d4e" class=3D"conflue=
+nceTd">
+<p local-id=3D"3cbe5c120756">TBD</p></td>
+<td data-local-id=3D"f1bdfff0-df66-4c61-9c8b-a3cc1ec5e0ae" class=3D"conflue=
+nceTd">
+<p local-id=3D"c426514a6509">OPEN</p></td>
+<td data-local-id=3D"50135939-dc9d-4a34-936d-90ae1018ed70" class=3D"conflue=
+nceTd">
+<p local-id=3D"20476fde14b4">Ensure visibility across teams <a class=3D"ext=
+ernal-link" href=3D"https://teams.microsoft.com/l/message/19:8b44df3f-571b-=
+40d4-8c11-6c7d37f35e93_f3178e31-dbcd-452a-ad6c-4a8fd0fe6dc8@unq.gbl.spaces/=
+1780016842567?context=3D%7B%22contextType%22:%22chat%22%7D" rel=3D"nofollow=
+">[Birger Fja...=E3=83=AB=EF=BC=89 in chat | Teams]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"a09370ff-f084-43f1-ab82-03aa0816dcbe">
+<h2 local-id=3D"07a5ce8177dd" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=F0=9F=8E=AFNextSteps">=F0=9F=8E=AF Next Steps</h2>
+<ul local-id=3D"f21c274e-7300-4041-a729-b306b6144bdb">
+<li local-id=3D"4bd759f1-1309-4a61-9803-ab28438a3b24">
+<p local-id=3D"a1ec3d934a7c">Conduct <strong>internal MFT deep-dive session=
+ (huddle)</strong></p></li>
+<li local-id=3D"4ed8f15d-ad5b-461a-99fb-f4e071852a37">
+<p local-id=3D"434440d56b5c">Aggregate and rationalize <strong>batch proces=
+s questions across teams</strong></p></li>
+<li local-id=3D"799a61f2-a3d6-4031-8383-d4d38953a10f">
+<p local-id=3D"7779331ebeb2">Build <strong>transition readiness view (curre=
+nt vs target state)</strong></p></li>
+<li local-id=3D"083b8668-9c17-4503-8644-e550c64d07bb">
+<p local-id=3D"c4084fba59dc">Align with GOCC/GBO on:</p>
+<ul local-id=3D"2880fec7-68fa-4e54-af2e-30ea62f57528">
+<li local-id=3D"350f9769-c09d-4402-81bc-e94c716cd438">
+<p local-id=3D"4b68264d289f">Monitoring model</p></li>
+<li local-id=3D"37801ac6-b675-4806-8779-59ccbf99b593">
+<p local-id=3D"c661be4621e1">Ownership boundaries</p></li>
+<li local-id=3D"475413b0-0e0b-4ed3-bff1-e13fb9523f0d">
+<p local-id=3D"832f17cbd16f">Automation scope</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"4fb4b40e-d3ee-45ad-85b8-458845c5006e">
+<h2 local-id=3D"3c1c99516244" id=3D"JapanBatch/MFTOpportunitiesMeetingNotes=
+andKeyOutcomes-=F0=9F=93=8CRecommendedFollow-ups(Operational)">=F0=9F=93=8C=
+ Recommended Follow-ups (Operational)</h2>
+<p local-id=3D"44d4817cafcf"><em>(Advisory based on discussion patterns =E2=
+=80=94 not directly from source)</em></p>
+<ul local-id=3D"415742e5-1ad7-47d1-b966-29c9229c64ab">
+<li local-id=3D"a8d42a9c-1998-413f-b17a-323908844f6f">
+<p local-id=3D"19dfcfd991d5">Create <strong>Batch + MFT inventory baseline<=
+/strong> (apps, jobs, ownership)</p></li>
+<li local-id=3D"35ffdb14-3408-4387-9360-340cea6368da">
+<p local-id=3D"3b4e4f58ee1f">Establish <strong>RACI for L0/L1/L2 ownership =
+pre-transition</strong></p></li>
+<li local-id=3D"65baec30-dc0e-4666-b7b4-8d310009f075">
+<p local-id=3D"98399d157ca4">Define <strong>success criteria for parallel m=
+onitoring phase</strong></p></li>
+<li local-id=3D"735b6dea-1171-4989-86bd-4931ef315c6b">
+<p local-id=3D"d14782406fec">Introduce <strong>early automation candidates =
+(manual batch tasks)</strong></p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_16_1627125230.1780017517882--

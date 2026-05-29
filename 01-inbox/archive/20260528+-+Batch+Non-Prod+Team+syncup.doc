@@ -1,0 +1,692 @@
+Date: Thu, 28 May 2026 04:15:12 +0000 (UTC)
+Message-ID: <455432406.7.1779941712079@e8d985b7e519>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_6_1135201857.1779941712079"
+
+------=_Part_6_1135201857.1779941712079
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260528 - Batch Non-Prod Team syncup</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260528 - Batch Non-Prod Team syncup</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"b63a5fed99a5" id=3D"id-20260528-BatchNon-ProdTeamsy=
+ncup-=F0=9F=94=B71.Objective(ConfirmedDirection)">=F0=9F=94=B7 1. Objective=
+ (Confirmed Direction)</h1>
+<p local-id=3D"2434ac26f2b8"><strong>DECIDED / ALIGNED</strong></p>
+<ul local-id=3D"5bcd46f6-d747-4dc1-b9d5-172261d99d9a">
+<li local-id=3D"608e178d-3576-4c02-a4e5-a847a4dcc101">
+<p local-id=3D"76e83d7988f6">Shift from project execution =E2=86=92 <strong=
+>BAU service model</strong></p></li>
+<li local-id=3D"622eede0-521e-47be-af91-bad89b2056da">
+<p local-id=3D"5418be024d99">Standardize and automate:</p>
+<ul local-id=3D"13396c11-9b56-44b8-b06e-b3e3ae14fecf">
+<li local-id=3D"fd42aac0-4f3a-4586-9d01-6f60cbcf705d">
+<p local-id=3D"4955e4904bb6">File transfer</p></li>
+<li local-id=3D"e6261cd9-8bd6-4a3f-8bd9-884306dbee70">
+<p local-id=3D"80e270ab37ec">File share</p></li>
+<li local-id=3D"48054d98-4387-4b53-aa55-bcd3a89b0f18">
+<p local-id=3D"f953c88caaad">Batch job operations</p></li>
+</ul></li>
+<li local-id=3D"3c109028-07fb-42ee-90a7-eaaa11d557ab">
+<p local-id=3D"e1eda5b284b5">Transfer <strong>L0 / L1 operational activitie=
+s</strong>:</p>
+<ul local-id=3D"81fd52c4-3cd5-415c-9067-62b242e2b3df">
+<li local-id=3D"8be9072a-b607-46cd-9a42-e8a498f4a40a">
+<p local-id=3D"ffbf755a83d9">=E2=9C=85 From: Batch / PS / App support teams=
+</p></li>
+<li local-id=3D"6b9463c5-a783-4788-adaa-e7cd286d86a7">
+<p local-id=3D"a2d4a4efcd6f">=E2=9C=85 To: <strong>GOCC (infra + transfer)<=
+/strong> and <strong>GBO (batch execution)</strong></p></li>
+</ul></li>
+</ul>
+<p local-id=3D"8b594c3db43e">=F0=9F=91=89 Primary outcome:<br>
+Free up engineering/testing teams to focus on <strong>higher-value work (au=
+tomation, enhancements, new initiatives)</strong></p>
+<hr local-id=3D"6f077ef1-886f-4cba-a850-bb2c6883ff57">
+<h1 local-id=3D"30d9812cd2fa" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B72.CurrentState(KeyFindings)">=F0=9F=94=B7 2. Current State (Key Fi=
+ndings)</h1>
+<h2 local-id=3D"fb87e859881c" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Bat=
+chOperationsModel">Batch Operations Model</h2>
+<ul local-id=3D"3fcda816-655b-4769-a9fe-0124f2fd6740">
+<li local-id=3D"133777f7-3a1b-4e22-b66f-130e7092143f">
+<p local-id=3D"fa4ca2cd70e4">Batch team currently:</p>
+<ul local-id=3D"4386e12f-62df-4dd2-8254-6913a6449984">
+<li local-id=3D"a05c63b6-682c-47c5-961d-5c2c8125e21e">
+<p local-id=3D"d9be484cf91f">Handles <strong>non-prod execution, monitoring=
+, and fixes</strong></p></li>
+<li local-id=3D"19b60c9d-f7dc-4865-a736-7898d6dcc3b9">
+<p local-id=3D"50c32abda7fe">Supports Japan business applications</p></li>
+</ul></li>
+<li local-id=3D"b0835b6f-42d9-495c-a98f-1dded2d15297">
+<p local-id=3D"ea6db760d734">Jobs are:</p>
+<ul local-id=3D"cc3ef9e2-6be5-4355-b98e-a2893f5b590b">
+<li local-id=3D"173746e4-d888-4383-a338-58b68d9d2386">
+<p local-id=3D"4010c2ba5881"><strong>NOT centrally scheduled</strong></p></=
+li>
+<li local-id=3D"e98999d1-7e11-43b0-b03e-9958f49b3c37">
+<p local-id=3D"2e8f9b73d190">Triggered <strong>on-demand by testing teams</=
+strong></p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"71694d68-be73-465c-9598-edf8abe8298c">
+<h2 local-id=3D"5ca772fbbfe2" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Exe=
+cutionReality">Execution Reality</h2>
+<ul local-id=3D"8929720d-f4dc-44a1-aa19-558af6fcc17b">
+<li local-id=3D"cc560ebd-313f-4655-8775-9dd4e65763a2">
+<p local-id=3D"cc6326b1ec45">Jobs run via CA / scheduler platform</p></li>
+<li local-id=3D"def09d66-2ad5-457c-8564-a5679116e131">
+<p local-id=3D"092d3e0380c7">Failures:</p>
+<ul local-id=3D"859f6b76-5c81-4792-9c3a-af929b43d143">
+<li local-id=3D"6b05c5ee-34d9-402c-9c22-6c208863df68">
+<p local-id=3D"2c9955df10ce">Typically caused by:</p>
+<ul local-id=3D"cdc1b692-794a-40fc-bd56-e76bcfde2431">
+<li local-id=3D"1e96aaaa-1d7e-4ff5-b709-2544cb2a8baa">
+<p local-id=3D"d778debe7f39">Data issues</p></li>
+<li local-id=3D"3db9b3f7-9465-48d1-a397-723e7fa89e75">
+<p local-id=3D"1601e6e44c29">code mismatches</p></li>
+<li local-id=3D"b095fd37-5fdb-4a85-b70c-14f2038ef47d">
+<p local-id=3D"0ce08fa26681">inactive applications</p></li>
+</ul></li>
+</ul></li>
+<li local-id=3D"8e3bcedf-e03b-4da6-9c1a-92ee82accb2d">
+<p local-id=3D"542bd1d010a3">Resolution model:</p>
+<ul local-id=3D"94b30085-747b-4db9-aedc-8b8b78eba6b4">
+<li local-id=3D"4a3f512d-8801-4a7b-a6ba-86dc24e5e064">
+<p local-id=3D"d6314bc67d37">Batch team coordinates with developers</p></li=
+>
+</ul></li>
+</ul>
+<hr local-id=3D"b493bf7d-3e4b-41a6-9db2-00deb3b6c730">
+<h2 local-id=3D"7e69a6c14954" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Maj=
+orVisibilityGap">Major Visibility Gap</h2>
+<ul local-id=3D"399711c8-6efd-4fa3-b02d-9a9dfb06155f">
+<li local-id=3D"4b1a8516-9e6c-41e0-9d26-06ae9d167043">
+<p local-id=3D"107fb4c827c4">No single <strong>source of truth for:</strong=
+></p>
+<ul local-id=3D"14240b3d-f7d4-4586-893d-a207862ca83f">
+<li local-id=3D"b2f5403a-2ed1-4793-8b14-128269983cb9">
+<p local-id=3D"3745c09d0f9c">Job inventory</p></li>
+<li local-id=3D"89475aea-c086-42ef-b432-3d9c763832cc">
+<p local-id=3D"ac508401b11f">Application coverage</p></li>
+<li local-id=3D"0ceb0428-2385-4bb7-80b6-8aa03f2c4b4a">
+<p local-id=3D"39400540dc53">Supporting teams</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"4601a9ffdd98">=F0=9F=91=89 Multiple teams involved:</p>
+<ul local-id=3D"4b01f813-e363-4b59-81b5-00681930dde0">
+<li local-id=3D"844920e0-f44c-4c9d-8cbc-c6a4a05e1017">
+<p local-id=3D"635840cc366d">Engineering</p></li>
+<li local-id=3D"d0e3d719-ec08-430b-a841-3e1a90a1a606">
+<p local-id=3D"7b878114161c">MDM</p></li>
+<li local-id=3D"8e56d67c-6eb1-4b53-ab6d-941672dc9fb8">
+<p local-id=3D"8662d02e1d53">Batch support</p></li>
+<li local-id=3D"e07c778b-5c02-4c3a-9f25-3ad0a057ef2f">
+<p local-id=3D"945714509981">Others (unclear scope)</p></li>
+</ul>
+<hr local-id=3D"88420e8d-fb34-4ac9-bd07-2a796403e7c2">
+<h1 local-id=3D"0ffb064a95f1" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B73.AutomationStrategy">=F0=9F=94=B7 3. Automation Strategy</h1>
+<h2 local-id=3D"85b046eba7c1" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Dir=
+ection(ALIGNED)">Direction (ALIGNED)</h2>
+<ul local-id=3D"3767e735-b6fc-43f5-895a-072e750d0bda">
+<li local-id=3D"976bb164-eefb-498a-a9f5-2ac08b238bff">
+<p local-id=3D"3b75f76738ae">Target: <strong>Eliminate manual batch executi=
+on</strong></p></li>
+<li local-id=3D"f6f285e9-4e98-49b8-ae13-4335ce263347">
+<p local-id=3D"55a6eaf3fa8d">Move all jobs into:</p>
+<ul local-id=3D"d206e43d-fe3c-4cce-98d7-c3b514b186f2">
+<li local-id=3D"2ed13ce5-6866-4341-8070-2e18bd670bba">
+<p local-id=3D"dc8f719badb2">=E2=9C=85 <strong>CAWLA platform (standardized=
+ scheduler)</strong></p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"f49fe773-ab04-4dc4-b632-50c66958f261">
+<h2 local-id=3D"8f13bc6a7757" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Cur=
+rentProgress">Current Progress</h2>
+<ul local-id=3D"3e36471c-4643-40c0-a28a-f1a5ba114bd6">
+<li local-id=3D"2541f79c-1e57-4704-b4bc-f343b6f52ae1">
+<p local-id=3D"43a8f6a08bb6">QA team:</p>
+<ul local-id=3D"5f4404be-e3ea-40bd-8b81-089987909955">
+<li local-id=3D"9baa5602-31fd-4d21-9faf-a1d7a741392f">
+<p local-id=3D"4ea7e51700fc">Built automation tools</p></li>
+<li local-id=3D"5ec36135-dc5d-4aa4-920a-b280bab2915c">
+<p local-id=3D"1f70367a941c">Currently in <strong>testing phase</strong></p=
+></li>
+</ul></li>
+<li local-id=3D"6e88b5ed-8b9d-4b7f-9ea3-3fafb945f34c">
+<p local-id=3D"aca813dbc46a">Next dependency:</p>
+<ul local-id=3D"e1e0058d-5849-470f-94ce-c614d16f1e9c">
+<li local-id=3D"755b8ed6-2166-4ee8-a016-d58e4b9d3993">
+<p local-id=3D"a6b8a9a09bf4">Firewall opening =E2=86=92 broader rollout</p>=
+</li>
+</ul></li>
+</ul>
+<hr local-id=3D"4dc9051c-972b-421d-b32a-8ed0bb01b093">
+<h2 local-id=3D"c076c31af09e" id=3D"id-20260528-BatchNon-ProdTeamsyncup-End=
+-StateVision">End-State Vision</h2>
+<ul local-id=3D"c579f3df-0f49-4cb7-bb24-397260cc377b">
+<li local-id=3D"f18ce907-990e-4312-8d8f-cd2b458998c6">
+<p local-id=3D"49a93647414c">End users trigger batch processes directly</p>=
+</li>
+<li local-id=3D"2e2de2ab-6611-47ef-a9e3-522dc75e2619">
+<p local-id=3D"7443fc9d2eb5">Batch team involvement minimized</p></li>
+<li local-id=3D"5b82cae7-2350-4db5-b24d-ef39282c183c">
+<p local-id=3D"1ff0919de87c">GOCC + GBO operate standardized workflows</p><=
+/li>
+</ul>
+<hr local-id=3D"075c8365-a622-4a74-9ff4-85820151579f">
+<h1 local-id=3D"edc75667c6b8" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B74.TransitionModel(Emerging)">=F0=9F=94=B7 4. Transition Model (Eme=
+rging)</h1>
+<h2 local-id=3D"bfc55ae1e7ac" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Tar=
+getOwnership">Target Ownership</h2>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"88=
+9adc2c-ac04-4fc1-b40b-533976d2d1e1" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"cee73b4a-44c7-44e0-9d99-b99b03864a53">
+<th data-local-id=3D"4147d1fd-d7f5-446e-acb1-77187e913be9" class=3D"conflue=
+nceTh">
+<p local-id=3D"6124995a0299">Function</p></th>
+<th data-local-id=3D"e4229041-5f92-4ed2-a5d8-6cd0715d016e" class=3D"conflue=
+nceTh">
+<p local-id=3D"37d1fdcd7234">Target Owner</p></th>
+</tr>
+<tr data-local-id=3D"df943510-225d-4652-988d-ff6f8f0a1669">
+<td data-local-id=3D"b344fa96-6d6d-4159-b37a-561574e8b928" class=3D"conflue=
+nceTd">
+<p local-id=3D"9003d96fb139">Batch execution / control</p></td>
+<td data-local-id=3D"7f6afad0-d45f-44c4-bc6d-68c521afd121" class=3D"conflue=
+nceTd">
+<p local-id=3D"6961e0f59f56"><strong>GBO</strong></p></td>
+</tr>
+<tr data-local-id=3D"6ece6292-e033-4e8f-95bf-50437ecba4ae">
+<td data-local-id=3D"e522e4df-f4a0-4e2a-b93f-430baccd3ec3" class=3D"conflue=
+nceTd">
+<p local-id=3D"25d063f82c06">File transfer + infra</p></td>
+<td data-local-id=3D"6895ff44-711d-44b8-a1a4-8b7e9c92c2bd" class=3D"conflue=
+nceTd">
+<p local-id=3D"4b1aac2c680f"><strong>GOCC</strong></p></td>
+</tr>
+<tr data-local-id=3D"80c40e13-fac6-4372-b8d6-43410e6c409b">
+<td data-local-id=3D"c40e82ad-ebb3-4258-beaf-992be475fa67" class=3D"conflue=
+nceTd">
+<p local-id=3D"bb4a7372465d">Data / application logic</p></td>
+<td data-local-id=3D"85295df1-81b9-4d95-ad96-6c51a18909de" class=3D"conflue=
+nceTd">
+<p local-id=3D"7f926319a4c7"><strong>App Teams</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"10807215-30f3-41b4-bb6e-db770deb949e">
+<h2 local-id=3D"3f7f56c4713c" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Sco=
+peofTransition">Scope of Transition</h2>
+<ul local-id=3D"05894d33-13d7-455b-b856-9b51bce774f7">
+<li local-id=3D"feff5ede-6c4d-40c3-926f-18fc335142d6">
+<p local-id=3D"2b8c19412462">Focus initially:</p>
+<ul local-id=3D"ece2b438-49bf-4e67-a320-a9319934df0c">
+<li local-id=3D"484a7662-8aa7-4b36-9278-10c8b8030bd2">
+<p local-id=3D"23f475624314"><strong>Non-production batch operations</stron=
+g></p></li>
+</ul></li>
+<li local-id=3D"38aa271f-6272-46c6-a7c9-472f9ed3a318">
+<p local-id=3D"c7f8d5578ba6">Use as:</p>
+<ul local-id=3D"8ebb6d5d-9774-4363-a4c4-58cb166ad772">
+<li local-id=3D"b7a64a71-152c-4e15-92b0-d4d21ac5318b">
+<p local-id=3D"0a7fb83f1607">Testbed for:</p>
+<ul local-id=3D"02f3197b-e5a7-40d2-a868-18c56e3f0fb3">
+<li local-id=3D"621ee075-2aff-46d7-b4b0-9aa49656b049">
+<p local-id=3D"5a273b612617">ownership clarity</p></li>
+<li local-id=3D"cf6228b3-8d5e-4829-aa0c-500deefdf1da">
+<p local-id=3D"869e8081f716">automation validation</p></li>
+<li local-id=3D"b2bc5db2-63c9-4f50-b8b8-c14d77ee5d7c">
+<p local-id=3D"5eb1994aafa4">operating model design</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr local-id=3D"5f415faf-2636-4f7c-b7d1-581620d40ed8">
+<h1 local-id=3D"0028c9f9a496" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B75.KeyChallenges/Risks">=F0=9F=94=B7 5. Key Challenges / Risks</h1>
+<h2 local-id=3D"5ad7b81e65a1" id=3D"id-20260528-BatchNon-ProdTeamsyncup-1.L=
+ackofInventory(CriticalBlocker)">1. Lack of Inventory (Critical Blocker)</h=
+2>
+<ul local-id=3D"75e0d150-6fa2-4d5f-8b69-88ef40dc4465">
+<li local-id=3D"5c9049d4-d640-4c14-96a1-b90c604c5620">
+<p local-id=3D"55b2f3dd1c28">No complete list of:</p>
+<ul local-id=3D"68076e3f-461a-401e-89bc-ade663c393dc">
+<li local-id=3D"9c784396-958d-4dc4-acd4-e25aef000b14">
+<p local-id=3D"db40621a5872">Jobs</p></li>
+<li local-id=3D"fdca1173-aed4-4205-a062-e6ea44a123d6">
+<p local-id=3D"fa5346f77cbc">applications</p></li>
+<li local-id=3D"a2bffe33-54f9-4b26-b1e4-14fc0449525f">
+<p local-id=3D"27088d26bbaf">ownership</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"4a30394f-fc41-413f-a64d-4f7825328557">
+<h2 local-id=3D"55ce09d1a2ba" id=3D"id-20260528-BatchNon-ProdTeamsyncup-2.F=
+ragmentedOwnership">2. Fragmented Ownership</h2>
+<ul local-id=3D"ac07b4bc-288f-4ddb-9736-2f2ae0eeff8f">
+<li local-id=3D"2ac5bb94-75e0-49d6-a8ee-fcf8250066be">
+<p local-id=3D"75651a81ec90">Multiple teams supporting overlapping areas</p=
+></li>
+<li local-id=3D"8bfa839c-80ce-4649-85ac-d5b917d683c6">
+<p local-id=3D"8d6314922a54">No clear service boundaries</p></li>
+</ul>
+<hr local-id=3D"24805a52-a1a0-4960-8dcb-3314dc774634">
+<h2 local-id=3D"face2cf9cf6c" id=3D"id-20260528-BatchNon-ProdTeamsyncup-3.A=
+utomationComplexity">3. Automation Complexity</h2>
+<ul local-id=3D"2858ca42-b3f8-40e4-805f-4494df17d13b">
+<li local-id=3D"6a770bc8-d2d7-4327-ac8e-1d0c16de0f6f">
+<p local-id=3D"d919714d9313">Hard to automate:</p>
+<ul local-id=3D"c8f3994a-36b9-4ed4-9c27-f011681c690e">
+<li local-id=3D"6b07ec98-a834-4354-9886-8a05f07f7334">
+<p local-id=3D"729d61038b55">Ad-hoc requests</p></li>
+<li local-id=3D"7d1c4b70-0133-4973-94d0-8bf366533e07">
+<p local-id=3D"38b85b6d3d2e">non-standard workflows</p></li>
+<li local-id=3D"b19067e2-9109-49a6-a36b-f64764b97c8e">
+<p local-id=3D"d575d562feaa">cross-team dependencies</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"6624961d-e77e-4cbb-8c49-fee23a36bc0d">
+<h2 local-id=3D"34d2dc75d090" id=3D"id-20260528-BatchNon-ProdTeamsyncup-4.R=
+eportingInaccuracy">4. Reporting Inaccuracy</h2>
+<ul local-id=3D"e4390e83-ea83-4c6e-9b62-650d3d81adc2">
+<li local-id=3D"7d5585d9-0eec-487a-9cd5-faca05d22464">
+<p local-id=3D"61d8dc5aea55">Example:</p>
+<ul local-id=3D"23dc00fc-1070-4d79-a4c8-6abfa0fe8aef">
+<li local-id=3D"49d78cac-92ef-4ad1-9bad-92f1f814e7a0">
+<p local-id=3D"a3a08aa09fa1">~600 open issues reported</p></li>
+</ul></li>
+<li local-id=3D"30e231fc-28ea-413c-a6c3-f5f226df8e9a">
+<p local-id=3D"1ebfec0a7e52">Root cause:</p>
+<ul local-id=3D"f485296b-0ab1-4b85-8841-fdcf91f5ca24">
+<li local-id=3D"a290cc41-bc5a-4233-a8f2-6e731ef85cf8">
+<p local-id=3D"936e4045be25">No segmentation by system/team</p></li>
+<li local-id=3D"6ff06d6b-4ac4-44ef-8ab6-8e1ab3255409">
+<p local-id=3D"90b34e215b93">unclear ownership attribution</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"b26add08-f6e6-473f-870b-3ceb81b0f606">
+<h1 local-id=3D"4ba79a85533d" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B76.KeyDecisions&amp;Alignment">=F0=9F=94=B7 6. Key Decisions &amp; =
+Alignment</h1>
+<p local-id=3D"f390f723738d"><strong>CONFIRMED</strong></p>
+<ul local-id=3D"ec397396-d91a-43ee-85fd-c30ec2ca8aa6">
+<li local-id=3D"0ef548ec-2269-4a6b-b103-adcfd48f7def">
+<p local-id=3D"95336e6e9f5b">Move L0 / L1 =E2=86=92 GOCC / GBO</p></li>
+<li local-id=3D"5dc51443-64e6-4c64-be47-09054ec7ec85">
+<p local-id=3D"5fe62a5e4be0">Standardize batch execution via CAWLA</p></li>
+<li local-id=3D"265d31fd-e428-4e28-a96d-0f7417ed2007">
+<p local-id=3D"c1c54a66d141">Automate repetitive tasks wherever possible</p=
+></li>
+</ul>
+<p local-id=3D"43a477d3d679"><strong>PENDING</strong></p>
+<ul local-id=3D"abb361a5-f972-4552-a154-aa9242ed2073">
+<li local-id=3D"54e6c346-230d-4b58-a89b-8e0618c67596">
+<p local-id=3D"1b48b259c0c4">Final ownership mapping (system-level)</p></li=
+>
+<li local-id=3D"adc91a04-b136-4c93-8634-5dd3f8bcacd0">
+<p local-id=3D"8605e363b16e">Definition of:</p>
+<ul local-id=3D"3e6d0b3e-ae44-419b-8b42-5aa365f7bff3">
+<li local-id=3D"5c275d03-3d6b-4c08-b1b9-31724179d7bf">
+<p local-id=3D"cd63f1a3ae76">what stays with batch team vs GOCC/GBO</p></li=
+>
+</ul></li>
+<li local-id=3D"1abd8921-f32e-48f9-bc8d-053a47d921d8">
+<p local-id=3D"6dcffe1fb203">Full inventory baseline</p></li>
+</ul>
+<hr local-id=3D"142b9677-d092-4a7f-bd57-3aa5fd6a8adb">
+<h1 local-id=3D"848f70d155ac" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B77.CriticalDependencies">=F0=9F=94=B7 7. Critical Dependencies</h1>
+<p local-id=3D"57adc3dd2e74">To proceed with transition:</p>
+<ol start=3D"1" local-id=3D"fd933b7a-ade0-437f-978c-ce0cf53116e6">
+<li local-id=3D"293ff435-b3ad-47a2-bb8f-a67f4575f30f">
+<p local-id=3D"d275e42123d6"><strong>Full Batch Job Inventory</strong></p><=
+/li>
+<li local-id=3D"cb243cc9-baf6-4cf3-9178-443dc8fbe1e8">
+<p local-id=3D"0942f65433b8"><strong>Application-to-team ownership mapping<=
+/strong></p></li>
+<li local-id=3D"d0d23e01-5b1e-4360-b082-f86f08a0492e">
+<p local-id=3D"0b52f91677b7"><strong>End-to-end file + job flow mapping</st=
+rong></p></li>
+<li local-id=3D"06b9220b-f4f3-416a-9418-86e93d5edf78">
+<p local-id=3D"3466ce75d7df"><strong>Automation coverage assessment</strong=
+></p></li>
+</ol>
+<p local-id=3D"e8d95067b832">=F0=9F=91=89 Without these =E2=86=92 transitio=
+n will stall or fail</p>
+<hr local-id=3D"1acf6688-f22f-4a5d-b530-c69ed32b3ba8">
+<h1 local-id=3D"d0f859d6e947" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B78.Actions(Consolidated)">=F0=9F=94=B7 8. Actions (Consolidated)</h=
+1>
+<h2 local-id=3D"57656aabc72d" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Inv=
+entory&amp;Visibility">Inventory &amp; Visibility</h2>
+<ul local-id=3D"fffb0de6-2f75-4deb-94f9-d46e79ddafd3">
+<li local-id=3D"2dead046-fbaf-4a60-903e-d9b5f60c0377">
+<p local-id=3D"49cc0a0ecb24">Arunpriyan:</p>
+<ul local-id=3D"827bb818-73af-4ed8-b300-bf4ea0ce046c">
+<li local-id=3D"ea1cd423-09f0-47d2-a0a1-9c7a49544219">
+<p local-id=3D"56600793d505">Provide full <strong>batch job report (non-pro=
+d)</strong></p></li>
+<li local-id=3D"d49ba0f5-80de-4698-a20d-aeb9dce6f3d6">
+<p local-id=3D"e4672e173bbd">Provide <strong>application coverage list</str=
+ong></p></li>
+</ul></li>
+<li local-id=3D"c7cbcbf9-dbb4-426c-b943-d7a66ae075f7">
+<p local-id=3D"4378e383f7d1">Balaji:</p>
+<ul local-id=3D"d43058c8-636f-41c5-9e38-da377c0bc087">
+<li local-id=3D"212d154b-7ed0-4460-9cf0-2532b54eb162">
+<p local-id=3D"74856e98ded2">Consolidate <strong>cross-team batch ownership=
+ view</strong></p></li>
+<li local-id=3D"a68da1bf-8881-4949-819b-d526581a414a">
+<p local-id=3D"d6f392d72a5b">Coordinate for <strong>holistic reporting</str=
+ong></p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"3eb05024-dade-464f-8b4f-ef2fd24bdf50">
+<h2 local-id=3D"6ea7dde92098" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Aut=
+omation">Automation</h2>
+<ul local-id=3D"e500837d-f372-4224-baef-87cbec03471a">
+<li local-id=3D"5a02f42d-11f7-4834-b402-972aecd44d7e">
+<p local-id=3D"e83b45bccd9b">Vikhyat:</p>
+<ul local-id=3D"5f4c27f3-c1b9-4d0b-be12-a192528cef40">
+<li local-id=3D"1bf80e20-791b-4a3e-be2a-e3d6978efe8c">
+<p local-id=3D"58b9a0ee751d">Deliver automation demo (post-firewall)</p></l=
+i>
+</ul></li>
+<li local-id=3D"89e71d01-4adf-4e2b-9eda-5b43acf5025a">
+<p local-id=3D"353b51d919cd">Nandan:</p>
+<ul local-id=3D"8ec86c02-bc05-4c62-b67b-106ba6071f9b">
+<li local-id=3D"e212ddaf-0e30-4980-8aa8-fa8bcb64614a">
+<p local-id=3D"d9278f408614">Assess reuse of existing GOCC automation</p></=
+li>
+</ul></li>
+</ul>
+<hr local-id=3D"e9921b0d-16be-489e-b33e-e278827b0641">
+<h2 local-id=3D"902dd66662ea" id=3D"id-20260528-BatchNon-ProdTeamsyncup-Coo=
+rdination">Coordination</h2>
+<ul local-id=3D"3b8d423a-149e-477d-a03c-da9b90099250">
+<li local-id=3D"61a0812c-07fe-42c6-977b-b25221566a24">
+<p local-id=3D"ec500f5739e8">David:</p>
+<ul local-id=3D"3107a3c5-72cc-4bf8-ad69-2fe74cd90080">
+<li local-id=3D"34ecaae5-bd86-4efe-9c76-d8999fc3d305">
+<p local-id=3D"9056f202d009">Provide <strong>Japan system inventory baselin=
+e</strong></p></li>
+<li local-id=3D"72155b6e-d6a4-4e85-b98b-e9f54d4b8fb3">
+<p local-id=3D"cfcff45f28e7">Lead alignment with GOCC / GBO</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"f00d516a-ed2f-4b1b-bd41-f7e8d1e7edd1">
+<h1 local-id=3D"2f9a144e2ac4" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=F0=
+=9F=94=B79.NextSteps">=F0=9F=94=B7 9. Next Steps</h1>
+<ul local-id=3D"4c82ea23-ba7e-4ecb-a1ca-f40d0a527224">
+<li local-id=3D"3190ea81-3470-4c89-aa8c-7d37200b20bb">
+<p local-id=3D"00e186b19a1d">Engage <strong>GBO + GOCC</strong> on:</p>
+<ul local-id=3D"a27b1b17-8f8f-493e-8b23-4e78c1b594fa">
+<li local-id=3D"f008159f-cd7d-455b-9bae-200e687544f7">
+<p local-id=3D"d97d2d90ddb9">Ownership model</p></li>
+<li local-id=3D"dd0fee36-a6b6-4124-9f92-57dd1a338512">
+<p local-id=3D"f83748cdde10">operational responsibilities</p></li>
+</ul></li>
+<li local-id=3D"e376d002-34c0-44b4-8b96-1eee93498194">
+<p local-id=3D"57ead89cbe37">Build:</p>
+<ul local-id=3D"e22dbcec-de86-4328-bd81-dc15b24463b9">
+<li local-id=3D"de442595-354d-43d4-8334-7f9e28d2c9cf">
+<p local-id=3D"c1cf9caa2ed2">Unified <strong>service inventory</strong></p>=
+</li>
+</ul></li>
+<li local-id=3D"57410ec8-0ba6-4767-a185-44022fd63be7">
+<p local-id=3D"bab4833bf33f">Validate:</p>
+<ul local-id=3D"d4462761-e131-488d-8814-dfd98992ec2f">
+<li local-id=3D"405c53d7-f126-43b3-a4e1-7281a89ad5b7">
+<p local-id=3D"df8a834ad7b4">automation feasibility vs manual fallback</p><=
+/li>
+</ul></li>
+</ul>
+<hr local-id=3D"7adeadb0-a31b-4619-ba36-b3e5c69a64de">
+<h1 local-id=3D"c38f784a3865" id=3D"id-20260528-BatchNon-ProdTeamsyncup-=E2=
+=9C=85BottomLine(ExecSummary)">=E2=9C=85 Bottom Line (Exec Summary)</h1>
+<ul local-id=3D"ec750351-22a3-49fe-9a4f-2b096bc38fea">
+<li local-id=3D"06feefde-64ad-4308-84f1-44c77b0ea972">
+<p local-id=3D"fd678bbd0bf6">Transition goal is <strong>clear and aligned</=
+strong></p></li>
+<li local-id=3D"60d535b7-91be-4563-add6-da0ab7c004e5">
+<p local-id=3D"392c21b9ef47">Biggest blocker is <strong>lack of visibility =
+and ownership clarity</strong></p></li>
+<li local-id=3D"b8c3968b-28fe-49c9-9207-d5a2db1bb9a2">
+<p local-id=3D"58dc1b8e014c">Automation is progressing, but:</p>
+<ul local-id=3D"2b81af00-07a4-42d8-b152-79aa0e2f9f4d">
+<li local-id=3D"bf4e15b0-68a8-42a4-8a9f-7fb8d16ba761">
+<p local-id=3D"8a2d2798e400">depends on <strong>standardization first</stro=
+ng></p></li>
+</ul></li>
+</ul>
+<p local-id=3D"39b78a2f55fb">=F0=9F=91=89 This is now a <strong>service mod=
+el problem</strong>, not a technical problem</p>
+    </div>
+</body>
+</html>
+------=_Part_6_1135201857.1779941712079--

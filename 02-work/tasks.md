@@ -1431,3 +1431,42 @@
 - **Relevance:** 85/100
 - **Tags:** #project:lapu-lapu #program:r2r #worktype:documentation #outcome:resilience
 - **Description:** Pull and integrate restart runbooks from Kanagaraj's team into the RRP baseline for Gold applications. Restart procedures are a critical prerequisite — restart-based recovery scenarios cannot be authored without validated reboot/restart sequences. Identify restart-resolvable failure patterns from existing incident analysis for each Gold app. Dependency for T106.
+
+---
+
+## T108 — Deliver Non-Production Batch Job Inventory & Ownership Map
+- **Status:** Open
+- **Created:** 2026-05-28
+- **Objective Chain:** H-1 (Batch Automation) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:cmdb
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #domain:batch #worktype:inventory #outcome:visibility #priority:blocker
+- **Description:** Produce a complete non-production batch job inventory covering job names, owning applications, supporting teams, and execution method (CA/manual). Consolidate cross-team batch ownership into a single view. This is the critical-path blocker for the L0/L1 batch transition to GOCC/GBO — without it the transition will stall. Arunpriyan to provide the raw batch job report; Balaji to consolidate and coordinate holistic reporting.
+
+---
+
+## T109 — Collect Structured Batch & MFT Process Questions for Transition
+- **Status:** Open
+- **Created:** 2026-05-28
+- **Objective Chain:** H-4 (Unified Support) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #domain:batch #domain:mft #worktype:coordination #outcome:transition-readiness
+- **Description:** Aggregate and rationalize structured questions from all teams regarding manual batch processes, MFT integration details, and end-to-end ownership. Provide Japan system inventory baseline. Define MFT review scope (technical + process layers) and identify owner for MFT internal deep-dive session. Prerequisite for building transition readiness view (current vs target state) and aligning with GOCC/GBO on ownership boundaries.
+
+---
+
+## T110 — Deliver Batch Automation Demo & Assess GOCC Reuse Potential
+- **Status:** Open
+- **Created:** 2026-05-28
+- **Objective Chain:** H-1 (Batch Automation) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:gocc
+- **Assigned:** Hari Pothakamuri
+- **Systems:** #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #domain:batch #capability:automation #worktype:assessment
+- **Description:** Vikhyat to deliver automation demo once firewall opening is completed. Nandan to assess reuse of existing GOCC automation tooling for Japan batch operations. Validate automation feasibility vs manual fallback for non-production batch jobs. Feeds into end-state vision where end users trigger batch processes directly with minimized batch team involvement.

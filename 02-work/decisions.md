@@ -139,3 +139,16 @@ tags: #project:lapu-lapu #program:r2r #domain:rapid-recovery #outcome:resilience
 **Related Objectives:** B-4 (Infrastructure Resilience & Disaster Recovery), H-4 (Unified Support), O4 (Robust Technical Core)
 **Owner:** Balaji Ravi
 **Source:** 20260526 - RRP Touchpoint (Confluence export)
+
+---
+
+## D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO
+
+tags: #project:lapu-lapu #domain:batch #domain:mft #domain:gocc-handover #capability:automation
+
+**Date:** 2026-05-28
+**Decision:** Approved (directional)
+**Summary:** Confirmed direction to shift from project execution to a BAU service model for batch and file transfer operations. L0/L1 operational activities will transfer from Batch/PS/App support teams to GOCC (infrastructure + file transfer) and GBO (batch execution). Standardize all batch execution via the CAWLA platform. Non-production operations will serve as the testbed for ownership clarity, automation validation, and operating model design before production transition. Current batch operations depend on a multi-vendor model (Geantec, Cognizant, Tech Mahindra) with fragmented ownership. Transition is contingent on completing a full batch job inventory, application-to-team ownership mapping, and end-to-end job/file flow mapping. Parallel monitoring setup accepted for the current year with formal transition targeted next year. IS contract constraints (GienTech transition, fixed-bid) mean savings will be indirect.
+**Related Objectives:** H-1 (Batch Automation), H-4 (Unified Support), O6 (Technology Transformation through AI & Automation)
+**Owner:** David Klan
+**Source:** 20260528 - Batch Non-Prod Team syncup + Japan Batch/MFT Opportunities Meeting

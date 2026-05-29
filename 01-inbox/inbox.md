@@ -4,6 +4,61 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-05-28 — Batch Non-Prod Team Syncup: L0/L1 Transition & Inventory Baseline** #processed
+  - **Source:** 20260528+-+Batch+Non-Prod+Team+syncup.doc
+  - **From:** Confluence export (Batch Non-Prod team syncup meeting notes)
+  - **Focus:** Confirm direction for shifting batch and file transfer L0/L1 operations from project execution to a BAU service model under GOCC/GBO ownership.
+  - **Key outcomes:**
+    1. Confirmed direction: L0/L1 batch and file transfer operations to transition from Batch/PS/App support teams to GOCC (infra + transfer) and GBO (batch execution), freeing engineering/testing for higher-value work.
+    2. Batch execution to be standardized via CAWLA platform; QA team automation tools currently in testing, pending firewall opening for broader rollout.
+    3. Critical blocker identified: no complete inventory of jobs, applications, or ownership — multiple teams (Engineering, MDM, Batch, others) support overlapping areas with no clear service boundaries.
+    4. ~600 open issues reported but unsegmented by system/team, making ownership attribution impossible.
+    5. Non-production batch operations will serve as testbed for ownership clarity, automation validation, and operating model design.
+    6. Target ownership model: GBO (batch execution/control), GOCC (file transfer + infra), App Teams (data/application logic).
+  - **Actions extracted → T108, T109, T110**
+  - **Decision extracted → D012**
+
+- **2026-05-28 — Japan Batch/MFT Opportunities: Multi-Vendor Model & Transition Readiness** #processed
+  - **Source:** Japan+Batch_MFT+Opportunities+Meeting+Notes+and+Key+Outcomes.doc
+  - **From:** Confluence export (Joan Lee meeting notes)
+  - **Focus:** Review batch operations structure, multi-vendor landscape, and transition constraints for Japan batch/MFT operations.
+  - **Key outcomes:**
+    1. Current batch operations depend on a multi-vendor model (Geantec, Cognizant, Tech Mahindra) with fragmented ownership and processes.
+    2. Technical and process constraints require careful planning and phased execution — parallel monitoring setup accepted for current year, formal transition targeted next year.
+    3. Priority focus on reducing delays in batch execution and file transfers (MFT).
+    4. Transition readiness gaps: lack of clarity on manual batch processes, MFT integration details, and end-to-end ownership.
+    5. Decision to collect structured questions from all teams to clarify manual processes and MFT uncertainties before transition proceeds.
+    6. CA workload automation confirmed for job execution and monitoring; language barrier challenges previously affecting coordination acknowledged.
+  - **Actions extracted → none (actions consolidated into T108, T109, T110 from sibling meeting)**
+  - **Decision referenced → D012**
+
+- **2026-05-28 — GBO Opportunities Briefing: Japan Batch Landscape & Contract Constraints** #processed
+  - **Source:** GBO Opportunities.pptx
+  - **From:** Briefing deck (Japan batch/MFT operations overview)
+  - **Focus:** Context briefing on Japan batch operations landscape, IS managed service contracts, and transition opportunities/constraints.
+  - **Key outcomes:**
+    1. File transfer methods in use: SFTP, RSYNC, HULFT, MFT — multiple protocols complicate standardization.
+    2. IS managed service contracts: Cognizant (CTS) for PAS dev+ops, Tech Mahindra for non-PAS dev, GienTech for non-PAS ops / batch ops / ITSM — GienTech contract transitioning to new vendor Q3 2026.
+    3. Total contractor base ~1,000 across three vendors.
+    4. Production CA batch run by Batch operations (~5 perm + GienTech); Non-prod by PS (GienTech different team) and AQA (Cognizant, Tech Mahindra).
+    5. Constraints: GienTech contract transition will tie up staff; fixed-bid IS contracts mean savings will be indirect.
+    6. Opportunities: IS contract ramp-down supports GBO/GOCC transition timing; KLO reduction possible; adding CA to ADX for batch observability.
+  - **Actions extracted → none (reference/context material supporting D012)**
+
+- **2026-05-28 — RRP Ingenium App Japan (Updated): Recovery Plan Deliverable** #processed
+  - **Source:** RRP_Ingenium_App_Japan_updated_20260528.docx
+  - **From:** Balaji Ravi / Ingenium support team (updated RRP document)
+  - **Focus:** Completed Rapid Recovery Plan for Ingenium - App - Japan (Gold application, APM0004174) using the mandatory standard template with scenario-based recovery sequences.
+  - **Key outcomes:**
+    1. RRP covers two recovery scenarios: (1) full service restart sequence (WAS → CICS → DB, with validated bring-up order) and (2) batch slowness workaround (CPU/memory/IO diagnostics, DB lock analysis, stray process kill with PS confirmation, batch retrigger).
+    2. RTO/RPO defined: Primary 2hr/2hr, DR 4hr/4hr — sourced from the 2025 Criticality Framework Revision.
+    3. Local HA, load balancing, and DR site parity all confirmed as Y.
+    4. Support groups documented: Asia-JP-Ingenium-Owner-A (managed by), Asia-JP-PST-PolicyAdmin-IPCRW (support), owned by Rosalina Yeung, assigned to Senthil Kumar Jaganathan.
+    5. Tech stack, known endpoints (prod + UAT URLs), and CI metadata captured in appendix.
+    6. This is one of the 6 Gold application RRPs required by T106 — advances the June 10 reboot/restart milestone and June 30 audit-ready completion target.
+  - **Actions extracted → none (deliverable artifact advancing T106)**
+  - **Actions referenced → T106, T107, T003**
+
 - **2026-05-26 — RRP Touchpoint: Gold Application Rapid Recovery Execution** #processed
   - **Source:** 20260526+-+RRP+Touchpoint.doc
   - **From:** Confluence export (RRP touchpoint meeting notes)
