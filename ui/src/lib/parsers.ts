@@ -324,7 +324,7 @@ export function parseTasks(md: string): Task[] {
   const blocks = md.split(/(?=^## T\d)/m);
 
   for (const block of blocks) {
-    const headingMatch = block.match(/^## (T\d+)\s*[—–-]\s*(.+?)(?:\n|$)/);
+    const headingMatch = block.match(/^## (T\d+)[\s—–\-?\u2000-\u206F]+(.+?)(?:\n|$)/);
     if (!headingMatch) continue;
 
     const id = headingMatch[1].trim();
@@ -380,7 +380,7 @@ export function parseDecisions(md: string): Decision[] {
   const blocks = md.split(/(?=^## D\d)/m);
 
   for (const block of blocks) {
-    const headingMatch = block.match(/^## (D\d+)\s*[—–-]\s*(.+?)(?:\n|$)/);
+    const headingMatch = block.match(/^## (D\d+)[\s—–\-?\u2000-\u206F]+(.+?)(?:\n|$)/);
     if (!headingMatch) continue;
 
     const id = headingMatch[1].trim();
@@ -424,7 +424,7 @@ export function parseProjects(md: string): Project[] {
   const blocks = md.split(/(?=^## P-)/m);
 
   for (const block of blocks) {
-    const headingMatch = block.match(/^## (P-\S+)\s*[—–-]\s*(.+?)(?:\n|$)/);
+    const headingMatch = block.match(/^## (P-\S+)[\s—–\-?\u2000-\u206F]+(.+?)(?:\n|$)/);
     if (!headingMatch) continue;
 
     const id = headingMatch[1].trim();
@@ -532,7 +532,7 @@ export function parseKeyResults(md: string): KeyResult[] {
   const blocks = md.split(/(?=^## KR\d)/m);
 
   for (const block of blocks) {
-    const headingMatch = block.match(/^## (KR\d+)\s*[—–-]\s*(.+?)(?:\n|$)/);
+    const headingMatch = block.match(/^## (KR\d+)[\s—–\-?\u2000-\u206F]+(.+?)(?:\n|$)/);
     if (!headingMatch) continue;
 
     const id = headingMatch[1].trim();

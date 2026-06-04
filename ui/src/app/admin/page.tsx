@@ -75,7 +75,7 @@ export default function AdminPage() {
     setDraft((prev) => ({ ...prev, lint: { ...prev.lint, [key]: value } }));
 
   const updateTagsMap = useCallback(
-    (category: "systems" | "projects" | "teams", json: string) => {
+    (category: "systems" | "projects" | "teams" | "areas", json: string) => {
       try {
         const parsed = JSON.parse(json);
         if (typeof parsed !== "object" || parsed === null) return;
@@ -365,6 +365,14 @@ export default function AdminPage() {
               value={JSON.stringify(draft.tags.keywordMap.teams, null, 2)}
               onChange={(e) => updateTagsMap("teams", e.target.value)}
               rows={6}
+              className={`${inputCls} font-mono text-xs`}
+            />
+          </Field>
+          <Field label="Delivery Areas">
+            <textarea
+              value={JSON.stringify(draft.tags.keywordMap.areas, null, 2)}
+              onChange={(e) => updateTagsMap("areas", e.target.value)}
+              rows={8}
               className={`${inputCls} font-mono text-xs`}
             />
           </Field>

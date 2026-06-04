@@ -128,7 +128,7 @@
           "Observability",
           "Deb",
           "Debamalya",
-          "OMM",
+          "MMM",
           "R2R"
         ],
         "#team:ets-region": [
@@ -136,6 +136,16 @@
           "ETS-Region",
           "Kelvin"
         ]
+      },
+      "areas": {
+        "#area:adx-registration": ["ADX", "Azure Data Explorer"],
+        "#area:cmdb-mapping":     ["CMDB mapping", "CMDB gap", "CI structure", "CMDB reconciliation"],
+        "#area:employee-xp":      ["Employee Experience", "Employee XP"],
+        "#area:dev-xp":           ["Developer Experience", "Dev XP", "non-prod monitoring", "non-production monitoring"],
+        "#area:gocc-transition":  ["PS-to-GOCC", "GOCC handover", "GOCC onboarding", "GOCC transition", "scaffolding pack", "reverse-shadow", "KT", "knowledge transfer"],
+        "#area:mmm-l2":           ["MMM", "OMM", "Observability Maturity"],
+        "#area:patching":         ["patching", "patch cycle", "weekday patching"],
+        "#area:rapid-recovery":   ["Rapid Recovery", "RRP", "R2R", "recovery plan"]
       }
     }
   },

@@ -202,7 +202,8 @@ export function normalizeTag(raw: string): string {
 
   // Programs
   if (s === "r2r") return "#program:r2r";
-  if (s === "omm") return "#program:omm";
+  if (s === "omm") return "#program:mmm"; // legacy alias: OMM renamed to MMM
+  if (s === "mmm") return "#program:mmm";
   if (s === "odf") return "#program:odf";
 
   // Pass through with # prefix

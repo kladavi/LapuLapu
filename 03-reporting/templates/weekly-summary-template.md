@@ -24,25 +24,109 @@ distribution: ["Name1","Name2"]
 
 ---
 
-## Key Accomplishments (This Week)
+## Delivery Areas
 
-[Accomplishment 1 — outcome language, reference task or workstream.]
-[Accomplishment 2 — outcome language, reference task or workstream.]
-[Accomplishment 3 — outcome language, reference task or workstream.]
+### ADX Registration
+
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
 
 ---
 
-## Top Risks & Issues
+### CMDB Mapping
 
-[Risk] · [Risk description] | [Mitigation action] | [Owner] |
-[Risk] · [Risk description] | [Mitigation action] | [Owner] |
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
 
 ---
 
-## Planned for Next Week
+### [Employee XP Dashboard](https://one.newrelic.com/workloads?account=1737705&begin=1773902125466&end=1774506925466&state=d5eaebde-6fa4-4b77-d855-1fbaabdafab7)
 
-[Priority 1 — tied to objective]
-[Priority 2 — tied to objective, with optional (O#): prefix for the specific objective action]
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
+
+---
+
+### [Dev XP Dashboard](https://one.newrelic.com/workloads?account=1737705&begin=1773902125466&end=1774506925466&state=12a49ba6-7125-e1bf-9517-3ff344f7bf26)
+
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
+
+---
+
+### GOCC Transition
+
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
+
+---
+
+### MMM L2
+
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
+
+---
+
+### Patching
+
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
+
+---
+
+### Rapid Recovery
+
+**Accomplishments**
+- [Accomplishment — outcome language, reference task or workstream.]
+
+**Risks / Issues**
+- [Risk] · [Description] | [Mitigation] | [Owner]
+
+**Planned for Next Week**
+- [Priority — tied to objective]
 
 ---
 

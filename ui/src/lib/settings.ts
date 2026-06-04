@@ -39,6 +39,7 @@ export interface AppSettings {
       systems: Record<string, string[]>;
       projects: Record<string, string[]>;
       teams: Record<string, string[]>;
+      areas: Record<string, string[]>;
     };
   };
   ui: {
@@ -104,8 +105,19 @@ export const DEFAULT_SETTINGS: AppSettings = {
         "#team:ets-japan":        ["ETS Japan", "ETS-Japan", "Birger"],
         "#team:gocc":             ["GOCC", "gocc", "Hari"],
         "#team:gocc-monitoring":  ["GOCC Monitoring", "Jonan", "L0", "L1 triage"],
-        "#team:gocc-observability": ["Observability", "Deb", "Debamalya", "OMM", "R2R"],
+        "#team:gocc-observability": ["Observability", "Deb", "Debamalya", "MMM", "R2R"],
         "#team:ets-region":       ["ETS Region", "ETS-Region", "Kelvin"],
+      },
+      // Lapu-Lapu delivery areas (see 00-context/pack-config.md → Delivery Area Taxonomy)
+      areas: {
+        "#area:adx-registration": ["ADX", "Azure Data Explorer"],
+        "#area:cmdb-mapping":     ["CMDB mapping", "CMDB gap", "CI structure", "CMDB reconciliation"],
+        "#area:employee-xp":      ["Employee Experience", "Employee XP"],
+        "#area:dev-xp":           ["Developer Experience", "Dev XP", "non-prod monitoring", "non-production monitoring"],
+        "#area:gocc-transition":  ["PS-to-GOCC", "GOCC handover", "GOCC onboarding", "GOCC transition", "scaffolding pack", "reverse-shadow", "KT", "knowledge transfer"],
+        "#area:mmm-l2":           ["MMM", "OMM", "Observability Maturity"],
+        "#area:patching":         ["patching", "patch cycle", "weekday patching"],
+        "#area:rapid-recovery":   ["Rapid Recovery", "RRP", "R2R", "recovery plan"],
       },
     },
   },
@@ -267,7 +279,7 @@ export function validateSettings(settings: unknown): SettingsValidationError[] {
     const tags = s.tags as Record<string, unknown>;
     if (tags.keywordMap && typeof tags.keywordMap === "object") {
       const km = tags.keywordMap as Record<string, unknown>;
-      for (const key of ["systems", "projects", "teams"] as const) {
+      for (const key of ["systems", "projects", "teams", "areas"] as const) {
         if (km[key] !== undefined && (typeof km[key] !== "object" || km[key] === null)) {
           errors.push({ path: `tags.keywordMap.${key}`, message: "Must be an object (tag → keyword[])" });
         }
@@ -339,6 +351,10 @@ export function mergeWithDefaults(partial: Partial<AppSettings>): AppSettings {
         teams: {
           ...DEFAULT_SETTINGS.tags.keywordMap.teams,
           ...(partial.tags?.keywordMap?.teams ?? {}),
+        },
+        areas: {
+          ...DEFAULT_SETTINGS.tags.keywordMap.areas,
+          ...(partial.tags?.keywordMap?.areas ?? {}),
         },
       },
     },

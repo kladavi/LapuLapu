@@ -21,7 +21,7 @@
 - **Assigned:** A. Delgado
 - **Systems:** #system:azure #system:cmdb
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #system:azure #system:cmdb #domain:cost #worktype:hygiene
+- **Tags:** #project:lapu-lapu #system:azure #system:cmdb #domain:cost #worktype:hygiene #area:cmdb-mapping
 - **Description:** Identify orphan VMs flagged in Q2 Azure cost report. Cross-reference with CMDB records. Decommission or onboard to Terraform state as appropriate. Report cost impact.
 
 ---
@@ -34,7 +34,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:cmdb
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #program:r2r #outcome:resilience #worktype:incident-management
+- **Tags:** #project:lapu-lapu #program:r2r #outcome:resilience #worktype:incident-management #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Deliver Rapid Recovery Plans as a key R2R deliverable for FY2026. Plans will define recovery procedures for Gold applications to meet RTO/RPO targets and reduce P1 MTTR. Format and template to be confirmed with Rohina.
 
 ---
@@ -52,7 +52,7 @@
 
 ---
 
-## T005 — OMM L2 for Gold Applications
+## T005 — MMM L2 for Gold Applications
 - **Status:** Open
 - **Created:** 2026-03-24
 - **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
@@ -60,8 +60,8 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:newrelic #system:moogsoft #system:xmatters #system:cmdb #system:apm
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #program:r2r #program:omm #worktype:observability
-- **Description:** Achieve OMM L2 maturity for all Gold applications by mid-FY2027. Requires infrastructure alerts with AIOps reconciliation, application transaction alerts via xMatters, synthetics monitoring with login checks, and application logging into ADX with pattern alerts.
+- **Tags:** #project:lapu-lapu #program:r2r #program:mmm #worktype:observability #area:adx-registration #area:cmdb-mapping #area:mmm-l2
+- **Description:** Achieve MMM L2 maturity for all Gold applications by mid-FY2027. Requires infrastructure alerts with AIOps reconciliation, application transaction alerts via xMatters, synthetics monitoring with login checks, and application logging into ADX with pattern alerts.
 
 ---
 
@@ -73,7 +73,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:newrelic
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #team:ets-japan #artifact:dashboard #worktype:monitoring #worktype:observability
+- **Tags:** #project:lapu-lapu #team:ets-japan #artifact:dashboard #worktype:monitoring #worktype:observability #area:employee-xp
 - **Description:** Establish a single, authoritative Employee Experience Dashboard providing production application availability and performance visibility from a Japan employee perspective. Daily readiness confirmation before 8:00 AM JST. Success measured by 100% coverage of employee-facing URLs.
 
 ---
@@ -86,7 +86,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:newrelic
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #team:ets-japan #artifact:dashboard #domain:non-production #worktype:monitoring #outcome:developer-experience
+- **Tags:** #project:lapu-lapu #team:ets-japan #artifact:dashboard #domain:non-production #worktype:monitoring #outcome:developer-experience #area:dev-xp
 - **Description:** Establish a Developer Experience Dashboard providing holistic visibility into non-production environment health for developers and testers in Japan. Daily pre-8:00 AM JST readiness check. Measurable reduction in time lost to environment investigation.
 
 ---
@@ -125,7 +125,7 @@
 - **Assigned:** Balaji Ravi
 - **Systems:** #system:ingenium #system:azure
 - **Relevance:** 88/100
-- **Tags:** #project:epsilon #program:epsilon #system:ingenium #domain:modernisation #worktype:testing #outcome:ha #worktype:pot
+- **Tags:** #project:epsilon #program:epsilon #system:ingenium #domain:modernisation #worktype:testing #outcome:ha #worktype:pot #area:patching
 - **Description:** Execute the full POT validation plan: application and policy-level workflow testing, zone-level failover testing across presentation, middleware, and data layers, VCS and Pacemaker verification, batch execution testing, and online patching testing.
 
 ---
@@ -151,7 +151,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:newrelic #system:cmdb
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:gocc-handover #system:epos #worktype:observability
+- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:gocc-handover #system:epos #worktype:observability #area:cmdb-mapping
 - **Description:** Obtain details of the ePOS health check script used by PS (Manulink batch process). Follow up with Yamamoto-san, Murata-san, and Nakatsu-san. GOCC will need visibility or access to this process for sustainable monitoring handover. Deliver documentation of script purpose, authentication flow, and frequency.
 - **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action item for David
 
@@ -165,7 +165,7 @@
 - **Assigned:** Kiran Mohandas
 - **Systems:** #system:newrelic
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:non-production #system:epos #worktype:observability
+- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:non-production #system:epos #worktype:observability #area:dev-xp
 - **Description:** Share the daily non-production monitoring status email with David and highlight the ePOS gap. ePOS is not currently included in the daily non-prod monitoring alert email sent by TEM. ePOS alone has ~17 non-prod environments contributing to operational burden. Confirm non-prod monitoring parameters with TEM (Sangram).
 - **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action items for Kiran Mohandas
 
@@ -193,7 +193,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:newrelic
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:non-production #worktype:observability
+- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:non-production #worktype:observability #area:dev-xp
 - **Description:** Confirm non-production monitoring parameters with TEM (Sangram). Define the standard set of monitoring checks for non-prod environments to ensure the Developer Experience Dashboard has correct coverage and alerting thresholds. Joint action with Kiran Mohandas.
 - **Source:** GOCC 2026-03-26 New Relic Monitoring meeting — Action item for David / Kiran Mohandas
 
@@ -207,7 +207,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:newrelic #system:cmdb #system:xmatters
 - **Relevance:** 82/100
-- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:gocc-handover #system:epos #worktype:observability #domain:authentication
+- **Tags:** #project:lapu-lapu #worktype:monitoring #domain:gocc-handover #system:epos #worktype:observability #domain:authentication #area:adx-registration #area:cmdb-mapping
 - **Description:** Establish GOCC monitoring for ePOS including: service account provisioning with key-based authentication through Manulink, ServiceNow CMDB relationship mapping (application → application services → components), xMatters registration, and runbook-driven first response procedures. ePOS access path uses SSO/LTPA token + cookie-based authorization via Manulink. PII guardrails confirmed: no PII in New Relic or ADX, debug logging disabled in production.
 - **Source:** GOCC 2026-03-26 New Relic Monitoring meeting
 
@@ -221,7 +221,7 @@
 - **Assigned:** Kanagaraj Ramasamy
 - **Systems:** #system:azure
 - **Relevance:** 82/100
-- **Tags:** #project:lapu-lapu #worktype:hygiene #domain:patching #domain:documentation #outcome:resilience
+- **Tags:** #project:lapu-lapu #worktype:hygiene #domain:patching #domain:documentation #outcome:resilience #area:patching
 - **Description:** Prepare documentation outlining the patching challenges and the end-to-end patching process for Japan servers (Linux). Document the current manpower constraints, Ansible automation gaps, and server categorisation windows. Goal is to simplify the process so it can be handed to GOCC for execution, reducing dependency on ETS engineering resources. Supports the broader objective of achieving 14-day patching cycles on weekdays.
 - **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Kanagaraj
 
@@ -235,7 +235,7 @@
 - **Assigned:** Kanagaraj Ramasamy
 - **Systems:** #system:azure #system:cmdb
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #worktype:hygiene #domain:patching #domain:asset-management #domain:cmdb
+- **Tags:** #project:lapu-lapu #worktype:hygiene #domain:patching #domain:asset-management #domain:cmdb #area:cmdb-mapping #area:patching
 - **Description:** Share updated list of Linux and Windows production servers with Hideo Hasegawa, who will assist in mapping application names. Sreekanth Dogiparthy to provide the Windows server list. Prepare the standard template for Japan production servers to enable transition of patching to Standard BAU Change. Joint effort: Kanagaraj (Linux), Sreekanth (Windows), Hideo (application mapping).
 - **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Kanagaraj, Sreekanth, Hideo
 
@@ -249,7 +249,7 @@
 - **Assigned:** Karen Escalona
 - **Systems:** #system:azure
 - **Relevance:** 70/100
-- **Tags:** #project:lapu-lapu #worktype:coordination #domain:patching #domain:non-production
+- **Tags:** #project:lapu-lapu #worktype:coordination #domain:patching #domain:non-production #area:dev-xp #area:patching
 - **Description:** Schedule a meeting with Hong Kong (Karen Leung) and Indonesia (Glenn Jay) representatives to discuss next steps for non-production environment patching alignment. Extends the Japan patching standardisation work to other Asia regions.
 - **Source:** 2026-03-17 Patching Schedule and Possible Standard BAU Transition meeting — Action for Karen Escalona
 
@@ -263,7 +263,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:azure
 - **Relevance:** 82/100
-- **Tags:** #project:lapu-lapu #domain:patching #outcome:resilience #worktype:hygiene
+- **Tags:** #project:lapu-lapu #domain:patching #outcome:resilience #worktype:hygiene #area:patching
 - **Description:** Applications that do not have batch jobs running can be patched on Thursday night, instead of waiting for the weekend when releases and upgrades are prioritised. Identify and maintain a list of non-batch applications eligible for Thursday patching. Implement the Thursday patching window to relieve pressure on the weekend schedule. Coordinate with Kanagaraj (Linux) and Sreekanth (Windows) for server categorisation.
 - **Source:** 2026-03-26 Incident Review Meeting
 
@@ -277,7 +277,7 @@
 - **Assigned:** Mary Kris Cabunilas
 - **Systems:** #system:newrelic #system:azure
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #artifact:dashboard #worktype:monitoring #worktype:observability
+- **Tags:** #project:lapu-lapu #artifact:dashboard #worktype:monitoring #worktype:observability #area:employee-xp
 - **Description:** Add three new URLs to the Employee Experience Dashboard URL monitoring list (JIRA: LPLP-99): (1) Azure Databricks — https://adb-290394047047427.7.azuredatabricks.net/ (external service), (2) Pathwise endpoint from Aon — https://manulife.pathwise.aon.com/logon/LogonPoint/index.html (Manulife internal), (3) DORA app from Manulife AI team — https://dora.manulife.com/ (Manulife internal). Confirm all three are in scope before adding. To be included in Employee Experience Dashboard.
 - **Source:** Inbox — Add3URLtodashboard.md
 
@@ -291,7 +291,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:newrelic #system:moogsoft #system:xmatters
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #worktype:coordination #domain:gocc-handover
+- **Tags:** #project:lapu-lapu #worktype:coordination #domain:gocc-handover #area:patching #area:rapid-recovery
 - **Description:** Register and track the GOCC-Monitoring team member assignments for LapuLapu work streams as confirmed by Jonan: Mary Kris, Rae, Yam — Dashboard; Edward and team (12 members) — actual instrumentation; Dennis/Mark — server build implementation of patching for Ingenium; George/Angelo — gathering of rapid recovery items. Update teams.md member roles accordingly and ensure alignment with T003, T006, T016 assignments.
 - **Source:** Inbox — TeamUpdate.md (message from Jonan)
 
@@ -305,7 +305,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:newrelic #system:powerbi
 - **Relevance:** 92/100
-- **Tags:** #project:lapu-lapu #dashboard #employee-experience #japan
+- **Tags:** #project:lapu-lapu #dashboard #employee-experience #japan #area:employee-xp
 - **Description:** Improve Japan-focused Employee Experience Dashboard in Production by enhancing visibility, impact-driven drilldowns, and Japan-specific filtering aligned to real user experience. Incorporate PS Team Morning Health Check data as an input source.
 
 ---
@@ -318,7 +318,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:newrelic #system:apm
 - **Relevance:** 88/100
-- **Tags:** #project:lapu-lapu #dashboard #developer-experience #nonprod
+- **Tags:** #project:lapu-lapu #dashboard #developer-experience #nonprod #area:dev-xp
 - **Description:** Establish Developer Experience Dashboard coverage for DEV/SIT/UAT environments to improve non-prod health visibility and accelerate troubleshooting for Japan application teams.
 
 ---
@@ -349,7 +349,7 @@
 
 ---
 
-## T027 — Achieve OMM L2 for Major Japan Applications
+## T027 — Achieve MMM L2 for Major Japan Applications
 - **Status:** Open
 - **Created:** 2026-04-01
 - **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
@@ -357,7 +357,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:newrelic #system:apm
 - **Relevance:** 95/100
-- **Tags:** #project:lapu-lapu #omm #gold-apps #japan
+- **Tags:** #project:lapu-lapu #mmm #gold-apps #japan #area:mmm-l2
 - **Description:** Drive Observability Maturity Model Level 2 compliance for all major Japan applications, including APM installation, tracing enablement, tagging, and alert coverage validation.
 
 ---
@@ -383,7 +383,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:newrelic #system:azure #system:cmdb
 - **Relevance:** 91/100
-- **Tags:** #project:lapu-lapu #tagging #data-quality #japan
+- **Tags:** #project:lapu-lapu #tagging #data-quality #japan #area:cmdb-mapping
 - **Description:** Define and publish minimum tagging standards (including country=JP) and bulk tagging guidance for Azure and New Relic to enable accurate Japan filtering and reporting.
 
 ---
@@ -476,7 +476,7 @@
 - **Relevance:** 88/100
 - **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #worktype:planning
 - **Description:** Derive a low-level implementation plan from the high-level Epsilon POT project plan. Must clearly capture detailed prerequisite steps, ownership and dependencies across teams, sequencing and timelines, and constraints or assumptions requiring validation. Once finalised, update the overall project plan and align all stakeholders on execution expectations. David Klan to facilitate and coordinate the POT execution end-to-end after the plan is firmed up.
-- **Source:** Re: Epsilon – POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
+- **Source:** Re: Epsilon — POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
 
 ---
 
@@ -490,7 +490,7 @@
 - **Relevance:** 72/100
 - **Tags:** #project:lapu-lapu #project:epsilon #domain:modernisation #worktype:documentation
 - **Description:** ETS BAU team to share screen with VCS team to complete VCS setup for Epsilon POT. Kanagaraj agreed to create documentation on the VCS setup process, as this has not been handled by the team previously. Documentation to be reusable for future environments.
-- **Source:** Re: Epsilon – POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
+- **Source:** Re: Epsilon — POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
 
 ---
 
@@ -504,7 +504,7 @@
 - **Relevance:** 65/100
 - **Tags:** #project:lapu-lapu #project:epsilon #worktype:access-management
 - **Description:** Request Azure contributor access to the Epsilon POT subscription (tagged CC9153) for Sanjeev, so he is ready to support infrastructure work when required. Resource group has already been provisioned.
-- **Source:** Re: Epsilon – POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
+- **Source:** Re: Epsilon — POT - Ingenium Modernization email (Balaji Ravi, 2026-04-02)
 
 ---
 
@@ -516,7 +516,7 @@
 - **Assigned:** Christopher Bond
 - **Systems:** #system:cmdb
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #domain:problem-management #worktype:incident-management #outcome:mttr
+- **Tags:** #project:lapu-lapu #domain:problem-management #worktype:incident-management #outcome:mttr #area:cmdb-mapping
 - **Description:** Create a dedicated problem ticket for recurring Japan incident use cases. Share the problem ticket and Japan use cases with Rohina Emerson and Hans for review and alignment. Enables structured root cause tracking and prevention for Japan-specific repeat incidents.
 - **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
 
@@ -530,7 +530,7 @@
 - **Assigned:** Rohina Emerson
 - **Systems:** #system:cmdb
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #domain:incident-management #worktype:documentation #program:r2r
+- **Tags:** #project:lapu-lapu #domain:incident-management #worktype:documentation #program:r2r #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Share the R2R Knowledge Management deck and standardized structured template for Japan incident documentation. Template must be searchable by Configuration Items (CIs), include Key Contacts and Rapid Response (RR) contacts. Hasegawa-san to distribute template to Incident Management teams once received.
 - **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
 
@@ -544,7 +544,7 @@
 - **Assigned:** George Francis Fermo
 - **Systems:** #system:cmdb
 - **Relevance:** 83/100
-- **Tags:** #project:lapu-lapu #program:r2r #outcome:resilience #worktype:incident-management
+- **Tags:** #project:lapu-lapu #program:r2r #outcome:resilience #worktype:incident-management #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Finalize Japan CI structure with explicit identification of Primary CI, Supporting CI components, and CI(s) designed for rapid recovery execution. Validate component mapping against CMDB to enable structured incident response and rapid recovery workflows.
 - **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
 
@@ -572,7 +572,7 @@
 - **Assigned:** George Francis Fermo
 - **Systems:** #system:cmdb
 - **Relevance:** 75/100
-- **Tags:** #project:lapu-lapu #worktype:incident-management #worktype:documentation
+- **Tags:** #project:lapu-lapu #worktype:incident-management #worktype:documentation #area:cmdb-mapping
 - **Description:** Define a standardized escalation procedure format for application vendor support to ensure consistent, timely engagement during Japan incidents. Format to be reviewed and operationalized by Incident Management / IT Ops teams.
 - **Source:** 2026-03-30 Japan Team - Global Incident Management w/ Rohina meeting (George Fermo minutes)
 
@@ -586,7 +586,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:newrelic #system:azure
 - **Relevance:** 92/100
-- **Tags:** #project:lapu-lapu #tier:3 #worktype:monitoring #domain:colleague #outcome:resilience #system:newrelic #system:azure
+- **Tags:** #project:lapu-lapu #tier:3 #worktype:monitoring #domain:colleague #outcome:resilience #system:newrelic #system:azure #area:employee-xp
 - **Description:** Analyze recurring capacity alerts on the Employee Experience dashboard to identify timing patterns and isolate impacted servers or Azure components. Confirm whether the alerts correlate with measurable performance degradation such as latency or error spikes, then summarize recommended actions such as threshold tuning, right-sizing, or workload/process changes.
 
 ---
@@ -599,7 +599,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium #system:cmdb
 - **Relevance:** 88/100
-- **Tags:** #project:lapu-lapu #bau #stability #transition
+- **Tags:** #project:lapu-lapu #bau #stability #transition #area:cmdb-mapping
 - **Description:** Maintain current Ingenium Infra team BAU support to ensure operational stability and close non‑business‑hours support gaps while transition activities progress. **Plan reviewed and explicitly approved by Birger Fjaellman.**
 
 ---
@@ -612,7 +612,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:newrelic #system:ingenium #system:cmdb
 - **Relevance:** 94/100
-- **Tags:** #project:lapu-lapu #automation #runbooks #omm
+- **Tags:** #project:lapu-lapu #automation #runbooks #mmm #area:cmdb-mapping
 - **Description:** Identify and automate high‑frequency repeatable Ingenium BAU tasks across WAS and DB layers, reducing manual intervention and engineering dependency. **Approach confirmed as reasonable and approved by ETS Japan lead.**
 
 ---
@@ -625,7 +625,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:newrelic #system:xmatters #system:ingenium
 - **Relevance:** 91/100
-- **Tags:** #project:lapu-lapu #runbooks #incident-response #go-live
+- **Tags:** #project:lapu-lapu #runbooks #incident-response #go-live #area:gocc-transition
 - **Description:** Create, standardise, and validate end‑to‑end Ingenium operational runbooks to support incident detection, recovery, and escalation by GOCC. **Plan acknowledged and approved by Birger Fjaellman.**
 
 ---
@@ -638,7 +638,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium
 - **Relevance:** 76/100
-- **Tags:** #project:lapu-lapu #governance #tracking #transition
+- **Tags:** #project:lapu-lapu #governance #tracking #transition #area:gocc-transition
 - **Description:** Set up and run a weekly review forum to track Ingenium KT progress, automation delivery, runbook readiness, and transition risks. **Cadence and governance approach approved by ETS Japan leadership.**
 
 ---
@@ -651,7 +651,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:newrelic #system:moogsoft #system:ingenium
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #kt #capability-building #gocc
+- **Tags:** #project:lapu-lapu #kt #capability-building #gocc #area:gocc-transition
 - **Description:** Involve ~6 core GOCC members in ongoing Ingenium KT sessions to build system knowledge in parallel with automation and documentation. **Phased KT approach explicitly endorsed by Birger Fjaellman.**
 
 ---
@@ -664,8 +664,8 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:azure #system:ingenium #system:cmdb
 - **Relevance:** 92/100
-- **Tags:** #project:lapu-lapu #linux #patching #kt #r2r #resilience
-- **Description:** Execute the reverse‑shadow Linux patching pre‑ and post‑validation in the Non‑Production environment under guidance of the Ingenium Infra team. This activity builds operational readiness and strengthens recovery and control validation capabilities aligned to R2R objectives.
+- **Tags:** #project:lapu-lapu #linux #patching #kt #r2r #resilience #area:cmdb-mapping #area:gocc-transition #area:patching #area:rapid-recovery
+- **Description:** Execute the reverse‑shadow Linux patching pre Eand post‑validation in the Non‑Production environment under guidance of the Ingenium Infra team. This activity builds operational readiness and strengthens recovery and control validation capabilities aligned to R2R objectives.
 -----------------------
 
 ---
@@ -678,7 +678,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium #system:cmdb #system:azure
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #linux #patching #change-management #prod #kt
+- **Tags:** #project:lapu-lapu #linux #patching #change-management #prod #kt #area:cmdb-mapping #area:gocc-transition #area:patching
 - **Description:** Finalise preparation for the PROD reverse‑shadow Linux patching validation, including receipt and review of the PROD CHG ticket, access confirmation, and alignment of validation checkpoints. Note: PROD change date is tentative and pending formal CHG details.
 
 ---
@@ -691,8 +691,8 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:newrelic
 - **Relevance:** 92/100
-- **Tags:** #project:lapu-lapu #dashboard #developer-experience #naming #non-prod
-- **Description:** Rename the current “GOCC Japan Employee Experience Dashboard” for non‑production workloads to “GOCC Japan Developer Experience Dashboard” to accurately reflect audience and intent. Ensure consistency across dashboard titles, descriptions, and references for the 16 listed non‑prod systems.
+- **Tags:** #project:lapu-lapu #dashboard #developer-experience #naming #non-prod #area:employee-xp #area:dev-xp
+- **Description:** Rename the current “GOCC Japan Employee Experience Dashboard Efor non‑production workloads to “GOCC Japan Developer Experience Dashboard Eto accurately reflect audience and intent. Ensure consistency across dashboard titles, descriptions, and references for the 16 listed non‑prod systems.
 
 ---
 
@@ -718,7 +718,7 @@
 - **Systems:** #system:newrelic
 - **Relevance:** 78/100
 - **Tags:** #project:lapu-lapu #metadata #ownership #honeycomb #governance
-- **Description:** Assess the “Team Ownership” setting available in honeycomb views and determine standard usage guidelines. If viable, implement ownership tagging to improve accountability, filtering, and collaboration across GOCC and ETS Japan teams.
+- **Description:** Assess the “Team Ownership Esetting available in honeycomb views and determine standard usage guidelines. If viable, implement ownership tagging to improve accountability, filtering, and collaboration across GOCC and ETS Japan teams.
 
 ---
 
@@ -730,7 +730,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium #system:cmdb
 - **Relevance:** 92/100
-- **Tags:** #project:lapu-lapu #kt #transition #support-model
+- **Tags:** #project:lapu-lapu #kt #transition #support-model #area:cmdb-mapping #area:gocc-transition
 - **Description:** Define the Knowledge Transfer (KT) scope for Ingenium based on the approved WBS and project schedule to ensure aligned expectations between ETS Asia and GOCC. Scope definition will act as the baseline for transition planning and acceptance.
 
 ---
@@ -743,7 +743,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:ingenium #system:xmatters
 - **Relevance:** 95/100
-- **Tags:** #project:lapu-lapu #kt #handover #lifecycle
+- **Tags:** #project:lapu-lapu #kt #handover #lifecycle #area:gocc-transition
 - **Description:** Execute a 3‑month shadow and reverse‑shadow support transition with GOCC from April to June to validate readiness for full L0–L2 ownership. Track issues and gaps during the transition for remediation.
 
 ---
@@ -756,7 +756,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium #system:cmdb
 - **Relevance:** 88/100
-- **Tags:** #project:lapu-lapu #documentation #kt
+- **Tags:** #project:lapu-lapu #documentation #kt #area:cmdb-mapping #area:gocc-transition
 - **Description:** Finalize all Ingenium KT documentation, covering operational procedures, DB2, and middleware, with clear responsibility split between ETS Asia and GOCC. Documentation will be used as the formal handover artifact.
 
 ---
@@ -769,7 +769,7 @@
 - **Assigned:** Hari Pothakamuri
 - **Systems:** #system:ingenium
 - **Relevance:** 75/100
-- **Tags:** #project:lapu-lapu #governance #roles
+- **Tags:** #project:lapu-lapu #governance #roles #area:gocc-transition
 - **Description:** Confirm the six GOCC core leads assigned to the Japan segment for the Ingenium KT to establish the official target audience. This ensures accountability and effective knowledge absorption.
 
 ---
@@ -782,7 +782,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium
 - **Relevance:** 70/100
-- **Tags:** #project:lapu-lapu #governance #cadence
+- **Tags:** #project:lapu-lapu #governance #cadence #area:gocc-transition
 - **Description:** Set up weekly progress calls to address KT issues and concerns, and a monthly deliverable review to track transition health. Governance ensures risks are surfaced early and resolved.
 
 ---
@@ -795,7 +795,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium
 - **Relevance:** 90/100
-- **Tags:** #project:lapu-lapu #planning #kt
+- **Tags:** #project:lapu-lapu #planning #kt #area:gocc-transition
 - **Description:** Prepare and publish the detailed Ingenium KT plan and schedule in coordination with GOCC Monitoring, covering sequencing, milestones, and acceptance criteria to support full L0–L2 ownership.
 
 ---
@@ -834,7 +834,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:azure #system:cmdb
 - **Relevance:** 88/100
-- **Tags:** #project:lapu-lapu #worktype:kt #worktype:patching #outcome:resilience #domain:operations
+- **Tags:** #project:lapu-lapu #worktype:kt #worktype:patching #outcome:resilience #domain:operations #area:cmdb-mapping #area:dev-xp #area:gocc-transition #area:patching #area:rapid-recovery
 - **Description:** Conduct a GOCC shadow session for Windows patching pre- and post-validation activities in the Japan Non-Production environment to reinforce operational controls and validation checkpoints. Session will support R2R readiness and operational resilience, aligned to CHG01354108 scheduled for 2026-04-16.
 
 ---
@@ -847,7 +847,7 @@
 - **Assigned:** Birger Fjaellman
 - **Systems:** #system:ingenium #system:cmdb
 - **Relevance:** 95/100
-- **Tags:** #project:lapu-lapu #kt #transition #risk-managed #lapu-lapu
+- **Tags:** #project:lapu-lapu #kt #transition #risk-managed #lapu-lapu #area:cmdb-mapping #area:gocc-transition
 - **Description:** Develop and publish a detailed, phase-wise Ingenium knowledge transfer plan covering non-production, production readiness, and full BAU operations. The plan must define clear KT targets, milestones, and risk controls to ensure a controlled transition to GOCC support.
 
 ---
@@ -873,7 +873,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:jira #system:cmdb
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #governance #kt #milestones
+- **Tags:** #project:lapu-lapu #governance #kt #milestones #area:cmdb-mapping #area:gocc-transition
 - **Description:** Formalise and run the agreed KT governance model, including weekly status calls, monthly milestone reviews, and a final Q2 takeover readiness review. Track risks, dependencies, and readiness feedback via a central JIRA tracker.
 
 ---
@@ -886,7 +886,7 @@
 - **Assigned:** Hari Pothakamuri
 - **Systems:** #system:xmatters #system:ingenium
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #support-coverage #kt #operations
+- **Tags:** #project:lapu-lapu #support-coverage #kt #operations #area:gocc-transition
 - **Description:** Confirm and align 24x7 GOCC DB, Middleware, and Infrastructure support availability with the approved Ingenium KT plan. Ensure on-call coverage and escalation paths are validated for each KT phase.
 
 ---
@@ -925,7 +925,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:newrelic
 - **Relevance:** 79/100
-- **Tags:** #project:lapu-lapu #domain:gocc-handover #reporting #coverage
+- **Tags:** #project:lapu-lapu #domain:gocc-handover #reporting #coverage #area:gocc-transition
 - **Description:** Publish a weekly application-by-application PS-to-GOCC transition list using the accepted Phase-1 checklist as the source of truth. Track fully transitioned and in-progress applications, include notable schedule risks such as Japan holiday slippage, and use the list as the handover status artifact for weekly reporting.
 - **Source:** Inbox — 20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
 
@@ -939,7 +939,7 @@
 - **Assigned:** Joan Lee
 - **Systems:** #system:newrelic #system:azure
 - **Relevance:** 77/100
-- **Tags:** #project:lapu-lapu #synthetics #credential-management #security #domain:gocc-handover
+- **Tags:** #project:lapu-lapu #synthetics #credential-management #security #domain:gocc-handover #area:gocc-transition
 - **Description:** Define audit-compliant credential management standards for synthetic monitoring and customer journey checks, including storage, rotation, ownership, and evidence requirements. The standard must support PS-to-GOCC handover without leaving customer-impact monitoring dependent on unmanaged credentials.
 - **Source:** Inbox — 20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
 
@@ -981,7 +981,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:ingenium #system:cmdb
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #rapid-recovery #program:r2r #knowledge-transfer
+- **Tags:** #project:lapu-lapu #rapid-recovery #program:r2r #knowledge-transfer #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Execute a 90-minute bilingual rapid recovery enablement session with Japan Production Support, using Ingenium as the reference implementation and circulating materials in advance. The session must align invocation criteria, responsibilities, and information flow between Prod Support, GOCC, and incident coordination roles.
 - **Source:** Inbox — 20260416+-+Lapu-Lapu+GOCC+and+Japan.doc
 
@@ -1009,7 +1009,7 @@
 - **Assigned:** Yegor Pomozoff
 - **Systems:** #system:cmdb #system:leanix
 - **Relevance:** 76/100
-- **Tags:** #project:lapu-lapu #asset-management #cleanup #servers
+- **Tags:** #project:lapu-lapu #asset-management #cleanup #servers #area:cmdb-mapping
 - **Description:** Break down the orphaned asset inventory by category, start with servers, and work through ownership validation and cleanup in a structured sequence. The goal is to reduce unmanaged assets that block accurate service mapping and evergreen migration decisions.
 - **Source:** Inbox — 20260416+-+LapuLapu+Team+Direction+and+Execution.doc
 
@@ -1023,7 +1023,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:newrelic #system:moogsoft #system:xmatters
 - **Relevance:** 84/100
-- **Tags:** #project:lapu-lapu #alerting #incident-workflow #support-model
+- **Tags:** #project:lapu-lapu #alerting #incident-workflow #support-model #area:dev-xp
 - **Description:** Confirm and document the end-to-end alerting and incident workflow for Japan production and non-production monitoring, including how dashboard alerts flow into incident handling and which teams respond at each step. The outcome should remove ambiguity across GOCC, ETS Japan, and TEM-aligned responders before additional applications are onboarded.
 - **Source:** Inbox — 20260423+-+Lapu-Lapu+GOCC+and+Japan.doc
 
@@ -1051,7 +1051,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:cmdb #system:azure
 - **Relevance:** 83/100
-- **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #domain:gocc-handover
+- **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #domain:gocc-handover #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Work with Rohina and the Server Team to document per-application reboot and restore procedures and use the result to register additional applications for Rapid Recovery coverage. The deliverable should clarify recovery actions, ownership, and information flow needed for GOCC-assisted recovery execution.
 - **Source:** Inbox — 20260423+-+Lapu-Lapu+GOCC+and+Japan.doc
 
@@ -1065,7 +1065,7 @@
 - **Assigned:** Rae Judavar
 - **Systems:** #system:newrelic #system:xmatters
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #nonprod #incident-workflow #developer-experience
+- **Tags:** #project:lapu-lapu #nonprod #incident-workflow #developer-experience #area:dev-xp #area:rapid-recovery
 - **Description:** Define the response workflow for non-production monitoring alerts in Japan, with the first decision point on alert handling before environment spin-up or spin-down and rapid recovery follow-up. The workflow must capture cross-team handoffs with Sangram, Rupesh, and GOCC responders so non-prod incidents do not stall in ambiguous ownership.
 - **Source:** Inbox — 20260423+-+LapuLapu+Team+Direction+and+Execution.doc
 
@@ -1079,7 +1079,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:cmdb #system:newrelic
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #domain:gocc-handover #service-inventory #transition-planning
+- **Tags:** #project:lapu-lapu #domain:gocc-handover #service-inventory #transition-planning #area:cmdb-mapping #area:gocc-transition
 - **Description:** Publish a reusable Japan transition scaffolding pack covering inventory templates, a sample transition project plan, a support-level definitions dictionary, and a prioritized checklist of services to transition next. The pack should explicitly capture the handover categories Kelvin asked for in the weekly status review: CMDB reconciliation, support-group and xMatters coverage, monitored URLs, infrastructure thresholds, business-operation timing, alert validation by PS, and GOCC ORR sign-off. Co-develop the pack with David so the Japan onboarding backlog can be sequenced by impact, downtime history, and ownership clarity rather than ad hoc requests.
 - **Source:** Inbox — 20260423+-+LapuLapu+Team+Direction+and+Execution.doc
 
@@ -1093,7 +1093,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:cmdb
 - **Relevance:** 88/100
-- **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #incident-followup #recovery-readiness
+- **Tags:** #project:lapu-lapu #rapid-recovery #runbooks #incident-followup #recovery-readiness #area:cmdb-mapping #area:gocc-transition #area:rapid-recovery
 - **Description:** Use the SRM incident as the first focused Rapid Recovery onboarding case by registering SRM for recovery coverage, scheduling follow-up and knowledge-transfer sessions with the application team, and standardizing production validation, restart, and recovery SOPs. The work should also coordinate RCA review and close the operational gap where incidents can stall because restart authority, validation steps, and recovery procedures are unclear.
 - **Source:** Inbox — Meeting+Summary_+SRM+Certificate+Incident,+Operational+Gaps,+and+Rapid+Recovery+Onboarding.doc
 
@@ -1107,7 +1107,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:xmatters #system:cmdb
 - **Relevance:** 84/100
-- **Tags:** #project:lapu-lapu #domain:gocc-handover #xmatters #escalation #support-model
+- **Tags:** #project:lapu-lapu #domain:gocc-handover #xmatters #escalation #support-model #area:cmdb-mapping
 - **Description:** Generate a current roster report for all Japan xMatters groups, reconcile it against ServiceNow support-group routing, and define the target L1, L2, and L3 escalation structure needed for Ingenium onboarding and wider Japan incident handling. Share the baseline with David and Birger so static single-level rosters can be corrected before additional applications go live in GOCC.
 - **Source:** Inbox — 20260507+-+Lapu-Lapu+GOCC+and+Japan.doc
 
@@ -1121,7 +1121,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:cmdb
 - **Relevance:** 87/100
-- **Tags:** #project:lapu-lapu #program:r2r #automation #cmdb #data-quality
+- **Tags:** #project:lapu-lapu #program:r2r #automation #cmdb #data-quality #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Resolve CI-number discrepancies between CMDB V9 and the source spreadsheets, confirm field mappings for all six Rapid Recovery Plan sections, and establish a pilot-ready data set for automated plan generation. This is the primary blocker called out in the automation deck and must be closed before generated RRPs can be trusted or scaled.
 - **Source:** Inbox — Rapid Recovery Planning Automation Process.pdf
 
@@ -1135,7 +1135,7 @@
 - **Assigned:** Debamalya Das
 - **Systems:** #system:cmdb
 - **Relevance:** 82/100
-- **Tags:** #project:lapu-lapu #program:r2r #automation #runbooks #workflow
+- **Tags:** #project:lapu-lapu #program:r2r #automation #runbooks #workflow #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Build and pilot a workflow that extracts CMDB and ServiceNow data, maps it into the six-section Rapid Recovery Plan template, generates sample RRPs, routes them for SME review, and documents the ongoing generation runbook. Use the pilot to segment the 134-app scope, validate sample outputs, and close remaining gaps in contacts, triage content, and dependency data before scale-out.
 - **Source:** Inbox — Rapid Recovery Planning Automation Process.pdf
 
@@ -1260,7 +1260,7 @@
 - **Assigned:** Joan Lee
 - **Systems:** #system:cmdb #system:newrelic #system:leanix
 - **Relevance:** 95/100
-- **Tags:** #cmdb #mapping #apm
+- **Tags:** #cmdb #mapping #apm #area:cmdb-mapping
 - **Description:** Create a standardized mapping table linking application CIs to APM IDs to resolve inconsistencies caused by LeanIX integration gaps. This will enable accurate service mapping and consistent tagging across monitoring systems.
 
 ---
@@ -1273,7 +1273,7 @@
 - **Assigned:** Jonan Tan Pangan
 - **Systems:** #system:cmdb
 - **Relevance:** 85/100
-- **Tags:** #runbook #incident-response #japan
+- **Tags:** #runbook #incident-response #japan #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Create a dedicated runbook repository for Japan operations to support localized incident response. Ensure alignment with Rapid Recovery Plan standards and maintain visibility for ETS Japan stakeholders.
 
 ---
@@ -1286,7 +1286,7 @@
 - **Assigned:** Joan Lee
 - **Systems:** #system:newrelic #system:apm #system:cmdb
 - **Relevance:** 100/100
-- **Tags:** #mmm #omm #monitoring
+- **Tags:** #mmm #mmm #monitoring #area:cmdb-mapping #area:mmm-l2
 - **Description:** Implement Monitoring Maturity Matrix (MMM) Level 2 for Japan applications, including tagging, APM onboarding, and policy setup. Coordinate with application owners to validate entity mappings and ensure monitoring coverage.
 
 ---
@@ -1299,7 +1299,7 @@
 - **Assigned:** Joan Lee
 - **Systems:** #system:apm #system:newrelic
 - **Relevance:** 92/100
-- **Tags:** #apm #ingenium #policy
+- **Tags:** #apm #ingenium #policy #area:mmm-l2
 - **Description:** Define and implement APM alert policies for the Ingenium system in coordination with infrastructure and engineering teams. Ensure coverage aligns with MMM Level 2 standards and supports proactive monitoring.
 
 ---
@@ -1338,7 +1338,7 @@
 - **Assigned:** Joan Lee
 - **Systems:** #system:adx #system:moogsoft
 - **Relevance:** 88/100
-- **Tags:** #logs #adx #aiops
+- **Tags:** #logs #adx #aiops #area:adx-registration
 - **Description:** Enable centralized log ingestion into Azure Data Explorer (ADX) and integrate with Moogsoft via webhook for incident conversion. Coordinate with GCS team for onboarding and validate ingestion pipeline.
 
 ---
@@ -1364,7 +1364,7 @@
 - **Assigned:** Joan Lee
 - **Systems:** #system:leanix #system:cmdb
 - **Relevance:** 92/100
-- **Tags:** #leanix #cmdb #ownership
+- **Tags:** #leanix #cmdb #ownership #area:cmdb-mapping
 - **Description:** Register missing Japan applications (e.g., BPM, EMC) in LeanIX with correct ownership and URLs. Ensure alignment with CMDB and enable accurate service mapping and monitoring onboarding.
 
 ---
@@ -1416,7 +1416,7 @@
 - **Assigned:** Balaji Ravi
 - **Systems:** #system:cmdb
 - **Relevance:** 92/100
-- **Tags:** #project:lapu-lapu #program:r2r #worktype:disaster-recovery #outcome:resilience #priority:regulatory
+- **Tags:** #project:lapu-lapu #program:r2r #worktype:disaster-recovery #outcome:resilience #priority:regulatory #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Complete Rapid Recovery Plans for the 6 regulatory-priority Gold applications using the mandatory standard template with 3 scenario types (restart-based, workaround+restart, non-restart). Reboot/restart sequences due June 10; full audit-ready RRP completion due June 30. RRPs must be submitted to Thabani for validation and KB publishing — no self-publishing. RRPs linked via PEM to CIs in Knowledge Base; production readiness gate requires RRP + SRD + DR.
 
 ---
@@ -1429,7 +1429,7 @@
 - **Assigned:** Balaji Ravi
 - **Systems:** #system:cmdb
 - **Relevance:** 85/100
-- **Tags:** #project:lapu-lapu #program:r2r #worktype:documentation #outcome:resilience
+- **Tags:** #project:lapu-lapu #program:r2r #worktype:documentation #outcome:resilience #area:cmdb-mapping #area:rapid-recovery
 - **Description:** Pull and integrate restart runbooks from Kanagaraj's team into the RRP baseline for Gold applications. Restart procedures are a critical prerequisite — restart-based recovery scenarios cannot be authored without validated reboot/restart sequences. Identify restart-resolvable failure patterns from existing incident analysis for each Gold app. Dependency for T106.
 
 ---
@@ -1442,7 +1442,7 @@
 - **Assigned:** Balaji Ravi
 - **Systems:** #system:cmdb
 - **Relevance:** 90/100
-- **Tags:** #project:lapu-lapu #domain:batch #worktype:inventory #outcome:visibility #priority:blocker
+- **Tags:** #project:lapu-lapu #domain:batch #worktype:inventory #outcome:visibility #priority:blocker #area:cmdb-mapping #area:gocc-transition
 - **Description:** Produce a complete non-production batch job inventory covering job names, owning applications, supporting teams, and execution method (CA/manual). Consolidate cross-team batch ownership into a single view. This is the critical-path blocker for the L0/L1 batch transition to GOCC/GBO — without it the transition will stall. Arunpriyan to provide the raw batch job report; Balaji to consolidate and coordinate holistic reporting.
 
 ---
@@ -1455,7 +1455,7 @@
 - **Assigned:** David Klan
 - **Systems:** #system:cmdb
 - **Relevance:** 78/100
-- **Tags:** #project:lapu-lapu #domain:batch #domain:mft #worktype:coordination #outcome:transition-readiness
+- **Tags:** #project:lapu-lapu #domain:batch #domain:mft #worktype:coordination #outcome:transition-readiness #area:cmdb-mapping
 - **Description:** Aggregate and rationalize structured questions from all teams regarding manual batch processes, MFT integration details, and end-to-end ownership. Provide Japan system inventory baseline. Define MFT review scope (technical + process layers) and identify owner for MFT internal deep-dive session. Prerequisite for building transition readiness view (current vs target state) and aligning with GOCC/GBO on ownership boundaries.
 
 ---
@@ -1468,5 +1468,19 @@
 - **Assigned:** Hari Pothakamuri
 - **Systems:** #system:cmdb
 - **Relevance:** 80/100
-- **Tags:** #project:lapu-lapu #domain:batch #capability:automation #worktype:assessment
+- **Tags:** #project:lapu-lapu #domain:batch #capability:automation #worktype:assessment #area:cmdb-mapping
 - **Description:** Vikhyat to deliver automation demo once firewall opening is completed. Nandan to assess reuse of existing GOCC automation tooling for Japan batch operations. Validate automation feasibility vs manual fallback for non-production batch jobs. Feeds into end-state vision where end users trigger batch processes directly with minimized batch team involvement.
+
+---
+
+## T111 — Engage Harish Arasu on Cross-Market GOCC Application Onboarding (KLO)
+- **Status:** Open
+- **Created:** 2026-06-01
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #domain:gocc-handover #cross-market #klo #reporting #area:gocc-transition #area:employee-xp-dashboard
+- **Description:** Re-engage Harish Arasu (driving Kelvin Leung's KLO reduction initiative to onboard non-Gold applications across markets to GOCC MMM) using the Japan onboarding model as the template. Share the 2026LapuLapu Power BI dashboard view (Japan applications, metal rating, monitoring/alert/incident response categories) as the cross-market status-tracking reference, then confirm cadence and reporting hooks so Japan's onboarding progress and methodology are visible in the KLO program. Initial outreach on 2026-05-27 is unanswered; Birger requested this item be surfaced on the weekly status report until contact is re-established.
+- **Source:** Inbox — archive/RE_ KLO - application onboarding.eml

@@ -9,7 +9,7 @@
 - **Target Date:** 2026-05-29
 - **Status:** On Track
 - **Created:** 2026-04-06
-- **Tags:** #project:lapu-lapu
+- **Tags:** #project:lapu-lapu #area:employee-xp
 - **Description:** ### Progress Log of Applications added to the dashboard
 
 ### Progress Log
@@ -40,7 +40,7 @@
 - **Target Date:** 2026-06-26
 - **Status:** On Track
 - **Created:** 2026-04-06
-- **Tags:** #project:lapu-lapu
+- **Tags:** #project:lapu-lapu #area:dev-xp
 - **Description:** ### Progress Log of Applications added to the dashboard, Workload dashboard has been refined and KR updated
 
 ### Progress Log
@@ -63,7 +63,7 @@
 
 ---
 
-## KR003 — Japan OMM L2 Application Coverage
+## KR003 — Japan MMM L2 Application Coverage
 - **Objective:** O1
 - **Metric Type:** Numeric
 - **Start Value:** 0
@@ -72,8 +72,8 @@
 - **Target Date:** 2026-12-31
 - **Status:** Not Started
 - **Created:** 2026-04-06
-- **Tags:** #project:lapu-lapu #domain:observability #worktype:monitoring
-- **Description:** Number of major Japan applications achieving OMM Level 2 maturity. Target and current values to be defined.
+- **Tags:** #project:lapu-lapu #domain:observability #worktype:monitoring #area:mmm-l2
+- **Description:** Number of major Japan applications achieving MMM Level 2 maturity. Target and current values to be defined.
 
 ### Progress Log
 | Date | Value | Comment |
@@ -96,7 +96,7 @@
 - **Target Date:** 2026-12-31
 - **Status:** Not Started
 - **Created:** 2026-04-06
-- **Tags:** #project:lapu-lapu #outcome:resilience #domain:cloud
+- **Tags:** #project:lapu-lapu #outcome:resilience #domain:cloud #area:patching
 - **Description:** Patching cadence reduced to 14-day cycle for non-batch Japan applications. Patching moved to weekdays for non-Gold and non-batch targets.  Target and current values to be defined.
 
 ### Progress Log
@@ -120,7 +120,7 @@
 - **Target Date:** 2026-07-31
 - **Status:** On Track
 - **Created:** 2026-04-16
-- **Tags:** 
+- **Tags:** #area:gocc-transition
 - **Description:** Handover Application monitoring from PS to GOCC
 
 ### Progress Log
@@ -157,3 +157,74 @@
 | Date | Change |
 |------|--------|
 | 2026-05-22 | Created |
+
+
+---
+
+## KR007 — ADX Registration Coverage
+- **Objective:** O4
+- **Metric Type:** Numeric
+- **Start Value:** 0
+- **Target Value:** 65
+- **Current Value:** 0
+- **Target Date:** 2026-12-31
+- **Status:** Not Started
+- **Created:** 2026-06-04
+- **Tags:** #project:lapu-lapu #area:adx-registration #area:mmm-l2 #domain:observability
+- **Description:** Number of Japan applications with logs onboarded to Azure Data Explorer (ADX) with pattern alerts configured. Required for MMM L2 maturity.
+
+### Progress Log
+| Date | Value | Comment |
+|------|-------|---------|
+
+### Change Log
+| Date | Change |
+|------|--------|
+| 2026-06-04 | Created |
+
+---
+
+## KR008 — CMDB Mapping Completeness
+- **Objective:** O4
+- **Metric Type:** Numeric
+- **Start Value:** 0
+- **Target Value:** 65
+- **Current Value:** 0
+- **Target Date:** 2026-12-31
+- **Status:** Not Started
+- **Created:** 2026-06-04
+- **Tags:** #project:lapu-lapu #area:cmdb-mapping #system:cmdb #domain:data-quality #area:rapid-recovery
+- **Description:** Number of Japan applications with accurate CMDB CI structure (Primary CI, Supporting CI components, RR-execution CIs) reconciled and validated against ServiceNow. Prerequisite for Rapid Recovery automation and incident workflow.
+
+### Progress Log
+| Date | Value | Comment |
+|------|-------|---------|
+
+### Change Log
+| Date | Change |
+|------|--------|
+| 2026-06-04 | Created |
+
+---
+
+## KR009 — Rapid Recovery Plan Delivery
+- **Objective:** O4
+- **Metric Type:** Numeric
+- **Start Value:** 0
+- **Target Value:** 6
+- **Current Value:** 1
+- **Target Date:** 2026-06-30
+- **Status:** On Track
+- **Created:** 2026-06-04
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #program:r2r #outcome:resilience
+- **Description:** Number of Gold applications with audit-ready Rapid Recovery Plans (RRP) completed, validated by Thabani, and published. Ingenium delivered as the first plan; remaining 5 due 2026-06-30. Restart/reboot sequences for all 6 due 2026-06-10.
+
+### Progress Log
+| Date | Value | Comment |
+|------|-------|---------|
+| 2026-05-29 | 1 | Ingenium RRP completed |
+
+### Change Log
+| Date | Change |
+|------|--------|
+| 2026-06-04 | Created |

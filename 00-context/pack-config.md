@@ -16,6 +16,23 @@
 - **Temporal scope:** Data is current as of the export timestamp in the YAML frontmatter.
 - **Data scope:** This pack is a point-in-time snapshot. Missing items should be treated as unknown, not assumed absent. If something is not present, it may simply not have been registered yet.
 
+## Delivery Area Taxonomy (Lapu-Lapu)
+
+Weekly reports for `#project:lapu-lapu` are grouped by **delivery area**. Every task and key result that belongs to a delivery area must carry the matching canonical tag:
+
+| Delivery Area | Canonical Tag | Classification keywords |
+|---|---|---|
+| ADX Registration | `#area:adx-registration` | "ADX", "Azure Data Explorer" |
+| CMDB Mapping | `#area:cmdb-mapping` | "CMDB" (mapping / gap / relationships / CI structure) |
+| Employee XP Dashboard | `#area:employee-xp` | "Employee Experience", "Employee XP" |
+| Dev XP Dashboard | `#area:dev-xp` | "Developer Experience", "Dev XP", non-prod monitoring |
+| GOCC Transition | `#area:gocc-transition` | "PS-to-GOCC", "GOCC handover", "GOCC onboarding", "KT", "Shadow", "Reverse-Shadow", "scaffolding pack" |
+| MMM L2 | `#area:mmm-l2` | "MMM", "OMM" (legacy), "Observability Maturity" |
+| Patching | `#area:patching` | "patching", "patch cycle" |
+| Rapid Recovery | `#area:rapid-recovery` | "Rapid Recovery", "RRP", "R2R", "recovery plan" |
+
+A single task may carry multiple `#area:*` tags when work spans areas (e.g. CMDB Mapping enabling Rapid Recovery). Tasks tagged only `#project:epsilon` (no Lapu-Lapu area) are out of scope for the Lapu-Lapu weekly report.
+
 ## How Copilot Should Behave
 1. **Start with a 1-page executive weekly report.** Group progress by Tier-1 objective, highlight risks, and list deferred work.
 2. **Ask 5 clarifying questions** before expanding or refining any section.

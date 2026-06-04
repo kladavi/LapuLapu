@@ -1,0 +1,344 @@
+Received: from YT1PR01MB9467.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01:aa::9)
+ by YQXPR01MB6656.CANPRD01.PROD.OUTLOOK.COM with HTTPS; Mon, 1 Jun 2026
+ 01:55:01 +0000
+Received: from YQBPR01MB10580.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:c01:76::19)
+ by YT1PR01MB9467.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01:aa::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.6; Mon, 1 Jun 2026
+ 01:54:59 +0000
+Received: from YQBPR01MB10580.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::8896:6918:2081:5d9e]) by YQBPR01MB10580.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::8896:6918:2081:5d9e%4]) with mapi id 15.21.0092.005; Mon, 1 Jun 2026
+ 01:54:59 +0000
+From: =?iso-2022-jp?B?QmlyZ2VyIEZqYWVsbG1hbiAbJEIhSiVVJSMlKCVrJV4lcxsoQiA=?=
+ =?iso-2022-jp?B?GyRCJVMlayUkJSclayFLGyhC?= <Birger_Fjaellman@manulife.com>
+To: David Klan <David_Klan@manulife.com>,
+	=?iso-2022-jp?B?QmFsYWppIFJhdmkgGyRCIUolaSV0JSMbKEIgGyRCJVAlaSU4IUsbKEI=?=
+	<balaji_ravi@manulife.com>
+Subject: RE: KLO - application onboarding
+Thread-Topic: KLO - application onboarding
+Thread-Index: AdztexL8o790v6ElSyOv/rRB+8GhBAAJgexAAAEDV74A8REs3wAADKYw
+Date: Mon, 1 Jun 2026 01:54:59 +0000
+Message-ID:
+	<YQBPR01MB10580CD0A2D591736A6DA069C98152@YQBPR01MB10580.CANPRD01.PROD.OUTLOOK.COM>
+References:
+	<YT3PR01MB8994EC3C939BB1D4C06C7C9D91082@YT3PR01MB8994.CANPRD01.PROD.OUTLOOK.COM>
+ <YT3PR01MB817727114C6944F273145389D0082@YT3PR01MB8177.CANPRD01.PROD.OUTLOOK.COM>
+ <YT2PR01MB6644AB2FA606D107CDC0FADB8D082@YT2PR01MB6644.CANPRD01.PROD.OUTLOOK.COM>
+ <YQXPR01MB665661BC3C8EDF39B543EC8B8D152@YQXPR01MB6656.CANPRD01.PROD.OUTLOOK.COM>
+In-Reply-To:
+	<YQXPR01MB665661BC3C8EDF39B543EC8B8D152@YQXPR01MB6656.CANPRD01.PROD.OUTLOOK.COM>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource:
+	YQBPR01MB10580.CANPRD01.PROD.OUTLOOK.COM
+X-MS-Exchange-Organization-ComplianceLabelId:
+	ae261b7a-b705-4c4a-8cba-01ad3686f6fb
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-Network-Message-Id:
+	c5345583-d6ac-4f01-b67a-08debf80c9a3
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels:
+	MSIP_Label_5a27cab5-59e6-424d-abbb-227cd06504a3_Enabled=True;MSIP_Label_5a27cab5-59e6-424d-abbb-227cd06504a3_SiteId=5d3e2773-e07f-4432-a630-1a0f68a28a05;MSIP_Label_5a27cab5-59e6-424d-abbb-227cd06504a3_SetDate=2026-06-01T01:54:08.1260000Z;MSIP_Label_5a27cab5-59e6-424d-abbb-227cd06504a3_Name=Internal;MSIP_Label_5a27cab5-59e6-424d-abbb-227cd06504a3_ContentBits=3;MSIP_Label_5a27cab5-59e6-424d-abbb-227cd06504a3_Method=Standard
+x-ms-publictraffictype: Email
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(425001)(930201)(20251009189)(140003)(1420198);
+X-Microsoft-Antispam-Message-Info:
+	5tZob4FPm7IY6WAK4JzOT/fw+ZxMC6qPFNcQOfEYVj1g24qelKBH3vSul/qOmvnLJO7i/DfLFHRt0CL9Pds35aE+V84lpdSvX82ElUDMPIj1dZVZnZQ8r0Lvky+Ei1jT4wU9OUIuvzlxgwzm8nYkRLPQ4S9HD1BYkqzcOrAWgU0FFfsxMifZOx2LxUM234hj2diQUioA6kxYXpq2NmjhQ0lBIe8MKdcuNZ0+ud8/TPUibwZ/AfjHS93epsk4DZ2eyZJT1CWy4w/foujuAlDvcjA/KJPSa2JtEplXmBxjGX5LJ+gf6Y9sFQ8AG/26GdaBGYPOkHH0EgxZb+jrPmZ9KNUCvQD7frqWsDnLRYc3a4Kv5bw4GRerWrHeukOxPII8LvQ9a6cVlS6hH/yb5KXYjzmpYb1x75YI5UhAw7abI4eDLl7IjER5GGK8OPkcphhZFKb/UlMtPTWf/NLP3K0xQOAQ+HAV1rQ+SiWZJ2GFfAPAArFOagDWt74WLtL6tgC6Vt08CvZ7YBrbOGT5sm9kCGBgDmMuR4te2sPhnItt4jkG9KJY+y9MiwwDIkDy1yq/Pw6/DLjKmWfHPUQSvLop8TreORU2u832Yfee4qggHbgVfs+myO/NbmADaocageefISXt8laJS1SDVaqWEOfu4J2b/mk6WCARtivZxzs1R+OmgeFENw+qXNj6pXJT8asF1rUZJBsXtrEcmqfICi5ktsmyrGZl5dDuGOvJxQLimwIi0XFulty95+2hMcJm9OnjvuGvCKsVkPAcgftZkSucoofl0Qoer7Bh+Svk4QWbHxN/FnkPW8rSnzNkxcv88Mcw
+Content-Type: multipart/alternative;
+	boundary="_000_YQBPR01MB10580CD0A2D591736A6DA069C98152YQBPR01MB10580CA_"
+MIME-Version: 1.0
+
+--_000_YQBPR01MB10580CD0A2D591736A6DA069C98152YQBPR01MB10580CA_
+Content-Type: text/plain; charset="iso-2022-jp"
+
+Please add to report
+
+Best Regards/よろしくお願いいたします。
+
+Birger Fjaellman | ビルイェル・フィエルマン
+AVP|Head of Technology Services Japan|Enterprise Technology & Services
+Mobile: +81-80 5024 6491
+Manulife | マニュライフ生命保険株式会社
+
+From: David Klan <David_Klan@manulife.com>
+Sent: Monday, June 1, 2026 10:54 AM
+To: Balaji Ravi （ラヴィ バラジ） <balaji_ravi@manulife.com>; Birger Fjaellman （フィエルマン ビルイェル） <Birger_Fjaellman@manulife.com>
+Subject: Fw: KLO - application onboarding
+
+FYI - Not getting response from Harish
+
+________________________________
+From: David Klan <David_Klan@manulife.com<mailto:David_Klan@manulife.com>>
+Sent: Wednesday, May 27, 2026 3:54 PM
+To: Harish Arasu <harish_arasu@manulife.com<mailto:harish_arasu@manulife.com>>
+Cc: Kelvin Leung <Kelvin_YK_Leung@manulife.com<mailto:Kelvin_YK_Leung@manulife.com>>; Julian Wai <Julian_Wai@manulife.com<mailto:Julian_Wai@manulife.com>>
+Subject: Re: KLO - application onboarding
+
+Hi @Harish Arasu<mailto:harish_arasu@manulife.com>
+
+I added you to our dashboard 2026LapuLapu - Power BI<https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapp.powerbi.com%2Fgroups%2F93140576-da25-430f-a8e3-bf136d165f63%2Freports%2Feb41fe5e-1b07-40f5-9359-e5cb43222151%2Fc1ce4a4b142b70b368d8%3Fctid%3D5d3e2773-e07f-4432-a630-1a0f68a28a05%26experience%3Dpower-bi&data=05%7C02%7CDavid_Klan%40manulife.com%7Cc5345583d6ac4f01b67a08debf80c9a3%7C5d3e2773e07f4432a6301a0f68a28a05%7C0%7C0%7C639158757018304384%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=8NmFZ2Q9OEco2vWgHYn4Ga9lCMG7mJj1gJ3n1t%2FJlDM%3D&reserved=0>
+This shows the list of Japan Applications, metal rating, and categories of monitoring/alert/incident response improvements for status tracking.
+
+Best regards,
+David
+
+INTERNAL
+________________________________
+From: Kelvin Leung <Kelvin_YK_Leung@manulife.com<mailto:Kelvin_YK_Leung@manulife.com>>
+Sent: Wednesday, May 27, 2026 3:25 PM
+To: Julian Wai <Julian_Wai@manulife.com<mailto:Julian_Wai@manulife.com>>; Harish Arasu <harish_arasu@manulife.com<mailto:harish_arasu@manulife.com>>
+Cc: David Klan <David_Klan@manulife.com<mailto:David_Klan@manulife.com>>
+Subject: RE: KLO - application onboarding
+
+
+Hi Harish,
+
+
+
+I need your help to get markets to onboard more applications to GOCC outside of Gold applications in order to reduce their Planview hours booked under ‘Incident Management‘ and ‘Monitoring & Alert Response’ tasks.  I am going to talk to CIOs in the next few days and ask for the contact in their team for you to work with on this effort.
+
+
+
+David Klan in JP has already managing the JP application onboarding effort.  Please engage him to get the detail from Japan first.
+
+Regards,
+Kelvin
+
+
+
+
+INTERNAL
+
+From: Julian Wai <Julian_Wai@manulife.com<mailto:Julian_Wai@manulife.com>>
+Sent: Wednesday, May 27, 2026 9:52 AM
+To: Harish Arasu <harish_arasu@manulife.com<mailto:harish_arasu@manulife.com>>
+Cc: Kelvin Leung <Kelvin_YK_Leung@manulife.com<mailto:Kelvin_YK_Leung@manulife.com>>
+Subject: KLO - application onboarding
+
+
+
+Hi Harish, Heads up, Kelvin (copied) is driving with markets CIOs to onboard more applications to GOCC OMM as part of KLO reduction initiative.  Once confirmed with markets, Kelvin will connect with you.  Suggest you re-initiate the process with GOCC team and use the same template.  Regards, Julian
+
+
+
+INTERNAL
+
+INTERNAL
+
+
+INTERNAL
+
+--_000_YQBPR01MB10580CD0A2D591736A6DA069C98152YQBPR01MB10580CA_
+Content-Type: text/html; charset="iso-2022-jp"
+
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-2022-jp">
+<meta name="Generator" content="Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:"ＭＳ ゴシック";
+	panose-1:2 11 6 9 7 2 5 8 2 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:游ゴシック;
+	panose-1:2 11 4 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Aptos;}
+@font-face
+	{font-family:"ＭＳ Ｐゴシック";
+	panose-1:2 11 6 0 7 2 5 8 2 4;}
+@font-face
+	{font-family:"\@游ゴシック";
+	panose-1:2 11 4 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"\@ＭＳ Ｐゴシック";}
+@font-face
+	{font-family:"\@ＭＳ ゴシック";
+	panose-1:2 11 6 9 7 2 5 8 2 4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"ＭＳ Ｐゴシック";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+span.EmailStyle21
+	{mso-style-type:personal-reply;
+	font-family:游ゴシック;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	mso-ligatures:none;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:99.25pt 3.0cm 3.0cm 3.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext="edit" spidmax="1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext="edit">
+<o:idmap v:ext="edit" data="1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang="EN-GB" link="blue" vlink="purple" style="word-wrap:break-word">
+<div class="WordSection1">
+<p class="MsoNormal"><span style="font-size:11.0pt;font-family:游ゴシック">Please add to report<o:p></o:p></span></p>
+<p class="MsoNormal"><span style="font-size:11.0pt;font-family:游ゴシック"><o:p>&nbsp;</o:p></span></p>
+<div>
+<p class="MsoNormal" style="margin-bottom:1.0pt"><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual">Best Regards/</span><span lang="JA" style="font-family:&quot;ＭＳ 明朝&quot;,serif;color:#4A4A4A;mso-ligatures:standardcontextual">よろしくお願いいたします。</span><span lang="EN-US" style="font-size:11.0pt;font-family:游ゴシック;color:#4A4A4A"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:1.0pt"><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:1.0pt"><b><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual">Birger Fjaellman</span></b><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual">
+ | </span><b><span lang="JA" style="font-family:&quot;ＭＳ 明朝&quot;,serif;color:#4A4A4A;mso-ligatures:standardcontextual">ビルイェル・フィエルマン</span></b><b><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual"><o:p></o:p></span></b></p>
+<p class="MsoNormal" style="background:white;vertical-align:baseline"><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual">AVP|Head of Technology Services Japan|Enterprise Technology &amp; Services<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:1.0pt"><span lang="EN-US" style="font-family:游ゴシック;color:#4A4A4A;mso-ligatures:standardcontextual">Mobile: +81-80 5024 6491
+<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:1.0pt"><b><span lang="EN-CA" style="font-family:游ゴシック;color:#00B050;mso-ligatures:standardcontextual;mso-fareast-language:ZH-HK">Manulife</span></b><span lang="EN-CA" style="font-family:游ゴシック;color:#00B050;mso-ligatures:standardcontextual;mso-fareast-language:ZH-HK">
+ |<b> </b></span><b><span lang="JA" style="font-family:&quot;ＭＳ ゴシック&quot;;color:#00B050;mso-ligatures:standardcontextual">マニュライフ生命保険株式会社</span></b><span lang="EN-US" style="font-family:游ゴシック;mso-ligatures:standardcontextual"><o:p></o:p></span></p>
+</div>
+<p class="MsoNormal"><span style="font-size:11.0pt;font-family:游ゴシック"><o:p>&nbsp;</o:p></span></p>
+<div>
+<div style="border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm">
+<p class="MsoNormal"><b><span lang="EN-US" style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">From:</span></b><span lang="EN-US" style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif"> David Klan &lt;David_Klan@manulife.com&gt;
+<br>
+<b>Sent:</b> Monday, June 1, 2026 10:54 AM<br>
+<b>To:</b> Balaji Ravi </span><span lang="JA" style="font-size:11.0pt">（ラヴィ</span><span lang="JA" style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">
+</span><span lang="JA" style="font-size:11.0pt">バラジ）</span><span lang="EN-US" style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif"> &lt;balaji_ravi@manulife.com&gt;; Birger Fjaellman
+</span><span lang="JA" style="font-size:11.0pt">（フィエルマン</span><span lang="JA" style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">
+</span><span lang="JA" style="font-size:11.0pt">ビルイェル）</span><span lang="EN-US" style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif"> &lt;Birger_Fjaellman@manulife.com&gt;<br>
+<b>Subject:</b> Fw: KLO - application onboarding<o:p></o:p></span></p>
+</div>
+</div>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black">FYI - Not getting response from Harish<o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black"><o:p>&nbsp;</o:p></span></p>
+</div>
+<div class="MsoNormal" align="center" style="text-align:center">
+<hr size="2" width="98%" align="center">
+</div>
+<div id="divRplyFwdMsg">
+<div>
+<p class="MsoNormal"><b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">From:</span></b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">&nbsp;David Klan &lt;<a href="mailto:David_Klan@manulife.com">David_Klan@manulife.com</a>&gt;<br>
+<b>Sent:</b>&nbsp;Wednesday, May 27, 2026 3:54 PM<br>
+<b>To:</b>&nbsp;Harish Arasu &lt;<a href="mailto:harish_arasu@manulife.com">harish_arasu@manulife.com</a>&gt;<br>
+<b>Cc:</b>&nbsp;Kelvin Leung &lt;<a href="mailto:Kelvin_YK_Leung@manulife.com">Kelvin_YK_Leung@manulife.com</a>&gt;; Julian Wai &lt;<a href="mailto:Julian_Wai@manulife.com">Julian_Wai@manulife.com</a>&gt;<br>
+<b>Subject:</b>&nbsp;Re: KLO - application onboarding<o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal">&nbsp;<o:p></o:p></p>
+</div>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black">Hi <a id="OWAAM859535" href="mailto:harish_arasu@manulife.com">
+<span style="font-family:&quot;Aptos&quot;,sans-serif;text-decoration:none">@Harish Arasu</span></a><o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black"><o:p>&nbsp;</o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black">I added you to our dashboard
+<a href="https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapp.powerbi.com%2Fgroups%2F93140576-da25-430f-a8e3-bf136d165f63%2Freports%2Feb41fe5e-1b07-40f5-9359-e5cb43222151%2Fc1ce4a4b142b70b368d8%3Fctid%3D5d3e2773-e07f-4432-a630-1a0f68a28a05%26experience%3Dpower-bi&amp;data=05%7C02%7CDavid_Klan%40manulife.com%7Cc5345583d6ac4f01b67a08debf80c9a3%7C5d3e2773e07f4432a6301a0f68a28a05%7C0%7C0%7C639158757018304384%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=8NmFZ2Q9OEco2vWgHYn4Ga9lCMG7mJj1gJ3n1t%2FJlDM%3D&amp;reserved=0" originalsrc="https://app.powerbi.com/groups/93140576-da25-430f-a8e3-bf136d165f63/reports/eb41fe5e-1b07-40f5-9359-e5cb43222151/c1ce4a4b142b70b368d8?ctid=5d3e2773-e07f-4432-a630-1a0f68a28a05&amp;experience=power-bi">
+2026LapuLapu - Power BI</a><o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black">This shows the list of Japan Applications, metal rating, and categories of monitoring/alert/incident response improvements for status tracking.<o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black"><o:p>&nbsp;</o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black">Best regards,<o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><span style="font-family:&quot;Aptos&quot;,sans-serif;color:black">David<o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+<div style="margin-left:5.0pt">
+<p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:8.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">INTERNAL<o:p></o:p></span></p>
+</div>
+<div class="MsoNormal" align="center" style="text-align:center">
+<hr size="2" width="98%" align="center">
+</div>
+<div id="x_divRplyFwdMsg">
+<div>
+<p class="MsoNormal"><b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">From:</span></b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">&nbsp;Kelvin Leung &lt;<a href="mailto:Kelvin_YK_Leung@manulife.com">Kelvin_YK_Leung@manulife.com</a>&gt;<br>
+<b>Sent:</b>&nbsp;Wednesday, May 27, 2026 3:25 PM<br>
+<b>To:</b>&nbsp;Julian Wai &lt;<a href="mailto:Julian_Wai@manulife.com">Julian_Wai@manulife.com</a>&gt;; Harish Arasu &lt;<a href="mailto:harish_arasu@manulife.com">harish_arasu@manulife.com</a>&gt;<br>
+<b>Cc:</b>&nbsp;David Klan &lt;<a href="mailto:David_Klan@manulife.com">David_Klan@manulife.com</a>&gt;<br>
+<b>Subject:</b>&nbsp;RE: KLO - application onboarding<o:p></o:p></span></p>
+</div>
+<div>
+<p class="MsoNormal">&nbsp;<o:p></o:p></p>
+</div>
+</div>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">Hi Harish,<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">I need your help to get markets to onboard more applications to GOCC outside of Gold applications in order to reduce their Planview hours booked under ‘Incident Management‘ and ‘Monitoring &amp; Alert Response’ tasks.&nbsp;
+ I am going to talk to CIOs in the next few days and ask for the contact in their team for you to work with on this effort.<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">David Klan in JP has already managing the JP application onboarding effort.&nbsp; Please engage him to get the detail from Japan first.<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif"><br>
+Regards,<br>
+Kelvin<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+<div>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+<p style="margin:5.0pt"><span style="font-size:8.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">INTERNAL<o:p></o:p></span></p>
+<div style="border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm">
+<p><b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">From:</span></b><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif">&nbsp;Julian Wai &lt;<a href="mailto:Julian_Wai@manulife.com">Julian_Wai@manulife.com</a>&gt;<br>
+<b>Sent:</b>&nbsp;Wednesday, May 27, 2026 9:52 AM<br>
+<b>To:</b>&nbsp;Harish Arasu &lt;<a href="mailto:harish_arasu@manulife.com">harish_arasu@manulife.com</a>&gt;<br>
+<b>Cc:</b>&nbsp;Kelvin Leung &lt;<a href="mailto:Kelvin_YK_Leung@manulife.com">Kelvin_YK_Leung@manulife.com</a>&gt;<br>
+<b>Subject:</b>&nbsp;KLO - application onboarding</span><span style="font-family:&quot;Aptos&quot;,sans-serif"><o:p></o:p></span></p>
+</div>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">Hi Harish, Heads up, Kelvin (copied) is driving with markets CIOs to onboard more applications to GOCC OMM as part of KLO reduction initiative.&nbsp; Once confirmed with markets, Kelvin will connect with you.&nbsp; Suggest
+ you re-initiate the process with GOCC team and use the same template.&nbsp; Regards, Julian<o:p></o:p></span></p>
+<p><span style="font-family:&quot;Aptos&quot;,sans-serif">&nbsp;<o:p></o:p></span></p>
+<p align="center" style="margin:5.0pt;text-align:center"><span style="font-size:8.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">INTERNAL</span><o:p></o:p></p>
+<div>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+<div style="margin-left:5.0pt">
+<p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:8.0pt;font-family:&quot;Calibri&quot;,sans-serif;color:black">INTERNAL<o:p></o:p></span></p>
+</div>
+</div>
+</div>
+<br>
+<p style="font-family:Calibri;font-size:8pt;color:#000000;margin:5pt;font-style:normal;font-weight:normal;text-decoration:none;" align="Center">
+INTERNAL<br>
+</p>
+</body>
+</html>
+
+--_000_YQBPR01MB10580CD0A2D591736A6DA069C98152YQBPR01MB10580CA_--

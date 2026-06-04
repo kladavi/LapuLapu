@@ -4,6 +4,29 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-06-01 — RE: KLO - Application Onboarding (Cross-Market GOCC MMM)** #processed
+  - **Source:** archive/RE_ KLO - application onboarding.eml
+  - **From:** Birger Fjaellman (reply to David Klan's forward of the Kelvin Leung / Julian Wai / Harish Arasu thread)
+  - **Focus:** Cross-market KLO reduction initiative driven by Kelvin Leung — onboard non-Gold applications into GOCC MMM beyond Japan, using the Japan onboarding playbook and the 2026LapuLapu Power BI dashboard as the cross-market status reference.
+  - **Key outcomes:**
+    1. Kelvin Leung is engaging market CIOs to onboard more applications into GOCC MMM to reduce Planview hours booked under Incident Management and Monitoring & Alert Response (the KLO categories).
+    2. Julian Wai directed Harish Arasu to re-initiate the GOCC onboarding process for new markets using the same template, with David Klan as the Japan reference contact.
+    3. David shared the 2026LapuLapu Power BI dashboard (Japan applications, metal rating, monitoring/alert/incident response categories) with Harish on 2026-05-27; Harish has not responded.
+    4. Birger requested this item be added to the weekly status report so the stalled outreach stays visible until contact with Harish is re-established.
+  - **Actions extracted → T111**
+  - **Actions referenced → T070, T077, T081**
+
+- **2026-04-13 — Fw: URL/API [TEST - UAT] Morning Health Check (TEM Daily Non-Prod Report)** #processed
+  - **Source:** archive/Fw_ URL_API [TEST - UAT] - Morning Health Check- Automation Execution Results Summary - 2026-03-26 09_31_02 (1).eml
+  - **From:** David Klan forward (Kiran Puthanveettil Mohandas → David Klan/Birger; original sender Rupesh Mishra) to Rae Judavar, Mary Kris Cabunilas, Yam Villanueva, Dennis Talento
+  - **Focus:** TEM team's automated daily non-prod environment health check report (URL/API status across ~120 application/environment endpoints for AIS, Apollo, Cone, CWS SFDC, IACB, Ingenium, Iwin, Magellan, MLK, NBBPM, PA-Web, SCV, SSW, etc.) shared with the Developer Experience Dashboard team as a reference dataset.
+  - **Key outcomes:**
+    1. Confirms TEM already publishes a daily non-prod URL/API health summary covering most Japan non-prod environment groups — overlaps with the Developer Experience Dashboard coverage scope.
+    2. ePOS environments are not in the TEM daily report (gap previously called out in the 2026-03-26 GOCC New Relic Monitoring meeting and tracked under T013/T014).
+    3. Useful as a reconciliation source for the 50/60 non-prod environment groups currently in the Developer Experience Dashboard and for future Service ID workaround design.
+  - **Actions extracted → none (reference artifact)**
+  - **Actions referenced → T013, T014, T093**
+
 - **2026-05-28 — Batch Non-Prod Team Syncup: L0/L1 Transition & Inventory Baseline** #processed
   - **Source:** 20260528+-+Batch+Non-Prod+Team+syncup.doc
   - **From:** Confluence export (Batch Non-Prod team syncup meeting notes)

@@ -1,0 +1,13 @@
+import { parseObjectives, parseTasks, parseKeyResults, parseDecisions, parseTeams, parseSystems } from "./src/lib/parsers.ts";
+import fs from "fs";
+const objs = parseObjectives(fs.readFileSync('../00-context/objectives.md','utf8'));
+const tasks = parseTasks(fs.readFileSync('../02-work/tasks.md','utf8'));
+const krs = parseKeyResults(fs.readFileSync('../02-work/key-results.md','utf8'));
+const decs = parseDecisions(fs.readFileSync('../02-work/decisions.md','utf8'));
+const teams = parseTeams(fs.readFileSync('../00-context/teams.md','utf8'));
+const sys = parseSystems(fs.readFileSync('../00-context/systems.md','utf8'));
+console.log('objectives:', objs.length, 'tasks:', tasks.length, 'krs:', krs.length, 'decisions:', decs.length, 'teams:', teams.length, 'systems:', sys.length);
+console.log('KR ids:', krs.map(k=>k.id).join(','));
+console.log('first task:', tasks[0]?.id, JSON.stringify(tasks[0]?.title?.slice(0,80)));
+console.log('last task:', tasks[tasks.length-1]?.id, JSON.stringify(tasks[tasks.length-1]?.title?.slice(0,80)));
+console.log('tier1 objectives:', objs.filter(o=>o.tier===1).length, 'tier2:', objs.filter(o=>o.tier===2).length);

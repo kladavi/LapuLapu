@@ -7,7 +7,7 @@ export interface TagSuggestion {
   tag: string;                        // e.g. "#system:newrelic"
   confidence: "high" | "medium";
   source: string;                     // the keyword that triggered the match
-  category: "system" | "project" | "team";
+  category: "system" | "project" | "team" | "area";
 }
 
 /**
@@ -50,9 +50,10 @@ export function suggestTags(
   scan(keywordMap.systems, "system");
   scan(keywordMap.projects, "project");
   scan(keywordMap.teams, "team");
+  scan(keywordMap.areas, "area");
 
   // Sort: high before medium, then by category order, then alphabetical
-  const catOrder: Record<string, number> = { project: 0, system: 1, team: 2 };
+  const catOrder: Record<string, number> = { project: 0, area: 1, system: 2, team: 3 };
   results.sort((a, b) => {
     const confDiff = (a.confidence === "high" ? 0 : 1) - (b.confidence === "high" ? 0 : 1);
     if (confDiff !== 0) return confDiff;
@@ -123,6 +124,7 @@ export function generateIntakePrompt(
     dumpMap("Systems", keywordMap.systems);
     dumpMap("Projects", keywordMap.projects);
     dumpMap("Teams", keywordMap.teams);
+    dumpMap("Delivery Areas", keywordMap.areas);
   }
 
   lines.push("## Instructions\n");
