@@ -1,0 +1,354 @@
+Date: Thu, 4 Jun 2026 07:11:31 +0000 (UTC)
+Message-ID: <1402367646.101.1780557091276@7e291072adcd>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_100_329274662.1780557091276"
+
+------=_Part_100_329274662.1780557091276
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260604 - Lapu-Lapu GOCC and Japan</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260604 - Lapu-Lapu GOCC and Japan</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"a7b3c1b16d7e" id=3D"id-20260604-Lapu-LapuGOCCandJap=
+an-ApplicationMonitoringOnboarding&amp;DashboardReview=E2=80=93MeetingNotes=
+">Application Monitoring Onboarding &amp; Dashboard Review =E2=80=93 Meetin=
+g Notes</h1>
+<p local-id=3D"ab4e4fb8021d"></p>
+<p local-id=3D"b3d40f75806c"><strong>GOCC Dashboard for ongoing service and=
+ responses to Japan-related alerts/incidents</strong></p>
+<p local-id=3D"b6e9dfebfa8a"></p>
+<p local-id=3D"70497fd75b9e"><strong><u>Dashboards</u></strong></p>
+<p local-id=3D"d0fb5458ee43">Prod - <strong>Employee Experience Dashboard <=
+/strong></p>
+<ul local-id=3D"77ce0270a2d1">
+<li local-id=3D"d9051a5a5ebe">
+<p local-id=3D"5f564c02ff39">David set up meeting with PS Team to share das=
+hboard and also Branch Office monitoring</p></li>
+</ul>
+<p local-id=3D"fdd5dbc8bef3">Non-Prod -<strong> Developer Experience Dashbo=
+ard</strong></p>
+<ul local-id=3D"426970a078e3">
+<li local-id=3D"9a603cc2ad33">
+<p local-id=3D"4cfbcdea01d2">Check the current configuration for Health Che=
+ck email to replace current TEM work</p></li>
+<li local-id=3D"d4e66c1b256e">
+<p local-id=3D"c84d79c9a14d">Decide what to do with alerts =E2=86=90 Check =
+in with TEM Sangram and Rupesh</p></li>
+<li local-id=3D"29e2fef75f55">
+<p local-id=3D"c7cf9a4c7cd0"><img height=3D"250" style=3D"margin: 2px; bord=
+er: 1px solid #ddd; box-sizing: border-box; vertical-align: text-bottom;" s=
+rc=3D"00c6baf2885e49d972620f047eaf2a0683d1c6cde6e43ba34b1095d2aeeda7bb" wid=
+th=3D"250"></p></li>
+</ul>
+<p local-id=3D"8043234373e5"><strong>URL Monitoring Transition to GOCC</str=
+ong></p>
+<ul local-id=3D"2de3763b6f7d">
+<li local-id=3D"eeba575180c9">
+<p local-id=3D"6b36084452c7">Jonan update Onboarding data source for diff c=
+heck against SNOW to catch quality issues with the data.</p></li>
+<li local-id=3D"00209ec83326">
+<p local-id=3D"eda6dd8e5878">Some Onboarding data has issues like strike-th=
+ru fonts</p></li>
+</ul>
+<p local-id=3D"f18e998d0867"><strong>Branch dashboards and DC Minions</stro=
+ng> - Comparison reports between nodes</p>
+<ul local-id=3D"f64a3a021bca">
+<li local-id=3D"c4afa575c668">
+<p local-id=3D"9a838efdd487">OAR Team: <a class=3D"external-link" href=3D"m=
+ailto:debamalya_das@manulife.com" rel=3D"nofollow">debamalya_das@manulife.c=
+om</a>; <a class=3D"external-link" href=3D"mailto:edward_ian_vera@manulife.=
+com" rel=3D"nofollow">edward_ian_vera@manulife.com</a>; <a class=3D"externa=
+l-link" href=3D"mailto:jesusjr_pepito@manulife.com" rel=3D"nofollow">jesusj=
+r_pepito@manulife.com</a>; <a class=3D"external-link" href=3D"mailto:paula_=
+segovia@manulife.com" rel=3D"nofollow">paula_segovia@manulife.com</a></p></=
+li>
+<li local-id=3D"d54f9c041665">
+<p local-id=3D"bf2b6210f481">Requirements: David put together PRD and send =
+to OAR</p></li>
+</ul>
+<p local-id=3D"b384c0b41c1a"><strong>xMatters</strong> - quality report for=
+ Japan</p>
+<ul local-id=3D"13db92d0524a">
+<li local-id=3D"90f8a5eed8cd">
+<p local-id=3D"3ce7d91f5c8c">OAR Jonan/Edward engage vendor for xMatters qu=
+ality control (Updated group and member registration)</p></li>
+</ul>
+<p local-id=3D"db6ec6528deb"><strong>SMS spam Incident</strong> - Monitorin=
+g Team response</p>
+<p local-id=3D"688319e6cd59"><strong>ADX</strong>: GOCC can check if FW ope=
+n and agent is installed</p>
+<p local-id=3D"394ad55293ef"><strong>File Share / File Transfer</strong>: s=
+eparate from Lapu-Lapu for now</p>
+<p local-id=3D"769350b1757f"></p>
+<p local-id=3D"93e2b16ca031"></p>
+<p local-id=3D"36478e9d4d23"></p>
+    </div>
+</body>
+</html>
+------=_Part_100_329274662.1780557091276
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/00c6baf2885e49d972620f047eaf2a0683d1c6cde6e43ba34b1095d2aeeda7bb
+
+iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAADAFBMVEX19fXv7+98fHx1dXV9fX23
+t7eenp5wcHDn5+f09PTz8/Pd3d2SkpLY2Njt7e3Q0NCioqJycnKqqqq7u7uurq6CgoKGhobOzs7D
+w8PR0dGNjY3Hx8fj4+PGxsbS0tKoqKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABYhwFnAAAFh0lEQVR4Xu3ciXKqSBQG4APK4oKaUqNWliHv/1BDzcyt7PHGLSoq
+0wsgtCSlqRHi+H+3ZDk0rQfopm5YiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAE6ApgaOw95sSmrsE2tdn6uxE2aXDVuNfcY29L3LngDTUCNfMUw1chS6GjiKvY92obRR
+IyfMUgNfO7D4N+Wz13+kM079oEb4beW1Gmn0zYXe6QYLdQG3W/wYCkrdmZU+lgGtJ05W7jvFT5ja
+b/WsgZwYWE56iaAWP2VKLo3ybTTZLDWSS6R8Ui+km7to/RVNvjcvkkvyVFYDeZh9bKcXhfyC/ChH
+cCnxn6YG72iV5f/fA75SDrYzo8L2ehGp/xBI/Rwh9XNUWOr5nMC+UljqxUPq5wipnyOkfo6Q+jlC
+6sWpVqtqKCeFpM6T9cMrySVjRpVCsi8i9Y93m+3slpxxNkTBe7pAPopInapNmrWGfeJ/kX+dETUL
+2euFXHgK9DmNqqWa3hk6AUvd+EhfUc/nwlMhqdfHVZ+W5JSm+tgnqn1U01fe8kk9H+rfJW6sxO0y
+tn61nRHU4qdsJ5d2uRZNOlY7uYTbKX7CdnO50Vs9u1Kxe62yus+zip+ujFwaRr1sXZTrRsadexnF
+T9aBuRxY/JsKOa//DEj9yNYH3fpp53Nazyd1/aBk1jn9KDVwFHpwyO3BOaWecWo5hvO9KRwAAAAA
+AAAAAAAAjs51XTX0E7h8IB+wE5PkhQtUrheNXKJ7ak9GcSxmapXfvAwvYEyDeLkXVc6nwykvCgg3
+TySrpEb9lYh/OEMn2vhEWs3fBpmrhzJfyMr3hwMvDtN2jW2FXwufLfRSwc95pN08Zjx7zH7hVIxZ
+gca8+5Rc5FG8peQw7ak+7dzzKyHawirPLvkGZK5e6r4x6T3S4LX3981jM7697OViMalWeGLDyygm
+xGvEFe7FlaMav7DNtl3Fus5Y6oZT17xUGIsMLBKPpIswLyAmtsXkOJrbYfMqTT6IlPhtdWaJSPyU
+a+VSlCiv1BevwYUFmLZlWfUqK/sHm7jqsEEtXDFV55RuqXZ7TQ36Jxnew9qhyt4bepd4bY2WfJxb
+3ERlxc+7pt5rU601Vsl5KbVGXP5q0rFMnxd/MK32y5gNonXD1F2OqPlA/p8zmu7c2LOl3T7v3uBX
+fX+l+auMa4PnrBYhiK9x1SjRTDzfuwp3EDfnG5J/ms+O5jxvi7JKLrvvGa/4idfgZIXMS+vXaNzl
+YXM8ehvwQbhEaetrjTTDIT/rBRKCywe1oRIl31rQvFSf8QL3b+2JujziqQHJ1EpL9tttc1Jftmfp
+Zc+1pbl0xomIV+3QMjGfQVYoPLDPHd8sbGfPxSDsd0JuOG5Y1+Jf+ti1xF7kzcdl27Vn1UlttpbY
+m9smHk9E83IczSlM+QWyVYeNVLzDwolabD/ZDVBcyk3GEmuEFYpo1Gu5yYEYp/uPES1YM19Q4vly
+ThyE4e28wWPZVw9om948z3ujva+hp3Q0S5yJUu13xfurRRRaKD9o57Cj5BpRhcLn17aVrjN4CsQn
+ZTPs23Z/GL1LZLpSXy+x8flXjVb7p+5uP/2xJn9oR7TqsJvpf7Qbba3DdltPq3VnvowyVt9uXK0y
+OqN4jbhCXvvFQ8e228pBIympt+/YWepOqdjfDINguHmJ5ru8/SQ7LE2eYbuJV1Bky+rmhoM+i7Gt
+9lhnrdq4l9Ffm8n7ZPPINutvc2VY251xMQwWL6K3YRUl64rXiCvkHi7HQTBR95WgqYH/lvtp1wYF
++myvu3LkJWO7XDnykrEjceXIS8YEV468ZAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAP4FKSJMdeSK598AAAAASUVORK5CYII=
+------=_Part_100_329274662.1780557091276--

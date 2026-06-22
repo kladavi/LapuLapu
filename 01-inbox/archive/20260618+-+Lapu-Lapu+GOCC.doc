@@ -1,0 +1,475 @@
+Date: Thu, 18 Jun 2026 07:26:04 +0000 (UTC)
+Message-ID: <1223437677.113.1781767564402@c39498f547ec>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_112_101349099.1781767564401"
+
+------=_Part_112_101349099.1781767564401
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260618 - Lapu-Lapu GOCC</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260618 - Lapu-Lapu GOCC</h1>
+    <div class=3D"Section1">
+        <p local-id=3D"8d5b5639b938">Generated by AI. Be sure to check for =
+accuracy.</p>
+<p local-id=3D"d9f1573e56e9">Meeting notes:</p>
+<ul local-id=3D"b7362ce8-f6a8-476f-951a-af848929413a">
+<li local-id=3D"836ffde8-c338-4903-be5f-739c4df48c6c">
+<p local-id=3D"dcdbba5232f0"><strong>Employee and Developer Experience Dash=
+boards: </strong>David updated the team, including Rae and Jonan, on progre=
+ss with the employee experience and business capability dashboards, discuss=
+ed feedback from the sales team, and outlined ongoing efforts to integrate =
+external monitoring data and refine the developer experience dashboard, par=
+ticularly addressing recurring issues with the Solace application.</p>
+<ul local-id=3D"050801aa-1d27-4ef0-bfb7-d7c2f56e9571">
+<li local-id=3D"6e7590d6-ca95-4139-8f06-4d5f6334c962">
+<p local-id=3D"697d6dee532f"><strong>Sales Team Feedback: </strong>David re=
+ported that a member of the sales team and other key business stakeholders =
+found the employee experience and business capability dashboards very usefu=
+l for monitoring branch office and application status, and requested furthe=
+r access and feedback mechanisms.</p></li>
+<li local-id=3D"89267b68-9165-4245-b824-1278e3f4532b">
+<p local-id=3D"27ae673f2d86"><strong>Integration with New Relic and Power B=
+I: </strong>David and Rae are exploring the possibility of importing extern=
+al reports from New Relic into Power BI to enhance dashboard functionality,=
+ while also working to provide direct access to New Relic for relevant busi=
+ness users.</p></li>
+<li local-id=3D"4cee2df9-92eb-4537-8730-efb3616891f1">
+<p local-id=3D"55a3b4abe0d8"><strong>Developer Experience Dashboard Refinem=
+ent: </strong>David described ongoing refinement of the developer experienc=
+e dashboard, focusing on the Solace application, which exhibits unstable en=
+vironments; he has contacted the app owner and is collaborating with the te=
+st environment team to investigate and address the recurring system errors.=
+</p></li>
+<li local-id=3D"ebd97da5-d4b8-4cff-8580-81440821af08">
+<p local-id=3D"b9e29ca70900"><strong>Alert Process Improvement: </strong>Jo=
+nan emphasized the need to reinforce processes for recurring alerts, ensuri=
+ng that such issues are promptly identified and addressed, and discussed co=
+ordination with Mark and the test environment management team to improve mo=
+nitoring and escalation procedures.</p></li>
+</ul></li>
+<li local-id=3D"d00b9b50-8375-4c31-88ea-a11e5febd188">
+<p local-id=3D"7d2c88bfd8b1"><strong>Automated Monitoring and Incident Resp=
+onse Enhancements: </strong>Jonan, Mary, and Mark discussed plans to automa=
+te monitoring and incident response for non-production environments, includ=
+ing integration with Moogsoft and Ansible, and outlined interim manual proc=
+esses and timelines for implementation.</p>
+<ul local-id=3D"a7c23777-cdaa-412a-b14d-759ef0cd6a8b">
+<li local-id=3D"25b2e7ce-3d1f-43dd-976b-4b0252f02ddc">
+<p local-id=3D"41e734de4205"><strong>Moogsoft and Ansible Integration Plan:=
+ </strong>Jonan explained that the team plans to integrate monitoring alert=
+s with Moogsoft, triggering an Ansible script to automatically restart serv=
+ices upon failure; if the automated restart fails, incidents will escalate =
+to GOCC and, if necessary, to L2 support.</p></li>
+<li local-id=3D"e57cf22a-2168-4b5c-8ed3-18bb6c714511">
+<p local-id=3D"cf5117ba6bc2"><strong>Implementation Timeline: </strong>Mary=
+ provided an estimated timeline, stating that Moogsoft integration is expec=
+ted by the end of the month or early next month, while Ansible integration =
+will require additional testing and will be implemented after initial Moogs=
+oft deployment.</p></li>
+<li local-id=3D"8af99f68-2592-4044-8fdc-8a53cab96050">
+<p local-id=3D"8c43a933f615"><strong>Manual Interim Process: </strong>Until=
+ full automation is achieved, the team will manually run the Ansible script=
+ in response to incidents, with Moogsoft registering incidents after valida=
+tion and requiring human intervention for service restarts.</p></li>
+<li local-id=3D"3ebdc324-3278-46a3-8f1c-803afd6deb28">
+<p local-id=3D"a3c83962fc39"><strong>Root Cause Analysis and Alert Routing:=
+ </strong>Jonan noted that the current L2 team is investigating the root ca=
+uses of repeated failures, and MK is working with the observability team to=
+ ensure alerts are properly routed to GOCC, addressing previous issues with=
+ reactive incident handling.</p></li>
+</ul></li>
+<li local-id=3D"3462be87-1c87-41dc-855b-be3c2c471c7b">
+<p local-id=3D"edf67fcc0991"><strong>Firewall Approvals and Application URL=
+ Monitoring: </strong>Balaji, Rae, Mark, and Jonan discussed the status of =
+firewall approvals required for Enginium application URL monitoring in non-=
+production environments, clarified the approval process, and addressed issu=
+es with outdated URLs and validation procedures.</p>
+<ul local-id=3D"04ffa27b-9a93-4c69-a973-e137f8da7054">
+<li local-id=3D"863ad403-d167-4096-b154-1abb41e29891">
+<p local-id=3D"1e235924762d"><strong>Pending Firewall Requests: </strong>Ra=
+e reported that a firewall request for Enginium is pending approval, with c=
+oordination ongoing with the observability team and Paula, and Mark clarifi=
+ed that the request involves switching to Azure jump due to decommissioning=
+ of the on-premise server.</p></li>
+<li local-id=3D"21392a5c-c4c7-4230-a673-2a881a137da0">
+<p local-id=3D"13e800c0ef42"><strong>Validation and Monitoring Impact: </st=
+rong>Balaji highlighted that incomplete firewall approvals previously preve=
+nted GOCC from completing application validation during non-production patc=
+hing, and expressed hope that completion would enable validation for upcomi=
+ng production patching.</p></li>
+<li local-id=3D"bab43452-3224-41ad-a160-3d7847664ba7">
+<p local-id=3D"788995ad203c"><strong>URL Accuracy and Updates: </strong>Dav=
+id pointed out that some Enginium environments listed in the monitoring she=
+et are outdated or incorrectly reference old environments, and Rae confirme=
+d that updated URLs have been provided and recorded in the worksheet.</p></=
+li>
+<li local-id=3D"93f69f8a-6ffc-441a-81ac-176e9fdef47b">
+<p local-id=3D"6f500e4ac231"><strong>Action Items for Approvals: </strong>J=
+onan instructed Mark and Rae to closely monitor the firewall approval proce=
+ss to ensure timely completion and avoid further delays in application moni=
+toring and validation.</p></li>
+</ul></li>
+<li local-id=3D"0245cb03-3923-407e-a7a0-9a23901c55f7">
+<p local-id=3D"891fd1e72d0a"><strong>L1/L2/L3 Support Roles and Runbook Cla=
+rification: </strong>Balaji, Jonan, Birger, and Dennis discussed the curren=
+t and future structure of L1, L2, and L3 support roles for Ingenium, clarif=
+ied escalation procedures, and agreed to maintain the current runbook until=
+ the GOCC operating model transitions in September.</p>
+<ul local-id=3D"ed693394-f256-4a0a-979a-91d7f19f2627">
+<li local-id=3D"307cfcf6-c866-4f6d-98aa-84934924c8d5">
+<p local-id=3D"8918fae883b9"><strong>Current Escalation Procedures: </stron=
+g>Balaji raised questions about the absence of L2 roles in the Ingenium run=
+book and sought clarification on escalation paths, particularly for scenari=
+os requiring immediate action or further investigation beyond L1 capabiliti=
+es.</p></li>
+<li local-id=3D"4cf210dc-fe74-468d-b2b0-6954e37c5e7f">
+<p local-id=3D"8f6d50504744"><strong>Future GOCC Operating Model: </strong>=
+Jonan explained that by September, the GOCC will transition to a unified op=
+erational team without L1/L2 silos, with a single engineer handling all sup=
+port tasks, and confirmed that the current structure and resources will rem=
+ain unchanged until then.</p></li>
+<li local-id=3D"9f9a5806-d5cc-4951-b9b2-7846cf9553f1">
+<p local-id=3D"49c7e821575f"><strong>Runbook Updates and Agreement: </stron=
+g>Balaji and Jonan agreed to retain the existing runbook for Japan market a=
+pplications until the new GOCC model is implemented, after which the runboo=
+k will be updated to reflect the revised support structure.</p></li>
+<li local-id=3D"e02877f5-b73c-408e-9bc0-5947c27400e8">
+<p local-id=3D"9192d46d82d9"><strong>Support Role Clarification: </strong>B=
+irger and Jonan clarified the procedural flow from automation (L0) through =
+L1 and L2, specifying that specialized troubleshooting not covered by proce=
+dures should escalate to L2, and only unresolved or complex issues should r=
+each L3.</p></li>
+</ul></li>
+<li local-id=3D"e8e5340f-ddd1-47e6-9ad7-e86baeb1f5f7">
+<p local-id=3D"3d73f9db99b6"><strong>GOCC Transition and Runbook Standardiz=
+ation: </strong>David, Jonan, Birger, and Rae discussed the ongoing transit=
+ion of applications to GOCC, the need for standardized and up-to-date runbo=
+oks, and challenges related to scope, sign-off, and automation of health ch=
+ecks and escalation procedures.</p>
+<ul local-id=3D"4f045cce-2859-4e65-b30f-78a74d8e3e74">
+<li local-id=3D"3466cd3d-9a97-4ad4-a69e-401d3c4bc447">
+<p local-id=3D"a2ba9f7293a7"><strong>Runbook Format and Maintenance: </stro=
+ng>David and Birger discussed the drawbacks of outdated or manually maintai=
+ned runbooks, suggesting improvements such as metadata extraction, version =
+control, and integration with ServiceNow to ensure accuracy and facilitate =
+automation.</p></li>
+<li local-id=3D"96f887b5-04a4-47b4-8c80-2375c91004b9">
+<p local-id=3D"76ac42f32184"><strong>Scope and Sign-Off Clarification: </st=
+rong>Rae and Angelo clarified that several remaining applications are curre=
+ntly out of scope for GOCC transition, with Rae tasked to follow up with Do=
+nna and the AMS team to determine the reasons and report back to David and =
+Jonan.</p></li>
+<li local-id=3D"c8f5f004-27d1-479d-ad07-3f2e57d9a82f">
+<p local-id=3D"900fbd05e48b"><strong>Levels of Monitoring Responsibility: <=
+/strong>Birger and Jonan distinguished between basic availability monitorin=
+g (e.g., up/down status) and more granular performance or capacity monitori=
+ng, agreeing that at minimum, availability monitoring should remain in scop=
+e even if other aspects are excluded.</p></li>
+<li local-id=3D"6713e8f4-ebdf-472e-850f-eea02e148539">
+<p local-id=3D"215658a80ea4"><strong>Escalation and Communication Procedure=
+s: </strong>The team discussed the use of XMatters for automated escalation=
+ and communication in case of incidents, emphasizing the importance of havi=
+ng clear routing and escalation paths documented and tested as part of the =
+transition process.</p></li>
+</ul></li>
+<li local-id=3D"d418b78d-93d8-4b64-bb45-c07d7f8747f8">
+<p local-id=3D"1ad1db6d3686"><strong>Rapid Recovery Plan and Knowledge Base=
+ Publication: </strong>David, Jonan, Birger, and Mary reviewed the status o=
+f the rapid recovery plan and MMM level 2 for Ingenium, confirmed the publi=
+cation of the relevant knowledge base article, and discussed next steps for=
+ extending the plan to other applications and departments.</p>
+<ul local-id=3D"780c0a4f-cff5-41e8-8883-1b4773ea2a46">
+<li local-id=3D"d4e12cd4-47d9-4def-8fde-241df8063f5e">
+<p local-id=3D"a30c0cee5ed8"><strong>Ingenium Rapid Recovery Completion: </=
+strong>David confirmed that the rapid recovery plan for Ingenium is complet=
+e and the knowledge base article has been published, with Jonan and Birger =
+agreeing to review and suggest edits as needed.</p></li>
+<li local-id=3D"9ef5a066-4b12-4c91-b306-595a7453069c">
+<p local-id=3D"7f6a4a3a6216"><strong>Extension to Other Applications: </str=
+ong>David noted that while Ingenium is complete, extending the rapid recove=
+ry plan to other applications requires coordination with the PS team and ad=
+ditional approvals, with Harish and Hirooka San involved in facilitating th=
+is process.</p></li>
+</ul></li>
+<li local-id=3D"a8176343-30ed-4f05-a3bf-4d67e83e5553">
+<p local-id=3D"9c98abc46c86"><strong>Branch Office Monitoring Expansion: </=
+strong>David, Jonan, and Birger discussed the deployment of monitoring solu=
+tions in the Philippines branch office, addressed customization for local s=
+ites, and considered potential collaboration with other regions such as Sin=
+gapore.</p>
+<ul local-id=3D"aed6b3d5-ce4a-4a9a-8781-b0020e7bb038">
+<li local-id=3D"44567a56-3649-4575-932e-bd1d7f43d5c3">
+<p local-id=3D"2ccec4dbf7fc"><strong>Philippines Branch Monitoring Setup: <=
+/strong>David announced that monitoring is now operational in the Philippin=
+es branch office, with Jonan and Birger confirming the site details and dis=
+cussing the replacement of Japan-specific monitoring items with local custo=
+mer sites.</p></li>
+<li local-id=3D"309832c6-b855-4b90-acf2-5e7cfdc1ec94">
+<p local-id=3D"eb97de2e1074"><strong>Regional Collaboration Opportunities: =
+</strong>Birger mentioned that Singapore has expressed interest in similar =
+monitoring solutions, suggesting future collaboration and knowledge sharing=
+ across regions.</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"cb272fffd091">Follow-up tasks:</p>
+<ul local-id=3D"ab8fa837-7656-4df5-9233-076ea56fa49b">
+<li local-id=3D"14bd719b-98c2-4c5c-ba6e-c83a210ae9c8">
+<p local-id=3D"ae9f0d5a0124"><strong>New Relic Dashboard Access: </strong>P=
+rovide access to New Relic dashboards for the sales team and collect their =
+feedback on dashboard usefulness. (David)</p></li>
+<li local-id=3D"be9a430d-7aae-450a-97c4-bf54bd98adf2">
+<p local-id=3D"59e19b505dc5"><strong>Solace Environment Stability: </strong=
+>Investigate with the test environment team and app owner to determine the =
+root cause of Solace SIT and UAT environment instability and decide on appr=
+opriate monitoring actions. (David, Jonan)</p></li>
+<li local-id=3D"aad1d856-aa6b-4947-963e-f35bee18f747">
+<p local-id=3D"c8075b174eb1"><strong>Moogsoft and Ansible Integration: </st=
+rong>Monitor progress and complete the integration of alerts to Moogsoft, f=
+ollowed by Ansible script automation for service restarts, starting with ma=
+nual execution if necessary. (Mary, Mark)</p></li>
+<li local-id=3D"94a0c559-dbff-46d2-8f78-fd2ce58f98f9">
+<p local-id=3D"8deef3a3ea68"><strong>Firewall Approval for Enginium Monitor=
+ing: </strong>Follow up with the observability team and Paula to obtain app=
+roval for the pending firewall request required for Enginium non-production=
+ environment URL monitoring. (Rae)</p></li>
+<li local-id=3D"ef28d854-30ac-4943-8074-00545d992248">
+<p local-id=3D"291e9cccc4a3"><strong>Firewall Rule Validation for Enginium:=
+ </strong>Validate access to Enginium URLs after firewall changes and infor=
+m Balaji upon confirmation. (Mark)</p></li>
+<li local-id=3D"b495838f-b4da-4965-8753-de2c9b1c5360">
+<p local-id=3D"0004cfcc211b"><strong>Runbook L2 Role Clarification: </stron=
+g>Clarify and document the L2 roles and responsibilities in the Ingenium ru=
+nbook, ensuring alignment with the current and future GOCC operating model,=
+ and update the runbook for Japan market applications after September if ne=
+eded. (Jonan, Balaji)</p></li>
+<li local-id=3D"51cfb783-1f0d-4793-a245-23c847f8722c">
+<p local-id=3D"9a5f55f037be"><strong>Runbook Format Improvement: </strong>R=
+eview and propose improvements for the format and versioning of application=
+ runbooks to ensure they remain up-to-date and useful, considering automati=
+on and metadata extraction options. (Jonan, Birger)</p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_112_101349099.1781767564401--

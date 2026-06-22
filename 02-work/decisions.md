@@ -152,3 +152,50 @@ tags: #project:lapu-lapu #domain:batch #domain:mft #domain:gocc-handover #capabi
 **Related Objectives:** H-1 (Batch Automation), H-4 (Unified Support), O6 (Technology Transformation through AI & Automation)
 **Owner:** David Klan
 **Source:** 20260528 - Batch Non-Prod Team syncup + Japan Batch/MFT Opportunities Meeting
+## D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only
+- **Date:** 2026-06-09
+- **Requestor:** David Klan / Rae Judavar / Debamalya Das
+- **Request:** Decide how much of the Developer Experience Dashboard signal surface should fire as real-time alerts vs sit in the dashboard or the daily summary email.
+- **Decision:** Agreed
+- **Reason:** AQA beta and operational experience show non-actionable notifications dilute responder attention; we will route only actionable signals (red) to responders via push/real-time alerts, keep the full data surface in the dashboard (yellow, pull), and rely on the daily summary email (green) as the one-page health view. Sleeping systems and other false-alert sources will be tuned out, and New Relic subscription workloads will let users subscribe to alerts for specific systems or environments.
+- **Tags:** #project:lapu-lapu #area:dev-xp #domain:alerting #domain:noise-reduction
+
+---
+
+## D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope
+- **Date:** 2026-06-09
+- **Requestor:** David Klan / Birger Fjaellman / Aleksei Radzeveliuk
+- **Request:** Decide whether shared-folder ACL inventory and compliance monitoring belongs in the Lapu-Lapu workstream now that file-server migration is being blocked by outdated accounts and unclear ownership (after the 2026-06-04 stance to keep file share / file transfer separate).
+- **Decision:** Agreed
+- **Reason:** The lack of a regular inventory and monitoring for shared-drive ACLs has produced persistent outdated accounts, unclear ownership, and unenforced retention; the previous Veronis capability was decommissioned without replacement. Aleksei has already built a compliance checker and folder governance can be piloted on small migrated shares. GOCC Middleware Operations is the prospective long-term owner. File transfer and batch jobs remain a separate workstream (D012); only ACL compliance is in scope here.
+- **Tags:** #project:lapu-lapu #area:gocc-transition #domain:acl #domain:fileshare
+
+---
+
+## D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
+- **Date:** 2026-06-09
+- **Requestor:** David Klan / Jonan Tan Pangan / Kiran Bonde
+- **Request:** Decide whether RRPs must explicitly document who can authorize a server restart and under what circumstances, given the recent Ingenium freeze (INC08624117) and the broader Rapid Recovery rollout.
+- **Decision:** Agreed
+- **Reason:** Server restarts in Japan have ambiguous authorization paths that slow Rapid Recovery and create downstream blame surface. Every RRP will include a decision matrix and guardrails identifying the responsible parties (app owner, GOCC, vendor) and the circumstances that permit a restart, integrated into the mandatory RRP template (D011) so the 6 Gold apps and all future RRPs inherit the same authorization model.
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #domain:governance #domain:authorization
+
+---
+
+## D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
+- **Date:** 2026-06-16
+- **Requestor:** David Klan / Balaji Ravi / Hari Pothakamuri
+- **Request:** Decide whether to continue pushing central logging / ADX onboarding for Japan applications at the R2R workstream level after the COUE response cycle was already bypassed (W23–W24) by repositioning ADX onboarding as an app-owner responsibility.
+- **Decision:** Agreed (parked)
+- **Reason:** After discussion with Hari and Tabitha, R2R-scope ADX onboarding was dropped; ADX onboarding is now an app-owner responsibility with catalog-based onboarding instructions sent to non-compliant teams. Going forward, incident analysis will guide whether central logging is required for specific apps/components rather than a top-down push, and Yegor has ADX ACL access to support local investigations. The push resumes only when Balaji explicitly signals "engage". Asia ownership for ADX log monitoring, management, and audit remains in scope under T116.
+- **Tags:** #project:lapu-lapu #area:adx-registration #domain:logging #domain:governance
+
+---
+
+## D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **Date:** 2026-06-18
+- **Requestor:** Jonan Tan Pangan / Birger Fjaellman / Balaji Ravi
+- **Request:** Decide the post-September GOCC support structure for Japan market applications and whether the existing L1/L2 silo runbook structure should remain in the interim.
+- **Decision:** Agreed
+- **Reason:** By September the GOCC will transition to a unified operational team without L1/L2 silos, with a single engineer handling the full support flow. The current structure and resources remain unchanged until cutover so the existing Ingenium runbook is retained for Japan market applications and updated to the new GOCC model immediately after September. The L0 (automation) → L1 → L2 (specialized troubleshooting not covered by procedures) → L3 (unresolved/complex) procedural flow is preserved in the interim, and the runbook update will follow the new format/versioning standard tracked under T134.
+- **Tags:** #project:lapu-lapu #area:gocc-transition #domain:operating-model #domain:escalation

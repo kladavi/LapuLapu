@@ -1484,3 +1484,322 @@
 - **Tags:** #project:lapu-lapu #domain:gocc-handover #cross-market #klo #reporting #area:gocc-transition #area:employee-xp-dashboard
 - **Description:** Re-engage Harish Arasu (driving Kelvin Leung's KLO reduction initiative to onboard non-Gold applications across markets to GOCC MMM) using the Japan onboarding model as the template. Share the 2026LapuLapu Power BI dashboard view (Japan applications, metal rating, monitoring/alert/incident response categories) as the cross-market status-tracking reference, then confirm cadence and reporting hooks so Japan's onboarding progress and methodology are visible in the KLO program. Initial outreach on 2026-05-27 is unanswered; Birger requested this item be surfaced on the weekly status report until contact is re-established.
 - **Source:** Inbox — archive/RE_ KLO - application onboarding.eml
+## T112 — Schedule and Run PS Team Sharing Session for Employee Experience Dashboard
+- **Status:** Open
+- **Created:** 2026-06-04
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O3 (Outstanding Colleague Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #worktype:enablement #audience:ps-team
+- **Description:** Schedule and deliver a sharing session with the Japan PS Team for the Employee Experience Dashboard (Prod), including Branch Office monitoring scope. Walk through the dashboard layout, alerting parameters, and the access path so PS support staff can self-serve health checks. Targeted to take place within the week following 2026-06-04 GOCC/Japan touchpoint.
+- **Source:** Inbox — archive/20260604+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T113 — Build URL Onboarding Data Diff vs ServiceNow for GOCC URL Monitoring Quality
+- **Status:** Open
+- **Created:** 2026-06-04
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:newrelic #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #area:dev-xp #domain:data-quality #worktype:tooling
+- **Description:** Build a periodic diff between the URL onboarding data source used by GOCC URL Monitoring and ServiceNow to flag quality issues seen during onboarding (e.g., entries with strike-through fonts, stale or mislabeled URLs). Output a short exception list that GOCC and Japan can triage weekly. Required to keep the URL monitoring transition to GOCC trustworthy and avoid handover noise.
+- **Source:** Inbox — archive/20260604+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T114 — Author OAR PRD for Branch Dashboard & DC Minion Comparison Reports
+- **Status:** Open
+- **Created:** 2026-06-04
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #worktype:requirements #artifact:prd
+- **Description:** Author a Product Requirements Document (PRD) for Branch Office dashboards and DC Minion comparison reports between nodes, then send it to the OAR Team (Debamalya Das, Edward Ian Vera, Jesusjr Pepito, Paula Segovia) for build. Comparison report should highlight node-to-node deltas to surface configuration drift or coverage gaps across branch sites and DC minion fleets.
+- **Source:** Inbox — archive/20260604+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T115 — Engage xMatters Vendor for Japan Group/Member Registration Quality Control
+- **Status:** Open
+- **Created:** 2026-06-04
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:xmatters
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #domain:on-call #worktype:vendor-engagement
+- **Description:** Through OAR (Edward Ian Vera lead), engage the xMatters vendor to deliver a quality report on Japan groups and member registrations and put in place ongoing quality control for updated group and member data. Complements T083 (internal xMatters roster and escalation model) by closing the data-quality loop on vendor-managed records.
+- **Source:** Inbox — archive/20260604+-+Lapu-Lapu+GOCC+and+Japan.doc
+
+---
+
+## T116 — Establish ADX Coverage Assessment and Asia Ownership for Japan Gold Apps
+- **Status:** Open
+- **Created:** 2026-06-04
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:adx #system:moogsoft
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #area:adx-registration #area:mmm-l2 #worktype:assessment #ownership:asia
+- **Description:** Validate ADX coverage for Japan applications, confirming firewall openings and agent installation status per server, then identify applications whose components are not sending logs to ADX. Send catalog-based onboarding instructions to non-compliant application teams. In parallel, stand up an Asia-based ownership model (GOCC Middleware Operations + Observability) for ADX log monitoring, management, and audit so ADX onboarding is no longer dependent on COUE response cycles. Jonan to update David by Thursday or the following week; outcome feeds KR007 baseline.
+- **Source:** Inbox — archive/20260604+-+Lapu-Lapu+GOCC+and+Japan.doc, archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T117 — Define Shared-Folder ACL Compliance Monitoring Capability
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-5 (Security, Data Integrity & Encryption) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Joan Lee
+- **Systems:** #system:fileshare
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #domain:acl #domain:fileshare #worktype:assessment
+- **Description:** Assess whether GOCC Middleware Operations can monitor shared-folder ACL compliance against the standard mfcgd\acl_{folder_name}_{tier} model, including detection of missing required groups (_C, _R), incorrect rights, unexpected additional principals, and ACL read failures. Define scope control and false-positive handling for unmanaged folders. Reuse the SharePoint permission and retention profiles where applicable. Coordinate with Aleksei Radzeveliuk's compliance checker and an Aleksei-led pilot on small migrated shares; check with Dong for existing scripts. Feeds the broader file-server migration and retention cleanup.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T118 — Tighten Developer Experience Dashboard Alerting Parameters with AQA Beta
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Rae Judavar
+- **Systems:** #system:newrelic
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #area:dev-xp #worktype:alerting #domain:noise-reduction
+- **Description:** With the Developer Experience Dashboard in beta with AQA users, tighten alerting parameters so only actionable signals (push, real-time) are routed to responders, while the dashboard (pull) keeps all data across all environments and the daily summary email (Rae) keeps the one-page health view. Refine alerting rules to handle sleeping systems and avoid false alerts. Pair with subscription-based alert workloads in New Relic so users can subscribe to alerts for specific systems or environments.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T119 — Extend Daily Summary Email & Alert Tuning Pattern to Employee Experience Dashboard
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #worktype:alerting #worktype:reporting
+- **Description:** Apply the lessons learned from the Developer Experience Dashboard (alert vs dashboard vs morning email split, actionable-only routing, subscription model) to the Employee Experience Dashboard and other production systems for comprehensive coverage. Coordinate with Mary Kris Cabunilas and Rae Judavar on shared tuning patterns and confirm responder routing for Japan prod alerts.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T120 — Schedule Ingenium APM Production Rollout (Outage Coordination)
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Angelito Darjuan
+- **Systems:** #system:apm #system:ingenium
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #area:mmm-l2 #system:ingenium #worktype:rollout
+- **Description:** APM has been configured successfully for Ingenium non-production environments (Angelito, Sai); schedule the production rollout including the required outage window and CHG#. Coordinate with Jesus Pepito and Prabu Thiagarajan to confirm rollout plan, validation steps, and rollback path. Production APM coverage on Ingenium is the first non-AKS APM activation and a precursor to MMM L2 declaration for Ingenium.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T121 — Follow Up with Harish on Remaining Japan App MMM L2 Updates
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic #system:apm
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:mmm-l2 #worktype:tracking
+- **Description:** Harish has reached out to all Japan application owners for MMM L2 updates and completed data collection for Ingenium; remaining application updates are expected by Friday. Follow up with Harish at end of week to consolidate the responses, post the per-app status against the MMM L2 declaration checklist, and update KR003. Share the MMM L2 checklist and project plan back to the working group (Debamalya owns checklist distribution).
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T122 — Document Server Restart Authorization Decision Matrix in RRP Standard
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:cmdb
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #worktype:standards #domain:governance
+- **Description:** With David Klan and Kiran Bonde, document a decision matrix and guardrails for server restart authorization inside every Rapid Recovery Plan. Specify which roles can authorize a restart, the circumstances under which the authorization is valid, and the escalation path if criteria are not met. Roll into the mandatory RRP template (D011) so all 6 Gold apps and future RRPs inherit the same authorization model.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T123 — Investigate INC08624117 Ingenium Server Freeze with Red Hat Vendor
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:ingenium
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #system:ingenium #worktype:incident-management #severity:p2
+- **Description:** Ingenium server freeze (INC08624117, 2026-06-08) was resolved with a restart, but root cause remains under investigation by Red Hat. Jonan to follow up with Dennis Talento for vendor log analysis updates, drive the post-incident review, and capture findings against the Ingenium incident analysis baseline (Ing_INC_6Months). Confirm whether GOCC Middleware Operations should take on the post-restart application health check pattern Jonan proposed.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc, archive/GOCC+_+Japan+-+Lapu-Lapu+project.doc
+
+---
+
+## T124 — Onboard Philippine Branch Office Laptop Monitoring (Agent Install + Dashboard)
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-observability
+- **Assigned:** Vignesh M
+- **Systems:** #system:newrelic
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #domain:branch-office #worktype:onboarding
+- **Description:** Donna has submitted a REQ to install the monitoring agent on a laptop in the Philippine branch office. Once installation completes, Aleksei Radzeveliuk will assist with configuration and Vignesh M will work with GOCC on setting up the Philippine branch office dashboard. Run the requirements-gathering call between Aleksei, Donna, and Vignesh to confirm metrics, alerting, and dashboard layout. Mirrors the Japan branch monitoring model (10 JP laptops already in service).
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T125 — Unblock JPE/JPW Production VNet Subscription Networking Issue
+- **Status:** Open
+- **Created:** 2026-06-09
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** Jesus Pepito
+- **Systems:** #system:azure
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #domain:network #domain:branch-office #worktype:infrastructure
+- **Description:** Japan East / West non-production VNet setup is complete (post-provisioning issue awaiting fix) but production VNet updates are still pending due to subscription networking issues. Drive the subscription networking fix to closure and complete production VNet provisioning so the JPE/JPW Synthetic Job Monitor agents / minions can be deployed against the new dashboard. Confirm dates with the network team and unblock the cross-location branch observability sequence.
+- **Source:** Inbox — archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+
+---
+
+## T126 — Connect Harish Arasu with Hirooka-san for PS Team MMM L2 Sequencing
+- **Status:** Open
+- **Created:** 2026-06-16
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic #system:apm
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:mmm-l2 #worktype:coordination #audience:ps-team
+- **Description:** Harish has reached out to all Japan application owners and completed Ingenium MMM L2 data collection; the remaining Japan Gold app updates need PS Team engagement before they can be sequenced. Introduce Harish to Hirooka-san so Harish has the right PS Team entry point for scheduling and ownership; once the introduction is made, hand off to Harish + Hirooka and re-engage Debamalya for checklist / project-plan distribution. Direct dependency for T121.
+- **Source:** Inbox — archive/20260616+-+Direction.doc
+
+---
+
+## T127 — Add Izza to the Lapu-Lapu Weekly Meeting for Batch/MFT Engagement
+- **Status:** Open
+- **Created:** 2026-06-16
+- **Objective Chain:** H-1 (Batch Automation) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Relevance:** 65/100
+- **Tags:** #project:lapu-lapu #domain:batch #domain:mft #worktype:coordination #area:gocc-transition
+- **Description:** Bring Izza into the Lapu-Lapu weekly meeting so she can represent the File Transfer / File Share / Batch Job Services intake conversation alongside Arbindra (who may provide batch job failure data) and the GBO/CA WLA migration discussion. Supports the inventory and ownership work tracked under T108–T110 and the D012 transition direction; key blockers remain inventory completeness, ownership clarity, PS Team engagement, and non-prod pilot validation.
+- **Source:** Inbox — archive/20260616+-+Direction.doc
+
+---
+
+## T128 — Provide Sales/Business Stakeholders with New Relic Dashboard Access and Capture Feedback
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #domain:digital #worktype:enablement #audience:business
+- **Description:** A sales team member and other business stakeholders found the Employee Experience and Business Capability dashboards useful for monitoring branch office and application status and asked for further access and a feedback mechanism. Provide direct New Relic access for the identified business users, document the access path, and capture structured feedback for the next dashboard refinement cycle. In parallel, work with Rae on importing external New Relic reports into Power BI to broaden access without provisioning full New Relic seats. Pairs with T112 (PS Team sharing session) and Ito-san feedback already collected on the Employee XP / Business Capability / Branch monitoring dashboards.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc, archive/20260616+-+Direction.doc
+
+---
+
+## T129 — Investigate Solace SIT/UAT Environment Instability
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #area:dev-xp #system:solace #worktype:troubleshooting #domain:non-production
+- **Description:** Solace SIT and UAT environments surface recurring system errors and noisy alerts in the Developer Experience Dashboard. David has already contacted the application owner; partner with Jonan and the Test Environment Management team (Mark) to determine the root cause of the instability, decide whether to suppress, tune, or fix the alert source, and update the Solace monitoring profile so the dashboard reflects real availability. Pairs with the T118 alert-tuning workstream and the T130 Moogsoft/Ansible auto-restart pilot.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc
+
+---
+
+## T130 — Deploy Moogsoft Alert + Ansible Auto-Restart for Non-Prod Environments (Manual Interim)
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Mary Kris Cabunilas
+- **Systems:** #system:moogsoft #system:newrelic
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #area:dev-xp #capability:automation #worktype:integration #domain:non-production
+- **Description:** Integrate non-prod monitoring alerts into Moogsoft for incident registration and trigger an Ansible script for automatic service restart on failure; if the automated restart fails, escalate to GOCC and then L2 support. Moogsoft integration is targeted for end of month / early next month; Ansible integration follows after additional testing. Until full automation is in place, the team will manually run the Ansible script in response to incidents, with Moogsoft registering incidents after validation. Mark Adriel Manuel to support implementation and ensure alerts are properly routed to GOCC alongside the observability team. Addresses prior reactive incident handling for repeated non-prod failures.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc
+
+---
+
+## T131 — Drive Enginium Non-Prod URL Monitoring Firewall Approval (Azure Jump Switch)
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Rae Judavar
+- **Systems:** #system:newrelic #system:ingenium
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #area:dev-xp #domain:non-production #worktype:firewall #system:ingenium
+- **Description:** A firewall request for Enginium non-prod URL monitoring is pending approval; the request involves switching to the Azure jump server because the on-premise jump server is being decommissioned. Follow up with the observability team and Paula to obtain approval so GOCC can complete application validation during non-production patching and unblock validation for the upcoming production patching window. Incomplete approvals previously prevented GOCC from completing non-prod patching validation; closure is a prerequisite for T132.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc
+
+---
+
+## T132 — Validate Enginium URL Access After Firewall Changes
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Mark Adriel Manuel
+- **Systems:** #system:newrelic #system:ingenium
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:dev-xp #domain:non-production #worktype:validation
+- **Description:** Once the T131 firewall approval lands, validate access to the updated Enginium non-prod URLs via the Azure jump server and confirm to Balaji Ravi. Use the worksheet of updated URLs Rae has recorded as the validation source (several Enginium environments previously listed in the monitoring sheet were outdated or referenced old environments and have since been corrected). Direct dependency on T131.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc
+
+---
+
+## T133 — Clarify L2 Roles in Ingenium Runbook (Interim to GOCC Unified Ops Model)
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:ingenium #system:cmdb
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #system:ingenium #worktype:documentation #domain:escalation
+- **Description:** Document the L2 roles and escalation paths inside the Ingenium runbook with Balaji Ravi — Balaji has flagged that the current runbook lacks explicit L2 roles, leaving escalation paths unclear for immediate-action scenarios beyond L1 capabilities. Retain the existing runbook for Japan market applications until the September GOCC unified operating model transition (D017), then update the runbook to reflect the unified ops structure (no L1/L2 silos). Capture the L0 (automation) → L1 → L2 (specialized troubleshooting) → L3 (unresolved / complex) procedural flow per the Birger/Jonan alignment.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc
+
+---
+
+## T134 — Define Application Runbook Format, Versioning, and ServiceNow-Backed Metadata Standard
+- **Status:** Open
+- **Created:** 2026-06-18
+- **Objective Chain:** H-4 (Unified Support) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-monitoring
+- **Assigned:** Jonan Tan Pangan
+- **Systems:** #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #worktype:standards #domain:knowledge-management #capability:automation
+- **Description:** With Birger Fjaellman, review the drawbacks of outdated and manually-maintained runbooks and propose improvements covering metadata extraction, version control, and integration with ServiceNow so runbooks remain accurate and machine-readable enough to feed downstream automation (auto health checks, escalation, AI-assisted RRP drafting). Propose the runbook format/versioning standard, identify a migration approach for the existing runbook corpus (starting with Japan market applications), and align with the mandatory RRP template (D011) so RRPs inherit the same metadata baseline.
+- **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc

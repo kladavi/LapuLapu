@@ -4,10 +4,10 @@
 - **Objective:** O1
 - **Metric Type:** Numeric
 - **Start Value:** 0
-- **Target Value:** 88
+- **Target Value:** 68
 - **Current Value:** 68
 - **Target Date:** 2026-05-29
-- **Status:** On Track
+- **Status:** Complete
 - **Created:** 2026-04-06
 - **Tags:** #project:lapu-lapu #area:employee-xp
 - **Description:** ### Progress Log of Applications added to the dashboard
@@ -28,6 +28,8 @@
 | 2026-04-06 | Created |
 | 2026-04-09 | Definition updated |
 | 2026-04-13 | Definition updated |
+| 2026-06-04 | Target Value changed from 88 to 68 |
+| 2026-06-04 | Status changed from "On Track" to "Complete" |
 
 ---
 
@@ -158,7 +160,6 @@
 |------|--------|
 | 2026-05-22 | Created |
 
-
 ---
 
 ## KR007 — ADX Registration Coverage
@@ -189,7 +190,7 @@
 - **Metric Type:** Numeric
 - **Start Value:** 0
 - **Target Value:** 65
-- **Current Value:** 0
+- **Current Value:** 14
 - **Target Date:** 2026-12-31
 - **Status:** Not Started
 - **Created:** 2026-06-04
@@ -199,6 +200,7 @@
 ### Progress Log
 | Date | Value | Comment |
 |------|-------|---------|
+| 2026-06-05 | 14 |  |
 
 ### Change Log
 | Date | Change |

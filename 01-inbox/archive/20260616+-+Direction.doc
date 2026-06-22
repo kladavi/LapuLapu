@@ -1,0 +1,358 @@
+Date: Thu, 18 Jun 2026 07:24:53 +0000 (UTC)
+Message-ID: <1464643589.111.1781767493734@c39498f547ec>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_110_616814096.1781767493734"
+
+------=_Part_110_616814096.1781767493734
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260616 - Direction</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260616 - Direction</h1>
+    <div class=3D"Section1">
+        <ul local-id=3D"07e36325a38d">
+<li local-id=3D"e81d6dbbdbe5">
+<p local-id=3D"066201271913"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16433185040/File+Transfer+File+Share+Batch+Job+Servi=
+ces" data-linked-resource-id=3D"16433185040" data-linked-resource-version=
+=3D"6" data-linked-resource-type=3D"page">=F0=9F=93=84 File Transfer, File =
+Share &amp; Batch Job Services</a> - Full current-state intake request to e=
+nable GBO onboarding and CA WLA migration. The key blockers are inventory c=
+ompleteness, ownership clarity, PS Team engagement and validation that non-=
+production can serve as a meaningful pilot.</p>
+<ul local-id=3D"a2ed50796374">
+<li local-id=3D"e012941a3621">
+<p local-id=3D"8f97dc3a22a8">Batches ingest dates dynamically to enable tim=
+e-series batch automation</p></li>
+<li local-id=3D"fda24b49b567">
+<p local-id=3D"63fec7fdc6cd">Arbindra may provide batch job failures</p></l=
+i>
+<li local-id=3D"0438b928ded6">
+<p local-id=3D"1d926a2e6cf8">Bring Izza into the weekly meeting</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"1a5b25d6707b"><strong>ADX Registration:&nbsp;</strong></p>
+<p local-id=3D"a33831ad38f8">R2R-scope ADX onboarding was dropped after dis=
+cussion with Hari and Tabitha; ADX onboarding is now an app-owner responsib=
+ility, with catalog-based onboarding instructions to be sent to non-complia=
+nt application teams.</p>
+<p local-id=3D"d38defc2eb3a"><em>Recommendation</em>: Let Incident analysis=
+ guide us on whether or not to push central logging for Apps/components. Ye=
+gor has access to ADX ACLs and may be able to support investigation locally=
+.</p>
+<ul local-id=3D"360dc7253bfd">
+<li local-id=3D"7038392f225b">
+<p local-id=3D"ee3ac73a9e59">Park it until Balaji says =E2=80=98engage=E2=
+=80=99</p></li>
+</ul>
+<p local-id=3D"af8da8c04e65"><strong>MMM L2: </strong>(Pending PS Team enga=
+gement)</p>
+<p local-id=3D"7402fb70fdce">Harish has reached out to all Japan applicatio=
+n owners; Ingenium data has been collected. Remaining Japan Gold app update=
+s will be planned after <strong>PS Team</strong>&nbsp;members are assigned.=
+&nbsp; Debamalya owns checklist / project-plan distribution back to the wor=
+king group.</p>
+<ul local-id=3D"1d6c7428e08b">
+<li local-id=3D"0a48705fc6a5">
+<p local-id=3D"f85e8da386c1">Put Harish in touch with Hirooka-san</p></li>
+</ul>
+<p local-id=3D"2a5489cf4dbc"><strong>Rapid Recovery: </strong>(Pending PS T=
+eam engagement)</p>
+<p local-id=3D"4c25982f489d">Ingenium Gold RRP delivered (Balaji Ravi / Sen=
+thil Kumar Jaganathan) to the mandatory standard template =E2=80=94 covers =
+a full restart sequence (WAS =E2=86=92 CICS =E2=86=92 DB) and a batch-slown=
+ess workaround, with RTO/RPO Primary 2h/2h and DR 4h/4h. Kanagaraj's restar=
+t runbooks have been integrated as the baseline. A mandatory server-restart=
+ authorization decision matrix is now required in every RRP, driven by the =
+ambiguity surfaced during INC08624117. AI-assisted RRP drafting workflow bu=
+ilt for PS team; PS team still needs to assign authors per application.</p>
+<p local-id=3D"f1893751d508"><strong>Patching: </strong>(Pending PS Team en=
+gagement)</p>
+<p local-id=3D"60a14d4e148f">Standardization and weekday patch registration=
+ meetings continue; the first application weekday onboarding is being confi=
+rmed. Weekday patching for non-Gold, non-batch apps/servers remains the pat=
+h for reducing weekend workload (Karen, Sreekanth, Kanaraj).&nbsp; <strong>=
+RISK</strong>: Team repeats the same questions every week and don't have th=
+e skill to query CMDB or Service Now to establish standardized changes for =
+patching.</p>
+<p local-id=3D"6643f80150d0"><strong>Employee XP Dashboard</strong>:</p>
+<p local-id=3D"b2d876b1a88d">David got feedback from Ito-san on <em>Employe=
+e XP</em>, <em>Business Capability</em>, and <em>Branch monitoring </em>das=
+hboards. He would like to have external App health check reports for IT-sav=
+vy business team members.&nbsp; Enhancements will be made in parallel based=
+ on Dev XP Dashboard improvements</p>
+<p local-id=3D"6b3718397b1c"><strong>Dev XP Dashboard</strong>:</p>
+<p local-id=3D"fb40e43d3145">In beta with the AQA group. Alerting tightened=
+ to actionable signals only: push for real-time action, dashboard for the f=
+ull data surface across all environments, and Rae's daily summary email for=
+ one-page health. Sleeping-system false alerts being tuned out, active hour=
+s (9am-9pm JST) set; Focus on process monitoring now.</p>
+<p local-id=3D"5dbf417ccbc0"><strong>CMDB Mapping:</strong></p>
+<p local-id=3D"f153e6bc8e9c">Yegor continues cleaning up app mapping</p>
+<p local-id=3D"49a13202bb8b"><strong>GOCC Transition: </strong>(Pending PS =
+Team engagement)</p>
+<p local-id=3D"1097af3f1e04">GOCC Yam is moving to a different team and han=
+ding over to Rae for remaining applications. <strong>PS Team Risk</strong>&=
+nbsp;related to responsiveness during contract transition.</p>
+<p local-id=3D"5816a5396789"></p>
+<p local-id=3D"b098a506e878"><strong><u>Additional related work</u></strong=
+></p>
+<p local-id=3D"b460f9b161a4"><strong>Branch / JPE-JPW:</strong></p>
+<p local-id=3D"4cb162870531">Non-prod VNet setup complete (post-provisionin=
+g fix pending); production VNet still blocked on a subscription networking =
+issue. 10 JP laptops in service. Philippine branch laptop monitoring kicked=
+ off =E2=80=94 Donna submitted the agent install REQ, Aleksei to configure,=
+ Vignesh to build the PH branch dashboard with GOCC (mirrors the Japan bran=
+ch model).</p>
+<ul local-id=3D"4a0e53ec-e2e9-4d4e-a0fb-6b2ba1b0ab5f">
+<li local-id=3D"3228c4c4-8354-4bb6-ac28-a79ab7be612f">
+<p local-id=3D"083883b5bc6a"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16426598406/Objective+review" data-linked-resource-i=
+d=3D"16426598406" data-linked-resource-version=3D"2" data-linked-resource-t=
+ype=3D"page">Objective review</a></p></li>
+<li local-id=3D"a41e0d64-a456-43d7-a8cc-7df930a5a5ad">
+<p local-id=3D"9e984d50d064"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16259481746/Gopher" data-linked-resource-id=3D"16259=
+481746" data-linked-resource-version=3D"2" data-linked-resource-type=3D"pag=
+e">Gopher</a></p></li>
+<li local-id=3D"a0d91f49-085b-4858-8675-a27720df01f2">
+<p local-id=3D"5c8bbe60ba09"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16376234029/NWInventory+Management" data-linked-reso=
+urce-id=3D"16376234029" data-linked-resource-version=3D"2" data-linked-reso=
+urce-type=3D"page">NWInventory Management</a></p></li>
+<li local-id=3D"fc4fa5fd-42b8-4ac7-9660-8afd9ed62343">
+<p local-id=3D"d5f73c0531ac"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16448585774/Pulse" data-linked-resource-id=3D"164485=
+85774" data-linked-resource-version=3D"8" data-linked-resource-type=3D"page=
+">Pulse</a></p></li>
+<li local-id=3D"7fd44e49-4aaf-4a22-9bee-0847fbdb2c03">
+<p local-id=3D"46c8fe34f02e"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16433185040/File+Transfer+File+Share+Batch+Job+Servi=
+ces" data-linked-resource-id=3D"16433185040" data-linked-resource-version=
+=3D"6" data-linked-resource-type=3D"page">=F0=9F=93=84 File Transfer, File =
+Share &amp; Batch Job Services</a></p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_110_616814096.1781767493734--

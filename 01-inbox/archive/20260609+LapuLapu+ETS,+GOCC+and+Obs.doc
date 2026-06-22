@@ -1,0 +1,798 @@
+Date: Tue, 9 Jun 2026 07:15:08 +0000 (UTC)
+Message-ID: <1820660532.75.1780989308830@acfffe0238fb>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_74_953488552.1780989308830"
+
+------=_Part_74_953488552.1780989308830
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260609 LapuLapu ETS, GOCC and Obs</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260609 LapuLapu ETS, GOCC and Obs</h1>
+    <div class=3D"Section1">
+        <p local-id=3D"946e9de56191"><strong><u>Key Agenda Items</u></stron=
+g></p>
+<ul local-id=3D"90c4c73a-79ed-4023-9781-9db8d6bc388f">
+<li local-id=3D"e83277fb-0f09-4b7c-a94d-5faa30deef34">
+<p local-id=3D"795c9002417b"><strong>File Share</strong>: ServerF <strong>F=
+ile Transfer</strong>: MFT, WSFTP <strong>Batch jobs</strong>: CAWLA</p>
+<ul local-id=3D"23d65d5b967f">
+<li local-id=3D"41368dc292de">
+<p local-id=3D"d5a5760b72cf">Add Joan and Rowena to weekly meeting to repre=
+sent GBO</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"1cd8f0215728" style=3D"margin-left: 30.0px;"><strong>ACL mon=
+itoring proposal:</strong> Assess whether GOCC can monitor shared-folder AC=
+L compliance against the standard <code>mfcgd\acl_{folder_name}_{tier}</cod=
+e> model, including detection of missing required groups (<code>_C</code>, =
+<code>_R</code>), incorrect rights, unexpected additional principals, and A=
+CL read failures. Key design consideration: unmanaged folders will also gen=
+erate findings, so scope control and false-positive handling would need to =
+be defined.</p>
+<p local-id=3D"5c997315f7d0" style=3D"margin-left: 30.0px;">Apply the same =
+<strong>permission and retention profiles</strong> from <strong>SharePoint<=
+/strong></p>
+<p local-id=3D"7d49f9e115b5" style=3D"margin-left: 30.0px;"><strong> </stro=
+ng>- <a data-card-appearance=3D"inline" href=3D"https://manulife-ets.atlass=
+ian.net/wiki/x/AQAk-AI" local-id=3D"289ba9bc1219" rel=3D"nofollow">https://=
+manulife-ets.atlassian.net/wiki/x/AQAk-AI</a></p>
+<p local-id=3D"034356056d80"></p>
+<ul local-id=3D"a22c7dd5843d">
+<li local-id=3D"6c2cd1aa357a">
+<p local-id=3D"a6188aa429ca"><strong>Dashboards </strong>- Currently in Bet=
+a-test with AQA users, tighten alerting parameters and reporting</p>
+<ul local-id=3D"21a33249-6da4-4d32-8712-fbdd8bc5cd2d">
+<li local-id=3D"c57598ed-ff33-4f5e-9ffa-43effa574b53">
+<p local-id=3D"50b0320958d5">Developer Experience Dashboard</p></li>
+</ul></li>
+</ul>
+<h3 local-id=3D"48f429cee395" style=3D"margin-left: 30.0px;" id=3D"id-20260=
+609LapuLapuETS,GOCCandObs-=F0=9F=94=B4Alerts(push,real-time)">=F0=9F=94=B4 =
+Alerts (push, real-time)</h3>
+<ul local-id=3D"2d1d3c7df041">
+<li local-id=3D"298fb0d4035c">
+<p local-id=3D"daefaad54a4d">Only actionable signals</p></li>
+<li local-id=3D"4f1ad8aa8011">
+<p local-id=3D"dc1003c480f7">Routed to responders</p></li>
+</ul>
+<h3 local-id=3D"7202e8398d71" style=3D"margin-left: 30.0px;" id=3D"id-20260=
+609LapuLapuETS,GOCCandObs-=F0=9F=9F=A1Dashboard(pull)">=F0=9F=9F=A1 Dashboa=
+rd (pull)</h3>
+<ul local-id=3D"9b0af5eb56bb">
+<li local-id=3D"01dbfc6a34d8">
+<p local-id=3D"b047ba1d1708">All data, all environments</p></li>
+</ul>
+<h3 local-id=3D"487c78c7c2d6" style=3D"margin-left: 30.0px;" id=3D"id-20260=
+609LapuLapuETS,GOCCandObs-=F0=9F=9F=A2Morningemail(summary)">=F0=9F=9F=A2 M=
+orning email (summary)</h3>
+<ul local-id=3D"4b32d75c4bb5">
+<li local-id=3D"054cc72f6419">
+<p local-id=3D"0e570994e3bf">One concise view of system health</p></li>
+<li local-id=3D"5328c8f2-57fb-4507-a405-b8ad0381f91e">
+<p local-id=3D"846ca4adfb46"><strong>MMM L2 Coverage</strong></p>
+<ul local-id=3D"72d254fb-7ea4-43e1-b9af-a2cd947d9243">
+<li local-id=3D"a02e6623-b551-4960-a428-31f358456b28">
+<p local-id=3D"a92798ce65a5">Check with Harish for updates</p></li>
+<li local-id=3D"78b2c683eb74">
+<p local-id=3D"987813fbf0b0">APM rollout to non-AKS starting with <strong>I=
+ngenium</strong></p>
+<ul local-id=3D"d3f2d9b0-a23a-4205-b646-88f3f8f2cdcf">
+<li local-id=3D"086fe7af-205f-466b-9091-f5581621ebe9">
+<p local-id=3D"d049988d5c03"><strong>Jesus </strong>and <strong>Prabu </str=
+ong>and <strong>Angelito Darjuan </strong>working on Prod (CHG#)</p></li>
+<li local-id=3D"b10c17e0-f3d2-4c9a-a9e3-37f59f877472">
+<p local-id=3D"eb96e0bad46e">Lower environment implementation is complete</=
+p></li>
+</ul></li>
+<li local-id=3D"52479a20ea30">
+<p local-id=3D"59cf1713f521"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16487481504/ADX" data-linked-resource-id=3D"16487481=
+504" data-linked-resource-version=3D"2" data-linked-resource-type=3D"page">=
+ADX</a> - Establish coverage in Asia thru GOCC</p>
+<ul local-id=3D"25b4578919eb">
+<li local-id=3D"c0a71aaff1e0">
+<p local-id=3D"114635c73dc5">Jonan will review capability and feasibility o=
+f establishing some coverage for Asia</p></li>
+</ul></li>
+</ul></li>
+<li local-id=3D"427f0e91-c626-41f7-a417-5c87496f1fb7">
+<p local-id=3D"62a8cc8c8eb7"><a href=3D"https://manulife-ets.atlassian.net/=
+wiki/spaces/GOCC/pages/16269803539/Rapid+Recovery+Information+Hub" data-lin=
+ked-resource-id=3D"16269803539" data-linked-resource-version=3D"5" data-lin=
+ked-resource-type=3D"page">Rapid Recovery Information Hub</a></p>
+<ul local-id=3D"59e9be79-b77e-442e-83db-35fc9478be4d">
+<li local-id=3D"3de6a9d3-4988-4331-aa2c-cc8035247f13">
+<p local-id=3D"de37e45930f8">Teams message and email sent to PS Team</p></l=
+i>
+<li local-id=3D"cd2f261940e8">
+<p local-id=3D"b07048b4e935">PS Team to assign members to draft RRP</p></li=
+>
+</ul></li>
+<li local-id=3D"a9413b88-fde6-4900-95e6-5086ccd746a8">
+<p local-id=3D"3a49f581c351"><strong>Laptop and JPE/JPW monitoring/Syntheti=
+c Job Monitor Agents/minions </strong>- Confirm <a href=3D"https://manulife=
+-ets.atlassian.net/wiki/x/foBe0AM" rel=3D"nofollow"><u>new minion set up</u=
+></a> and dashboard</p>
+<ul local-id=3D"095b98a1-e433-4221-820b-79973f039e02">
+<li local-id=3D"5725227f-7f45-4a36-b5af-8bff79b6b7a8">
+<p local-id=3D"fedf08945c24"><strong>JPE/JPW still needs VNET update</stron=
+g> - Dates TBC - ongoing</p>
+<ul local-id=3D"6d9b24a8c8ef">
+<li local-id=3D"684fb1986197">
+<p local-id=3D"0ac43efed2f6">Non-Prod VNET complete - Post-provisioning iss=
+ue waiting for it to be fixed</p></li>
+<li local-id=3D"5a080eab14bd">
+<p local-id=3D"f4907e3d2fe1">Prod VNET setup in progress - Still waiting</p=
+></li>
+</ul></li>
+<li local-id=3D"eba9729b-60f5-455a-9059-e7c46800ed52">
+<p local-id=3D"aa3f8f37a23c"><strong>JP Branch Offices</strong>: 10x laptop=
+s in service</p></li>
+<li local-id=3D"c76c0cf8-44dc-4922-b5cc-9954eb52f18e">
+<p local-id=3D"ca5eb12c4fa8"><strong>Philippine Branch Offices</strong>: Vi=
+gnesh will work with GOCC on setting up a dashboard</p>
+<ul local-id=3D"08a7a35ded6a">
+<li local-id=3D"a1ca04612f42">
+<p local-id=3D"628876818142">Call between Aleksei, Donna, Vignesh requireme=
+nts gathering</p></li>
+<li local-id=3D"4858d564285c">
+<p local-id=3D"742e7bad936b">REQ to install agent in-progress</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<p local-id=3D"e3b0ba7f479a">&nbsp;</p>
+<hr local-id=3D"64f15b4e">
+<h1 local-id=3D"8e7385b6a4b3" id=3D"id-20260609LapuLapuETS,GOCCandObs-Decis=
+ions">Decisions</h1>
+<ul local-id=3D"2cb06587-ee60-477e-b9a7-de9b313a1e14">
+<li local-id=3D"e123b5ee-b804-47d5-8607-686d2acf15fe">
+<p local-id=3D"ec7feb8e3ae7">Inventory and compliance monitoring of shared =
+drive ACLs, focusing on easy cleanup.</p></li>
+<li local-id=3D"0a33a657-5123-4cf8-8421-f3e60e911228">
+<p local-id=3D"b35529b9d205">Trim alerting to actionable signals and set up=
+ meaningful alerts.</p></li>
+<li local-id=3D"eafa4829-7956-4a63-963c-5b20a969878c">
+<p local-id=3D"81ecbe4140f0">Implement daily summary emails for system heal=
+th and improve dashboard coverage.</p></li>
+<li local-id=3D"2ed49513-e881-4b41-b73b-243d78715ffd">
+<p local-id=3D"881bcad3fd25">Share MMM Level 2 checklist and project plan w=
+ith Japan application teams.</p></li>
+<li local-id=3D"e2f6c1fd-e50f-4324-8468-4766cae5f45e">
+<p local-id=3D"734f1f390fe3">Include decision matrix in rapid recovery plan=
+s for server restart authorization.</p></li>
+</ul>
+<h1 local-id=3D"6c96a399426b" id=3D"id-20260609LapuLapuETS,GOCCandObs-Openq=
+uestions">Open questions</h1>
+<ul local-id=3D"891bb097-522a-4b55-b95c-48220abb8fe8">
+<li local-id=3D"7138694a-8b4e-4750-98d3-aba8bbabb1c7">
+<p local-id=3D"440b22f09b57">Inventory of ACLs is unclear and needs further=
+ investigation.</p></li>
+<li local-id=3D"db9e4a0b-c428-4cb0-8cf6-ff0a419d2716">
+<p local-id=3D"aa81e7ddbc52">Ownership of ACL monitoring and cleanup is unr=
+esolved.</p></li>
+<li local-id=3D"2bd2bdc0-ea1e-4529-8e9d-ea2532e78d27">
+<p local-id=3D"d34432211b05">Refine alerting rules to handle sleeping syste=
+ms and avoid false alerts.</p></li>
+<li local-id=3D"9832a155-cf10-401b-9062-2bd98ad70a9b">
+<p local-id=3D"04f2e9fa170b">APM activation date for Ingenium production is=
+ not determined.</p></li>
+<li local-id=3D"0325a322-11cf-46a8-bf45-d3e7c93f6d9a">
+<p local-id=3D"5410d47dd7d1">Responsibility for ADX monitoring and onboardi=
+ng in Asia is undecided.</p></li>
+<li local-id=3D"9fa0b1dd-701e-4468-9878-c3130e21e441">
+<p local-id=3D"4a818bcc9522">Process for identifying and onboarding applica=
+tions to ADX needs clarification.</p></li>
+<li local-id=3D"d30929ba-ef02-4dad-ab8f-a892d1f40f0c">
+<p local-id=3D"e3fec4021489">Objectives for file transfer, batch jobs, and =
+patching projects are undefined.</p></li>
+<li local-id=3D"95307bf1-7b48-451e-9506-93dc1d31faa6">
+<p local-id=3D"6c878a64b8aa">Authorization for server restarts needs more d=
+ocumentation and guardrails.</p></li>
+</ul>
+<h1 local-id=3D"6afa3852c6e1" id=3D"id-20260609LapuLapuETS,GOCCandObs-Agend=
+a">Agenda</h1>
+<p local-id=3D"7d5c7251056c"><strong>Goal:</strong> Review ongoing results<=
+/p>
+<ul local-id=3D"9a9669fd-36c3-4278-8c54-e259f46da58c">
+<li local-id=3D"dc734cce-1238-4741-82be-f2d20554b7a2">
+<p local-id=3D"063db66db4b5">Ongoing results review for Dashboards and tagg=
+ing (15 min)</p></li>
+<li local-id=3D"5acfce29-3f9a-456f-a310-d46ae9c35d17">
+<p local-id=3D"980bba3be8b4">Ongoing results review for OMM L2 Coverage (15=
+ min)</p></li>
+<li local-id=3D"3eb19130-bdea-4c7e-bce5-eaa1c314bd99">
+<p local-id=3D"20b69a7c27e6">Ongoing results review for Laptop and JPE/JPW =
+monitoring/minions (15 min)</p></li>
+<li local-id=3D"cfd652ae-b0f0-4021-8778-c10c8c44af13">
+<p local-id=3D"162464bb948b">Ongoing results review for Rapid Recovery (15 =
+min)</p></li>
+<li local-id=3D"01ad4224-4bfe-4eb9-bf8c-88303787b2d8">
+<p local-id=3D"76e0e1373b57">Establish monitoring for folder permissions as=
+ part of File transfer/File share (1 min)</p></li>
+</ul>
+<h1 local-id=3D"23e38b0b512a" id=3D"id-20260609LapuLapuETS,GOCCandObs-Meeti=
+ngnotes">Meeting notes</h1>
+<h3 local-id=3D"9e2fb2062900" id=3D"id-20260609LapuLapuETS,GOCCandObs-Proje=
+ctupdates">Project updates</h3>
+<ul local-id=3D"1ed871b7-48f5-49f6-aa6b-24ae89b27da4">
+<li local-id=3D"fa7aa9bc-cb61-4d12-9339-d29bcb845635">
+<p local-id=3D"6801d8502e65">David explained that the team is actively work=
+ing on the developer dashboard with the AQA team, focusing on alerting para=
+meters.</p></li>
+<li local-id=3D"7462b316-7bfc-43ae-8f4c-e3017e42724b">
+<p local-id=3D"7caa41bb4e70">David described ongoing efforts with MK and Ra=
+e to refine developer dashboard alerts, aiming to reduce non-actionable not=
+ifications and improve responder routing.</p></li>
+</ul>
+<h3 local-id=3D"9d99ba392e52" id=3D"id-20260609LapuLapuETS,GOCCandObs-Acces=
+scontrolandcompliance">Access control and compliance</h3>
+<ul local-id=3D"d7d0dd7a-cc88-427d-8b8a-a22c571c929a">
+<li local-id=3D"55a9491a-e36e-43cf-9874-16c9b3e24534">
+<p local-id=3D"72966dc4d4a2">David described the issue of outdated and inco=
+rrectly assigned accounts in shared drive ACLs and mentioned that Aleksei d=
+eveloped a compliance checker to identify these patterns.</p></li>
+<li local-id=3D"a734f1a9-8a00-4d06-a659-f5a2ea27f9ff">
+<p local-id=3D"3664f6d811e8">Birger explained that the lack of inventory an=
+d monitoring for shared drive ACLs has led to accumulation of outdated acco=
+unts, and previous systems like Veronis were decommissioned without replace=
+ment.</p></li>
+<li local-id=3D"525dc82d-3282-4420-9518-aee44eab9279">
+<p local-id=3D"2653bf41aa4e">Debamalya confirmed that issues with invalid a=
+ccounts and unclear ACL ownership persist, and suggested checking with Dong=
+ for existing scripts or monitoring solutions.</p></li>
+<li local-id=3D"000c48a8-051f-4225-8d3f-bace816646f2">
+<p local-id=3D"d4c2826da7f8">Kiran explained that migration projects are co=
+mplicated by the lack of consolidated information on ACL ownership and outd=
+ated accounts, making it difficult to implement effective cleanup strategie=
+s and retention policies.</p></li>
+<li local-id=3D"62c82839-e0cc-4498-8226-fc41575f1aaa">
+<p local-id=3D"013f35b19867">Birger described the absence of a regular inve=
+ntory and process for identifying folders with only invalid users, leading =
+to persistent issues with outdated files and unclear ownership.</p></li>
+<li local-id=3D"4df9e8c5-b4f7-4536-a11d-b371f2a86283">
+<p local-id=3D"567401d24602">David highlighted that current folder retentio=
+n policies are not enforced due to unclear responsibilities for cleanup, re=
+sulting in files from as far back as 1994 remaining undeleted.</p></li>
+<li local-id=3D"20577f0e-792d-420d-8aeb-04dd7f4de0ea">
+<p local-id=3D"9d6a8c5aa76c">David explained that the lack of consolidated =
+ownership and ACL information continues to hinder file server migrations an=
+d retention policy enforcement.</p></li>
+</ul>
+<h3 local-id=3D"26081ee3540d" id=3D"id-20260609LapuLapuETS,GOCCandObs-Dashb=
+oardandalerting">Dashboard and alerting</h3>
+<ul local-id=3D"e06dc3cb-e531-498e-ae72-4fe6e90a4117">
+<li local-id=3D"75aa1213-ebd0-4fb3-98ee-20b6f038bac4">
+<p local-id=3D"7d1d216f9f51">Rae created a daily summary email that provide=
+s a concise view of system health, including response times and alert statu=
+ses for all Japan systems.</p></li>
+<li local-id=3D"d657dae9-544e-401c-907f-d38000574afb">
+<p local-id=3D"df9a2eac047d">Debamalya explained that New Relic supports cu=
+stom alert subscriptions, allowing users to receive alerts only for specifi=
+c systems or environments they are interested in.</p></li>
+<li local-id=3D"27e986e9-9388-4508-bcd9-97e568ce4c90">
+<p local-id=3D"9946e5ce7692">Debamalya explained that New Relic allows user=
+s to subscribe to alerts for specific workloads, enabling tailored notifica=
+tions based on system or environment preferences.</p></li>
+<li local-id=3D"4fd82908-02c8-4fc1-a2e7-1909008479b0">
+<p local-id=3D"7caf00d84b49">Debamalya described ongoing entity tagging eff=
+orts, noting that around 10,001 entities were tagged last week, and that by=
+ July or August, users will be able to search and filter entities, alerts, =
+and workloads in New Relic using PM IDs.</p></li>
+<li local-id=3D"7e161f45-f3b7-4cf9-b8a0-f4569f4b229f">
+<p local-id=3D"619272f2cac2">David clarified that the signal to noise ratio=
+ report implementation after the change freeze was not an update from Debam=
+alya's team, and Debamalya confirmed no related actions from their side.</p=
+></li>
+</ul>
+<h3 local-id=3D"b51f784eb29e" id=3D"id-20260609LapuLapuETS,GOCCandObs-MMMle=
+vel2progress">MMM level 2 progress</h3>
+<ul local-id=3D"17dd2605-430f-4183-9106-6437b30b4c3a">
+<li local-id=3D"585399d2-6b67-48ae-9878-893b897925de">
+<p local-id=3D"a16635683f77">Harish reached out to all Japan application ow=
+ners for MMM level 2 updates, and completed data collection for Ingenium; u=
+pdates for the remaining applications are expected by Friday.</p></li>
+</ul>
+<h3 local-id=3D"947d3dea496c" id=3D"id-20260609LapuLapuETS,GOCCandObs-APMro=
+llout">APM rollout</h3>
+<ul local-id=3D"9fbb1c08-ccaa-4127-aff2-090b8445cd83">
+<li local-id=3D"dc79cbe1-fe82-4d1d-a176-7814c5875ad8">
+<p local-id=3D"d31a7c3a9d1e">Angelito confirmed that APM was successfully c=
+onfigured for non-production environments with Sai, and production rollout =
+is planned next.</p></li>
+<li local-id=3D"d5367d64-41b8-4f19-a012-a5ec515b5521">
+<p local-id=3D"491ccf21516f">APM was successfully configured for Ingenium's=
+ non-production environments, and production rollout is pending scheduling =
+due to required outage (Angelito, Sai)</p></li>
+</ul>
+<h3 local-id=3D"1587e8bf7b7f" id=3D"id-20260609LapuLapuETS,GOCCandObs-Centr=
+alizedlogging(ADX)">Centralized logging (ADX)</h3>
+<ul local-id=3D"63939de8-5ff3-4956-b416-887ba6c82666">
+<li local-id=3D"8ea1fb01-232f-43e9-86a6-c594c6ad98fc">
+<p local-id=3D"236f2efb9d3a">David explained that access to ADX centralized=
+ logging is available to anyone with proper permissions, and emphasized the=
+ need for an Asia-based team to take responsibility for monitoring and mana=
+ging ADX logs</p></li>
+<li local-id=3D"121b75d1-8cea-4054-8168-a8c7289471c4">
+<p local-id=3D"deaa690b0a79">Debamalya explained that MoogsoftAlertIntakeDe=
+v can be used to validate whether an application's logs are reaching ADX, a=
+nd if logs are missing, onboarding instructions should be provided to the a=
+pplication teams.</p></li>
+<li local-id=3D"8fed5c1f-51a4-44b0-83e1-ab4d72aea839">
+<p local-id=3D"46d2a6545883">Debamalya clarified that ADX log onboarding is=
+ the responsibility of application owners, and support is available through=
+ the catalog if logs are not reaching ADX</p></li>
+<li local-id=3D"b233888c-2306-4c65-a18d-f2777e5c0ceb">
+<p local-id=3D"56c97d7b75af">Debamalya confirmed that ADX-related tasks wer=
+e removed from the R2R scope after discussions with Tabitha and Hari</p></l=
+i>
+<li local-id=3D"5741386d-d5f6-42d9-a2e4-5c1119fad392">
+<p local-id=3D"8d96595c772d">Jonan explained that the ADX log onboarding ta=
+sk was dropped from the R2R scope after discussions with Hari and Tabitha.<=
+/p></li>
+</ul>
+<h3 local-id=3D"8937c1263816" id=3D"id-20260609LapuLapuETS,GOCCandObs-Rapid=
+recoveryplan">Rapid recovery plan</h3>
+<ul local-id=3D"26f8877f-5d5f-4a4e-a148-34ed2f452889">
+<li local-id=3D"1ba13004-b894-4a96-9d85-02ad9ca7de93">
+<p local-id=3D"2251164bd9ff">David created a workflow for PS team members t=
+o generate rapid recovery plans using AI, but emphasized that the PS team n=
+eeds to assign someone to start drafting the plans.</p></li>
+</ul>
+<h3 local-id=3D"f2c03f04ad0c" id=3D"id-20260609LapuLapuETS,GOCCandObs-Japan=
+branchnetworkupdates">Japan branch network updates</h3>
+<ul local-id=3D"083d71f1-7bf4-405c-8c11-176957e9b443">
+<li local-id=3D"33077e92-e5a0-4380-9b1e-d7fe652b2014">
+<p local-id=3D"58946b9bd217">Jesus explained that for Japan East and West, =
+the non-production VNet setup is complete, but production VNet updates are =
+still pending due to subscription networking issues.</p></li>
+</ul>
+<h3 local-id=3D"0c2bcc154e28" id=3D"id-20260609LapuLapuETS,GOCCandObs-Branc=
+hofficeITsetup">Branch office IT setup</h3>
+<ul local-id=3D"a16e673d-b27c-44be-be66-c3d1c3aadfd1">
+<li local-id=3D"908eda23-c01a-4b23-8e33-88edfd1d9500">
+<p local-id=3D"87d64b7a22a0">Donna submitted a request to install the agent=
+ on a laptop in the Philippine branch office, and Aleksei will assist with =
+configuration after installation is complete.</p></li>
+</ul>
+<h3 local-id=3D"1c5b41145450" id=3D"id-20260609LapuLapuETS,GOCCandObs-Dashb=
+oardandreportingupdates">Dashboard and reporting updates</h3>
+<ul local-id=3D"cdacb4b5-016b-4aa2-a528-6ea8bfc6ed92">
+<li local-id=3D"71eb284e-c191-44fa-8090-74775e4c7c64">
+<p local-id=3D"0ee637a27f75">David redesigned the Lapu Lapu splash page to =
+prioritize alerting and recovery, and reorganized sections for better team =
+observability and monitoring.</p></li>
+</ul>
+<h3 local-id=3D"8bb0508c2186" id=3D"id-20260609LapuLapuETS,GOCCandObs-Patch=
+ingandmaintenance">Patching and maintenance</h3>
+<ul local-id=3D"bfee852e-8457-4235-8440-afd9adbb56f1">
+<li local-id=3D"c20b4729-b1da-4729-9a80-fa458f49d09f">
+<p local-id=3D"5430ee97154f">Implement weekday patching for non-gold and no=
+n-batch applications and servers to reduce weekend workload, with Karen, Sr=
+ikranth, and Kanu Rajesh leading the effort from the server team.</p></li>
+</ul>
+<h3 local-id=3D"d46f5d5c9c3c" id=3D"id-20260609LapuLapuETS,GOCCandObs-Incid=
+entmanagement">Incident management</h3>
+<ul local-id=3D"99c4d074-e113-42ed-991b-50044214275d">
+<li local-id=3D"5821ad84-b658-4fa5-8388-c41a5d970591">
+<p local-id=3D"0da42c348be7">Escalation of the server incident to the Red H=
+at vendor for log analysis was discussed, and Jonan planned to follow up wi=
+th Dennis for updates on the vendor's findings.</p></li>
+<li local-id=3D"913a8f38-013d-4dbf-a1f5-776360e60fbb">
+<p local-id=3D"da164074a04c">The team resolved the server issue with a rest=
+art, but the root cause of the server freezing remains under investigation =
+by the vendor.</p></li>
+</ul>
+<h3 local-id=3D"60f4dd342f97" id=3D"id-20260609LapuLapuETS,GOCCandObs-Opera=
+tionalprocessimprovement">Operational process improvement</h3>
+<ul local-id=3D"8b3666c0-a68a-4d3b-b246-43fc01ded192">
+<li local-id=3D"3d4912b5-d668-462f-a9ed-741f6dbcd589">
+<p local-id=3D"6b5701505db1">Jonan suggested that GOCCMiddlewareOperations =
+could take on future application health checks after server restarts, pendi=
+ng process changes.</p></li>
+</ul>
+<h1 local-id=3D"2f4abb9019d4" id=3D"id-20260609LapuLapuETS,GOCCandObs-Follo=
+w-uptasks">Follow-up tasks</h1>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"70576292-4123-4133-9a47-2f3=
+84723bbd5" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"2f8bc1a8-39b5-42a4-91c4-eccb540d3c9a">
+<td data-local-id=3D"1acef561-1e93-445e-b2c4-f7694802d0b3" class=3D"conflue=
+nceTd">
+<p local-id=3D"e07061403675">Task</p></td>
+<td data-local-id=3D"de9d55b4-63d5-4ce0-a3fb-d8c27c0dcb01" class=3D"conflue=
+nceTd">
+<p local-id=3D"fe57f25fe55c">Assigned to</p></td>
+<td data-local-id=3D"d0f5c0d9-2517-48c6-8f8b-4117c6d5ef3f" class=3D"conflue=
+nceTd">
+<p local-id=3D"25fac222e141">Due date</p></td>
+<td data-local-id=3D"80388b3b-3e3e-4826-af10-a7812ebc83a3" class=3D"conflue=
+nceTd">
+<p local-id=3D"3917150a8ad6">Bucket</p></td>
+</tr>
+<tr data-local-id=3D"851408ef-9795-4db4-8253-dc042f781bc8">
+<td data-local-id=3D"7d951560-e991-4110-947b-b68cc5f68e87" class=3D"conflue=
+nceTd">
+<p local-id=3D"799ebfadc2da">Discuss the possibility of GOCCMiddlewareOpera=
+tions running ACL monitoring and producing compliance reports for shared dr=
+ives (David, Jonan)</p></td>
+<td data-local-id=3D"6159e0e0-4df7-44db-b965-a8e5169a0b12" class=3D"conflue=
+nceTd">
+<p local-id=3D"f3354d81b224"></p></td>
+<td data-local-id=3D"b36c2d85-8414-44e1-b316-c7f47b5d95bb" class=3D"conflue=
+nceTd">
+<p local-id=3D"120ccfcbbd31"></p></td>
+<td data-local-id=3D"51bd3bb5-80ee-4b58-ae9f-b7998ea1266b" class=3D"conflue=
+nceTd">
+<p local-id=3D"ee8d55a71f51"></p></td>
+</tr>
+<tr data-local-id=3D"9c1087a4-de5a-49cb-b17c-8ea9528c238c">
+<td data-local-id=3D"b219924a-0b36-4920-9155-33cdac48626f" class=3D"conflue=
+nceTd">
+<p local-id=3D"63dcdec35c82">Expand compliance monitoring and reporting for=
+ shared drive ACLs to additional regions if initial cleanup is successful (=
+David, Jonan)</p></td>
+<td data-local-id=3D"86fd790a-2506-4ba1-b7f5-bb39af012226" class=3D"conflue=
+nceTd">
+<p local-id=3D"c8a71881311c"></p></td>
+<td data-local-id=3D"2c46d1b8-7a78-49cc-8196-cfd1d55ee779" class=3D"conflue=
+nceTd">
+<p local-id=3D"80241c80b747"></p></td>
+<td data-local-id=3D"661e1a9a-176f-4d9a-836f-acc66f2e01ee" class=3D"conflue=
+nceTd">
+<p local-id=3D"a0bf1cc79b32"></p></td>
+</tr>
+<tr data-local-id=3D"5d77085a-b818-464b-8372-6cad261f5ed1">
+<td data-local-id=3D"7a02dae1-aead-4d7d-9069-7ba43e64871e" class=3D"conflue=
+nceTd">
+<p local-id=3D"77069df280da">Pilot new folder governance policies on small =
+migrated shares and monitor effectiveness (Aleksei)</p></td>
+<td data-local-id=3D"9803b9bb-f35c-4a8b-81b1-35d19b4cd0ff" class=3D"conflue=
+nceTd">
+<p local-id=3D"bda38de23392"></p></td>
+<td data-local-id=3D"d4d51dbf-d394-4a54-a5be-6a771f37b82f" class=3D"conflue=
+nceTd">
+<p local-id=3D"e5f1cdcef1b6"></p></td>
+<td data-local-id=3D"24e98b2e-e81d-40cd-9903-5c2079e6b844" class=3D"conflue=
+nceTd">
+<p local-id=3D"21697871efc0"></p></td>
+</tr>
+<tr data-local-id=3D"e2c2e2f3-d532-4f4c-96cd-6800bf11d4be">
+<td data-local-id=3D"6fa4d58e-177a-42ea-a09d-eca32e96456a" class=3D"conflue=
+nceTd">
+<p local-id=3D"7c762a565a4a">Apply lessons learned from the developer exper=
+ience dashboard to the customer experience dashboard and production systems=
+ for comprehensive coverage (David)</p></td>
+<td data-local-id=3D"2d49267d-6b79-4d2a-8b25-0b48f10b4351" class=3D"conflue=
+nceTd">
+<p local-id=3D"52e5fa7f58a0"></p></td>
+<td data-local-id=3D"aa4a3ef7-9609-4869-82d4-7a1d08e59bd0" class=3D"conflue=
+nceTd">
+<p local-id=3D"02c9ad8edb02"></p></td>
+<td data-local-id=3D"a0e3b431-b344-45a1-be18-34cca2c28393" class=3D"conflue=
+nceTd">
+<p local-id=3D"313c76e1cdeb"></p></td>
+</tr>
+<tr data-local-id=3D"469f474d-13f7-4f2a-9689-2fbcdfd455ed">
+<td data-local-id=3D"84b1ce6a-19cf-4da7-ac5f-06f1e89e9f95" class=3D"conflue=
+nceTd">
+<p local-id=3D"0b44f00e0791">Share MMM level 2 checklist and project plan w=
+ith the group and in the chat (Debamalya)</p></td>
+<td data-local-id=3D"017c1987-3afd-4cd2-8273-2f462ca94d24" class=3D"conflue=
+nceTd">
+<p local-id=3D"c87437747850"></p></td>
+<td data-local-id=3D"5544a34b-cf67-4bf9-b136-c2dca655a9ba" class=3D"conflue=
+nceTd">
+<p local-id=3D"3cf0fa78df53"></p></td>
+<td data-local-id=3D"8c068c55-8f11-4edd-911f-24460b23d7c7" class=3D"conflue=
+nceTd">
+<p local-id=3D"93cbc9ead557"></p></td>
+</tr>
+<tr data-local-id=3D"c2face02-176f-4e6c-b4ef-f4795580a57d">
+<td data-local-id=3D"39d5481d-8617-4241-86ad-4dca4d56f018" class=3D"conflue=
+nceTd">
+<p local-id=3D"8ea8f83d9cd6">Establish a team in Asia to monitor, manage, a=
+nd ensure proper setup of ADX logs for audit and incident management (GOCCM=
+iddlewareOperations, observability team)</p></td>
+<td data-local-id=3D"59ed7f9b-9da6-40f9-a011-ebdcf3c202dd" class=3D"conflue=
+nceTd">
+<p local-id=3D"989a8df15e00"></p></td>
+<td data-local-id=3D"76d5f5a8-336c-467e-b52b-7fff8dfce003" class=3D"conflue=
+nceTd">
+<p local-id=3D"37ab2acd3bf5"></p></td>
+<td data-local-id=3D"e749f96f-a6c2-40c5-93fb-3dceb9ca0a06" class=3D"conflue=
+nceTd">
+<p local-id=3D"29ab0af94402"></p></td>
+</tr>
+<tr data-local-id=3D"2a428d73-cb81-4b3a-96ff-9c5d375a49d3">
+<td data-local-id=3D"65ad6a43-3653-4020-afe6-168cb078f5a6" class=3D"conflue=
+nceTd">
+<p local-id=3D"395ac4384bbb">Assess current ADX log coverage and identify a=
+pplications not sending logs to ADX (David, Jonan)</p></td>
+<td data-local-id=3D"15875208-5baa-4a96-9f67-ee04f4499a62" class=3D"conflue=
+nceTd">
+<p local-id=3D"06b7c1f58b13"></p></td>
+<td data-local-id=3D"240a1589-90f7-4da1-86e1-8bea5227bdf8" class=3D"conflue=
+nceTd">
+<p local-id=3D"892458ed08b0"></p></td>
+<td data-local-id=3D"1245de33-33a5-45a9-a374-755589fe815f" class=3D"conflue=
+nceTd">
+<p local-id=3D"28e943057082"></p></td>
+</tr>
+<tr data-local-id=3D"1379d52f-bd74-4b1e-bd96-253f6a322ae5">
+<td data-local-id=3D"19be94d0-259f-49bf-9b7c-a2a9d571ad03" class=3D"conflue=
+nceTd">
+<p local-id=3D"3e342d4f8358">Send onboarding instructions to application te=
+ams whose components are not compliant with ADX logging requirements (David=
+, Jonan)</p></td>
+<td data-local-id=3D"2625af17-7412-4327-91e8-d8e91ce97119" class=3D"conflue=
+nceTd">
+<p local-id=3D"d39acc4380b9"></p></td>
+<td data-local-id=3D"9c9d3975-e18d-4ad8-bb26-7e094ee186c9" class=3D"conflue=
+nceTd">
+<p local-id=3D"e1467e30eec0"></p></td>
+<td data-local-id=3D"ce3cc8ac-c061-46ed-b1b8-3b6b885d10cf" class=3D"conflue=
+nceTd">
+<p local-id=3D"d4bfaa3dd8e7"></p></td>
+</tr>
+<tr data-local-id=3D"80461bb9-04c3-4648-9581-ede05f60cfab">
+<td data-local-id=3D"186ade76-1a75-4970-b208-4e8cb6ddeec7" class=3D"conflue=
+nceTd">
+<p local-id=3D"2ed7a5dcfce8">Jonan agreed to review ADX coverage and brains=
+torm with their team, then update David by Thursday or next week</p></td>
+<td data-local-id=3D"0a5eb896-5c81-4286-9b4b-29a68e733599" class=3D"conflue=
+nceTd">
+<p local-id=3D"9241e41a0999"></p></td>
+<td data-local-id=3D"2ac09927-28e1-483a-a5bd-e7e050eb7a17" class=3D"conflue=
+nceTd">
+<p local-id=3D"19272b9d52a1"></p></td>
+<td data-local-id=3D"d0099bf2-6122-47b5-9f18-0ab4736c56c8" class=3D"conflue=
+nceTd">
+<p local-id=3D"31926bc19d4b"></p></td>
+</tr>
+<tr data-local-id=3D"a4f1daff-6e90-4289-ad1a-f7860e686542">
+<td data-local-id=3D"12974b87-9ce1-4f61-a9d2-e8cdd366f509" class=3D"conflue=
+nceTd">
+<p local-id=3D"fd48297d128c">Clarify and document the decision matrix and g=
+uardrails for server restart authorization in rapid recovery plans, specify=
+ing responsible parties and circumstances (David, Jonan, Kiran)</p></td>
+<td data-local-id=3D"aeb3695b-decc-414f-878b-4d233557fbab" class=3D"conflue=
+nceTd">
+<p local-id=3D"3e87fcb1163d"></p></td>
+<td data-local-id=3D"1742c555-20df-44cb-bfb6-30e903034a95" class=3D"conflue=
+nceTd">
+<p local-id=3D"3aca4fd8e789"></p></td>
+<td data-local-id=3D"12e8d40d-0cc3-410e-bd2c-f5c44d6d7396" class=3D"conflue=
+nceTd">
+<p local-id=3D"ea003871a876"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"f70f8cc7497a"></p>
+<p local-id=3D"3584528e"></p>
+    </div>
+</body>
+</html>
+------=_Part_74_953488552.1780989308830--

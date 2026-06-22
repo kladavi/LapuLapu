@@ -4,6 +4,129 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-06-19 — W25 Copilot-Generated Work Summary (Recap Artifact)** #processed
+  - **Source:** archive/W25_copilot.md
+  - **From:** Copilot-generated week-in-review recap (David Klan working notes, week of 2026-06-15 → 2026-06-19)
+  - **Focus:** Theme-level summary of W25 activity across Rapid Recovery Plan / MMM L2, Lapu-Lapu / GOCC transition, Batch / MFT transition readiness, operational governance + BAU alignment, Azure cost optimization, and dashboard/collaboration enablement.
+  - **Key outcomes:**
+    1. Recap confirms continued cadence on the in-flight workstreams already tracked — RRP standardization (T106 / D011 / D015), MMM L2 (T005 / T121 / T126), GOCC transition + onboarding (T077 / T118 / D017), batch/MFT readiness (T108–T110 / D012 / T127), patching governance (T017 / T020 / D003), and dashboard alerting tune-up (T128 / D013).
+    2. Mentions Azure cost optimization review and GOCC Azure resource reduction discussions at theme level only; too vague to extract a discrete task — flagged for direction at the next governance forum if it warrants its own workstream (otherwise folds into T002 orphan-VM hygiene).
+    3. Mentions SNOW asset/CMDB sync at theme level only; folds into existing CMDB-mapping work (T002 + Yegor's in-flight app-mapping cleanup).
+    4. Observation that work is skewed toward coordination and governance rather than isolated delivery — aligns with the PS Team transition responsiveness risk already tracked (T121 / T126) and the contract transition flagged under T077 (Yam → Rae handover).
+    5. "Next focus" items (RRP ownership/enforcement, Lapu-Lapu readiness scoring, batch/MFT clarity, measurable deliverables/dashboards) all already covered by open tasks; no new T### required.
+  - **Actions extracted → none (recap artifact; all themes mapped to existing tracked work)**
+  - **Actions referenced → T002, T005, T017, T020, T077, T106, T108, T109, T110, T118, T121, T126, T127, T128**
+  - **Decisions referenced → D003, D011, D012, D013, D015, D017**
+
+- **2026-06-18 — Lapu-Lapu GOCC (Dashboards, Moogsoft/Ansible Auto-Restart, Firewall Approval, Runbook Standardization)** #processed
+  - **Source:** archive/20260618+-+Lapu-Lapu+GOCC.doc
+  - **From:** Confluence export (Lapu-Lapu GOCC meeting notes — David Klan, Jonan Tan Pangan, Rae Judavar, Mary Kris Cabunilas, Mark Adriel Manuel, Balaji Ravi, Birger Fjaellman, Dennis Talento, Angelo Tiu Mariano)
+  - **Focus:** Employee/Developer Experience dashboard feedback, automated Moogsoft + Ansible non-prod incident response, Enginium non-prod URL monitoring firewall approvals, Ingenium L1/L2/L3 runbook clarity, GOCC transition runbook standardization, Ingenium Rapid Recovery + KB publication, Philippines branch monitoring go-live.
+  - **Key outcomes:**
+    1. Sales team and other business stakeholders found the Employee Experience and Business Capability dashboards useful and asked for further access and a feedback mechanism; David and Rae exploring direct New Relic access and importing external reports into Power BI.
+    2. Solace SIT/UAT environments exhibit recurring instability; David contacted the app owner and is partnering with the test environment team to investigate.
+    3. Plan locked to integrate non-prod alerts with Moogsoft (target end of month / early next month) and trigger an Ansible auto-restart on failure; until live, the team runs the Ansible script manually with Moogsoft registering incidents after validation. Escalation: failed restart → GOCC → L2.
+    4. Enginium firewall approval pending (switch to Azure jump due to on-prem decommissioning); incomplete approvals previously blocked GOCC validation during non-prod patching — Rae driving approval, Mark to validate URLs post-change.
+    5. Ingenium runbook lacks explicit L2 roles; current runbook retained for Japan market apps until September, then updated for the new GOCC unified operating model. L0 → L1 → L2 → L3 procedural flow confirmed.
+    6. Runbook format/versioning improvements proposed (metadata extraction, version control, ServiceNow integration) to support automation and AI-assisted RRP drafting.
+    7. Ingenium Rapid Recovery Plan complete with KB article published; extension to other apps requires PS Team coordination (Harish + Hirooka-san).
+    8. Philippines branch monitoring is operational; Singapore expressed interest in similar solutions (future opportunity).
+    9. Some applications currently out-of-scope for GOCC transition; Rae to follow up with Donna and AMS to confirm reasons; minimum availability monitoring agreed to remain in scope even where deeper performance/capacity coverage is excluded.
+  - **Actions extracted → T128, T129, T130, T131, T132, T133, T134**
+  - **Actions referenced → T003, T106, T112, T118, T124**
+  - **Decision extracted → D017**
+  - **Decision referenced → D011**
+
+- **2026-06-17 — Test Environment Front-System Batch Operation Transition Proposal (Balaji Ravi)** #processed
+  - **Source:** archive/Batch Operation - Front system.pptx
+  - **From:** Balaji Ravi (proposal deck dated June 17, 2026)
+  - **Focus:** Formal proposal to transition test-environment front-system batch operations (MLK, SCV, AGW, SSW, PAweb, WFI, BPM) to GBO/GOCC under the D012 transition direction.
+  - **Key outcomes:**
+    1. Current state: batch execution in FT/SIT/UAT; ad-hoc batch requests from AQA/BA; full lifecycle (prerequisites, input prep, system date config, execution, output handoff); high engineering effort with no standardized runbooks and significant SME dependency.
+    2. Proposed transition scope: batch execution in test environments, recurring/ad-hoc batch request handling, prerequisite + input file validation, execution monitoring and reporting, output coordination — all moved to GBO/GOCC.
+    3. Benefits framed as: engineering capacity release for modernization, standardization via runbooks, lower-cost delivery model, scalability via time-zone/shift coverage, reduced manual-error risk, and audit-readiness.
+    4. Aligns directly with D012 and the existing batch-transition workstream (T108–T110); no new actions beyond what is already tracked.
+  - **Actions extracted → none (proposal artifact advancing D012, T108–T110)**
+  - **Actions referenced → T108, T109, T110, T127**
+  - **Decision referenced → D012**
+
+- **2026-06-16 — Direction (David Klan): ADX Park, MMM L2 PS Engagement, Batch Services Intake** #processed
+  - **Source:** archive/20260616+-+Direction.doc
+  - **From:** Confluence export (David Klan direction notes)
+  - **Focus:** Direction adjustments across ADX, MMM L2, Rapid Recovery, Patching, Dashboards, CMDB mapping, GOCC transition, branch monitoring, and the File Transfer / File Share / Batch Job Services intake.
+  - **Key outcomes:**
+    1. ADX onboarding push at the R2R workstream is parked until Balaji signals "engage"; incident analysis will guide central-logging needs, with Yegor supporting investigations via his ADX ACL access.
+    2. MMM L2 progress for remaining Japan Gold apps is blocked on PS Team engagement; Harish to be introduced to Hirooka-san for the entry point; Debamalya retains checklist/project-plan ownership.
+    3. Rapid Recovery + Patching remain pending PS Team engagement, with patching risk that the team repeats the same questions weekly and lacks the CMDB/ServiceNow query skills to drive standardized patching changes.
+    4. Employee XP dashboard: Ito-san feedback received; external app health-check reports requested for IT-savvy business users — feeds T128 with the GOCC meeting feedback.
+    5. Dev XP dashboard: alerting tightened, sleeping-system false alerts being tuned out, active hours (9am–9pm JST) set; focus on process monitoring next.
+    6. CMDB mapping: Yegor continues app-mapping cleanup (in-flight under existing CMDB-area work; no new task).
+    7. GOCC transition: Yam moving teams, handing over remaining applications to Rae; PS Team responsiveness risk during contract transition flagged.
+    8. Branch / JPE-JPW: non-prod VNet complete (post-provisioning fix pending); production VNet still blocked on subscription networking; 10 JP laptops in service; Philippines branch monitoring set up (Donna agent install REQ, Aleksei to configure, Vignesh to build PH dashboard with GOCC).
+    9. File Transfer / File Share / Batch Job Services intake: dynamic-date batch ingestion noted as automation design intent; Arbindra may provide batch job failure data; Izza to be added to the weekly meeting.
+  - **Actions extracted → T126, T127**
+  - **Actions referenced → T002, T108, T109, T110, T116, T118, T119, T120, T121, T122, T123, T124, T125**
+  - **Decision extracted → D016**
+
+- **2026-06-12 — [Lapu-Lapu] Weekly Status Update W24 (Distribution Copy)** #processed
+  - **Source:** archive/[Lapu-Lapu] Weekly Status Update.eml
+  - **From:** David Klan → Birger Fjaellman, Kelvin Leung, Hari Pothakamuri (cc Joan Lee, Debamalya Das, Jonan Tan Pangan, Balaji Ravi, Harish Arasu)
+  - **Focus:** Distribution copy of the W24 weekly status report sent to leadership on 2026-06-12.
+  - **Key outcomes:**
+    1. Matches the W24 record already filed in 03-reporting/weekly/2026-W24.md; dashboard metrics, risks, ADX, MMM L2, Rapid Recovery, and INC08624117 narratives align with that report.
+    2. PS Team contract transition risk surfaced as the new headline risk (less responsiveness expected) — already reflected in T121/T126 and the W24 narrative.
+    3. No new actionable content beyond the filed report.
+  - **Actions extracted → none (report-only artifact)**
+
+---
+
+- **2026-06-09 — LapuLapu ETS, GOCC and Obs (Weekly Touchpoint)** #processed
+  - **Source:** archive/20260609+LapuLapu+ETS,+GOCC+and+Obs.doc
+  - **From:** Confluence export (Lapu-Lapu ETS / GOCC / Observability weekly meeting notes)
+  - **Focus:** Beta-test status for the Developer Experience Dashboard, ACL compliance for shared folders, MMM L2 coverage, APM rollout, ADX coverage in Asia, Rapid Recovery readiness, JPE/JPW + branch office monitoring, weekday patching, and the INC08624117 Ingenium freeze post-incident discussion.
+  - **Key outcomes:**
+    1. Developer Experience Dashboard alerting being tightened with the AQA beta group — push alerts only for actionable signals, full data kept in the dashboard, daily summary email (Rae) for one-page health.
+    2. Shared-folder ACL compliance brought into scope: Aleksei's compliance checker + folder governance pilot on small migrated shares; GOCC Middleware Operations is the prospective long-term owner. File transfer / batch remain separate (D012); ACL only.
+    3. MMM L2: Harish has reached out to all Japan app owners; Ingenium data collected; remaining updates expected by Friday. Debamalya to share MMM L2 checklist and project plan.
+    4. APM successfully configured for Ingenium non-prod (Angelito, Sai); production rollout pending outage scheduling.
+    5. ADX (centralized logging): R2R-scope ADX onboarding was dropped after discussion with Hari and Tabitha; ADX onboarding is now app-owner responsibility, but Asia ownership for ADX log monitoring/management needs to be stood up by GOCC Middleware Operations + Observability. Jonan to update David by Thursday/next week.
+    6. Rapid Recovery: AI-assisted workflow built for PS team to draft RRPs; PS team still needs to assign authors. Server restart authorization decision matrix to be embedded in every RRP (D015).
+    7. Branch/JPE-JPW: Non-prod VNet complete (post-provisioning fix pending); prod VNet still blocked on subscription networking; 10 JP laptops in service; Philippines branch laptop agent install REQ in progress (Donna), Aleksei to configure, Vignesh to build PH branch dashboard.
+    8. Weekday patching for non-gold, non-batch apps/servers to be implemented to reduce weekend workload (Karen, Srikranth, Kanu Rajesh).
+    9. INC08624117 Ingenium server freeze (2026-06-08) resolved by restart; root cause under investigation with Red Hat; Jonan to follow up with Dennis. Jonan proposed GOCC Middleware Operations take on post-restart application health checks.
+    10. Joan and Rowena to be added to the weekly meeting to represent GBO.
+  - **Actions extracted → T117, T118, T119, T120, T121, T122, T124, T125**
+  - **Actions referenced → T003, T005, T020, T108, T116, T123**
+  - **Decision extracted → D013, D014, D015**
+
+- **2026-06-08 — GOCC / Japan Lapu-Lapu Project Hub (Confluence Landing Page Snapshot)** #processed
+  - **Source:** archive/GOCC+_+Japan+-+Lapu-Lapu+project.doc
+  - **From:** Confluence export (Lapu-Lapu project landing/index page)
+  - **Focus:** Snapshot of the Lapu-Lapu project landing page on Confluence — navigation hub for Alerting & Recovery, Observability & Monitoring, Reporting & Insights, OKRs, Source of Truth, side quests, meeting notes archive, ADX coverage docs, Rapid Recovery Information Hub, gold/silver/bronze app lists, and the INC08624117 Ingenium incident headline.
+  - **Key outcomes:**
+    1. Confirms current scope split: Employee Experience Dashboard (Japan Prod), Developer Experience Dashboard (Japan Non-Prod), Japan Business Capability dashboard, GOCC transition (synthetic/uptime + incident routing handover), and RRP (documented, tested, KB-published).
+    2. Confirms Observability scope (MMM L2, ADX, branch minions, certificates), Reporting scope (Power BI Lapu-Lapu/Epsilon/Gopher + Super Ops), and side-quest portfolio (Gopher, Pulse, Patching, CMDB Mapping, NW Inventory, File Transfer/Batch/File Share).
+    3. Incident analysis backlog page lists Ingenium, eClaims, OSCS, SURF, IACB-WFI, Sales Support Web, and Vantage — confirms RRP scope set already tracked in T106 + RRP work.
+    4. Featured incident headline: INC08624117 - Ingenium (2026-06-08) — same incident tracked under T123.
+  - **Actions extracted → none (reference/navigation hub)**
+  - **Actions referenced → T003, T004, T005, T006, T077, T079, T081, T106, T123**
+
+- **2026-06-04 — Lapu-Lapu GOCC and Japan (Application Monitoring Onboarding & Dashboard Review)** #processed
+  - **Source:** archive/20260604+-+Lapu-Lapu+GOCC+and+Japan.doc
+  - **From:** Confluence export (GOCC / Japan weekly touchpoint meeting notes)
+  - **Focus:** Dashboards (Prod Employee Experience + Non-Prod Developer Experience), URL monitoring transition to GOCC, branch dashboards + DC Minion comparison, xMatters quality control, ADX firewall/agent posture, and confirmation that File Share / File Transfer stays separate from Lapu-Lapu for now.
+  - **Key outcomes:**
+    1. David to set up sharing session with PS Team for the Employee Experience Dashboard, including Branch Office monitoring scope.
+    2. Developer Experience Dashboard: validate current Health Check email config to replace the TEM-owned daily report; align alert handling with TEM (Sangram, Rupesh).
+    3. URL Monitoring transition to GOCC: Jonan to onboard a data-quality diff between the URL onboarding source and ServiceNow (catches strike-through fonts and similar data-quality defects).
+    4. Branch dashboards + DC Minion node-to-node comparison reports — David to write the PRD and send to OAR Team (debamalya_das, edward_ian_vera, jesusjr_pepito, paula_segovia).
+    5. xMatters: OAR (Jonan/Edward) to engage the vendor for a Japan group/member registration quality report and ongoing QC.
+    6. SMS spam incident response — handled by Monitoring Team (referenced INC08574374 / T104).
+    7. ADX: GOCC to verify firewall openings and agent installation status (feeds the broader ADX Asia coverage assessment).
+    8. File Share / File Transfer to remain a separate workstream from Lapu-Lapu for now (subsequently revisited 2026-06-09 — ACL compliance pulled in via D014).
+  - **Actions extracted → T112, T113, T114, T115, T116**
+  - **Actions referenced → T077, T083, T104**
+
 - **2026-06-01 — RE: KLO - Application Onboarding (Cross-Market GOCC MMM)** #processed
   - **Source:** archive/RE_ KLO - application onboarding.eml
   - **From:** Birger Fjaellman (reply to David Klan's forward of the Kelvin Leung / Julian Wai / Harish Arasu thread)
