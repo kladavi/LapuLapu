@@ -199,3 +199,16 @@ tags: #project:lapu-lapu #domain:batch #domain:mft #domain:gocc-handover #capabi
 - **Decision:** Agreed
 - **Reason:** By September the GOCC will transition to a unified operational team without L1/L2 silos, with a single engineer handling the full support flow. The current structure and resources remain unchanged until cutover so the existing Ingenium runbook is retained for Japan market applications and updated to the new GOCC model immediately after September. The L0 (automation) → L1 → L2 (specialized troubleshooting not covered by procedures) → L3 (unresolved/complex) procedural flow is preserved in the interim, and the runbook update will follow the new format/versioning standard tracked under T134.
 - **Tags:** #project:lapu-lapu #area:gocc-transition #domain:operating-model #domain:escalation
+
+---
+
+## D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline
+- **Date:** 2026-06-24
+- **Requestor:** David Klan / Balaji Ravi / GBO (Rowena Zulueta)
+- **Request:** Lock the executable transition plan for migrating Japan batch operations into a GBO-owned 24x7 operating model, including operating principles, scope, work breakdown, and a September pilot cutover.
+- **Decision:** Agreed
+- **Reason:** D012 set the directional shift to GBO/GOCC ownership; the 2026-06-24 level-set with GBO converts it into an executable plan. Operating principles confirmed: centralized GBO execution of batch workloads 24x7, Japan teams shift from execution to stability/input management/failure prevention, strict "No runbook = No onboarding" onboarding gate, and full alignment with the Lapu-Lapu global operating model. Phase-1 scope confirmed as CA batch jobs (primary focus), test-environment front-system batch operations (MLK, SCV, AGW, SSW, PAweb, WFI, BPM), and L0/L1 operational activities; manual/non-CA jobs deferred pending inventory + readiness validation. Work breakdown (WP1–WP7) covers operating model, inventory baseline, runbook standardization, execution readiness, pilot implementation, Ingenium parallel track, and governance/reporting. Timeline locked: Discovery & Inventory now → mid-July; Onsite GBO Deployment mid-July; Runbook Build & Dry Runs late July → August; Pilot Cutover September. Top risks: incomplete inventory (esp. non-CA/manual jobs), unclear ownership, unproven 24x7 readiness, missing/poor runbooks, lack of Japan on-site support — each with assigned mitigations (T108, T135, T136, T137, T138). Four follow-up confirmations required: (a) GBO full ownership of batch execution (24x7), (b) Japan input responsibilities (inventory + runbooks), (c) pilot application selection (front system), (d) timeline alignment (July readiness → September pilot).
+- **Related Objectives:** H-1 (Batch Automation), H-4 (Unified Support), O6 (Technology Transformation through AI & Automation)
+- **Owner:** David Klan
+- **Tags:** #project:lapu-lapu #domain:batch #area:gocc-transition #domain:operating-model #domain:governance
+- **Source:** Inbox — archive/20260624+-+GBO+Batch+Transition.doc

@@ -1803,3 +1803,101 @@
 - **Tags:** #project:lapu-lapu #area:gocc-transition #worktype:standards #domain:knowledge-management #capability:automation
 - **Description:** With Birger Fjaellman, review the drawbacks of outdated and manually-maintained runbooks and propose improvements covering metadata extraction, version control, and integration with ServiceNow so runbooks remain accurate and machine-readable enough to feed downstream automation (auto health checks, escalation, AI-assisted RRP drafting). Propose the runbook format/versioning standard, identify a migration approach for the existing runbook corpus (starting with Japan market applications), and align with the mandatory RRP template (D011) so RRPs inherit the same metadata baseline.
 - **Source:** Inbox — archive/20260618+-+Lapu-Lapu+GOCC.doc
+
+---
+
+## T135 — Define GBO Batch Transition Operating Model (RACI + SLO Categories + Escalation Flow)
+- **Status:** Open
+- **Created:** 2026-06-24
+- **Objective Chain:** H-1 (Batch Automation) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Relevance:** 88/100
+- **Tags:** #project:lapu-lapu #domain:batch #worktype:operating-model #area:gocc-transition #domain:governance
+- **Description:** Author WP1 of the GBO Japan Batch Transition execution plan: define the 24x7 GBO execution model and scope boundaries, formalize the execution-vs-requestor RACI between Japan Application Teams (inputs, runbooks, requests) and GBO (execution, monitoring, escalation, governance), define SLO categories (scheduled batch, ad-hoc batch, incident recovery), and document the GBO → L3 escalation flow. Output feeds D012/D018 governance and unblocks WP4 execution readiness for the September pilot.
+- **Source:** Inbox — archive/20260624+-+GBO+Batch+Transition.doc
+
+---
+
+## T136 — Define Standard CA Batch Runbook Template (L1/L2/L3 Aligned) and Enforce Onboarding Gate
+- **Status:** Open
+- **Created:** 2026-06-24
+- **Objective Chain:** H-1 (Batch Automation) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:cmdb
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #domain:batch #worktype:standards #area:gocc-transition #priority:blocker
+- **Description:** Author WP3 of the GBO Japan Batch Transition execution plan: define a standard CA-batch runbook template aligned to L1/L2/L3 with step-by-step execution flows, troubleshooting paths, and escalation triggers; convert existing batch documentation into that template; validate runbooks for completeness and testability; and enforce the "No runbook = No onboarding" gate at GBO intake. Distinct from T134 (general application runbook format/metadata standard) — this is the batch-specific operational template required for September pilot readiness. Sample runbook templates shared by GBO CAWLA admin (Godfrey Esguerra, 2026-06-24) feed the starting point.
+- **Source:** Inbox — archive/20260624+-+GBO+Batch+Transition.doc, archive/FW_ Action items from the meeting with Japan BU.eml
+
+---
+
+## T137 — Select Pilot Front-System Application and Execute September GBO Batch Cutover
+- **Status:** Open
+- **Created:** 2026-06-24
+- **Objective Chain:** H-1 (Batch Automation) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:ets-japan
+- **Assigned:** Balaji Ravi
+- **Systems:** #system:cmdb
+- **Relevance:** 92/100
+- **Tags:** #project:lapu-lapu #domain:batch #worktype:pilot #area:gocc-transition #priority:milestone
+- **Description:** Execute WP5 of the GBO Japan Batch Transition execution plan: select one pilot front-system application (from MLK, SCV, AGW, SSW, PAweb, WFI, BPM) and fully onboard its job inventory and runbooks, transition execution fully to GBO, validate zero dependency on Japan execution and a clean escalation flow, and capture gaps and remediation actions. Target cutover is September per the locked timeline (Discovery + Inventory now → mid-July; Runbook Build & Dry Runs late July → August; Pilot Cutover September). Application selection is one of the four decisions required per the 2026-06-24 level-set.
+- **Source:** Inbox — archive/20260624+-+GBO+Batch+Transition.doc
+
+---
+
+## T138 — Stand Up GBO 24x7 Japan Batch Support (Staffing, Shifts, xMatters, Onsite Resource by Mid-July)
+- **Status:** Open
+- **Created:** 2026-06-25
+- **Objective Chain:** H-4 (Unified Support) → O6 (Technology Transformation through AI & Automation)
+- **Team:** #team:gbo
+- **Assigned:** Rowena Zulueta
+- **Systems:** #system:xmatters
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #domain:batch #area:gocc-transition #worktype:resourcing #priority:milestone
+- **Description:** Confirm the GBO 24/7 support model for the Japan batch transition: team name, member list, shift schedule, xMatters registration (group ETS-GBO-N-Asia confirmed), and onboarding of Raj Kanesh into the team. Deploy onsite GBO support presence in Japan by mid-July per the locked timeline. Risk mitigation for "24x7 support readiness unproven" and "Lack of Japan on-site support" raised in the 2026-06-24 level-set. Status currently in-progress with Rowena's direct reports listed and to be shared with Balaji and David.
+- **Source:** Inbox — archive/20260625+-+Direction.doc, archive/FW_ Action items from the meeting with Japan BU.eml
+
+---
+
+## T139 — Establish RRP Draft Quality-Control Workflow (DK + Balaji QC; Jonan Response Sequencing)
+- **Status:** Open
+- **Created:** 2026-06-25
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #worktype:governance #domain:quality-control
+- **Description:** Define and run the QC workflow for incoming RRP drafts from PS Team authors: David Klan and Balaji Ravi review and quality-control draft documentation before submission to Thabani for KB publishing, while Jonan Tan Pangan sequences responses and routing back to authors. Closes the gap surfaced under T107 where PS team still needs to assign authors and the AI-assisted RRP drafting workflow lacks a review checkpoint. Reinforces D011 (mandatory standard template) and D015 (restart authorization matrix in every RRP).
+- **Source:** Inbox — archive/20260625+-+Direction.doc
+
+---
+
+## T140 — Evaluate GBO-Built ADX Batch Dashboard for JPN-Scoped Read-Only Troubleshooting Access
+- **Status:** Open
+- **Created:** 2026-06-25
+- **Objective Chain:** H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:adx
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:adx-registration #domain:batch #domain:logging #domain:troubleshooting
+- **Description:** Godfrey Esguerra (GBO CAWLA Manager) has built and shared an ADX dashboard against the APROD ADX environment that captures CA batch tracelog messages for all regions (HKG/JPN/SGP) with a rolling 1-hour query window. Proposal is to build a separate dashboard with read-only access for the GBO Batch Ops team filtered to a specific application string (e.g., `JPN`) so each business unit sees only its batch logs (sample KQL: `Apps | where Hostname == 'AZWAPPGBOAPPP01' and Message contains "JPN" | where TimeGenerated >= ago(1h)`). Hold the discussion with the CAWLA team and confirm whether GBO can forward batch logs from ADX for troubleshooting use vs continued reliance on CA logs. This is an app-driven re-engagement of ADX consistent with D016 (parked R2R push, resume on explicit demand).
+- **Source:** Inbox — archive/FW_ Action items from the meeting with Japan BU.eml
+
+---
+
+## T141 — Document CAWLA Hosting & DR Posture (EAS Primary / SEA Secondary, Coupled App+DB Failover) in Batch RRP and Risk Register
+- **Status:** Open
+- **Created:** 2026-06-25
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gbo
+- **Assigned:** Godfrey Esguerra
+- **Systems:** #system:cawla #system:azure
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #domain:batch #area:rapid-recovery #domain:dr #domain:risk
+- **Description:** Capture the CAWLA hosting and DR posture confirmed by Godfrey Esguerra (GBO CAWLA admin, 2026-06-24): HA architecture with primary CAWLA application and SQL MI database servers in EAS (East Asia), secondary servers in SEA (South East Asia). Cross-region execution introduces network latency; a database failover to SEA requires the application server to fail over to SEA in tandem to maintain optimal performance and stability. Embed this constraint into the Japan batch transition RRP (T136 / T141 alignment), batch transition risk register (D018), and the Lapu-Lapu DR view so recovery procedures and pilot validation account for the coupled failover model.
+- **Source:** Inbox — archive/FW_ Action items from the meeting with Japan BU.eml

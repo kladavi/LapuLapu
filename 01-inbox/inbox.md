@@ -4,6 +4,59 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-06-25 — FW: Action items from the meeting with Japan BU (CAWLA Admin Confirmations: ADX Logging & DR Posture)** #processed
+  - **Source:** archive/FW_ Action items from the meeting with Japan BU.eml
+  - **From:** Rowena Zulueta (forwarding Godfrey Esguerra's CAWLA admin responses) → David Klan, Balaji Ravi; cc Izza Ilagan, Melanie Lumbao, Eric Vaughan
+  - **Focus:** GBO follow-up after the 2026-06-24 GBO Batch Transition level-set with Japan BU — confirming ADX logging coverage/usage for batch troubleshooting and the CAWLA hosting/DR architecture; sharing sample runbook + batch status report templates and the xMatters group.
+  - **Key outcomes:**
+    1. ADX logging clarification: APROD ADX environment captures CA batch tracelog messages for all batch jobs across all regions (HKG/JPN/SGP) with a rolling 1-hour query window for performance; Godfrey proposed a separate ADX dashboard for GBO Batch Ops with read-only access scoped by application string (e.g., `JPN`) using KQL filters on Hostname `AZWAPPGBOAPPP01` + Message contains "JPN" + TimeGenerated >= ago(1h).
+    2. CAWLA hosting and DR: HA architecture with primary CAWLA application and SQL MI database servers in EAS (East Asia), secondary servers in SEA (South East Asia). Cross-region execution introduces network latency; DB failover to SEA requires the application server to fail over in tandem to maintain optimal performance and stability.
+    3. Sample runbooks (using the runbook template) and sample batch status reports (manual and automated) shared as reference material — feeds the WP3 CA-batch runbook standardization (T136).
+    4. xMatters group confirmed for the GBO Asia coverage: `ETS-GBO-N-Asia` — feeds the GBO 24x7 staffing/registration work (T138).
+    5. Re-engagement signal for ADX at the batch-app level (app-driven demand) — consistent with D016 (parked R2R push, resume on explicit demand).
+  - **Actions extracted → T140, T141**
+  - **Actions referenced → T136, T138**
+  - **Decision referenced → D016, D018**
+
+- **2026-06-25 — Direction (David Klan): FT/FS/Batch Kickoff, RRP QC Workflow, MMM L2 + Patching + GOCC Status** #processed
+  - **Source:** archive/20260625+-+Direction.doc
+  - **From:** Confluence export (David Klan direction notes)
+  - **Focus:** Direction snapshot after the GBO Batch Transition level-set — File Transfer / File Share / Batch Job Services kickoff with GBO; ADX registration parked; status checkpoints on MMM L2, Rapid Recovery (with new draft QC workflow), Patching, Employee XP Dashboard, Dev XP Dashboard, CMDB mapping, GOCC transition; and additional related work on Branch / JPE-JPW.
+  - **Key outcomes:**
+    1. File Transfer / File Share / Batch Job Services kickoff held with Rowena, Izza, Balaji, and David. All Cobol jobs onboarded to CA (TBC). GBO 24/7 support confirmation in progress — team name, member list, shift schedule, xMatters registration, and Rowena's direct reports; Raj Kanesh joining the team.
+    2. ADX Registration parked pending further instruction as an MMM L2 requirement (aligns with D016).
+    3. MMM L2 (Pending PS Team engagement): Harish reached out to all Japan app owners; Ingenium data collected; remaining Gold app updates planned once PS Team members are assigned; Debamalya owns checklist / project-plan distribution; escalation in progress with Japan Team engaged; Ingenium ADX registration will enable other app thresholds — all aligned to T121.
+    4. Rapid Recovery (Pending PS Team engagement): Ingenium Gold RRP delivered (Balaji Ravi / Senthil Kumar Jaganathan) to the mandatory standard template (full restart sequence WAS → CICS → DB + batch-slowness workaround; RTO/RPO Primary 2h/2h, DR 4h/4h); Kanagaraj's restart runbooks integrated as baseline; mandatory server-restart authorization decision matrix required in every RRP (D015); AI-assisted RRP drafting workflow built for PS team; PS team still needs to assign authors. NEW: David Klan and Balaji Ravi perform QC on incoming draft documentation; Jonan Tan Pangan sequences out responses.
+    5. Patching (Pending PS Team engagement): Standardization and weekday patch registration meetings continue; first application weekday onboarding being confirmed; weekday patching for non-Gold non-batch apps/servers remains the path to reduce weekend workload (Karen, Sreekanth, Kanaraj). Risk reaffirmed: team repeats the same questions weekly and lacks CMDB/ServiceNow query skills to drive standardized patching changes.
+    6. Employee XP Dashboard: David received feedback from Ito-san on Employee XP, Business Capability, and Branch monitoring dashboards; external app health-check reports for IT-savvy business members requested (already feeds T128).
+    7. Dev XP Dashboard: In beta with AQA group; alerting tightened to actionable signals (push for real-time action, dashboard for full data surface across all environments, Rae's daily summary email for one-page health); sleeping-system false alerts being tuned out; active hours (9am–9pm JST) set; focus on process monitoring next (aligns with T118).
+    8. CMDB Mapping: Yegor continues app-mapping cleanup (in-flight; no new task).
+    9. GOCC Transition (Pending PS Team engagement): Yam moving teams and handing remaining applications to Rae; PS Team responsiveness risk during contract transition (aligned to T077, T121, T126).
+    10. Branch / JPE-JPW: Non-prod VNet setup complete (post-provisioning fix pending); production VNet still blocked on subscription networking; 10 JP laptops in service; Philippine branch laptop monitoring kicked off — Donna submitted agent install REQ, Aleksei to configure, Vignesh to build PH branch dashboard with GOCC (mirrors Japan branch model). Aligns to existing T119/T120/T125.
+  - **Actions extracted → T138, T139**
+  - **Actions referenced → T020, T077, T106, T107, T108, T118, T121, T126, T127, T128**
+  - **Decision referenced → D011, D012, D015, D016, D017**
+
+- **2026-06-24 — GBO Japan Batch Transition: Level Set & Execution Plan (WP1–WP7, September Pilot)** #processed
+  - **Source:** archive/20260624+-+GBO+Batch+Transition.doc
+  - **From:** Confluence export (GBO Japan Batch Transition level-set meeting notes; deck reference: SharePoint BatchOpsTransition_v1.pptx)
+  - **Focus:** Align stakeholders on the executable transition plan to migrate Japan batch operations into a GBO-owned 24x7 operating model, with a September pilot validating end-to-end ownership; lock operating principles, scope, work breakdown, timeline, risks, and the four decisions required.
+  - **Key outcomes:**
+    1. Operating principles: centralized GBO execution of batch workloads (24x7); Japan teams shift from execution to stability/input management/failure prevention; strict "No runbook = No onboarding" gate; full alignment with Lapu-Lapu global operating model (standardization, observability, governance). RACI: Japan Application Teams provide accurate job inputs, runbooks, and requests; GBO owns execution, monitoring, escalation, and governance.
+    2. Phase-1 scope confirmed: CA batch jobs (primary focus), test-environment front-system batch operations (MLK, SCV, AGW, SSW, PAweb, WFI, BPM), and L0/L1 operational activities. To-be transition scope covers batch execution (test environments initially), ad-hoc batch request handling, input validation and prerequisite checks, execution monitoring and reporting, and output coordination with downstream systems. Manual and non-CA jobs out-of-scope pending inventory + readiness validation.
+    3. Work breakdown locked: WP1 Operating Model Definition (24x7 model + RACI + SLO categories scheduled/ad-hoc/incident + GBO → L3 escalation); WP2 Inventory Baseline (consolidate complete CA job inventory + non-CA/manual; map ownership and execution dependencies; capture failure patterns and incident history); WP3 Runbook Standardization (L1/L2/L3-aligned template; convert existing docs; validate completeness/testability; enforce runbook onboarding gate); WP4 Execution Readiness (configure CA jobs under GBO ownership; validate access/credentials, tooling; align monitoring on job success/failure; run execution simulations and failure scenario testing); WP5 Pilot Implementation (select 1 pilot front-system app, fully onboard inventory + runbooks, transition execution to GBO, validate zero dependency on Japan execution and clean escalation flow); WP6 Ingenium Parallel Track (align with existing RRP/failure patterns, ensure high-quality runbooks and recovery alignment, transition incrementally to GBO); WP7 Governance & Reporting (success metrics — execution success rate, failure recovery time — integrated into GBO monitoring + Lapu-Lapu governance; reporting cadence and visibility/accountability dashboards).
+    4. Timeline locked: Discovery & Inventory now → mid-July (complete batch inventory + scope definition); Onsite GBO Deployment mid-July (local Japan support established); Runbook Build & Dry Runs late July → August (validated execution and failure readiness); Pilot Cutover September (full GBO execution of selected pilot front-system app).
+    5. Top risks and mitigations: incomplete inventory (esp. non-CA/manual) → enforce WP2 baseline before onboarding (T108); unclear ownership model → formalize RACI in WP1 (T135); 24x7 support readiness unproven → validate capability during pilot (T138); missing/poor runbooks → enforce runbook gating in WP3 (T136); lack of Japan on-site support → deploy GBO local resource (T138).
+    6. Four decisions required for confirmation: (a) GBO full ownership of batch execution (24x7); (b) Japan input responsibilities (inventory + runbooks); (c) pilot application selection (front-system domain); (d) timeline alignment (July readiness → September pilot). Captured under D018.
+    7. Expected outcomes: release engineering capacity for modernization/automation, improved consistency/reliability/audit readiness via runbooks, reduced manual effort and SME dependency, scalable global batch operations model aligned to GBO/GOCC.
+    8. Immediate next steps: finalize RACI and operating model boundaries; complete CA job inventory baseline; define and distribute runbook template; confirm GBO resourcing (24x7 + onsite Japan); select pilot application and begin onboarding.
+  - **Actions extracted → T135, T136, T137, T138**
+  - **Actions referenced → T108, T109, T110, T127**
+  - **Decision extracted → D018**
+  - **Decision referenced → D012, D017**
+
+---
+
 - **2026-06-19 — W25 Copilot-Generated Work Summary (Recap Artifact)** #processed
   - **Source:** archive/W25_copilot.md
   - **From:** Copilot-generated week-in-review recap (David Klan working notes, week of 2026-06-15 → 2026-06-19)

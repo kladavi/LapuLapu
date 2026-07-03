@@ -1,0 +1,774 @@
+Date: Thu, 25 Jun 2026 06:55:53 +0000 (UTC)
+Message-ID: <497293274.71.1782370553493@dc4bd0679df4>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_70_881529786.1782370553492"
+
+------=_Part_70_881529786.1782370553492
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>20260624 - GBO Batch Transition</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>20260624 - GBO Batch Transition</h1>
+    <div class=3D"Section1">
+        <p local-id=3D"f7a3f0154a4c"><a class=3D"external-link" data-card-a=
+ppearance=3D"inline" href=3D"https://mfc.sharepoint.com/:p:/r/sites/ets-jap=
+an/Program%20Delivery/Lapu-Lapu/06_Batch_GBO/PPTs/BatchOpsTransition_v1.ppt=
+x?d=3Dwf3ae4fa42dfd46078aa5973ec6bb5101&amp;csf=3D1&amp;web=3D1&amp;e=3D0LA=
+sYZ" local-id=3D"f716ba694c9f" rel=3D"nofollow">https://mfc.sharepoint.com/=
+:p:/r/sites/ets-japan/Program%20Delivery/Lapu-Lapu/06_Batch_GBO/PPTs/BatchO=
+psTransition_v1.pptx?d=3Dwf3ae4fa42dfd46078aa5973ec6bb5101&amp;csf=3D1&amp;=
+web=3D1&amp;e=3D0LAsYZ</a></p>
+<h1 local-id=3D"d06fd85917c2" id=3D"id-20260624-GBOBatchTransition-GBOJapan=
+BatchTransition=E2=80=93LevelSet&amp;ExecutionPlan"><strong>GBO Japan Batch=
+ Transition =E2=80=93 Level Set &amp; Execution Plan</strong></h1>
+<h2 local-id=3D"f7ce0753f94b" id=3D"id-20260624-GBOBatchTransition-1.Object=
+ive"><strong>1. Objective</strong></h2>
+<p local-id=3D"9d6eecc6bf20">Align stakeholders on an <strong>executable tr=
+ansition plan</strong> to migrate Japan batch operations into a <strong>GBO=
+-owned 24x7 operating model</strong>, with a <strong>September pilot valida=
+ting end-to-end ownership</strong>.</p>
+<hr local-id=3D"e318e727-a77a-4f00-9064-c11b97c52c20">
+<h2 local-id=3D"9e63dddcbe1a" id=3D"id-20260624-GBOBatchTransition-2.Target=
+OperatingModel"><strong>2. Target Operating Model</strong></h2>
+<h3 local-id=3D"9decb55eaa02" id=3D"id-20260624-GBOBatchTransition-Operatin=
+gPrinciples"><strong>Operating Principles</strong></h3>
+<ul local-id=3D"2f06d971-2aac-476b-b292-fa57d89b4d12">
+<li local-id=3D"a6bfaefb-26dd-43e3-a11a-8cad604b27f4">
+<p local-id=3D"3f4ae2187265">Centralized <strong>GBO execution of batch wor=
+kloads (24x7)</strong></p></li>
+<li local-id=3D"3028ec37-8284-4605-92cf-732dabe272ba">
+<p local-id=3D"78fa3994ba99">Japan teams shift from <strong>execution =E2=
+=86=92 stability, input management, and failure prevention</strong></p></li=
+>
+<li local-id=3D"396fdedc-6151-4613-a915-64dd4973eabe">
+<p local-id=3D"663d9f4a38df">Strict enforcement: <strong>No runbook =3D No =
+onboarding</strong></p></li>
+<li local-id=3D"8927998d-cc1a-48b5-ae6d-2a93f6072e13">
+<p local-id=3D"fc6ccb1f1875">Full alignment with <strong>Lapu-Lapu global o=
+perating model (standardization, observability, governance)</strong></p></l=
+i>
+</ul>
+<h3 local-id=3D"978ab5d54ad6" id=3D"id-20260624-GBOBatchTransition-Roles&am=
+p;Responsibilities"><strong>Roles &amp; Responsibilities</strong></h3>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"624d77c9-f04a-4e66-9e56-fe5=
+5f60d949e" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"06afe1c8-7ab5-4ac2-9d0a-90aacafc89e3">
+<th data-local-id=3D"9a654458-338e-43c9-9aeb-1d90b50ea624" class=3D"conflue=
+nceTh">
+<p local-id=3D"c6f8f495d727">Team</p></th>
+<th data-local-id=3D"06a8122f-3c2e-480a-91b7-bf1db5192101" class=3D"conflue=
+nceTh">
+<p local-id=3D"2a4cd383b996">Responsibility</p></th>
+</tr>
+<tr data-local-id=3D"66f2e27b-7594-4888-b87a-b08a8434d2e7">
+<td data-local-id=3D"1b4ec40c-75c4-46c0-a4a5-baf2d57b1995" class=3D"conflue=
+nceTd">
+<p local-id=3D"63fe9d05ddcc">Japan Application Teams</p></td>
+<td data-local-id=3D"ee4a7d90-6224-4c59-965a-f79004b307c3" class=3D"conflue=
+nceTd">
+<p local-id=3D"9f0d7a9e0457">Provide accurate job inputs, runbooks, and req=
+uests</p></td>
+</tr>
+<tr data-local-id=3D"94ece012-c2cc-48f5-9202-198e0893ee2e">
+<td data-local-id=3D"48d865a5-78e8-4b80-8308-6bc02aab23f4" class=3D"conflue=
+nceTd">
+<p local-id=3D"c5c846926acb">GBO</p></td>
+<td data-local-id=3D"11b94d08-64f9-4c9e-b555-555a1bbd8b24" class=3D"conflue=
+nceTd">
+<p local-id=3D"cd442e05c178">24x7 execution, monitoring, escalation, govern=
+ance</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"eb9096fa-d104-47b4-b446-c5ce415ce7d8">
+<h2 local-id=3D"aff71a4d5c7e" id=3D"id-20260624-GBOBatchTransition-3.ScopeD=
+efinition"><strong>3. Scope Definition</strong></h2>
+<h3 local-id=3D"8a9c005f3527" id=3D"id-20260624-GBOBatchTransition-InScope(=
+Phase1)"><strong>In Scope (Phase 1)</strong></h3>
+<ul local-id=3D"72cc109d-838b-4dad-a10f-50167ad39f34">
+<li local-id=3D"f5fc0479-6b3a-439d-810c-fd593fe1bed0">
+<p local-id=3D"e7ab00aa99c6"><strong>CA batch jobs (primary focus)</strong>=
+ for standardized onboarding</p></li>
+<li local-id=3D"560ef484-9f49-4908-988b-1180c9f70a17">
+<p local-id=3D"eec12b4e9c6c"><strong>Test environment front-system batch op=
+erations</strong> (MLK, SCV, AGW, SSW, PAweb, WFI, BPM)</p></li>
+<li local-id=3D"3357c433-7ca9-4332-a7b1-6a6111245311">
+<p local-id=3D"f83235d3b0db"><strong>L0/L1 operational activities</strong> =
+(repeatable, request-driven workload)</p></li>
+</ul>
+<h3 local-id=3D"ed6748aa1c89" id=3D"id-20260624-GBOBatchTransition-To-BeTra=
+nsitionScope"><strong>To-Be Transition Scope</strong></h3>
+<ul local-id=3D"c5514305-8edb-462b-8209-24b9b14edcc3">
+<li local-id=3D"072f5da1-76d6-404b-8421-42eaf7ded5b1">
+<p local-id=3D"1f743beebef9">Batch execution (test environments initially)<=
+/p></li>
+<li local-id=3D"dcccd5fb-a7b5-4feb-ac64-f185dce47435">
+<p local-id=3D"06c8924dd023">Ad-hoc batch request handling</p></li>
+<li local-id=3D"dcc1c4b5-141c-4fd3-b44c-807f8e1a6811">
+<p local-id=3D"340c21ffe39b">Input validation &amp; prerequisite checks</p>=
+</li>
+<li local-id=3D"a5642a44-db4c-4f7f-b239-213a1152e828">
+<p local-id=3D"7c9c20bbfa97">Execution monitoring &amp; reporting</p></li>
+<li local-id=3D"cefbc248-4ad4-41c8-b265-897f851cb3bc">
+<p local-id=3D"a661cf738987">Output coordination with downstream systems</p=
+></li>
+</ul>
+<h3 local-id=3D"5eb2488fd701" id=3D"id-20260624-GBOBatchTransition-OutofSco=
+pe/RequiresAssessment"><strong>Out of Scope / Requires Assessment</strong><=
+/h3>
+<ul local-id=3D"61227e58-11c9-474f-b4e4-93dd2e18215f">
+<li local-id=3D"040ed351-64d3-4f2d-a15d-efb85e29d385">
+<p local-id=3D"7b6c56d7fdb1">Manual and non-CA jobs (require inventory + re=
+adiness validation)</p></li>
+</ul>
+<hr local-id=3D"845aeab7-426b-402f-b9fa-d4f9dbbdc031">
+<h2 local-id=3D"b5865fafa280" id=3D"id-20260624-GBOBatchTransition-4.Curren=
+tStatevsTargetState"><strong>4. Current State vs Target State</strong></h2>
+<h3 local-id=3D"b472904c29b0" id=3D"id-20260624-GBOBatchTransition-Current(=
+As-Is)"><strong>Current (As-Is)</strong></h3>
+<ul local-id=3D"8abce5a1-93e1-4a8a-8e89-93b718e69d21">
+<li local-id=3D"ff91fcf7-ed38-441e-928c-84ee2d7cc740">
+<p local-id=3D"41e1b397da33">Execution-heavy workload handled by engineerin=
+g teams</p></li>
+<li local-id=3D"aa275531-cd26-4c69-9ecb-91a094d01cb6">
+<p local-id=3D"bcd5d52829b1">Manual processes with <strong>no standardized =
+runbooks</strong></p></li>
+<li local-id=3D"e7966a59-4dcb-4c9d-b6ea-641d8c779dcb">
+<p local-id=3D"c4816b1a858d">High reliance on <strong>individual SME knowle=
+dge</strong></p></li>
+<li local-id=3D"0681c98c-f7ad-40be-8ae3-13743c16d4c5">
+<p local-id=3D"59869c59afa8">Limited monitoring and centralized visibility<=
+/p></li>
+</ul>
+<h3 local-id=3D"d0d44d1b1489" id=3D"id-20260624-GBOBatchTransition-Target(T=
+o-Be)"><strong>Target (To-Be)</strong></h3>
+<ul local-id=3D"150ce175-f6ca-456a-9873-30cce02fb29e">
+<li local-id=3D"f542dd37-1699-47a9-95bd-36d6d1612846">
+<p local-id=3D"a7bee4860b10">Fully <strong>centralized execution under GBO<=
+/strong></p></li>
+<li local-id=3D"adc709f3-2d7d-4a72-877b-96bc38cee480">
+<p local-id=3D"d5efb113785a"><strong>Runbook-driven operations with automat=
+ion enablement</strong></p></li>
+<li local-id=3D"0f68414c-0520-4759-93de-4e4dbbd58379">
+<p local-id=3D"c7a9dd833b84">Integrated <strong>monitoring + observability<=
+/strong></p></li>
+<li local-id=3D"6841ecf4-5015-4b4c-91b1-c6fd42923baf">
+<p local-id=3D"8c6cf10f6b52">Reduced reliance on SMEs, improved auditabilit=
+y</p></li>
+</ul>
+<hr local-id=3D"1e3bf0c2-2640-42f0-b72c-5da4fa73dbba">
+<h2 local-id=3D"95db419eda03" id=3D"id-20260624-GBOBatchTransition-5.Execut=
+ionPlan(WorkBreakdownStructure)"><strong>5. Execution Plan (Work Breakdown =
+Structure)</strong></h2>
+<h3 local-id=3D"217a1acc1d0a" id=3D"id-20260624-GBOBatchTransition-WP1:Oper=
+atingModelDefinition"><strong>WP1: Operating Model Definition</strong></h3>
+<ul local-id=3D"d42530a6-23be-4ff8-b086-8e5c90fb2095">
+<li local-id=3D"cdff2c7c-9ecc-4151-836f-e2994da23ffa">
+<p local-id=3D"1dd7017f7a54">Define GBO <strong>24x7 execution model and sc=
+ope boundaries</strong></p></li>
+<li local-id=3D"b4602e00-9ba4-4fc7-b7a6-b34f32f1a4ff">
+<p local-id=3D"d5b262866808">Establish <strong>execution vs requestor respo=
+nsibilities (RACI)</strong></p></li>
+<li local-id=3D"80fdac30-1a01-4a98-8374-8174c4beb787">
+<p local-id=3D"727dc2d71be3">Define SLO categories:</p>
+<ul local-id=3D"aeed5d48-fcff-43cf-a1b1-1c0a69433e4a">
+<li local-id=3D"851bf83e-ddfc-487c-ac8b-8261e466b8a0">
+<p local-id=3D"f6c4ad5093ad">Scheduled batch</p></li>
+<li local-id=3D"b4431f86-541a-4bf1-99ea-1105c8119751">
+<p local-id=3D"e2c686375100">Ad-hoc batch</p></li>
+<li local-id=3D"c06370ab-059f-4c91-966e-857d0bd85778">
+<p local-id=3D"81e88581b8c4">Incident recovery</p></li>
+</ul></li>
+<li local-id=3D"a43f6bde-9eae-40ef-9c33-b31b7a1be36b">
+<p local-id=3D"57a634e9a1d2">Define escalation flow (GBO =E2=86=92 L3)</p><=
+/li>
+</ul>
+<hr local-id=3D"7eee0d4a-cadd-4d4c-8321-c9585a975a30">
+<h3 local-id=3D"e68ab86f6de5" id=3D"id-20260624-GBOBatchTransition-WP2:Inve=
+ntoryBaseline"><strong>WP2: Inventory Baseline</strong></h3>
+<ul local-id=3D"bc92f648-377c-4ecc-9d3c-51adc21a4211">
+<li local-id=3D"afa82f9c-7c1e-4a6f-a966-991238444439">
+<p local-id=3D"bc708196326b">Consolidate <strong>complete CA job inventory<=
+/strong></p></li>
+<li local-id=3D"2af68458-d12e-4bc4-b0cf-4926219f08e9">
+<p local-id=3D"b88b5a5095bd">Identify:</p>
+<ul local-id=3D"753df15d-ffd0-4558-a55c-a9e0e585caa3">
+<li local-id=3D"46281daa-dec3-498a-8083-67ad077139b7">
+<p local-id=3D"d781f9420bf3">Non-CA jobs</p></li>
+<li local-id=3D"65cd49fc-e6ef-435d-b313-707a8442d976">
+<p local-id=3D"4cc2bce9cc7b">Manual/script-driven jobs</p></li>
+</ul></li>
+<li local-id=3D"11f77c70-86c8-4420-9032-6b24e975c80b">
+<p local-id=3D"0e1f22217529">Map:</p>
+<ul local-id=3D"55ce3e3b-01b7-4f04-8b56-20f1e6641997">
+<li local-id=3D"acdbe1eb-0e1b-4b3e-bd15-cd59a561ae8d">
+<p local-id=3D"9397629c1ca0">Ownership</p></li>
+<li local-id=3D"8c5d32d5-7996-4abf-aaea-0bcbf2cabcee">
+<p local-id=3D"830cc00db7d1">Execution dependencies</p></li>
+</ul></li>
+<li local-id=3D"1923a771-ad77-478a-9c85-597d568f1091">
+<p local-id=3D"5d65a55d07e4">Capture failure patterns and incident history<=
+br>
+=E2=86=92 Output: <strong>Complete batch landscape view</strong></p></li>
+</ul>
+<hr local-id=3D"4eb56500-6c97-4259-b89e-db9e2de55291">
+<h3 local-id=3D"d0f599c9c0a0" id=3D"id-20260624-GBOBatchTransition-WP3:Runb=
+ookStandardization"><strong>WP3: Runbook Standardization</strong></h3>
+<ul local-id=3D"150e64db-3bfe-4705-960f-9c4b47c11632">
+<li local-id=3D"67a784ad-ad6c-4371-a2f5-b2aee45a70db">
+<p local-id=3D"9eea492cb95a">Define <strong>standard runbook template (L1/L=
+2/L3 aligned)</strong></p></li>
+<li local-id=3D"1bd4365e-53a4-4b46-b2df-260648cd3a1d">
+<p local-id=3D"94eb5e8306e5">Convert existing documentation into:</p>
+<ul local-id=3D"76372579-595b-4141-b3c2-831a7c76d2ea">
+<li local-id=3D"eb551497-efc5-4060-9f16-41a9a0d3e660">
+<p local-id=3D"0509158da449">Step-by-step execution flows</p></li>
+<li local-id=3D"4b820413-25f7-405b-aeaf-0e02f149bbd7">
+<p local-id=3D"12aec59a680d">Troubleshooting paths</p></li>
+<li local-id=3D"2b349d28-1f20-4ae2-aa67-b198b9fa30db">
+<p local-id=3D"81c255cd3a48">Escalation triggers</p></li>
+</ul></li>
+<li local-id=3D"b8bdac1b-00af-41b7-a99b-41255a24c314">
+<p local-id=3D"da452ccad68f">Validate:</p>
+<ul local-id=3D"0e484a0b-210d-4c1f-9699-5f082fbfa532">
+<li local-id=3D"9658048d-f187-4438-a21c-e052f40c1feb">
+<p local-id=3D"4cd3d2f44e85">Completeness</p></li>
+<li local-id=3D"31c25e6f-18b1-44a5-801f-429d8fd8f04d">
+<p local-id=3D"0a29c85f11f1">Testability</p></li>
+</ul></li>
+<li local-id=3D"0afee2ec-2470-4ff5-a3e8-b4a30a817069">
+<p local-id=3D"2bd193beaf2c">Enforce onboarding gate: <strong>Runbook requi=
+red</strong></p></li>
+</ul>
+<hr local-id=3D"0b764899-a19f-4614-a11f-265e4c3148ae">
+<h3 local-id=3D"c8d93617aefa" id=3D"id-20260624-GBOBatchTransition-WP4:Exec=
+utionReadiness"><strong>WP4: Execution Readiness</strong></h3>
+<ul local-id=3D"9041c4cf-6bea-4fe2-8536-199e02b6b074">
+<li local-id=3D"33212082-8510-485f-a6ce-5d229d71a0b2">
+<p local-id=3D"344202702762">Configure CA jobs under <strong>GBO ownership<=
+/strong></p></li>
+<li local-id=3D"af32fa43-7693-4155-8927-d73749e57c53">
+<p local-id=3D"2691b444f1ae">Validate:</p>
+<ul local-id=3D"c1c59d86-7151-496a-99e6-b0c78bfbd3da">
+<li local-id=3D"f6bff607-8a3c-48d7-b357-ca12a0b5a1cb">
+<p local-id=3D"8e4d30d86db6">Access / credentials</p></li>
+<li local-id=3D"76c8ecb6-12e3-4274-b345-56fb349f0205">
+<p local-id=3D"bc9974603fba">Tooling readiness</p></li>
+</ul></li>
+<li local-id=3D"2be75c87-4f4f-42f4-ac59-44cdf39b361b">
+<p local-id=3D"5a81123abaea">Align monitoring:</p>
+<ul local-id=3D"6e351f54-d73a-455a-a73e-e145be66def2">
+<li local-id=3D"e7cb9c6f-fa2b-4795-b5df-0c50e848a7d8">
+<p local-id=3D"891ab58ee079">Job success/failure visibility</p></li>
+</ul></li>
+<li local-id=3D"5257eea9-f115-4da2-b8fb-32ea3b8dc663">
+<p local-id=3D"7cc4f1369c71">Conduct:</p>
+<ul local-id=3D"1fed1b4a-23cd-4137-b040-c564019fc283">
+<li local-id=3D"10beafb3-68f9-42dc-956c-9862971e3016">
+<p local-id=3D"0b6bba564951">Execution simulations</p></li>
+<li local-id=3D"f034f818-14e7-4f34-bde3-bc6075cac247">
+<p local-id=3D"e2cb21e8f30f">Failure scenario testing</p></li>
+</ul></li>
+</ul>
+<hr local-id=3D"50a44631-f56d-4a59-b3cc-9200ccc23b47">
+<h3 local-id=3D"a78744c1a15c" id=3D"id-20260624-GBOBatchTransition-WP5:Pilo=
+tImplementation"><strong>WP5: Pilot Implementation</strong></h3>
+<ul local-id=3D"520bba16-ddaa-4a5d-9537-f3c6134d99ae">
+<li local-id=3D"de48aeaa-f3c5-46a2-96d4-62078db98aa1">
+<p local-id=3D"6c441e1ba098">Select <strong>1 pilot application (front syst=
+em)</strong></p></li>
+<li local-id=3D"0d6b4e2c-c21f-4102-8aa6-1950156efa3c">
+<p local-id=3D"6fa57e40e7e4">Fully onboard:</p>
+<ul local-id=3D"e1a90d55-22b6-4684-b0c6-16f9882a4753">
+<li local-id=3D"8bd7621b-2bca-4550-88cd-f32cf844d07b">
+<p local-id=3D"69af217f9690">Job inventory</p></li>
+<li local-id=3D"732d7ab3-dbec-47a1-ac73-f6fd8bd2e1f5">
+<p local-id=3D"fc2c35898e5c">Runbooks</p></li>
+</ul></li>
+<li local-id=3D"a1f73c13-e1b9-4a78-bcdd-7235a36987d7">
+<p local-id=3D"e93e2812cd67">Transition execution fully to GBO</p></li>
+<li local-id=3D"251c60a4-a9ea-42a5-b83f-f1f994326e13">
+<p local-id=3D"2cb617e0804d">Validate:</p>
+<ul local-id=3D"ac9b1438-e866-466b-9622-fbd2f0779437">
+<li local-id=3D"871f96f9-a13c-41d7-b4f7-f09518fe04ad">
+<p local-id=3D"bf35680f6ae4">Zero dependency on Japan execution</p></li>
+<li local-id=3D"3329f0a9-6767-4198-9b5f-09ea65237681">
+<p local-id=3D"44259548e1e3">Clean escalation flow</p></li>
+</ul></li>
+<li local-id=3D"7fd6adb6-f8fb-4693-b7ae-2ef9592ebcfb">
+<p local-id=3D"131878ebe9ce">Capture gaps and remediation actions</p></li>
+</ul>
+<hr local-id=3D"04ea876f-10e7-4198-aaed-4ae3a7f4d8a2">
+<h3 local-id=3D"537660f2253c" id=3D"id-20260624-GBOBatchTransition-WP6:Inge=
+niumParallelTrack"><strong>WP6: Ingenium Parallel Track</strong></h3>
+<ul local-id=3D"ce212b8a-9001-48df-97e0-0b8510d6f4b7">
+<li local-id=3D"405fd34c-a7c0-411e-ba0c-e5476b558d20">
+<p local-id=3D"cf840a6374b2">Align with <strong>existing RRP / failure patt=
+erns</strong></p></li>
+<li local-id=3D"fc9b6a8a-21d5-4176-b6c1-2962df6d84f8">
+<p local-id=3D"be50bff328a9">Ensure:</p>
+<ul local-id=3D"53cc2ac5-8d7f-442e-a7cf-35552344f05a">
+<li local-id=3D"bb953a91-7fe7-48d1-8772-cbb8e9e7d62a">
+<p local-id=3D"30891ca14516">High-quality runbooks</p></li>
+<li local-id=3D"16d5ae95-f01d-4d14-90ef-b33010f7fadc">
+<p local-id=3D"4d5428380d03">Recovery alignment</p></li>
+</ul></li>
+<li local-id=3D"ece295d7-4ef4-418a-a8a5-b86b85c4ab4d">
+<p local-id=3D"4a81955c33dc">Transition incrementally to GBO</p></li>
+</ul>
+<hr local-id=3D"e2124c04-e055-492f-b5f7-0f1bde28e78f">
+<h3 local-id=3D"8eef448ff186" id=3D"id-20260624-GBOBatchTransition-WP7:Gove=
+rnance&amp;Reporting"><strong>WP7: Governance &amp; Reporting</strong></h3>
+<ul local-id=3D"fe76869e-8780-4b1f-b944-d1806e62c70c">
+<li local-id=3D"2cd8c8d3-7684-4642-a3f0-3b303db21103">
+<p local-id=3D"a58ff265ae63">Define success metrics:</p>
+<ul local-id=3D"8c6ffcbe-b48f-4f88-a7d7-7295943edf8d">
+<li local-id=3D"bb1e0c64-913c-461c-9171-57f5b291cbe4">
+<p local-id=3D"8335a4fbeb91">Execution success rate</p></li>
+<li local-id=3D"2d1f2bb0-1825-472c-ac18-12f0ad2271de">
+<p local-id=3D"42b25bf03786">Failure recovery time</p></li>
+</ul></li>
+<li local-id=3D"428d130e-dd5a-4a7a-9891-bd71d56728cd">
+<p local-id=3D"1c40f14b4406">Integrate into:</p>
+<ul local-id=3D"3c22fd1d-4908-47b7-bafe-9f1c673b1a5d">
+<li local-id=3D"cd4e0cec-8945-4bab-a6d8-1837c67537d5">
+<p local-id=3D"86cf43aa0c47">GBO monitoring model</p></li>
+<li local-id=3D"5782e13d-0295-49b1-8224-e8e9efdbc59a">
+<p local-id=3D"d1842735ec50">Lapu-Lapu governance</p></li>
+</ul></li>
+<li local-id=3D"93163869-8185-483c-a126-e2297588b6f6">
+<p local-id=3D"cd1a65a89eb6">Establish:</p>
+<ul local-id=3D"6d025968-7ea7-47aa-ab3a-0120113d2930">
+<li local-id=3D"dc834bde-123c-4594-8924-d9792c97a580">
+<p local-id=3D"6f0f6b578067">Reporting cadence</p></li>
+<li local-id=3D"752c78b2-040e-4190-b641-8d0166d6e904">
+<p local-id=3D"31d677bfcd87">Visibility and accountability dashboards</p></=
+li>
+</ul></li>
+</ul>
+<hr local-id=3D"8ad0f574-5ee1-4561-8fc9-12ca1c615953">
+<h2 local-id=3D"130783da5d68" id=3D"id-20260624-GBOBatchTransition-6.Timeli=
+ne&amp;Milestones"><strong>6. Timeline &amp; Milestones</strong></h2>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"271436d7-ea65-4e95-96ca-5bb=
+97f77c131" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"746da872-428d-4124-93fb-0fe608d6bc0c">
+<th data-local-id=3D"a149eb51-86f9-429b-be4d-e9543403aa67" class=3D"conflue=
+nceTh">
+<p local-id=3D"f39be73d6336">Phase</p></th>
+<th data-local-id=3D"73a59c88-04b1-478b-8f93-51fb5ff7b32b" class=3D"conflue=
+nceTh">
+<p local-id=3D"d7d80ce8d3f1">Timeline</p></th>
+<th data-local-id=3D"717f9218-6f8c-4f25-a635-5e8a93d7251c" class=3D"conflue=
+nceTh">
+<p local-id=3D"ff6206e99311">Key Outcome</p></th>
+</tr>
+<tr data-local-id=3D"87afbe05-756f-469c-98a3-3e5b8f51b481">
+<td data-local-id=3D"43670379-7cf3-4677-91fc-7414642d2eac" class=3D"conflue=
+nceTd">
+<p local-id=3D"014369d0a470">Discovery &amp; Inventory</p></td>
+<td data-local-id=3D"01d67401-d8b3-4e99-89ed-b35a48353007" class=3D"conflue=
+nceTd">
+<p local-id=3D"20034b8085f7">Now =E2=86=92 Mid-July</p></td>
+<td data-local-id=3D"b747e506-0a78-4579-bc47-a68a62f3479d" class=3D"conflue=
+nceTd">
+<p local-id=3D"4a4672bf3e8f">Complete batch inventory + scope definition</p=
+></td>
+</tr>
+<tr data-local-id=3D"f8558d09-fd33-42bc-8957-1060b42e237e">
+<td data-local-id=3D"b1efc8a4-6a37-4f53-a065-3b1e7383e165" class=3D"conflue=
+nceTd">
+<p local-id=3D"a693c5defae4">Onsite GBO Deployment</p></td>
+<td data-local-id=3D"59b47bb0-d467-46a7-9533-4a391919b64b" class=3D"conflue=
+nceTd">
+<p local-id=3D"ac41059547eb">Mid-July</p></td>
+<td data-local-id=3D"5866ecdd-e728-473d-8404-8422de14c08f" class=3D"conflue=
+nceTd">
+<p local-id=3D"f09285a2c422">Local support established</p></td>
+</tr>
+<tr data-local-id=3D"b37a32f0-37ab-423a-8602-de85b3ae11d6">
+<td data-local-id=3D"e8dcca63-dc08-4e2d-8e53-8e07486a45f9" class=3D"conflue=
+nceTd">
+<p local-id=3D"ef133b137d47">Runbook Build &amp; Dry Runs</p></td>
+<td data-local-id=3D"668b29d0-bffc-463b-9b1b-3754f02d9b7c" class=3D"conflue=
+nceTd">
+<p local-id=3D"f58b40059a27">Late July =E2=86=92 August</p></td>
+<td data-local-id=3D"6c1a0ba4-1118-4d96-8257-71b789a5aae8" class=3D"conflue=
+nceTd">
+<p local-id=3D"2d60a76938b1">Validated execution &amp; failure readiness</p=
+></td>
+</tr>
+<tr data-local-id=3D"8a5a6857-3240-46e6-bdab-844f20284644">
+<td data-local-id=3D"b297de93-5119-44f6-9e79-7fa01f1b71fd" class=3D"conflue=
+nceTd">
+<p local-id=3D"10e43151046c">Pilot Cutover</p></td>
+<td data-local-id=3D"0e50c09f-3a9d-4ef2-afb6-96d5bead75dd" class=3D"conflue=
+nceTd">
+<p local-id=3D"320c9845969c">September</p></td>
+<td data-local-id=3D"e7008dd8-d665-48cb-8024-507eaa939617" class=3D"conflue=
+nceTd">
+<p local-id=3D"ffbb0083db59">Full GBO execution of selected app</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"5cbee220-9eb8-476e-b18a-d2246f866902">
+<h2 local-id=3D"79d6ff5550bf" id=3D"id-20260624-GBOBatchTransition-7.KeyRis=
+ks&amp;Mitigations"><strong>7. Key Risks &amp; Mitigations</strong></h2>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"ce4ac993-b40c-467c-976b-a45=
+dbd2f33a8" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"a146c693-1782-4f80-b334-10c0ba0a8b70">
+<th data-local-id=3D"145d310c-fd67-4992-acd5-1f9bf88fd3f7" class=3D"conflue=
+nceTh">
+<p local-id=3D"66352dc31132">Risk</p></th>
+<th data-local-id=3D"b6e8ee12-f8b4-4775-a1d2-f5867d2afed2" class=3D"conflue=
+nceTh">
+<p local-id=3D"a1d41f2b100b">Impact</p></th>
+<th data-local-id=3D"1716e390-e98c-4f10-b51d-810aa7f1a555" class=3D"conflue=
+nceTh">
+<p local-id=3D"079db4dd8d7e">Mitigation</p></th>
+</tr>
+<tr data-local-id=3D"2db6413c-a9b4-488d-ac2b-84486e9b8284">
+<td data-local-id=3D"f8195693-5d1b-4bf1-93b9-a35e67bdaec7" class=3D"conflue=
+nceTd">
+<p local-id=3D"df1324162057">Incomplete inventory (esp. non-CA/manual jobs)=
+</p></td>
+<td data-local-id=3D"ef061734-5e96-46d5-bfa3-cbbdc38b4855" class=3D"conflue=
+nceTd">
+<p local-id=3D"7e1865ec1060">Scope gaps, missed dependencies</p></td>
+<td data-local-id=3D"a462fad9-c1d7-4a0c-ab7f-f7c6cd4231ba" class=3D"conflue=
+nceTd">
+<p local-id=3D"4ebbfce2471b">Enforce WP2 baseline before onboarding</p></td=
+>
+</tr>
+<tr data-local-id=3D"56b84689-436a-4961-b055-70b90a12a526">
+<td data-local-id=3D"d1043120-eed7-4e4a-b9e7-2ff2f57e8733" class=3D"conflue=
+nceTd">
+<p local-id=3D"a245011626b1">Unclear ownership model</p></td>
+<td data-local-id=3D"8dce8d01-9acb-4d0a-9af1-83c33a599f15" class=3D"conflue=
+nceTd">
+<p local-id=3D"b73f65e8e1e1">Execution errors and delays</p></td>
+<td data-local-id=3D"c6b82040-937e-4bcd-b4b7-c61be9dfd9b8" class=3D"conflue=
+nceTd">
+<p local-id=3D"9a3ae10c8c35">Formalize RACI in WP1</p></td>
+</tr>
+<tr data-local-id=3D"6bfe9cc9-e440-4007-b0f1-795224e7f50e">
+<td data-local-id=3D"4523a67d-a829-4c03-91d8-5e73ef76494f" class=3D"conflue=
+nceTd">
+<p local-id=3D"a6f6e79617f6">24x7 support readiness unproven</p></td>
+<td data-local-id=3D"61181c67-769c-490e-b593-cbd2169092a2" class=3D"conflue=
+nceTd">
+<p local-id=3D"c39c5f04a2a9">Operational risk</p></td>
+<td data-local-id=3D"6a4a2961-b749-4a8b-bfc7-241a84ed1cba" class=3D"conflue=
+nceTd">
+<p local-id=3D"7631255c9c32">Validate capability during pilot</p></td>
+</tr>
+<tr data-local-id=3D"2c9ef517-9102-4c64-9eb9-359fccd4d403">
+<td data-local-id=3D"8d7e9a83-cbf6-4175-a49c-f2488019a119" class=3D"conflue=
+nceTd">
+<p local-id=3D"b2b66abfb379">Missing/poor runbooks</p></td>
+<td data-local-id=3D"bdc80b0b-9610-4e76-8860-d78e22c751d9" class=3D"conflue=
+nceTd">
+<p local-id=3D"05e06f69ec13">Execution inconsistency</p></td>
+<td data-local-id=3D"2c815689-83e2-44d6-9678-3e15ba3457a3" class=3D"conflue=
+nceTd">
+<p local-id=3D"0bce68e7d527">Enforce runbook gating (WP3)</p></td>
+</tr>
+<tr data-local-id=3D"a577b5ed-956d-497f-8c30-21a478a06e32">
+<td data-local-id=3D"9f59dc3f-41bd-49ae-98b2-5703b76bd588" class=3D"conflue=
+nceTd">
+<p local-id=3D"51b09068e886">Lack of Japan on-site support</p></td>
+<td data-local-id=3D"7ac45a94-6e57-4fd2-9023-f8e2bf2cc00d" class=3D"conflue=
+nceTd">
+<p local-id=3D"9b000765fbb6">Recovery delays</p></td>
+<td data-local-id=3D"f5accf56-dee0-4d56-9bc9-14007608b5e2" class=3D"conflue=
+nceTd">
+<p local-id=3D"b22da0aa0bc1">Deploy GBO local resource</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"cb49d527-ed45-4dce-8135-8b1e9b9d35a1">
+<h2 local-id=3D"becfcda5c9f7" id=3D"id-20260624-GBOBatchTransition-8.KeyDec=
+isionsRequired"><strong>8. Key Decisions Required</strong></h2>
+<ul local-id=3D"28c383c9-c494-4d7f-ae00-27f86178b1ef">
+<li local-id=3D"59a81860-3201-4248-a0da-94f30931b00a">
+<p local-id=3D"0ce1a3ca6c3a">Confirm <strong>GBO full ownership of batch ex=
+ecution (24x7)</strong></p></li>
+<li local-id=3D"45b72c1a-97ae-4069-bf90-61000d951453">
+<p local-id=3D"dba98ccad40d">Agree on <strong>input responsibilities from J=
+apan teams (inventory + runbooks)</strong></p></li>
+<li local-id=3D"fb397426-4a78-416b-83ab-c10b60a677be">
+<p local-id=3D"013af832dbff">Select <strong>pilot application (front system=
+ domain)</strong></p></li>
+<li local-id=3D"77303119-2349-4eb2-ab65-42458cabc090">
+<p local-id=3D"7955454ebd66">Confirm <strong>timeline alignment (July readi=
+ness =E2=86=92 September pilot)</strong></p></li>
+</ul>
+<hr local-id=3D"b0b1058a-96b3-4289-9274-ff04abb6437d">
+<h2 local-id=3D"df0d32b7cd82" id=3D"id-20260624-GBOBatchTransition-9.Expect=
+edOutcomes/Benefits"><strong>9. Expected Outcomes / Benefits</strong></h2>
+<ul local-id=3D"0d2af89b-e1ba-4838-9f43-598c6cbb67bf">
+<li local-id=3D"843203a7-03c0-4736-9a9e-27502e2d1944">
+<p local-id=3D"251080f10733">Release engineering capacity for <strong>moder=
+nization and automation initiatives</strong></p></li>
+<li local-id=3D"8facf407-30ef-4c67-a3ae-50ab0d5f69f1">
+<p local-id=3D"8d3daaa87aa9">Improved <strong>consistency, reliability, and=
+ audit readiness</strong> via runbooks</p></li>
+<li local-id=3D"a1253a8c-204d-404b-a723-a1f3a4f019d0">
+<p local-id=3D"dc0f95658ac9">Reduced <strong>manual effort and SME dependen=
+cy</strong></p></li>
+<li local-id=3D"ed1ed9d2-7421-493b-b2f0-0c0ccbc70043">
+<p local-id=3D"095a89ce2aba">Scalable <strong>global batch operations model=
+ aligned to GBO/GOCC</strong></p></li>
+</ul>
+<hr local-id=3D"c590eaa1-6f97-4d18-8205-04ec12fc5458">
+<h2 local-id=3D"f9056c867366" id=3D"id-20260624-GBOBatchTransition-10.Immed=
+iateNextSteps"><strong>10. Immediate Next Steps</strong></h2>
+<ul local-id=3D"a612322b-d4bf-4958-afa2-0f84d9fae489">
+<li local-id=3D"6ea8383f-ca5e-4aba-ae5c-4b6ce6b483cf">
+<p local-id=3D"9077853c4607">Finalize <strong>RACI and operating model boun=
+daries</strong></p></li>
+<li local-id=3D"a549d42b-0524-4ba8-8738-a6cbe0f53fea">
+<p local-id=3D"bf94dffef4a4">Complete <strong>CA job inventory baseline</st=
+rong></p></li>
+<li local-id=3D"8c6233dc-f58d-4933-af1a-3fac67398f4d">
+<p local-id=3D"1f044b78e8c1">Define and distribute <strong>runbook template=
+</strong></p></li>
+<li local-id=3D"1008d257-0287-40f2-a471-4c9924c2825b">
+<p local-id=3D"9deb5172267e">Confirm <strong>GBO resourcing (24x7 + onsite =
+Japan)</strong></p></li>
+<li local-id=3D"0d33f0b9-4186-4366-892c-2a8e6230107c">
+<p local-id=3D"aced12d0e720">Select <strong>pilot application and begin onb=
+oarding</strong></p></li>
+</ul>
+    </div>
+</body>
+</html>
+------=_Part_70_881529786.1782370553492--

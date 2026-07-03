@@ -1,0 +1,867 @@
+Date: Wed, 1 Jul 2026 07:40:55 +0000 (UTC)
+Message-ID: <2044510835.69.1782891655195@42fbafe4ad89>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_68_1936832715.1782891655195"
+
+------=_Part_68_1936832715.1782891655195
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>CAP for Capacity Management</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>CAP for Capacity Management</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"8effd0a1f17a" id=3D"CAPforCapacityManagement-CAP-48=
+585=E2=80=93ImplementProcesstoEstimateFutureCapacityRequirements"><strong>C=
+AP-48585 =E2=80=93 Implement Process to Estimate Future Capacity Requiremen=
+ts</strong></h1>
+<p class=3D"media-group"><img height=3D"250" style=3D"margin: 2px; border: =
+1px solid #ddd; box-sizing: border-box; vertical-align: text-bottom;" src=
+=3D"5be5af5f1f88fe0593b44a92218a322bd427800ef2a80c9eb36f852e3c9d209a" width=
+=3D"250"></p>
+<h2 local-id=3D"4506f3261033" id=3D"CAPforCapacityManagement-1.Objective"><=
+strong>1. Objective</strong></h2>
+<p local-id=3D"22cbc75edc2b">Establish a <strong>standardized, repeatable c=
+apacity management process</strong> to:</p>
+<ul local-id=3D"f0ab9b2c-9bf7-4eb0-a5ef-ea3380d5e9a9">
+<li local-id=3D"74a50065-e5e0-4b4b-b9fb-bca95acf567f">
+<p local-id=3D"2e29970f32f5">Estimate future infrastructure capacity requir=
+ements</p></li>
+<li local-id=3D"69f2cfa4-8f30-4767-bd31-0159c5259636">
+<p local-id=3D"9ad3f98a0d08">Identify capacity-related risks proactively</p=
+></li>
+<li local-id=3D"e09b2d39-3c62-4f48-96ef-edef096d3f70">
+<p local-id=3D"c00551147761">Enable GOCC to operate a <strong>predictive, r=
+unbook-driven model</strong></p></li>
+<li local-id=3D"ad32a14f-2b58-43fc-86f4-5659bc624719">
+<p local-id=3D"a4fba3190acd">Support <strong>MMM L2 maturity</strong> and <=
+strong>Lapu=E2=80=91Lapu operational readiness</strong></p></li>
+</ul>
+<hr local-id=3D"d180be4f-aab9-4056-bd61-f56ff5295555">
+<h2 local-id=3D"4cfdf6e522dc" id=3D"CAPforCapacityManagement-2.Scope"><stro=
+ng>2. Scope</strong></h2>
+<p local-id=3D"f7f82921af3d"><strong>In Scope</strong></p>
+<ul local-id=3D"5f33540d-dcf2-461e-88dc-436ec8a0ace5">
+<li local-id=3D"b4f95941-dcf2-4413-8a39-e3767ffe4e00">
+<p local-id=3D"dbd8b41957b5">All <strong>Gold applications (Phase 1)</stron=
+g> =E2=86=92 expand to full estate (~65 apps)</p></li>
+<li local-id=3D"ef1ed2d1-4da5-4bfc-bdbd-973679f32f51">
+<p local-id=3D"56c1c16777f0">Core components:</p>
+<ul local-id=3D"339e9ba3-2115-4c98-830a-47e23fa3223e">
+<li local-id=3D"27e3b4ae-3b76-4d3d-8c31-49cf3070be6f">
+<p local-id=3D"bda47f95cef9">Compute (CPU / memory)</p></li>
+<li local-id=3D"8bdb63a7-c315-4065-aac2-ba4cc0249550">
+<p local-id=3D"5b4908217167">Storage</p></li>
+<li local-id=3D"e9b494d4-d1c2-4ef9-8806-bcf4b65429ac">
+<p local-id=3D"ac34957c90bf">Database growth</p></li>
+<li local-id=3D"cf35fb42-2910-42e0-a294-64dfae14076d">
+<p local-id=3D"1360564ab5f0">Batch processing windows</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"05eff0708292"><strong>Out of Scope (Phase 1)</strong></p>
+<ul local-id=3D"ddc75389-c229-406a-ac7d-6503c60c74fd">
+<li local-id=3D"a7357390-972e-4e58-b120-34670ccbdd3a">
+<p local-id=3D"6218b75d3985">Deep workload re-architecture</p></li>
+<li local-id=3D"83d17484-307b-409f-840b-06e0268cba19">
+<p local-id=3D"cf0b6c132ee1">Advanced ML forecasting models</p></li>
+</ul>
+<hr local-id=3D"c396bed4-60c1-492c-9e09-19ccdfa7704a">
+<h2 local-id=3D"12f0dd6f430a" id=3D"CAPforCapacityManagement-3.SuccessCrite=
+ria"><strong>3. Success Criteria</strong></h2>
+<ul local-id=3D"a62a6188-a8a2-4836-a86d-86a9267caa9b">
+<li local-id=3D"c1771ca5-d3cb-47cc-961b-89b42f4bf119">
+<p local-id=3D"26932ccd9295">100% of Gold applications have:</p>
+<ul local-id=3D"89eeb8aa-0e15-42fa-b9ec-e67e79bbd26d">
+<li local-id=3D"32094206-3b0d-4e20-9553-80db827f0711">
+<p local-id=3D"59f7753e03b7">Baseline + 6=E2=80=9312 month capacity forecas=
+t</p></li>
+<li local-id=3D"f6775d22-e52e-44d9-9852-ad0c626b3d35">
+<p local-id=3D"6412dc4d7d74">Defined thresholds and trigger actions</p></li=
+>
+</ul></li>
+<li local-id=3D"5449d927-d0c5-4f0f-b56f-4c649f5d262b">
+<p local-id=3D"4f2f13592be9">Capacity risk integrated into:</p>
+<ul local-id=3D"6c1c1cff-f29e-41d7-8cfa-91e8ebb1b5d1">
+<li local-id=3D"d2625e04-573f-4afc-be78-e3bc3536996c">
+<p local-id=3D"8c04757afbb2">RRP (Rapid Recovery Plan)</p></li>
+<li local-id=3D"2e0b330f-68f7-4729-a132-d94e0ee43826">
+<p local-id=3D"0c8cbed3fe98">MMM L2 dashboards</p></li>
+</ul></li>
+<li local-id=3D"40f5e276-082b-43a1-afb0-18a3fab26136">
+<p local-id=3D"7842e250f506">GOCC owns ongoing monitoring + forecast update=
+s</p></li>
+</ul>
+<hr local-id=3D"8b7bcce3-a533-4d8c-ab18-e5c7e1b25efd">
+<h2 local-id=3D"bc04d1eec0c3" id=3D"CAPforCapacityManagement-4.OperatingMod=
+elAlignment"><strong>4. Operating Model Alignment</strong></h2>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"ac=
+5b67ed-8594-4ba3-ab3c-c185b3fb9681" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"735a3d41-4722-4114-a841-e763f1e552be">
+<th data-local-id=3D"9dd4f5f9-8147-4332-97d3-96d6d403ba82" class=3D"conflue=
+nceTh">
+<p local-id=3D"afaf0ca42496">Area</p></th>
+<th data-local-id=3D"546085ce-2091-4042-98c9-523ddfbf6ab0" class=3D"conflue=
+nceTh">
+<p local-id=3D"5b75d3da97df">Alignment</p></th>
+</tr>
+<tr data-local-id=3D"f4d9caf0-50be-4efe-8c48-b3abe20444eb">
+<th data-local-id=3D"39998698-f432-4ddf-a062-2cf08d60cc39" class=3D"conflue=
+nceTh">
+<p local-id=3D"57f047eb2c58"><strong>Lapu=E2=80=91Lapu</strong></p></th>
+<td data-local-id=3D"06008395-85f1-4ba4-8c0b-283ff3abd4d5" class=3D"conflue=
+nceTd">
+<p local-id=3D"0069e2cacc88">Standardized, automatable, evidence-based outp=
+uts</p></td>
+</tr>
+<tr data-local-id=3D"fe9a38df-17eb-4778-b273-1ec2afc6cdd1">
+<th data-local-id=3D"5f90d867-b3dd-4d35-9fd9-a4caf3717735" class=3D"conflue=
+nceTh">
+<p local-id=3D"0bbb8ec051f0"><strong>GOCC</strong></p></th>
+<td data-local-id=3D"4f43a188-b06b-4ecf-88e7-26c2a99268bc" class=3D"conflue=
+nceTd">
+<p local-id=3D"85bb41d8a51f">Runbook-driven execution, centralized ownershi=
+p</p></td>
+</tr>
+<tr data-local-id=3D"82551948-6c78-4967-ab64-a07757209ab4">
+<th data-local-id=3D"e849ba4d-01be-4978-8d50-c7baceb71cfb" class=3D"conflue=
+nceTh">
+<p local-id=3D"13620e98ff83"><strong>MMM L2</strong></p></th>
+<td data-local-id=3D"d504ceaa-cfca-461b-a4c5-b6e75914c168" class=3D"conflue=
+nceTd">
+<p local-id=3D"8dff70d03162">Predictive monitoring + risk-based thresholdin=
+g</p></td>
+</tr>
+<tr data-local-id=3D"9d694bf2-be38-43da-8cae-f502400ec4fa">
+<th data-local-id=3D"0e82a4ab-cf41-4d9b-8cc8-12cb0fc4d54f" class=3D"conflue=
+nceTh">
+<p local-id=3D"6c730ff2ac7f"><strong>RRP</strong></p></th>
+<td data-local-id=3D"48a8c6bb-e7a4-47fa-8dce-4569f3cbee12" class=3D"conflue=
+nceTd">
+<p local-id=3D"316fe9cdb8cb">Capacity risk scenarios included in recovery p=
+lanning</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"0d1d82c3-9f4b-4e50-ac83-fe40991bebac">
+<h2 local-id=3D"d3a1de776040" id=3D"CAPforCapacityManagement-5.WorkPackages=
+&amp;Deliverables"><strong>5. Work Packages &amp; Deliverables</strong></h2=
+>
+<h3 local-id=3D"1d31f4c0c555" id=3D"CAPforCapacityManagement-WP1=E2=80=93Ca=
+pacityBaselineEstablishment"><strong>WP1 =E2=80=93 Capacity Baseline Establ=
+ishment</strong></h3>
+<p local-id=3D"f2c399a8b4f3"><strong>Objective:</strong> Create auditable b=
+aseline for all in-scope systems</p>
+<p local-id=3D"6f94b2eb1794"><strong>Key Activities</strong></p>
+<ul local-id=3D"24751ab9-c28f-40fe-9ef6-089aebe3e5ef">
+<li local-id=3D"489d5fca-49fe-45c8-a010-e6b8e7ee1800">
+<p local-id=3D"45db185dfcc2">Identify application =E2=86=92 CI mapping (CMD=
+B alignment)</p></li>
+<li local-id=3D"4e14616c-ae59-4e57-9bec-82e748ec9d0d">
+<p local-id=3D"ac8c71430990">Extract:</p>
+<ul local-id=3D"4c6909c0-1330-46aa-a45a-6e4871d49514">
+<li local-id=3D"e8012783-d390-41da-9c6d-a83d74b50d39">
+<p local-id=3D"a0479b418c04">Current utilization (CPU, memory, storage)</p>=
+</li>
+<li local-id=3D"194b5189-d118-4219-93ee-e566e0e15066">
+<p local-id=3D"b47c8f71b4e0">Peak vs average load</p></li>
+<li local-id=3D"74371764-d0ce-4802-a495-837a442d5a2f">
+<p local-id=3D"d8b4b95ec634">Historical trends (last 3=E2=80=936 months)</p=
+></li>
+</ul></li>
+<li local-id=3D"27cbaab2-73eb-46f7-9924-80e439414b5d">
+<p local-id=3D"b5575222cbf4">Identify known capacity-related incidents</p><=
+/li>
+</ul>
+<p local-id=3D"7eedb0247354"><strong>Deliverables</strong></p>
+<ul local-id=3D"b9c56c25-309e-47fa-90c9-615f83d5bf31">
+<li local-id=3D"debadefc-e7db-4277-8252-49aa0e44c9d6">
+<p local-id=3D"831f1cb1b274"><strong>D1.1 Capacity Baseline Dataset (standa=
+rd format)</strong></p></li>
+<li local-id=3D"ebd38de7-db21-4507-9f55-311054320dc0">
+<p local-id=3D"e9050d6625ef"><strong>D1.2 Data Source Inventory (NR, logs, =
+GOCC inputs)</strong></p></li>
+<li local-id=3D"94e9ed0e-3ca0-476d-a205-ac923d3bf546">
+<p local-id=3D"2a63c1cbc52b"><strong>D1.3 Data Quality Assessment</strong><=
+/p></li>
+</ul>
+<p local-id=3D"3c0c2c8f22a1"><strong>Owner</strong></p>
+<ul local-id=3D"5c42a8cf-556e-4151-9dc2-558aed0f461d">
+<li local-id=3D"a0ae1f18-6aa4-46cb-baa5-2e5e5affe7d6">
+<p local-id=3D"2a8c2db4cb1e"><strong>Primary:</strong> GOCC</p></li>
+<li local-id=3D"c960da8b-2be1-4fb8-8a87-8d403362431c">
+<p local-id=3D"aadc802cfca3"><strong>Support:</strong> Application Teams / =
+ETS Monitoring</p></li>
+</ul>
+<hr local-id=3D"6c570934-1c40-42d7-b384-0fa61e05710e">
+<h3 local-id=3D"d72bd76ec6c4" id=3D"CAPforCapacityManagement-WP2=E2=80=93De=
+mandDriverDefinition"><strong>WP2 =E2=80=93 Demand Driver Definition</stron=
+g></h3>
+<p local-id=3D"ed4465c56939"><strong>Objective:</strong> Standardize how bu=
+siness demand translates to capacity</p>
+<p local-id=3D"d27e5a6979cb"><strong>Key Activities</strong></p>
+<ul local-id=3D"dbd990ac-0d87-40df-ad44-4dabc06b6769">
+<li local-id=3D"2b18f80c-14b2-4c3e-8e27-a66000576453">
+<p local-id=3D"2fca296da45e">Define common driver categories:</p>
+<ul local-id=3D"68a1a45d-ec46-488e-9bfa-f42dacc67e1a">
+<li local-id=3D"5d8a4ef8-a4b7-42f4-a8dc-564ce8abb8ca">
+<p local-id=3D"f58e7466b501">Transaction volume (e.g., Ingenium growth)</p>=
+</li>
+<li local-id=3D"091d39aa-169e-4eae-a638-5bcf512a4787">
+<p local-id=3D"221b822f2e82">Batch volume / runtime</p></li>
+<li local-id=3D"bcf50978-6853-4952-9345-a0d45c8f6c62">
+<p local-id=3D"9c091061cbc1">User concurrency</p></li>
+<li local-id=3D"92534b57-d4a3-41b5-b3b4-7c708b553acd">
+<p local-id=3D"13ffc8477dea">Data growth</p></li>
+</ul></li>
+<li local-id=3D"2246635f-b097-4d47-8999-6eaa51ec7420">
+<p local-id=3D"3c5c3d25cf40">Map drivers to each application</p></li>
+<li local-id=3D"5f92d08f-41af-47ec-bf34-ec0c59bbadff">
+<p local-id=3D"16a756eb5dd9">Create simple driver-to-resource relationships=
+</p></li>
+</ul>
+<p local-id=3D"8e3da604cd30"><strong>Deliverables</strong></p>
+<ul local-id=3D"ac162743-2b66-4c12-895b-819098e5cef0">
+<li local-id=3D"9b194640-6e2e-4ef2-875e-35fa0d8eb5a1">
+<p local-id=3D"bf4b67fb8c77"><strong>D2.1 Standard Demand Driver Template</=
+strong></p></li>
+<li local-id=3D"075d3f9f-4fa6-44a9-8054-85298b810d46">
+<p local-id=3D"fc7b29e37652"><strong>D2.2 Application Driver Mapping Matrix=
+</strong></p></li>
+</ul>
+<p local-id=3D"2777dc41f85a"><strong>Owner</strong></p>
+<ul local-id=3D"85afeec1-9eab-435c-b7b9-c17814a3faa4">
+<li local-id=3D"875f8d7e-b17e-48ce-bd1d-0cb078b7fe12">
+<p local-id=3D"d019086e21db"><strong>Primary:</strong> ETS (you / central p=
+rogram)</p></li>
+<li local-id=3D"d4d67505-d528-4f9f-bd60-7493a2e5a4a9">
+<p local-id=3D"e067d7509994"><strong>Support:</strong> App Owners / Busines=
+s SMEs</p></li>
+</ul>
+<hr local-id=3D"38985ec4-a646-402d-a648-954992125778">
+<h3 local-id=3D"cafc37b2975f" id=3D"CAPforCapacityManagement-WP3=E2=80=93Fo=
+recastingModel(StandardMethodology)"><strong>WP3 =E2=80=93 Forecasting Mode=
+l (Standard Methodology)</strong></h3>
+<p local-id=3D"4541dc336250"><strong>Objective:</strong> Establish a simple=
+, auditable projection model</p>
+<p local-id=3D"08d629b7bd83"><strong>Key Activities</strong></p>
+<ul local-id=3D"eaf6066b-ed46-48c2-a839-23d672c199f7">
+<li local-id=3D"82dca5a1-daf5-4626-b933-85d4de9eba34">
+<p local-id=3D"47a50696f74e">Create baseline projection logic:</p>
+<ul local-id=3D"9d7e24a5-98e6-472f-9e03-1a47a6fe5b77">
+<li local-id=3D"0fe22264-2294-4d42-b586-4a8364e68118">
+<p local-id=3D"97657ee2b189">Trend-based (linear / seasonal where applicabl=
+e)</p></li>
+</ul></li>
+<li local-id=3D"3410ea5b-610b-4387-a3e7-d68b39d06b35">
+<p local-id=3D"d6545137a3a0">Overlay known business events:</p>
+<ul local-id=3D"ac108e0f-c985-411d-aa22-d11a7182169d">
+<li local-id=3D"1b5c6e78-aadc-4d44-861d-3865e2f8fceb">
+<p local-id=3D"e6f2126d4d4b">Peak periods, releases, regulatory changes</p>=
+</li>
+</ul></li>
+<li local-id=3D"4720e69c-6ae5-4cee-a130-30727f9d6122">
+<p local-id=3D"aaef9f53082d">Estimate:</p>
+<ul local-id=3D"69c1ee85-e0f2-4014-9463-ab8523ddf94a">
+<li local-id=3D"780e8fca-53df-44ce-a133-b5bd6c8090f4">
+<p local-id=3D"a59ded47ad32">Capacity growth trajectory</p></li>
+<li local-id=3D"2e36f5e1-899e-44cc-af1e-f86480697d08">
+<p local-id=3D"4de5a6ad3312">Exhaustion horizon</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"fcd5fc31ddc8"><strong>Deliverables</strong></p>
+<ul local-id=3D"4ed83087-d004-42da-9709-ea84ecf8fab1">
+<li local-id=3D"0de1f680-8853-482c-a8de-20e2784d09e2">
+<p local-id=3D"985fa6d07e3f"><strong>D3.1 Standard Forecasting Method (docu=
+mented logic)</strong></p></li>
+<li local-id=3D"a1437902-b715-43e2-b444-2db9d22cf156">
+<p local-id=3D"f15ab940ad6a"><strong>D3.2 Per-App 6=E2=80=9312 Month Capaci=
+ty Forecast</strong></p></li>
+<li local-id=3D"e9c6e82e-f064-4a33-8582-9e1c7afb91f9">
+<p local-id=3D"2cdd660ff9a8"><strong>D3.3 Forecast Assumptions Log</strong>=
+</p></li>
+</ul>
+<p local-id=3D"e035a9709e7b"><strong>Owner</strong></p>
+<ul local-id=3D"e15fa970-ba73-4e72-be62-a20c3d4baff8">
+<li local-id=3D"33f6f1f8-5251-4f82-ad79-78753a63ad33">
+<p local-id=3D"2d7b3a29d911"><strong>Primary:</strong> GOCC</p></li>
+<li local-id=3D"db723d66-2394-4b32-9cbc-90f9dc8eda87">
+<p local-id=3D"72af42488869"><strong>Support:</strong> ETS / Monitoring / A=
+pp Teams</p></li>
+</ul>
+<hr local-id=3D"b2da47f9-f11e-4273-8ec4-618abe7a0775">
+<h3 local-id=3D"383e31afe62a" id=3D"CAPforCapacityManagement-WP4=E2=80=93Th=
+resholds&amp;TriggerActions"><strong>WP4 =E2=80=93 Thresholds &amp; Trigger=
+ Actions</strong></h3>
+<p local-id=3D"00fbd96c7da5"><strong>Objective:</strong> Convert forecasts =
+into actionable controls</p>
+<p local-id=3D"9baf4c62f4c2"><strong>Key Activities</strong></p>
+<ul local-id=3D"fd19facd-9dd3-493c-a594-144210f141da">
+<li local-id=3D"c261d29c-aac9-4418-ab50-b4296df78820">
+<p local-id=3D"c4e2051972a2">Define standard thresholds:</p>
+<ul local-id=3D"decc7cd7-e858-4b37-a9cd-96bcccf18212">
+<li local-id=3D"17959609-a967-439b-a79d-f436fa16614c">
+<p local-id=3D"2a85fcbb0bf5">70% =E2=86=92 Watch</p></li>
+<li local-id=3D"999f77b9-7574-4e28-9892-420a10cf02b9">
+<p local-id=3D"a08801f74c3e">85% =E2=86=92 Plan</p></li>
+<li local-id=3D"f1e8c61a-ebd2-4f64-be60-15c2534727c2">
+<p local-id=3D"ed99a34bf8ad">95% =E2=86=92 Urgent</p></li>
+</ul></li>
+<li local-id=3D"2036f1e8-23a2-4385-871c-f3f0d149ea09">
+<p local-id=3D"121be59874be">Define response actions:</p>
+<ul local-id=3D"cfa490c2-4bce-4b1e-8c54-4c5ed34ef3cc">
+<li local-id=3D"68bf7896-fe85-4a2d-b258-42f1b1e353b1">
+<p local-id=3D"390c09351422">Scale infra</p></li>
+<li local-id=3D"8132ee3e-6867-4661-b9e1-2586fbd2c23d">
+<p local-id=3D"690d4666819e">Batch optimization</p></li>
+<li local-id=3D"90b90d23-dd0e-4138-869f-52b4aa77aa88">
+<p local-id=3D"812e839f83f4">Incident escalation / CAP linkage</p></li>
+</ul></li>
+<li local-id=3D"4a5a8970-c606-444f-98c8-97cc5c907e3c">
+<p local-id=3D"c8662fe95745">Align with alerting (NR / monitoring)</p></li>
+</ul>
+<p local-id=3D"fa976855fb72"><strong>Deliverables</strong></p>
+<ul local-id=3D"fb1b5a65-428d-46c7-b38a-bbfce2418d5f">
+<li local-id=3D"146da958-0945-48f0-b855-ad14dd33cc24">
+<p local-id=3D"b5363ad93a76"><strong>D4.1 Standard Threshold Matrix</strong=
+></p></li>
+<li local-id=3D"63f68938-508b-45ee-89bd-01d14a61c4e4">
+<p local-id=3D"b325289c4123"><strong>D4.2 Trigger Action Runbook</strong></=
+p></li>
+<li local-id=3D"f58d523d-e10f-4a3c-9487-d8922f31c7b0">
+<p local-id=3D"cc4532b767de"><strong>D4.3 Alerting Integration Requirements=
+</strong></p></li>
+</ul>
+<p local-id=3D"cd63c49e28ae"><strong>Owner</strong></p>
+<ul local-id=3D"eab2f683-c96b-4ace-98bf-1f4133241736">
+<li local-id=3D"04f555e3-a1ba-41cf-ad28-f4e08828fa52">
+<p local-id=3D"4fb8ea9605cc"><strong>Primary:</strong> GOCC</p></li>
+<li local-id=3D"335e2730-9071-4456-b4f0-bcb39cd08efc">
+<p local-id=3D"9b23d029470b"><strong>Support:</strong> SRE / Monitoring Tea=
+ms</p></li>
+</ul>
+<hr local-id=3D"63b8cac6-f89a-4dfb-8f01-8b78cccbc5e9">
+<h3 local-id=3D"9792c17293f9" id=3D"CAPforCapacityManagement-WP5=E2=80=93GO=
+CCOperationalization"><strong>WP5 =E2=80=93 GOCC Operationalization</strong=
+></h3>
+<p local-id=3D"29f594d124e8"><strong>Objective:</strong> Embed into steady-=
+state operations</p>
+<p local-id=3D"670277579da6"><strong>Key Activities</strong></p>
+<ul local-id=3D"e16f4eaf-bd0b-45df-aed6-b68f12089913">
+<li local-id=3D"c20f931f-1d80-438f-abad-f2aa26468e8f">
+<p local-id=3D"6c3026e195ca">Define cadence:</p>
+<ul local-id=3D"f9340250-955d-4da1-b3cd-a7a9e84abced">
+<li local-id=3D"0eaefd36-bf05-425c-96a4-207abb970215">
+<p local-id=3D"ad0da2b466d5">Monthly capacity review</p></li>
+<li local-id=3D"cd21484f-4389-4759-9349-08090143f438">
+<p local-id=3D"459bf6bfd0c3">Quarterly forecast refresh</p></li>
+</ul></li>
+<li local-id=3D"a2ce47dd-1329-45c9-8fde-2a29c6a3f95a">
+<p local-id=3D"015af3327e66">Assign ownership:</p>
+<ul local-id=3D"a4920b8a-a69b-4dc8-9f67-2d4f46899c92">
+<li local-id=3D"d0488eb1-fec0-44fc-b048-059d2f3c9a82">
+<p local-id=3D"d9b85359e1a4">GOCC monitors vs forecast variance</p></li>
+</ul></li>
+<li local-id=3D"d7560551-9697-4000-bac2-c2b1be2e89f0">
+<p local-id=3D"439d8ddbecdd">Integrate into runbooks:</p>
+<ul local-id=3D"df373c59-f988-4246-bb0a-4dfc741d7cfb">
+<li local-id=3D"51bf7d78-e0a9-47f1-8a9f-9456ffc5d6be">
+<p local-id=3D"7c2529b2a7ee">Capacity review</p></li>
+<li local-id=3D"781d4dca-ed8d-448c-80be-f71f00042d3b">
+<p local-id=3D"ab8968cecede">Exception handling</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"ea271007044e"><strong>Deliverables</strong></p>
+<ul local-id=3D"b93ecbdc-8c8f-4cc7-af2c-9d38ebc0b1ab">
+<li local-id=3D"faf87b0b-e8fb-42dc-988c-a81de6b87fe3">
+<p local-id=3D"23ddae644d95"><strong>D5.1 GOCC Runbook: Capacity Management=
+</strong></p></li>
+<li local-id=3D"8a93d44c-4ddb-4f17-b7bd-0f07ca8918d4">
+<p local-id=3D"d59ef7dff8b7"><strong>D5.2 Review Cadence Schedule</strong><=
+/p></li>
+<li local-id=3D"cde0f449-0484-493b-b49e-4fffd65ef5a1">
+<p local-id=3D"e3d4378067d4"><strong>D5.3 Ownership Matrix (RACI)</strong><=
+/p></li>
+</ul>
+<p local-id=3D"638eb01877be"><strong>Owner</strong></p>
+<ul local-id=3D"233066fc-1861-4802-9312-0bf894343f64">
+<li local-id=3D"41001b06-485f-4a48-9768-815393d9f570">
+<p local-id=3D"4a68aaa4be49"><strong>Primary:</strong> GOCC</p></li>
+<li local-id=3D"740393d8-1576-41ad-853f-85ee6d3a29c1">
+<p local-id=3D"f1c93e1a39b8"><strong>Support:</strong> ETS Program</p></li>
+</ul>
+<hr local-id=3D"69df23c4-d523-4177-a27e-6468f0465d8c">
+<h3 local-id=3D"f1ac2d7ce22f" id=3D"CAPforCapacityManagement-WP6=E2=80=93Re=
+porting&amp;Evidence(Lapu=E2=80=91LapuCompliance)"><strong>WP6 =E2=80=93 Re=
+porting &amp; Evidence (Lapu=E2=80=91Lapu Compliance)</strong></h3>
+<p local-id=3D"6d96b51ef8f6"><strong>Objective:</strong> Ensure auditabilit=
+y + executive visibility</p>
+<p local-id=3D"dc4026fb5f97"><strong>Key Activities</strong></p>
+<ul local-id=3D"3843eb60-b88a-4ef2-a1d9-16e4c6b00b35">
+<li local-id=3D"cb57ef3b-3426-4fe1-8752-935add096ec3">
+<p local-id=3D"b849452db88b">Produce standardized outputs:</p>
+<ul local-id=3D"f432430d-98aa-4377-8ff0-faa430adefa3">
+<li local-id=3D"6f511f97-b53d-4ff8-a39a-306748428d6f">
+<p local-id=3D"005dace1d55a">Baseline snapshot</p></li>
+<li local-id=3D"0e57cfd1-92df-4310-999e-a6eac267cd2c">
+<p local-id=3D"98ee4bc5a2d4">Forecast</p></li>
+<li local-id=3D"19315232-f68c-40c9-8a7e-d36e80eaf30a">
+<p local-id=3D"22ff79529729">Risk rating (use <strong>MetalRating: Gold/Sil=
+ver/Bronze</strong>)</p></li>
+</ul></li>
+<li local-id=3D"12740783-d99b-4c2c-ae01-2e4ac61428b7">
+<p local-id=3D"9695a0bb232a">Integrate with:</p>
+<ul local-id=3D"8ef9105b-be69-4e9f-89f9-61bb6376b7da">
+<li local-id=3D"503e0aad-bbb5-48d3-8440-3ef9bd98d66d">
+<p local-id=3D"d784bfaa980f">Power BI dashboard</p></li>
+<li local-id=3D"d38c094d-cce3-4034-9930-e4b6f175ee64">
+<p local-id=3D"9e5bc0de85cb">New Relic (if applicable)</p></li>
+</ul></li>
+<li local-id=3D"3ad9ea0a-00ae-4279-a6a9-d6dffef960a0">
+<p local-id=3D"64ce5baa65b5">Ensure evidence capture:</p>
+<ul local-id=3D"86c5aa65-91c5-4ce6-9403-74ef3ed65848">
+<li local-id=3D"0b79ab8d-361d-4ac5-8544-e506fd7dab6b">
+<p local-id=3D"fde1fd206b0c">Timestamped outputs</p></li>
+<li local-id=3D"d4656f80-7517-4233-8e1f-ece28d6a4363">
+<p local-id=3D"7563a9684d1d">Standard import format for GOCC</p></li>
+</ul></li>
+</ul>
+<p local-id=3D"3316a302154b"><strong>Deliverables</strong></p>
+<ul local-id=3D"157fd08f-903a-4343-b4ff-daa60999fb90">
+<li local-id=3D"d0632837-25c2-4f7c-ba00-5a02d78c771f">
+<p local-id=3D"e84055b83a54"><strong>D6.1 Capacity Dashboard (Power BI / NR=
+)</strong></p></li>
+<li local-id=3D"f33b553e-a59a-4954-8dfb-e24adb9c36b3">
+<p local-id=3D"4a784a7aac26"><strong>D6.2 Standard Evidence Pack per Applic=
+ation</strong></p></li>
+<li local-id=3D"de1b5b47-c1e4-45b2-aba2-3b268c132f36">
+<p local-id=3D"5f729da830e1"><strong>D6.3 GOCC Import Template</strong></p>=
+</li>
+</ul>
+<p local-id=3D"ec0eed86fd24"><strong>Owner</strong></p>
+<ul local-id=3D"f6c5c778-2a03-4fc8-9a3b-ab4557d458e9">
+<li local-id=3D"8602497e-ba27-4d63-9cfa-502be2c8cbf1">
+<p local-id=3D"a7928b51ecf2"><strong>Primary:</strong> ETS (you)</p></li>
+<li local-id=3D"4cd3630d-51de-4d9a-8849-73fc524a52a4">
+<p local-id=3D"55a02f4271f9"><strong>Support:</strong> GOCC / Data / BI</p>=
+</li>
+</ul>
+<hr local-id=3D"32ebfa20-0675-4c5d-81db-593cd321df19">
+<h2 local-id=3D"981c4f2ffb43" id=3D"CAPforCapacityManagement-6.Timeline(Hig=
+h-Level)"><strong>6. Timeline (High-Level)</strong></h2>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"68=
+dbeba5-e740-4628-a69f-896e2ab46813" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"edfb42ad-c04f-4981-aaf6-d90172550081">
+<th data-local-id=3D"234a20f6-0b72-4f27-928a-8ac7cc095333" class=3D"conflue=
+nceTh">
+<p local-id=3D"faa995b8c309">Phase</p></th>
+<th data-local-id=3D"d213e249-b879-4f61-bdea-df9470605dda" class=3D"conflue=
+nceTh">
+<p local-id=3D"65833ec83e19">Focus</p></th>
+</tr>
+<tr data-local-id=3D"63fa39d9-ead7-43dd-b2ae-668eec2e3cad">
+<td data-local-id=3D"255dedbd-4f56-482d-b971-c985afca7ab7" class=3D"conflue=
+nceTd">
+<p local-id=3D"13a9e8e9e6a9">Phase 1</p></td>
+<td data-local-id=3D"41f1d76d-f77a-4532-ace8-1d813cd40aaa" class=3D"conflue=
+nceTd">
+<p local-id=3D"04ca06464a0c">Gold applications (baseline + forecast)</p></t=
+d>
+</tr>
+<tr data-local-id=3D"39ffcf34-ed35-466b-8b3b-c2f23d0f53e2">
+<td data-local-id=3D"02fb9b2c-3b86-4d5a-aaf4-e74ef0f26202" class=3D"conflue=
+nceTd">
+<p local-id=3D"e6335acc67ad">Phase 2</p></td>
+<td data-local-id=3D"68b3e493-075d-4946-9522-f08cdb051fc3" class=3D"conflue=
+nceTd">
+<p local-id=3D"3e31e98bc558">Full estate rollout</p></td>
+</tr>
+<tr data-local-id=3D"e6dfc742-32fb-465b-b20c-bbf63b4510b6">
+<td data-local-id=3D"d0e599d9-5b84-4bed-ac0d-4a8925d78cd5" class=3D"conflue=
+nceTd">
+<p local-id=3D"fd97696a3d4d">Phase 3</p></td>
+<td data-local-id=3D"a8262780-c3e4-43d7-b62f-55952bd7d736" class=3D"conflue=
+nceTd">
+<p local-id=3D"7af0fe474646">Automation + dashboard integration</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"86363a3c-96b5-4fcf-871c-fb0c7635f1d7">
+<h2 local-id=3D"4ea923dd4535" id=3D"CAPforCapacityManagement-7.Risks&amp;Mi=
+tigations"><strong>7. Risks &amp; Mitigations</strong></h2>
+<div class=3D"table-wrap">
+<table data-table-width=3D"760" data-layout=3D"default" data-local-id=3D"b5=
+76d5fb-3372-4401-86fe-84010d3542f1" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"78d99259-76ad-458a-9d06-1c12f8607a9b">
+<th data-local-id=3D"8a46d9b9-f372-4d6e-ba91-6af0b50c5cfc" class=3D"conflue=
+nceTh">
+<p local-id=3D"b0497e85c508">Risk</p></th>
+<th data-local-id=3D"0b32cd57-f8ef-4b5f-a0fe-84369c0e1d20" class=3D"conflue=
+nceTh">
+<p local-id=3D"58cef35a9f15">Impact</p></th>
+<th data-local-id=3D"86b32cf3-3d48-4e03-a2ed-8055eb92be1b" class=3D"conflue=
+nceTh">
+<p local-id=3D"e65488b45220">Mitigation</p></th>
+</tr>
+<tr data-local-id=3D"b3fc6be8-ab64-4e5f-ae51-0d2905323dc7">
+<td data-local-id=3D"5d047051-6a00-4577-8df1-206063c9a82f" class=3D"conflue=
+nceTd">
+<p local-id=3D"9b117462db65">Inconsistent data quality</p></td>
+<td data-local-id=3D"ae1de948-1a75-494b-8b87-2a801f5cbdce" class=3D"conflue=
+nceTd">
+<p local-id=3D"1e57f8ebedfb">Inaccurate forecasts</p></td>
+<td data-local-id=3D"84a517f6-fb92-4ac8-ba1a-41cbc4f151c2" class=3D"conflue=
+nceTd">
+<p local-id=3D"434ce72cb6c6">Standardize sources + validation (WP1)</p></td=
+>
+</tr>
+<tr data-local-id=3D"a8421196-1aad-41c8-8a56-4ce54a1cec13">
+<td data-local-id=3D"62822c77-e9f7-432f-bc52-d69597955e35" class=3D"conflue=
+nceTd">
+<p local-id=3D"c6da02c025c3">Lack of monitoring coverage</p></td>
+<td data-local-id=3D"dabfe1d8-5f24-4554-af58-68551dc32d5a" class=3D"conflue=
+nceTd">
+<p local-id=3D"dc7f50231b1c">Blind spots</p></td>
+<td data-local-id=3D"24cc060f-4f92-4319-8d90-a19e626c4642" class=3D"conflue=
+nceTd">
+<p local-id=3D"404a31bd1cbd">Identify gaps, prioritize Gold apps</p></td>
+</tr>
+<tr data-local-id=3D"5889333c-d405-49f9-96a4-32816ccf9c87">
+<td data-local-id=3D"14737dcd-f5e2-442f-bdd6-2c78ad669f8b" class=3D"conflue=
+nceTd">
+<p local-id=3D"1bda88cf428b">Unclear ownership</p></td>
+<td data-local-id=3D"bcab0ccb-2da3-4784-9f57-604fe8bbd498" class=3D"conflue=
+nceTd">
+<p local-id=3D"8c183a98289b">Execution delay</p></td>
+<td data-local-id=3D"2e8377f3-485a-49df-b4d8-7c8aea45e4b9" class=3D"conflue=
+nceTd">
+<p local-id=3D"659bc69a2773">Formalize GOCC ownership (WP5)</p></td>
+</tr>
+<tr data-local-id=3D"c253fdf7-36e7-4e0a-821f-5627b21d0e70">
+<td data-local-id=3D"d35b78e7-6862-4175-86aa-d774e533949c" class=3D"conflue=
+nceTd">
+<p local-id=3D"37fed8c81235">Over-complex modeling</p></td>
+<td data-local-id=3D"c50b93f3-d068-436d-98dc-0c54887586a1" class=3D"conflue=
+nceTd">
+<p local-id=3D"d949efea6a39">Low adoption</p></td>
+<td data-local-id=3D"9e2e0f41-b262-4533-acc1-d8bc09b15237" class=3D"conflue=
+nceTd">
+<p local-id=3D"491ebe9bb82b">Keep model simple, transparent</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr local-id=3D"c4b6cc50-3d67-422d-9b44-687ddb7a9513">
+<h2 local-id=3D"f0d0650ee338" id=3D"CAPforCapacityManagement-8.Dependencies=
+"><strong>8. Dependencies</strong></h2>
+<ul local-id=3D"74604db1-9b83-4e27-a525-c5f73d007ddb">
+<li local-id=3D"ab622466-a1b2-43f6-a98f-445c93dca466">
+<p local-id=3D"4c3ca7fd7cbf">GOCC onboarding &amp; operating model readines=
+s</p></li>
+<li local-id=3D"24e674cf-407a-4aea-a04d-9b1ec72da4d7">
+<p local-id=3D"6fed113b783b">Monitoring data availability (NR / logs)</p></=
+li>
+<li local-id=3D"091db379-00cb-4a3c-b842-936a24f4de67">
+<p local-id=3D"16bfbdc338b0">CMDB accuracy (CI mapping)</p></li>
+<li local-id=3D"367de449-bd98-4528-ad8f-bf17f4ea1720">
+<p local-id=3D"35f86465aa03">Application team engagement</p></li>
+</ul>
+<hr local-id=3D"9eb947c2-35be-4f84-a5b6-83974e5023b9">
+<h2 local-id=3D"eb12218868c5" id=3D"CAPforCapacityManagement-9.KeyOutputs(E=
+xecutiveView)"><strong>9. Key Outputs (Executive View)</strong></h2>
+<ul local-id=3D"fbd96058-0714-4250-8b40-63d26e2b2817">
+<li local-id=3D"8741a0b1-0cba-42eb-98dd-b59dd5dc692a">
+<p local-id=3D"330644b0733a">Capacity risk heatmap across applications</p><=
+/li>
+<li local-id=3D"6fe818cd-152b-4782-b35a-f6921658eee5">
+<p local-id=3D"e6eae09acd00">Forecasted capacity breaches (6=E2=80=9312 mon=
+ths)</p></li>
+<li local-id=3D"d77a0571-6478-457b-be1a-a008de8058ef">
+<p local-id=3D"907b8bf6b4ba">Action backlog (scale / optimize / mitigate)</=
+p></li>
+</ul>
+<hr local-id=3D"88426d25-f868-4545-ae77-a24db304b40b">
+<h2 local-id=3D"b03f49f0147a" id=3D"CAPforCapacityManagement-10.NextActions=
+(Immediate)"><strong>10. Next Actions (Immediate)</strong></h2>
+<ol start=3D"1" local-id=3D"9ed6989f-1d4b-47fb-8035-d3d4359f0ad7">
+<li local-id=3D"d8fdf393-f9fd-4eb8-80c9-ad3006ca6fa2">
+<p local-id=3D"d8a5702b650e">Confirm <strong>GOCC ownership of WP1=E2=80=93=
+WP5</strong></p></li>
+<li local-id=3D"2f5cb6cf-aba9-4e63-bf30-9b4b1e47db93">
+<p local-id=3D"e4c7b0a6b5e7">Align on <strong>standard baseline + forecast =
+template (D1 / D3)</strong></p></li>
+<li local-id=3D"5ce42eec-6563-4507-8f6b-58e9b17f60df">
+<p local-id=3D"26bac4b4d4b1">Pilot with <strong>top Gold applications (e.g.=
+, Ingenium, NDM, ServerF)</strong></p></li>
+</ol>
+    </div>
+</body>
+</html>
+------=_Part_68_1936832715.1782891655195
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/5be5af5f1f88fe0593b44a92218a322bd427800ef2a80c9eb36f852e3c9d209a
+
+iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAADAFBMVEX19fXv7+98fHx1dXV9fX23
+t7eenp5wcHDn5+f09PTz8/Pd3d2SkpLY2Njt7e3Q0NCioqJycnKqqqq7u7uurq6CgoKGhobOzs7D
+w8PR0dGNjY3Hx8fj4+PGxsbS0tKoqKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABYhwFnAAAE2ElEQVR4Xu3cDVPaSBjA8U1CspGXCAcqVmj3vv+HKnN15nr21LMq
+ilZpNgkQNpESryQi/99Mw+bZJzt53BCmZlEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ANgClhnYDP/52TFjL3iy7XsztsX8muubsZf4rr127hbwXDOyiuuZkY2wzcBGrH21R5xnM7LFpBlY
+rWD6K5Uz62/SDpde6E34arUnMxL0vYndO5hOzA4tm74JFZXeGjt3D1PxdNPKqz2TvsXM+9aRPI4b
+x7K13BMx07eZUUtQ+zhr7jtBuidWTumV3OY67b9mzav9TrqnTDUzUIbx3aI9qeQMymNcwU7qP02B
+vtEa/e/3gt+rTRc73yub9SpKfyMofRdR+i6qrPRyPsBWqaz06lH6LqL0XUTpu4jSdxGlV6der5uh
+klRSui72MXmS7LhjsVdJ9VWUfnflh5Pdjndaz0JMr5YTylFF6aK+L8bty77Qv5E/HwuxX8msV/Lg
+aWrfi+91p2H3LlvTsHT3bvmJejkPniopvXldfxQPouXc2tePQjTu6stP3sopvRzm7yWGMrVcxrdP
+FjsRM32bZWrp1hqzZkt20z1aJn2LZWsZ2u0jf2/PP2rXzDnPS99eObUEbrMmO7Wmm7NyLyd9axWs
+pWD6K1Xyuf42UPqGPRVa+umX87FeTul2oWKeSjopM7AR9rTI8uCSSs/5aNmE3V0UDgAAAAAAAADY
+GGUGfkGZgTzKDORTQrhSmdGstX7bbzVlaGiG8ykzYPJksngqptI7eZRSUjYLPTCweyMzlLVO6ZZ3
+7z3UmmdmfIWRGUixGqmvtCZGZiBtNHrwHw/M6Cr3F2bklbzF8+5Pcio/ha/qDzmNN6IbXhBNvfpL
+N3p6jpQSaiD1NFnSX/QnjqWIv72+lJ8eW3ek/jaN7hMDGTVaHSk7vpGjetFIofCEZE9FYyYH/09y
+vuTDlf2gr9e+KNlINifyJGhJT1fSDT52kjNVIjqXnlz0zxz2RPuDyOSnx+4HA2fxnCpKSEqXQys4
+PDBylBwGQ9kXoh81VHLI77BY7iT1n9Zx9Vno795HG3kk4hOL+nQ03ugsHZv3J+rh5eDLeiY/Nfa+
+WDoi7LOOpa433g/MHKXXIekjowVJrlqz9ILfI3Yew3/6e8hf9F60+Rr++/PeivsWfniD08G3H6n+
+2KOciHunOTbzU2Pr+KkazTuU+PuiexM1G974WHy2jJxbkRwZNeLY77G44KP59+NrL9nIQbpvFg03
+B57wDlL9CRm9ufUUGfnLY6cmbt4KG/LDoG4pI0fNjoyHmHf/wjp3+Om/86Ze7WYsE5j/lJP45+SW
+5lnC0qMvz4IvLkaj0UX4aubnjZ11czo2fpYideRaQxRhyVqrPuhK/YbS9xF9K9LxaNOXPd/XfUN9
+2wrrlP163CWjT4Z5f8yLf9ZOO5O/PPZLs+4FR4v7mN7qndmR3UK3ubVm/cF/ePp2cxi+w/pnV2f9
+83Tn18Pr6fQmvFN/eb6Z/BO+Pl/eqviwiX77zftj1mH0cnCXyc8ZO8u3Jv/tmUHROpucNcIjzxvh
+EHl/7eXdUmZgPevM+jtV8MPt9VT8MkrHVlPxyygdAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AACs6SdSOOLSEKQq3AAAAABJRU5ErkJggg==
+------=_Part_68_1936832715.1782891655195--
