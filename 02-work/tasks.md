@@ -1901,3 +1901,46 @@
 - **Tags:** #project:lapu-lapu #domain:batch #area:rapid-recovery #domain:dr #domain:risk
 - **Description:** Capture the CAWLA hosting and DR posture confirmed by Godfrey Esguerra (GBO CAWLA admin, 2026-06-24): HA architecture with primary CAWLA application and SQL MI database servers in EAS (East Asia), secondary servers in SEA (South East Asia). Cross-region execution introduces network latency; a database failover to SEA requires the application server to fail over to SEA in tandem to maintain optimal performance and stability. Embed this constraint into the Japan batch transition RRP (T136 / T141 alignment), batch transition risk register (D018), and the Lapu-Lapu DR view so recovery procedures and pilot validation account for the coupled failover model.
 - **Source:** Inbox — archive/FW_ Action items from the meeting with Japan BU.eml
+﻿
+
+---
+
+## T142 — Deliver CAP-48585 Capacity Management Plan (WP1–WP6, Gold Pilot: Ingenium/NDM/ServerF)
+- **Status:** Open
+- **Created:** 2026-07-01
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc-observability
+- **Assigned:** Debamalya Das
+- **Systems:** #system:cmdb #system:newrelic #system:azure
+- **Relevance:** 88/100
+- **Tags:** #project:lapu-lapu #area:capacity-management #area:mmm-l2 #area:rapid-recovery #domain:governance #priority:milestone
+- **Description:** Deliver the CAP-48585 "Implement Process to Estimate Future Capacity Requirements" corrective action plan under the six-work-package delivery model exported from Confluence (2026-07-01): WP1 Capacity Baseline Establishment (GOCC primary; CMDB CI mapping, current utilization, peak vs average load, 3-month trend, capacity-incident history; deliverables D1.1 Baseline Dataset, D1.2 Data Source Inventory, D1.3 Data Quality Assessment); WP2 Demand Driver Definition (ETS primary; standardize transaction volume, batch runtime, user concurrency, and data growth drivers; deliverables D2.1 Demand Driver Template, D2.2 Application Driver Matrix); WP3 Forecasting Model (GOCC primary; trend-based projection with business-event overlay, exhaustion horizon; deliverables D3.1 Standard Method, D3.2 Per-App 6-12 Month Forecast, D3.3 Assumptions Log); WP4 Thresholds & Trigger Actions (GOCC primary; 70/85/95 Watch/Plan/Urgent thresholds, response actions, NR alerting integration; deliverables D4.1 Threshold Matrix, D4.2 Trigger Action Runbook, D4.3 Alerting Requirements); WP5 GOCC Operationalization (monthly review, quarterly forecast refresh, RACI, integrated runbooks; deliverables D5.1 GOCC Capacity Runbook, D5.2 Review Cadence, D5.3 RACI); WP6 Reporting & Evidence (ETS primary; MetalRating-linked risk output, Power BI + New Relic integration, evidence pack per app, GOCC import template). Phase 1 covers Gold applications (~65 apps in full estate); pilot with Ingenium, NDM, and ServerF. Integrates capacity risk into RRP scenarios (T003 / T106 alignment) and MMM L2 dashboards (T005 / T121). Aligns to formal GRC CAP-48585 governance record (Issue-4027146; Owner: Rasheersh Jha; Coordinators: Hideo Hasegawa, Eiji Omi, Naomi Tsuchida; Issue Owner: Sandeep Chakraborty; CAP Health: On Track; target close 2026-09-30) per Corrective_Action_Plan.pdf.
+- **Source:** Inbox — archive/CAP+for+Capacity+Management.doc, archive/Corrective_Action_Plan.pdf
+
+---
+
+## T143 — Close Out PRB00024864 (INC08672078 wasAPIMprod Credential Expiry: Ownership, PWMGR Rotation, Escalation Enforcement)
+- **Status:** Open
+- **Created:** 2026-07-02
+- **Objective Chain:** H-2 (Problem Management) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb #system:xmatters
+- **Tags:** #project:lapu-lapu #domain:incident-management #domain:credentials #domain:cyberark #area:rapid-recovery
+- **Relevance:** 92/100
+- **Description:** Drive the problem-management close-out for PRB00024864 opened after INC08672078: the `mfcgd\wasAPIMprod` domain service account password expired on 2026-06-27 and broke ING APIM communication for SCV, MLK, PAW, and SSW; communication resumed at 10:06am HKT once GAM reset the password. Root-cause layers identified: (a) Ownership — no clear accountable owner registered for the ID (ADUC shows /S/108078/MLI/Hirooka, Kinue as primary and /S/490766/MLI/Yeung, Rosalina as backup; Safe owner = Kinue Hirooka); (b) Rotation — account is Semi-Managed (SSEMI) in CyberArk under Safe `NH_MLJ_ITIS_SUPP_S`, Platform `NH_WINDOM_SSEMI_DOMAINREC_DC_NoAAM`, requiring manual rotation by the NH_MLJ_ITIS_SUPP_S Password Managers (PWMGR); no rotation performed by PWMGR since 2024-05-27; (c) Notification — CyberArk only notifies via `mlj_it_is_support@manulife.com` if "Change the password immediately" has been executed, so silent expiry is possible; (d) Escalation — no enforced action when notifications are ignored. Confirm the ownership record with the Global Access Management team (`Information_Security@manulife.com`) and Dennis Icaro (CyberArk PAS ops), formalize the Safe/Platform rotation cadence against the 365-day IAM Standard, close the notification/escalation gap, and register the failure mode into the RRP for the four APIM-consuming apps (SCV/MLK/PAW/SSW). Links to D002 (service account password management as automation opportunity) and D004 (Japan incident documentation & CI standards). Feeds a follow-on sweep of the Japan Semi-Managed CyberArk estate (T144).
+- **Source:** Inbox — archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc
+
+---
+
+## T144 — Sweep Japan Semi-Managed CyberArk Safes for PWMGR Rotation Compliance and Owner Registration
+- **Status:** Open
+- **Created:** 2026-07-02
+- **Objective Chain:** B-5 (Security, Data Integrity & Encryption) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Tags:** #project:lapu-lapu #domain:credentials #domain:cyberark #domain:security #domain:hygiene #worktype:audit
+- **Relevance:** 78/100
+- **Description:** Off the back of INC08672078 / PRB00024864 (T143), audit the Japan Semi-Managed CyberArk estate — starting with Safe `NH_MLJ_ITIS_SUPP_S` and Platform `NH_WINDOM_SSEMI_DOMAINREC_DC_NoAAM` — to identify domain service accounts whose last PWMGR rotation is beyond the 365-day IAM Standard, whose safe owner or ADUC-listed primary/backup owner is stale, or whose notification path relies on a `Change password immediately` opt-in that was never enabled. Coordinate with Kinue Hirooka (safe owner), the GAM team (`Information_Security@manulife.com`), and Dennis Icaro (CyberArk PAS ops) to remediate rotation and owner-registration gaps for the top-risk accounts, and register the resulting inventory in the Lapu-Lapu risk register so the same silent-expiry failure mode cannot recur on other Japan Gold-app service accounts.
+- **Source:** Inbox — archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc

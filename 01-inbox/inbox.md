@@ -4,6 +4,59 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-07-02 — INC08672078 / PRB00024864: mfcgd\wasAPIMprod Credential Expiry Post-Incident Analysis** #processed
+  - **Source:** archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc
+  - **From:** Confluence export (INC08672078 problem-management page)
+  - **Focus:** Root-cause analysis of the 2026-06-27 domain service account credential expiry that broke ING APIM communication for SCV, MLK, PAW, and SSW; captures CyberArk semi-managed account posture, ownership mapping, notification behaviour, and escalation gaps confirmed with Dennis Icaro (CyberArk PAS ops).
+  - **Key outcomes:**
+    1. Immediate fix: ING APIM communication for SCV, MLK, PAW, and SSW resumed at 10:06am HKT after Global Access Management (GAM) reset the `mfcgd\wasAPIMprod` password (expired 2026-06-27).
+    2. Ownership mapping (ADUC): primary /S/108078/MLI/Hirooka, Kinue; backup /S/490766/MLI/Yeung, Rosalina; Safe owner = Kinue Hirooka. No clear registered accountable owner for the ID — a root-cause finding.
+    3. CyberArk posture: `mfcgd\wasAPIMprod` is Semi-Managed (SSEMI) under Safe `NH_MLJ_ITIS_SUPP_S`, Platform `NH_WINDOM_SSEMI_DOMAINREC_DC_NoAAM`; rotation is manual by NH_MLJ_ITIS_SUPP_S Password Managers (PWMGR); expiry threshold = 365 days per Manulife IAM Standard. No PWMGR rotation performed since 2024-05-27.
+    4. Notification: CyberArk only notifies (via `mlj_it_is_support@manulife.com`) when "Change the password immediately" has been executed; GAM (`Information_Security@manulife.com`) is the pre-expiry notification path. Escalation gap: no enforced action when notifications are ignored.
+    5. Impacted systems: SCV, MLK, PAW, SSW ING APIM communication (all four listed in the Rapid Recovery scope) — new failure mode to embed in the APIM-consumer RRP set.
+  - **Actions extracted → T143, T144**
+  - **Actions referenced → T001, T003, T005, T106, T121**
+  - **Decision referenced → D002, D004**
+
+- **2026-07-01 — CAP-48585: Implement Process to Estimate Future Capacity Requirements (Delivery Plan + GRC Governance Record)** #processed
+  - **Source:** archive/CAP+for+Capacity+Management.doc, archive/Corrective_Action_Plan.pdf
+  - **From:** Confluence export (Delivery Plan) + GRC system export (Corrective Action Plan formal record)
+  - **Focus:** Formalize the Lapu-Lapu delivery model for the CAP-48585 corrective action plan filed under Global Information Risk Management (GIRM) / Technology Stability, Reliability and Scalability, and align internal GOCC/ETS work packages with the September 2026 target.
+  - **Key outcomes:**
+    1. GRC record: CAP-48585 "Implement process to estimate future capacity requirements" (Issue-4027146, "Lack of regular monitoring to estimate future capacity requirements"). CAP Owner: Rasheersh Jha; Coordinators: Hideo Hasegawa, Eiji Omi, Naomi Tsuchida; Issue Owner: Sandeep Chakraborty; ELT Owner: Shamus Weiland; Responsible Common Unit: Information Technology (Japan); Responsible Parent Business Process: Systems Performance & Capacity; Impact Level: Moderate; CAP Health: On Track; CAP Days Open: 63; Original & Current Planned Completion: 2026-09-30; Opened 2026-04-27 by Naomi Tsuchida.
+    2. Delivery plan objective: standardized, repeatable capacity management process that estimates future infrastructure capacity, identifies capacity-related risks proactively, enables GOCC to operate a predictive runbook-driven model, and supports MMM L2 maturity and Lapu-Lapu operational readiness.
+    3. Scope: Gold applications (Phase 1) expanding to full estate (~65 apps); covers Compute (CPU/memory), Storage, Database growth, and Batch processing windows. Out of scope in Phase 1: deep workload re-architecture and advanced ML forecasting.
+    4. Success criteria: 100% of Gold apps with baseline + 6-12 month forecast, defined thresholds & trigger actions; capacity risk integrated into RRP and MMM L2 dashboards; GOCC owns ongoing monitoring and forecast updates.
+    5. Six work packages: WP1 Capacity Baseline (GOCC primary; deliverables D1.1 Baseline Dataset, D1.2 Data Source Inventory, D1.3 Data Quality Assessment); WP2 Demand Driver Definition (ETS primary; D2.1 Template, D2.2 Application Driver Matrix); WP3 Forecasting Model (GOCC primary; D3.1 Standard Method, D3.2 Per-App 6-12 Month Forecast, D3.3 Assumptions Log); WP4 Thresholds & Trigger Actions (GOCC primary; 70% Watch / 85% Plan / 95% Urgent; D4.1 Threshold Matrix, D4.2 Trigger Action Runbook, D4.3 Alerting Integration Requirements); WP5 GOCC Operationalization (monthly capacity review, quarterly forecast refresh; D5.1 GOCC Capacity Runbook, D5.2 Cadence Schedule, D5.3 RACI); WP6 Reporting & Evidence (ETS primary; D6.1 Power BI/NR Capacity Dashboard, D6.2 Standard Evidence Pack, D6.3 GOCC Import Template).
+    6. Timeline (high-level): Phase 1 Gold applications (baseline + forecast); Phase 2 full estate rollout; Phase 3 automation + dashboard integration.
+    7. Risks: inconsistent data quality → standardize sources/validation (WP1); lack of monitoring coverage → prioritize Gold apps; unclear ownership → formalize GOCC ownership (WP5); over-complex modeling → keep simple and transparent.
+    8. Dependencies: GOCC onboarding & operating-model readiness (D017), NR/log monitoring data availability, CMDB accuracy (T002 / T121), application team engagement (T121).
+    9. Immediate next actions: confirm GOCC ownership of WP1-WP5; align on baseline + forecast template (D1 / D3); pilot with top Gold applications (Ingenium, NDM, ServerF).
+  - **Actions extracted → T142**
+  - **Actions referenced → T002, T003, T005, T106, T118, T121, T128**
+  - **Decision extracted → D019**
+  - **Decision referenced → D017**
+
+- **2026-06-26 — W26 Copilot-Generated Work Summary (Recap Artifact)** #processed
+  - **Source:** archive/W26_copilot.md
+  - **From:** Copilot-generated week-in-review recap (David Klan working notes, week of 2026-06-22 → 2026-06-26)
+  - **Focus:** Theme-level summary of W26 activity across GBO Japan Batch Transition formalization, batch operations readiness, Rapid Recovery progress, MMM L2 expansion, observability & logging, dashboard & monitoring maturity, patching standardization, PS Team risk, and batch readiness risk.
+  - **Key outcomes:**
+    1. Recap confirms W26 headline: GBO Batch Transition Program formalized with seven work packages (WP1-WP7), September pilot target, "No Runbook = No Onboarding" gate, and identified inventory / ownership / runbook / 24x7 readiness risks — all already tracked under T135–T138 and D018.
+    2. Batch operations readiness: ADX logging clarification, sample runbook + status report templates, xMatters group `ETS-GBO-N-Asia` confirmed — all captured under T136, T138, T140, T141.
+    3. Rapid Recovery: Ingenium Gold RRP delivered; AI-assisted drafting; new QC workflow (David/Balaji QC, Jonan sequencing); mandatory authorization matrix reinforced — all covered by T106, T107, T139, D011, D015.
+    4. MMM L2 expansion continues (T005 / T121); Ingenium as baseline; PS Team engagement remains the binding constraint.
+    5. Dashboard & monitoring maturity: Employee XP / Business Capability feedback captured (T128), Dev XP alert tuning and process-monitoring focus (T118), external app health-check reports for IT-savvy business users flagged for T128 refinement.
+    6. Patching standardization slowed by CMDB/ServiceNow knowledge gaps — already tracked under T017/T020/D003 with the CMDB-query skills risk under T126.
+    7. PS Team contract-transition responsiveness reaffirmed as active delivery risk — tracked under T077, T121, T126.
+    8. Batch readiness risk profile — inventory completeness, runbook quality, GBO operational readiness, local/regional support — mapped to T108/T135/T136/T137/T138.
+    9. Next-week focus items (operating model & ownership boundaries, inventory & runbook standardization, RRP acceleration + QC, MMM L2 onboarding, 24x7 staffing/xMatters, Dev/Employee XP, PS Team engagement) all already covered by open tasks; no new T### required.
+  - **Actions extracted → none (recap artifact; all themes mapped to existing tracked work)**
+  - **Actions referenced → T005, T017, T020, T077, T106, T107, T108, T118, T121, T126, T128, T135, T136, T137, T138, T139, T140, T141**
+  - **Decisions referenced → D003, D011, D015, D017, D018**
+
+---
+
 - **2026-06-25 — FW: Action items from the meeting with Japan BU (CAWLA Admin Confirmations: ADX Logging & DR Posture)** #processed
   - **Source:** archive/FW_ Action items from the meeting with Japan BU.eml
   - **From:** Rowena Zulueta (forwarding Godfrey Esguerra's CAWLA admin responses) → David Klan, Balaji Ravi; cc Izza Ilagan, Melanie Lumbao, Eric Vaughan

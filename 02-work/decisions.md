@@ -212,3 +212,17 @@ tags: #project:lapu-lapu #domain:batch #domain:mft #domain:gocc-handover #capabi
 - **Owner:** David Klan
 - **Tags:** #project:lapu-lapu #domain:batch #area:gocc-transition #domain:operating-model #domain:governance
 - **Source:** Inbox — archive/20260624+-+GBO+Batch+Transition.doc
+﻿
+
+---
+
+## D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Target)
+- **Date:** 2026-07-01
+- **Requestor:** David Klan / Debamalya Das / GOCC (aligned with CAP-48585 GRC governance record)
+- **Request:** Confirm the internal Lapu-Lapu delivery model for the CAP-48585 corrective action plan (Issue-4027146 "Lack of regular monitoring to estimate future capacity requirements") ahead of the 2026-09-30 target close date.
+- **Decision:** Agreed
+- **Reason:** CAP-48585 is a formal GRC action plan owned by Rasheersh Jha (CAP Owner), coordinated by Hideo Hasegawa, Eiji Omi, and Naomi Tsuchida, with Sandeep Chakraborty as the Issue Owner under Global Information Risk Management (GIRM) / Technology Stability, Reliability and Scalability. The Confluence delivery plan (exported 2026-07-01) decomposes the CAP into six work packages: WP1 Capacity Baseline (GOCC primary; App Teams / ETS Monitoring support), WP2 Demand Driver Definition (ETS primary; App Owners / Business SMEs support), WP3 Forecasting Model (GOCC primary; ETS / Monitoring / App Teams support), WP4 Thresholds & Trigger Actions with 70/85/95 Watch/Plan/Urgent thresholds (GOCC primary; SRE / Monitoring support), WP5 GOCC Operationalization with monthly review and quarterly forecast refresh cadence (GOCC primary; ETS Program support), and WP6 Reporting & Evidence with Power BI / New Relic dashboard and MetalRating-linked risk output (ETS primary; GOCC / Data / BI support). Phase 1 covers Gold applications with pilot on Ingenium, NDM, and ServerF; Phase 2 expands to the full estate (~65 apps); Phase 3 automates and integrates dashboards. Capacity risk is explicitly integrated into the RRP (T003 / T106) and MMM L2 dashboards (T005 / T121). Success criteria: 100% of Gold apps have a baseline + 6-12 month forecast with defined thresholds and trigger actions; GOCC owns ongoing monitoring and forecast updates. Dependencies acknowledged: GOCC onboarding readiness (D017), NR/log monitoring data availability, CMDB accuracy (T002 / T121), and application team engagement (T121 risk).
+- **Related Objectives:** B-4 (Infrastructure Resilience & Disaster Recovery), H-3 (AI Ops / Incident Troubleshooting), O4 (Robust Technical Core)
+- **Owner:** Debamalya Das (delivery), David Klan (Lapu-Lapu integration)
+- **Tags:** #project:lapu-lapu #area:capacity-management #area:mmm-l2 #area:rapid-recovery #domain:governance #domain:grc
+- **Source:** Inbox — archive/CAP+for+Capacity+Management.doc, archive/Corrective_Action_Plan.pdf
