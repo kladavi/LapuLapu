@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lapu-Lapu — Semi-Annual Status Report (2026 H1)</title>
+<style>
+  body { font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: 11pt; color: #222; max-width: 820px; margin: 24px auto; padding: 0 16px; line-height: 1.45; }
+  h1 { font-size: 20pt; margin: 0 0 4px 0; color: #003366; }
+  h2 { font-size: 14pt; margin: 22px 0 8px 0; color: #003366; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+  h3 { font-size: 12pt; margin: 16px 0 6px 0; color: #003366; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0 8px 24px; padding: 0; }
+  li { margin: 4px 0; }
+  hr { border: 0; border-top: 1px solid #ddd; margin: 20px 0; }
+  code { font-family: Consolas, "Courier New", monospace; background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 10.5pt; }
+  a { color: #0563c1; text-decoration: underline; }
+  .meta { color: #555; font-size: 10.5pt; margin: 0 0 6px 0; }
+  .footer { color: #555; font-size: 10pt; margin-top: 24px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<h1>Lapu-Lapu — Semi-Annual Status Report (2026 H1)</h1>
+<p class="meta"><strong>Project:</strong> Lapu-Lapu<br>
+<strong>Period:</strong> March 9 – July 3, 2026 (W11 – W27)<br>
+<strong>Prepared by:</strong> David Klan · Manulife Enterprise Technology Services</p>
+
+<hr>
+
+<h2>Executive Summary</h2>
+
+<p><strong>Frictionless Customer Experience.</strong> H1 opened with a successful production monitoring go-live — 23 Japan applications (6 Gold and 17 Silver) were actively monitored inside the first week, with Ingenium set as the reference standard. Over the following months the Employee Experience and Developer Experience dashboards moved from draft to shared with the business, Sales and other stakeholders asked for direct access, and Ito-san opened a feedback loop asking for a business-friendly external health-check report. The branch monitoring pattern was extended from Japan to the Philippines. H1 closed with a reminder that the platform is not free of hidden risk: a service account expired on June 27 and broke the ING APIM connection for four Japan applications until it was manually reset, exposing a gap in how "Semi-Managed" service accounts are rotated and owned.</p>
+
+<p><strong>Robust Technical Core.</strong> The half was defined by standing up Rapid Recovery as a real operational capability. The Ingenium plan became the first Gold-application plan built to the mandatory template, covering a full WAS → CICS → DB restart sequence and a batch-slowness workaround, and was published as a KB article. A server-restart authorization matrix was made mandatory in every plan after the June Ingenium freeze. In parallel, CMDB accuracy became the substrate for every downstream workstream (transition, MMM L2, patching, recovery), and by end of H1 was also the foundation for the new capacity management workstream (CAP-48585), which aims to prevent capacity-shortfall incidents and right-size over-provisioned environments.</p>
+
+<p><strong>Technology Transformation through AI &amp; Automation.</strong> Direction shifted from project execution to a BAU service model for batch and file transfer — L0/L1 activities moving to GOCC and GBO, with CAWLA as the standard batch platform. The GBO Japan Batch Transition moved from a directional statement in May to a locked executable plan in June, with a September pilot cutover, mid-July onsite deployment, and 24x7 staffing under the new ETS-GBO-N-Asia support group. Developer Experience alerting was trimmed to actionable signals only, with the dashboard carrying the full data surface and a daily summary email providing a one-page health view. An AI-assisted drafting workflow was built to help produce Rapid Recovery Plans for the remaining Gold applications, and a quality-check step was added so drafts are reviewed before publishing.</p>
+
+<p><strong>Outstanding Colleague Experience.</strong> Non-production monitoring onboarding was initiated in March for roughly 200 Dev and Test environments. Philippines branch laptop monitoring reached operational state and Singapore expressed interest in the same model — an opportunity to reuse the Japan pattern once the Asia GOCC model settles in September.</p>
+
+<hr>
+
+<h2>Key Milestones by Month</h2>
+
+<p><strong>March (W11 – W13).</strong> Production go-live: 23 applications monitored in the first week, Ingenium set as the reference standard, Rapid Recovery workstream initiated with Rohina's team, 16 URLs formally handed over to GOCC. Employee Experience Dashboard registration resumed. Non-production onboarding kicked off for ~200 Dev/Test environments. Epsilon 3-tier HA proof-of-technology proposed.</p>
+
+<p><strong>April (W15 – W17).</strong> Phase-1 PS-to-GOCC transition checklist established as the single source of truth. Employee Experience Dashboard reached 66 of 81 systems; Developer Experience 45 of 60 non-prod environments. Transition progressed to 22 of 65 applications. SRM incident converted into a Rapid Recovery onboarding case rather than a one-off firefight.</p>
+
+<p><strong>May (W19 – W22).</strong> AQA automation locked onto the Asia Jenkins pipeline; Delta test cases confirmed reusable for Epsilon migration testing. INC08574374 — mass mis-send of SMS and LINE messages to ~70,000 customers — surfaced batch observability gaps. Ingenium Rapid Recovery Plan completed as the first Gold-app plan on the mandatory template. Direction set to shift Batch and MFT L0/L1 operations to GOCC and GBO.</p>
+
+<p><strong>June (W23 – W26).</strong> Rapid Recovery hit the June 10 restart-sequence milestone with the Ingenium Gold plan delivered against the standard template; the plan was published as a KB article. INC08624117 (Ingenium server freeze on June 8) drove a new rule: every plan must contain a server-restart authorization matrix. The R2R-driven push to onboard applications to ADX central logging was parked and replaced with an app-owner responsibility model. The September move to a single unified GOCC operations team (no L1/L2 silos) was locked. The GBO Japan Batch Transition moved from directional intent to an executable plan with a September pilot cutover.</p>
+
+<p><strong>July (W27).</strong> CAP-48585 (Capacity Management) formally adopted as a Lapu-Lapu workstream, targeting close by end of September, with Ingenium, NDM, and ServerF as pilot applications. A service account password expiry on June 27 broke ING APIM communication for SCV, MLK, PAW, and SSW; the post-incident review exposed a systemic silent-expiry pattern in Japan's Semi-Managed accounts and opened a follow-on sweep across the rest of the estate.</p>
+
+<hr>
+
+<h2>Decisions Locked in H1</h2>
+
+<ul>
+  <li><strong>Mar 17 — Simplify patching</strong> so GOCC can execute independently; target weekday patching as the norm.</li>
+  <li><strong>Mar 26 — GOCC delivery model for Japan monitoring:</strong> URL availability first, then APM performance, then Rapid Recovery. Application teams own logic and runbooks; GOCC owns standardized monitoring and first response.</li>
+  <li><strong>Mar 30 — Standardize Japan incident documentation</strong> with CI-linked, searchable records.</li>
+  <li><strong>Apr 16 — Phase-1 checklist and impact-based alerting</strong> are the authoritative controls for the PS-to-GOCC transition.</li>
+  <li><strong>Apr 23 — Escalate non-standard monitoring applications</strong> to the owning team rather than building one-off workarounds.</li>
+  <li><strong>Apr 24 — SRM-class incidents</strong> require explicit validation steps and enforceable restart / recovery paths; close the gaps via Rapid Recovery onboarding.</li>
+  <li><strong>May 11 — AQA automation scripts</strong> onboard into the Asia Jenkins pipeline; Delta test cases reused for Epsilon migration testing.</li>
+  <li><strong>May 26 — Rapid Recovery Plans use the mandatory standard template</strong>; no self-publishing — everything routes through Thabani for KB publishing.</li>
+  <li><strong>May 28 — Shift Batch and MFT L0/L1 operations</strong> to GOCC (infrastructure and file transfer) and GBO (batch execution); standardize batch execution on CAWLA; use non-prod as the testbed.</li>
+  <li><strong>Jun 9 — Trim Developer Experience alerting</strong> to actionable signals only; dashboard carries the full data surface; daily summary email is the one-page health view.</li>
+  <li><strong>Jun 9 — Shared-folder ACL compliance monitoring</strong> is in Lapu-Lapu scope; file transfer and batch remain separate.</li>
+  <li><strong>Jun 9 — Every Rapid Recovery Plan</strong> must include a server-restart authorization decision matrix.</li>
+  <li><strong>Jun 16 — Park the R2R-scope ADX onboarding push;</strong> central logging becomes an application-owner responsibility, re-engaged only when a specific incident demands it.</li>
+  <li><strong>Jun 18 — Unified GOCC operations team</strong> in September (no L1/L2 silos). Japan-market runbooks retained until cutover, then updated.</li>
+  <li><strong>Jun 24 — GBO Japan Batch Transition</strong> executable plan, operating principles, and September pilot timeline locked.</li>
+  <li><strong>Jul 1 — Adopt the CAP-48585 capacity-management delivery plan</strong> as the Lapu-Lapu execution vehicle, targeting close by end of September.</li>
+</ul>
+
+<hr>
+
+<h2>Workstream Rundown</h2>
+
+<ul>
+  <li><strong>Production Monitoring (Employee XP / Business Capability).</strong> Live from W11 with 23 applications and Ingenium as the reference standard. Coverage expanded through Q2 and moved to shared use with Sales and business stakeholders. Ito-san's request for a business-friendly external health-check report is the next refinement cycle.</li>
+  <li><strong>Developer Experience Dashboard.</strong> Draft in early Q2, then tightened to route only actionable signals as alerts, with the full data surface staying in the dashboard and a daily summary email providing a one-page view. Active hours set to 9am–9pm JST. Enginium non-prod URL monitoring is still waiting on a firewall approval for the new Azure jump switch.</li>
+  <li><strong>CMDB Mapping.</strong> Continuous cleanup by Yegor across H1. Now the substrate for GOCC Transition, MMM L2, Patching, Rapid Recovery, and — as of end of H1 — the new capacity management workstream.</li>
+  <li><strong>GOCC Transition.</strong> 25 of 65 applications onboarded (6 Gold, 19 Silver), enabling managed L0-L1 triage. Progress stalled at that number for several weeks in Q2, held up by PS Team engagement during their contract transition. The September move to a unified operations team is now locked, with a parallel 24x7 batch ownership track under GBO added on top.</li>
+  <li><strong>MMM L2.</strong> Checklist for Japan's 6 Gold applications progressed through Q2; Ingenium data collected. Remaining Gold-app updates still waiting on PS Team resource assignment. Capacity thresholds from CAP-48585 will now be added into the dashboards.</li>
+  <li><strong>Patching.</strong> Standardization and weekday patch registration meetings running through Q2. Weekday patching for non-Gold, non-batch apps and servers is the target for reducing weekend workload. Ongoing risk: the team lacks the CMDB and ServiceNow query skills to drive standardized patching changes on their own.</li>
+  <li><strong>Rapid Recovery.</strong> Kick-off in March → first delivered Gold-app plan (Ingenium) on June 10 → published KB article → AI-assisted drafting workflow with a quality-check step for the remaining Gold applications. Server-restart authorization matrix now mandatory in every plan. Extension to the remaining Gold applications still requires PS Team coordination.</li>
+  <li><strong>ADX Registration.</strong> Started H1 as an R2R-scope push blocked on the COUE team, then shifted to an app-owner responsibility model. Asia ownership for ADX log monitoring and audit was picked up by GOCC Middleware Operations. The first app-driven re-engagement is Godfrey Esguerra's CAWLA batch tracelog dashboard on the APROD ADX environment.</li>
+  <li><strong>Batch / MFT.</strong> Direction set in May to move L0/L1 operations to GOCC and GBO with CAWLA as the standard batch platform. In June the GBO Japan Batch Transition became an executable plan with a September pilot cutover, a July onsite deployment, and 24x7 staffing under the ETS-GBO-N-Asia support group. Open blockers: inventory of non-CA and manual jobs, PS Team engagement to author batch plans, and pilot application selection.</li>
+  <li><strong>Branch / JPE-JPW.</strong> Non-prod VNet complete with a small post-provisioning fix pending; production VNet still blocked on the subscription-level networking issue; 10 Japan branch laptops in service; Philippines branch laptop monitoring stood up in Q2 with the dashboard build in progress; Singapore has expressed interest in the same pattern.</li>
+  <li><strong>Epsilon (Ingenium 3-Tier HA POT).</strong> Proof-of-technology proposed in W13; AQA onboarding into Jenkins and Delta test-case reuse for Epsilon migration testing locked in W20.</li>
+  <li><strong>Capacity Management (CAP-48585).</strong> New workstream adopted at the end of H1 to establish a repeatable process to estimate future capacity, prevent capacity-shortfall incidents, and right-size over-provisioned environments. Six work packages split between GOCC (baseline, forecast, thresholds, ongoing ops) and ETS (demand drivers, reporting). Pilot on Ingenium, NDM, and ServerF; target close end of September.</li>
+  <li><strong>Credential Lifecycle Governance.</strong> New workstream opened at the end of H1 in response to the June 27 service account expiry. Formalize the rotation cadence for Semi-Managed accounts with CyberArk operations, fix the pre-expiry notification gap, register the failure mode in the affected Rapid Recovery Plans, and sweep the rest of the Japan Semi-Managed estate for silent-expiry and stale-owner exposure.</li>
+</ul>
+
+<hr>
+
+<h2>Notable Incidents</h2>
+
+<ul>
+  <li><strong>INC08574374 (May).</strong> Mass mis-send of SMS and LINE messages to about 70,000 customers. Surfaced batch observability gaps; drove work on volume-anomaly detection, circuit breakers, and a mis-send runbook.</li>
+  <li><strong>INC08624117 (Jun 8).</strong> Ingenium server freeze; resolved by restart. Red Hat root-cause investigation still open at end of H1. Drove the mandatory server-restart authorization decision matrix in every Rapid Recovery Plan.</li>
+  <li><strong>INC08672078 / PRB00024864 (Jun 27).</strong> <code>mfcgd\wasAPIMprod</code> service account password expired and broke ING APIM communication for SCV, MLK, PAW, and SSW; GAM reset restored service the same morning. Post-incident review found no rotation since May 2024, no accountable owner on record, and no pre-expiry notification configured — a silent-expiry pattern likely present in other Japan Semi-Managed accounts.</li>
+</ul>
+
+<hr>
+
+<h2>Standing Risks at End of H1</h2>
+
+<ul>
+  <li><strong>PS Team contract transition</strong> is the single biggest constraint on throughput — holding up MMM L2 Gold-app updates, Rapid Recovery author assignment, and per-application onboarding to GOCC. Mitigation: Harish-to-Hirooka-san escalation, weekly per-app blocker tracking.</li>
+  <li><strong>GOCC onboarding velocity</strong> stalled at 25 of 65 applications for several weeks in Q2. Unblocking depends on PS Team engagement and the September unified-operating-model cutover.</li>
+  <li><strong>CMDB data quality</strong> remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management.</li>
+  <li><strong>Patching team skills gap</strong> — the team is not yet self-sufficient in querying CMDB / ServiceNow to drive standardized patching changes.</li>
+  <li><strong>Silent-expiry exposure on Semi-Managed service accounts</strong> — the June 27 incident is very likely not isolated; the follow-on sweep will confirm the size of the exposure.</li>
+  <li><strong>INC08624117 root cause</strong> still with Red Hat.</li>
+</ul>
+
+<hr>
+
+<h2>H2 Priorities</h2>
+
+<ol>
+  <li>Land the September GOCC unified-operating-model cutover and use it to unblock the transition velocity from 25 of 65.</li>
+  <li>Deliver the GBO Japan Batch Transition September pilot — onsite deployment in July, runbooks and dry runs in August.</li>
+  <li>Close CAP-48585 by end of September with the Ingenium / NDM / ServerF pilot delivering a repeatable baseline-and-forecast pattern.</li>
+  <li>Extend Rapid Recovery from the Ingenium reference plan to the remaining Gold applications using the AI-assisted drafting workflow with the quality-check step.</li>
+  <li>Close out the credential lifecycle gap — formalize the Semi-Managed rotation cadence with CyberArk operations, fix the notification path, and complete the estate-wide sweep.</li>
+  <li>Convert the dashboard feedback loop with Sales and Ito-san into the next refinement cycle for the Employee Experience and Business Capability dashboards.</li>
+</ol>
+
+<hr>
+
+<h2>Project Resources</h2>
+
+<ul>
+  <li><a href="https://manulife-ets.atlassian.net/wiki/x/XoCRtgM">Confluence — GOCC Japan (Lapu-Lapu)</a></li>
+  <li><a href="https://manulife-ets.atlassian.net/jira/software/c/projects/LPLP/issues?jql=project+%3D+LPLP+ORDER+BY+created+DESC&amp;atlOrigin=eyJpIjoiNDhjNjBhOTliY2NmNDY1YzljNDlmMThlMmZkYzUzYTMiLCJwIjoiaiJ9">Jira — LPLP Project Board</a></li>
+  <li><a href="https://app.powerbi.com/links/-UO6N0K4_L?ctid=5d3e2773-e07f-4432-a630-1a0f68a28a05&amp;pbi_source=linkShare">Ops Dashboard — Power BI</a></li>
+  <li><a href="https://mfc.sharepoint.com/:f:/r/sites/ets-japan/Program%20Delivery/Lapu-Lapu?csf=1&amp;web=1&amp;e=OldAiG">SharePoint — ETS Japan Program Delivery</a></li>
+  <li><a href="https://one.newrelic.com/dashboards/detail/MTczNzcwNXxWSVp8REFTSEJPQVJEfGRhOjEyMDUxOTgy?account=1737705&amp;state=95432be6-14bc-fb31-5335-6225a8c7d447">New Relic — GOCC Dashboard</a></li>
+  <li><a href="https://one.newrelic.com/dashboards/detail/MTczNzcwNXxWSVp8REFTSEJPQVJEfGRhOjUzNjY4MjQ?account=1737705&amp;state=aa5295fd-dc42-9ea8-0f4b-3150726ad380">New Relic — Observability Dashboard</a></li>
+</ul>
+
+<p class="footer">Prepared by David Klan · Manulife Enterprise Technology Services · 2026-07-06</p>
+
+</body>
+</html>
