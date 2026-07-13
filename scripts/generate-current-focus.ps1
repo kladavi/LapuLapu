@@ -32,6 +32,14 @@ $SCAN_FOLDERS = @(
 $BINARY_EXTS = @('.png','.jpg','.jpeg','.gif','.bmp','.pdf',
                  '.docx','.xlsx','.pptx','.zip','.exe','.dll')
 
+# Control files are inputs to the generator, not evidence — exclude to prevent
+# workstream self-amplification via aliases in workstreams.yaml.
+$EXCLUDED_FILES = @(
+    'workstreams.yaml',
+    'priority-overrides.yaml',
+    'scoring-model.yaml'
+)
+
 $script:SIGNAL_PATTERNS = @{
     meeting_mention  = '\b(meeting|call|sync|agenda|transcript|standup|stand-up|catchup)\b'
     email_mention    = '\b(email|mail|inbox|replied)\b'
@@ -202,6 +210,7 @@ function Get-SourceFiles($root, $folders) {
             $fp = $_.FullName
             if (($fp -replace '\\','/') -like "*$genPath*") { return }
             if ($BINARY_EXTS -contains $_.Extension.ToLower()) { return }
+            if ($EXCLUDED_FILES -contains $_.Name) { return }
             $files.Add($fp)
         }
     }
@@ -301,6 +310,21 @@ function Measure-WorkstreamSignals($files, $workstreams, $model) {
 
 # --- Categorisation ---------------------------------------------------------
 
+function Get-NormalizedScores($signals) {
+    # Normalize raw_score to 0-100 based on the max across all workstreams.
+    # Preserves raw_score; adds `score` (normalized) to each entry.
+    $max = 0.0
+    foreach ($v in $signals.Values) {
+        if ($v.raw_score -gt $max) { $max = $v.raw_score }
+    }
+    foreach ($k in @($signals.Keys)) {
+        $raw = $signals[$k].raw_score
+        $norm = if ($max -gt 0) { [Math]::Round(($raw / $max) * 100, 1) } else { 0 }
+        $signals[$k].score = $norm
+    }
+    return $signals
+}
+
 function Get-Category($score, $categories) {
     # Sort categories by minimum_score descending, return first that score meets
     $sorted = $categories.GetEnumerator() | Sort-Object { $_.Value.minimum_score } -Descending
@@ -315,8 +339,9 @@ function Invoke-Overrides($workstreams, $signals, $overrides, $categories) {
     $final = @{}
 
     foreach ($ws in $workstreams) {
-        $wsId    = $ws.id
-        $score   = $signals[$wsId].raw_score
+        $wsId     = $ws.id
+        $score    = $signals[$wsId].score        # normalized 0-100
+        $rawScore = $signals[$wsId].raw_score
         $category = Get-Category $score $categories
         $overrideApplied = $false
         $overrideReason  = ''
@@ -339,6 +364,7 @@ function Invoke-Overrides($workstreams, $signals, $overrides, $categories) {
         $final[$wsId] = @{
             workstream       = $ws
             score            = $score
+            raw_score        = $rawScore
             category         = $category
             override_applied = $overrideApplied
             override_reason  = $overrideReason
@@ -523,6 +549,7 @@ function Build-Json($finalResults, $meta) {
             name             = $_.workstream.name
             category         = $_.category
             score            = $_.score
+            raw_score        = $_.raw_score
             strategic_weight = $_.workstream.strategic_weight
             override_applied = $_.override_applied
             override_reason  = $_.override_reason
@@ -569,6 +596,7 @@ if (Test-Path $recapDir) {
 
 # Score
 $signals      = Measure-WorkstreamSignals $allFiles $workstreams $model
+$signals      = Get-NormalizedScores $signals
 $finalResults = Invoke-Overrides $workstreams $signals $overrides $model.categories
 
 # Ensure output directory exists
