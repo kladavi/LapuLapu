@@ -1,23 +1,14 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Project Matryoshka V1.1 — Current Focus Dashboard generator.
+    Project Matryoshka V1.1 - Current Focus Dashboard generator.
 .DESCRIPTION
     Reads workstreams, overrides, and scoring model from 00-context/.
     Scans corpus text files for workstream activity signals.
     Writes 00-context/generated/current-focus.md and current-focus.json.
     Safe to run repeatedly. No external dependencies required.
-.INPUTS
-    00-context/workstreams.yaml
-    00-context/priority-overrides.yaml
-    00-context/scoring-model.yaml
-    01-inbox/, 01-inbox/copilot-activity/, 02-work/, 03-reporting/weekly/, docs/
-.OUTPUTS
-    00-context/generated/current-focus.md
-    00-context/generated/current-focus.json
 .NOTES
-    Pure PowerShell — no external modules required.
-    YAML parsing is targeted to the known structure of these control files.
+    Pure PowerShell. ASCII-only source to avoid encoding issues.
 #>
 
 Set-StrictMode -Version Latest
@@ -41,7 +32,17 @@ $SCAN_FOLDERS = @(
 $BINARY_EXTS = @('.png','.jpg','.jpeg','.gif','.bmp','.pdf',
                  '.docx','.xlsx','.pptx','.zip','.exe','.dll')
 
-# ─── YAML Parsers ─────────────────────────────────────────────────────────────
+$script:SIGNAL_PATTERNS = @{
+    meeting_mention  = '\b(meeting|call|sync|agenda|transcript|standup|stand-up|catchup)\b'
+    email_mention    = '\b(email|mail|inbox|replied)\b'
+    chat_mention     = '\b(chat|teams|message|thread|channel)\b'
+    task_created     = '\b(action|task|T\d{3,}|todo|to-do|assigned)\b'
+    decision_logged  = '\b(decision|decided|D\d{3,}|agreed|approved)\b'
+    risk_logged      = '\b(risk|issue|blocker|blocked|concern|impediment)\b'
+    escalation       = '\b(escalat|leadership|exec|urgent|critical)\b'
+}
+
+# --- YAML Parsers -----------------------------------------------------------
 
 function Read-FileLines($path) {
     if (-not (Test-Path $path)) { return @() }
@@ -52,13 +53,12 @@ function Read-Workstreams($path) {
     $lines   = Read-FileLines $path
     $result  = [System.Collections.Generic.List[hashtable]]::new()
     $cur     = $null
-    $context = ''   # aliases | objectives | upstream | downstream | ''
+    $context = ''
 
     foreach ($raw in $lines) {
         $line = $raw
         if ($line -match '^\s*#' -or [string]::IsNullOrWhiteSpace($line)) { continue }
 
-        # New workstream block
         if ($line -match '^  - id:\s*(.+)$') {
             if ($cur) { $result.Add($cur) }
             $cur = @{
@@ -88,12 +88,11 @@ function Read-Workstreams($path) {
             '^      - (.+)$' {
                 $val = $Matches[1].Trim()
                 switch ($context) {
-                    'aliases'     { $cur.aliases.Add($val) }
-                    'objectives'  { $cur.primary_objectives.Add($val) }
+                    'aliases'    { $cur.aliases.Add($val) }
+                    'objectives' { $cur.primary_objectives.Add($val) }
                 }
                 break
             }
-            # Any new 4-space field resets sub-context
             '^    [a-z]' { if ($context -notin @('aliases','objectives')) { $context = '' } }
         }
     }
@@ -129,24 +128,39 @@ function Read-Overrides($path) {
 }
 
 function Read-ScoringModel($path) {
-    $lines   = Read-FileLines $path
-    $model   = @{
-        windows            = @{ primary_days=14; secondary_days=60 }
-        signals            = @{}
-        stakeholder_weights= @{}
-        categories         = @{}
-        rules              = @{}
+    $lines = Read-FileLines $path
+    $model = @{
+        windows             = @{ primary_days=14; secondary_days=60 }
+        signals             = @{
+            meeting_mention  = '\b(meeting|call|sync|agenda|transcript|standup|stand-up|catchup)\b'
+            email_mention    = '\b(email|mail|inbox|replied)\b'
+            chat_mention     = '\b(chat|teams|message|thread|channel)\b'
+            task_created     = '\b(action|task|T\d{3,}|todo|to-do|assigned)\b'
+            decision_logged  = '\b(decision|decided|D\d{3,}|agreed|approved)\b'
+            risk_logged      = '\b(risk|issue|blocker|blocked|concern|impediment)\b'
+            escalation       = '\b(escalat|leadership|exec|urgent|critical)\b'
+        }
+        stakeholder_weights = @{}
+        categories          = @{
+            ParkingLot = @{ minimum_score=0; description='No immediate action' }
+            P1        = @{ minimum_score=8; description='High priority' }
+            P2        = @{ minimum_score=5; description='Medium priority' }
+            Watch     = @{ minimum_score=3; description='Monitor for changes' }
+        }
+        rules               = @{
+            'default' = 'P2'
+        }
     }
     $section = ''; $catName = ''
 
     foreach ($raw in $lines) {
         if ($raw -match '^\s*#' -or [string]::IsNullOrWhiteSpace($raw)) { continue }
         switch -Regex ($raw) {
-            '^windows:'            { $section='windows';   $catName=''; break }
-            '^signals:'            { $section='signals';   $catName=''; break }
-            '^stakeholder_weights:'{ $section='stake';     $catName=''; break }
-            '^categories:'         { $section='cats';      $catName=''; break }
-            '^rules:'              { $section='rules';     $catName=''; break }
+            '^windows:'             { $section='windows'; $catName=''; break }
+            '^signals:'             { $section='signals'; $catName=''; break }
+            '^stakeholder_weights:' { $section='stake';   $catName=''; break }
+            '^categories:'          { $section='cats';    $catName=''; break }
+            '^rules:'               { $section='rules';   $catName=''; break }
             '^  (\w+):\s*$' {
                 if ($section -eq 'cats') {
                     $catName = $Matches[1]
@@ -175,20 +189,18 @@ function Read-ScoringModel($path) {
     return $model
 }
 
-# ─── File Collection ──────────────────────────────────────────────────────────
+# --- File Collection --------------------------------------------------------
 
 function Get-SourceFiles($root, $folders) {
     $files = [System.Collections.Generic.List[string]]::new()
-    $genPath = (Join-Path $root '00-context' 'generated') -replace '\\','/'
+    $genPath = (Join-Path (Join-Path $root '00-context') 'generated') -replace '\\','/'
 
     foreach ($folder in $folders) {
         $full = Join-Path $root $folder
         if (-not (Test-Path $full)) { continue }
         Get-ChildItem -Path $full -Recurse -File -ErrorAction SilentlyContinue | ForEach-Object {
             $fp = $_.FullName
-            # Skip generated folder (avoid self-reinforcement)
-            if ($fp -replace '\\','/' -like "*$($genPath)*") { return }
-            # Skip binary extensions
+            if (($fp -replace '\\','/') -like "*$genPath*") { return }
             if ($BINARY_EXTS -contains $_.Extension.ToLower()) { return }
             $files.Add($fp)
         }
@@ -196,29 +208,20 @@ function Get-SourceFiles($root, $folders) {
     return $files
 }
 
-# ─── Signal Detection ─────────────────────────────────────────────────────────
-
-$SIGNAL_PATTERNS = @{
-    meeting_mention  = '\b(meeting|call|sync|agenda|transcript|standup|stand-up|catchup|catch.up)\b'
-    email_mention    = '\b(email|mail|inbox|message sent|replied)\b'
-    chat_mention     = '\b(chat|teams|message|thread|channel)\b'
-    task_created     = '\b(action|task|T\d{3,}|todo|to.do|assigned)\b'
-    decision_logged  = '\b(decision|decided|D\d{3,}|agreed|approved)\b'
-    risk_logged      = '\b(risk|issue|blocker|blocked|concern|impediment)\b'
-    escalation       = '\b(escalat|leadership|exec|urgent|critical|P0|P1 issue)\b'
-}
+# --- Signal Detection -------------------------------------------------------
 
 function Measure-WorkstreamSignals($files, $workstreams, $model) {
     # Returns hashtable: wsId -> @{ score=n; files=@[]; signal_counts=@{} }
     $results = @{}
     foreach ($ws in $workstreams) {
         $results[$ws.id] = @{
-            raw_score     = 0.0
-            mention_count = 0
-            signal_counts = @{}
-            evidence_files= [System.Collections.Generic.List[string]]::new()
+            raw_score      = 0.0
+            mention_count  = 0
+            signal_counts  = @{
+            }
+            evidence_files = [System.Collections.Generic.List[string]]::new()
         }
-        foreach ($sig in $model.signals.Keys) { $results[$ws.id].signal_counts[$sig] = 0 }
+        foreach ($sig in $script:SIGNAL_PATTERNS.Keys) { $results[$ws.id].signal_counts[$sig] = 0 }
     }
 
     # Build alias lookup: wsId -> regex pattern
@@ -232,8 +235,12 @@ function Measure-WorkstreamSignals($files, $workstreams, $model) {
     }
 
     # Stakeholder pattern
-    $stakeTerms = $model.stakeholder_weights.Keys | ForEach-Object { [regex]::Escape($_) }
-    $stakePattern = if ($stakeTerms) { '(?i)(' + ($stakeTerms -join '|') + ')' } else { $null }
+    $stakeKeys = @($model.stakeholder_weights.Keys)
+    $stakePattern = $null
+    if ($stakeKeys.Count -gt 0) {
+        $escaped = $stakeKeys | ForEach-Object { [regex]::Escape($_) }
+        $stakePattern = '(?i)(' + ($escaped -join '|') + ')'
+    }
 
     foreach ($file in $files) {
         try { $content = Get-Content $file -Raw -Encoding UTF8 -ErrorAction Stop }
@@ -256,8 +263,8 @@ function Measure-WorkstreamSignals($files, $workstreams, $model) {
 
             # Detect signal keywords in this file
             $sigPoints = 0.0
-            foreach ($sig in $SIGNAL_PATTERNS.Keys) {
-                if ($content -imatch $SIGNAL_PATTERNS[$sig]) {
+            foreach ($sig in $script:SIGNAL_PATTERNS.Keys) {
+                if ($content -imatch $script:SIGNAL_PATTERNS[$sig]) {
                     $sigWeight = if ($model.signals.ContainsKey($sig)) { $model.signals[$sig] } else { 1 }
                     $results[$wsId].signal_counts[$sig] += 1
                     $sigPoints += $sigWeight
@@ -269,8 +276,11 @@ function Measure-WorkstreamSignals($files, $workstreams, $model) {
                 $stakeMatches = [regex]::Matches($content, $stakePattern)
                 foreach ($m in $stakeMatches) {
                     $name = $m.Value
-                    $weight = $model.stakeholder_weights[$model.stakeholder_weights.Keys | Where-Object { $_ -ieq $name } | Select-Object -First 1]
-                    if ($weight) { $sigPoints += $weight }
+                    # Find canonical key (case-insensitive)
+                    $canonKey = $stakeKeys | Where-Object { $_ -ieq $name } | Select-Object -First 1
+                    if ($canonKey) {
+                        $sigPoints += $model.stakeholder_weights[$canonKey]
+                    }
                 }
             }
 
@@ -289,21 +299,20 @@ function Measure-WorkstreamSignals($files, $workstreams, $model) {
     return $results
 }
 
-# ─── Categorisation ───────────────────────────────────────────────────────────
+# --- Categorisation ---------------------------------------------------------
 
 function Get-Category($score, $categories) {
     # Sort categories by minimum_score descending, return first that score meets
-    $sorted = $categories.GetEnumerator() |
-              Sort-Object { $_.Value.minimum_score } -Descending
+    $sorted = $categories.GetEnumerator() | Sort-Object { $_.Value.minimum_score } -Descending
     foreach ($cat in $sorted) {
         if ($score -ge $cat.Value.minimum_score) { return $cat.Key }
     }
     return 'ParkingLot'
 }
 
-function Apply-Overrides($workstreams, $signals, $overrides, $categories) {
+function Invoke-Overrides($workstreams, $signals, $overrides, $categories) {
     $today = Get-Date
-    $finalResults = @{}
+    $final = @{}
 
     foreach ($ws in $workstreams) {
         $wsId    = $ws.id
@@ -327,7 +336,7 @@ function Apply-Overrides($workstreams, $signals, $overrides, $categories) {
             }
         }
 
-        $finalResults[$wsId] = @{
+        $final[$wsId] = @{
             workstream       = $ws
             score            = $score
             category         = $category
@@ -338,14 +347,14 @@ function Apply-Overrides($workstreams, $signals, $overrides, $categories) {
             evidence_files   = $signals[$wsId].evidence_files
         }
     }
-    return $finalResults
+    return $final
 }
 
-# ─── Markdown Generation ──────────────────────────────────────────────────────
+# --- Markdown Generation ----------------------------------------------------
 
 function Format-WorkstreamSection($r) {
     $ws  = $r.workstream
-    $ovr = if ($r.override_applied) { "Yes — $($r.override_reason)" } else { 'No' }
+    $ovr = if ($r.override_applied) { "Yes - $($r.override_reason)" } else { 'No' }
     $ev  = if ($r.evidence_files.Count -gt 0) {
         ($r.evidence_files | Select-Object -First 5 | ForEach-Object { "- ``$_``" }) -join "`n"
     } else { '- No mentions detected in scanned files.' }
@@ -356,11 +365,11 @@ function Format-WorkstreamSection($r) {
     $sigLine = if ($sigs) { $sigs } else { 'none detected' }
 
     $action = switch ($r.category) {
-        'P1'         { "Review progress this week. Ensure blockers are visible to stakeholders." }
-        'P2'         { "Keep moving. Unblock dependencies where possible." }
-        'Watch'      { "Monitor. Escalate to P1 if a blocker or deadline appears." }
-        'ParkingLot' { "Parked. Revisit when capacity allows." }
-        default      { "Review." }
+        'P1'         { 'Review progress this week. Ensure blockers are visible to stakeholders.' }
+        'P2'         { 'Keep moving. Unblock dependencies where possible.' }
+        'Watch'      { 'Monitor. Escalate to P1 if a blocker or deadline appears.' }
+        'ParkingLot' { 'Parked. Revisit when capacity allows.' }
+        default      { 'Review.' }
     }
 
     return @"
@@ -380,6 +389,12 @@ $ev
 "@
 }
 
+function Build-CategorySection($label, $items) {
+    if (-not $items -or $items.Count -eq 0) { return "## $label`n`n_None._`n" }
+    $body = ($items | ForEach-Object { Format-WorkstreamSection $_ }) -join ''
+    return "## $label`n`n$body"
+}
+
 function Build-Dashboard($workstreams, $finalResults, $model, $scannedFiles, $latestRecap) {
     $now = Get-Date -Format 'yyyy-MM-dd HH:mm'
 
@@ -390,7 +405,7 @@ function Build-Dashboard($workstreams, $finalResults, $model, $scannedFiles, $la
         if (-not $groups.ContainsKey($cat)) { $groups[$cat] = @() }
         $groups[$cat] += $r
     }
-    foreach ($cat in $groups.Keys) {
+    foreach ($cat in @($groups.Keys)) {
         $groups[$cat] = @($groups[$cat] | Sort-Object { $_.score } -Descending)
     }
 
@@ -398,8 +413,8 @@ function Build-Dashboard($workstreams, $finalResults, $model, $scannedFiles, $la
     $tableRows = ($finalResults.Values |
         Sort-Object { $_.score } -Descending |
         ForEach-Object {
-            $ovr  = if ($_.override_applied) { '✓' } else { '' }
-            $top  = if ($_.evidence_files.Count -gt 0) { $_.evidence_files[0] } else { '—' }
+            $ovr  = if ($_.override_applied) { 'yes' } else { '' }
+            $top  = if ($_.evidence_files.Count -gt 0) { $_.evidence_files[0] } else { '-' }
             $act  = switch ($_.category) {
                 'P1' { 'Review & report' }; 'P2' { 'Progress' }
                 'Watch' { 'Monitor' }; default { 'Park' }
@@ -410,7 +425,7 @@ function Build-Dashboard($workstreams, $finalResults, $model, $scannedFiles, $la
     # Overrides applied section
     $overrideLines = ($finalResults.Values |
         Where-Object { $_.override_applied } |
-        ForEach-Object { "- **$($_.workstream.name)** → $($_.category): $($_.override_reason)" }) -join "`n"
+        ForEach-Object { "- **$($_.workstream.name)** -> $($_.category): $($_.override_reason)" }) -join "`n"
     if (-not $overrideLines) { $overrideLines = '_None active._' }
 
     # Source coverage
@@ -419,32 +434,31 @@ function Build-Dashboard($workstreams, $finalResults, $model, $scannedFiles, $la
 
     # Build blocked/escalation candidates
     $escalated = @($finalResults.Values |
-        Where-Object { $_.signal_counts.ContainsKey('escalation') -and $_.signal_counts['escalation'] -gt 0 } |
-        ForEach-Object { "- **$($_.workstream.name)** — escalation signal detected." })
+        Where-Object { $_.signal_counts['escalation'] -gt 0 } |
+        ForEach-Object { "- **$($_.workstream.name)** - escalation signal detected." })
     $escalatedSection = if ($escalated) { $escalated -join "`n" } else { '_None detected._' }
 
-    # Section builder
-    function Build-CategorySection($label, $items) {
-        if (-not $items -or $items.Count -eq 0) { return "## $label`n`n_None._`n" }
-        $body = ($items | ForEach-Object { Format-WorkstreamSection $_ }) -join ''
-        return "## $label`n`n$body"
-    }
-
-    # Executive summary
-    $p1Names  = ($groups['P1']  | ForEach-Object { $_.workstream.name }) -join ', '
+    $p1Names    = ($groups['P1']    | ForEach-Object { $_.workstream.name }) -join ', '
     $watchNames = ($groups['Watch'] | ForEach-Object { $_.workstream.name }) -join ', '
+    if (-not $p1Names)    { $p1Names    = 'none' }
+    if (-not $watchNames) { $watchNames = 'none' }
     $execSummary = "Primary focus: **$p1Names**. Watch items: **$watchNames**. " +
-                   "Human overrides are active — see Human Overrides section for details."
+                   "Human overrides are active - see Human Overrides section for details."
+
+    $p1Section  = Build-CategorySection 'P1 Focus'      $groups['P1']
+    $p2Section  = Build-CategorySection 'P2 Focus'      $groups['P2']
+    $wSection   = Build-CategorySection 'Watch List'    $groups['Watch']
+    $plSection  = Build-CategorySection 'Parking Lot'   $groups['ParkingLot']
 
     return @"
 <!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
 # Current Focus Dashboard
 
-Project: **Project Matryoshka V1.1 — David Brain**  
-Scope: **Lapu-Lapu**  
-Generated: **$now**  
-Primary activity window: **$($model.windows.primary_days) days**  
-Secondary reference window: **$($model.windows.secondary_days) days**  
+Project: **Project Matryoshka V1.1 - David Brain**
+Scope: **Lapu-Lapu**
+Generated: **$now**
+Primary activity window: **$($model.windows.primary_days) days**
+Secondary reference window: **$($model.windows.secondary_days) days**
 
 ---
 
@@ -454,10 +468,10 @@ $execSummary
 
 ---
 
-$(Build-CategorySection 'P1 Focus' $groups['P1'])
-$(Build-CategorySection 'P2 Focus' $groups['P2'])
-$(Build-CategorySection 'Watch List' $groups['Watch'])
-$(Build-CategorySection 'Parking Lot' $groups['ParkingLot'])
+$p1Section
+$p2Section
+$wSection
+$plSection
 
 ## Blocked / Escalation Candidates
 
@@ -493,12 +507,12 @@ Total files scanned: **$($scannedFiles.Count)**
 
 ## Agent Notes
 
-- This file is generated by `scripts/generate-current-focus.ps1`.
+- This file is generated by ``scripts/generate-current-focus.ps1``.
 - Do not edit this file directly.
-- To change workstream priorities: edit `00-context/priority-overrides.yaml`.
-- To change scoring behaviour: edit `00-context/scoring-model.yaml`.
-- To add workstreams: edit `00-context/workstreams.yaml`.
-- To provide new activity evidence: drop a recap into `01-inbox/copilot-activity/` and regenerate.
+- To change workstream priorities: edit ``00-context/priority-overrides.yaml``.
+- To change scoring behaviour: edit ``00-context/scoring-model.yaml``.
+- To add workstreams: edit ``00-context/workstreams.yaml``.
+- To provide new activity evidence: drop a recap into ``01-inbox/copilot-activity/`` and regenerate.
 "@
 }
 
@@ -517,22 +531,24 @@ function Build-Json($finalResults, $meta) {
         }
     }
     $output = [ordered]@{
-        generated    = $meta.generated
-        generator    = 'scripts/generate-current-focus.ps1'
-        version      = 'V1.1'
-        workstreams  = @($items)
+        generated   = $meta.generated
+        generator   = 'scripts/generate-current-focus.ps1'
+        version     = 'V1.1'
+        workstreams = @($items)
     }
     return $output | ConvertTo-Json -Depth 6
 }
 
-# ─── Main ─────────────────────────────────────────────────────────────────────
+# --- Main -------------------------------------------------------------------
 
-Write-Host "`nProject Matryoshka V1.1 — Current Focus Generator" -ForegroundColor Cyan
-Write-Host "Root: $ROOT`n"
+Write-Host ""
+Write-Host "Project Matryoshka V1.1 - Current Focus Generator" -ForegroundColor Cyan
+Write-Host "Root: $ROOT"
+Write-Host ""
 
 # Load control files
-$workstreams = Read-Workstreams (Join-Path $CTX 'workstreams.yaml')
-$overrides   = Read-Overrides  (Join-Path $CTX 'priority-overrides.yaml')
+$workstreams = Read-Workstreams  (Join-Path $CTX 'workstreams.yaml')
+$overrides   = Read-Overrides    (Join-Path $CTX 'priority-overrides.yaml')
 $model       = Read-ScoringModel (Join-Path $CTX 'scoring-model.yaml')
 
 Write-Host "Loaded $($workstreams.Count) workstreams, $($overrides.Count) overrides."
@@ -542,7 +558,7 @@ $allFiles = Get-SourceFiles $ROOT $SCAN_FOLDERS
 Write-Host "Scanning $($allFiles.Count) files..."
 
 # Detect latest recap
-$recapDir    = Join-Path $ROOT '01-inbox' 'copilot-activity'
+$recapDir    = Join-Path (Join-Path $ROOT '01-inbox') 'copilot-activity'
 $latestRecap = $null
 if (Test-Path $recapDir) {
     $latest = Get-ChildItem $recapDir -Filter '*.md' -ErrorAction SilentlyContinue |
@@ -553,7 +569,7 @@ if (Test-Path $recapDir) {
 
 # Score
 $signals      = Measure-WorkstreamSignals $allFiles $workstreams $model
-$finalResults = Apply-Overrides $workstreams $signals $overrides $model.categories
+$finalResults = Invoke-Overrides $workstreams $signals $overrides $model.categories
 
 # Ensure output directory exists
 if (-not (Test-Path $GEN)) { New-Item -ItemType Directory -Path $GEN -Force | Out-Null }
@@ -562,18 +578,21 @@ $meta = @{ generated = (Get-Date -Format 'yyyy-MM-dd HH:mm') }
 
 # Write markdown
 $md = Build-Dashboard $workstreams $finalResults $model $allFiles $latestRecap
-[System.IO.File]::WriteAllText($OUT_MD, $md, [System.Text.Encoding]::UTF8)
+[System.IO.File]::WriteAllText($OUT_MD, $md, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_MD.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
 # Write JSON
 $json = Build-Json $finalResults $meta
-[System.IO.File]::WriteAllText($OUT_JSON, $json, [System.Text.Encoding]::UTF8)
+[System.IO.File]::WriteAllText($OUT_JSON, $json, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
 # Summary to console
-Write-Host "`nCategory summary:" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Category summary:" -ForegroundColor Yellow
 $finalResults.Values | Sort-Object { $_.score } -Descending | ForEach-Object {
     $flag = if ($_.override_applied) { ' [override]' } else { '' }
-    Write-Host "  [$($_.category.PadRight(10))] $($_.workstream.name)$flag  (score: $($_.score))"
+    Write-Host ("  [{0}] {1}{2}  (score: {3})" -f $_.category.PadRight(10), $_.workstream.name, $flag, $_.score)
 }
-Write-Host "`nDone.`n" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "Done." -ForegroundColor Cyan
+Write-Host ""
