@@ -1,0 +1,52 @@
+# <!-- HUMAN --> Manual overrides applied last in scoring.
+#
+# Fields:
+#   workstream_id  must exist in workstreams.yaml
+#   boost          float; >0 raises rank, <0 suppresses
+#   reason         short human explanation
+#   expires        ISO date (YYYY-MM-DD); ignored once past
+overrides:
+  - workstream_id: matryoshka
+    boost: 2.0
+    reason: "Bootstrapping V1.1 dashboard."
+    expires: 2025-12-31
+
+  # - workstream_id: some-id
+  #   boost: -5.0
+  #   reason: "Parked until Q2."
+  #   expires: 2026-03-31
+
+# Human-maintained
+# Purpose: David's steering input for Project Matryoshka V1.1 Current Focus
+# Use this when strategic priority should override recent activity signals.
+
+effective_start: 2026-07-13
+effective_end: null
+
+overrides:
+  - workstream_id: mmm-l2
+    force_category: P1
+    reason: Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
+    expires: null
+
+  - workstream_id: rapid-recovery
+    force_category: P1
+    reason: Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
+    expires: null
+
+  - workstream_id: gbo-batch-transition
+    force_category: P1
+    reason: Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
+    expires: null
+
+  - workstream_id: cyberark-governance
+    force_category: Watch
+    reason: Governance risk is material but should not displace core delivery work unless escalated.
+    expires: null
+
+  - workstream_id: capacity-management
+    force_category: Watch
+    reason: CAP-48585 is strategically important but should be tracked as a watch item unless delivery risk increases.
+    expires: null
+
+deprioritized: []

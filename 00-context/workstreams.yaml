@@ -1,0 +1,286 @@
+# <!-- HUMAN --> Maintained by David. Registry of active workstreams.
+# `id` must be stable — referenced by priority-overrides.yaml, recap
+# front-matter, and inline `#id` tags across the corpus.
+#
+# Fields:
+#   id          stable slug (kebab-case)
+#   name        human-readable name
+#   owner       primary owner
+#   status      active | paused | archived
+#   priority    1 (low) .. 5 (high)
+#   tags        free-form tags
+#   description one-line purpose
+workstreams:
+  - id: matryoshka
+    name: Project Matryoshka
+    owner: David
+    status: active
+    priority: 5
+    tags: [ai, tooling, personal-ops]
+    description: Self-referential context + focus system for Lapu-Lapu.
+
+  - id: lapulapu-corpus
+    name: Lapu-Lapu Corpus Care
+    owner: David
+    status: active
+    priority: 3
+    tags: [knowledge, hygiene]
+    description: Keep the corpus clean, tagged, and current.
+
+  # Human-maintained
+  # Purpose: canonical registry of Lapu-Lapu workstreams for Project Matryoshka V1.1
+
+  - id: adx-registration
+    name: ADX Registration
+    status: active
+    strategic_weight: 5
+    primary_objectives:
+      - O1
+      - O4
+    aliases:
+      - ADX
+      - ADX Registration
+      - SIEM
+      - Sentinel
+      - application logging
+      - application registration
+    dependencies:
+      upstream:
+        - cmdb-mapping
+      downstream:
+        - mmm-l2
+        - employee-xp
+        - developer-xp
+    contacts: []
+    notes: Application registration and logging visibility workstream.
+
+  - id: cmdb-mapping
+    name: CMDB Mapping
+    status: active
+    strategic_weight: 8
+    primary_objectives:
+      - O4
+    aliases:
+      - CMDB
+      - service mapping
+      - application ownership
+      - dependency mapping
+      - LeanIX
+    dependencies:
+      upstream: []
+      downstream:
+        - adx-registration
+        - mmm-l2
+        - rapid-recovery
+        - gocc-transition
+    contacts: []
+    notes: Ownership and service relationship foundation for operational readiness.
+
+  - id: employee-xp
+    name: Employee XP Dashboard
+    status: active
+    strategic_weight: 6
+    primary_objectives:
+      - O3
+    aliases:
+      - Employee XP
+      - Employee Experience
+      - Employee Experience Dashboard
+      - colleague experience
+      - branch monitoring
+      - laptop monitoring
+    dependencies:
+      upstream:
+        - adx-registration
+        - cmdb-mapping
+      downstream: []
+    contacts: []
+    links:
+      - label: Employee XP Dashboard
+        url: "https://one.newrelic.com/workloads?account=1737705&begin=1773902125466&end=1774506925466&state=d5eaebde-6fa4-4b77-d855-1fbaabdafab7"
+    notes: Dashboard tracking employee-facing technology experience.
+
+  - id: developer-xp
+    name: Developer XP Dashboard
+    status: active
+    strategic_weight: 6
+    primary_objectives:
+      - O2
+      - O3
+    aliases:
+      - Dev XP
+      - Developer XP
+      - Developer Experience
+      - Developer Experience Dashboard
+      - synthetic monitoring
+      - non-production monitoring
+      - AQA
+      - UAT
+    dependencies:
+      upstream:
+        - adx-registration
+        - cmdb-mapping
+        - mmm-l2
+      downstream: []
+    contacts: []
+    links:
+      - label: Developer XP Dashboard
+        url: "https://one.newrelic.com/workloads?account=1737705&begin=1773902125466&end=1774506925466&state=12a49ba6-7125-e1bf-9517-3ff344f7bf26"
+    notes: Dashboard tracking developer and non-production technology experience.
+
+  - id: gocc-transition
+    name: GOCC Transition
+    status: active
+    strategic_weight: 9
+    primary_objectives:
+      - O4
+      - O6
+    aliases:
+      - GOCC
+      - GOCC Transition
+      - PS to GOCC
+      - handover
+      - operational readiness
+      - runbook
+      - support transition
+      - ORR
+    dependencies:
+      upstream:
+        - cmdb-mapping
+        - mmm-l2
+        - rapid-recovery
+      downstream:
+        - gbo-batch-transition
+    contacts: []
+    links:
+      - label: GOCC Transition
+        url: "https://manulife-ets.atlassian.net/wiki/spaces/GOCC/folder/16408084520?atlOrigin=eyJpIjoiZDY0NWQ2MjNiZmU5NGExYWEyMzM0Y2E5ZmFjNGYyOTYiLCJwIjoiYyJ9"
+    notes: Transition of operational support activities to GOCC.
+
+  - id: mmm-l2
+    name: MMM L2
+    status: active
+    strategic_weight: 10
+    primary_objectives:
+      - O1
+      - O4
+    aliases:
+      - MMM L2
+      - monitoring maturity
+      - observability maturity
+      - New Relic
+      - alerts
+      - alerting
+      - monitoring coverage
+      - dashboard rebuild
+    dependencies:
+      upstream:
+        - adx-registration
+        - cmdb-mapping
+      downstream:
+        - rapid-recovery
+        - gocc-transition
+        - gbo-batch-transition
+    contacts: []
+    notes: Monitoring maturity and observability readiness workstream.
+
+  - id: rapid-recovery
+    name: Rapid Recovery
+    status: active
+    strategic_weight: 10
+    primary_objectives:
+      - O4
+    aliases:
+      - Rapid Recovery
+      - RRP
+      - recovery plan
+      - disaster recovery
+      - reboot procedure
+      - restore procedure
+      - Gold applications
+      - SRM
+    dependencies:
+      upstream:
+        - cmdb-mapping
+        - mmm-l2
+      downstream:
+        - gocc-transition
+        - gbo-batch-transition
+    contacts: []
+    notes: Recovery readiness for Gold applications and critical operational scenarios.
+
+  - id: gbo-batch-transition
+    name: GBO Batch Transition
+    status: active
+    strategic_weight: 9
+    primary_objectives:
+      - O4
+      - O6
+    aliases:
+      - GBO
+      - GBO Batch
+      - GBO Batch Transition
+      - batch transition
+      - batch operations
+      - batch support
+      - xMatters
+      - vendor manualization
+    dependencies:
+      upstream:
+        - mmm-l2
+        - rapid-recovery
+        - gocc-transition
+        - cmdb-mapping
+      downstream: []
+    contacts: []
+    notes: Transition of batch operations into the GBO operating model.
+
+  - id: cyberark-governance
+    name: CyberArk Governance
+    status: watch
+    strategic_weight: 8
+    primary_objectives:
+      - O4
+    aliases:
+      - CyberArk
+      - IAM
+      - SailPoint
+      - privileged access
+      - service account
+      - safe
+      - PWMGR
+      - USER APPROVER AUDITOR
+      - semi-managed
+      - managed account
+      - unmanaged account
+    dependencies:
+      upstream: []
+      downstream:
+        - rapid-recovery
+        - gocc-transition
+    contacts: []
+    notes: Privileged access governance and service-account risk workstream.
+
+  - id: capacity-management
+    name: Capacity Management
+    status: watch
+    strategic_weight: 7
+    primary_objectives:
+      - O4
+      - O6
+    aliases:
+      - capacity
+      - CAP-48585
+      - forecast
+      - capacity forecast
+      - capacity baseline
+      - threshold
+      - Power BI capacity
+    dependencies:
+      upstream:
+        - cmdb-mapping
+        - mmm-l2
+      downstream:
+        - gocc-transition
+    contacts: []
+    notes: Capacity management corrective action and operational forecasting.

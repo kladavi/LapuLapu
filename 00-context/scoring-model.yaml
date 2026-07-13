@@ -1,0 +1,68 @@
+# <!-- HUMAN --> Tunable scoring model for the Current Focus Dashboard.
+#
+# score = w_recency * recency_decay
+#       + w_priority * (priority / 5)
+#       + w_signal * min(1, mentions / saturation_count)
+#       + override_boost
+weights:
+  recency: 1.0
+  priority: 1.0
+  signal: 1.0
+
+decay:
+  half_life_days: 7   # exponential decay on days since last mention
+
+signal:
+  saturation_count: 5 # mentions at/above this count saturate the signal to 1.0
+
+top_n: 10             # number of workstreams shown in the dashboard
+
+# Human-maintained
+# Purpose: scoring rules for generated Current Focus Dashboard
+
+windows:
+  primary_days: 14
+  secondary_days: 60
+
+signals:
+  meeting_mention: 2
+  email_mention: 1
+  chat_mention: 1
+  task_created: 5
+  decision_logged: 6
+  risk_logged: 8
+  manager_mention: 8
+  birger_mention: 10
+  escalation: 10
+
+stakeholder_weights:
+  Balaji Ravi: 8
+  Birger Fjaellman: 10
+  Hari: 8
+  Jonan: 8
+  Deb: 8
+  Kelvin: 8
+  Manish: 7
+  Rowena: 7
+  Rasheersh: 7
+
+categories:
+  P1:
+    minimum_score: 70
+    description: Primary focus; should appear in executive weekly reporting.
+  P2:
+    minimum_score: 40
+    description: Active but secondary; track and progress where dependencies allow.
+  Watch:
+    minimum_score: 20
+    description: Important but not primary unless escalated or overridden.
+  ParkingLot:
+    minimum_score: 0
+    description: Known but not currently active.
+
+rules:
+  apply_human_override_first: true
+  preserve_override_reason: true
+  include_evidence_summary: true
+  include_top_source_files: true
+  include_recommended_next_actions: true

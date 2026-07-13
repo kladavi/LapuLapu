@@ -1,11 +1,17 @@
 # LapuLapu — Ignore Rules
 
-# OS files
-Thumbs.db
-.DS_Store
-
-# Editor files
-*.swp
-*.swo
-*~
+# Dependencies
 node_modules/
+.next/
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# Temp / backup files
+*.tmp
+*.bak
+~$*
+
+# NOTE: 00-context/generated/current-focus.md and current-focus.json
+# are intentionally NOT ignored — they must be Git-tracked for traceability.

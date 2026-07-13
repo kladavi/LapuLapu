@@ -1,3 +1,22 @@
+<!-- HUMAN -->
+# ui — UI / Application Assets
+
+This folder contains **UI and application assets** for any viewer, dashboard,
+or app that renders the vault.
+
+## Agent rules
+
+- **Do not mix operational knowledge files** (context, tasks, reports,
+  prompts) into `ui/`. Operational content belongs in `00-context/`,
+  `02-work/`, `03-reporting/`, or `04-prompts/`.
+- Files in `ui/` should be **specifically used by the UI** (components,
+  styles, static assets, build config).
+- Treat the markdown corpus as the **source of truth**; the UI is a
+  read-oriented view over it.
+- Any generated UI artifacts (bundles, static HTML) must be marked
+  `<!-- GENERATED -->` and produced by a script in `scripts/`.
+- If this folder is currently unused, leave it as a reserved slot.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
