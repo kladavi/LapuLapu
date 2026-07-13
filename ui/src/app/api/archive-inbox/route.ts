@@ -5,7 +5,9 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 
-const DEFAULT_ROOT = "C:\\Users\\kladavi\\Projects\\LapuLapu";
+const DEFAULT_ROOT =
+  process.env.LAPU_ROOT ??
+  "C:\\Users\\kladavi\\OneDrive - Manulife\\Projects\\LapuLapu";
 const INBOX_DIR = path.join(DEFAULT_ROOT, "01-inbox");
 const ARCHIVE_DIR = path.join(INBOX_DIR, "archive");
 
