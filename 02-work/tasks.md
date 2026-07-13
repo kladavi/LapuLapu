@@ -1944,3 +1944,31 @@
 - **Relevance:** 78/100
 - **Description:** Off the back of INC08672078 / PRB00024864 (T143), audit the Japan Semi-Managed CyberArk estate — starting with Safe `NH_MLJ_ITIS_SUPP_S` and Platform `NH_WINDOM_SSEMI_DOMAINREC_DC_NoAAM` — to identify domain service accounts whose last PWMGR rotation is beyond the 365-day IAM Standard, whose safe owner or ADUC-listed primary/backup owner is stale, or whose notification path relies on a `Change password immediately` opt-in that was never enabled. Coordinate with Kinue Hirooka (safe owner), the GAM team (`Information_Security@manulife.com`), and Dennis Icaro (CyberArk PAS ops) to remediate rotation and owner-registration gaps for the top-risk accounts, and register the resulting inventory in the Lapu-Lapu risk register so the same silent-expiry failure mode cannot recur on other Japan Gold-app service accounts.
 - **Source:** Inbox — archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc
+
+---
+
+## T145 — Run Ingenium Production-Incident Desktop Rehearsal (RRP + GOCC-to-MIM Escalation Validation)
+- **Status:** Open
+- **Created:** 2026-07-10
+- **Objective Chain:** T003 (Rapid Recovery Plan) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:ingenium #system:newrelic #system:xmatters
+- **Relevance:** 85/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #area:gocc-transition #worktype:exercise #domain:incident-management
+- **Description:** Plan and execute a production-incident desktop rehearsal for Ingenium covering the full incident lifecycle: GOCC alerting and detection, L1 handoff, troubleshooting evidence capture, restart sequences (WAS → CICS → DB, batch-slowness workaround) against the delivered Gold RRP, escalation into L2/L3 and MIM, and validation of the RRP as an operational reference document rather than a static deliverable. Confirm the right participants across GOCC, ETS Japan, PS Team, and MIM; capture gaps in runbook usability, ownership, and escalation timing; feed findings back into T106 (Gold RRP standardisation), T139 (RRP QC workflow), and D015 (server-restart authorization matrix). Advances the operationalisation of the Ingenium RRP from documentation completion (W27) to tested execution.
+- **Source:** Inbox — archive/W28_copilot.md (Lapu-Lapu GOCC and Japan meeting, 2026-07-09)
+
+---
+
+## T146 — Follow Up on CyberArk Privileged Access Review (SoD Monitoring, IIQ Certification, Archer/CAP Tracking)
+- **Status:** Open
+- **Created:** 2026-07-10
+- **Objective Chain:** B-5 (Security, Data Integrity & Encryption) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** David Klan
+- **Systems:** #system:cmdb
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #domain:cyberark #domain:security #domain:governance #domain:risk #worktype:audit
+- **Description:** Extend the CyberArk work beyond the T143/T144 account-level remediation to address broader privileged-access governance concerns surfaced in the 2026-07-09 CyberArk Privileged Access Review: role concentration across CyberArk Safes, evidence gaps for approval / risk acceptance, and unclear challenge ownership. Drive four specific follow-ups: (a) request ServiceNow approval history for the flagged Safes / role assignments; (b) request IIQ certification records to confirm periodic recertification is happening; (c) identify the automated control responsible for excessive-privilege / Segregation-of-Duties (SoD) monitoring and confirm it is producing evidence; (d) confirm Archer / CAP tracking is opened once issue owners are named, so remediation is governed rather than ad-hoc. Coordinate with IAM / PAS / Information Risk with Safe and Application Owners. Complements T143 (single-account close-out) and T144 (Japan Semi-Managed sweep) by lifting the workstream from account hygiene to enterprise privileged-access governance.
+- **Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)

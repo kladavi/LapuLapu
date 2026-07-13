@@ -4,6 +4,28 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-07-10 — W28 Copilot-Generated Work Summary (Recap Artifact)** #processed
+  - **Source:** archive/W28_copilot.md
+  - **From:** Copilot-generated week-in-review recap (David Klan working notes, week of 2026-07-06 → 2026-07-10; distribution set to Birger, Hari, Kelvin, Jonan, Deb, Balaji, Joan)
+  - **Focus:** Theme-level summary of W28 activity across the Lapu-Lapu observability meeting (Dev XP synthetics, process monitoring, laptop/branch expansion, NRQL→Power BI, MMM L2 dashboard rebuild, GBO transition, CyberArk/AD accounts), the Ingenium GOCC/Japan meeting (production-incident desktop rehearsal), CyberArk/IAM governance escalation, Yegor's CMDB service-mapping status update, ADX/SIEM/Sentinel runbook sharing, Dev XP synthetic ping-check alert traffic, and the H1 report distribution.
+  - **Key outcomes:**
+    1. Observability meeting confirmed continued cadence on NRQL export → Power BI, AQA/UAT monitoring, Ingenium server access, process monitoring, laptop/branch monitoring, and Gold-application RRP completion — all already tracked under T005/T106/T117/T118/T121/T128 and T139.
+    2. Process monitoring identified a new prerequisite: define application-specific baseline processes and tag servers by application category before broader alerting expansion — folds into existing T118 dev-XP alert-tuning workstream (add baseline-definition sub-scope) and T005/T121 MMM L2 dashboard rebuild.
+    3. Central repository / FAQ for advanced monitoring configurations and edge cases proposed at the observability meeting — flagged as a colleague-experience enabler but not yet committed; parked (no new T### until an owner and scope are named).
+    4. Ingenium GOCC/Japan meeting (2026-07-09) locked plans for a production-incident desktop rehearsal covering GOCC alerting, handoff to L2/L3, troubleshooting, restart sequences, escalation, MIM engagement, and RRP usability — a specific execution event that advances T003/T106/T139 and now warrants its own tracked activity (see T145).
+    5. CyberArk Privileged Access Review escalated beyond the T143/T144 account-level remediation into a broader privileged-access governance concern (role concentration across Safes, evidence gaps for approval/risk acceptance, unclear challenge ownership) with named next actions: request ServiceNow approval history, IIQ certification records, identify the automated excessive-privilege / SoD monitoring control, and confirm Archer/CAP tracking once issue owners are identified (see T146).
+    6. New Relic email traffic confirmed active Dev XP synthetic ping-check alerts for the ePOS DEV monitors under the "GOCC Japan Developer Experience Synthetic Policy" (Policy 7316475) — reinforces the need to finish T118 alert tuning and disposition whether ePOS non-prod alerts are actionable, non-prod-expected, or noise.
+    7. `mfcgd\wasAPIMprod` service-account response from CyberArk/GAM restated the Semi-Managed configuration, 365-day expected expiry, manual PWMGR rotation dependency, notification behaviour, and ownership — no new material beyond what T143/T144 already carry.
+    8. Yegor's CMDB update marked EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW as done; Apollo done but JCUS service mapping needs redesign; finer Cosmos DB dependency mapping remains in progress — feeds ongoing CMDB-mapping work (T002 / T121) with no new T### required.
+    9. GBO transition planning continued: a new GBO expert is expected to join from July 20 to support batch transition, additional stakeholder sessions are planned for open items from Manish, and vendor manualization is targeted for August 15 with parallel transition-plan development for a November go-live — all covered under T135/T136/T137/T138 and D018.
+    10. ADX remained an app-owner responsibility per D016; the SIEM / ADX / Sentinel runbook was shared with application teams to support advanced troubleshooting and app-specific logging — no scope reopening.
+    11. MMM L2 dashboard rebuild in progress; the existing dashboard was flagged as outdated and not to be used for executive figures until the new one lands — reinforces T005 / T121 status and the PS-Team engagement risk (T121 / T126).
+  - **Actions extracted → T145, T146**
+  - **Actions referenced → T002, T003, T005, T106, T117, T118, T121, T126, T128, T135, T136, T137, T138, T139, T143, T144**
+  - **Decisions referenced → D011, D015, D016, D017, D018**
+
+---
+
 - **2026-07-02 — INC08672078 / PRB00024864: mfcgd\wasAPIMprod Credential Expiry Post-Incident Analysis** #processed
   - **Source:** archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc
   - **From:** Confluence export (INC08672078 problem-management page)
