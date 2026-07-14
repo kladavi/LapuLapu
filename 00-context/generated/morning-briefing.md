@@ -2,7 +2,7 @@
 
 # Lapu-Lapu Morning Briefing
 
-Generated: 2026-07-14 16:11
+Generated: 2026-07-14 16:27
 
 ## Executive Snapshot
 
@@ -20,7 +20,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (367.5% vs prior 14 days).
+- Trend: ↑ increasing (367% vs prior 14 days).
 - Activity score: 100 (current window).
 - Previous-window activity: 112.8.
 
@@ -36,7 +36,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (280.2% vs prior 14 days).
+- Trend: ↑ increasing (279.8% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 136.8.
 
@@ -52,7 +52,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (214.6% vs prior 14 days).
+- Trend: ↑ increasing (214.3% vs prior 14 days).
 - Activity score: 97.4 (current window).
 - Previous-window activity: 163.2.
 
@@ -67,7 +67,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (280.2% vs prior 14 days).
+- Trend: ↑ increasing (279.8% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 136.8.
 
@@ -82,7 +82,7 @@ Why it matters:
 - High strategic weight (8/10).
 
 What changed:
-- Trend: ↑ increasing (411.9% vs prior 14 days).
+- Trend: ↑ increasing (411.3% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 101.6.
 
@@ -92,16 +92,16 @@ Recommended next action:
 
 ## Rising Risks
 
-- **MMM L2** ↑ 367.5% delta; risk_logged: 33, escalation: 19.
-- **Rapid Recovery** ↑ 280.2% delta; risk_logged: 36, escalation: 23.
-- **GBO Batch Transition** ↑ 214.6% delta; risk_logged: 28, escalation: 17.
+- **MMM L2** ↑ 367% delta; risk_logged: 33, escalation: 19.
+- **Rapid Recovery** ↑ 279.8% delta; risk_logged: 36, escalation: 23.
+- **GBO Batch Transition** ↑ 214.3% delta; risk_logged: 28, escalation: 17.
 - **CyberArk Governance** ↑ 100% delta; risk_logged: 11, escalation: 4.
-- **GOCC Transition** ↑ 280.2% delta; risk_logged: 39, escalation: 26.
-- **CMDB Mapping** ↑ 411.9% delta; risk_logged: 27, escalation: 15.
-- **Capacity Management** ↑ 1012.2% delta; risk_logged: 16, escalation: 8.
-- **Developer XP Dashboard** ↑ 473% delta; risk_logged: 28, escalation: 16.
-- **Employee XP Dashboard** ↑ 473% delta; risk_logged: 29, escalation: 18.
-- **ADX Registration** ↑ 554.9% delta; risk_logged: 21, escalation: 8.
+- **GOCC Transition** ↑ 279.8% delta; risk_logged: 39, escalation: 26.
+- **Capacity Management** ↑ 1011% delta; risk_logged: 16, escalation: 8.
+- **CMDB Mapping** ↑ 411.3% delta; risk_logged: 27, escalation: 15.
+- **Employee XP Dashboard** ↑ 472.4% delta; risk_logged: 29, escalation: 18.
+- **Developer XP Dashboard** ↑ 472.4% delta; risk_logged: 28, escalation: 16.
+- **ADX Registration** ↑ 554.2% delta; risk_logged: 21, escalation: 8.
 
 ## Decision Watch
 
@@ -110,7 +110,7 @@ Recommended next action:
 - **GBO Batch Transition**: decision_logged signals = 25.
 - **CyberArk Governance**: decision_logged signals = 8.
 - **GOCC Transition**: decision_logged signals = 37.
-- **CMDB Mapping**: decision_logged signals = 21.
+- **Capacity Management**: decision_logged signals = 13.
 
 ## Blocked / Escalation Candidates
 
@@ -119,9 +119,9 @@ Recommended next action:
 - **GBO Batch Transition** - escalation signal detected.
 - **CyberArk Governance** - escalation signal detected.
 - **GOCC Transition** - escalation signal detected.
-- **CMDB Mapping** - escalation signal detected.
 - **Capacity Management** - escalation signal detected.
-- **Developer XP Dashboard** - escalation signal detected.
+- **CMDB Mapping** - escalation signal detected.
+- **Employee XP Dashboard** - escalation signal detected.
 
 ## Recommended Actions for David
 
