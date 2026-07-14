@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # Repairs mojibake'd markdown heading separators.
 # Pattern observed: " <U+2001>E" replaced original " <U+2014> " (space + em-dash + space).
 # Also normalizes KR question-mark separator and the "<U+2181>E" arrow mojibake.

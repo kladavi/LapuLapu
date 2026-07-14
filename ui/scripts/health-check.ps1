@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # health-check.ps1 — Poll the dev server until it responds or times out
 # Usage: powershell -NoProfile -File scripts\health-check.ps1 [-Port 3000] [-MaxWait 30]
 
