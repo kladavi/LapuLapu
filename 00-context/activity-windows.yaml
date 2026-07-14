@@ -1,0 +1,32 @@
+# <!-- HUMAN -->
+# Human-maintained
+# Purpose: defines recency windows for activity scoring and trend detection.
+
+windows:
+  current:
+    days: 14
+    description: Primary activity window for Current Focus.
+
+  previous:
+    days: 14
+    offset_days: 14
+    description: Prior comparison window for trend detection.
+
+  reference:
+    days: 60
+    description: Secondary context window for historical reference.
+
+recency_decay:
+  enabled: true
+  half_life_days: 7
+  description: Newer activity should contribute more than older activity.
+
+trend_rules:
+  increasing:
+    minimum_delta_percent: 20
+    symbol: "↑"
+  decreasing:
+    maximum_delta_percent: -20
+    symbol: "↓"
+  stable:
+    symbol: "→"

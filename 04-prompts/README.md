@@ -31,3 +31,16 @@ Version: v1.1 (2025-11-14)
   the files.
 - Bump the **Version** when semantics change.
 - Prompts are **human-maintained**. Do not auto-generate them.
+
+## Sprint prompt files
+
+Multi-package sprint prompts (e.g. [0714Prompt_sprint1.md](0714Prompt_sprint1.md))
+coordinate a full agent-driven sprint across the repo. They typically:
+
+- Name the concrete files an agent must create or update.
+- List human-maintained vs generated files.
+- Define validation commands (usually PowerShell) the agent must run.
+- End with a completion report checklist.
+
+When adding a new sprint prompt, follow the same shape and reference the
+control/generated files by exact path so the agent can act deterministically.

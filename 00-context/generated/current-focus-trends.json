@@ -1,0 +1,142 @@
+{
+  "generated": "2026-07-14T16:11:00",
+  "generator": "scripts/generate-current-focus.ps1",
+  "version": "V1.3",
+  "currentWindowDays": 14,
+  "previousWindowDays": 14,
+  "offsetDays": 14,
+  "workstreams": [
+    {
+      "id": "matryoshka",
+      "name": "Project Matryoshka",
+      "currentActivityScore": 0.0,
+      "previousActivityScore": 0.0,
+      "delta": 0.0,
+      "deltaPercent": 0.0,
+      "trendDirection": "stable",
+      "trendSymbol": "→",
+      "trendReason": "No recent activity in either window."
+    },
+    {
+      "id": "lapulapu-corpus",
+      "name": "Lapu-Lapu Corpus Care",
+      "currentActivityScore": 0.0,
+      "previousActivityScore": 0.0,
+      "delta": 0.0,
+      "deltaPercent": 0.0,
+      "trendDirection": "stable",
+      "trendSymbol": "→",
+      "trendReason": "No recent activity in either window."
+    },
+    {
+      "id": "adx-registration",
+      "name": "ADX Registration",
+      "currentActivityScore": 513.45,
+      "previousActivityScore": 78.4,
+      "delta": 435.05,
+      "deltaPercent": 554.9,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 555% vs prior 14 days."
+    },
+    {
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "currentActivityScore": 520.09,
+      "previousActivityScore": 101.6,
+      "delta": 418.49,
+      "deltaPercent": 411.9,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 412% vs prior 14 days."
+    },
+    {
+      "id": "employee-xp",
+      "name": "Employee XP Dashboard",
+      "currentActivityScore": 513.45,
+      "previousActivityScore": 89.6,
+      "delta": 423.85,
+      "deltaPercent": 473.0,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 473% vs prior 14 days."
+    },
+    {
+      "id": "developer-xp",
+      "name": "Developer XP Dashboard",
+      "currentActivityScore": 513.45,
+      "previousActivityScore": 89.6,
+      "delta": 423.85,
+      "deltaPercent": 473.0,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 473% vs prior 14 days."
+    },
+    {
+      "id": "gocc-transition",
+      "name": "GOCC Transition",
+      "currentActivityScore": 520.09,
+      "previousActivityScore": 136.8,
+      "delta": 383.29,
+      "deltaPercent": 280.2,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 280% vs prior 14 days."
+    },
+    {
+      "id": "mmm-l2",
+      "name": "MMM L2",
+      "currentActivityScore": 527.32,
+      "previousActivityScore": 112.8,
+      "delta": 414.52,
+      "deltaPercent": 367.5,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 367% vs prior 14 days."
+    },
+    {
+      "id": "rapid-recovery",
+      "name": "Rapid Recovery",
+      "currentActivityScore": 520.09,
+      "previousActivityScore": 136.8,
+      "delta": 383.29,
+      "deltaPercent": 280.2,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 280% vs prior 14 days."
+    },
+    {
+      "id": "gbo-batch-transition",
+      "name": "GBO Batch Transition",
+      "currentActivityScore": 513.45,
+      "previousActivityScore": 163.2,
+      "delta": 350.25,
+      "deltaPercent": 214.6,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 215% vs prior 14 days."
+    },
+    {
+      "id": "cyberark-governance",
+      "name": "CyberArk Governance",
+      "currentActivityScore": 505.51,
+      "previousActivityScore": 0.0,
+      "delta": 505.51,
+      "deltaPercent": 100.0,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 100% vs prior 14 days."
+    },
+    {
+      "id": "capacity-management",
+      "name": "Capacity Management",
+      "currentActivityScore": 498.27,
+      "previousActivityScore": 44.8,
+      "delta": 453.47,
+      "deltaPercent": 1012.2,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "trendReason": "Activity signals up 1012% vs prior 14 days."
+    }
+  ]
+}

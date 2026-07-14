@@ -302,8 +302,29 @@ export function parseSettings(raw: string): {
   settings: AppSettings;
   errors: SettingsValidationError[];
 } {
-  const parsed = JSON.parse(raw);
-  const merged = mergeWithDefaults(parsed);
+  const trimmed = raw.trim();
+
+  // Treat empty settings files as defaults so UI does not crash on first run.
+  if (trimmed.length === 0) {
+    const merged = mergeWithDefaults({});
+    const errors = validateSettings(merged);
+    return { settings: merged, errors };
+  }
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(trimmed);
+  } catch {
+    const merged = mergeWithDefaults({});
+    const errors = validateSettings(merged);
+    errors.unshift({
+      path: "settings",
+      message: "Invalid JSON. Falling back to defaults.",
+    });
+    return { settings: merged, errors };
+  }
+
+  const merged = mergeWithDefaults(parsed as Partial<AppSettings>);
   const errors = validateSettings(merged);
   return { settings: merged, errors };
 }

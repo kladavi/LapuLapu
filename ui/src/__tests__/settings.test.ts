@@ -135,8 +135,11 @@ describe("parseSettings", () => {
     expect(settings.project.defaultProjectSlug).toBe("lapu-lapu");
   });
 
-  it("throws on invalid JSON", () => {
-    expect(() => parseSettings("{ not json ")).toThrow();
+  it("falls back to defaults on invalid JSON", () => {
+    const { settings, errors } = parseSettings("{ not json ");
+    expect(settings.project.defaultProjectSlug).toBe(DEFAULT_SETTINGS.project.defaultProjectSlug);
+    expect(errors.length).toBeGreaterThan(0);
+    expect(errors[0]?.path).toBe("settings");
   });
 
   it("fills in missing sections with defaults", () => {

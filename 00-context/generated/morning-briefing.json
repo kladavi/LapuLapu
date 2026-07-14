@@ -1,0 +1,349 @@
+{
+  "generated": "2026-07-14T16:11:00",
+  "generator": "scripts/generate-current-focus.ps1",
+  "version": "V1.4",
+  "executiveSnapshot": "The Lapu-Lapu operating picture shows 8 P1 workstream(s) and 2 watch item(s). 10 workstream(s) show increasing activity in the last 14 days. Top attention today is on MMM L2.",
+  "primaryFocus": [
+    {
+      "id": "mmm-l2",
+      "name": "MMM L2",
+      "category": "P1",
+      "attentionScore": 100.0,
+      "strategicScore": 100.0,
+      "activityScore": 100.0,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "deltaPercent": 367.5,
+      "overrideApplied": true,
+      "overrideReason": "Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.",
+      "whyItMatters": "Monitoring maturity and observability readiness workstream.",
+      "recommendedNextAction": "Review progress this week. Ensure blockers are visible to stakeholders.",
+      "topEvidence": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+        "01-inbox/copilot-activity/README.md",
+        "01-inbox/inbox.md"
+      ]
+    },
+    {
+      "id": "rapid-recovery",
+      "name": "Rapid Recovery",
+      "category": "P1",
+      "attentionScore": 99.2,
+      "strategicScore": 100.0,
+      "activityScore": 98.6,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "deltaPercent": 280.2,
+      "overrideApplied": true,
+      "overrideReason": "Recovery readiness is a core Robust Technical Core deliverable for Gold applications.",
+      "whyItMatters": "Recovery readiness for Gold applications and critical operational scenarios.",
+      "recommendedNextAction": "Review progress this week. Ensure blockers are visible to stakeholders.",
+      "topEvidence": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+        "01-inbox/inbox.md",
+        "01-inbox/archive/W28_copilot.md"
+      ]
+    },
+    {
+      "id": "gbo-batch-transition",
+      "name": "GBO Batch Transition",
+      "category": "P1",
+      "attentionScore": 96.4,
+      "strategicScore": 90.0,
+      "activityScore": 97.4,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "deltaPercent": 214.6,
+      "overrideApplied": true,
+      "overrideReason": "Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.",
+      "whyItMatters": "Transition of batch operations into the GBO operating model.",
+      "recommendedNextAction": "Review progress this week. Ensure blockers are visible to stakeholders.",
+      "topEvidence": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+        "01-inbox/inbox.md",
+        "01-inbox/archive/W28_copilot.md"
+      ]
+    },
+    {
+      "id": "gocc-transition",
+      "name": "GOCC Transition",
+      "category": "P1",
+      "attentionScore": 82.2,
+      "strategicScore": 90.0,
+      "activityScore": 98.6,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "deltaPercent": 280.2,
+      "overrideApplied": false,
+      "overrideReason": "",
+      "whyItMatters": "Transition of operational support activities to GOCC.",
+      "recommendedNextAction": "Review progress this week. Ensure blockers are visible to stakeholders.",
+      "topEvidence": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+        "01-inbox/inbox.md",
+        "01-inbox/archive/W28_copilot.md"
+      ]
+    },
+    {
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "category": "P1",
+      "attentionScore": 80.2,
+      "strategicScore": 80.0,
+      "activityScore": 98.6,
+      "trendDirection": "increasing",
+      "trendSymbol": "↑",
+      "deltaPercent": 411.9,
+      "overrideApplied": false,
+      "overrideReason": "",
+      "whyItMatters": "Ownership and service relationship foundation for operational readiness.",
+      "recommendedNextAction": "Review progress this week. Ensure blockers are visible to stakeholders.",
+      "topEvidence": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+        "01-inbox/inbox.md",
+        "01-inbox/archive/W28_copilot.md"
+      ]
+    }
+  ],
+  "risingRisks": [
+    {
+      "id": "mmm-l2",
+      "name": "MMM L2",
+      "trendSymbol": "↑",
+      "deltaPercent": 367.5,
+      "riskSignals": 33,
+      "escalationSignals": 19
+    },
+    {
+      "id": "rapid-recovery",
+      "name": "Rapid Recovery",
+      "trendSymbol": "↑",
+      "deltaPercent": 280.2,
+      "riskSignals": 36,
+      "escalationSignals": 23
+    },
+    {
+      "id": "gbo-batch-transition",
+      "name": "GBO Batch Transition",
+      "trendSymbol": "↑",
+      "deltaPercent": 214.6,
+      "riskSignals": 28,
+      "escalationSignals": 17
+    },
+    {
+      "id": "cyberark-governance",
+      "name": "CyberArk Governance",
+      "trendSymbol": "↑",
+      "deltaPercent": 100.0,
+      "riskSignals": 11,
+      "escalationSignals": 4
+    },
+    {
+      "id": "gocc-transition",
+      "name": "GOCC Transition",
+      "trendSymbol": "↑",
+      "deltaPercent": 280.2,
+      "riskSignals": 39,
+      "escalationSignals": 26
+    },
+    {
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "trendSymbol": "↑",
+      "deltaPercent": 411.9,
+      "riskSignals": 27,
+      "escalationSignals": 15
+    },
+    {
+      "id": "capacity-management",
+      "name": "Capacity Management",
+      "trendSymbol": "↑",
+      "deltaPercent": 1012.2,
+      "riskSignals": 16,
+      "escalationSignals": 8
+    },
+    {
+      "id": "developer-xp",
+      "name": "Developer XP Dashboard",
+      "trendSymbol": "↑",
+      "deltaPercent": 473.0,
+      "riskSignals": 28,
+      "escalationSignals": 16
+    },
+    {
+      "id": "employee-xp",
+      "name": "Employee XP Dashboard",
+      "trendSymbol": "↑",
+      "deltaPercent": 473.0,
+      "riskSignals": 29,
+      "escalationSignals": 18
+    },
+    {
+      "id": "adx-registration",
+      "name": "ADX Registration",
+      "trendSymbol": "↑",
+      "deltaPercent": 554.9,
+      "riskSignals": 21,
+      "escalationSignals": 8
+    }
+  ],
+  "decisionWatch": [
+    {
+      "id": "mmm-l2",
+      "name": "MMM L2",
+      "decisionSignals": 30
+    },
+    {
+      "id": "rapid-recovery",
+      "name": "Rapid Recovery",
+      "decisionSignals": 34
+    },
+    {
+      "id": "gbo-batch-transition",
+      "name": "GBO Batch Transition",
+      "decisionSignals": 25
+    },
+    {
+      "id": "cyberark-governance",
+      "name": "CyberArk Governance",
+      "decisionSignals": 8
+    },
+    {
+      "id": "gocc-transition",
+      "name": "GOCC Transition",
+      "decisionSignals": 37
+    },
+    {
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "decisionSignals": 21
+    }
+  ],
+  "blockedOrEscalationCandidates": [
+    {
+      "id": "mmm-l2",
+      "name": "MMM L2",
+      "escalationSignals": 19,
+      "category": "P1"
+    },
+    {
+      "id": "rapid-recovery",
+      "name": "Rapid Recovery",
+      "escalationSignals": 23,
+      "category": "P1"
+    },
+    {
+      "id": "gbo-batch-transition",
+      "name": "GBO Batch Transition",
+      "escalationSignals": 17,
+      "category": "P1"
+    },
+    {
+      "id": "cyberark-governance",
+      "name": "CyberArk Governance",
+      "escalationSignals": 4,
+      "category": "Watch"
+    },
+    {
+      "id": "gocc-transition",
+      "name": "GOCC Transition",
+      "escalationSignals": 26,
+      "category": "P1"
+    },
+    {
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "escalationSignals": 15,
+      "category": "P1"
+    },
+    {
+      "id": "capacity-management",
+      "name": "Capacity Management",
+      "escalationSignals": 8,
+      "category": "Watch"
+    },
+    {
+      "id": "developer-xp",
+      "name": "Developer XP Dashboard",
+      "escalationSignals": 16,
+      "category": "P1"
+    }
+  ],
+  "recommendedActionsForDavid": [
+    {
+      "id": "mmm-l2",
+      "name": "MMM L2",
+      "action": "Review progress this week. Ensure blockers are visible to stakeholders."
+    },
+    {
+      "id": "rapid-recovery",
+      "name": "Rapid Recovery",
+      "action": "Review progress this week. Ensure blockers are visible to stakeholders."
+    },
+    {
+      "id": "gbo-batch-transition",
+      "name": "GBO Batch Transition",
+      "action": "Review progress this week. Ensure blockers are visible to stakeholders."
+    },
+    {
+      "id": "gocc-transition",
+      "name": "GOCC Transition",
+      "action": "Review progress this week. Ensure blockers are visible to stakeholders."
+    },
+    {
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "action": "Review progress this week. Ensure blockers are visible to stakeholders."
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "01-inbox/copilot-activity/2026-07-14-14-day-activity.md",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-14"
+    },
+    {
+      "path": "01-inbox/copilot-activity/2026-07-14-14-day-activity.md",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-14"
+    },
+    {
+      "path": "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-13"
+    },
+    {
+      "path": "01-inbox/copilot-activity/2026-07-13-14-day-activity.md",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-13"
+    },
+    {
+      "path": "01-inbox/copilot-activity/README.md",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-13"
+    },
+    {
+      "path": "01-inbox/copilot-activity/README.md",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-13"
+    },
+    {
+      "path": "01-inbox/copilot-activity/.gitkeep",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-13"
+    },
+    {
+      "path": "01-inbox/copilot-activity/.gitkeep",
+      "weight": 1.0,
+      "window": "current",
+      "date": "2026-07-13"
+    }
+  ]
+}

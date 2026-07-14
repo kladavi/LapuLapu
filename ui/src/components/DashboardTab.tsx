@@ -5,6 +5,187 @@ import { usePMData } from "../context/PMContext";
 import { computeKRProgress } from "../lib/parsers";
 import type { NavFilter } from "../app/page";
 
+type FocusSection = "P1 Focus" | "P2 Focus" | "Watch List" | "Parking Lot";
+
+type CurrentFocusItem = {
+  name: string;
+  status: string;
+  score: number;
+  overrideDetail: string;
+  mentions: number | null;
+  signals: string;
+  summary: string;
+  recommendedAction: string;
+  evidence: string[];
+  // V1.2 enrichment (populated from current-focus.json when available)
+  attentionScore?: number;
+  activityScore?: number;
+  strategicScore?: number;
+  strategicWeight?: number;
+  trendSymbol?: string;
+  trendDirection?: string;
+  deltaPercent?: number;
+  overrideApplied?: boolean;
+};
+
+type CurrentFocusFromMd = {
+  generated: string;
+  version: string;
+  executiveSummary: string;
+  sections: Record<FocusSection, CurrentFocusItem[]>;
+};
+
+type FocusJsonItem = {
+  id?: string;
+  name?: string;
+  category?: string;
+  score?: number;
+  attention_score?: number;
+  activity_score?: number;
+  strategic_score?: number;
+  strategic_weight?: number;
+  override_applied?: boolean;
+  override_reason?: string;
+  trend_symbol?: string;
+  trend_direction?: string;
+  trend_delta_percent?: number;
+  evidence_files?: string[];
+};
+
+type TrendJsonItem = {
+  id?: string;
+  name?: string;
+  currentActivityScore?: number;
+  previousActivityScore?: number;
+  delta?: number;
+  deltaPercent?: number;
+  trendDirection?: string;
+  trendSymbol?: string;
+  trendReason?: string;
+};
+
+type TrendJson = {
+  generated?: string;
+  currentWindowDays?: number;
+  previousWindowDays?: number;
+  workstreams?: TrendJsonItem[];
+};
+
+type BriefingPrimary = {
+  id?: string;
+  name?: string;
+  category?: string;
+  attentionScore?: number;
+  strategicScore?: number;
+  activityScore?: number;
+  trendDirection?: string;
+  trendSymbol?: string;
+  deltaPercent?: number;
+  overrideApplied?: boolean;
+  overrideReason?: string;
+  whyItMatters?: string;
+  recommendedNextAction?: string;
+  topEvidence?: string[];
+};
+
+type BriefingItemLite = { name?: string; deltaPercent?: number; trendSymbol?: string; riskSignals?: number; escalationSignals?: number; decisionSignals?: number; category?: string };
+type BriefingActionItem = { name?: string; action?: string };
+type BriefingSource = { path?: string; weight?: number; window?: string; date?: string };
+
+type BriefingJson = {
+  generated?: string;
+  executiveSnapshot?: string;
+  primaryFocus?: BriefingPrimary[];
+  risingRisks?: BriefingItemLite[];
+  decisionWatch?: BriefingItemLite[];
+  blockedOrEscalationCandidates?: BriefingItemLite[];
+  recommendedActionsForDavid?: BriefingActionItem[];
+  sourceInputs?: BriefingSource[];
+};
+
+function safeJsonParse<T>(raw: string | undefined): T | null {
+  if (!raw || !raw.trim()) return null;
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
+
+const FOCUS_SECTIONS: FocusSection[] = ["P1 Focus", "P2 Focus", "Watch List", "Parking Lot"];
+
+function parseCurrentFocusMarkdown(markdown: string): CurrentFocusFromMd | null {
+  if (!markdown.trim()) return null;
+
+  const md = markdown.replace(/\r\n/g, "\n");
+
+  const generated = md.match(/Generated:\s*\*\*(.+?)\*\*/)?.[1]?.trim() ?? "";
+  const version = md.match(/Generated:.*?·\s*([^\n]+)/)?.[1]?.trim() ?? "";
+
+  const executiveSummaryBlock = md.match(/## Executive Summary\s+([\s\S]*?)(?=\n---|\n## )/);
+  const executiveSummary = executiveSummaryBlock?.[1]
+    ?.replace(/\*\*/g, "")
+    .replace(/\n+/g, " ")
+    .trim() ?? "";
+
+  const sections: Record<FocusSection, CurrentFocusItem[]> = {
+    "P1 Focus": [],
+    "P2 Focus": [],
+    "Watch List": [],
+    "Parking Lot": [],
+  };
+
+  const sectionRegex = /## (P1 Focus|P2 Focus|Watch List|Parking Lot)\n([\s\S]*?)(?=\n## |\n---|$)/g;
+  let sectionMatch: RegExpExecArray | null;
+
+  while ((sectionMatch = sectionRegex.exec(md)) !== null) {
+    const sectionName = sectionMatch[1] as FocusSection;
+    const sectionContent = sectionMatch[2] ?? "";
+    const itemRegex = /### ([^\n]+)\n([\s\S]*?)(?=\n### |$)/g;
+    let itemMatch: RegExpExecArray | null;
+
+    while ((itemMatch = itemRegex.exec(sectionContent)) !== null) {
+      const name = itemMatch[1].trim();
+      const body = itemMatch[2] ?? "";
+      const statusLine = body.match(/\*\*Status:\*\*\s*([^\n]+)/)?.[1] ?? "";
+      const status = statusLine.match(/^([^\s]+)/)?.[1] ?? "";
+      const score = Number(statusLine.match(/\*\*Score:\*\*\s*([0-9.]+)/)?.[1] ?? 0);
+      const overrideDetail = statusLine.match(/\*\*Override:\*\*\s*(.+)/)?.[1]?.trim() ?? "";
+      const mentions = Number(body.match(/\*\*Mentions:\*\*\s*([0-9]+)/)?.[1] ?? "");
+      const signals = body.match(/\*\*Signals:\*\*\s*([^\n]+)/)?.[1]?.trim() ?? "";
+
+      const summary = body
+        .match(/\*\*Signals:\*\*[^\n]*\n\n([\s\S]*?)\n\n\*\*Evidence:\*\*/)?.[1]
+        ?.replace(/\n+/g, " ")
+        .trim() ?? "";
+
+      const evidenceBlock = body.match(/\*\*Evidence:\*\*\n([\s\S]*?)\n\n\*\*Recommended next action:\*\*/)?.[1] ?? "";
+      const evidence = evidenceBlock
+        .split("\n")
+        .map((line) => line.replace(/^-\s+`?/, "").replace(/`$/, "").trim())
+        .filter(Boolean);
+
+      const recommendedAction = body
+        .match(/\*\*Recommended next action:\*\*\n-\s*(.+)/)?.[1]
+        ?.trim() ?? "";
+
+      sections[sectionName].push({
+        name,
+        status,
+        score,
+        overrideDetail,
+        mentions: Number.isFinite(mentions) ? mentions : null,
+        signals,
+        summary,
+        recommendedAction,
+        evidence,
+      });
+    }
+  }
+
+  return { generated, version, executiveSummary, sections };
+}
+
 type TabId = "dashboard" | "objectives" | "keyresults" | "tasks" | "weekly" | "export";
 
 interface Props {
@@ -16,6 +197,12 @@ type SectionId = "objectives" | "keyresults" | "open" | "closed" | "decisions" |
 export function DashboardTab({ onNavigate }: Props) {
   const { data } = usePMData();
   const [expandedSection, setExpandedSection] = useState<SectionId | null>(null);
+  const [expandedFocusSections, setExpandedFocusSections] = useState<Record<FocusSection, boolean>>({
+    "P1 Focus": true,
+    "P2 Focus": false,
+    "Watch List": false,
+    "Parking Lot": false,
+  });
 
   if (!data) return null;
 
@@ -29,12 +216,50 @@ export function DashboardTab({ onNavigate }: Props) {
     (t) => t.status.toLowerCase() !== "open"
   );
   const latestWeekly = data.weeklySummaries[0];
+  const focusMarkdown = data.rawFiles["00-context/generated/current-focus.md"];
+  const currentFocus = focusMarkdown ? parseCurrentFocusMarkdown(focusMarkdown) : null;
+
+  // V1.2/V1.3/V1.4: JSON enrichment (safe if any file is missing)
+  const focusJson    = safeJsonParse<{ workstreams?: FocusJsonItem[]; version?: string; generated?: string }>(
+    data.rawFiles["00-context/generated/current-focus.json"]
+  );
+  const trendsJson   = safeJsonParse<TrendJson>(data.rawFiles["00-context/generated/current-focus-trends.json"]);
+  const briefingJson = safeJsonParse<BriefingJson>(data.rawFiles["00-context/generated/morning-briefing.json"]);
+
+  // Merge JSON enrichment into markdown-derived items by name
+  if (currentFocus && focusJson?.workstreams?.length) {
+    const jsonByName = new Map<string, FocusJsonItem>();
+    for (const w of focusJson.workstreams) {
+      if (w?.name) jsonByName.set(w.name, w);
+    }
+    for (const section of FOCUS_SECTIONS) {
+      for (const item of currentFocus.sections[section]) {
+        const j = jsonByName.get(item.name);
+        if (!j) continue;
+        item.attentionScore   = j.attention_score ?? j.score;
+        item.activityScore    = j.activity_score;
+        item.strategicScore   = j.strategic_score;
+        item.strategicWeight  = j.strategic_weight;
+        item.trendSymbol      = j.trend_symbol;
+        item.trendDirection   = j.trend_direction;
+        item.deltaPercent     = j.trend_delta_percent;
+        item.overrideApplied  = j.override_applied;
+        if ((!item.evidence || item.evidence.length === 0) && j.evidence_files?.length) {
+          item.evidence = j.evidence_files;
+        }
+      }
+    }
+  }
 
   // Flatten teams (top-level + sub-teams)
   const allTeams = data.teams.flatMap((t) => [t, ...(t.subTeams || [])]);
 
   const toggle = (id: SectionId) =>
     setExpandedSection((prev) => (prev === id ? null : id));
+
+  const toggleFocusSection = (section: FocusSection) => {
+    setExpandedFocusSections((prev) => ({ ...prev, [section]: !prev[section] }));
+  };
 
   const cards: {
     id: SectionId;
@@ -112,7 +337,7 @@ export function DashboardTab({ onNavigate }: Props) {
       <h2 className="text-xl font-bold text-th-text">Dashboard</h2>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-3">
         {cards.map((c) => (
           <button
             key={c.id}
@@ -420,16 +645,314 @@ export function DashboardTab({ onNavigate }: Props) {
         </div>
       )}
 
-      {/* Files loaded */}
+      {/* Current focus */}
       <div className="rounded-xl border border-th-border bg-th-surface p-4">
-        <h3 className="font-semibold text-th-text-secondary mb-2">Files Loaded</h3>
-        <div className="text-sm text-th-text-muted space-y-0.5 max-h-48 overflow-auto font-mono">
-          {Object.keys(data.rawFiles)
-            .sort()
-            .map((f) => (
-              <div key={f}>{f}</div>
-            ))}
-        </div>
+        <h3 className="font-semibold text-th-text-secondary mb-2">Current Focus</h3>
+        {currentFocus ? (
+          <div className="space-y-3">
+            <div className="text-xs text-th-text-faint">
+              Generated {currentFocus.generated || "-"}
+              {currentFocus.version ? ` ${currentFocus.version}` : ""}
+            </div>
+
+            {currentFocus.executiveSummary && (
+              <div className="rounded-lg border border-th-border bg-th-surface-alt p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">
+                  Executive Summary
+                </h4>
+                <p className="text-sm text-th-text-secondary">{currentFocus.executiveSummary}</p>
+              </div>
+            )}
+
+            <div className="space-y-2">
+              {FOCUS_SECTIONS.map((section) => {
+                const items = currentFocus.sections[section] ?? [];
+                const isOpen = expandedFocusSections[section];
+                return (
+                  <div key={section} className="rounded-lg border border-th-border overflow-hidden">
+                    <button
+                      onClick={() => toggleFocusSection(section)}
+                      className="w-full px-3 py-2 bg-th-surface-alt flex items-center justify-between text-left cursor-pointer"
+                    >
+                      <span className="text-sm font-semibold text-th-text-secondary">
+                        {section}
+                      </span>
+                      <span className="text-xs text-th-text-faint">
+                        {items.length} items {isOpen ? "▼" : "▶"}
+                      </span>
+                    </button>
+
+                    {isOpen && (
+                      <div className="p-3 space-y-2">
+                        {items.length === 0 ? (
+                          <p className="text-sm text-th-text-faint italic">No workstreams found.</p>
+                        ) : (
+                          items.map((item) => (
+                            <div key={`${section}-${item.name}`} className="rounded-md border border-th-border p-2">
+                              <div className="flex items-center justify-between gap-3">
+                                <div className="text-sm font-medium text-th-text">{item.name}</div>
+                                <div className="flex items-center gap-2 text-xs">
+                                  <span className="rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 font-medium text-th-text-secondary">
+                                    {item.status || section.replace(" Focus", "").replace(" List", "").replace(" Lot", "Lot")}
+                                  </span>
+                                  <span className="tabular-nums text-th-text">
+                                    Attention: <strong>{(item.attentionScore ?? item.score).toFixed(1)}</strong>
+                                  </span>
+                                  {item.trendSymbol && (
+                                    <span className="tabular-nums text-th-text-muted" title={item.trendDirection || ""}>
+                                      {item.trendSymbol}{" "}
+                                      {typeof item.deltaPercent === "number"
+                                        ? `${item.deltaPercent > 0 ? "+" : ""}${item.deltaPercent.toFixed(1)}%`
+                                        : ""}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+
+                              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs text-th-text-muted tabular-nums">
+                                <span>Activity: <strong>{item.activityScore != null ? item.activityScore.toFixed(1) : "-"}</strong></span>
+                                <span>Strategic: <strong>{item.strategicScore != null ? item.strategicScore.toFixed(1) : "-"}</strong>{item.strategicWeight != null ? ` (${item.strategicWeight}/10)` : ""}</span>
+                                <span>Override: <strong>{item.overrideApplied ? "Yes" : "No"}</strong></span>
+                                <span>Mentions: {item.mentions ?? "-"}</span>
+                              </div>
+
+                              {item.overrideDetail && item.overrideDetail !== "No" && (
+                                <p className="mt-1 text-xs text-th-text-secondary">Override: {item.overrideDetail}</p>
+                              )}
+
+                              {item.summary && (
+                                <p className="mt-1 text-xs text-th-text-secondary">{item.summary}</p>
+                              )}
+
+                              {item.recommendedAction && (
+                                <p className="mt-1 text-xs text-th-text-secondary">Next: {item.recommendedAction}</p>
+                              )}
+
+                              {item.evidence.length > 0 && (
+                                <p className="mt-1 text-xs text-th-text-faint break-all">
+                                  Evidence: {item.evidence.slice(0, 3).join(", ")}
+                                  {item.evidence.length > 3 ? ` (+${item.evidence.length - 3} more)` : ""}
+                                </p>
+                              )}
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <p className="text-xs text-th-text-faint">
+              Source: 00-context/generated/current-focus.md - do not hand-edit.
+            </p>
+          </div>
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Current focus data not available. Generate 00-context/generated/current-focus.md to display this section.
+          </p>
+        )}
+      </div>
+
+      {/* Trends */}
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">Trends</h3>
+        {trendsJson?.workstreams?.length ? (
+          <div className="space-y-2">
+            <p className="text-xs text-th-text-faint">
+              Comparing last {trendsJson.currentWindowDays ?? 14} days vs previous {trendsJson.previousWindowDays ?? 14} days.
+              {trendsJson.generated ? ` Generated ${trendsJson.generated}.` : ""}
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="text-left text-th-text-faint border-b border-th-border">
+                    <th className="py-1 pr-3 font-medium">Workstream</th>
+                    <th className="py-1 pr-3 font-medium text-right">Current</th>
+                    <th className="py-1 pr-3 font-medium text-right">Previous</th>
+                    <th className="py-1 pr-3 font-medium text-right">Delta %</th>
+                    <th className="py-1 pr-3 font-medium">Trend</th>
+                    <th className="py-1 font-medium">Reason</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[...trendsJson.workstreams]
+                    .sort((a, b) => (b.deltaPercent ?? 0) - (a.deltaPercent ?? 0))
+                    .map((w) => (
+                      <tr key={w.id ?? w.name} className="border-b border-th-border/40">
+                        <td className="py-1 pr-3 text-th-text font-medium">{w.name}</td>
+                        <td className="py-1 pr-3 text-right tabular-nums text-th-text-muted">{(w.currentActivityScore ?? 0).toFixed(2)}</td>
+                        <td className="py-1 pr-3 text-right tabular-nums text-th-text-muted">{(w.previousActivityScore ?? 0).toFixed(2)}</td>
+                        <td className="py-1 pr-3 text-right tabular-nums text-th-text-muted">
+                          {typeof w.deltaPercent === "number"
+                            ? `${w.deltaPercent > 0 ? "+" : ""}${w.deltaPercent.toFixed(1)}%`
+                            : "-"}
+                        </td>
+                        <td className="py-1 pr-3 text-th-text">
+                          <span className="mr-1">{w.trendSymbol ?? "-"}</span>
+                          <span className="text-th-text-muted">{w.trendDirection ?? ""}</span>
+                        </td>
+                        <td className="py-1 text-th-text-muted">{w.trendReason ?? ""}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-th-text-faint">
+              Source: 00-context/generated/current-focus-trends.json - do not hand-edit.
+            </p>
+          </div>
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Trend data not available. Regenerate to produce 00-context/generated/current-focus-trends.json.
+          </p>
+        )}
+      </div>
+
+      {/* Morning Briefing */}
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">Morning Briefing</h3>
+        {briefingJson ? (
+          <div className="space-y-3">
+            {briefingJson.generated && (
+              <p className="text-xs text-th-text-faint">Generated {briefingJson.generated}</p>
+            )}
+            {briefingJson.executiveSnapshot && (
+              <div className="rounded-lg border border-th-border bg-th-surface-alt p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">
+                  Executive Snapshot
+                </h4>
+                <p className="text-sm text-th-text-secondary">{briefingJson.executiveSnapshot}</p>
+              </div>
+            )}
+
+            {briefingJson.primaryFocus && briefingJson.primaryFocus.length > 0 && (
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-2">
+                  Today&apos;s Primary Focus
+                </h4>
+                <div className="space-y-2">
+                  {briefingJson.primaryFocus.map((p) => (
+                    <div key={p.id ?? p.name} className="rounded-md border border-th-border p-2">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="text-sm font-medium text-th-text">{p.name}</div>
+                        <div className="flex items-center gap-2 text-xs tabular-nums">
+                          <span className="rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 font-medium text-th-text-secondary">{p.category ?? "-"}</span>
+                          <span>Attention: <strong>{(p.attentionScore ?? 0).toFixed(1)}</strong></span>
+                          {p.trendSymbol && (
+                            <span className="text-th-text-muted" title={p.trendDirection || ""}>
+                              {p.trendSymbol} {typeof p.deltaPercent === "number" ? `${p.deltaPercent > 0 ? "+" : ""}${p.deltaPercent.toFixed(1)}%` : ""}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      {p.whyItMatters && (
+                        <p className="mt-1 text-xs text-th-text-secondary"><span className="font-medium">Why: </span>{p.whyItMatters}</p>
+                      )}
+                      {p.overrideApplied && p.overrideReason && (
+                        <p className="mt-1 text-xs text-th-text-secondary"><span className="font-medium">Override: </span>{p.overrideReason}</p>
+                      )}
+                      {p.recommendedNextAction && (
+                        <p className="mt-1 text-xs text-th-text-secondary"><span className="font-medium">Next: </span>{p.recommendedNextAction}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="rounded-lg border border-th-border p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">Rising Risks</h4>
+                {briefingJson.risingRisks && briefingJson.risingRisks.length > 0 ? (
+                  <ul className="space-y-1 text-xs text-th-text-secondary">
+                    {briefingJson.risingRisks.map((r, i) => (
+                      <li key={i}>
+                        <span className="font-medium">{r.name}</span>
+                        {r.trendSymbol ? ` ${r.trendSymbol}` : ""}
+                        {typeof r.deltaPercent === "number" ? ` ${r.deltaPercent > 0 ? "+" : ""}${r.deltaPercent.toFixed(1)}%` : ""}
+                        {typeof r.riskSignals === "number" && r.riskSignals > 0 ? ` · risk:${r.riskSignals}` : ""}
+                        {typeof r.escalationSignals === "number" && r.escalationSignals > 0 ? ` · escalation:${r.escalationSignals}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-th-text-faint italic">None flagged.</p>
+                )}
+              </div>
+
+              <div className="rounded-lg border border-th-border p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">Decision Watch</h4>
+                {briefingJson.decisionWatch && briefingJson.decisionWatch.length > 0 ? (
+                  <ul className="space-y-1 text-xs text-th-text-secondary">
+                    {briefingJson.decisionWatch.map((d, i) => (
+                      <li key={i}>
+                        <span className="font-medium">{d.name}</span>
+                        {typeof d.decisionSignals === "number" ? ` · decisions:${d.decisionSignals}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-th-text-faint italic">None flagged.</p>
+                )}
+              </div>
+
+              <div className="rounded-lg border border-th-border p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">Blocked / Escalation</h4>
+                {briefingJson.blockedOrEscalationCandidates && briefingJson.blockedOrEscalationCandidates.length > 0 ? (
+                  <ul className="space-y-1 text-xs text-th-text-secondary">
+                    {briefingJson.blockedOrEscalationCandidates.map((e, i) => (
+                      <li key={i}>
+                        <span className="font-medium">{e.name}</span>
+                        {e.category ? ` · ${e.category}` : ""}
+                        {typeof e.escalationSignals === "number" ? ` · escalation:${e.escalationSignals}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-th-text-faint italic">None detected.</p>
+                )}
+              </div>
+
+              <div className="rounded-lg border border-th-border p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">Recommended Actions for David</h4>
+                {briefingJson.recommendedActionsForDavid && briefingJson.recommendedActionsForDavid.length > 0 ? (
+                  <ul className="space-y-1 text-xs text-th-text-secondary">
+                    {briefingJson.recommendedActionsForDavid.map((a, i) => (
+                      <li key={i}>
+                        <span className="font-medium">{a.name}: </span>{a.action}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-th-text-faint italic">Nothing on the plate today.</p>
+                )}
+              </div>
+            </div>
+
+            {briefingJson.sourceInputs && briefingJson.sourceInputs.length > 0 && (
+              <div className="rounded-lg border border-th-border p-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-1">Source Inputs</h4>
+                <ul className="space-y-0.5 text-xs text-th-text-muted font-mono">
+                  {briefingJson.sourceInputs.slice(0, 8).map((s, i) => (
+                    <li key={i}>
+                      {s.path}{s.date ? ` (${s.date})` : ""}{typeof s.weight === "number" ? ` [w=${s.weight}]` : ""}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <p className="text-xs text-th-text-faint">
+              Source: 00-context/generated/morning-briefing.json - do not hand-edit.
+            </p>
+          </div>
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Morning briefing not available. Regenerate to produce 00-context/generated/morning-briefing.json.
+          </p>
+        )}
       </div>
     </div>
   );

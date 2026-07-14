@@ -37,6 +37,27 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Dashboard data sources
+
+The Dashboard tab (see `src/components/DashboardTab.tsx`) reads three generated
+JSON artifacts from the vault via the `/api/load-local` route:
+
+- `00-context/generated/current-focus.json` — populates the Current Focus
+  cards with attention / activity / strategic / override / trend scores.
+- `00-context/generated/current-focus-trends.json` — powers the Trends table.
+- `00-context/generated/morning-briefing.json` — powers the Morning Briefing
+  block (executive snapshot, primary focus, rising risks, decision watch,
+  escalation candidates, recommended actions, source inputs).
+
+All three sections fail gracefully with a friendly message if the corresponding
+JSON file is missing. Regenerate the artifacts with:
+
+```powershell
+& "C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.3.0_x64__8wekyb3d8bbwe\pwsh.exe" -NoLogo -NoProfile -File ..\scripts\generate-current-focus.ps1
+```
+
+Then hit the **Reload** button in the header so the API re-reads the vault.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

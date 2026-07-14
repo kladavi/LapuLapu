@@ -1,9 +1,9 @@
 <!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
 # Current Focus Dashboard
 
-Project: **Project Matryoshka V1.1 - David Brain**
+Project: **Project Matryoshka V1.2 - David Brain**
 Scope: **Lapu-Lapu**
-Generated: **2026-07-13 16:30**
+Generated: **2026-07-14 16:11**
 Primary activity window: **14 days**
 Secondary reference window: **60 days**
 
@@ -11,205 +11,217 @@ Secondary reference window: **60 days**
 
 ## Executive Summary
 
-Primary focus: **GOCC Transition, Rapid Recovery, MMM L2, GBO Batch Transition, Employee XP Dashboard, CMDB Mapping, Developer XP Dashboard**. Watch items: **Capacity Management, CyberArk Governance**. Human overrides are active - see Human Overrides section for details.
+Primary focus: **MMM L2, Rapid Recovery, GBO Batch Transition, GOCC Transition, CMDB Mapping, Developer XP Dashboard, Employee XP Dashboard, ADX Registration**. Watch items: **CyberArk Governance, Capacity Management**. Human overrides are active - see Human Overrides section for details.
 
 ---
 
 ## P1 Focus
 
-### GOCC Transition
+### MMM L2
 
-**Status:** P1  **Score:** 100  **Override:** No
-**Mentions:** 1073  **Signals:** escalation: 26, email_mention: 18, risk_logged: 39, decision_logged: 37, task_created: 41, meeting_mention: 28, chat_mention: 43
+**Status:** P1  **Score:** 100  **Override:** Yes - Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
+**Attention:** 100  **Activity:** 100  **Strategic:** 100  **Trend:** ↑ +367.5%
+**Mentions:** 448  **Signals:** task_created: 34, risk_logged: 33, meeting_mention: 29, email_mention: 19, chat_mention: 38, decision_logged: 30, escalation: 19
 
-Transition of operational support activities to GOCC.
+Monitoring maturity and observability readiness workstream.
 
 **Evidence:**
-- `00-context\objectives.md`
-- `00-context\objective_skill.md`
-- `00-context\pack-config.md`
-- `00-context\projects.md`
-- `00-context\settings.json`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/copilot-activity/README.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
 
 **Recommended next action:**
 - Review progress this week. Ensure blockers are visible to stakeholders.
 ### Rapid Recovery
 
-**Status:** P1  **Score:** 93.8  **Override:** Yes - Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
-**Mentions:** 603  **Signals:** escalation: 23, email_mention: 17, risk_logged: 36, decision_logged: 34, task_created: 36, meeting_mention: 26, chat_mention: 40
+**Status:** P1  **Score:** 99.2  **Override:** Yes - Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
+**Attention:** 99.2  **Activity:** 98.6  **Strategic:** 100  **Trend:** ↑ +280.2%
+**Mentions:** 603  **Signals:** task_created: 36, risk_logged: 36, meeting_mention: 26, email_mention: 17, chat_mention: 40, decision_logged: 34, escalation: 23
 
 Recovery readiness for Gold applications and critical operational scenarios.
 
 **Evidence:**
-- `00-context\objectives.md`
-- `00-context\pack-config.md`
-- `00-context\settings.json`
-- `00-context\teams.md`
-- `01-inbox\inbox.md`
-
-**Recommended next action:**
-- Review progress this week. Ensure blockers are visible to stakeholders.
-### MMM L2
-
-**Status:** P1  **Score:** 88.1  **Override:** Yes - Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
-**Mentions:** 448  **Signals:** escalation: 19, email_mention: 19, risk_logged: 33, decision_logged: 30, task_created: 34, meeting_mention: 29, chat_mention: 38
-
-Monitoring maturity and observability readiness workstream.
-
-**Evidence:**
-- `00-context\objectives.md`
-- `00-context\objective_skill.md`
-- `00-context\pack-config.md`
-- `00-context\settings.json`
-- `00-context\systems.md`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `01-inbox/archive/CAP+for+Capacity+Management.doc`
 
 **Recommended next action:**
 - Review progress this week. Ensure blockers are visible to stakeholders.
 ### GBO Batch Transition
 
-**Status:** P1  **Score:** 80.6  **Override:** Yes - Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
-**Mentions:** 404  **Signals:** escalation: 17, email_mention: 16, risk_logged: 28, decision_logged: 25, task_created: 28, meeting_mention: 24, chat_mention: 32
+**Status:** P1  **Score:** 96.4  **Override:** Yes - Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
+**Attention:** 96.4  **Activity:** 97.4  **Strategic:** 90  **Trend:** ↑ +214.6%
+**Mentions:** 404  **Signals:** task_created: 28, risk_logged: 28, meeting_mention: 24, email_mention: 16, chat_mention: 32, decision_logged: 25, escalation: 17
 
 Transition of batch operations into the GBO operating model.
 
 **Evidence:**
-- `00-context\objectives.md`
-- `00-context\projects.md`
-- `00-context\settings.json`
-- `00-context\systems.md`
-- `00-context\teams.md`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `02-work/tasks.md`
 
 **Recommended next action:**
 - Review progress this week. Ensure blockers are visible to stakeholders.
-### Employee XP Dashboard
+### GOCC Transition
 
-**Status:** P1  **Score:** 79.8  **Override:** No
-**Mentions:** 185  **Signals:** escalation: 18, email_mention: 15, risk_logged: 29, decision_logged: 28, task_created: 30, meeting_mention: 22, chat_mention: 30
+**Status:** P1  **Score:** 82.2  **Override:** No
+**Attention:** 82.2  **Activity:** 98.6  **Strategic:** 90  **Trend:** ↑ +280.2%
+**Mentions:** 1073  **Signals:** task_created: 41, risk_logged: 39, meeting_mention: 28, email_mention: 18, chat_mention: 43, decision_logged: 37, escalation: 26
 
-Dashboard tracking employee-facing technology experience.
+Transition of operational support activities to GOCC.
 
 **Evidence:**
-- `00-context\objectives.md`
-- `00-context\pack-config.md`
-- `00-context\projects.md`
-- `00-context\settings.json`
-- `00-context\teams.md`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `01-inbox/archive/CAP+for+Capacity+Management.doc`
 
 **Recommended next action:**
 - Review progress this week. Ensure blockers are visible to stakeholders.
 ### CMDB Mapping
 
-**Status:** P1  **Score:** 72.4  **Override:** No
-**Mentions:** 270  **Signals:** escalation: 15, email_mention: 12, risk_logged: 27, decision_logged: 21, task_created: 24, meeting_mention: 19, chat_mention: 24
+**Status:** P1  **Score:** 80.2  **Override:** No
+**Attention:** 80.2  **Activity:** 98.6  **Strategic:** 80  **Trend:** ↑ +411.9%
+**Mentions:** 270  **Signals:** task_created: 24, risk_logged: 27, meeting_mention: 19, email_mention: 12, chat_mention: 24, decision_logged: 21, escalation: 15
 
 Ownership and service relationship foundation for operational readiness.
 
 **Evidence:**
-- `00-context\objectives.md`
-- `00-context\pack-config.md`
-- `00-context\projects.md`
-- `00-context\settings.json`
-- `00-context\systems.md`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `01-inbox/archive/CAP+for+Capacity+Management.doc`
 
 **Recommended next action:**
 - Review progress this week. Ensure blockers are visible to stakeholders.
 ### Developer XP Dashboard
 
-**Status:** P1  **Score:** 71.8  **Override:** No
-**Mentions:** 222  **Signals:** escalation: 16, email_mention: 15, risk_logged: 28, decision_logged: 27, task_created: 29, meeting_mention: 20, chat_mention: 29
+**Status:** P1  **Score:** 75.4  **Override:** No
+**Attention:** 75.4  **Activity:** 97.4  **Strategic:** 60  **Trend:** ↑ +473%
+**Mentions:** 222  **Signals:** task_created: 29, risk_logged: 28, meeting_mention: 20, email_mention: 15, chat_mention: 29, decision_logged: 27, escalation: 16
 
 Dashboard tracking developer and non-production technology experience.
 
 **Evidence:**
-- `00-context\pack-config.md`
-- `00-context\projects.md`
-- `00-context\settings.json`
-- `00-context\teams.md`
-- `01-inbox\inbox.md`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `02-work/tasks.md`
+
+**Recommended next action:**
+- Review progress this week. Ensure blockers are visible to stakeholders.
+### Employee XP Dashboard
+
+**Status:** P1  **Score:** 75.4  **Override:** No
+**Attention:** 75.4  **Activity:** 97.4  **Strategic:** 60  **Trend:** ↑ +473%
+**Mentions:** 185  **Signals:** task_created: 30, risk_logged: 29, meeting_mention: 22, email_mention: 15, chat_mention: 30, decision_logged: 28, escalation: 18
+
+Dashboard tracking employee-facing technology experience.
+
+**Evidence:**
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `02-work/tasks.md`
+
+**Recommended next action:**
+- Review progress this week. Ensure blockers are visible to stakeholders.
+### ADX Registration
+
+**Status:** P1  **Score:** 73.4  **Override:** No
+**Attention:** 73.4  **Activity:** 97.4  **Strategic:** 50  **Trend:** ↑ +554.9%
+**Mentions:** 204  **Signals:** task_created: 19, risk_logged: 21, meeting_mention: 17, email_mention: 15, chat_mention: 21, decision_logged: 16, escalation: 8
+
+Application registration and logging visibility workstream.
+
+**Evidence:**
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/copilotUpdate.md`
+- `02-work/tasks.md`
 
 **Recommended next action:**
 - Review progress this week. Ensure blockers are visible to stakeholders.
 
 ## P2 Focus
 
-### ADX Registration
-
-**Status:** P2  **Score:** 60.2  **Override:** No
-**Mentions:** 204  **Signals:** escalation: 8, email_mention: 15, risk_logged: 21, decision_logged: 16, task_created: 19, meeting_mention: 17, chat_mention: 21
-
-Application registration and logging visibility workstream.
-
-**Evidence:**
-- `00-context\pack-config.md`
-- `00-context\settings.json`
-- `00-context\systems.md`
-- `01-inbox\inbox.md`
-- `01-inbox\archive\20260604+-+Lapu-Lapu+GOCC+and+Japan.doc`
-
-**Recommended next action:**
-- Keep moving. Unblock dependencies where possible.
+_None._
 
 ## Watch List
 
-### Capacity Management
-
-**Status:** Watch  **Score:** 58.8  **Override:** Yes - CAP-48585 is strategically important but should be tracked as a watch item unless delivery risk increases.
-**Mentions:** 193  **Signals:** escalation: 8, email_mention: 9, risk_logged: 16, decision_logged: 13, task_created: 17, meeting_mention: 11, chat_mention: 17
-
-Capacity management corrective action and operational forecasting.
-
-**Evidence:**
-- `00-context\objectives.md`
-- `01-inbox\inbox.md`
-- `01-inbox\archive\20260416+-+LapuLapu+Team+Direction+and+Execution.doc`
-- `01-inbox\archive\20260423+-+LapuLapu+Team+Direction+and+Execution.doc`
-- `01-inbox\archive\20260618+-+Lapu-Lapu+GOCC.doc`
-
-**Recommended next action:**
-- Monitor. Escalate to P1 if a blocker or deadline appears.
 ### CyberArk Governance
 
-**Status:** Watch  **Score:** 45.7  **Override:** Yes - Governance risk is material but should not displace core delivery work unless escalated.
-**Mentions:** 203  **Signals:** escalation: 4, email_mention: 7, risk_logged: 11, decision_logged: 8, task_created: 11, meeting_mention: 8, chat_mention: 11
+**Status:** Watch  **Score:** 83  **Override:** Yes - Governance risk is material but should not displace core delivery work unless escalated.
+**Attention:** 83  **Activity:** 95.9  **Strategic:** 80  **Trend:** ↑ +100%
+**Mentions:** 203  **Signals:** task_created: 11, risk_logged: 11, meeting_mention: 8, email_mention: 7, chat_mention: 11, decision_logged: 8, escalation: 4
 
 Privileged access governance and service-account risk workstream.
 
 **Evidence:**
-- `01-inbox\inbox.md`
-- `01-inbox\archive\INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc`
-- `01-inbox\archive\Incident+Analysis_+Unintended+SMS_LINE+Messages+Sent+to+70,000+Customers+Due+to+Data+Update+Error.doc`
-- `01-inbox\archive\W28_copilot.md`
-- `01-inbox\copilot-activity\2026-07-13-14-day-activity.md`
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/W28_copilot.md`
+- `01-inbox/archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc`
+- `02-work/tasks.md`
+
+**Recommended next action:**
+- Monitor. Escalate to P1 if a blocker or deadline appears.
+### Capacity Management
+
+**Status:** Watch  **Score:** 80.2  **Override:** Yes - CAP-48585 is strategically important but should be tracked as a watch item unless delivery risk increases.
+**Attention:** 80.2  **Activity:** 94.5  **Strategic:** 70  **Trend:** ↑ +1012.2%
+**Mentions:** 193  **Signals:** task_created: 17, risk_logged: 16, meeting_mention: 11, email_mention: 9, chat_mention: 17, decision_logged: 13, escalation: 8
+
+Capacity management corrective action and operational forecasting.
+
+**Evidence:**
+- `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+- `01-inbox/inbox.md`
+- `01-inbox/archive/INC08672078-mfcgd_wasAPIMprod-credential-expiry.doc`
+- `01-inbox/archive/CAP+for+Capacity+Management.doc`
+- `02-work/tasks.md`
 
 **Recommended next action:**
 - Monitor. Escalate to P1 if a blocker or deadline appears.
 
 ## Parking Lot
 
-### Project Matryoshka
+### Lapu-Lapu Corpus Care
 
-**Status:** ParkingLot  **Score:** 0.8  **Override:** No
-**Mentions:** 5  **Signals:** email_mention: 3, chat_mention: 1
+**Status:** ParkingLot  **Score:** 12.5  **Override:** No
+**Attention:** 12.5  **Activity:** 0  **Strategic:** 50  **Trend:** → 0%
+**Mentions:** 0  **Signals:** none detected
 
 
 
 **Evidence:**
-- `01-inbox\copilot-recaps\README.md`
-- `docs\matryoshka-v1.1.md`
-- `docs\project-matryoshka-v1-milestones.md`
-- `docs\README.md`
+- No mentions detected in scanned files.
 
 **Recommended next action:**
 - Parked. Revisit when capacity allows.
-### Lapu-Lapu Corpus Care
+### Project Matryoshka
 
-**Status:** ParkingLot  **Score:** 0.7  **Override:** No
-**Mentions:** 1  **Signals:** chat_mention: 1
+**Status:** ParkingLot  **Score:** 12.5  **Override:** No
+**Attention:** 12.5  **Activity:** 0  **Strategic:** 50  **Trend:** → 0%
+**Mentions:** 3  **Signals:** email_mention: 3
 
 
 
 **Evidence:**
-- `01-inbox\copilot-recaps\README.md`
+- `docs/project-matryoshka-v1-milestones.md`
+- `docs/README.md`
+- `docs/matryoshka-v1.1.md`
 
 **Recommended next action:**
 - Parked. Revisit when capacity allows.
@@ -217,16 +229,16 @@ Privileged access governance and service-account risk workstream.
 
 ## Blocked / Escalation Candidates
 
-- **Employee XP Dashboard** - escalation signal detected.
+- **GOCC Transition** - escalation signal detected.
 - **ADX Registration** - escalation signal detected.
 - **Developer XP Dashboard** - escalation signal detected.
-- **GBO Batch Transition** - escalation signal detected.
-- **Rapid Recovery** - escalation signal detected.
-- **MMM L2** - escalation signal detected.
 - **CMDB Mapping** - escalation signal detected.
-- **GOCC Transition** - escalation signal detected.
+- **Employee XP Dashboard** - escalation signal detected.
 - **CyberArk Governance** - escalation signal detected.
+- **GBO Batch Transition** - escalation signal detected.
+- **MMM L2** - escalation signal detected.
 - **Capacity Management** - escalation signal detected.
+- **Rapid Recovery** - escalation signal detected.
 
 ---
 
@@ -234,28 +246,28 @@ Privileged access governance and service-account risk workstream.
 
 | Workstream | Category | Score | Override | Top Evidence | Recommended Action |
 |---|---:|---:|:---:|---|---|
-| GOCC Transition | P1 | 100 |  | `00-context\objectives.md` | Review & report |
-| Rapid Recovery | P1 | 93.8 | yes | `00-context\objectives.md` | Review & report |
-| MMM L2 | P1 | 88.1 | yes | `00-context\objectives.md` | Review & report |
-| GBO Batch Transition | P1 | 80.6 | yes | `00-context\objectives.md` | Review & report |
-| Employee XP Dashboard | P1 | 79.8 |  | `00-context\objectives.md` | Review & report |
-| CMDB Mapping | P1 | 72.4 |  | `00-context\objectives.md` | Review & report |
-| Developer XP Dashboard | P1 | 71.8 |  | `00-context\pack-config.md` | Review & report |
-| ADX Registration | P2 | 60.2 |  | `00-context\pack-config.md` | Progress |
-| Capacity Management | Watch | 58.8 | yes | `00-context\objectives.md` | Monitor |
-| CyberArk Governance | Watch | 45.7 | yes | `01-inbox\inbox.md` | Monitor |
-| Project Matryoshka | ParkingLot | 0.8 |  | `01-inbox\copilot-recaps\README.md` | Park |
-| Lapu-Lapu Corpus Care | ParkingLot | 0.7 |  | `01-inbox\copilot-recaps\README.md` | Park |
+| MMM L2 | P1 | 100 | yes | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| Rapid Recovery | P1 | 99.2 | yes | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| GBO Batch Transition | P1 | 96.4 | yes | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| CyberArk Governance | Watch | 83 | yes | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Monitor |
+| GOCC Transition | P1 | 82.2 |  | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| CMDB Mapping | P1 | 80.2 |  | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| Capacity Management | Watch | 80.2 | yes | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Monitor |
+| Developer XP Dashboard | P1 | 75.4 |  | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| Employee XP Dashboard | P1 | 75.4 |  | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| ADX Registration | P1 | 73.4 |  | `01-inbox/copilot-activity/2026-07-13-14-day-activity.md` | Review & report |
+| Lapu-Lapu Corpus Care | ParkingLot | 12.5 |  | `-` | Park |
+| Project Matryoshka | ParkingLot | 12.5 |  | `docs/project-matryoshka-v1-milestones.md` | Park |
 
 ---
 
 ## Human Overrides Applied
 
-- **GBO Batch Transition** -> P1: Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
-- **Rapid Recovery** -> P1: Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
-- **MMM L2** -> P1: Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
 - **CyberArk Governance** -> Watch: Governance risk is material but should not displace core delivery work unless escalated.
+- **GBO Batch Transition** -> P1: Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
+- **MMM L2** -> P1: Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
 - **Capacity Management** -> Watch: CAP-48585 is strategically important but should be tracked as a watch item unless delivery risk increases.
+- **Rapid Recovery** -> P1: Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
 
 ---
 
@@ -270,9 +282,9 @@ Scanned folders:
 - `docs`
 
 Latest Copilot activity recap:
-- `01-inbox\copilot-activity\2026-07-13-14-day-activity.md`
+- `01-inbox\copilot-activity\2026-07-14-14-day-activity.md`
 
-Total files scanned: **90**
+Total files scanned: **93**
 
 ---
 

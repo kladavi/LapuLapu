@@ -66,3 +66,35 @@ rules:
   include_evidence_summary: true
   include_top_source_files: true
   include_recommended_next_actions: true
+
+# --- V1.2 Signal Quality additions -----------------------------------------
+# The attention score used for dashboard ranking is a weighted combination of
+# distinct score components. Stable context files (00-context, docs) should
+# inform meaning but must not dominate activity scoring. See source-weights.yaml
+# for per-folder weighting and activity-windows.yaml for recency behaviour.
+
+score_components:
+  strategic_score:
+    description: Stable workstream importance based on workstream registry.
+    source: 00-context/workstreams.yaml
+
+  activity_score:
+    description: Recent operational activity based on weighted recent sources.
+    source: recent activity folders
+
+  override_score:
+    description: Human steering from priority-overrides.yaml.
+    source: 00-context/priority-overrides.yaml
+
+  trend_score:
+    description: Change in activity compared to the previous activity window.
+    source: current vs previous activity windows
+
+  attention_score:
+    description: Final normalized score used for dashboard ranking.
+
+attention_formula:
+  strategic_weight_percent: 20
+  activity_weight_percent: 60
+  override_weight_percent: 15
+  trend_weight_percent: 5
