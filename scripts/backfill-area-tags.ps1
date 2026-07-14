@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # Backfill #area:* tags on tasks.md and key-results.md based on keyword rules.
 # See 00-context/pack-config.md "Delivery Area Taxonomy" for the canonical mapping.
 [CmdletBinding()]

@@ -1,0 +1,209 @@
+#Requires -Version 7.0
+<#
+.SYNOPSIS
+    Project Matryoshka - Automated Intake Pipeline runner.
+
+.DESCRIPTION
+    Detects the newest Copilot 14-day activity recap in
+    01-inbox/copilot-activity/, compares it against
+    00-context/automation-state.json, and if the recap is new:
+      1. Regenerates every Current Focus artifact via
+         scripts/generate-current-focus.ps1.
+      2. Validates all generated JSON files.
+      3. Updates 00-context/automation-state.json.
+      4. Commits source + generated files to Git (local only).
+    The script never pushes and never overwrites prior recaps.
+
+.NOTES
+    Target shell: PowerShell 7.6.3+ (pwsh).
+    Path:  C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.3.0_x64__8wekyb3d8bbwe\pwsh.exe
+
+    Idempotent: repeated runs with no new recap exit cleanly with exit code 0.
+    Do NOT push in this script. Pushing is intentionally left to the operator.
+#>
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+# UTF-8 everywhere so generated files render arrow/emoji characters correctly.
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding           = [System.Text.Encoding]::UTF8
+
+$RepoRoot     = 'C:\Users\kladavi\OneDrive - Manulife\Projects\LapuLapu'
+Set-Location -LiteralPath $RepoRoot
+
+$ActivityDir  = Join-Path $RepoRoot '01-inbox\copilot-activity'
+$StateFile    = Join-Path $RepoRoot '00-context\automation-state.json'
+$Generator    = Join-Path $RepoRoot 'scripts\generate-current-focus.ps1'
+
+$GeneratedFiles = @(
+    '00-context\generated\current-focus.json',
+    '00-context\generated\current-focus.md',
+    '00-context\generated\current-focus-trends.json',
+    '00-context\generated\current-focus-trends.md',
+    '00-context\generated\morning-briefing.json',
+    '00-context\generated\morning-briefing.md'
+)
+
+function Write-Log {
+    param([string] $Message)
+    $ts = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss')
+    Write-Host "[$ts] $Message"
+}
+
+function Get-PwshPath {
+    $preferred = 'C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.3.0_x64__8wekyb3d8bbwe\pwsh.exe'
+    if (Test-Path -LiteralPath $preferred) { return $preferred }
+    $cmd = Get-Command pwsh -ErrorAction SilentlyContinue
+    if ($cmd) { return $cmd.Source }
+    throw 'pwsh (PowerShell 7+) not found. Install PowerShell 7 or update the path in run-matryoshka-pipeline.ps1.'
+}
+
+function Read-StateFile {
+    param([string] $Path)
+    $default = [ordered]@{
+        lastProcessedActivityFile = ''
+        lastProcessedActivityHash = ''
+        lastSuccessfulRun         = ''
+        lastCommitHash            = ''
+        status                    = 'initialized'
+    }
+    if (-not (Test-Path -LiteralPath $Path)) {
+        ($default | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
+        return $default
+    }
+
+    try {
+        $raw = Get-Content -LiteralPath $Path -Raw -Encoding UTF8
+        if ([string]::IsNullOrWhiteSpace($raw)) {
+            ($default | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
+            return $default
+        }
+        $obj = $raw | ConvertFrom-Json -AsHashtable
+        # Fill in any missing keys with defaults so downstream code can trust the shape.
+        foreach ($k in $default.Keys) {
+            if (-not $obj.ContainsKey($k)) { $obj[$k] = $default[$k] }
+        }
+        return $obj
+    } catch {
+        Write-Log "State file malformed; resetting to defaults. Reason: $($_.Exception.Message)"
+        ($default | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
+        return $default
+    }
+}
+
+function Save-StateFile {
+    param([hashtable] $State, [string] $Path)
+    ($State | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
+}
+
+# --- Locate newest recap ----------------------------------------------------
+
+Write-Log "Pipeline start. Repo: $RepoRoot"
+
+if (-not (Test-Path -LiteralPath $ActivityDir)) {
+    Write-Log "Activity directory not found: $ActivityDir"
+    exit 0
+}
+
+$latest = Get-ChildItem -LiteralPath $ActivityDir -File -Filter '*-14-day-activity.md' -ErrorAction SilentlyContinue |
+          Sort-Object LastWriteTime -Descending |
+          Select-Object -First 1
+
+if (-not $latest) {
+    Write-Log 'No 14-day activity recap found. Exiting.'
+    exit 0
+}
+
+Write-Log "Latest recap: $($latest.Name) (modified $($latest.LastWriteTime.ToString('s')))"
+
+# --- Compare against automation-state ---------------------------------------
+
+$state = Read-StateFile -Path $StateFile
+$hash  = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
+
+if ($state.lastProcessedActivityHash -eq $hash) {
+    Write-Log "Recap already processed (hash unchanged). Nothing to do."
+    exit 0
+}
+
+Write-Log "New content detected. Previous hash: '$($state.lastProcessedActivityHash)'  new hash: '$hash'"
+
+# --- Run generator ----------------------------------------------------------
+
+$pwshPath = Get-PwshPath
+Write-Log "Invoking generator via $pwshPath"
+
+& $pwshPath -NoLogo -NoProfile -File $Generator
+if ($LASTEXITCODE -ne 0) {
+    throw "Generator exited with code $LASTEXITCODE."
+}
+
+# --- Validate generated JSON ------------------------------------------------
+
+Write-Log 'Validating generated JSON files.'
+foreach ($relJson in ($GeneratedFiles | Where-Object { $_ -like '*.json' })) {
+    $abs = Join-Path $RepoRoot $relJson
+    if (-not (Test-Path -LiteralPath $abs)) { throw "Missing generated file: $relJson" }
+    try {
+        Get-Content -LiteralPath $abs -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
+        Write-Log "  OK: $relJson"
+    } catch {
+        throw "Invalid JSON in $relJson : $($_.Exception.Message)"
+    }
+}
+
+# --- Update automation-state.json -------------------------------------------
+
+$now = (Get-Date).ToString('s')
+$state.lastProcessedActivityFile = $latest.Name
+$state.lastProcessedActivityHash = $hash
+$state.lastSuccessfulRun         = $now
+$state.status                    = 'success'
+Save-StateFile -State $state -Path $StateFile
+Write-Log "Automation state updated (lastSuccessfulRun=$now)."
+
+# --- Git commit (local only, never push) ------------------------------------
+
+Write-Log 'Staging Git changes.'
+git status --short
+
+git add `
+    '01-inbox/copilot-activity' `
+    '00-context/generated' `
+    '00-context/automation-state.json'
+
+$staged = git diff --cached --name-only
+if (-not $staged) {
+    Write-Log 'No staged changes. Nothing to commit.'
+    exit 0
+}
+
+Write-Log "Files staged for commit:`n$staged"
+
+git commit -m 'Update Project Matryoshka automated intake outputs'
+if ($LASTEXITCODE -ne 0) {
+    throw "git commit failed with exit code $LASTEXITCODE"
+}
+$commit = (git rev-parse HEAD).Trim()
+Write-Log "Committed outputs: $commit"
+
+# Record the commit hash back into automation-state for full audit trail.
+$state = Read-StateFile -Path $StateFile
+$state.lastCommitHash = $commit
+Save-StateFile -State $state -Path $StateFile
+
+git add '00-context/automation-state.json'
+$stagedState = git diff --cached --name-only
+if ($stagedState) {
+    git commit -m 'Record Project Matryoshka automation state'
+    if ($LASTEXITCODE -ne 0) {
+        throw "git commit (state) failed with exit code $LASTEXITCODE"
+    }
+    $stateCommit = (git rev-parse HEAD).Trim()
+    Write-Log "Recorded state commit: $stateCommit"
+} else {
+    Write-Log 'State commit skipped: no additional changes to record.'
+}
+
+Write-Log 'Pipeline complete. Push intentionally skipped.'

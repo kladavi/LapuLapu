@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # Print every #area:* tag with the items carrying it (id + title).
 $root = Split-Path -Parent $PSScriptRoot
 $files = @(

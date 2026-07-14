@@ -1,0 +1,78 @@
+# <!-- HUMAN -->
+# Human-maintained
+# Purpose: controls how strongly each folder contributes to Current Focus scoring.
+# Stable context files should inform meaning but should not dominate recent activity scoring.
+#
+# Fields per entry:
+#   type                         short label describing the folder role
+#   weight                       0.0..1.0 multiplier applied to signal points collected in files under this path
+#   include_for_activity_score   whether files in this path may add to the activity score
+#   include_for_context          whether files in this path may be surfaced as evidence / used for meaning
+#   description                  human-readable purpose
+#
+# Path keys are matched by "starts-with" against the repo-relative folder path.
+# The most specific (longest) matching key wins.
+
+source_weights:
+  01-inbox/copilot-activity:
+    type: recent_activity
+    weight: 1.0
+    include_for_activity_score: true
+    include_for_context: true
+    description: Copilot-generated 14-day activity recaps based on M365 activity.
+
+  01-inbox:
+    type: intake
+    weight: 0.8
+    include_for_activity_score: true
+    include_for_context: true
+    description: Raw or semi-processed intake, including imported summaries and operational notes.
+
+  02-work:
+    type: active_work
+    weight: 0.7
+    include_for_activity_score: true
+    include_for_context: true
+    description: Active workstream notes, tasks, and operational working files.
+
+  03-reporting/weekly:
+    type: weekly_reporting
+    weight: 0.6
+    include_for_activity_score: true
+    include_for_context: true
+    description: Weekly reporting artifacts and recent status summaries.
+
+  docs/key-results:
+    type: key_results
+    weight: 0.5
+    include_for_activity_score: true
+    include_for_context: true
+    description: Key result evidence and measurable delivery artifacts.
+
+  00-context:
+    type: stable_context
+    weight: 0.15
+    include_for_activity_score: false
+    include_for_context: true
+    description: Strategic context, objectives, registries, settings, and operating model.
+
+  docs:
+    type: durable_docs
+    weight: 0.3
+    include_for_activity_score: false
+    include_for_context: true
+    description: Durable reference documentation and milestone material.
+
+  99-archive:
+    type: archive
+    weight: 0.0
+    include_for_activity_score: false
+    include_for_context: false
+    description: Historical or retired material.
+
+  90-assets:
+    type: assets
+    weight: 0.0
+    include_for_activity_score: false
+    include_for_context: false
+    description: Images, screenshots, and non-text assets.

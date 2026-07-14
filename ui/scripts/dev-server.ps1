@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # dev-server.ps1 — Stop, clear cache, start Next.js dev server for LapuLapu UI
 # Usage: powershell -NoProfile -File scripts\dev-server.ps1 [-Port 3000]
 #

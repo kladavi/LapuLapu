@@ -1,3 +1,4 @@
+#Requires -Version 7.0
 # restart-dev.ps1 — Stop services, start Next.js dev server, confirm it's up
 # Usage: powershell -NoProfile -ExecutionPolicy Bypass -File scripts\restart-dev.ps1 [-Port 3000]
 #        powershell -NoProfile -ExecutionPolicy Bypass -File scripts\restart-dev.ps1 -Port 3000 -ClearCache

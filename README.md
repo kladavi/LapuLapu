@@ -85,3 +85,43 @@ script.
 4. **IDs are stable.** Objective IDs (`O1`, `O2`…) and Task IDs (`T001`, `T002`…) never change once assigned.
 5. **Tags are mandatory.** Every item carries tags for objective, system, team, and tier.
 6. **Respect the human/generated boundary.** See markers above.
+
+## Project Matryoshka — Current Focus pipeline (V1.2–V1.4)
+
+The scoring pipeline lives in [scripts/generate-current-focus.ps1](scripts/generate-current-focus.ps1) and
+is driven by these **human-maintained** control files under `00-context/`:
+
+- [00-context/workstreams.yaml](00-context/workstreams.yaml) — workstream registry (stable IDs, aliases).
+- [00-context/scoring-model.yaml](00-context/scoring-model.yaml) — signal weights, category thresholds, and V1.2 attention formula.
+- [00-context/priority-overrides.yaml](00-context/priority-overrides.yaml) — human steering (`force_category`).
+- [00-context/source-weights.yaml](00-context/source-weights.yaml) — **V1.2** per-folder weight and whether files count for activity vs context.
+- [00-context/activity-windows.yaml](00-context/activity-windows.yaml) — **V1.3** current/previous windows, recency decay, trend thresholds.
+
+The script produces six **generated** files (never hand-edit) under `00-context/generated/`:
+
+- `current-focus.md` / `current-focus.json` — attention-ranked focus dashboard.
+- `current-focus-trends.md` / `current-focus-trends.json` — **V1.3** trend detection vs the previous 14-day window.
+- `morning-briefing.md` / `morning-briefing.json` — **V1.4** executive briefing with primary focus, rising risks, decision watch, escalation candidates, and recommended actions.
+
+Regenerate with pwsh 7:
+
+```powershell
+& "C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.3.0_x64__8wekyb3d8bbwe\pwsh.exe" -NoLogo -NoProfile -File .\scripts\generate-current-focus.ps1
+```
+
+### Why activity and stable context are scored differently
+
+Stable strategic context (`00-context/`, `docs/`) informs meaning — purpose,
+dependencies, aliases, background — but must not dominate current activity
+scoring. `source-weights.yaml` marks those folders as `include_for_activity_score: false`
+so only recent operational folders (`01-inbox/copilot-activity/`, `01-inbox/`,
+`02-work/`, `03-reporting/weekly/`, `docs/key-results/`) contribute to the
+activity component of the attention score.
+
+### How trend detection works
+
+Each workstream's activity is measured over two windows: the current 14 days
+and the prior 14 days (offset). If the current activity is at least 20% higher
+it is flagged **↑ increasing**; at least 20% lower is **↓ decreasing**;
+otherwise **→ stable**. See [00-context/activity-windows.yaml](00-context/activity-windows.yaml).
+
