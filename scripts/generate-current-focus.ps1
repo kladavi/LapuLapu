@@ -32,6 +32,8 @@ $OUT_RISKREG_MD  = Join-Path $GEN 'risk-register.md'
 $OUT_RISKREG_JSON = Join-Path $GEN 'risk-register.json'
 $OUT_INBOX_MD    = Join-Path $GEN 'david-inbox.md'
 $OUT_INBOX_JSON  = Join-Path $GEN 'david-inbox.json'
+$OUT_INSIGHTS_MD   = Join-Path $GEN 'execution-insights.md'
+$OUT_INSIGHTS_JSON = Join-Path $GEN 'execution-insights.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -45,7 +47,7 @@ $SCAN_FOLDERS = @(
 $BINARY_EXTS = @('.png','.jpg','.jpeg','.gif','.bmp','.pdf',
                  '.docx','.xlsx','.pptx','.zip','.exe','.dll')
 
-# Control files are inputs to the generator, not evidence — exclude to prevent
+# Control files are inputs to the generator, not evidence  Eexclude to prevent
 # workstream self-amplification via aliases in workstreams.yaml.
 $EXCLUDED_FILES = @(
     'workstreams.yaml',
@@ -256,6 +258,87 @@ function Read-OwnershipMap($path) {
         }
     }
     return $result
+}
+
+# --- V3.0 Adaptive Intelligence: David preference profile parser -----------
+#
+# Minimal YAML slice for david-preferences.yaml. Reads the specific keys used
+# by the inbox re-ranker and returns a nested hashtable. Missing file returns
+# a zero-weight default so the ranker still works.
+
+function Read-DavidPreferences($path) {
+    $default = @{
+        priorityBoosts = @{ workstream = @{}; owner = @{}; kind = @{} }
+        penalties      = @{
+            overloadedOwnerThreshold = 5
+            overloadedOwnerPenalty   = 0.20
+            lowConfidencePenalty     = 0.10
+            lowConfidenceThreshold   = 0.4
+        }
+        bonuses        = @{
+            recurringDecisionBonus   = 0.10
+            missedDeadlineBonus      = 0.30
+            imminentEscalationBonus  = 0.15
+            inferredActionBonus      = 0.05
+        }
+        learning       = @{
+            delayedWorkstreamConfidenceBonus = 0.10
+            missedDeadlineConfidenceBonus    = 0.15
+            overloadedOwnerConfidencePenalty = 0.05
+        }
+        version        = ''
+    }
+    if (-not (Test-Path -LiteralPath $path)) { return $default }
+    $lines = Read-FileLines $path
+
+    $section    = ''
+    $subSection = ''
+    foreach ($raw in $lines) {
+        if ($raw -match '^\s*#' -or [string]::IsNullOrWhiteSpace($raw)) { continue }
+
+        if ($raw -match '^version:\s*(.+)$') { $default.version = $Matches[1].Trim(); continue }
+
+        # Top-level section keys (unindented + trailing colon).
+        if ($raw -match '^([a-z_]+):\s*$') {
+            $section = $Matches[1]
+            $subSection = ''
+            continue
+        }
+
+        # Second-level: 2-space indent + trailing colon (only inside priority_boosts).
+        if ($section -eq 'priority_boosts' -and $raw -match '^  ([a-z_]+):\s*$') {
+            $subSection = $Matches[1]
+            continue
+        }
+
+        # Third-level (priority_boosts nested map) or second-level scalar.
+        if ($raw -match '^    "?([^":]+)"?\s*:\s*([0-9.\-]+)\s*$' -and $section -eq 'priority_boosts') {
+            $key = $Matches[1].Trim().Trim('"')
+            $val = [double]$Matches[2]
+            switch ($subSection) {
+                'workstream' { $default.priorityBoosts.workstream[$key] = $val }
+                'owner'      { $default.priorityBoosts.owner[$key] = $val }
+                'kind'       { $default.priorityBoosts.kind[$key] = $val }
+            }
+            continue
+        }
+
+        # Second-level scalar under penalties / bonuses / learning.
+        if ($raw -match '^  ([a-z_]+):\s*([0-9.\-]+)\s*$') {
+            $key = $Matches[1]
+            $val = [double]$Matches[2]
+            # snake -> camel for consumption
+            $camel = [regex]::Replace($key, '_([a-z])', { param($m) $m.Groups[1].Value.ToUpperInvariant() })
+            switch ($section) {
+                'penalties' { $default.penalties[$camel] = $val }
+                'bonuses'   { $default.bonuses[$camel]   = $val }
+                'learning'  { $default.learning[$camel]  = $val }
+            }
+            continue
+        }
+    }
+
+    return $default
 }
 
 # --- V1.2 additions: source weighting + activity windows --------------------
@@ -1135,7 +1218,7 @@ function Build-Json($finalResults, $meta) {
     $output = [ordered]@{
         generated   = $meta.generated
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V2.5'
+        version     = 'V3.0'
         workstreams = @($items)
     }
     return $output | ConvertTo-Json -Depth 6
@@ -1675,7 +1758,7 @@ function Build-MorningBriefingJson {
     $out = [ordered]@{
         generated                     = $GeneratedIso
         generator                     = 'scripts/generate-current-focus.ps1'
-        version                       = 'V2.5'
+        version                       = 'V3.0'
         executiveSnapshot             = $execSnap
         primaryFocus                  = @($primaryList)
         risingRisks                   = @($risingList)
@@ -1849,7 +1932,7 @@ function Get-DecisionRegistry {
             $context  = ($lines[$ctxStart..$ctxEnd] -join "`n")
             $lcContext = $context.ToLowerInvariant()
 
-            # Prefer H2 heading as title when the file uses the `## Dxxx — Title` convention.
+            # Prefer H2 heading as title when the file uses the `## Dxxx  ETitle` convention.
             $titleRaw = if ($currentHeading) { $currentHeading } else { $body }
             $title    = if ($titleRaw.Length -gt 140) { $titleRaw.Substring(0, 137) + '...' } else { $titleRaw }
 
@@ -1932,6 +2015,9 @@ function Get-DecisionRegistry {
                     completionSignal     = $completionSignal
                     timeToEscalationRisk = $null
                     themeTags            = [System.Collections.Generic.List[string]]::new()
+                    # V3.0 adaptive intelligence
+                    outcomeQuality       = 'Unknown'
+                    recurrenceCount      = 0
                     recommendedFollowUp = $null
                     _detectedOn         = $rec.LastWriteTime
                     _lastSeenOn         = $rec.LastWriteTime
@@ -2038,6 +2124,32 @@ function Get-DecisionRegistry {
         $e.timeToEscalationRisk = Get-EscalationRisk -Kind 'decision' -Entry $e -Now $now
         # A decided item should no longer be flagged as requiring a decision.
         if ($e.decisionStatus -eq 'Decided') { $e.decisionRequired = $false }
+
+        # V3.0 Adaptive Intelligence: action inference + outcome quality
+        # If no marker-derived actions exist for a still-Pending decision,
+        # synthesize 1-3 inferred follow-ups. Mark them with actionSource='inferred'.
+        if ($e.decisionStatus -ne 'Decided' -and (@($e.linkedActions).Count -eq 0)) {
+            $inferred = Get-InferredActions -Entry $e -Now $now
+            foreach ($ia in @($inferred)) { $e.linkedActions.Add($ia) }
+        }
+        $e.outcomeQuality  = Get-OutcomeQuality -Entry $e
+        $e.recurrenceCount = 0    # populated in the second pass below
+    }
+
+    # V3.0 recurrence detection: normalize titles and count occurrences.
+    # Any decision whose normalized title appears 2+ times gets recurrenceCount>=2.
+    $titleCounts = @{}
+    foreach ($e in $decisions.Values) {
+        $norm = Get-NormalizedTitle -Title $e.title
+        if (-not $norm) { continue }
+        if (-not $titleCounts.ContainsKey($norm)) { $titleCounts[$norm] = 0 }
+        $titleCounts[$norm] += 1
+    }
+    foreach ($e in $decisions.Values) {
+        $norm = Get-NormalizedTitle -Title $e.title
+        if ($norm -and $titleCounts.ContainsKey($norm)) {
+            $e.recurrenceCount = [int]$titleCounts[$norm]
+        }
     }
 
     # Sort: open before closed; within each group, oldest first
@@ -2169,6 +2281,8 @@ function Build-DecisionRegistryJson {
             completionSignal    = $e.completionSignal
             linkedActions       = @($e.linkedActions)
             timeToEscalationRisk= $e.timeToEscalationRisk
+            outcomeQuality      = $e.outcomeQuality
+            recurrenceCount     = $e.recurrenceCount
             owner               = $e.owner
             ownerConfidence     = $e.ownerConfidence
             escalationPath      = @($e.escalationPath)
@@ -2191,11 +2305,18 @@ function Build-DecisionRegistryJson {
     $decidedCount  = @($Decisions | Where-Object { $_.decisionStatus -eq 'Decided' }).Count
     $expiredCount  = @($Decisions | Where-Object { $_.decisionStatus -eq 'Expired' }).Count
     $lifecyclePending = @($Decisions | Where-Object { $_.decisionStatus -eq 'Pending' }).Count
+    $recurringCount   = @($Decisions | Where-Object { [int]$_.recurrenceCount -ge 2 }).Count
+    $inferredActionCount = 0
+    foreach ($d in $Decisions) {
+        foreach ($la in @($d.linkedActions)) {
+            if ($la -is [System.Collections.IDictionary] -and $la.actionSource -eq 'inferred') { $inferredActionCount += 1 }
+        }
+    }
 
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V2.5'
+        version     = 'V3.0'
         totals      = [ordered]@{
             total              = $Decisions.Count
             open               = $openCount
@@ -2207,6 +2328,14 @@ function Build-DecisionRegistryJson {
                 decided = $decidedCount
                 expired = $expiredCount
             }
+            outcomeQuality     = [ordered]@{
+                high    = @($Decisions | Where-Object { $_.outcomeQuality -eq 'High' }).Count
+                medium  = @($Decisions | Where-Object { $_.outcomeQuality -eq 'Medium' }).Count
+                low     = @($Decisions | Where-Object { $_.outcomeQuality -eq 'Low' }).Count
+                unknown = @($Decisions | Where-Object { $_.outcomeQuality -eq 'Unknown' }).Count
+            }
+            recurring          = $recurringCount
+            inferredActions    = $inferredActionCount
         }
         decisions   = @($items)
     }
@@ -2377,14 +2506,137 @@ function Get-LinkedActionsFromContext {
         $text = ($body -replace '\s*\((?:owner|due)[:\s].*?\)\s*$', '').Trim()
         if ($text.Length -gt 200) { $text = $text.Substring(0, 197) + '...' }
         $out.Add([ordered]@{
-            text   = $text
-            owner  = $owner
-            dueBy  = $due
-            status = $status
+            text         = $text
+            owner        = $owner
+            dueBy        = $due
+            status       = $status
+            actionSource = 'marker'
         })
         if ($out.Count -ge 5) { break }
     }
     return @($out)
+}
+
+# --- V3.0 Adaptive Intelligence: action inference + outcome quality + recurrence
+
+function Get-InferredActions {
+    <#
+        Fires when a decision has no linked actions captured from **Action:** markers.
+        Synthesizes 1-3 sensible follow-ups based on the entry's owner, escalation
+        path, structured recommendation, deadline, and aging. Every inferred item
+        is tagged with actionSource='inferred' so consumers can distinguish
+        marker-derived actions from synthesized ones.
+    #>
+    param([hashtable] $Entry, [datetime] $Now)
+
+    $out = [System.Collections.Generic.List[hashtable]]::new()
+    $owner  = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+    $wsText = if ($Entry.workstream) { [string]$Entry.workstream } else { '(no workstream)' }
+    $rec    = $Entry.recommendedFollowUp
+    $priority = if ($rec -is [System.Collections.IDictionary] -and $rec.priority) { [int]$rec.priority } else { 4 }
+    $verb     = if ($rec -is [System.Collections.IDictionary] -and $rec.verb)     { [string]$rec.verb } else { 'Track' }
+    $due      = if ($rec -is [System.Collections.IDictionary] -and $rec.dueBy)    { [string]$rec.dueBy } else { $Now.AddDays(7).ToString('yyyy-MM-dd') }
+
+    # Rule 1: escalation path
+    if ($priority -le 1) {
+        $escTarget = 'the workstream owner'
+        if ($Entry.escalationPath -and @($Entry.escalationPath).Count -gt 0) {
+            $escTarget = @($Entry.escalationPath)[0]
+        }
+        $out.Add([ordered]@{
+            text         = "Escalate to ${escTarget}: pending 14+ days on $wsText"
+            owner        = $owner
+            dueBy        = $due
+            status       = 'pending'
+            actionSource = 'inferred'
+        })
+    }
+
+    # Rule 2: aging (7-13d) or P2 - confirmation
+    if (($priority -eq 2) -or ([int]$Entry.decisionAgeDays -ge 7 -and [int]$Entry.decisionAgeDays -lt 14)) {
+        $out.Add([ordered]@{
+            text         = "Confirm status with $owner and record outcome"
+            owner        = $owner
+            dueBy        = $due
+            status       = 'pending'
+            actionSource = 'inferred'
+        })
+    }
+
+    # Rule 3: aged 30+ days with no outcome - archive or resurface
+    if ([int]$Entry.decisionAgeDays -ge 30 -and -not $Entry.decisionOutcome) {
+        $out.Add([ordered]@{
+            text         = "Archive $($Entry.decisionId) or resurface with fresh rationale"
+            owner        = $owner
+            dueBy        = $Now.AddDays(3).ToString('yyyy-MM-dd')
+            status       = 'pending'
+            actionSource = 'inferred'
+        })
+    }
+
+    # Rule 4: fresh decisions - monitor
+    if ($out.Count -eq 0 -and $verb -eq 'Track') {
+        $out.Add([ordered]@{
+            text         = "Monitor $wsText for follow-through - re-check in 7 days"
+            owner        = $owner
+            dueBy        = $Now.AddDays(7).ToString('yyyy-MM-dd')
+            status       = 'pending'
+            actionSource = 'inferred'
+        })
+    }
+
+    return @($out)
+}
+
+function Get-NormalizedTitle {
+    <#
+        Normalises a decision title for recurrence detection: strips leading
+        `D### -` numbering, casts to lower, collapses whitespace, drops trailing
+        punctuation. Returns empty string on empty input.
+    #>
+    param([string] $Title)
+    if ([string]::IsNullOrWhiteSpace($Title)) { return '' }
+    $t = $Title -replace '^\s*D\d+\s*[\u2014\-:]\s*', ''   # strip D001 -
+    $t = $t -replace '^\s*(?:Agreed|Deferred|Approved|Rejected|Locked|Reversed|Superseded|Confirmed)\s*:\s*', ''
+    $t = ($t.ToLowerInvariant() -replace '\s+', ' ').Trim().TrimEnd('.', ',', ';', ':')
+    return $t
+}
+
+function Get-OutcomeQuality {
+    <#
+        Rates the quality/confidence of a decision's recorded outcome.
+          - High    : Decided AND explicit outcome AND (completed action OR completion signal)
+          - Medium  : Decided AND explicit outcome (no completed action yet)
+          - Low     : Decided but outcome is only the V2.5 fallback (`**Decision:** verb`)
+                       OR status closed with no outcome text
+          - Unknown : not Decided
+    #>
+    param([hashtable] $Entry)
+
+    if ($Entry.decisionStatus -ne 'Decided') { return 'Unknown' }
+
+    $hasOutcome = -not [string]::IsNullOrWhiteSpace([string]$Entry.decisionOutcome)
+    $completedAction = $false
+    if ($Entry.linkedActions) {
+        foreach ($a in @($Entry.linkedActions)) {
+            if ($a -is [System.Collections.IDictionary] -and $a.status -eq 'completed') { $completedAction = $true; break }
+        }
+    }
+    $completionSignal = if ($Entry.ContainsKey('completionSignal')) { [string]$Entry.completionSignal } else { '' }
+
+    # Fallback outcomes are single-token resolution verbs (Approved/Deferred/etc).
+    # A richer outcome contains 3+ words or a comma/period.
+    $outcomeText = [string]$Entry.decisionOutcome
+    $isFallback  = $false
+    if ($hasOutcome) {
+        $wordCount = ($outcomeText -split '\s+').Count
+        $isFallback = ($wordCount -le 2 -and $outcomeText -match '^(?i)(Approved|Deferred|Rejected|Superseded|Reversed|Deprecated|Locked|Confirmed)\b')
+    }
+
+    if ($hasOutcome -and -not $isFallback -and ($completedAction -or $completionSignal -eq 'completed')) { return 'High' }
+    if ($hasOutcome -and -not $isFallback) { return 'Medium' }
+    if ($hasOutcome -and $isFallback) { return 'Low' }
+    return 'Low'
 }
 
 function Get-DecisionLifecycleStatus {
@@ -2927,7 +3179,7 @@ function Build-RiskRegisterJson {
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V2.5'
+        version     = 'V3.0'
         totals      = [ordered]@{
             total          = $Risks.Count
             open           = $openCount
@@ -3065,6 +3317,15 @@ function New-InboxItem {
         decisionOutcome      = if ($Kind -eq 'decision' -and $Entry.ContainsKey('decisionOutcome')) { [string]$Entry.decisionOutcome } else { '' }
         timeToEscalationRisk = if ($Entry.ContainsKey('timeToEscalationRisk')) { $Entry.timeToEscalationRisk } else { $null }
         linkedActionCount    = if ($Kind -eq 'decision' -and $Entry.ContainsKey('linkedActions')) { @($Entry.linkedActions).Count } else { 0 }
+        # V3.0 adaptive intelligence pass-through
+        outcomeQuality       = if ($Kind -eq 'decision' -and $Entry.ContainsKey('outcomeQuality')) { [string]$Entry.outcomeQuality } else { 'Unknown' }
+        recurrenceCount      = if ($Kind -eq 'decision' -and $Entry.ContainsKey('recurrenceCount')) { [int]$Entry.recurrenceCount } else { 1 }
+        actionSource         = if ($Kind -eq 'decision' -and $Entry.ContainsKey('linkedActions') -and @($Entry.linkedActions).Count -gt 0) {
+                                    $srcs = @(@($Entry.linkedActions) | ForEach-Object { [string]$_.actionSource } | Sort-Object -Unique)
+                                    ($srcs -join '+')
+                                } else { '' }
+        rankingScore         = 0.0
+        personalizationSignals = @()
         impact          = $Entry.impact
         rationale       = if ($act -is [System.Collections.IDictionary]) { [string]$act.rationale } else { '' }
     }
@@ -3078,12 +3339,19 @@ function Get-DavidInbox {
           - Any risk with severity=High AND ownerConfidence != 'unknown'
           - Any decision or risk whose action priority is P1 (Escalate today)
           - Any entry whose timeToEscalationRisk is <=3 (imminent escalation)
-        Sort: priority asc, then timeToEscalationRisk asc (nulls last), then
-        deadline asc (empty last), then confidence desc, then ageDays desc.
+        Sort: priority asc, then rankingScore desc (personalization),
+        then timeToEscalationRisk asc, then deadline asc, then confidence desc,
+        then ageDays desc.
+
+        V3.0: accepts optional -Preferences (from Read-DavidPreferences) and
+        -Insights (from Get-ExecutionInsights) which together compute a per-item
+        rankingScore + personalizationSignals used as the secondary sort key.
     #>
     param(
         [object[]] $Decisions,
-        [object[]] $Risks
+        [object[]] $Risks,
+        [hashtable] $Preferences = $null,
+        [hashtable] $Insights    = $null
     )
 
     $items = [System.Collections.Generic.List[hashtable]]::new()
@@ -3102,8 +3370,105 @@ function Get-DavidInbox {
         }
     }
 
+    # V3.0 personalization: compute rankingScore and attach signals per item.
+    if ($Preferences) {
+        $overloadedOwners = @{}
+        $delayedWorkstreams = @{}
+        $missedIds = @{}
+        if ($Insights) {
+            foreach ($o in @($Insights.overloadedOwners)) {
+                if ($o.itemCount -ge $Preferences.penalties.overloadedOwnerThreshold) { $overloadedOwners[[string]$o.owner] = $true }
+            }
+            foreach ($d in @($Insights.delayedDecisions)) {
+                if ($d.workstream) { $delayedWorkstreams[[string]$d.workstream] = $true }
+            }
+            foreach ($m in @($Insights.missedDeadlines)) {
+                if ($m.id) { $missedIds[[string]$m.id] = $true }
+            }
+        }
+
+        foreach ($it in $items) {
+            $score = 0.0
+            $signals = [System.Collections.Generic.List[hashtable]]::new()
+
+            # Static boosts
+            if ($it.workstream -and $Preferences.priorityBoosts.workstream.ContainsKey([string]$it.workstream)) {
+                $delta = [double]$Preferences.priorityBoosts.workstream[[string]$it.workstream]
+                $score += $delta
+                $signals.Add(@{ source = 'workstream-boost'; delta = $delta; reason = "preferred workstream: $($it.workstream)" })
+            }
+            if ($it.owner -and $Preferences.priorityBoosts.owner.ContainsKey([string]$it.owner)) {
+                $delta = [double]$Preferences.priorityBoosts.owner[[string]$it.owner]
+                $score += $delta
+                $signals.Add(@{ source = 'owner-boost'; delta = $delta; reason = "preferred owner: $($it.owner)" })
+            }
+            if ($it.kind -and $Preferences.priorityBoosts.kind.ContainsKey([string]$it.kind)) {
+                $delta = [double]$Preferences.priorityBoosts.kind[[string]$it.kind]
+                if ($delta -ne 0.0) {
+                    $score += $delta
+                    $signals.Add(@{ source = 'kind-boost'; delta = $delta; reason = "kind bias: $($it.kind)" })
+                }
+            }
+
+            # Confidence-based penalty
+            if ([double]$it.confidence -lt [double]$Preferences.penalties.lowConfidenceThreshold) {
+                $delta = -[double]$Preferences.penalties.lowConfidencePenalty
+                $score += $delta
+                $signals.Add(@{ source = 'low-confidence'; delta = $delta; reason = "confidence $($it.confidence) < $($Preferences.penalties.lowConfidenceThreshold)" })
+            }
+
+            # Bonuses
+            if ([int]$it.recurrenceCount -ge 2) {
+                $delta = [double]$Preferences.bonuses.recurringDecisionBonus
+                $score += $delta
+                $signals.Add(@{ source = 'recurring'; delta = $delta; reason = "recurring $($it.recurrenceCount)x - prior decision didn't stick" })
+            }
+            if ($null -ne $it.timeToEscalationRisk -and [int]$it.timeToEscalationRisk -le 1) {
+                $delta = [double]$Preferences.bonuses.imminentEscalationBonus
+                $score += $delta
+                $signals.Add(@{ source = 'imminent-escalation'; delta = $delta; reason = "escalates in $($it.timeToEscalationRisk)d" })
+            }
+            if ($it.kind -eq 'decision' -and $it.actionSource -eq 'inferred') {
+                $delta = [double]$Preferences.bonuses.inferredActionBonus
+                $score += $delta
+                $signals.Add(@{ source = 'inferred-action'; delta = $delta; reason = 'no explicit **Action:** marker - inference applied' })
+            }
+            if ($it.id -and $missedIds.ContainsKey([string]$it.id)) {
+                $delta = [double]$Preferences.bonuses.missedDeadlineBonus
+                $score += $delta
+                $signals.Add(@{ source = 'missed-deadline'; delta = $delta; reason = 'past decisionDeadline - jump P1' })
+            }
+
+            # Overloaded-owner penalty (skip for P1 - never dampen escalate-today items)
+            if ([int]$it.priority -gt 1 -and $it.owner -and $overloadedOwners.ContainsKey([string]$it.owner)) {
+                $delta = -[double]$Preferences.penalties.overloadedOwnerPenalty
+                $score += $delta
+                $signals.Add(@{ source = 'overloaded-owner'; delta = $delta; reason = "owner $($it.owner) already at capacity" })
+            }
+
+            # Learning-loop confidence tuning (applied to the displayed confidence
+            # AND scored into the ranking so both surfaces move together).
+            if ($Insights) {
+                if ($it.workstream -and $delayedWorkstreams.ContainsKey([string]$it.workstream) -and $it.verb -eq 'Escalate') {
+                    $delta = [double]$Preferences.learning.delayedWorkstreamConfidenceBonus
+                    $score += $delta
+                    $signals.Add(@{ source = 'learning:delayed-workstream'; delta = $delta; reason = "workstream has delayed decisions - boost escalate confidence" })
+                }
+                if ($it.owner -and $overloadedOwners.ContainsKey([string]$it.owner)) {
+                    $delta = -[double]$Preferences.learning.overloadedOwnerConfidencePenalty
+                    $score += $delta
+                    $signals.Add(@{ source = 'learning:overloaded-owner'; delta = $delta; reason = 'signal is noisier when owner is over-capacity' })
+                }
+            }
+
+            $it.rankingScore = [Math]::Round($score, 3)
+            $it.personalizationSignals = @($signals)
+        }
+    }
+
     return @($items | Sort-Object `
         @{ Expression = { [int]$_.priority }; Ascending = $true },
+        @{ Expression = { -[double]$_.rankingScore }; Ascending = $true },
         @{ Expression = { if ($null -ne $_.timeToEscalationRisk) { [int]$_.timeToEscalationRisk } else { 9999 } }; Ascending = $true },
         @{ Expression = { if ($_.deadline) { $_.deadline } else { '9999-12-31' } }; Ascending = $true },
         @{ Expression = { [double]$_.confidence }; Descending = $true },
@@ -3209,6 +3574,252 @@ function Get-DecisionClusters {
         @{ Expression = { -[int]$_.p1Count }; Ascending = $true },
         @{ Expression = { -[int]$_.itemCount }; Ascending = $true },
         @{ Expression = { [string]$_.workstream }; Ascending = $true })
+}
+
+# --- V3.0 Adaptive Intelligence: execution insights + learning signals ------
+
+function Get-ExecutionInsights {
+    <#
+        Aggregates cross-cutting patterns across decisions and risks. Feeds the
+        priority-inbox re-ranking and the confidence-tuning learning loop.
+
+        Returns a hashtable with:
+          - delayedDecisions      : decisions Pending 14+ days
+          - missedDeadlines       : decisions with decisionDeadline < now AND lifecycle != Decided
+          - overloadedOwners      : top-N owners by open item count (>= threshold)
+          - recurringDecisions    : distinct normalized titles with recurrenceCount >= 2
+          - stalePendingByWorkstream : workstreams with >= 3 Pending decisions
+          - highSeverityAgedRisks : High-severity risks aged 14+ days
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks,
+        [datetime] $Now,
+        [int]      $OverloadThreshold = 3
+    )
+
+    $Decisions = @($Decisions | Where-Object { $null -ne $_ })
+    $Risks     = @($Risks     | Where-Object { $null -ne $_ })
+
+    $delayed = @($Decisions | Where-Object {
+        $_.decisionStatus -eq 'Pending' -and [int]$_.decisionAgeDays -ge 14
+    } | ForEach-Object {
+        [ordered]@{
+            id         = $_.decisionId
+            title      = $_.title
+            workstream = $_.workstream
+            owner      = $_.owner
+            ageDays    = $_.decisionAgeDays
+        }
+    })
+
+    $missed = [System.Collections.Generic.List[hashtable]]::new()
+    foreach ($d in $Decisions) {
+        if ($d.decisionStatus -eq 'Decided') { continue }
+        $dl = [string]$d.decisionDeadline
+        if (-not $dl) { continue }
+        [datetime] $parsed = [datetime]::MinValue
+        if ([datetime]::TryParseExact($dl, 'yyyy-MM-dd', [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $parsed)) {
+            if ($parsed -lt $Now.Date) {
+                $missed.Add([ordered]@{
+                    id           = $d.decisionId
+                    title        = $d.title
+                    workstream   = $d.workstream
+                    owner        = $d.owner
+                    deadline     = $dl
+                    daysOverdue  = [int][Math]::Floor(($Now.Date - $parsed).TotalDays)
+                })
+            }
+        }
+    }
+
+    # Overloaded owners: count open decisions + open risks per owner
+    $ownerLoad = @{}
+    foreach ($d in $Decisions) {
+        if ($d.decisionStatus -eq 'Decided') { continue }
+        $o = if ($d.owner) { [string]$d.owner } else { 'unassigned' }
+        if (-not $ownerLoad.ContainsKey($o)) { $ownerLoad[$o] = @{ owner = $o; decisions = 0; risks = 0; p1 = 0; confidenceSum = 0.0; confidenceCount = 0 } }
+        $ownerLoad[$o].decisions += 1
+        if (($d.recommendedFollowUp -is [System.Collections.IDictionary]) -and [int]$d.recommendedFollowUp.priority -le 1) { $ownerLoad[$o].p1 += 1 }
+        if ($null -ne $d.decisionConfidence) { $ownerLoad[$o].confidenceSum += [double]$d.decisionConfidence; $ownerLoad[$o].confidenceCount += 1 }
+    }
+    foreach ($r in $Risks) {
+        if ($r.status -eq 'closed') { continue }
+        $o = if ($r.owner) { [string]$r.owner } else { 'unassigned' }
+        if (-not $ownerLoad.ContainsKey($o)) { $ownerLoad[$o] = @{ owner = $o; decisions = 0; risks = 0; p1 = 0; confidenceSum = 0.0; confidenceCount = 0 } }
+        $ownerLoad[$o].risks += 1
+        if (($r.recommendedAction -is [System.Collections.IDictionary]) -and [int]$r.recommendedAction.priority -le 1) { $ownerLoad[$o].p1 += 1 }
+        if ($null -ne $r.riskConfidence) { $ownerLoad[$o].confidenceSum += [double]$r.riskConfidence; $ownerLoad[$o].confidenceCount += 1 }
+    }
+    $overloaded = @(
+        $ownerLoad.Values | ForEach-Object {
+            $total = [int]$_.decisions + [int]$_.risks
+            $avg = if ([int]$_.confidenceCount -gt 0) { [Math]::Round($_.confidenceSum / $_.confidenceCount, 2) } else { 0.0 }
+            [ordered]@{
+                owner        = $_.owner
+                itemCount    = $total
+                decisions    = $_.decisions
+                risks        = $_.risks
+                p1Count      = $_.p1
+                avgConfidence= $avg
+            }
+        } | Where-Object { [int]$_.itemCount -ge $OverloadThreshold } |
+            Sort-Object @{ Expression = { -[int]$_.itemCount } }, @{ Expression = { -[int]$_.p1Count } }
+    )
+
+    # Recurring decisions: pick unique titles with recurrenceCount >= 2
+    $recurring = [System.Collections.Generic.List[hashtable]]::new()
+    $seenNorm = [System.Collections.Generic.HashSet[string]]::new()
+    foreach ($d in $Decisions) {
+        if ([int]$d.recurrenceCount -lt 2) { continue }
+        $norm = Get-NormalizedTitle -Title $d.title
+        if (-not $norm) { continue }
+        if ($seenNorm.Add($norm)) {
+            $recurring.Add([ordered]@{
+                normalizedTitle = $norm
+                count           = [int]$d.recurrenceCount
+                exampleTitle    = $d.title
+                exampleId       = $d.decisionId
+                workstream      = $d.workstream
+            })
+        }
+    }
+
+    # Workstreams with >= 3 Pending decisions
+    $stalePending = [System.Collections.Generic.List[hashtable]]::new()
+    $byWs = @{}
+    foreach ($d in $Decisions) {
+        if ($d.decisionStatus -ne 'Pending') { continue }
+        $ws = if ($d.workstream) { [string]$d.workstream } else { '(none)' }
+        if (-not $byWs.ContainsKey($ws)) { $byWs[$ws] = [System.Collections.Generic.List[int]]::new() }
+        $byWs[$ws].Add([int]$d.decisionAgeDays)
+    }
+    foreach ($ws in @($byWs.Keys)) {
+        $ages = @($byWs[$ws])
+        if ($ages.Count -ge 3) {
+            $avgAge = if ($ages.Count -gt 0) { [Math]::Round((($ages | Measure-Object -Average).Average), 1) } else { 0 }
+            $stalePending.Add([ordered]@{
+                workstream  = $ws
+                count       = $ages.Count
+                avgAgeDays  = $avgAge
+            })
+        }
+    }
+
+    $highAgedRisks = @($Risks | Where-Object {
+        $_.status -ne 'closed' -and $_.severity -eq 'High' -and [int]$_.agingDays -ge 14
+    } | ForEach-Object {
+        [ordered]@{
+            id         = $_.riskId
+            title      = $_.title
+            workstream = $_.workstream
+            owner      = $_.owner
+            ageDays    = $_.agingDays
+        }
+    })
+
+    return @{
+        delayedDecisions          = $delayed
+        missedDeadlines           = @($missed)
+        overloadedOwners          = $overloaded
+        recurringDecisions        = @($recurring)
+        stalePendingByWorkstream  = @($stalePending | Sort-Object @{ Expression = { -[int]$_.count } })
+        highSeverityAgedRisks     = $highAgedRisks
+    }
+}
+
+function Build-ExecutionInsightsMarkdown {
+    param([hashtable] $Insights, [string] $NowStamp)
+
+    $renderList = {
+        param($items, $line)
+        if ($items.Count -gt 0) { ($items | ForEach-Object { & $line $_ }) -join "`n" } else { '_None._' }
+    }
+
+    $delayedBlock = & $renderList @($Insights.delayedDecisions) {
+        param($d) "- **$($d.title)** - $($d.workstream) - owner $($d.owner) - aged **$($d.ageDays)d** ($($d.id))"
+    }
+    $missedBlock = & $renderList @($Insights.missedDeadlines) {
+        param($d) "- **$($d.title)** - deadline $($d.deadline) (**$($d.daysOverdue)d** overdue) - owner $($d.owner)"
+    }
+    $overloadedBlock = & $renderList @($Insights.overloadedOwners) {
+        param($o) "- **$($o.owner)** - $($o.itemCount) open items ($($o.decisions) decisions / $($o.risks) risks, $($o.p1Count) P1), avg confidence $($o.avgConfidence)"
+    }
+    $recurringBlock = & $renderList @($Insights.recurringDecisions) {
+        param($r) "- **$($r.exampleTitle)** - $($r.count) occurrences - $($r.workstream) ($($r.exampleId))"
+    }
+    $staleBlock = & $renderList @($Insights.stalePendingByWorkstream) {
+        param($w) "- **$($w.workstream)** - $($w.count) Pending decisions, avg age $($w.avgAgeDays)d"
+    }
+    $agedRiskBlock = & $renderList @($Insights.highSeverityAgedRisks) {
+        param($r) "- **$($r.title)** - $($r.workstream) - owner $($r.owner) - aged **$($r.ageDays)d** ($($r.id))"
+    }
+
+    return @"
+<!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
+
+# Execution Insights
+
+Generated: $NowStamp
+
+Cross-cutting patterns detected across the decision registry and risk register.
+These signals feed the priority-inbox re-ranking and the confidence-tuning learning loop.
+
+## Delayed Decisions (Pending 14+ days)
+
+$delayedBlock
+
+## Missed Deadlines (past decisionDeadline, still Pending)
+
+$missedBlock
+
+## Overloaded Owners (>= 3 open items)
+
+$overloadedBlock
+
+## Recurring Decisions (same normalized title 2+ times)
+
+$recurringBlock
+
+## Stale Pending by Workstream (>= 3 Pending)
+
+$staleBlock
+
+## High-Severity Aged Risks (14+ days)
+
+$agedRiskBlock
+
+## Notes
+
+- **delayedDecisions** and **stalePendingByWorkstream** boost the confidence of any Escalate action on their workstream.
+- **overloadedOwners** trigger a down-rank on non-P1 items assigned to that owner in David's inbox.
+- **missedDeadlines** always jump to P1 with escalate-today priority regardless of static priority.
+- **recurringDecisions** get a small ranking boost - the same question resurfacing means the prior decision didn't stick.
+"@
+}
+
+function Build-ExecutionInsightsJson {
+    param([hashtable] $Insights, [string] $GeneratedIso)
+    $out = [ordered]@{
+        generated = $GeneratedIso
+        generator = 'scripts/generate-current-focus.ps1'
+        version   = 'V3.0'
+        totals    = [ordered]@{
+            delayedDecisions          = @($Insights.delayedDecisions).Count
+            missedDeadlines           = @($Insights.missedDeadlines).Count
+            overloadedOwners          = @($Insights.overloadedOwners).Count
+            recurringDecisions        = @($Insights.recurringDecisions).Count
+            stalePendingByWorkstream  = @($Insights.stalePendingByWorkstream).Count
+            highSeverityAgedRisks     = @($Insights.highSeverityAgedRisks).Count
+        }
+        delayedDecisions          = @($Insights.delayedDecisions)
+        missedDeadlines           = @($Insights.missedDeadlines)
+        overloadedOwners          = @($Insights.overloadedOwners)
+        recurringDecisions        = @($Insights.recurringDecisions)
+        stalePendingByWorkstream  = @($Insights.stalePendingByWorkstream)
+        highSeverityAgedRisks     = @($Insights.highSeverityAgedRisks)
+    }
+    return $out | ConvertTo-Json -Depth 6
 }
 
 function Build-DavidInboxMarkdown {
@@ -3323,7 +3934,7 @@ function Build-DavidInboxJson {
     $out = [ordered]@{
         generated = $GeneratedIso
         generator = 'scripts/generate-current-focus.ps1'
-        version   = 'V2.5'
+        version   = 'V3.0'
         caps      = [ordered]@{ p1 = $P1Cap; p2 = $P2Cap; p3 = $P3Cap }
         totals    = [ordered]@{
             candidates    = $Items.Count
@@ -3342,6 +3953,7 @@ function Build-DavidInboxJson {
             }
             clusters      = $clusters.Count
             imminentEscalation = @($Items | Where-Object { $null -ne $_.timeToEscalationRisk -and [int]$_.timeToEscalationRisk -le 3 }).Count
+            personalized  = @($Items | Where-Object { @($_.personalizationSignals).Count -gt 0 }).Count
         }
         tiers     = [ordered]@{
             p1 = @($p1)
@@ -3368,6 +3980,7 @@ $model         = Read-ScoringModel    (Join-Path $CTX 'scoring-model.yaml')
 $sourceWeights = Read-SourceWeights   (Join-Path $CTX 'source-weights.yaml')
 $activityWin   = Read-ActivityWindows (Join-Path $CTX 'activity-windows.yaml')
 $ownershipMap  = Read-OwnershipMap    (Join-Path $CTX 'ownership-map.yaml')
+$preferences   = Read-DavidPreferences (Join-Path $CTX 'david-preferences.yaml')
 
 # Preserve attention formula on the model if the parser did not capture it.
 if ($model -is [hashtable] -and -not $model.ContainsKey('attention_formula')) {
@@ -3505,7 +4118,16 @@ $md = Build-Dashboard $workstreams $finalResults $model $allFiles $latestRecap
 $json = Build-Json $finalResults $meta
 [System.IO.File]::WriteAllText($OUT_JSON, $json, (New-Object System.Text.UTF8Encoding($false)))
 
-$inboxItems = @(Get-DavidInbox -Decisions $decisions -Risks $risks)
+# --- V3.0 Adaptive Intelligence: execution insights + personalized inbox ---
+$insights     = Get-ExecutionInsights -Decisions $decisions -Risks $risks -Now (Get-Date) -OverloadThreshold $preferences.penalties.overloadedOwnerThreshold
+$insightsMd   = Build-ExecutionInsightsMarkdown -Insights $insights -NowStamp $meta.generated
+$insightsJson = Build-ExecutionInsightsJson     -Insights $insights -GeneratedIso $generatedIso
+[System.IO.File]::WriteAllText($OUT_INSIGHTS_MD,   $insightsMd,   (New-Object System.Text.UTF8Encoding($false)))
+[System.IO.File]::WriteAllText($OUT_INSIGHTS_JSON, $insightsJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_INSIGHTS_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
+Write-Host "Written: $($OUT_INSIGHTS_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+
+$inboxItems = @(Get-DavidInbox -Decisions $decisions -Risks $risks -Preferences $preferences -Insights $insights)
 $inboxMd    = Build-DavidInboxMarkdown -Items $inboxItems -NowStamp $meta.generated -P1Cap 5 -P2Cap 10 -P3Cap 10
 $inboxJson  = Build-DavidInboxJson     -Items $inboxItems -GeneratedIso $generatedIso -P1Cap 5 -P2Cap 10 -P3Cap 10
 [System.IO.File]::WriteAllText($OUT_INBOX_MD,   $inboxMd,   (New-Object System.Text.UTF8Encoding($false)))

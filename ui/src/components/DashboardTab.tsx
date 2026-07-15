@@ -134,6 +134,7 @@ type LinkedAction = {
   owner?: string;
   dueBy?: string;
   status?: string;
+  actionSource?: string;   // V3.0: 'marker' or 'inferred'
 };
 
 type DecisionEntry = {
@@ -166,6 +167,9 @@ type DecisionEntry = {
   completionSignal?: string;
   linkedActions?: LinkedAction[];
   timeToEscalationRisk?: number | null;
+  // V3.0 additions
+  outcomeQuality?: string;      // 'High' | 'Medium' | 'Low' | 'Unknown'
+  recurrenceCount?: number;
 };
 
 type DecisionRegistry = {
@@ -178,6 +182,9 @@ type DecisionRegistry = {
     authorativelyOwned?: number;
     pendingDecisions?: number;
     lifecycle?: { pending?: number; decided?: number; expired?: number };
+    outcomeQuality?: { high?: number; medium?: number; low?: number; unknown?: number };
+    recurring?: number;
+    inferredActions?: number;
   };
   decisions?: DecisionEntry[];
 };
@@ -255,6 +262,18 @@ type InboxItem = {
   decisionOutcome?: string;
   timeToEscalationRisk?: number | null;
   linkedActionCount?: number;
+  // V3.0 additions
+  outcomeQuality?: string;
+  recurrenceCount?: number;
+  actionSource?: string;
+  rankingScore?: number;
+  personalizationSignals?: PersonalizationSignal[];
+};
+
+type PersonalizationSignal = {
+  source?: string;
+  delta?: number;
+  reason?: string;
 };
 
 type InboxCluster = {
@@ -279,10 +298,38 @@ type DavidInbox = {
     tiers?: { p1Shown?: number; p2Shown?: number; p3Shown?: number };
     clusters?: number;
     imminentEscalation?: number;
+    personalized?: number;
   };
   tiers?: { p1?: InboxItem[]; p2?: InboxItem[]; p3?: InboxItem[] };
   clusters?: InboxCluster[];
   items?: InboxItem[];
+};
+
+// V3.0 Execution Insights
+type DelayedDecision = { id?: string; title?: string; workstream?: string; owner?: string; ageDays?: number };
+type MissedDeadline  = { id?: string; title?: string; workstream?: string; owner?: string; deadline?: string; daysOverdue?: number };
+type OverloadedOwner = { owner?: string; itemCount?: number; decisions?: number; risks?: number; p1Count?: number; avgConfidence?: number };
+type RecurringDecision = { normalizedTitle?: string; count?: number; exampleTitle?: string; exampleId?: string; workstream?: string };
+type StalePendingWs = { workstream?: string; count?: number; avgAgeDays?: number };
+type HighAgedRisk = { id?: string; title?: string; workstream?: string; owner?: string; ageDays?: number };
+
+type ExecutionInsights = {
+  generated?: string;
+  version?: string;
+  totals?: {
+    delayedDecisions?: number;
+    missedDeadlines?: number;
+    overloadedOwners?: number;
+    recurringDecisions?: number;
+    stalePendingByWorkstream?: number;
+    highSeverityAgedRisks?: number;
+  };
+  delayedDecisions?: DelayedDecision[];
+  missedDeadlines?: MissedDeadline[];
+  overloadedOwners?: OverloadedOwner[];
+  recurringDecisions?: RecurringDecision[];
+  stalePendingByWorkstream?: StalePendingWs[];
+  highSeverityAgedRisks?: HighAgedRisk[];
 };
 
 // Renders either the new structured action object or the legacy string.
@@ -342,6 +389,21 @@ function escalationLabel(days?: number | null): string {
   if (days <= 0) return "escalate today";
   if (days === 1) return "escalate in 1 day";
   return `escalate in ${days} days`;
+}
+
+function outcomeQualityBadgeClass(q?: string): string {
+  switch (q) {
+    case "High":    return "bg-green-50 text-green-800 border-green-200";
+    case "Medium":  return "bg-blue-50 text-blue-800 border-blue-200";
+    case "Low":     return "bg-amber-50 text-amber-800 border-amber-200";
+    default:        return "bg-slate-100 text-slate-500 border-slate-200";
+  }
+}
+
+function rankingScoreBadgeClass(score?: number): string {
+  if (typeof score !== "number" || score === 0) return "bg-slate-100 text-slate-500 border-slate-200";
+  if (score > 0) return "bg-green-50 text-green-800 border-green-200";
+  return "bg-amber-50 text-amber-800 border-amber-200";
 }
 
 function confidenceLabel(confidence?: number): string {
@@ -477,6 +539,7 @@ export function DashboardTab({ onNavigate }: Props) {
   const decisionRegistry = safeJsonParse<DecisionRegistry>(data.rawFiles["00-context/generated/decision-registry.json"]);
   const riskRegistry = safeJsonParse<RiskRegistry>(data.rawFiles["00-context/generated/risk-register.json"]);
   const davidInbox   = safeJsonParse<DavidInbox>(data.rawFiles["00-context/generated/david-inbox.json"]);
+  const executionInsights = safeJsonParse<ExecutionInsights>(data.rawFiles["00-context/generated/execution-insights.json"]);
 
   // Merge JSON enrichment into markdown-derived items by name
   if (currentFocus && focusJson?.workstreams?.length) {
@@ -936,6 +999,24 @@ export function DashboardTab({ onNavigate }: Props) {
                       {typeof it.linkedActionCount === "number" && it.linkedActionCount > 0 && (
                         <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-0.5 font-medium text-blue-800" title="Linked follow-up actions">
                           {it.linkedActionCount} linked action{it.linkedActionCount === 1 ? "" : "s"}
+                          {it.actionSource === "inferred" && <span className="ml-1 text-[10px] opacity-75">(inferred)</span>}
+                          {it.actionSource === "marker" && <span className="ml-1 text-[10px] opacity-75">(marker)</span>}
+                        </span>
+                      )}
+                      {typeof it.recurrenceCount === "number" && it.recurrenceCount >= 2 && (
+                        <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-1.5 py-0.5 font-medium text-amber-800" title="Same question has resurfaced">
+                          recurring {it.recurrenceCount}x
+                        </span>
+                      )}
+                      {typeof it.rankingScore === "number" && it.rankingScore !== 0 && (
+                        <span
+                          className={`inline-block rounded-full border px-1.5 py-0.5 font-mono font-medium ${rankingScoreBadgeClass(it.rankingScore)}`}
+                          title={(it.personalizationSignals ?? [])
+                            .map((s) => `${s.source} ${s.delta && s.delta > 0 ? "+" : ""}${s.delta}: ${s.reason}`)
+                            .join("\n") || "Ranking adjustment applied"}
+                        >
+                          {it.rankingScore > 0 ? "+" : ""}
+                          {it.rankingScore.toFixed(2)}
                         </span>
                       )}
                     </div>
@@ -1079,6 +1160,139 @@ export function DashboardTab({ onNavigate }: Props) {
         ) : (
           <p className="text-sm text-th-text-faint italic">
             Priority inbox not available. Regenerate to produce 00-context/generated/david-inbox.json.
+          </p>
+        )}
+      </div>
+
+      {/* Execution Insights (V3.0) - learning-loop signals feeding the inbox */}
+      <div className="rounded-xl border border-blue-200 bg-blue-50/20 p-4">
+        <div className="flex items-baseline justify-between mb-2">
+          <h3 className="font-semibold text-th-text-secondary">
+            Execution Insights
+            {executionInsights?.version && (
+              <span className="ml-2 text-[11px] font-mono text-th-text-faint">{executionInsights.version}</span>
+            )}
+          </h3>
+          {executionInsights?.generated && (
+            <span className="text-xs text-th-text-faint">Generated {executionInsights.generated}</span>
+          )}
+        </div>
+        {executionInsights ? (
+          (() => {
+            const t = executionInsights.totals ?? {};
+            const chip = (label: string, count: number, cls: string) => (
+              <span className={`inline-block rounded-full border px-2 py-0.5 text-xs ${cls}`}>
+                {label}: <strong>{count}</strong>
+              </span>
+            );
+
+            return (
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  {chip("Delayed", t.delayedDecisions ?? 0, (t.delayedDecisions ?? 0) > 0 ? "border-red-200 bg-red-50 text-red-800" : "border-th-border bg-th-surface-alt text-th-text-secondary")}
+                  {chip("Missed deadlines", t.missedDeadlines ?? 0, (t.missedDeadlines ?? 0) > 0 ? "border-red-200 bg-red-50 text-red-800" : "border-th-border bg-th-surface-alt text-th-text-secondary")}
+                  {chip("Overloaded owners", t.overloadedOwners ?? 0, (t.overloadedOwners ?? 0) > 0 ? "border-amber-200 bg-amber-50 text-amber-800" : "border-th-border bg-th-surface-alt text-th-text-secondary")}
+                  {chip("Recurring", t.recurringDecisions ?? 0, (t.recurringDecisions ?? 0) > 0 ? "border-amber-200 bg-amber-50 text-amber-800" : "border-th-border bg-th-surface-alt text-th-text-secondary")}
+                  {chip("Stale WS", t.stalePendingByWorkstream ?? 0, (t.stalePendingByWorkstream ?? 0) > 0 ? "border-amber-200 bg-amber-50 text-amber-800" : "border-th-border bg-th-surface-alt text-th-text-secondary")}
+                  {chip("High aged risks", t.highSeverityAgedRisks ?? 0, (t.highSeverityAgedRisks ?? 0) > 0 ? "border-red-200 bg-red-50 text-red-800" : "border-th-border bg-th-surface-alt text-th-text-secondary")}
+                </div>
+
+                <div className="grid gap-3 md:grid-cols-2">
+                  {/* Overloaded owners */}
+                  <div className="rounded-md border border-amber-200 bg-th-surface p-2">
+                    <div className="mb-1 text-xs font-semibold text-amber-800">Overloaded owners</div>
+                    {(executionInsights.overloadedOwners ?? []).length > 0 ? (
+                      <ul className="space-y-1 text-xs">
+                        {(executionInsights.overloadedOwners ?? []).slice(0, 6).map((o, i) => (
+                          <li key={`ovl-${o.owner}-${i}`} className="flex items-center justify-between gap-2">
+                            <span className="font-medium">{o.owner}</span>
+                            <span className="text-th-text-muted">
+                              {o.itemCount} items ({o.decisions}d / {o.risks}r, {o.p1Count} P1) · avg conf {o.avgConfidence}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-xs italic text-th-text-faint">No owners over capacity.</p>
+                    )}
+                  </div>
+
+                  {/* Delayed + missed */}
+                  <div className="rounded-md border border-red-200 bg-th-surface p-2">
+                    <div className="mb-1 text-xs font-semibold text-red-800">Delayed / missed</div>
+                    {(executionInsights.delayedDecisions ?? []).length > 0 && (
+                      <ul className="space-y-1 text-xs">
+                        {(executionInsights.delayedDecisions ?? []).slice(0, 4).map((d, i) => (
+                          <li key={`del-${d.id}-${i}`}>
+                            <span className="text-red-800 font-mono mr-1">{d.ageDays}d</span>
+                            <span className="font-medium">{d.title}</span>
+                            <span className="text-th-text-faint"> · {d.owner}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {(executionInsights.missedDeadlines ?? []).length > 0 && (
+                      <ul className="mt-1 space-y-1 text-xs">
+                        {(executionInsights.missedDeadlines ?? []).slice(0, 4).map((d, i) => (
+                          <li key={`miss-${d.id}-${i}`}>
+                            <span className="text-red-800 font-mono mr-1">{d.daysOverdue}d over</span>
+                            <span className="font-medium">{d.title}</span>
+                            <span className="text-th-text-faint"> · deadline {d.deadline}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {(executionInsights.delayedDecisions ?? []).length === 0 && (executionInsights.missedDeadlines ?? []).length === 0 && (
+                      <p className="text-xs italic text-th-text-faint">Nothing delayed or overdue.</p>
+                    )}
+                  </div>
+
+                  {/* Recurring */}
+                  <div className="rounded-md border border-amber-200 bg-th-surface p-2">
+                    <div className="mb-1 text-xs font-semibold text-amber-800">Recurring decisions</div>
+                    {(executionInsights.recurringDecisions ?? []).length > 0 ? (
+                      <ul className="space-y-1 text-xs">
+                        {(executionInsights.recurringDecisions ?? []).slice(0, 5).map((r, i) => (
+                          <li key={`rec-${r.exampleId}-${i}`}>
+                            <span className="text-amber-800 font-mono mr-1">{r.count}x</span>
+                            <span className="font-medium">{r.exampleTitle}</span>
+                            <span className="text-th-text-faint"> · {r.workstream || "(no workstream)"}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-xs italic text-th-text-faint">No decisions have resurfaced.</p>
+                    )}
+                  </div>
+
+                  {/* High severity aged risks */}
+                  <div className="rounded-md border border-red-200 bg-th-surface p-2">
+                    <div className="mb-1 text-xs font-semibold text-red-800">High-severity aged risks</div>
+                    {(executionInsights.highSeverityAgedRisks ?? []).length > 0 ? (
+                      <ul className="space-y-1 text-xs">
+                        {(executionInsights.highSeverityAgedRisks ?? []).slice(0, 5).map((r, i) => (
+                          <li key={`har-${r.id}-${i}`}>
+                            <span className="text-red-800 font-mono mr-1">{r.ageDays}d</span>
+                            <span className="font-medium">{r.title}</span>
+                            <span className="text-th-text-faint"> · {r.workstream} · {r.owner || "unassigned"}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-xs italic text-th-text-faint">No aged high-severity risks.</p>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-xs text-th-text-faint">
+                  Source: 00-context/generated/execution-insights.json - feeds david-inbox.json ranking via 00-context/david-preferences.yaml.
+                </p>
+              </div>
+            );
+          })()
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Execution insights not available. Regenerate to produce 00-context/generated/execution-insights.json.
           </p>
         )}
       </div>
@@ -1422,6 +1636,16 @@ export function DashboardTab({ onNavigate }: Props) {
                           {d.decisionStatus}
                         </span>
                       ) : null}
+                      {d.decisionStatus === "Decided" && d.outcomeQuality ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${outcomeQualityBadgeClass(d.outcomeQuality)}`} title="V3.0 outcome quality">
+                          quality: {d.outcomeQuality}
+                        </span>
+                      ) : null}
+                      {typeof d.recurrenceCount === "number" && d.recurrenceCount >= 2 ? (
+                        <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-1.5 py-0.5 font-medium text-amber-800" title="Same question has resurfaced">
+                          recurring {d.recurrenceCount}x
+                        </span>
+                      ) : null}
                       {(d.timeToEscalationRisk !== undefined && d.timeToEscalationRisk !== null) ? (
                         <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${escalationBadgeClass(d.timeToEscalationRisk)}`}
                               title="Predicted days until escalation">
@@ -1490,6 +1714,9 @@ export function DashboardTab({ onNavigate }: Props) {
                           la.status === "blocked" ? "border-red-200 bg-red-50 text-red-800" :
                           "border-slate-200 bg-slate-50 text-slate-700"
                         }`}>{la.status ?? "pending"}</span>
+                        {la.actionSource === "inferred" && (
+                          <span className="inline-block rounded border border-blue-200 bg-blue-50 px-1 py-0 mr-1 text-[10px] font-mono text-blue-800" title="Synthesized by V3.0 action inference">inferred</span>
+                        )}
                         {la.text}
                         {la.owner ? <span className="text-th-text-faint"> · {la.owner}</span> : null}
                         {la.dueBy ? <span className="text-th-text-faint"> · due {la.dueBy}</span> : null}

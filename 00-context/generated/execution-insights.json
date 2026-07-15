@@ -1,0 +1,66 @@
+{
+  "generated": "2026-07-15T13:13:46",
+  "generator": "scripts/generate-current-focus.ps1",
+  "version": "V3.0",
+  "totals": {
+    "delayedDecisions": 0,
+    "missedDeadlines": 0,
+    "overloadedOwners": 3,
+    "recurringDecisions": 0,
+    "stalePendingByWorkstream": 0,
+    "highSeverityAgedRisks": 3
+  },
+  "delayedDecisions": [],
+  "missedDeadlines": [],
+  "overloadedOwners": [
+    {
+      "owner": "Balaji Ravi",
+      "itemCount": 8,
+      "decisions": 2,
+      "risks": 6,
+      "p1Count": 4,
+      "avgConfidence": 0.7
+    },
+    {
+      "owner": "Rasheersh",
+      "itemCount": 8,
+      "decisions": 1,
+      "risks": 7,
+      "p1Count": 2,
+      "avgConfidence": 0.73
+    },
+    {
+      "owner": "Rowena",
+      "itemCount": 5,
+      "decisions": 2,
+      "risks": 3,
+      "p1Count": 1,
+      "avgConfidence": 0.69
+    }
+  ],
+  "recurringDecisions": [],
+  "stalePendingByWorkstream": [],
+  "highSeverityAgedRisks": [
+    {
+      "id": "R-52c6e63cae",
+      "title": "Vendor Escalation",
+      "workstream": "GBO Batch Transition",
+      "owner": "Rowena",
+      "ageDays": 85
+    },
+    {
+      "id": "R-cd89918f9c",
+      "title": "Review and operationalize the vendor escalation format",
+      "workstream": "Rapid Recovery",
+      "owner": "Balaji Ravi",
+      "ageDays": 85
+    },
+    {
+      "id": "R-f386376f94",
+      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
+      "workstream": "",
+      "owner": "",
+      "ageDays": 85
+    }
+  ]
+}

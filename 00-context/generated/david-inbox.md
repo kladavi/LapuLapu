@@ -2,7 +2,7 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-15 12:49
+Generated: 2026-07-15 13:13
 
 Candidates: **24** | P1: **5 (cap 5)** | P2: **10 (cap 10)** | P3: **0 (cap 10)**
 
@@ -10,24 +10,15 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 ## P1 - Escalate today (top 5)
 
-### P1 Escalate - ADX Registration [escalation in 0d]
+### P1 Escalate - Rapid Recovery [escalation in 0d]
 
-- **What**: Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es... (severity: High, trend: increasing)
-- **Owner**: Kelvin (workstream-map)
+- **What**: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... (severity: High, trend: increasing)
+- **Owner**: Balaji Ravi (workstream-map)
 - **Deadline**: 2026-07-15
 - **Confidence**: 0.79
-- **Age**: 5 days
+- **Age**: 2 days
 - **Rationale**: High severity - notify workstream owner today.
-- **Source**: risk R-d7f568105f
-### P1 Escalate - Developer XP Dashboard [escalation in 0d]
-
-- **What**: Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ... (severity: High, trend: increasing)
-- **Owner**: Deb (workstream-map)
-- **Deadline**: 2026-07-15
-- **Confidence**: 0.79
-- **Age**: 5 days
-- **Rationale**: High severity - notify workstream owner today.
-- **Source**: risk R-8ad2d2ce2f
+- **Source**: risk R-b493137b8f
 ### P1 Escalate - Rapid Recovery [escalation in 0d]
 
 - **What**: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... (severity: High, trend: increasing)
@@ -46,64 +37,57 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Age**: 2 days
 - **Rationale**: High severity - notify workstream owner today.
 - **Source**: risk R-2b2a241d9c
-### P1 Escalate - Capacity Management [escalation in 0d]
+### P1 Escalate - Rapid Recovery [escalation in 0d]
 
-- **What**: MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation (severity: High, trend: increasing)
-- **Owner**: Rasheersh (workstream-map)
+- **What**: Review and operationalize the vendor escalation format (severity: High, trend: stable)
+- **Owner**: Balaji Ravi (workstream-map)
+- **Deadline**: 2026-07-15
+- **Confidence**: 0.59
+- **Age**: 85 days
+- **Rationale**: High severity - notify workstream owner today.
+- **Source**: risk R-cd89918f9c
+### P1 Escalate - ADX Registration [escalation in 0d]
+
+- **What**: Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es... (severity: High, trend: increasing)
+- **Owner**: Kelvin (workstream-map)
 - **Deadline**: 2026-07-15
 - **Confidence**: 0.79
-- **Age**: 2 days
+- **Age**: 5 days
 - **Rationale**: High severity - notify workstream owner today.
-- **Source**: risk R-121760730c
+- **Source**: risk R-d7f568105f
 
 
 ## P2 - Confirm or investigate this week (top 10)
 
-### P2 Escalate - GOCC Transition [escalation in 0d]
-
-- **What**: Strong dependency on cross-team alignment (GOCC, PS, GBO) (severity: Medium, trend: decreasing)
-- **Owner**: Balaji Ravi (workstream-map)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.69
-- **Age**: 26 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-c7355ab891
-### P2 Escalate - GOCC Transition [escalation in 0d]
-
-- **What**: Weekly project status, CR review, and risk review governance forums (severity: Medium, trend: decreasing)
-- **Owner**: Balaji Ravi (workstream-map)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.69
-- **Age**: 26 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-d57894861d
-### P2 Escalate - GBO Batch Transition [escalation in 0d]
-
-- **What**: Weekly project governance forums (status, CR review, risk review) (severity: Medium, trend: decreasing)
-- **Owner**: Rowena (workstream-map)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.69
-- **Age**: 26 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-f1afae75e8
-### P2 Escalate - GBO Batch Transition [escalation in 0d]
+### P2 Escalate - ADX Registration [escalation in 0d]
 
 - **What**: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ... (severity: Medium, trend: decreasing)
-- **Owner**: Rowena (workstream-map)
+- **Owner**: Kelvin (workstream-map)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.69
 - **Age**: 19 days
 - **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-b882fa398a
-### P2 Escalate - CMDB Mapping [escalation in 0d]
+- **Source**: risk R-fff605c5dd
+### P2 Confirm - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 2d]
 
-- **What**: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts) (severity: Medium, trend: stable)
-- **Owner**: Rasheersh (workstream-map)
+- **What**: D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
+- **Owner**: Kelvin (workstream-map)
 - **Deadline**: 2026-07-17
-- **Confidence**: 0.59
-- **Age**: 85 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-ae3cccdff8
+- **Confidence**: 0.69
+- **Age**: 12 days
+- **Rationale**: Aging 7+ days - confirm status and communicate resolution this week.
+- **Linked actions**: 1
+- **Source**: decision D-fadd968d28
+### P2 Confirm - Developer XP Dashboard [Pending] [DECISION REQUIRED] [escalation in 2d]
+
+- **What**: D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only
+- **Owner**: Deb (workstream-map)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.69
+- **Age**: 12 days
+- **Rationale**: Aging 7+ days - confirm status and communicate resolution this week.
+- **Linked actions**: 1
+- **Source**: decision D-3ced6cbb47
 ### P2 Escalate - Rapid Recovery [escalation in 0d]
 
 - **What**: 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections) (severity: Medium, trend: stable)
@@ -122,15 +106,25 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Age**: 85 days
 - **Rationale**: Unresolved 14+ days - escalate this week.
 - **Source**: risk R-f5518c28bc
-### P2 Confirm - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 2d]
+### P2 Confirm - Rapid Recovery [Pending] [DECISION REQUIRED] [escalation in 2d]
 
-- **What**: D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
-- **Owner**: Kelvin (workstream-map)
+- **What**: D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
+- **Owner**: Balaji Ravi (workstream-map)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.69
 - **Age**: 12 days
 - **Rationale**: Aging 7+ days - confirm status and communicate resolution this week.
-- **Source**: decision D-fadd968d28
+- **Linked actions**: 1
+- **Source**: decision D-6f81d99006
+### P2 Escalate - GBO Batch Transition [escalation in 0d]
+
+- **What**: Weekly project governance forums (status, CR review, risk review) (severity: Medium, trend: decreasing)
+- **Owner**: Rowena (workstream-map)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.69
+- **Age**: 26 days
+- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Source**: risk R-f1afae75e8
 ### P2 Confirm - Capacity Management [Pending] [DECISION REQUIRED] [escalation in 2d]
 
 - **What**: D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...
@@ -139,16 +133,27 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Confidence**: 0.69
 - **Age**: 12 days
 - **Rationale**: Aging 7+ days - confirm status and communicate resolution this week.
+- **Linked actions**: 1
 - **Source**: decision D-0ac2a0c612
-### P2 Confirm - Developer XP Dashboard [Pending] [DECISION REQUIRED] [escalation in 2d]
+### P2 Escalate - GOCC Transition [escalation in 0d]
 
-- **What**: D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only
-- **Owner**: Deb (workstream-map)
+- **What**: Strong dependency on cross-team alignment (GOCC, PS, GBO) (severity: Medium, trend: decreasing)
+- **Owner**: Balaji Ravi (workstream-map)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.69
+- **Age**: 26 days
+- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Source**: risk R-c7355ab891
+### P2 Confirm - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 2d]
+
+- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **Owner**: Rowena (workstream-map)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.69
 - **Age**: 12 days
 - **Rationale**: Aging 7+ days - confirm status and communicate resolution this week.
-- **Source**: decision D-3ced6cbb47
+- **Linked actions**: 1
+- **Source**: decision D-30ae77972e
 
 
 ## P3 - Review this week (top 10)
@@ -158,19 +163,19 @@ _None._
 
 ## Clusters (workstream / theme)
 
-- **Rapid Recovery** / _escalation_ - 2 item(s), P1, 2 P1, min escalation: 0d
+- **Rapid Recovery** / _review_ - 2 item(s), P1, 2 P1, min escalation: 0d
 - **(none)** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **ADX Registration** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Capacity Management** / _management_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **ADX Registration** / _japan_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **Capacity Management** / _capacity_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **Developer XP Dashboard** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Rapid Recovery** / _recovery_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **GBO Batch Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **Rapid Recovery** / _restart_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **Rapid Recovery** / _recovery_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **Capacity Management** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **MMM L2** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **GBO Batch Transition** / _september_ - 3 item(s), P2, 0 P1, min escalation: 0d
-- **GOCC Transition** / _(misc)_ - 3 item(s), P2, 0 P1, min escalation: 0d
-- **CMDB Mapping** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
-- **GBO Batch Transition** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
+- **CMDB Mapping** / _(misc)_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **GBO Batch Transition** / _operating_ - 2 item(s), P2, 0 P1, min escalation: 2d
+- **GOCC Transition** / _(misc)_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **ADX Registration** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 2d
 
 ## How this list was built
 
