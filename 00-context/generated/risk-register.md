@@ -2,40 +2,25 @@
 
 # Risk Register
 
-Generated: 2026-07-15 12:49
+Generated: 2026-07-15 13:13
 
 Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 
 ## Highest Severity Open Risks
 
-### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
+### R-52c6e63cae - Vendor Escalation
 
-- Workstream: **-**
-- Owner: **-** _(confidence: unknown)_
-- Escalation Path: -
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (85 days ago)
-- Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P1 - Escalate: Standardization of templates, CI identification, and escalation procedures to reduce (owner: unassigned, by 2026-07-15)
-- Sources:
-  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-1c3d9c0e3b - Vendor Escalation
-
-- Workstream: **MMM L2**
-- Owner: **Hari** _(confidence: workstream-map)_
+- Workstream: **GBO Batch Transition**
+- Owner: **Rowena** _(confidence: workstream-map)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: Jonan, Kelvin
+- Stakeholders: Manish, Rasheersh
 - Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (85 days ago)
 - Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P1 - Escalate: Vendor Escalation (owner: Hari, by 2026-07-15)
+- Recommended action: P1 - Escalate: Vendor Escalation (owner: Rowena, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-cd89918f9c - Review and operationalize the vendor escalation format
@@ -51,6 +36,21 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - First seen: **2026-04-21** (85 days ago)
 - Last seen: **2026-04-21** (85 days ago)
 - Recommended action: P1 - Escalate: Review and operationalize the vendor escalation format (owner: Balaji Ravi, by 2026-07-15)
+- Sources:
+  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
+### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
+
+- Workstream: **-**
+- Owner: **-** _(confidence: unknown)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-04-21** (85 days ago)
+- Last seen: **2026-04-21** (85 days ago)
+- Recommended action: P1 - Escalate: Standardization of templates, CI identification, and escalation procedures to reduce (owner: unassigned, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-aa0c3f050b - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management
@@ -98,21 +98,6 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P1 - Escalate: Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July... (owner: Deb, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/W28_copilot.md`
-### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
-
-- Workstream: **Rapid Recovery**
-- Owner: **Balaji Ravi** _(confidence: workstream-map)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (2 days ago)
-- Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P1 - Escalate: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e... (owner: Balaji Ravi, by 2026-07-15)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
 
 - Workstream: **Capacity Management**
@@ -156,6 +141,21 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - First seen: **2026-07-13** (2 days ago)
 - Last seen: **2026-07-13** (2 days ago)
 - Recommended action: P1 - Escalate: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequenc... (owner: Balaji Ravi, by 2026-07-15)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
+
+- Workstream: **Rapid Recovery**
+- Owner: **Balaji Ravi** _(confidence: workstream-map)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-13** (2 days ago)
+- Last seen: **2026-07-13** (2 days ago)
+- Recommended action: P1 - Escalate: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e... (owner: Balaji Ravi, by 2026-07-15)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 
@@ -207,21 +207,6 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P1 - Escalate: Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July... (owner: Deb, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/W28_copilot.md`
-### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
-
-- Workstream: **Rapid Recovery**
-- Owner: **Balaji Ravi** _(confidence: workstream-map)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (2 days ago)
-- Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P1 - Escalate: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e... (owner: Balaji Ravi, by 2026-07-15)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
 
 - Workstream: **Capacity Management**
@@ -267,6 +252,21 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P1 - Escalate: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequenc... (owner: Balaji Ravi, by 2026-07-15)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
+
+- Workstream: **Rapid Recovery**
+- Owner: **Balaji Ravi** _(confidence: workstream-map)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-13** (2 days ago)
+- Last seen: **2026-07-13** (2 days ago)
+- Recommended action: P1 - Escalate: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e... (owner: Balaji Ravi, by 2026-07-15)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-1a32480547 - Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogiparthy (Windows Lead), Birger Fjaellman (JP...
 
 - Workstream: **GBO Batch Transition**
@@ -297,11 +297,11 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P4 - Monitor: Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings... (owner: Manish, by 2026-07-22)
 - Sources:
   - `02-work/tasks.md`
-### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
+### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
 
-- Workstream: **Capacity Management**
-- Owner: **Rasheersh** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi
+- Workstream: **CyberArk Governance**
+- Owner: **Manish** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **Medium**
 - Status: **open**
@@ -309,22 +309,7 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Time to escalation: **6 day(s)**
 - First seen: **2026-07-13** (2 days ago)
 - Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P4 - Monitor: Capacity Management is strategically important but should remain Watch unless delivery risk incre... (owner: Rasheersh, by 2026-07-22)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-8d9f37dcce - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...
-
-- Workstream: **Capacity Management**
-- Owner: **Rasheersh** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **Medium**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **6 day(s)**
-- First seen: **2026-07-13** (2 days ago)
-- Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P4 - Monitor: Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella... (owner: Rasheersh, by 2026-07-22)
+- Recommended action: P4 - Monitor: CyberArk / service-account governance remains a material risk theme after a password expiration i... (owner: Manish, by 2026-07-22)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-a18adafc06 - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...
@@ -342,11 +327,11 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P4 - Monitor: Weekly and H1 reporting state that the plan is split into six work packages and that capacity ris... (owner: Rasheersh, by 2026-07-22)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
+### R-8d9f37dcce - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...
 
-- Workstream: **CyberArk Governance**
-- Owner: **Manish** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Workstream: **Capacity Management**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
 - Stakeholders: -
 - Severity: **Medium**
 - Status: **open**
@@ -354,41 +339,41 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Time to escalation: **6 day(s)**
 - First seen: **2026-07-13** (2 days ago)
 - Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P4 - Monitor: CyberArk / service-account governance remains a material risk theme after a password expiration i... (owner: Manish, by 2026-07-22)
+- Recommended action: P4 - Monitor: Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella... (owner: Rasheersh, by 2026-07-22)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
+
+- Workstream: **Capacity Management**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **6 day(s)**
+- First seen: **2026-07-13** (2 days ago)
+- Last seen: **2026-07-13** (2 days ago)
+- Recommended action: P4 - Monitor: Capacity Management is strategically important but should remain Watch unless delivery risk incre... (owner: Rasheersh, by 2026-07-22)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 
 
 ## Oldest / Escalated Risks (14+ days)
 
-### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
+### R-52c6e63cae - Vendor Escalation
 
-- Workstream: **-**
-- Owner: **-** _(confidence: unknown)_
-- Escalation Path: -
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (85 days ago)
-- Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P1 - Escalate: Standardization of templates, CI identification, and escalation procedures to reduce (owner: unassigned, by 2026-07-15)
-- Sources:
-  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-1c3d9c0e3b - Vendor Escalation
-
-- Workstream: **MMM L2**
-- Owner: **Hari** _(confidence: workstream-map)_
+- Workstream: **GBO Batch Transition**
+- Owner: **Rowena** _(confidence: workstream-map)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: Jonan, Kelvin
+- Stakeholders: Manish, Rasheersh
 - Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (85 days ago)
 - Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P1 - Escalate: Vendor Escalation (owner: Hari, by 2026-07-15)
+- Recommended action: P1 - Escalate: Vendor Escalation (owner: Rowena, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-cd89918f9c - Review and operationalize the vendor escalation format
@@ -406,21 +391,21 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P1 - Escalate: Review and operationalize the vendor escalation format (owner: Balaji Ravi, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-ae3cccdff8 - Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
+### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
 
-- Workstream: **CMDB Mapping**
-- Owner: **Rasheersh** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **Medium**
+- Workstream: **-**
+- Owner: **-** _(confidence: unknown)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (85 days ago)
 - Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P2 - Escalate: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wr... (owner: Rasheersh, by 2026-07-17)
+- Recommended action: P1 - Escalate: Standardization of templates, CI identification, and escalation procedures to reduce (owner: unassigned, by 2026-07-15)
 - Sources:
-  - `00-context/objectives.md`
+  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-65e39d4c98 - 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
 
 - Workstream: **Rapid Recovery**
@@ -451,19 +436,34 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P2 - Escalate: Streamline risk framework and automate compliance (owner: unassigned, by 2026-07-17)
 - Sources:
   - `00-context/objectives.md`
-### R-d57894861d - Weekly project status, CR review, and risk review governance forums
+### R-ae3cccdff8 - Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
 
-- Workstream: **GOCC Transition**
-- Owner: **Balaji Ravi** _(confidence: workstream-map)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
+- Workstream: **CMDB Mapping**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-04-21** (85 days ago)
+- Last seen: **2026-04-21** (85 days ago)
+- Recommended action: P2 - Escalate: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wr... (owner: Rasheersh, by 2026-07-17)
+- Sources:
+  - `00-context/objectives.md`
+### R-f02ad44a72 - Weekly project status, CR review, and risk review governance forums
+
+- Workstream: **CMDB Mapping**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
 - Severity: **Medium**
 - Status: **open**
 - Trend: **decreasing**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-19** (26 days ago)
 - Last seen: **2026-06-19** (26 days ago)
-- Recommended action: P2 - Escalate: Weekly project status, CR review, and risk review governance forums (owner: Balaji Ravi, by 2026-07-17)
+- Recommended action: P2 - Escalate: Weekly project status, CR review, and risk review governance forums (owner: Rasheersh, by 2026-07-17)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
@@ -496,53 +496,38 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P2 - Escalate: Weekly project governance forums (status, CR review, risk review) (owner: Rowena, by 2026-07-17)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
-### R-b882fa398a - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
+### R-fff605c5dd - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
 
-- Workstream: **GBO Batch Transition**
-- Owner: **Rowena** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: Manish, Rasheersh
+- Workstream: **ADX Registration**
+- Owner: **Kelvin** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
 - Severity: **Medium**
 - Status: **open**
 - Trend: **decreasing**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-26** (19 days ago)
 - Last seen: **2026-06-26** (19 days ago)
-- Recommended action: P2 - Escalate: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a... (owner: Rowena, by 2026-07-17)
+- Recommended action: P2 - Escalate: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a... (owner: Kelvin, by 2026-07-17)
 - Sources:
   - `03-reporting/weekly/2026-W26.md`
 
 
 ## All Open Risks
 
-### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
+### R-52c6e63cae - Vendor Escalation
 
-- Workstream: **-**
-- Owner: **-** _(confidence: unknown)_
-- Escalation Path: -
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (85 days ago)
-- Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P1 - Escalate: Standardization of templates, CI identification, and escalation procedures to reduce (owner: unassigned, by 2026-07-15)
-- Sources:
-  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-1c3d9c0e3b - Vendor Escalation
-
-- Workstream: **MMM L2**
-- Owner: **Hari** _(confidence: workstream-map)_
+- Workstream: **GBO Batch Transition**
+- Owner: **Rowena** _(confidence: workstream-map)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: Jonan, Kelvin
+- Stakeholders: Manish, Rasheersh
 - Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (85 days ago)
 - Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P1 - Escalate: Vendor Escalation (owner: Hari, by 2026-07-15)
+- Recommended action: P1 - Escalate: Vendor Escalation (owner: Rowena, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-cd89918f9c - Review and operationalize the vendor escalation format
@@ -558,6 +543,21 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - First seen: **2026-04-21** (85 days ago)
 - Last seen: **2026-04-21** (85 days ago)
 - Recommended action: P1 - Escalate: Review and operationalize the vendor escalation format (owner: Balaji Ravi, by 2026-07-15)
+- Sources:
+  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
+### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
+
+- Workstream: **-**
+- Owner: **-** _(confidence: unknown)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-04-21** (85 days ago)
+- Last seen: **2026-04-21** (85 days ago)
+- Recommended action: P1 - Escalate: Standardization of templates, CI identification, and escalation procedures to reduce (owner: unassigned, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-aa0c3f050b - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management
@@ -605,21 +605,6 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P1 - Escalate: Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July... (owner: Deb, by 2026-07-15)
 - Sources:
   - `01-inbox/archive/W28_copilot.md`
-### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
-
-- Workstream: **Rapid Recovery**
-- Owner: **Balaji Ravi** _(confidence: workstream-map)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (2 days ago)
-- Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P1 - Escalate: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e... (owner: Balaji Ravi, by 2026-07-15)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
 
 - Workstream: **Capacity Management**
@@ -665,21 +650,21 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P1 - Escalate: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequenc... (owner: Balaji Ravi, by 2026-07-15)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-ae3cccdff8 - Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
+### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
 
-- Workstream: **CMDB Mapping**
-- Owner: **Rasheersh** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **Medium**
+- Workstream: **Rapid Recovery**
+- Owner: **Balaji Ravi** _(confidence: workstream-map)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
 - Status: **open**
-- Trend: **stable**
+- Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (85 days ago)
-- Last seen: **2026-04-21** (85 days ago)
-- Recommended action: P2 - Escalate: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wr... (owner: Rasheersh, by 2026-07-17)
+- First seen: **2026-07-13** (2 days ago)
+- Last seen: **2026-07-13** (2 days ago)
+- Recommended action: P1 - Escalate: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e... (owner: Balaji Ravi, by 2026-07-15)
 - Sources:
-  - `00-context/objectives.md`
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-65e39d4c98 - 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
 
 - Workstream: **Rapid Recovery**
@@ -710,19 +695,34 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P2 - Escalate: Streamline risk framework and automate compliance (owner: unassigned, by 2026-07-17)
 - Sources:
   - `00-context/objectives.md`
-### R-d57894861d - Weekly project status, CR review, and risk review governance forums
+### R-ae3cccdff8 - Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
 
-- Workstream: **GOCC Transition**
-- Owner: **Balaji Ravi** _(confidence: workstream-map)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
+- Workstream: **CMDB Mapping**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-04-21** (85 days ago)
+- Last seen: **2026-04-21** (85 days ago)
+- Recommended action: P2 - Escalate: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wr... (owner: Rasheersh, by 2026-07-17)
+- Sources:
+  - `00-context/objectives.md`
+### R-f02ad44a72 - Weekly project status, CR review, and risk review governance forums
+
+- Workstream: **CMDB Mapping**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
 - Severity: **Medium**
 - Status: **open**
 - Trend: **decreasing**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-19** (26 days ago)
 - Last seen: **2026-06-19** (26 days ago)
-- Recommended action: P2 - Escalate: Weekly project status, CR review, and risk review governance forums (owner: Balaji Ravi, by 2026-07-17)
+- Recommended action: P2 - Escalate: Weekly project status, CR review, and risk review governance forums (owner: Rasheersh, by 2026-07-17)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
@@ -755,19 +755,19 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P2 - Escalate: Weekly project governance forums (status, CR review, risk review) (owner: Rowena, by 2026-07-17)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
-### R-b882fa398a - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
+### R-fff605c5dd - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
 
-- Workstream: **GBO Batch Transition**
-- Owner: **Rowena** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: Manish, Rasheersh
+- Workstream: **ADX Registration**
+- Owner: **Kelvin** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
 - Severity: **Medium**
 - Status: **open**
 - Trend: **decreasing**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-26** (19 days ago)
 - Last seen: **2026-06-26** (19 days ago)
-- Recommended action: P2 - Escalate: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a... (owner: Rowena, by 2026-07-17)
+- Recommended action: P2 - Escalate: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a... (owner: Kelvin, by 2026-07-17)
 - Sources:
   - `03-reporting/weekly/2026-W26.md`
 ### R-1a32480547 - Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogiparthy (Windows Lead), Birger Fjaellman (JP...
@@ -800,11 +800,11 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P4 - Monitor: Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings... (owner: Manish, by 2026-07-22)
 - Sources:
   - `02-work/tasks.md`
-### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
+### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
 
-- Workstream: **Capacity Management**
-- Owner: **Rasheersh** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi
+- Workstream: **CyberArk Governance**
+- Owner: **Manish** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **Medium**
 - Status: **open**
@@ -812,22 +812,7 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Time to escalation: **6 day(s)**
 - First seen: **2026-07-13** (2 days ago)
 - Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P4 - Monitor: Capacity Management is strategically important but should remain Watch unless delivery risk incre... (owner: Rasheersh, by 2026-07-22)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-8d9f37dcce - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...
-
-- Workstream: **Capacity Management**
-- Owner: **Rasheersh** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **Medium**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **6 day(s)**
-- First seen: **2026-07-13** (2 days ago)
-- Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P4 - Monitor: Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella... (owner: Rasheersh, by 2026-07-22)
+- Recommended action: P4 - Monitor: CyberArk / service-account governance remains a material risk theme after a password expiration i... (owner: Manish, by 2026-07-22)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-a18adafc06 - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...
@@ -845,11 +830,11 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Recommended action: P4 - Monitor: Weekly and H1 reporting state that the plan is split into six work packages and that capacity ris... (owner: Rasheersh, by 2026-07-22)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
+### R-8d9f37dcce - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...
 
-- Workstream: **CyberArk Governance**
-- Owner: **Manish** _(confidence: workstream-map)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Workstream: **Capacity Management**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
 - Stakeholders: -
 - Severity: **Medium**
 - Status: **open**
@@ -857,7 +842,22 @@ Total: **24** risks (23 open / 1 closed / 10 high-severity / 13 rising)
 - Time to escalation: **6 day(s)**
 - First seen: **2026-07-13** (2 days ago)
 - Last seen: **2026-07-13** (2 days ago)
-- Recommended action: P4 - Monitor: CyberArk / service-account governance remains a material risk theme after a password expiration i... (owner: Manish, by 2026-07-22)
+- Recommended action: P4 - Monitor: Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella... (owner: Rasheersh, by 2026-07-22)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
+
+- Workstream: **Capacity Management**
+- Owner: **Rasheersh** _(confidence: workstream-map)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **6 day(s)**
+- First seen: **2026-07-13** (2 days ago)
+- Last seen: **2026-07-13** (2 days ago)
+- Recommended action: P4 - Monitor: Capacity Management is strategically important but should remain Watch unless delivery risk incre... (owner: Rasheersh, by 2026-07-22)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 

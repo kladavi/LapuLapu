@@ -1,0 +1,43 @@
+# David preference profile - V3.0 Adaptive Intelligence
+# Loaded by scripts/generate-current-focus.ps1 to bias the priority inbox
+# and the confidence-tuning learning loop.
+#
+# All weights are added to a `rankingScore` per inbox item. Higher score =
+# earlier position within a tier. Absent keys default to zero.
+version: V3.0
+
+# Static boosts David has told us matter more than the raw priority ordering.
+priority_boosts:
+  workstream:
+    "Rapid Recovery": 0.15
+    "MMM L2": 0.10
+    "GBO Batch Transition": 0.10
+    "ADX Registration": 0.08
+    "Capacity Management": 0.08
+  owner:
+    "Balaji Ravi": 0.05
+    "Deb": 0.03
+    "Rasheersh": 0.03
+  kind:
+    decision: 0.05
+    risk: 0.0
+
+# Dynamic penalties and bonuses derived from executionInsights.
+penalties:
+  overloaded_owner_threshold: 5       # owners above this count get non-P1 downranked
+  overloaded_owner_penalty: 0.20
+  low_confidence_penalty: 0.10        # confidence < 0.4 -> penalty
+  low_confidence_threshold: 0.4
+
+bonuses:
+  recurring_decision_bonus: 0.10      # decisions with recurrenceCount >= 2 get bonus
+  missed_deadline_bonus: 0.30         # decisions with past decisionDeadline jump P1
+  imminent_escalation_bonus: 0.15     # timeToEscalationRisk <= 1 day
+  inferred_action_bonus: 0.05         # decisions with only inferred actions ranked higher
+
+# Confidence-tuning learning loop: when an insight fires, bump the confidence
+# score of matching entries so the ranking gives them proper weight.
+learning:
+  delayed_workstream_confidence_bonus: 0.10   # any Escalate on a workstream that appears in delayedDecisions
+  missed_deadline_confidence_bonus: 0.15
+  overloaded_owner_confidence_penalty: 0.05   # slight drop - signal is noisy when owner is over-capacity

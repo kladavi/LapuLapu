@@ -1,23 +1,124 @@
 {
-  "generated": "2026-07-15T12:49:10",
+  "generated": "2026-07-15T13:13:46",
   "generator": "scripts/generate-current-focus.ps1",
-  "version": "V2.5",
+  "version": "V3.0",
   "totals": {
-    "total": 19,
-    "open": 19,
+    "total": 20,
+    "open": 20,
     "closed": 0,
     "authorativelyOwned": 16,
     "pendingDecisions": 7,
     "lifecycle": {
-      "pending": 7,
+      "pending": 8,
       "decided": 12,
       "expired": 0
-    }
+    },
+    "outcomeQuality": {
+      "high": 0,
+      "medium": 0,
+      "low": 12,
+      "unknown": 8
+    },
+    "recurring": 0,
+    "inferredActions": 8
   },
   "decisions": [
     {
-      "decisionId": "D-59805c75f5",
-      "title": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+      "decisionId": "D-9a895e8ecb",
+      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Deferred",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Birger Fjaellman",
+      "ownerConfidence": "name-proximity",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Decision: Deferred",
+      "impact": "",
+      "decisionConfidence": 0.44,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+        "targetOwner": "Birger Fjaellman",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-e275b159e5",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "text": "Confirm status with Balaji Ravi and record outcome",
+          "owner": "Balaji Ravi",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
+      "timeToEscalationRisk": 2,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "Balaji Ravi",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Jonan",
+        "Hari"
+      ],
+      "workstream": "GOCC Transition",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Decision: Agreed",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-d059b9808f",
+      "title": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
@@ -31,6 +132,8 @@
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
       "owner": "Balaji Ravi",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -46,58 +149,14 @@
       ],
       "decisionAgeDays": 12,
       "recencyDays": 12,
-      "decisionSummary": "All Rapid Recovery Plans must use the approved standard template covering triage steps, recovery sequences, and scenario-based documentation (3 scenario types: restart-based, workaround+restart, non-restart). No self-publishing — all RRP...",
+      "decisionSummary": "The SRM incident review concluded that production support needs explicit validation steps, enforceable runbooks, and a clear restart or recovery path when incidents require application restart. Rapid Recovery onboarding will be used to c...",
       "impact": "",
       "decisionConfidence": 0.69,
       "recommendedFollowUp": {
         "priority": 2,
         "verb": "Confirm",
-        "subject": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+        "subject": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
         "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-30ae77972e",
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [],
-      "timeToEscalationRisk": 2,
-      "owner": "Rowena",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Manish",
-        "Rasheersh"
-      ],
-      "workstream": "GBO Batch Transition",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Decision: Agreed",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-        "targetOwner": "Rowena",
         "dueBy": "2026-07-17",
         "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
       }
@@ -118,6 +177,8 @@
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
       "owner": "Hari",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -147,129 +208,6 @@
       }
     },
     {
-      "decisionId": "D-64c97dd4cc",
-      "title": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved (directional)",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Deb",
-        "Kelvin"
-      ],
-      "workstream": "Rapid Recovery",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Agreed that the Japan patching process should be simplified and documented so that GOCC can execute patching independently, reducing dependency on ETS engineering resources. Weekday patching is the target but currently blocked by manpowe...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-b27c5d17f9",
-      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Deferred",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "owner": "",
-      "ownerConfidence": "unknown",
-      "escalationPath": [],
-      "stakeholders": [],
-      "workstream": "",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Decision: Deferred",
-      "impact": "",
-      "decisionConfidence": 0.19,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
-        "targetOwner": "unassigned",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-66e0bd8e95",
-      "title": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved (locked)",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "owner": "Deb",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "workstream": "Developer XP Dashboard",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Two key decisions were locked in the AQA Information Sharing Session: (1) AQA automation scripts will be onboarded into the Asia Jenkins pipeline for Ingenium CI/CD, standardizing on Jenkins as the short-term CI/CD platform; (2) Delta pr...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
-        "targetOwner": "Deb",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
       "decisionId": "D-40250bb7d6",
       "title": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
       "dateDetected": "2026-07-03",
@@ -285,6 +223,8 @@
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
       "owner": "Manish",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -311,8 +251,58 @@
       }
     },
     {
-      "decisionId": "D-d059b9808f",
-      "title": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
+      "decisionId": "D-0ac2a0c612",
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "text": "Confirm status with Rasheersh and record outcome",
+          "owner": "Rasheersh",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
+      "timeToEscalationRisk": 2,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "Rasheersh",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [],
+      "workstream": "Capacity Management",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Decision: Agreed",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingeni...",
+        "targetOwner": "Rasheersh",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-b27c5d17f9",
+      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
@@ -322,33 +312,122 @@
       "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
-      "decisionOutcome": "Approved",
+      "decisionOutcome": "Deferred",
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Deb",
-        "Kelvin"
-      ],
-      "workstream": "Rapid Recovery",
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "",
+      "ownerConfidence": "unknown",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
       "sourceFiles": [
         "02-work/decisions.md"
       ],
       "decisionAgeDays": 12,
       "recencyDays": 12,
-      "decisionSummary": "The SRM incident review concluded that production support needs explicit validation steps, enforceable runbooks, and a clear restart or recovery path when incidents require application restart. Rapid Recovery onboarding will be used to c...",
+      "decisionSummary": "Decision: Deferred",
+      "impact": "",
+      "decisionConfidence": 0.19,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
+        "targetOwner": "unassigned",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-fadd968d28",
+      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "text": "Confirm status with Kelvin and record outcome",
+          "owner": "Kelvin",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
+      "timeToEscalationRisk": 2,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "Kelvin",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Hari"
+      ],
+      "workstream": "ADX Registration",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Decision: Agreed (parked)",
       "impact": "",
       "decisionConfidence": 0.69,
       "recommendedFollowUp": {
         "priority": 2,
         "verb": "Confirm",
-        "subject": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
-        "targetOwner": "Balaji Ravi",
+        "subject": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+        "targetOwner": "Kelvin",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-02c40deef8",
+      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Deferred",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "",
+      "ownerConfidence": "unknown",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a regis...",
+      "impact": "",
+      "decisionConfidence": 0.19,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+        "targetOwner": "unassigned",
         "dueBy": "2026-07-17",
         "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
       }
@@ -367,8 +446,18 @@
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
-      "linkedActions": [],
+      "linkedActions": [
+        {
+          "text": "Confirm status with Balaji Ravi and record outcome",
+          "owner": "Balaji Ravi",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
       "timeToEscalationRisk": 2,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
       "owner": "Balaji Ravi",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -397,6 +486,185 @@
       }
     },
     {
+      "decisionId": "D-4fc5c25a1c",
+      "title": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Balaji Ravi",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Deb",
+        "Kelvin"
+      ],
+      "workstream": "Rapid Recovery",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. ...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-64c97dd4cc",
+      "title": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved (directional)",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Balaji Ravi",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Deb",
+        "Kelvin"
+      ],
+      "workstream": "Rapid Recovery",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Agreed that the Japan patching process should be simplified and documented so that GOCC can execute patching independently, reducing dependency on ETS engineering resources. Weekday patching is the target but currently blocked by manpowe...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-7f991874c7",
+      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved (directional)",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Deb",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "workstream": "Developer XP Dashboard",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Confirmed direction to shift from project execution to a BAU service model for batch and file transfer operations. L0/L1 operational activities will transfer from Batch/PS/App support teams to GOCC (infrastructure + file transfer) and GB...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+        "targetOwner": "Deb",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-59805c75f5",
+      "title": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Balaji Ravi",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Deb",
+        "Kelvin"
+      ],
+      "workstream": "Rapid Recovery",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "All Rapid Recovery Plans must use the approved standard template covering triage steps, recovery sequences, and scenario-based documentation (3 scenario types: restart-based, workaround+restart, non-restart). No self-publishing — all RRP...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
       "decisionId": "D-f91314563c",
       "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
       "dateDetected": "2026-07-03",
@@ -410,8 +678,18 @@
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
-      "linkedActions": [],
+      "linkedActions": [
+        {
+          "text": "Confirm status with Rowena and record outcome",
+          "owner": "Rowena",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
       "timeToEscalationRisk": 2,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
       "owner": "Rowena",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -441,8 +719,8 @@
       }
     },
     {
-      "decisionId": "D-3ced6cbb47",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+      "decisionId": "D-30ae77972e",
+      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
@@ -454,100 +732,29 @@
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
-      "linkedActions": [],
+      "linkedActions": [
+        {
+          "text": "Confirm status with Rowena and record outcome",
+          "owner": "Rowena",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
       "timeToEscalationRisk": 2,
-      "owner": "Deb",
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "Rowena",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "workstream": "Developer XP Dashboard",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Decision: Agreed",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-        "targetOwner": "Deb",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-4fc5c25a1c",
-      "title": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
+        "Balaji Ravi",
         "Birger Fjaellman"
       ],
       "stakeholders": [
-        "Deb",
-        "Kelvin"
+        "Manish",
+        "Rasheersh"
       ],
-      "workstream": "Rapid Recovery",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. ...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-0ac2a0c612",
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [],
-      "timeToEscalationRisk": 2,
-      "owner": "Rasheersh",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [],
-      "workstream": "Capacity Management",
+      "workstream": "GBO Batch Transition",
       "sourceFiles": [
         "02-work/decisions.md"
       ],
@@ -559,46 +766,8 @@
       "recommendedFollowUp": {
         "priority": 2,
         "verb": "Confirm",
-        "subject": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingeni...",
-        "targetOwner": "Rasheersh",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-9a895e8ecb",
-      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Deferred",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "owner": "Birger Fjaellman",
-      "ownerConfidence": "name-proximity",
-      "escalationPath": [],
-      "stakeholders": [],
-      "workstream": "",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Decision: Deferred",
-      "impact": "",
-      "decisionConfidence": 0.44,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
-        "targetOwner": "Birger Fjaellman",
+        "subject": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
+        "targetOwner": "Rowena",
         "dueBy": "2026-07-17",
         "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
       }
@@ -619,6 +788,8 @@
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
       "owner": "Deb",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -646,8 +817,8 @@
       }
     },
     {
-      "decisionId": "D-fadd968d28",
-      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "decisionId": "D-3ced6cbb47",
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
@@ -659,93 +830,18 @@
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
-      "linkedActions": [],
+      "linkedActions": [
+        {
+          "text": "Confirm status with Deb and record outcome",
+          "owner": "Deb",
+          "status": "pending",
+          "dueBy": "2026-07-17",
+          "actionSource": "inferred"
+        }
+      ],
       "timeToEscalationRisk": 2,
-      "owner": "Kelvin",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Hari"
-      ],
-      "workstream": "ADX Registration",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Decision: Agreed (parked)",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-        "targetOwner": "Kelvin",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-e275b159e5",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [],
-      "timeToEscalationRisk": 2,
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Jonan",
-        "Hari"
-      ],
-      "workstream": "GOCC Transition",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "Decision: Agreed",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
-      }
-    },
-    {
-      "decisionId": "D-7f991874c7",
-      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved (directional)",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
       "owner": "Deb",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
@@ -760,21 +856,21 @@
       ],
       "decisionAgeDays": 12,
       "recencyDays": 12,
-      "decisionSummary": "Confirmed direction to shift from project execution to a BAU service model for batch and file transfer operations. L0/L1 operational activities will transfer from Batch/PS/App support teams to GOCC (infrastructure + file transfer) and GB...",
+      "decisionSummary": "Decision: Agreed",
       "impact": "",
       "decisionConfidence": 0.69,
       "recommendedFollowUp": {
         "priority": 2,
         "verb": "Confirm",
-        "subject": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+        "subject": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
         "targetOwner": "Deb",
         "dueBy": "2026-07-17",
         "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
       }
     },
     {
-      "decisionId": "D-02c40deef8",
-      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+      "decisionId": "D-66e0bd8e95",
+      "title": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
@@ -784,30 +880,84 @@
       "decisionPrompt": "Recorded decision aged 12 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
-      "decisionOutcome": "Deferred",
+      "decisionOutcome": "Approved (locked)",
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Deb",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "workstream": "Developer XP Dashboard",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 12,
+      "recencyDays": 12,
+      "decisionSummary": "Two key decisions were locked in the AQA Information Sharing Session: (1) AQA automation scripts will be onboarded into the Asia Jenkins pipeline for Ingenium CI/CD, standardizing on Jenkins as the short-term CI/CD platform; (2) Delta pr...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "subject": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
+        "targetOwner": "Deb",
+        "dueBy": "2026-07-17",
+        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+      }
+    },
+    {
+      "decisionId": "D-8391860e44",
+      "title": "0.05",
+      "dateDetected": "2026-07-15",
+      "firstSeenDate": "2026-07-15",
+      "lastSeenDate": "2026-07-15",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "text": "Monitor (no workstream) for follow-through - re-check in 7 days",
+          "owner": "unassigned",
+          "status": "pending",
+          "dueBy": "2026-07-22",
+          "actionSource": "inferred"
+        }
+      ],
+      "timeToEscalationRisk": 14,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
       "owner": "",
       "ownerConfidence": "unknown",
       "escalationPath": [],
       "stakeholders": [],
       "workstream": "",
       "sourceFiles": [
-        "02-work/decisions.md"
+        "00-context/david-preferences.yaml"
       ],
-      "decisionAgeDays": 12,
-      "recencyDays": 12,
-      "decisionSummary": "April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a regis...",
+      "decisionAgeDays": 0,
+      "recencyDays": 0,
+      "decisionSummary": "decision: 0.05",
       "impact": "",
-      "decisionConfidence": 0.19,
+      "decisionConfidence": 0.29,
       "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "subject": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+        "priority": 4,
+        "verb": "Track",
+        "subject": "0.05",
         "targetOwner": "unassigned",
-        "dueBy": "2026-07-17",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week."
+        "dueBy": "2026-07-22",
+        "rationale": "Fresh decision - monitor for follow-through."
       }
     }
   ]

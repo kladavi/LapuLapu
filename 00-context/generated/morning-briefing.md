@@ -2,7 +2,7 @@
 
 # Lapu-Lapu Morning Briefing
 
-Generated: 2026-07-15 12:49
+Generated: 2026-07-15 13:13
 
 ## Executive Snapshot
 
@@ -20,7 +20,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (329.3% vs prior 14 days).
+- Trend: ↑ increasing (328.6% vs prior 14 days).
 - Activity score: 100 (current window).
 - Previous-window activity: 112.8.
 
@@ -36,7 +36,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (249.2% vs prior 14 days).
+- Trend: ↑ increasing (248.6% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 136.8.
 
@@ -52,7 +52,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (188.9% vs prior 14 days).
+- Trend: ↑ increasing (188.4% vs prior 14 days).
 - Activity score: 97.4 (current window).
 - Previous-window activity: 163.2.
 
@@ -67,7 +67,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (249.2% vs prior 14 days).
+- Trend: ↑ increasing (248.6% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 136.8.
 
@@ -82,7 +82,7 @@ Why it matters:
 - High strategic weight (8/10).
 
 What changed:
-- Trend: ↑ increasing (370.1% vs prior 14 days).
+- Trend: ↑ increasing (369.3% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 101.6.
 
@@ -92,14 +92,14 @@ Recommended next action:
 
 ## Top 5 Risks
 
-- **(no workstream)** - High severity, stable trend, aging 85 days, owner: unassigned
-  - Standardization of templates, CI identification, and escalation procedures to reduce [R-f386376f94]
-  - P1 Escalate by 2026-07-15
-- **MMM L2** - High severity, stable trend, aging 85 days, owner: Hari
-  - Vendor Escalation [R-1c3d9c0e3b]
+- **GBO Batch Transition** - High severity, stable trend, aging 85 days, owner: Rowena
+  - Vendor Escalation [R-52c6e63cae]
   - P1 Escalate by 2026-07-15
 - **Rapid Recovery** - High severity, stable trend, aging 85 days, owner: Balaji Ravi
   - Review and operationalize the vendor escalation format [R-cd89918f9c]
+  - P1 Escalate by 2026-07-15
+- **(no workstream)** - High severity, stable trend, aging 85 days, owner: unassigned
+  - Standardization of templates, CI identification, and escalation procedures to reduce [R-f386376f94]
   - P1 Escalate by 2026-07-15
 - **Capacity Management** - High severity, increasing trend, aging 9 days, owner: Rasheersh
   - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management [R-aa0c3f050b]
@@ -125,41 +125,41 @@ Recommended next action:
 - **CyberArk Governance** - Medium severity, aging 5 days, owner: Manish
   - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09) [R-b1cf205d0f]
   - P4 Monitor by 2026-07-22
-- **Rapid Recovery** - High severity, aging 2 days, owner: Balaji Ravi
-  - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... [R-b493137b8f]
-  - P1 Escalate by 2026-07-15
 - **Capacity Management** - High severity, aging 2 days, owner: Rasheersh
   - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation [R-121760730c]
   - P1 Escalate by 2026-07-15
 - **Rapid Recovery** - High severity, aging 2 days, owner: Balaji Ravi
   - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement... [R-2b2a241d9c]
   - P1 Escalate by 2026-07-15
+- **Rapid Recovery** - High severity, aging 2 days, owner: Balaji Ravi
+  - The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... [R-bafab65c68]
+  - P1 Escalate by 2026-07-15
 
 ## Decision Watch
 
-- **Rapid Recovery** - Pending 12 days, owner: Balaji Ravi
-  - D011 — Agreed: Mandatory RRP Template with Controlled Publishing [D-59805c75f5]
+- **(no workstream)** - Pending 12 days, owner: Birger Fjaellman
+  - D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset [D-9a895e8ecb]
   - P2 Confirm by 2026-07-17
-- **GBO Batch Transition** - Pending 12 days, owner: Rowena
-  - D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September [D-30ae77972e]
+- **GOCC Transition** - Pending 12 days, owner: Balaji Ravi
+  - D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope [D-e275b159e5]
+  - P2 Confirm by 2026-07-17
+- **Rapid Recovery** - Pending 12 days, owner: Balaji Ravi
+  - D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness [D-d059b9808f]
   - P2 Confirm by 2026-07-17
 - **MMM L2** - Pending 12 days, owner: Hari
   - D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds [D-ad83b89db6]
   - P2 Confirm by 2026-07-17
-- **Rapid Recovery** - Pending 12 days, owner: Balaji Ravi
-  - D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution [D-64c97dd4cc]
+- **CyberArk Governance** - Pending 12 days, owner: Manish
+  - D002 — Agreed: GOCC Delivery Model for Japan Monitoring [D-40250bb7d6]
+  - P2 Confirm by 2026-07-17
+- **Capacity Management** - Pending 12 days, owner: Rasheersh
+  - D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar... [D-0ac2a0c612]
   - P2 Confirm by 2026-07-17
 - **(no workstream)** - Pending 12 days, owner: unassigned
   - D001 — Deferred: Ad-Hoc Dashboard Request from Marketing [D-b27c5d17f9]
   - P2 Confirm by 2026-07-17
-- **Developer XP Dashboard** - Pending 12 days, owner: Deb
-  - D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon [D-66e0bd8e95]
-  - P2 Confirm by 2026-07-17
-- **CyberArk Governance** - Pending 12 days, owner: Manish
-  - D002 — Agreed: GOCC Delivery Model for Japan Monitoring [D-40250bb7d6]
-  - P2 Confirm by 2026-07-17
-- **Rapid Recovery** - Pending 12 days, owner: Balaji Ravi
-  - D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness [D-d059b9808f]
+- **ADX Registration** - Pending 12 days, owner: Kelvin
+  - D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes [D-fadd968d28]
   - P2 Confirm by 2026-07-17
 
 ## Blocked / Escalation Candidates
@@ -171,7 +171,7 @@ Recommended next action:
 - **GOCC Transition** - escalation signal detected.
 - **Capacity Management** - escalation signal detected.
 - **CMDB Mapping** - escalation signal detected.
-- **Employee XP Dashboard** - escalation signal detected.
+- **Developer XP Dashboard** - escalation signal detected.
 
 ## Recommended Actions for David
 
