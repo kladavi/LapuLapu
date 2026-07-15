@@ -30,6 +30,8 @@ $OUT_DECREG_MD   = Join-Path $GEN 'decision-registry.md'
 $OUT_DECREG_JSON = Join-Path $GEN 'decision-registry.json'
 $OUT_RISKREG_MD  = Join-Path $GEN 'risk-register.md'
 $OUT_RISKREG_JSON = Join-Path $GEN 'risk-register.json'
+$OUT_INBOX_MD    = Join-Path $GEN 'david-inbox.md'
+$OUT_INBOX_JSON  = Join-Path $GEN 'david-inbox.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -377,6 +379,8 @@ $script:GENERATED_ARTIFACTS = @(
     'decision-registry.json',
     'risk-register.md',
     'risk-register.json',
+    'david-inbox.md',
+    'david-inbox.json',
     'pipeline-health.json'
 )
 
@@ -1125,12 +1129,13 @@ function Build-Json($finalResults, $meta) {
             trend_delta             = if ($_.ContainsKey('trend_delta'))             { $_.trend_delta }             else { 0 }
             trend_delta_percent     = if ($_.ContainsKey('trend_delta_percent'))     { $_.trend_delta_percent }     else { 0 }
             trend_reason            = if ($_.ContainsKey('trend_reason'))            { $_.trend_reason }            else { '' }
+            health                  = if ($_.ContainsKey('health'))                  { $_.health }                  else { $null }
         }
     }
     $output = [ordered]@{
         generated   = $meta.generated
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V1.2'
+        version     = 'V2.0'
         workstreams = @($items)
     }
     return $output | ConvertTo-Json -Depth 6
@@ -1692,6 +1697,14 @@ $script:DECISION_KEYWORDS = @(
     'Green Light', 'Proceed with', 'Selected', 'Chosen'
 )
 
+# V2.0: pending-decision keywords - lines that indicate David needs to decide,
+# rather than lines that record a decision already made.
+$script:PENDING_DECISION_KEYWORDS = @(
+    'Question', 'TBD', 'Awaiting decision', 'Need to decide', 'Open question',
+    'Pending decision', 'Decision needed', 'Decide', 'Requires decision',
+    'Awaiting sign-off', 'Approval needed', 'Confirm'
+)
+
 function New-DecisionId {
     param([string] $Seed)
     $sha1 = [System.Security.Cryptography.SHA1]::Create()
@@ -1783,9 +1796,12 @@ function Get-DecisionRegistry {
 
     $stakeKeys = @($Model.stakeholder_weights.Keys)
 
-    # Line-level decision phrase capture (bullet or heading prefix tolerated)
+    # Line-level decision phrase capture (bullet or heading prefix tolerated).
+    # V2.0 adds a second pattern for PENDING decisions that need David's input.
     $keywordAlt = ($script:DECISION_KEYWORDS | ForEach-Object { [regex]::Escape($_) }) -join '|'
     $decisionRegex = '(?im)^\s*(?:[-*>]\s+)?(?:\*\*)?(' + $keywordAlt + ')(?:\*\*)?\s*[:\-]\s*(.+?)\s*$'
+    $pendingAlt = ($script:PENDING_DECISION_KEYWORDS | ForEach-Object { [regex]::Escape($_) }) -join '|'
+    $pendingRegex = '(?im)^\s*(?:[-*>]\s+)?(?:\*\*)?(' + $pendingAlt + ')(?:\*\*)?\s*[:\-]\s+(.+?)\s*$'
 
     $decisions = @{}
 
@@ -1812,7 +1828,12 @@ function Get-DecisionRegistry {
             }
 
             $m = [regex]::Match($line, $decisionRegex)
-            if (-not $m.Success) { continue }
+            $matchType = 'recorded'
+            if (-not $m.Success) {
+                $m = [regex]::Match($line, $pendingRegex)
+                if (-not $m.Success) { continue }
+                $matchType = 'pending'
+            }
 
             $keyword = $m.Groups[1].Value
             $body    = ($m.Groups[2].Value.Trim() -replace '\s+', ' ')
@@ -1840,6 +1861,11 @@ function Get-DecisionRegistry {
                 "${keyword}: $body"
             }
             if ($summary.Length -gt 240) { $summary = $summary.Substring(0, 237) + '...' }
+
+            # V2.0: extract business impact from context if present.
+            $impact = Get-ImpactFromContext -Context $context
+            # V2.0: decision-specific explicit deadline (**By:**, **Deadline:**, **Due:**)
+            $explicitDeadline = Get-DeadlineFromContext -Context $context
 
             # Workstream via longest-alias-first
             $workstream = ''
@@ -1879,6 +1905,13 @@ function Get-DecisionRegistry {
                     decisionAgeDays     = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
                     recencyDays         = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
                     decisionSummary     = $summary
+                    impact              = $impact
+                    decisionConfidence  = 0.0
+                    # V2.0 decision triggering
+                    type                = $matchType
+                    decisionRequired    = ($matchType -eq 'pending')
+                    decisionPrompt      = if ($matchType -eq 'pending') { $body } else { '' }
+                    decisionDeadline    = $explicitDeadline
                     recommendedFollowUp = $null
                     _detectedOn         = $rec.LastWriteTime
                     _lastSeenOn         = $rec.LastWriteTime
@@ -1889,6 +1922,14 @@ function Get-DecisionRegistry {
             if (-not $entry.sourceFiles.Contains($rec.RelPath)) { $entry.sourceFiles.Add($rec.RelPath) }
             if (-not $entry.owner      -and $owner)      { $entry.owner      = $owner }
             if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
+            if (-not $entry.impact     -and $impact)     { $entry.impact     = $impact }
+            if (-not $entry.decisionDeadline -and $explicitDeadline) { $entry.decisionDeadline = $explicitDeadline }
+            # Any pending sighting upgrades type/decisionRequired (pending trumps recorded on dedupe)
+            if ($matchType -eq 'pending') {
+                $entry.type = 'pending'
+                $entry.decisionRequired = $true
+                if (-not $entry.decisionPrompt) { $entry.decisionPrompt = $body }
+            }
 
             # firstSeen = earliest, lastSeen = latest
             if ($rec.LastWriteTime -lt $entry._detectedOn) {
@@ -1932,6 +1973,29 @@ function Get-DecisionRegistry {
 
         # V1.8 structured action
         $e.recommendedFollowUp = Get-StructuredDecisionAction -Entry $e -Now $now
+
+        # V2.0: if an explicit decisionDeadline was captured, override the
+        # aging-derived dueBy so the action reflects the real deadline.
+        if ($e.decisionDeadline -and ($e.recommendedFollowUp -is [System.Collections.IDictionary])) {
+            $e.recommendedFollowUp.dueBy = $e.decisionDeadline
+        }
+
+        # V2.0 David Brain: confidence score
+        $e.decisionConfidence = Get-EntryConfidence -Entry $e
+
+        # V2.0 heuristic promotion: high-priority recorded decisions
+        # (P1 Escalate or P2 Confirm) require David's attention even without
+        # an explicit "Question:" marker. Preserve `type = recorded` so the
+        # priority inbox can distinguish 'new question' from 'stalled action'.
+        if (-not $e.decisionRequired -and ($e.recommendedFollowUp -is [System.Collections.IDictionary])) {
+            $p = $e.recommendedFollowUp.priority
+            if ($p -is [int] -and $p -le 2) {
+                $e.decisionRequired = $true
+                if (-not $e.decisionPrompt) {
+                    $e.decisionPrompt = "Recorded decision aged $($e.decisionAgeDays) days - confirm status or escalate."
+                }
+            }
+        }
     }
 
     # Sort: open before closed; within each group, oldest first
@@ -2038,6 +2102,10 @@ function Build-DecisionRegistryJson {
             firstSeenDate       = $e.firstSeenDate
             lastSeenDate        = $e.lastSeenDate
             status              = $e.status
+            type                = $e.type
+            decisionRequired    = $e.decisionRequired
+            decisionPrompt      = $e.decisionPrompt
+            decisionDeadline    = $e.decisionDeadline
             owner               = $e.owner
             ownerConfidence     = $e.ownerConfidence
             escalationPath      = @($e.escalationPath)
@@ -2047,23 +2115,27 @@ function Build-DecisionRegistryJson {
             decisionAgeDays     = $e.decisionAgeDays
             recencyDays         = $e.recencyDays
             decisionSummary     = $e.decisionSummary
+            impact              = $e.impact
+            decisionConfidence  = $e.decisionConfidence
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
 
-    $openCount   = @($Decisions | Where-Object { $_.status -ne 'closed' }).Count
-    $closedCount = @($Decisions | Where-Object { $_.status -eq 'closed' }).Count
-    $ownedCount  = @($Decisions | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
+    $openCount     = @($Decisions | Where-Object { $_.status -ne 'closed' }).Count
+    $closedCount   = @($Decisions | Where-Object { $_.status -eq 'closed' }).Count
+    $ownedCount    = @($Decisions | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
+    $pendingCount  = @($Decisions | Where-Object { $_.decisionRequired }).Count
 
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V1.8'
+        version     = 'V2.0'
         totals      = [ordered]@{
             total              = $Decisions.Count
             open               = $openCount
             closed             = $closedCount
             authorativelyOwned = $ownedCount
+            pendingDecisions   = $pendingCount
         }
         decisions   = @($items)
     }
@@ -2097,6 +2169,74 @@ function Get-EndOfWeekDate {
     if ($offset -eq 0 -and $Now.DayOfWeek -eq [DayOfWeek]::Friday -and $Now.Hour -ge 17) { $offset = 7 }
     if ($offset -eq 0 -and $Now.DayOfWeek -in @([DayOfWeek]::Saturday, [DayOfWeek]::Sunday)) { $offset = 5 }
     return $Now.AddDays($offset).Date.ToString('yyyy-MM-dd')
+}
+
+# --- V2.0 David Brain: confidence scoring + impact extraction ---------------
+
+function Get-EntryConfidence {
+    <#
+        Computes a 0-1 confidence score for a registry entry based on:
+          - ownerConfidence: workstream-map (+0.5), name-proximity (+0.25), else 0
+          - sourceFiles count: log-scaled up to +0.3
+          - recencyDays: <=7 -> +0.2, 8-30 -> +0.1, else 0
+        The result is clamped to [0, 1] and rounded to 2dp so JSON stays compact.
+    #>
+    param([hashtable] $Entry)
+    $score = 0.0
+    switch ($Entry.ownerConfidence) {
+        'workstream-map' { $score += 0.5 }
+        'name-proximity' { $score += 0.25 }
+        default          { $score += 0.0 }
+    }
+    $srcCount = 0
+    if ($Entry.sourceFiles) { $srcCount = @($Entry.sourceFiles).Count }
+    if ($srcCount -gt 0) {
+        $bonus = [Math]::Log10([double]($srcCount + 1)) * 0.3
+        $score += [Math]::Min(0.3, $bonus)
+    }
+    $recency = if ($Entry.ContainsKey('recencyDays') -and $null -ne $Entry.recencyDays) { [int]$Entry.recencyDays } else { 999 }
+    if ($recency -le 7)  { $score += 0.2 }
+    elseif ($recency -le 30) { $score += 0.1 }
+    return [Math]::Round([Math]::Min(1.0, [Math]::Max(0.0, $score)), 2)
+}
+
+function Get-ImpactFromContext {
+    <#
+        Extracts the `**Impact:**` line body from a context block, if present.
+        Falls back to empty string.
+    #>
+    param([string] $Context)
+    if ([string]::IsNullOrWhiteSpace($Context)) { return '' }
+    $m = [regex]::Match($Context, '(?im)^\s*(?:[-*>]\s+)?\*\*Impact:\*\*\s*(.+?)\s*$')
+    if (-not $m.Success) { return '' }
+    $val = ($m.Groups[1].Value -replace '\s+', ' ').Trim()
+    if ($val.Length -gt 240) { $val = $val.Substring(0, 237) + '...' }
+    return $val
+}
+
+function Get-DeadlineFromContext {
+    <#
+        Extracts an explicit deadline from `**By:** / **Deadline:** / **Due:** /
+        **Due by:** / **Target date:**` markers in the context block.
+        Returns ISO date string on success; empty string on failure.
+    #>
+    param([string] $Context)
+    if ([string]::IsNullOrWhiteSpace($Context)) { return '' }
+    $m = [regex]::Match($Context, '(?im)^\s*(?:[-*>]\s+)?\*\*(?:By|Deadline|Due|Due\s+by|Target\s+date)[:\s]?\*\*\s*(.+?)\s*$')
+    if (-not $m.Success) { return '' }
+    $raw = ($m.Groups[1].Value -replace '\s+', ' ').Trim().TrimEnd('.', ',', ';')
+    # Try several common date formats
+    $formats = @('yyyy-MM-dd','MM/dd/yyyy','dd/MM/yyyy','MMM d yyyy','MMMM d, yyyy','yyyy/MM/dd')
+    [datetime] $parsed = [datetime]::MinValue
+    foreach ($fmt in $formats) {
+        if ([datetime]::TryParseExact($raw, $fmt, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $parsed)) {
+            return $parsed.ToString('yyyy-MM-dd')
+        }
+    }
+    if ([datetime]::TryParse($raw, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $parsed)) {
+        return $parsed.ToString('yyyy-MM-dd')
+    }
+    return ''
 }
 
 function Get-StructuredRiskAction {
@@ -2269,6 +2409,9 @@ function Get-RiskRegister {
             $titleRaw = if ($currentHeading) { $currentHeading } else { $body }
             $title    = if ($titleRaw.Length -gt 140) { $titleRaw.Substring(0, 137) + '...' } else { $titleRaw }
 
+            # V2.0: extract business impact from context if present.
+            $impact = Get-ImpactFromContext -Context $context
+
             $workstream = ''
             foreach ($k in $aliasKeys) {
                 if ($lcContext -match ('\b' + [regex]::Escape($k) + '\b')) {
@@ -2311,6 +2454,8 @@ function Get-RiskRegister {
                     sourceFiles         = [System.Collections.Generic.List[string]]::new()
                     agingDays           = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
                     recencyDays         = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+                    impact              = $impact
+                    riskConfidence      = 0.0
                     recommendedAction   = $null
                     dateDetected        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
                     firstSeenDate       = $rec.LastWriteTime.ToString('yyyy-MM-dd')
@@ -2327,6 +2472,7 @@ function Get-RiskRegister {
             if (-not $entry.sourceFiles.Contains($rec.RelPath)) { $entry.sourceFiles.Add($rec.RelPath) }
             if (-not $entry.owner      -and $owner)      { $entry.owner = $owner }
             if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
+            if (-not $entry.impact     -and $impact)     { $entry.impact = $impact }
 
             # Severity may only escalate up
             if ($severity -eq 'High') { $entry.severity = 'High' }
@@ -2384,6 +2530,9 @@ function Get-RiskRegister {
 
         # V1.8 structured action (replaces canned string)
         $e.recommendedAction = Get-StructuredRiskAction -Entry $e -Now $now
+
+        # V2.0 David Brain: confidence score
+        $e.riskConfidence = Get-EntryConfidence -Entry $e
     }
 
     $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
@@ -2518,6 +2667,8 @@ function Build-RiskRegisterJson {
             lastSeenDate      = $e.lastSeenDate
             dateDetected      = $e.dateDetected
             sourceFiles       = @($e.sourceFiles)
+            impact            = $e.impact
+            riskConfidence    = $e.riskConfidence
             recommendedAction = $e.recommendedAction
         }
     }
@@ -2531,7 +2682,7 @@ function Build-RiskRegisterJson {
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V1.8'
+        version     = 'V2.0'
         totals      = [ordered]@{
             total          = $Risks.Count
             open           = $openCount
@@ -2541,6 +2692,248 @@ function Build-RiskRegisterJson {
             authorativelyOwned = $ownedCount
         }
         risks       = @($items)
+    }
+    return $out | ConvertTo-Json -Depth 6
+}
+
+# --- V2.0 David Brain: workstream health + priority inbox -------------------
+
+function Get-WorkstreamHealth {
+    <#
+        Computes a Red/Amber/Green health status per workstream by combining
+        attention scoring + open risks + open decisions + trend direction.
+        Returns { workstreamId -> @{ status, color, reason } }.
+
+        Red:   attention >= 70 AND (any High open risk OR any 14+d open decision OR trend=decreasing)
+        Amber: attention in 40..70 OR (P1 with any open Medium+ risk)
+        Green: everything else
+    #>
+    param(
+        [hashtable]                                       $FinalResults,
+        [object[]]                                        $Decisions,
+        [object[]]                                        $Risks
+    )
+
+    $risksByWs = @{}
+    foreach ($r in ($Risks | Where-Object { $null -ne $_ -and $_.status -ne 'closed' -and $_.workstream })) {
+        if (-not $risksByWs.ContainsKey($r.workstream)) { $risksByWs[$r.workstream] = [System.Collections.Generic.List[hashtable]]::new() }
+        $risksByWs[$r.workstream].Add($r)
+    }
+    $decsByWs = @{}
+    foreach ($d in ($Decisions | Where-Object { $null -ne $_ -and $_.status -ne 'closed' -and $_.workstream })) {
+        if (-not $decsByWs.ContainsKey($d.workstream)) { $decsByWs[$d.workstream] = [System.Collections.Generic.List[hashtable]]::new() }
+        $decsByWs[$d.workstream].Add($d)
+    }
+
+    $out = @{}
+    foreach ($wsId in @($FinalResults.Keys)) {
+        $entry = $FinalResults[$wsId]
+        if (-not $entry) { continue }
+        $wsName = if ($entry.ContainsKey('workstream') -and $entry.workstream -and $entry.workstream.ContainsKey('name')) { [string]$entry.workstream.name } else { '' }
+        $attention = if ($entry.ContainsKey('attention_score') -and $null -ne $entry.attention_score) { [double]$entry.attention_score } elseif ($entry.ContainsKey('score')) { [double]$entry.score } else { 0.0 }
+        $trend = if ($entry.ContainsKey('trend_direction') -and $entry.trend_direction) { [string]$entry.trend_direction } else { 'stable' }
+        $category = if ($entry.ContainsKey('category')) { [string]$entry.category } else { '' }
+
+        $wsRisks = @()
+        if ($wsName -and $risksByWs.ContainsKey($wsName)) { $wsRisks = @($risksByWs[$wsName]) }
+        $wsDecs  = @()
+        if ($wsName -and $decsByWs.ContainsKey($wsName))  { $wsDecs  = @($decsByWs[$wsName]) }
+
+        $highRisks        = @($wsRisks | Where-Object { $_ -and $_.severity -eq 'High' })
+        $mediumOrHigh     = @($wsRisks | Where-Object { $_ -and ($_.severity -eq 'High' -or $_.severity -eq 'Medium') })
+        $oldOpenDecisions = @($wsDecs  | Where-Object { $_ -and [int]$_.decisionAgeDays -ge 14 })
+
+        $status  = 'Green'
+        $reasons = [System.Collections.Generic.List[string]]::new()
+
+        if ($attention -ge 70 -and ($highRisks.Count -gt 0 -or $oldOpenDecisions.Count -gt 0 -or $trend -eq 'decreasing')) {
+            $status = 'Red'
+            if ($highRisks.Count        -gt 0) { $reasons.Add("$($highRisks.Count) high-severity open risk(s)") }
+            if ($oldOpenDecisions.Count -gt 0) { $reasons.Add("$($oldOpenDecisions.Count) decision(s) open 14+ days") }
+            if ($trend -eq 'decreasing')       { $reasons.Add('activity trend decreasing') }
+        }
+        elseif ($attention -ge 40 -or ($category -eq 'P1' -and $mediumOrHigh.Count -gt 0)) {
+            $status = 'Amber'
+            if ($mediumOrHigh.Count -gt 0) { $reasons.Add("$($mediumOrHigh.Count) open risk(s) at Medium+") }
+            if ($attention -ge 40 -and $attention -lt 70) { $reasons.Add("attention $([Math]::Round($attention,1)) in watch band") }
+        }
+        else {
+            $reasons.Add('no active risks or aged decisions on this workstream')
+        }
+
+        $color = switch ($status) { 'Red' { '#c62828' }; 'Amber' { '#f9a825' }; default { '#2e7d32' } }
+        $out[$wsId] = [ordered]@{
+            status            = $status
+            color             = $color
+            reason            = ($reasons -join '; ')
+            openRiskCount     = [int]$wsRisks.Count
+            highRiskCount     = [int]$highRisks.Count
+            openDecisionCount = [int]$wsDecs.Count
+            oldDecisionCount  = [int]$oldOpenDecisions.Count
+        }
+    }
+    return $out
+}
+
+function New-InboxItem {
+    <#
+        Normalises a decision or risk entry into a common inbox-item shape so
+        the David inbox can rank both types side-by-side.
+    #>
+    param(
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [hashtable] $Entry
+    )
+
+    if ($Kind -eq 'decision') {
+        $act = $Entry.recommendedFollowUp
+        $confidence = if ($Entry.ContainsKey('decisionConfidence')) { [double]$Entry.decisionConfidence } else { 0.0 }
+        $ageDays = $Entry.decisionAgeDays
+    } else {
+        $act = $Entry.recommendedAction
+        $confidence = if ($Entry.ContainsKey('riskConfidence')) { [double]$Entry.riskConfidence } else { 0.0 }
+        $ageDays = $Entry.agingDays
+    }
+    $priority = if ($act -is [System.Collections.IDictionary] -and $act.priority) { [int]$act.priority } else { 3 }
+    $verb     = if ($act -is [System.Collections.IDictionary]) { [string]$act.verb } else { '' }
+    $dueBy    = if ($act -is [System.Collections.IDictionary]) { [string]$act.dueBy } else { '' }
+
+    return [ordered]@{
+        kind            = $Kind
+        id              = if ($Kind -eq 'decision') { $Entry.decisionId } else { $Entry.riskId }
+        title           = $Entry.title
+        workstream      = $Entry.workstream
+        owner           = $Entry.owner
+        ownerConfidence = $Entry.ownerConfidence
+        priority        = $priority
+        verb            = $verb
+        dueBy           = $dueBy
+        deadline        = if ($Kind -eq 'decision' -and $Entry.decisionDeadline) { $Entry.decisionDeadline } else { $dueBy }
+        confidence      = [Math]::Round($confidence, 2)
+        ageDays         = $ageDays
+        severity        = if ($Kind -eq 'risk') { $Entry.severity } else { $null }
+        trend           = if ($Kind -eq 'risk') { $Entry.trend } else { $null }
+        decisionRequired= if ($Kind -eq 'decision') { $Entry.decisionRequired } else { $false }
+        impact          = $Entry.impact
+        rationale       = if ($act -is [System.Collections.IDictionary]) { [string]$act.rationale } else { '' }
+    }
+}
+
+function Get-DavidInbox {
+    <#
+        Ranks the top items David should decide/action today.
+        Includes:
+          - Any decision with decisionRequired=true
+          - Any risk with severity=High AND ownerConfidence != 'unknown'
+          - Any decision or risk whose action priority is P1 (Escalate today)
+        Sort: priority asc, then deadline asc (empty last), then confidence desc,
+        then ageDays desc.
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks
+    )
+
+    $items = [System.Collections.Generic.List[hashtable]]::new()
+
+    foreach ($d in ($Decisions | Where-Object { $_.decisionRequired })) {
+        $items.Add((New-InboxItem -Kind 'decision' -Entry $d))
+    }
+    foreach ($r in $Risks) {
+        if ($r.status -eq 'closed') { continue }
+        $isHigh = ($r.severity -eq 'High')
+        $act = $r.recommendedAction
+        $isP1 = ($act -is [System.Collections.IDictionary] -and $act.priority -eq 1)
+        if (($isHigh -and $r.ownerConfidence -ne 'unknown') -or $isP1) {
+            $items.Add((New-InboxItem -Kind 'risk' -Entry $r))
+        }
+    }
+
+    return @($items | Sort-Object `
+        @{ Expression = { [int]$_.priority }; Ascending = $true },
+        @{ Expression = { if ($_.deadline) { $_.deadline } else { '9999-12-31' } }; Ascending = $true },
+        @{ Expression = { [double]$_.confidence }; Descending = $true },
+        @{ Expression = { [int]$_.ageDays }; Descending = $true })
+}
+
+function Build-DavidInboxMarkdown {
+    param(
+        [object[]] $Items,
+        [string]   $NowStamp,
+        [int]      $Top = 10
+    )
+    $Items = @($Items | Where-Object { $null -ne $_ })
+    $selected = $Items | Select-Object -First $Top
+
+    $rows = if ($selected.Count -gt 0) {
+        ($selected | ForEach-Object {
+            $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
+            $ownerText = if ($_.owner) { $_.owner } else { 'unassigned' }
+            $sevBit = if ($_.kind -eq 'risk') { " (severity: $($_.severity), trend: $($_.trend))" } else { '' }
+            $flagBit = if ($_.decisionRequired) { ' [DECISION REQUIRED]' } else { '' }
+            @"
+### P$($_.priority) $($_.verb) - $wsName$flagBit
+
+- **What**: $($_.title)$sevBit
+- **Owner**: $ownerText ($($_.ownerConfidence))
+- **Deadline**: $($_.deadline)
+- **Confidence**: $($_.confidence)
+- **Age**: $($_.ageDays) days
+- **Rationale**: $($_.rationale)
+$(if ($_.impact) { "- **Impact**: $($_.impact)`n" } else { '' })
+- **Source**: $($_.kind) $($_.id)
+
+"@
+        }) -join ''
+    } else {
+        "_Nothing on David's plate today - all quiet._`n"
+    }
+
+    return @"
+<!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
+
+# David's Priority Inbox
+
+Generated: $NowStamp
+
+Top $($selected.Count) items combining pending decisions, high-severity risks with a known owner, and P1 actions.
+Sorted by priority (P1 first), then deadline, then confidence, then age.
+
+$rows
+
+## How this list was built
+
+- **Decisions**: any entry where ``decisionRequired = true`` (explicit ``Question:``/``TBD:`` marker OR heuristic promotion of P1/P2 recorded decisions).
+- **Risks**: any open High-severity risk with a known owner, OR any risk whose structured action is P1 (Escalate today).
+- Sort order guarantees the earliest deadline / highest confidence at the top.
+"@
+}
+
+function Build-DavidInboxJson {
+    param(
+        [object[]] $Items,
+        [string]   $GeneratedIso,
+        [int]      $Top = 10
+    )
+    $Items = @($Items | Where-Object { $null -ne $_ })
+    $selected = @($Items | Select-Object -First $Top)
+
+    $out = [ordered]@{
+        generated = $GeneratedIso
+        generator = 'scripts/generate-current-focus.ps1'
+        version   = 'V2.0'
+        totals    = [ordered]@{
+            candidates    = $Items.Count
+            selected      = $selected.Count
+            byPriority    = [ordered]@{
+                p1 = @($Items | Where-Object { $_.priority -eq 1 }).Count
+                p2 = @($Items | Where-Object { $_.priority -eq 2 }).Count
+                p3 = @($Items | Where-Object { $_.priority -eq 3 }).Count
+                p4 = @($Items | Where-Object { $_.priority -eq 4 }).Count
+                p5 = @($Items | Where-Object { $_.priority -eq 5 }).Count
+            }
+        }
+        items     = @($selected)
     }
     return $out | ConvertTo-Json -Depth 6
 }
@@ -2681,6 +3074,28 @@ $riskRegJson   = Build-RiskRegisterJson     -Risks $risks -GeneratedIso $generat
 [System.IO.File]::WriteAllText($OUT_RISKREG_JSON, $riskRegJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_RISKREG_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
 Write-Host "Written: $($OUT_RISKREG_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+
+# --- V2.0 David Brain: workstream health + priority inbox ---
+$healthMap = Get-WorkstreamHealth -FinalResults $finalResults -Decisions $decisions -Risks $risks
+foreach ($wsId in @($finalResults.Keys)) {
+    if ($healthMap.ContainsKey($wsId)) {
+        $finalResults[$wsId].health = $healthMap[$wsId]
+    }
+}
+
+# Rewrite current-focus.json/.md now that finalResults carries health
+$md = Build-Dashboard $workstreams $finalResults $model $allFiles $latestRecap
+[System.IO.File]::WriteAllText($OUT_MD, $md, (New-Object System.Text.UTF8Encoding($false)))
+$json = Build-Json $finalResults $meta
+[System.IO.File]::WriteAllText($OUT_JSON, $json, (New-Object System.Text.UTF8Encoding($false)))
+
+$inboxItems = @(Get-DavidInbox -Decisions $decisions -Risks $risks)
+$inboxMd    = Build-DavidInboxMarkdown -Items $inboxItems -NowStamp $meta.generated -Top 10
+$inboxJson  = Build-DavidInboxJson     -Items $inboxItems -GeneratedIso $generatedIso -Top 10
+[System.IO.File]::WriteAllText($OUT_INBOX_MD,   $inboxMd,   (New-Object System.Text.UTF8Encoding($false)))
+[System.IO.File]::WriteAllText($OUT_INBOX_JSON, $inboxJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_INBOX_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
+Write-Host "Written: $($OUT_INBOX_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
 # --- V1.4 Morning briefing (enriched with decision registry in V1.6) ---
 $briefMd   = Build-MorningBriefingMarkdown -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -RiskRegister $risks -NowStamp $meta.generated

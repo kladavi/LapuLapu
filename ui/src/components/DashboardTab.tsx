@@ -26,6 +26,8 @@ type CurrentFocusItem = {
   trendDirection?: string;
   deltaPercent?: number;
   overrideApplied?: boolean;
+  // V2.0 enrichment
+  health?: WorkstreamHealth;
 };
 
 type CurrentFocusFromMd = {
@@ -50,6 +52,7 @@ type FocusJsonItem = {
   trend_direction?: string;
   trend_delta_percent?: number;
   evidence_files?: string[];
+  health?: WorkstreamHealth;
 };
 
 type TrendJsonItem = {
@@ -143,6 +146,13 @@ type DecisionEntry = {
   recencyDays?: number;
   decisionSummary?: string;
   recommendedFollowUp?: string | StructuredAction;
+  // V2.0 additions
+  type?: string;
+  decisionRequired?: boolean;
+  decisionPrompt?: string;
+  decisionDeadline?: string;
+  impact?: string;
+  decisionConfidence?: number;
 };
 
 type DecisionRegistry = {
@@ -170,6 +180,9 @@ type RiskEntry = {
   dateDetected?: string;
   sourceFiles?: string[];
   recommendedAction?: string | StructuredAction;
+  // V2.0 additions
+  impact?: string;
+  riskConfidence?: number;
 };
 
 type RiskRegistry = {
@@ -177,6 +190,43 @@ type RiskRegistry = {
   version?: string;
   totals?: { total?: number; open?: number; closed?: number; high?: number; rising?: number; authorativelyOwned?: number };
   risks?: RiskEntry[];
+};
+
+type WorkstreamHealth = {
+  status?: string;
+  color?: string;
+  reason?: string;
+  openRiskCount?: number;
+  highRiskCount?: number;
+  openDecisionCount?: number;
+  oldDecisionCount?: number;
+};
+
+type InboxItem = {
+  kind?: "decision" | "risk" | string;
+  id?: string;
+  title?: string;
+  workstream?: string;
+  owner?: string;
+  ownerConfidence?: string;
+  priority?: number;
+  verb?: string;
+  dueBy?: string;
+  deadline?: string;
+  confidence?: number;
+  ageDays?: number;
+  severity?: string;
+  trend?: string;
+  decisionRequired?: boolean;
+  impact?: string;
+  rationale?: string;
+};
+
+type DavidInbox = {
+  generated?: string;
+  version?: string;
+  totals?: { candidates?: number; selected?: number; byPriority?: { p1?: number; p2?: number; p3?: number; p4?: number; p5?: number } };
+  items?: InboxItem[];
 };
 
 // Renders either the new structured action object or the legacy string.
@@ -196,6 +246,29 @@ function ownerBadgeClass(confidence?: string): string {
   if (confidence === "workstream-map") return "bg-green-50 text-green-800 border-green-200";
   if (confidence === "name-proximity") return "bg-amber-50 text-amber-800 border-amber-200";
   return "bg-slate-100 text-slate-600 border-slate-200";
+}
+
+function healthClass(status?: string): { stripe: string; badge: string } {
+  switch (status) {
+    case "Red":   return { stripe: "border-l-4 border-l-red-500",   badge: "bg-red-50 text-red-800 border-red-200" };
+    case "Amber": return { stripe: "border-l-4 border-l-amber-500", badge: "bg-amber-50 text-amber-800 border-amber-200" };
+    case "Green": return { stripe: "border-l-4 border-l-green-500", badge: "bg-green-50 text-green-800 border-green-200" };
+    default:      return { stripe: "border-l-4 border-l-slate-300", badge: "bg-slate-100 text-slate-600 border-slate-200" };
+  }
+}
+
+function priorityBadgeClass(priority?: number): string {
+  if (priority === 1) return "bg-red-50 text-red-800 border-red-200";
+  if (priority === 2) return "bg-amber-50 text-amber-800 border-amber-200";
+  if (priority === 3) return "bg-blue-50 text-blue-800 border-blue-200";
+  return "bg-slate-100 text-slate-600 border-slate-200";
+}
+
+function confidenceLabel(confidence?: number): string {
+  if (typeof confidence !== "number") return "n/a";
+  if (confidence >= 0.7) return "High";
+  if (confidence >= 0.4) return "Medium";
+  return "Low";
 }
 
 function safeJsonParse<T>(raw: string | undefined): T | null {
@@ -323,6 +396,7 @@ export function DashboardTab({ onNavigate }: Props) {
   const pipelineHealth = safeJsonParse<PipelineHealth>(data.rawFiles["00-context/generated/pipeline-health.json"]);
   const decisionRegistry = safeJsonParse<DecisionRegistry>(data.rawFiles["00-context/generated/decision-registry.json"]);
   const riskRegistry = safeJsonParse<RiskRegistry>(data.rawFiles["00-context/generated/risk-register.json"]);
+  const davidInbox   = safeJsonParse<DavidInbox>(data.rawFiles["00-context/generated/david-inbox.json"]);
 
   // Merge JSON enrichment into markdown-derived items by name
   if (currentFocus && focusJson?.workstreams?.length) {
@@ -342,6 +416,7 @@ export function DashboardTab({ onNavigate }: Props) {
         item.trendDirection   = j.trend_direction;
         item.deltaPercent     = j.trend_delta_percent;
         item.overrideApplied  = j.override_applied;
+        item.health           = j.health;
         if ((!item.evidence || item.evidence.length === 0) && j.evidence_files?.length) {
           item.evidence = j.evidence_files;
         }
@@ -708,6 +783,106 @@ export function DashboardTab({ onNavigate }: Props) {
         </div>
       )}
 
+      {/* David's Priority Inbox (V2.0) - highest signal card, top of page */}
+      <div className="rounded-xl border-2 border-red-200 bg-red-50/30 p-4">
+        <div className="flex items-baseline justify-between mb-2">
+          <h3 className="font-semibold text-th-text-secondary">David&apos;s Priority Inbox</h3>
+          {davidInbox?.generated && (
+            <span className="text-xs text-th-text-faint">Generated {davidInbox.generated}</span>
+          )}
+        </div>
+        {davidInbox?.items?.length ? (
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                Candidates: <strong>{davidInbox.totals?.candidates ?? 0}</strong>
+              </span>
+              <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                Selected: <strong>{davidInbox.totals?.selected ?? 0}</strong>
+              </span>
+              {(davidInbox.totals?.byPriority?.p1 ?? 0) > 0 && (
+                <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
+                  P1: <strong>{davidInbox.totals?.byPriority?.p1 ?? 0}</strong>
+                </span>
+              )}
+              {(davidInbox.totals?.byPriority?.p2 ?? 0) > 0 && (
+                <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-amber-800">
+                  P2: <strong>{davidInbox.totals?.byPriority?.p2 ?? 0}</strong>
+                </span>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              {davidInbox.items.map((it, idx) => (
+                <div key={it.id ?? `${it.kind}-${idx}`} className="rounded-md border border-th-border bg-th-surface p-2">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="text-sm font-medium text-th-text break-words">
+                        {it.verb ? <span className="font-semibold">{it.verb}: </span> : null}
+                        {it.title ?? "(no title)"}
+                      </div>
+                      <div className="mt-0.5 text-xs text-th-text-muted">
+                        <span className="uppercase font-mono mr-2">{it.kind}</span>
+                        {it.workstream ? <span className="font-medium">{it.workstream}</span> : <span className="italic">no workstream</span>}
+                        {it.id ? <span className="font-mono"> · {it.id}</span> : null}
+                      </div>
+                      <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
+                        {it.owner ? (
+                          <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(it.ownerConfidence)}`}>
+                            owner: {it.owner}
+                          </span>
+                        ) : (
+                          <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 font-medium text-slate-600">
+                            owner: unassigned
+                          </span>
+                        )}
+                        {it.decisionRequired && (
+                          <span className="inline-block rounded-full border border-red-200 bg-red-50 px-1.5 py-0.5 font-medium text-red-800">
+                            DECISION REQUIRED
+                          </span>
+                        )}
+                        {typeof it.confidence === "number" && (
+                          <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted" title={`raw ${it.confidence.toFixed(2)}`}>
+                            confidence: {confidenceLabel(it.confidence)} ({it.confidence.toFixed(2)})
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-end gap-1 shrink-0 text-xs tabular-nums">
+                      <span className={`inline-block rounded-full border px-2 py-0.5 font-mono ${priorityBadgeClass(it.priority)}`}>
+                        P{it.priority ?? "?"}
+                      </span>
+                      <span className="text-th-text-muted">by {it.deadline || it.dueBy || "-"}</span>
+                      {typeof it.ageDays === "number" && (
+                        <span className="text-th-text-faint">aging {it.ageDays}d</span>
+                      )}
+                    </div>
+                  </div>
+                  {it.rationale && (
+                    <p className="mt-1 text-xs text-th-text-secondary">
+                      <span className="font-medium">Why: </span>{it.rationale}
+                    </p>
+                  )}
+                  {it.impact && (
+                    <p className="mt-1 text-xs text-th-text-secondary">
+                      <span className="font-medium">Impact: </span>{it.impact}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <p className="text-xs text-th-text-faint">
+              Source: 00-context/generated/david-inbox.json - regenerated daily by scripts/run-matryoshka-pipeline.ps1.
+            </p>
+          </div>
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Priority inbox not available. Regenerate to produce 00-context/generated/david-inbox.json.
+          </p>
+        )}
+      </div>
+
       {/* Automation status */}
       <div className="rounded-xl border border-th-border bg-th-surface p-4">
         <h3 className="font-semibold text-th-text-secondary mb-2">Automation Status</h3>
@@ -864,11 +1039,18 @@ export function DashboardTab({ onNavigate }: Props) {
                         {items.length === 0 ? (
                           <p className="text-sm text-th-text-faint italic">No workstreams found.</p>
                         ) : (
-                          items.map((item) => (
-                            <div key={`${section}-${item.name}`} className="rounded-md border border-th-border p-2">
+                          items.map((item) => {
+                            const hc = healthClass(item.health?.status);
+                            return (
+                            <div key={`${section}-${item.name}`} className={`rounded-md border border-th-border p-2 ${hc.stripe}`}>
                               <div className="flex items-center justify-between gap-3">
                                 <div className="text-sm font-medium text-th-text">{item.name}</div>
                                 <div className="flex items-center gap-2 text-xs">
+                                  {item.health?.status && (
+                                    <span className={`rounded-full border px-2 py-0.5 font-medium ${hc.badge}`} title={item.health.reason ?? ""}>
+                                      {item.health.status}
+                                    </span>
+                                  )}
                                   <span className="rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 font-medium text-th-text-secondary">
                                     {item.status || section.replace(" Focus", "").replace(" List", "").replace(" Lot", "Lot")}
                                   </span>
@@ -893,6 +1075,12 @@ export function DashboardTab({ onNavigate }: Props) {
                                 <span>Mentions: {item.mentions ?? "-"}</span>
                               </div>
 
+                              {item.health?.reason && (
+                                <p className="mt-1 text-xs text-th-text-secondary">
+                                  <span className="font-medium">Health: </span>{item.health.reason}
+                                </p>
+                              )}
+
                               {item.overrideDetail && item.overrideDetail !== "No" && (
                                 <p className="mt-1 text-xs text-th-text-secondary">Override: {item.overrideDetail}</p>
                               )}
@@ -912,7 +1100,8 @@ export function DashboardTab({ onNavigate }: Props) {
                                 </p>
                               )}
                             </div>
-                          ))
+                            );
+                          })
                         )}
                       </div>
                     )}
@@ -1174,10 +1363,15 @@ export function DashboardTab({ onNavigate }: Props) {
               .sort((a, b) => (b.agingDays ?? 0) - (a.agingDays ?? 0))
               .slice(0, 6);
             const escalated = [...openRisks]
-              .filter((r) =>
-                r.severity === "High" ||
-                (r.recommendedAction ?? "").toLowerCase().includes("escalate")
-              )
+              .filter((r) => {
+                if (r.severity === "High") return true;
+                const act = r.recommendedAction;
+                if (typeof act === "string") return act.toLowerCase().includes("escalate");
+                if (act && typeof act === "object") {
+                  return (act.verb ?? "").toLowerCase() === "escalate";
+                }
+                return false;
+              })
               .sort(bySeverityAndAge)
               .slice(0, 6);
 
