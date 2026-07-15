@@ -2,7 +2,7 @@
 
 # Execution Insights
 
-Generated: 2026-07-15 13:13
+Generated: 2026-07-16 06:10
 
 Cross-cutting patterns detected across the decision registry and risk register.
 These signals feed the priority-inbox re-ranking and the confidence-tuning learning loop.
@@ -17,9 +17,9 @@ _None._
 
 ## Overloaded Owners (>= 3 open items)
 
+- **Rasheersh** - 9 open items (1 decisions / 8 risks, 2 P1), avg confidence 0.73
 - **Balaji Ravi** - 8 open items (2 decisions / 6 risks, 4 P1), avg confidence 0.7
-- **Rasheersh** - 8 open items (1 decisions / 7 risks, 2 P1), avg confidence 0.73
-- **Rowena** - 5 open items (2 decisions / 3 risks, 1 P1), avg confidence 0.69
+- **Rowena** - 6 open items (2 decisions / 4 risks, 1 P1), avg confidence 0.69
 
 ## Recurring Decisions (same normalized title 2+ times)
 
@@ -31,9 +31,9 @@ _None._
 
 ## High-Severity Aged Risks (14+ days)
 
-- **Vendor Escalation** - GBO Batch Transition - owner Rowena - aged **85d** (R-52c6e63cae)
-- **Review and operationalize the vendor escalation format** - Rapid Recovery - owner Balaji Ravi - aged **85d** (R-cd89918f9c)
-- **Standardization of templates, CI identification, and escalation procedures to reduce** -  - owner  - aged **85d** (R-f386376f94)
+- **Vendor Escalation** - GBO Batch Transition - owner Rowena - aged **86d** (R-52c6e63cae)
+- **Review and operationalize the vendor escalation format** - Rapid Recovery - owner Balaji Ravi - aged **86d** (R-cd89918f9c)
+- **Standardization of templates, CI identification, and escalation procedures to reduce** -  - owner  - aged **86d** (R-f386376f94)
 
 ## Notes
 
