@@ -137,6 +137,27 @@ type DecisionRegistry = {
   decisions?: DecisionEntry[];
 };
 
+type RiskEntry = {
+  riskId?: string;
+  title?: string;
+  workstream?: string;
+  owner?: string;
+  severity?: string;
+  status?: string;
+  trend?: string;
+  agingDays?: number;
+  dateDetected?: string;
+  sourceFiles?: string[];
+  recommendedAction?: string;
+};
+
+type RiskRegistry = {
+  generated?: string;
+  version?: string;
+  totals?: { total?: number; open?: number; closed?: number; high?: number; rising?: number };
+  risks?: RiskEntry[];
+};
+
 function safeJsonParse<T>(raw: string | undefined): T | null {
   if (!raw || !raw.trim()) return null;
   try {
@@ -261,6 +282,7 @@ export function DashboardTab({ onNavigate }: Props) {
   const briefingJson = safeJsonParse<BriefingJson>(data.rawFiles["00-context/generated/morning-briefing.json"]);
   const pipelineHealth = safeJsonParse<PipelineHealth>(data.rawFiles["00-context/generated/pipeline-health.json"]);
   const decisionRegistry = safeJsonParse<DecisionRegistry>(data.rawFiles["00-context/generated/decision-registry.json"]);
+  const riskRegistry = safeJsonParse<RiskRegistry>(data.rawFiles["00-context/generated/risk-register.json"]);
 
   // Merge JSON enrichment into markdown-derived items by name
   if (currentFocus && focusJson?.workstreams?.length) {
@@ -1054,6 +1076,173 @@ export function DashboardTab({ onNavigate }: Props) {
         ) : (
           <p className="text-sm text-th-text-faint italic">
             Decision registry not available. Regenerate to produce 00-context/generated/decision-registry.json.
+          </p>
+        )}
+      </div>
+
+      {/* Risk Watch */}
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">Risk Watch</h3>
+        {riskRegistry?.risks?.length ? (
+          (() => {
+            const risks = riskRegistry.risks ?? [];
+            const openRisks = risks.filter((r) => (r.status ?? "open") !== "closed");
+            const severityRank: Record<string, number> = { High: 0, Medium: 1, Low: 2 };
+            const bySeverityAndAge = (a: RiskEntry, b: RiskEntry) => {
+              const sa = severityRank[a.severity ?? "Medium"] ?? 1;
+              const sb = severityRank[b.severity ?? "Medium"] ?? 1;
+              if (sa !== sb) return sa - sb;
+              return (b.agingDays ?? 0) - (a.agingDays ?? 0);
+            };
+
+            const highest = [...openRisks].sort(bySeverityAndAge).slice(0, 6);
+            const growing = [...openRisks]
+              .filter((r) => r.trend === "increasing")
+              .sort((a, b) => (b.agingDays ?? 0) - (a.agingDays ?? 0))
+              .slice(0, 6);
+            const oldest = [...openRisks]
+              .filter((r) => (r.agingDays ?? 0) >= 14)
+              .sort((a, b) => (b.agingDays ?? 0) - (a.agingDays ?? 0))
+              .slice(0, 6);
+            const escalated = [...openRisks]
+              .filter((r) =>
+                r.severity === "High" ||
+                (r.recommendedAction ?? "").toLowerCase().includes("escalate")
+              )
+              .sort(bySeverityAndAge)
+              .slice(0, 6);
+
+            const totals = riskRegistry.totals ?? {};
+            const totalCount = totals.total ?? risks.length;
+            const openCount = totals.open ?? openRisks.length;
+            const highCount = totals.high ?? openRisks.filter((r) => r.severity === "High").length;
+            const risingCount = totals.rising ?? openRisks.filter((r) => r.trend === "increasing").length;
+
+            const severityBadge = (sev?: string) => {
+              const cls =
+                sev === "High"
+                  ? "bg-red-50 text-red-800 border-red-200"
+                  : sev === "Low"
+                    ? "bg-slate-100 text-slate-600 border-slate-200"
+                    : "bg-amber-50 text-amber-800 border-amber-200";
+              return (
+                <span className={`inline-block rounded-full border px-2 py-0.5 text-xs font-medium ${cls}`}>
+                  {sev ?? "Medium"}
+                </span>
+              );
+            };
+
+            const trendGlyph = (trend?: string) => {
+              if (trend === "increasing") return { symbol: "↑", label: "increasing", cls: "text-red-700" };
+              if (trend === "decreasing") return { symbol: "↓", label: "decreasing", cls: "text-green-700" };
+              return { symbol: "→", label: "stable", cls: "text-th-text-muted" };
+            };
+
+            const renderRisk = (r: RiskEntry) => {
+              const t = trendGlyph(r.trend);
+              return (
+                <div key={r.riskId ?? `${r.workstream}-${r.title}`} className="rounded-md border border-th-border p-2">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="text-sm font-medium text-th-text break-words">{r.title ?? "(no title)"}</div>
+                      <div className="mt-0.5 text-xs text-th-text-muted">
+                        {r.workstream ? <span className="font-medium">{r.workstream}</span> : <span className="italic">no workstream</span>}
+                        {r.owner ? <span> · owner: {r.owner}</span> : null}
+                        {r.riskId ? <span className="font-mono"> · {r.riskId}</span> : null}
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-end gap-1 shrink-0 text-xs">
+                      {severityBadge(r.severity)}
+                      <span className={`tabular-nums ${t.cls}`} title={t.label}>
+                        {t.symbol} {t.label}
+                      </span>
+                      <span className="tabular-nums text-th-text-muted">
+                        Aging {r.agingDays ?? 0}d
+                      </span>
+                    </div>
+                  </div>
+                  {r.recommendedAction && (
+                    <p className="mt-1 text-xs text-th-text-secondary">
+                      <span className="font-medium">Action: </span>{r.recommendedAction}
+                    </p>
+                  )}
+                  {r.sourceFiles && r.sourceFiles.length > 0 && (
+                    <p className="mt-1 text-xs text-th-text-faint break-all">
+                      Sources: {r.sourceFiles.slice(0, 2).join(", ")}
+                      {r.sourceFiles.length > 2 ? ` (+${r.sourceFiles.length - 2} more)` : ""}
+                    </p>
+                  )}
+                </div>
+              );
+            };
+
+            return (
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                    Total: <strong>{totalCount}</strong>
+                  </span>
+                  <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-blue-800">
+                    Open: <strong>{openCount}</strong>
+                  </span>
+                  <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
+                    High: <strong>{highCount}</strong>
+                  </span>
+                  <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-amber-800">
+                    Rising: <strong>{risingCount}</strong>
+                  </span>
+                  {riskRegistry.generated && (
+                    <span className="ml-auto text-th-text-faint">Generated {riskRegistry.generated}</span>
+                  )}
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-red-700 mb-2">
+                    Highest Risks
+                  </h4>
+                  {highest.length > 0 ? (
+                    <div className="space-y-2">{highest.map(renderRisk)}</div>
+                  ) : (
+                    <p className="text-xs text-th-text-faint italic">No open risks.</p>
+                  )}
+                </div>
+
+                {growing.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">
+                      Fastest Growing Risks
+                    </h4>
+                    <div className="space-y-2">{growing.map(renderRisk)}</div>
+                  </div>
+                )}
+
+                {oldest.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-2">
+                      Oldest Risks (14+ days)
+                    </h4>
+                    <div className="space-y-2">{oldest.map(renderRisk)}</div>
+                  </div>
+                )}
+
+                {escalated.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wide text-red-700 mb-2">
+                      Escalated Risks
+                    </h4>
+                    <div className="space-y-2">{escalated.map(renderRisk)}</div>
+                  </div>
+                )}
+
+                <p className="text-xs text-th-text-faint">
+                  Source: 00-context/generated/risk-register.json - do not hand-edit.
+                </p>
+              </div>
+            );
+          })()
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Risk register not available. Regenerate to produce 00-context/generated/risk-register.json.
           </p>
         )}
       </div>

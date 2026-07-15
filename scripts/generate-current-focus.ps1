@@ -28,6 +28,8 @@ $OUT_BRIEF_MD    = Join-Path $GEN 'morning-briefing.md'
 $OUT_BRIEF_JSON  = Join-Path $GEN 'morning-briefing.json'
 $OUT_DECREG_MD   = Join-Path $GEN 'decision-registry.md'
 $OUT_DECREG_JSON = Join-Path $GEN 'decision-registry.json'
+$OUT_RISKREG_MD  = Join-Path $GEN 'risk-register.md'
+$OUT_RISKREG_JSON = Join-Path $GEN 'risk-register.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -325,6 +327,8 @@ $script:GENERATED_ARTIFACTS = @(
     'morning-briefing.json',
     'decision-registry.md',
     'decision-registry.json',
+    'risk-register.md',
+    'risk-register.json',
     'pipeline-health.json'
 )
 
@@ -1294,20 +1298,25 @@ function Build-MorningBriefingMarkdown {
         [System.Collections.Generic.List[hashtable]] $Records,
         [hashtable] $Windows,
         [object[]] $DecisionRegistry,
+        [object[]] $RiskRegister,
         [string]   $NowStamp
     )
+
+    $DecisionRegistry = @($DecisionRegistry | Where-Object { $null -ne $_ })
+    $RiskRegister     = @($RiskRegister     | Where-Object { $null -ne $_ })
 
     $all = @($FinalResults.Values | Sort-Object { $_.attention_score } -Descending)
 
     $primary = @($all | Where-Object { $_.category -eq 'P1' } | Select-Object -First 5)
     if ($primary.Count -eq 0) { $primary = $all | Select-Object -First 3 }
 
-    $rising = @($all | Where-Object {
-        $_.trend_direction -eq 'increasing' -and (
-            ($_.signal_counts.ContainsKey('risk_logged')  -and $_.signal_counts['risk_logged']  -gt 0) -or
-            ($_.signal_counts.ContainsKey('escalation')   -and $_.signal_counts['escalation']   -gt 0)
-        )
-    })
+    # V1.7 Top 5 Risks + Rising Risks (registry-backed)
+    $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
+    $openRisks    = @($RiskRegister | Where-Object { $_.status -ne 'closed' })
+    $topRisks     = @($openRisks | Sort-Object `
+        @{ Expression = { $severityRank[$_.severity] }; Ascending = $true },
+        @{ Expression = { $_.agingDays }; Descending = $true } | Select-Object -First 5)
+    $risingRisks  = @($openRisks | Where-Object { $_.trend -eq 'increasing' } | Sort-Object { $_.agingDays } -Descending | Select-Object -First 8)
 
     # V1.6 Decision Pressure: registry-based, oldest open first.
     $pendingDecisions = @($DecisionRegistry | Where-Object { $_.status -ne 'closed' } | Select-Object -First 8)
@@ -1329,15 +1338,19 @@ function Build-MorningBriefingMarkdown {
         ($primary | ForEach-Object { Format-BriefingWorkstreamSection -Result $_ -Attention $AttentionMap[$_.workstream.id] }) -join ''
     } else { "_No workstream is currently marked as primary focus._`n" }
 
-    $risingBlock = if ($rising.Count -gt 0) {
-        ($rising | ForEach-Object {
-            $ws = $_
-            $reasonBits = @()
-            if ($ws.signal_counts.ContainsKey('risk_logged') -and $ws.signal_counts['risk_logged'] -gt 0) { $reasonBits += "risk_logged: $($ws.signal_counts['risk_logged'])" }
-            if ($ws.signal_counts.ContainsKey('escalation') -and $ws.signal_counts['escalation'] -gt 0)   { $reasonBits += "escalation: $($ws.signal_counts['escalation'])" }
-            "- **$($ws.workstream.name)** $($ws.trend_symbol) $($ws.trend_delta_percent)% delta; " + ($reasonBits -join ', ') + "."
+    $risingBlock = if ($risingRisks.Count -gt 0) {
+        ($risingRisks | ForEach-Object {
+            $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
+            "- **$wsName** - $($_.severity) severity, aging $($_.agingDays) days`n  - $($_.title) [$($_.riskId)]"
         }) -join "`n"
-    } else { '_No rising risks flagged in the current window._' }
+    } else { '_No rising risks in the current window._' }
+
+    $topRisksBlock = if ($topRisks.Count -gt 0) {
+        ($topRisks | ForEach-Object {
+            $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
+            "- **$wsName** - $($_.severity) severity, $($_.trend) trend, aging $($_.agingDays) days`n  - $($_.title) [$($_.riskId)]"
+        }) -join "`n"
+    } else { '_No open risks in the registry._' }
 
     $decisionBlock = if ($pendingDecisions.Count -gt 0) {
         ($pendingDecisions | ForEach-Object {
@@ -1385,6 +1398,10 @@ $execSnap
 
 $primaryBlock
 
+## Top 5 Risks
+
+$topRisksBlock
+
 ## Rising Risks
 
 $risingBlock
@@ -1419,13 +1436,48 @@ function Build-MorningBriefingJson {
         [System.Collections.Generic.List[hashtable]] $Records,
         [hashtable] $Windows,
         [object[]] $DecisionRegistry,
+        [object[]] $RiskRegister,
         [string]   $GeneratedIso
     )
+
+    $DecisionRegistry = @($DecisionRegistry | Where-Object { $null -ne $_ })
+    $RiskRegister     = @($RiskRegister     | Where-Object { $null -ne $_ })
 
     $all = @($FinalResults.Values | Sort-Object { $_.attention_score } -Descending)
 
     $primary = @($all | Where-Object { $_.category -eq 'P1' } | Select-Object -First 5)
     if ($primary.Count -eq 0) { $primary = $all | Select-Object -First 3 }
+
+    # V1.7 Risk highlights
+    $severityRankJson = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
+    $openRisksJson    = @($RiskRegister | Where-Object { $_.status -ne 'closed' })
+    $topRisksJson     = @($openRisksJson | Sort-Object `
+        @{ Expression = { $severityRankJson[$_.severity] }; Ascending = $true },
+        @{ Expression = { $_.agingDays }; Descending = $true } | Select-Object -First 5)
+    $risingRisksJson  = @($openRisksJson | Where-Object { $_.trend -eq 'increasing' } | Sort-Object { $_.agingDays } -Descending | Select-Object -First 10)
+
+    $topRisksList = foreach ($r in $topRisksJson) {
+        [ordered]@{
+            riskId            = $r.riskId
+            workstream        = $r.workstream
+            title             = $r.title
+            severity          = $r.severity
+            trend             = $r.trend
+            agingDays         = $r.agingDays
+            recommendedAction = $r.recommendedAction
+        }
+    }
+
+    $risingRisksList = foreach ($r in $risingRisksJson) {
+        [ordered]@{
+            riskId            = $r.riskId
+            workstream        = $r.workstream
+            title             = $r.title
+            severity          = $r.severity
+            agingDays         = $r.agingDays
+            recommendedAction = $r.recommendedAction
+        }
+    }
 
     $rising = @($all | Where-Object {
         $_.trend_direction -eq 'increasing' -and (
@@ -1545,10 +1597,12 @@ function Build-MorningBriefingJson {
     $out = [ordered]@{
         generated                     = $GeneratedIso
         generator                     = 'scripts/generate-current-focus.ps1'
-        version                       = 'V1.6'
+        version                       = 'V1.7'
         executiveSnapshot             = $execSnap
         primaryFocus                  = @($primaryList)
         risingRisks                   = @($risingList)
+        topRisks                      = @($topRisksList)
+        risksTrendingUp               = @($risingRisksList)
         decisionWatch                 = @($decisionList)
         decisionPressure              = @($decisionPressureList)
         blockedOrEscalationCandidates = @($escList)
@@ -1835,6 +1889,340 @@ function Build-DecisionRegistryJson {
     return $out | ConvertTo-Json -Depth 6
 }
 
+# --- V1.7 Risk Intelligence -------------------------------------------------
+
+$script:RISK_KEYWORDS = @(
+    'Risk', 'At Risk', 'Blocked', 'Dependency', 'Awaiting',
+    'Escalation', 'Concern', 'Compliance Gap', 'Capacity Issue'
+)
+
+function New-RiskId {
+    param([string] $Seed)
+    $sha1 = [System.Security.Cryptography.SHA1]::Create()
+    try {
+        $bytes = [System.Text.Encoding]::UTF8.GetBytes($Seed.ToLowerInvariant())
+        $hash  = $sha1.ComputeHash($bytes)
+        $hex   = -join ($hash | ForEach-Object { $_.ToString('x2') })
+        return 'R-' + $hex.Substring(0, 10)
+    } finally { $sha1.Dispose() }
+}
+
+function Get-RiskRegister {
+    <#
+        Scans context-eligible file records for risk-signal phrases and returns
+        deduplicated risk entries. Aging comes from earliest sighting; trend is
+        based on the ratio of current-window mentions vs previous-window mentions.
+    #>
+    param(
+        [System.Collections.Generic.List[hashtable]] $Records,
+        [object[]] $Workstreams,
+        [hashtable] $Model
+    )
+
+    $now = Get-Date
+
+    # Alias -> workstream name (longest-first for greedy match)
+    $aliasMap = @{}
+    foreach ($ws in $Workstreams) {
+        $aliasMap[$ws.name.ToLowerInvariant()] = $ws.name
+        $aliasMap[$ws.id.ToLowerInvariant()]   = $ws.name
+        foreach ($a in $ws.aliases) { $aliasMap[$a.ToLowerInvariant()] = $ws.name }
+    }
+    $aliasKeys = @($aliasMap.Keys | Sort-Object { -($_.Length) })
+
+    $stakeKeys = @($Model.stakeholder_weights.Keys)
+
+    # Line-level risk phrase capture. Two patterns:
+    #  A) Structured: `- **Risk:** description`
+    #  B) Narrative:  `- Risk of losing access to X`  or  `- Blocked by Y`
+    # We iterate lines and try A first, then B.
+    $keywordAlt   = ($script:RISK_KEYWORDS | ForEach-Object { [regex]::Escape($_) }) -join '|'
+    $strongRegex  = '(?im)^\s*(?:[-*>]\s+)?(?:\*\*)?(' + $keywordAlt + ')(?:\*\*)?\s*[:\-]\s+(.+?)\s*$'
+    $narrativeRegex = '(?im)^\s*[-*>]\s+(?:\*\*)?(.{0,240}?\b(' + $keywordAlt + ')\b.{0,240}?)\s*$'
+    # False-positive filter: skip lines that look like YAML/config or scoring rows
+    # (e.g. `escalation: 10`, `- risk_logged: 33`), or labeled metadata lines
+    # like `- **Focus:** …` / `- **Tags:** #x #y` that mention risk keywords in
+    # their body but aren't themselves risks.
+    $noiseRegex   = '(?i)(?:^\s*#|_mention|_weight|risk_logged|escalation_signals?|signal_counts|meeting_mention|patterns\s*\{)'
+    $labelNoiseRegex = '(?im)^\s*[-*>]?\s*\*\*(?:Focus|Description|Work\s*Types?|Tags|Purpose|Request|Note|Priority|Scope|Impact|Owner|Contacts?|Related|Members|Team|Sub[- ]?Teams?|Systems?|Objectives?|Aliases?|Dependencies|Status|Summary|Decision|Date|Assignees?|Roles?|Links?|Notes?)\s*:?\*\*'
+
+    $risks = @{}
+
+    foreach ($rec in $Records) {
+        if (-not $rec.IncludeForContext) { continue }
+        try {
+            $content = Get-Content -LiteralPath $rec.FullPath -Raw -Encoding UTF8 -ErrorAction Stop
+        } catch { continue }
+        if ([string]::IsNullOrWhiteSpace($content)) { continue }
+
+        $normalised     = $content -replace "`r`n", "`n"
+        $lines          = $normalised -split "`n"
+        $currentHeading = ''
+        $headingRegex   = '^##\s+(R\d+\s*[\u2014\-]\s*.+?)\s*$'
+
+        for ($i = 0; $i -lt $lines.Count; $i++) {
+            $line = $lines[$i]
+            if ([string]::IsNullOrWhiteSpace($line)) { continue }
+
+            $h = [regex]::Match($line, $headingRegex)
+            if ($h.Success) {
+                $currentHeading = ($h.Groups[1].Value -replace '\s+', ' ').Trim()
+                continue
+            }
+
+            if ($line -match $noiseRegex) { continue }
+            if ($line -match $labelNoiseRegex) { continue }
+
+            $m = [regex]::Match($line, $strongRegex)
+            $keyword = $null
+            $body    = $null
+            if ($m.Success) {
+                $keyword = $m.Groups[1].Value
+                $body    = ($m.Groups[2].Value.Trim() -replace '\s+', ' ')
+            } else {
+                $mm = [regex]::Match($line, $narrativeRegex)
+                if (-not $mm.Success) { continue }
+                $keyword = $mm.Groups[2].Value
+                $body    = ($mm.Groups[1].Value.Trim() -replace '\s+', ' ')
+            }
+            $body    = $body -replace '^\s*\*+\s*', ''
+            $body    = $body -replace '\s*\*+\s*$', ''
+            $body    = $body.Trim().TrimEnd('.', ',', ';', ':')
+            if ($body.Length -lt 5 -or $body.Length -gt 300) { continue }
+
+            $ctxStart = [Math]::Max(0, $i - 3)
+            $ctxEnd   = [Math]::Min($lines.Count - 1, $i + 6)
+            $context  = ($lines[$ctxStart..$ctxEnd] -join "`n")
+            $lcContext = $context.ToLowerInvariant()
+
+            $titleRaw = if ($currentHeading) { $currentHeading } else { $body }
+            $title    = if ($titleRaw.Length -gt 140) { $titleRaw.Substring(0, 137) + '...' } else { $titleRaw }
+
+            $workstream = ''
+            foreach ($k in $aliasKeys) {
+                if ($lcContext -match ('\b' + [regex]::Escape($k) + '\b')) {
+                    $workstream = $aliasMap[$k]; break
+                }
+            }
+
+            $owner = ''
+            foreach ($n in $stakeKeys) {
+                if ($context -match ('(?i)\b' + [regex]::Escape($n) + '\b')) { $owner = $n; break }
+            }
+
+            # Severity heuristic
+            $severity = 'Medium'
+            if ($lcContext -match '\b(critical|blocker|urgent|showstopper|severe|compliance gap|capacity issue|escalation|high[- ]severity|high[- ]impact|high[- ]priority)\b') {
+                $severity = 'High'
+            } elseif ($lcContext -match '\b(minor|low[- ]severity|low[- ]impact|low priority)\b') {
+                $severity = 'Low'
+            }
+
+            # Status heuristic
+            $status = 'open'
+            if ($lcContext -match '\b(resolved|closed|mitigated|remediated|no longer[- ]a[- ]risk|no risk)\b') { $status = 'closed' }
+
+            $seed = ($workstream + '|' + $title + '|' + $rec.RelPath)
+            $riskId = New-RiskId -Seed $seed
+
+            if (-not $risks.ContainsKey($riskId)) {
+                $risks[$riskId] = @{
+                    riskId              = $riskId
+                    title               = $title
+                    workstream          = $workstream
+                    owner               = $owner
+                    severity            = $severity
+                    status              = $status
+                    trend               = 'stable'
+                    sourceFiles         = [System.Collections.Generic.List[string]]::new()
+                    agingDays           = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+                    recommendedAction   = ''
+                    dateDetected        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                    keyword             = $keyword
+                    _detectedOn         = $rec.LastWriteTime
+                    _currentCount       = 0
+                    _previousCount      = 0
+                }
+            }
+
+            $entry = $risks[$riskId]
+            if (-not $entry.sourceFiles.Contains($rec.RelPath)) { $entry.sourceFiles.Add($rec.RelPath) }
+            if (-not $entry.owner      -and $owner)      { $entry.owner = $owner }
+            if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
+
+            # Severity may only escalate up
+            if ($severity -eq 'High') { $entry.severity = 'High' }
+            elseif ($severity -eq 'Medium' -and $entry.severity -eq 'Low') { $entry.severity = 'Medium' }
+
+            if ($status -eq 'closed') { $entry.status = 'closed' }
+
+            if ($rec.LastWriteTime -lt $entry._detectedOn) {
+                $entry._detectedOn  = $rec.LastWriteTime
+                $entry.dateDetected = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.agingDays    = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+            }
+
+            switch ($rec.Window) {
+                'current'  { $entry._currentCount  += 1 }
+                'previous' { $entry._previousCount += 1 }
+            }
+        }
+    }
+
+    foreach ($e in $risks.Values) {
+        $cur  = $e._currentCount
+        $prev = $e._previousCount
+        if     ($cur -gt $prev -and $cur -gt 0) { $e.trend = 'increasing' }
+        elseif ($cur -lt $prev -and $prev -gt 0) { $e.trend = 'decreasing' }
+        else                                     { $e.trend = 'stable' }
+
+        if ($e.status -eq 'closed') {
+            $e.recommendedAction = 'Archive after next weekly reporting cycle.'
+        } elseif ($e.severity -eq 'High') {
+            $e.recommendedAction = 'Escalate to workstream owner immediately.'
+        } elseif ($e.trend -eq 'increasing' -and $e.agingDays -ge 7) {
+            $e.recommendedAction = 'Investigate: signal is rising and 7+ days aged.'
+        } elseif ($e.agingDays -ge 14) {
+            $e.recommendedAction = 'Escalate: unresolved 14+ days.'
+        } elseif ($e.agingDays -ge 7) {
+            $e.recommendedAction = 'Review this week; confirm mitigation plan.'
+        } else {
+            $e.recommendedAction = 'Monitor and log next update.'
+        }
+    }
+
+    $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
+    return @($risks.Values | Sort-Object `
+        @{ Expression = { if ($_.status -eq 'closed') { 1 } else { 0 } }; Ascending = $true },
+        @{ Expression = { $severityRank[$_.severity] };                    Ascending = $true },
+        @{ Expression = { $_.agingDays };                                  Descending = $true })
+}
+
+function Build-RiskRegisterMarkdown {
+    param(
+        [object[]] $Risks,
+        [string]   $NowStamp
+    )
+
+    $Risks = @($Risks | Where-Object { $null -ne $_ })
+
+    $open       = @($Risks | Where-Object { $_.status -ne 'closed' })
+    $closed     = @($Risks | Where-Object { $_.status -eq 'closed' })
+    $high       = @($open | Where-Object { $_.severity -eq 'High' })
+    $rising     = @($open | Where-Object { $_.trend    -eq 'increasing' })
+    $escalated  = @($open | Where-Object { $_.agingDays -ge 14 })
+    $recent     = @($closed | Sort-Object { $_._detectedOn } -Descending | Select-Object -First 5)
+
+    function _RenderRisk($e) {
+        $ownerText = if ($e.owner)      { $e.owner }      else { '-' }
+        $wsText    = if ($e.workstream) { $e.workstream } else { '-' }
+        $sources   = if ($e.sourceFiles.Count -gt 0) {
+            ($e.sourceFiles | Select-Object -First 5 | ForEach-Object { "  - ``$_``" }) -join "`n"
+        } else { '  - (no source captured)' }
+        return @"
+### $($e.riskId) - $($e.title)
+
+- Workstream: **$wsText**
+- Owner: **$ownerText**
+- Severity: **$($e.severity)**
+- Status: **$($e.status)**
+- Trend: **$($e.trend)**
+- Aging: **$($e.agingDays) days** (detected $($e.dateDetected))
+- Recommended action: $($e.recommendedAction)
+- Sources:
+$sources
+
+"@
+    }
+
+    $highBlock   = if ($high.Count      -gt 0) { ($high      | ForEach-Object { _RenderRisk $_ }) -join '' } else { "_No high-severity open risks._`n" }
+    $risingBlock = if ($rising.Count    -gt 0) { ($rising    | ForEach-Object { _RenderRisk $_ }) -join '' } else { "_No rising risks in the current window._`n" }
+    $oldBlock    = if ($escalated.Count -gt 0) { ($escalated | ForEach-Object { _RenderRisk $_ }) -join '' } else { "_No risks past the 14-day escalation threshold._`n" }
+    $openBlock   = if ($open.Count      -gt 0) { ($open      | ForEach-Object { _RenderRisk $_ }) -join '' } else { "_No open risks detected._`n" }
+    $closedBlock = if ($recent.Count    -gt 0) { ($recent    | ForEach-Object { _RenderRisk $_ }) -join '' } else { "_No recently closed risks._`n" }
+
+    return @"
+<!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
+
+# Risk Register
+
+Generated: $NowStamp
+
+Total: **$($Risks.Count)** risks ($($open.Count) open / $($closed.Count) closed / $($high.Count) high-severity / $($rising.Count) rising)
+
+## Highest Severity Open Risks
+
+$highBlock
+
+## Fastest Growing Risks (increasing trend)
+
+$risingBlock
+
+## Oldest / Escalated Risks (14+ days)
+
+$oldBlock
+
+## All Open Risks
+
+$openBlock
+
+## Recently Closed Risks
+
+$closedBlock
+
+## Notes
+
+Risks are auto-extracted from context-eligible files (see 00-context/source-weights.yaml).
+Severity is heuristic (High: critical/blocker/urgent/escalation/compliance gap; Low: minor/low priority; else Medium).
+Trend compares current vs previous 14-day windows; recommended action layers severity, trend, and aging.
+"@
+}
+
+function Build-RiskRegisterJson {
+    param(
+        [object[]] $Risks,
+        [string]   $GeneratedIso
+    )
+
+    $Risks = @($Risks | Where-Object { $null -ne $_ })
+
+    $items = foreach ($e in $Risks) {
+        [ordered]@{
+            riskId            = $e.riskId
+            title             = $e.title
+            workstream        = $e.workstream
+            owner             = $e.owner
+            severity          = $e.severity
+            status            = $e.status
+            trend             = $e.trend
+            agingDays         = $e.agingDays
+            dateDetected      = $e.dateDetected
+            sourceFiles       = @($e.sourceFiles)
+            recommendedAction = $e.recommendedAction
+        }
+    }
+
+    $openCount   = @($Risks | Where-Object { $_.status -ne 'closed' }).Count
+    $closedCount = @($Risks | Where-Object { $_.status -eq 'closed' }).Count
+    $highCount   = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.severity -eq 'High' }).Count
+    $risingCount = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.trend    -eq 'increasing' }).Count
+
+    $out = [ordered]@{
+        generated   = $GeneratedIso
+        generator   = 'scripts/generate-current-focus.ps1'
+        version     = 'V1.7'
+        totals      = [ordered]@{
+            total    = $Risks.Count
+            open     = $openCount
+            closed   = $closedCount
+            high     = $highCount
+            rising   = $risingCount
+        }
+        risks       = @($items)
+    }
+    return $out | ConvertTo-Json -Depth 6
+}
+
 # --- Main -------------------------------------------------------------------
 
 Write-Host ""
@@ -1962,9 +2350,18 @@ $decRegJson      = Build-DecisionRegistryJson     -Decisions $decisions -Generat
 Write-Host "Written: $($OUT_DECREG_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
 Write-Host "Written: $($OUT_DECREG_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
+# --- V1.7 Risk Register (must run before the briefing so it can consume it) ---
+$risks         = @(Get-RiskRegister -Records $records -Workstreams $workstreams -Model $model)
+$riskRegMd     = Build-RiskRegisterMarkdown -Risks $risks -NowStamp $meta.generated
+$riskRegJson   = Build-RiskRegisterJson     -Risks $risks -GeneratedIso $generatedIso
+[System.IO.File]::WriteAllText($OUT_RISKREG_MD,   $riskRegMd,   (New-Object System.Text.UTF8Encoding($false)))
+[System.IO.File]::WriteAllText($OUT_RISKREG_JSON, $riskRegJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_RISKREG_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
+Write-Host "Written: $($OUT_RISKREG_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+
 # --- V1.4 Morning briefing (enriched with decision registry in V1.6) ---
-$briefMd   = Build-MorningBriefingMarkdown -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -NowStamp $meta.generated
-$briefJson = Build-MorningBriefingJson     -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -GeneratedIso $generatedIso
+$briefMd   = Build-MorningBriefingMarkdown -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -RiskRegister $risks -NowStamp $meta.generated
+$briefJson = Build-MorningBriefingJson     -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -RiskRegister $risks -GeneratedIso $generatedIso
 [System.IO.File]::WriteAllText($OUT_BRIEF_MD,   $briefMd,   (New-Object System.Text.UTF8Encoding($false)))
 [System.IO.File]::WriteAllText($OUT_BRIEF_JSON, $briefJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_BRIEF_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
