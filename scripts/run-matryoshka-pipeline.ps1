@@ -97,113 +97,195 @@ function Save-StateFile {
     ($State | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
 }
 
+# --- V1.5 additions: logging + pipeline-health ---------------------------
+
+$LogDir = Join-Path $RepoRoot 'logs'
+if (-not (Test-Path -LiteralPath $LogDir)) {
+    New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
+}
+$LogFile    = Join-Path $LogDir ("matryoshka-pipeline-{0}.log" -f (Get-Date -Format 'yyyy-MM-dd'))
+$HealthFile = Join-Path $RepoRoot '00-context\generated\pipeline-health.json'
+
+function New-HealthObject {
+    [ordered]@{
+        lastRun                  = ''
+        status                   = 'unknown'
+        message                  = ''
+        lastActivityFile         = ''
+        lastActivityHash         = ''
+        currentFocusGenerated    = $false
+        trendsGenerated          = $false
+        morningBriefingGenerated = $false
+        jsonValidated            = $false
+        gitCommitted             = $false
+        lastCommitHash           = ''
+    }
+}
+
+function Save-HealthFile {
+    param($Health, [string] $Path)
+    $Health.lastRun = (Get-Date).ToString('s')
+    $dir = Split-Path -Parent $Path
+    if (-not (Test-Path -LiteralPath $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    }
+    ($Health | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
+}
+
 # --- Locate newest recap ----------------------------------------------------
 
-Write-Log "Pipeline start. Repo: $RepoRoot"
+function Invoke-MatryoshkaPipeline {
+    param($Health)
 
-if (-not (Test-Path -LiteralPath $ActivityDir)) {
-    Write-Log "Activity directory not found: $ActivityDir"
-    exit 0
-}
+    Write-Log "Pipeline start. Repo: $RepoRoot"
 
-$latest = Get-ChildItem -LiteralPath $ActivityDir -File -Filter '*-14-day-activity.md' -ErrorAction SilentlyContinue |
-          Sort-Object LastWriteTime -Descending |
-          Select-Object -First 1
-
-if (-not $latest) {
-    Write-Log 'No 14-day activity recap found. Exiting.'
-    exit 0
-}
-
-Write-Log "Latest recap: $($latest.Name) (modified $($latest.LastWriteTime.ToString('s')))"
-
-# --- Compare against automation-state ---------------------------------------
-
-$state = Read-StateFile -Path $StateFile
-$hash  = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
-
-if ($state.lastProcessedActivityHash -eq $hash) {
-    Write-Log "Recap already processed (hash unchanged). Nothing to do."
-    exit 0
-}
-
-Write-Log "New content detected. Previous hash: '$($state.lastProcessedActivityHash)'  new hash: '$hash'"
-
-# --- Run generator ----------------------------------------------------------
-
-$pwshPath = Get-PwshPath
-Write-Log "Invoking generator via $pwshPath"
-
-& $pwshPath -NoLogo -NoProfile -File $Generator
-if ($LASTEXITCODE -ne 0) {
-    throw "Generator exited with code $LASTEXITCODE."
-}
-
-# --- Validate generated JSON ------------------------------------------------
-
-Write-Log 'Validating generated JSON files.'
-foreach ($relJson in ($GeneratedFiles | Where-Object { $_ -like '*.json' })) {
-    $abs = Join-Path $RepoRoot $relJson
-    if (-not (Test-Path -LiteralPath $abs)) { throw "Missing generated file: $relJson" }
-    try {
-        Get-Content -LiteralPath $abs -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
-        Write-Log "  OK: $relJson"
-    } catch {
-        throw "Invalid JSON in $relJson : $($_.Exception.Message)"
+    if (-not (Test-Path -LiteralPath $ActivityDir)) {
+        Write-Log "Activity directory not found: $ActivityDir"
+        $Health.status  = 'no-op'
+        $Health.message = 'Activity directory not found.'
+        return
     }
-}
 
-# --- Update automation-state.json -------------------------------------------
+    $latest = Get-ChildItem -LiteralPath $ActivityDir -File -Filter '*-14-day-activity.md' -ErrorAction SilentlyContinue |
+              Sort-Object LastWriteTime -Descending |
+              Select-Object -First 1
 
-$now = (Get-Date).ToString('s')
-$state.lastProcessedActivityFile = $latest.Name
-$state.lastProcessedActivityHash = $hash
-$state.lastSuccessfulRun         = $now
-$state.status                    = 'success'
-Save-StateFile -State $state -Path $StateFile
-Write-Log "Automation state updated (lastSuccessfulRun=$now)."
+    if (-not $latest) {
+        Write-Log 'No 14-day activity recap found. Exiting.'
+        $Health.status  = 'no-op'
+        $Health.message = 'No 14-day activity recap found.'
+        return
+    }
 
-# --- Git commit (local only, never push) ------------------------------------
+    Write-Log "Latest recap: $($latest.Name) (modified $($latest.LastWriteTime.ToString('s')))"
+    $Health.lastActivityFile = $latest.Name
 
-Write-Log 'Staging Git changes.'
-git status --short
+    # --- Compare against automation-state ---------------------------------------
 
-git add `
-    '01-inbox/copilot-activity' `
-    '00-context/generated' `
-    '00-context/automation-state.json'
+    $state = Read-StateFile -Path $StateFile
+    $hash  = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
+    $Health.lastActivityHash = $hash
 
-$staged = git diff --cached --name-only
-if (-not $staged) {
-    Write-Log 'No staged changes. Nothing to commit.'
-    exit 0
-}
+    if ($state.lastProcessedActivityHash -eq $hash) {
+        Write-Log 'Recap already processed (hash unchanged). Nothing to do.'
+        $Health.status         = 'no-op'
+        $Health.message        = 'Recap hash unchanged since previous run.'
+        # Carry forward last known good commit hash so the dashboard remains useful.
+        $Health.lastCommitHash = $state.lastCommitHash
+        return
+    }
 
-Write-Log "Files staged for commit:`n$staged"
+    Write-Log "New content detected. Previous hash: '$($state.lastProcessedActivityHash)'  new hash: '$hash'"
 
-git commit -m 'Update Project Matryoshka automated intake outputs'
-if ($LASTEXITCODE -ne 0) {
-    throw "git commit failed with exit code $LASTEXITCODE"
-}
-$commit = (git rev-parse HEAD).Trim()
-Write-Log "Committed outputs: $commit"
+    # --- Run generator ----------------------------------------------------------
 
-# Record the commit hash back into automation-state for full audit trail.
-$state = Read-StateFile -Path $StateFile
-$state.lastCommitHash = $commit
-Save-StateFile -State $state -Path $StateFile
-
-git add '00-context/automation-state.json'
-$stagedState = git diff --cached --name-only
-if ($stagedState) {
-    git commit -m 'Record Project Matryoshka automation state'
+    $pwshPath = Get-PwshPath
+    Write-Log "Invoking generator via $pwshPath"
+    & $pwshPath -NoLogo -NoProfile -File $Generator
     if ($LASTEXITCODE -ne 0) {
-        throw "git commit (state) failed with exit code $LASTEXITCODE"
+        throw "Generator exited with code $LASTEXITCODE."
     }
-    $stateCommit = (git rev-parse HEAD).Trim()
-    Write-Log "Recorded state commit: $stateCommit"
-} else {
-    Write-Log 'State commit skipped: no additional changes to record.'
+
+    $Health.currentFocusGenerated    = Test-Path -LiteralPath (Join-Path $RepoRoot '00-context\generated\current-focus.json')
+    $Health.trendsGenerated          = Test-Path -LiteralPath (Join-Path $RepoRoot '00-context\generated\current-focus-trends.json')
+    $Health.morningBriefingGenerated = Test-Path -LiteralPath (Join-Path $RepoRoot '00-context\generated\morning-briefing.json')
+
+    # --- Validate generated JSON ------------------------------------------------
+
+    Write-Log 'Validating generated JSON files.'
+    foreach ($relJson in ($GeneratedFiles | Where-Object { $_ -like '*.json' })) {
+        $abs = Join-Path $RepoRoot $relJson
+        if (-not (Test-Path -LiteralPath $abs)) { throw "Missing generated file: $relJson" }
+        try {
+            Get-Content -LiteralPath $abs -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
+            Write-Log "  OK: $relJson"
+        } catch {
+            throw "Invalid JSON in $relJson : $($_.Exception.Message)"
+        }
+    }
+    $Health.jsonValidated = $true
+
+    # --- Update automation-state.json -------------------------------------------
+
+    $now = (Get-Date).ToString('s')
+    $state.lastProcessedActivityFile = $latest.Name
+    $state.lastProcessedActivityHash = $hash
+    $state.lastSuccessfulRun         = $now
+    $state.status                    = 'success'
+    Save-StateFile -State $state -Path $StateFile
+    Write-Log "Automation state updated (lastSuccessfulRun=$now)."
+
+    # --- Git commit (local only, never push) ------------------------------------
+
+    Write-Log 'Staging Git changes.'
+    git status --short
+
+    git add `
+        '01-inbox/copilot-activity' `
+        '00-context/generated' `
+        '00-context/automation-state.json'
+
+    $staged = git diff --cached --name-only
+    if (-not $staged) {
+        Write-Log 'No staged changes. Nothing to commit.'
+        $Health.status         = 'success'
+        $Health.message        = 'Generator ran but produced no diffs to commit.'
+        $Health.lastCommitHash = $state.lastCommitHash
+        return
+    }
+
+    Write-Log "Files staged for commit:`n$staged"
+
+    git commit -m 'Update Project Matryoshka automated intake outputs'
+    if ($LASTEXITCODE -ne 0) {
+        throw "git commit failed with exit code $LASTEXITCODE"
+    }
+    $commit = (git rev-parse HEAD).Trim()
+    Write-Log "Committed outputs: $commit"
+    $Health.gitCommitted   = $true
+    $Health.lastCommitHash = $commit
+
+    # Record the commit hash back into automation-state for full audit trail.
+    $state = Read-StateFile -Path $StateFile
+    $state.lastCommitHash = $commit
+    Save-StateFile -State $state -Path $StateFile
+
+    git add '00-context/automation-state.json'
+    $stagedState = git diff --cached --name-only
+    if ($stagedState) {
+        git commit -m 'Record Project Matryoshka automation state'
+        if ($LASTEXITCODE -ne 0) {
+            throw "git commit (state) failed with exit code $LASTEXITCODE"
+        }
+        $stateCommit = (git rev-parse HEAD).Trim()
+        Write-Log "Recorded state commit: $stateCommit"
+    } else {
+        Write-Log 'State commit skipped: no additional changes to record.'
+    }
+
+    $Health.status  = 'success'
+    $Health.message = 'New recap processed and committed.'
+    Write-Log 'Pipeline complete. Push intentionally skipped.'
 }
 
-Write-Log 'Pipeline complete. Push intentionally skipped.'
+# --- Orchestration ----------------------------------------------------------
+
+Start-Transcript -Path $LogFile -Append -Force | Out-Null
+
+$health = New-HealthObject
+try {
+    Invoke-MatryoshkaPipeline -Health $health
+} catch {
+    $health.status  = 'error'
+    $health.message = $_.Exception.Message
+    Write-Log "PIPELINE ERROR: $($_.Exception.Message)"
+    throw
+} finally {
+    try {
+        Save-HealthFile -Health $health -Path $HealthFile
+        Write-Log "Health written: $HealthFile"
+    } catch {
+        Write-Warning "Failed to write health file: $($_.Exception.Message)"
+    }
+    try { Stop-Transcript | Out-Null } catch { }
+}
