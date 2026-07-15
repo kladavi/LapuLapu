@@ -117,6 +117,26 @@ type PipelineHealth = {
   lastCommitHash?: string;
 };
 
+type DecisionEntry = {
+  decisionId?: string;
+  title?: string;
+  dateDetected?: string;
+  status?: string;
+  owner?: string;
+  workstream?: string;
+  sourceFiles?: string[];
+  decisionAgeDays?: number;
+  decisionSummary?: string;
+  recommendedFollowUp?: string;
+};
+
+type DecisionRegistry = {
+  generated?: string;
+  version?: string;
+  totals?: { total?: number; open?: number; closed?: number };
+  decisions?: DecisionEntry[];
+};
+
 function safeJsonParse<T>(raw: string | undefined): T | null {
   if (!raw || !raw.trim()) return null;
   try {
@@ -240,6 +260,7 @@ export function DashboardTab({ onNavigate }: Props) {
   const trendsJson   = safeJsonParse<TrendJson>(data.rawFiles["00-context/generated/current-focus-trends.json"]);
   const briefingJson = safeJsonParse<BriefingJson>(data.rawFiles["00-context/generated/morning-briefing.json"]);
   const pipelineHealth = safeJsonParse<PipelineHealth>(data.rawFiles["00-context/generated/pipeline-health.json"]);
+  const decisionRegistry = safeJsonParse<DecisionRegistry>(data.rawFiles["00-context/generated/decision-registry.json"]);
 
   // Merge JSON enrichment into markdown-derived items by name
   if (currentFocus && focusJson?.workstreams?.length) {
@@ -900,6 +921,139 @@ export function DashboardTab({ onNavigate }: Props) {
         ) : (
           <p className="text-sm text-th-text-faint italic">
             Trend data not available. Regenerate to produce 00-context/generated/current-focus-trends.json.
+          </p>
+        )}
+      </div>
+
+      {/* Decision Watch */}
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">Decision Watch</h3>
+        {decisionRegistry?.decisions?.length ? (
+          (() => {
+            const decisions = decisionRegistry.decisions ?? [];
+            const openDecisions = decisions.filter((d) => (d.status ?? "open") !== "closed");
+            const closedDecisions = decisions.filter((d) => d.status === "closed");
+            const oldestUnresolved = [...openDecisions]
+              .sort((a, b) => (b.decisionAgeDays ?? 0) - (a.decisionAgeDays ?? 0))
+              .slice(0, 6);
+            const escalationCandidates = openDecisions.filter((d) => (d.decisionAgeDays ?? 0) >= 14);
+            const recentlyClosed = [...closedDecisions]
+              .sort((a, b) => (a.decisionAgeDays ?? 0) - (b.decisionAgeDays ?? 0))
+              .slice(0, 5);
+
+            const totals = decisionRegistry.totals ?? {};
+            const openCount = totals.open ?? openDecisions.length;
+            const closedCount = totals.closed ?? closedDecisions.length;
+            const totalCount = totals.total ?? decisions.length;
+
+            const renderEntry = (d: DecisionEntry) => (
+              <div key={d.decisionId ?? `${d.workstream}-${d.title}`} className="rounded-md border border-th-border p-2">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium text-th-text break-words">{d.title ?? "(no title)"}</div>
+                    <div className="mt-0.5 text-xs text-th-text-muted">
+                      {d.workstream ? <span className="font-medium">{d.workstream}</span> : <span className="italic">no workstream</span>}
+                      {d.owner ? <span> · owner: {d.owner}</span> : null}
+                      {d.decisionId ? <span className="font-mono"> · {d.decisionId}</span> : null}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end gap-1 shrink-0 text-xs">
+                    <span className={`inline-block rounded-full border px-2 py-0.5 font-medium ${
+                      d.status === "closed"
+                        ? "bg-slate-100 text-slate-600 border-slate-200"
+                        : (d.decisionAgeDays ?? 0) >= 14
+                          ? "bg-red-50 text-red-800 border-red-200"
+                          : (d.decisionAgeDays ?? 0) >= 7
+                            ? "bg-amber-50 text-amber-800 border-amber-200"
+                            : "bg-blue-50 text-blue-800 border-blue-200"
+                    }`}>
+                      {d.status ?? "open"}
+                    </span>
+                    <span className="tabular-nums text-th-text-muted">
+                      Pending {d.decisionAgeDays ?? 0} days
+                    </span>
+                  </div>
+                </div>
+                {d.recommendedFollowUp && (
+                  <p className="mt-1 text-xs text-th-text-secondary">
+                    <span className="font-medium">Follow-up: </span>{d.recommendedFollowUp}
+                  </p>
+                )}
+                {d.sourceFiles && d.sourceFiles.length > 0 && (
+                  <p className="mt-1 text-xs text-th-text-faint break-all">
+                    Sources: {d.sourceFiles.slice(0, 2).join(", ")}
+                    {d.sourceFiles.length > 2 ? ` (+${d.sourceFiles.length - 2} more)` : ""}
+                  </p>
+                )}
+              </div>
+            );
+
+            return (
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                    Total: <strong>{totalCount}</strong>
+                  </span>
+                  <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-blue-800">
+                    Open: <strong>{openCount}</strong>
+                  </span>
+                  <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-2 py-0.5 text-slate-700">
+                    Closed: <strong>{closedCount}</strong>
+                  </span>
+                  {escalationCandidates.length > 0 && (
+                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
+                      Escalate ({escalationCandidates.length}) 14+ days
+                    </span>
+                  )}
+                  {decisionRegistry.generated && (
+                    <span className="ml-auto text-th-text-faint">Generated {decisionRegistry.generated}</span>
+                  )}
+                </div>
+
+                {escalationCandidates.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wide text-red-700 mb-2">
+                      Escalation Candidates (14+ days)
+                    </h4>
+                    <div className="space-y-2">
+                      {escalationCandidates.slice(0, 6).map(renderEntry)}
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-2">
+                    Oldest Unresolved Decisions
+                  </h4>
+                  {oldestUnresolved.length > 0 ? (
+                    <div className="space-y-2">
+                      {oldestUnresolved.map(renderEntry)}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-th-text-faint italic">No unresolved decisions in the registry.</p>
+                  )}
+                </div>
+
+                {recentlyClosed.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wide text-th-text-faint mb-2">
+                      Recently Closed
+                    </h4>
+                    <div className="space-y-2">
+                      {recentlyClosed.map(renderEntry)}
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-xs text-th-text-faint">
+                  Source: 00-context/generated/decision-registry.json - do not hand-edit.
+                </p>
+              </div>
+            );
+          })()
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            Decision registry not available. Regenerate to produce 00-context/generated/decision-registry.json.
           </p>
         )}
       </div>
