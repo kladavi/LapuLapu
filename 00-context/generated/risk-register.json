@@ -1,14 +1,15 @@
 {
-  "generated": "2026-07-15T12:18:42",
+  "generated": "2026-07-15T12:49:10",
   "generator": "scripts/generate-current-focus.ps1",
-  "version": "V2.0",
+  "version": "V2.5",
   "totals": {
     "total": 24,
     "open": 23,
     "closed": 1,
     "high": 10,
     "rising": 13,
-    "authorativelyOwned": 22
+    "authorativelyOwned": 22,
+    "imminentEscalation": 17
   },
   "risks": [
     {
@@ -32,6 +33,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.09,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
@@ -42,18 +44,18 @@
       }
     },
     {
-      "riskId": "R-52c6e63cae",
+      "riskId": "R-1c3d9c0e3b",
       "title": "Vendor Escalation",
-      "workstream": "GBO Batch Transition",
-      "owner": "Rowena",
+      "workstream": "MMM L2",
+      "owner": "Hari",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
         "Balaji Ravi",
         "Birger Fjaellman"
       ],
       "stakeholders": [
-        "Manish",
-        "Rasheersh"
+        "Jonan",
+        "Kelvin"
       ],
       "severity": "High",
       "status": "open",
@@ -68,11 +70,12 @@
       ],
       "impact": "",
       "riskConfidence": 0.59,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
         "subject": "Vendor Escalation",
-        "targetOwner": "Rowena",
+        "targetOwner": "Hari",
         "dueBy": "2026-07-15",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -103,6 +106,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.59,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
@@ -135,45 +139,12 @@
       ],
       "impact": "",
       "riskConfidence": 0.69,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
         "subject": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a ...",
         "targetOwner": "Rasheersh",
-        "dueBy": "2026-07-15",
-        "rationale": "High severity - notify workstream owner today."
-      }
-    },
-    {
-      "riskId": "R-8ad2d2ce2f",
-      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Deb",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 5,
-      "recencyDays": 5,
-      "firstSeenDate": "2026-07-10",
-      "lastSeenDate": "2026-07-10",
-      "dateDetected": "2026-07-10",
-      "sourceFiles": [
-        "01-inbox/archive/W28_copilot.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "recommendedAction": {
-        "priority": 1,
-        "verb": "Escalate",
-        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
-        "targetOwner": "Deb",
         "dueBy": "2026-07-15",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -203,11 +174,47 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
         "subject": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium in...",
         "targetOwner": "Kelvin",
+        "dueBy": "2026-07-15",
+        "rationale": "High severity - notify workstream owner today."
+      }
+    },
+    {
+      "riskId": "R-8ad2d2ce2f",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Deb",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 5,
+      "recencyDays": 5,
+      "firstSeenDate": "2026-07-10",
+      "lastSeenDate": "2026-07-10",
+      "dateDetected": "2026-07-10",
+      "sourceFiles": [
+        "01-inbox/archive/W28_copilot.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 1,
+        "verb": "Escalate",
+        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
+        "targetOwner": "Deb",
         "dueBy": "2026-07-15",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -238,11 +245,45 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
         "subject": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e...",
         "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-15",
+        "rationale": "High severity - notify workstream owner today."
+      }
+    },
+    {
+      "riskId": "R-121760730c",
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "workstream": "Capacity Management",
+      "owner": "Rasheersh",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 2,
+      "recencyDays": 2,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "dateDetected": "2026-07-13",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 1,
+        "verb": "Escalate",
+        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
+        "targetOwner": "Rasheersh",
         "dueBy": "2026-07-15",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -273,43 +314,12 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
         "subject": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timel...",
         "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-15",
-        "rationale": "High severity - notify workstream owner today."
-      }
-    },
-    {
-      "riskId": "R-121760730c",
-      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-      "workstream": "Capacity Management",
-      "owner": "Rasheersh",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 2,
-      "recencyDays": 2,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "dateDetected": "2026-07-13",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "recommendedAction": {
-        "priority": 1,
-        "verb": "Escalate",
-        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
-        "targetOwner": "Rasheersh",
         "dueBy": "2026-07-15",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -340,6 +350,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
@@ -375,6 +386,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.59,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
@@ -410,6 +422,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.59,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
@@ -440,11 +453,48 @@
       ],
       "impact": "",
       "riskConfidence": 0.09,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
         "subject": "Streamline risk framework and automate compliance",
         "targetOwner": "unassigned",
+        "dueBy": "2026-07-17",
+        "rationale": "Unresolved 14+ days - escalate this week."
+      }
+    },
+    {
+      "riskId": "R-d57894861d",
+      "title": "Weekly project status, CR review, and risk review governance forums",
+      "workstream": "GOCC Transition",
+      "owner": "Balaji Ravi",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Jonan",
+        "Hari"
+      ],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "decreasing",
+      "agingDays": 26,
+      "recencyDays": 26,
+      "firstSeenDate": "2026-06-19",
+      "lastSeenDate": "2026-06-19",
+      "dateDetected": "2026-06-19",
+      "sourceFiles": [
+        "01-inbox/archive/W25_copilot.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.69,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Escalate",
+        "subject": "Weekly project status, CR review, and risk review governance forums",
+        "targetOwner": "Balaji Ravi",
         "dueBy": "2026-07-17",
         "rationale": "Unresolved 14+ days - escalate this week."
       }
@@ -475,6 +525,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.69,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
@@ -511,6 +562,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.69,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
@@ -521,51 +573,18 @@
       }
     },
     {
-      "riskId": "R-d57894861d",
-      "title": "Weekly project status, CR review, and risk review governance forums",
-      "workstream": "GOCC Transition",
-      "owner": "Balaji Ravi",
+      "riskId": "R-b882fa398a",
+      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
+      "workstream": "GBO Batch Transition",
+      "owner": "Rowena",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
+        "Balaji Ravi",
         "Birger Fjaellman"
       ],
       "stakeholders": [
-        "Jonan",
-        "Hari"
-      ],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "decreasing",
-      "agingDays": 26,
-      "recencyDays": 26,
-      "firstSeenDate": "2026-06-19",
-      "lastSeenDate": "2026-06-19",
-      "dateDetected": "2026-06-19",
-      "sourceFiles": [
-        "01-inbox/archive/W25_copilot.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.69,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Escalate",
-        "subject": "Weekly project status, CR review, and risk review governance forums",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Unresolved 14+ days - escalate this week."
-      }
-    },
-    {
-      "riskId": "R-fff605c5dd",
-      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
-      "workstream": "ADX Registration",
-      "owner": "Kelvin",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Hari"
+        "Manish",
+        "Rasheersh"
       ],
       "severity": "Medium",
       "status": "open",
@@ -580,46 +599,14 @@
       ],
       "impact": "",
       "riskConfidence": 0.69,
+      "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
         "subject": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a...",
-        "targetOwner": "Kelvin",
+        "targetOwner": "Rowena",
         "dueBy": "2026-07-17",
         "rationale": "Unresolved 14+ days - escalate this week."
-      }
-    },
-    {
-      "riskId": "R-b1cf205d0f",
-      "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
-      "workstream": "CyberArk Governance",
-      "owner": "Manish",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 5,
-      "recencyDays": 5,
-      "firstSeenDate": "2026-07-10",
-      "lastSeenDate": "2026-07-10",
-      "dateDetected": "2026-07-10",
-      "sourceFiles": [
-        "02-work/tasks.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "recommendedAction": {
-        "priority": 4,
-        "verb": "Monitor",
-        "subject": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings...",
-        "targetOwner": "Manish",
-        "dueBy": "2026-07-22",
-        "rationale": "Fresh signal - continue to observe."
       }
     },
     {
@@ -649,6 +636,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 4,
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
@@ -659,8 +647,8 @@
       }
     },
     {
-      "riskId": "R-2fc8ec9c90",
-      "title": "CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...",
+      "riskId": "R-b1cf205d0f",
+      "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
       "workstream": "CyberArk Governance",
       "owner": "Manish",
       "ownerConfidence": "workstream-map",
@@ -672,20 +660,21 @@
       "severity": "Medium",
       "status": "open",
       "trend": "increasing",
-      "agingDays": 2,
-      "recencyDays": 2,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "dateDetected": "2026-07-13",
+      "agingDays": 5,
+      "recencyDays": 5,
+      "firstSeenDate": "2026-07-10",
+      "lastSeenDate": "2026-07-10",
+      "dateDetected": "2026-07-10",
       "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+        "02-work/tasks.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 4,
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
-        "subject": "CyberArk / service-account governance remains a material risk theme after a password expiration i...",
+        "subject": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings...",
         "targetOwner": "Manish",
         "dueBy": "2026-07-22",
         "rationale": "Fresh signal - continue to observe."
@@ -714,6 +703,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 6,
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
@@ -746,6 +736,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 6,
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
@@ -778,11 +769,46 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": 6,
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
         "subject": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity ris...",
         "targetOwner": "Rasheersh",
+        "dueBy": "2026-07-22",
+        "rationale": "Fresh signal - continue to observe."
+      }
+    },
+    {
+      "riskId": "R-2fc8ec9c90",
+      "title": "CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...",
+      "workstream": "CyberArk Governance",
+      "owner": "Manish",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 2,
+      "recencyDays": 2,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "dateDetected": "2026-07-13",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 6,
+      "recommendedAction": {
+        "priority": 4,
+        "verb": "Monitor",
+        "subject": "CyberArk / service-account governance remains a material risk theme after a password expiration i...",
+        "targetOwner": "Manish",
         "dueBy": "2026-07-22",
         "rationale": "Fresh signal - continue to observe."
       }
@@ -812,6 +838,7 @@
       ],
       "impact": "",
       "riskConfidence": 0.79,
+      "timeToEscalationRisk": null,
       "recommendedAction": {
         "priority": 5,
         "verb": "Archive",

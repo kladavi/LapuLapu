@@ -1135,7 +1135,7 @@ function Build-Json($finalResults, $meta) {
     $output = [ordered]@{
         generated   = $meta.generated
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V2.0'
+        version     = 'V2.5'
         workstreams = @($items)
     }
     return $output | ConvertTo-Json -Depth 6
@@ -1675,7 +1675,7 @@ function Build-MorningBriefingJson {
     $out = [ordered]@{
         generated                     = $GeneratedIso
         generator                     = 'scripts/generate-current-focus.ps1'
-        version                       = 'V1.8'
+        version                       = 'V2.5'
         executiveSnapshot             = $execSnap
         primaryFocus                  = @($primaryList)
         risingRisks                   = @($risingList)
@@ -1866,6 +1866,19 @@ function Get-DecisionRegistry {
             $impact = Get-ImpactFromContext -Context $context
             # V2.0: decision-specific explicit deadline (**By:**, **Deadline:**, **Due:**)
             $explicitDeadline = Get-DeadlineFromContext -Context $context
+            # V2.5: execution tracking - outcome, linked actions, completion signal.
+            $outcome          = Get-OutcomeFromContext -Context $context
+            $linkedActions    = Get-LinkedActionsFromContext -Context $context
+            $completionSignal = Get-CompletionSignalFromContext -Context $context
+
+            # V2.5 fallback: `**Decision:** <ResolutionVerb>` (Approved / Deferred /
+            # Rejected / Superseded / Reversed / Deprecated / Locked / Confirmed)
+            # is itself an outcome + completion signal, even without an explicit
+            # `**Outcome:**` marker.
+            if (-not $outcome -and $keyword -match '^(?i)Decision$' -and $body -match '^(?i)(Approved|Deferred|Rejected|Superseded|Reversed|Deprecated|Locked|Confirmed)\b') {
+                $outcome = $body
+                if (-not $completionSignal) { $completionSignal = 'completed' }
+            }
 
             # Workstream via longest-alias-first
             $workstream = ''
@@ -1912,10 +1925,18 @@ function Get-DecisionRegistry {
                     decisionRequired    = ($matchType -eq 'pending')
                     decisionPrompt      = if ($matchType -eq 'pending') { $body } else { '' }
                     decisionDeadline    = $explicitDeadline
+                    # V2.5 execution intelligence
+                    decisionStatus       = 'Pending'
+                    decisionOutcome      = $outcome
+                    linkedActions        = [System.Collections.Generic.List[hashtable]]::new()
+                    completionSignal     = $completionSignal
+                    timeToEscalationRisk = $null
+                    themeTags            = [System.Collections.Generic.List[string]]::new()
                     recommendedFollowUp = $null
                     _detectedOn         = $rec.LastWriteTime
                     _lastSeenOn         = $rec.LastWriteTime
                 }
+                foreach ($la in @($linkedActions)) { $decisions[$decisionId].linkedActions.Add($la) }
             }
 
             $entry = $decisions[$decisionId]
@@ -1924,6 +1945,21 @@ function Get-DecisionRegistry {
             if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
             if (-not $entry.impact     -and $impact)     { $entry.impact     = $impact }
             if (-not $entry.decisionDeadline -and $explicitDeadline) { $entry.decisionDeadline = $explicitDeadline }
+            # V2.5: prefer any captured outcome; upgrade completionSignal (completed trumps in-progress)
+            if (-not $entry.decisionOutcome -and $outcome) { $entry.decisionOutcome = $outcome }
+            if ($completionSignal -eq 'completed') { $entry.completionSignal = 'completed' }
+            elseif ($completionSignal -eq 'in-progress' -and $entry.completionSignal -ne 'completed') { $entry.completionSignal = 'in-progress' }
+            # Merge linked actions - dedupe on trimmed text (case-insensitive)
+            if ($linkedActions -and @($linkedActions).Count -gt 0) {
+                $existingTexts = @($entry.linkedActions | ForEach-Object { ([string]$_.text).ToLowerInvariant() })
+                foreach ($la in @($linkedActions)) {
+                    $key = ([string]$la.text).ToLowerInvariant()
+                    if ($existingTexts -notcontains $key -and $entry.linkedActions.Count -lt 5) {
+                        $entry.linkedActions.Add($la)
+                        $existingTexts += $key
+                    }
+                }
+            }
             # Any pending sighting upgrades type/decisionRequired (pending trumps recorded on dedupe)
             if ($matchType -eq 'pending') {
                 $entry.type = 'pending'
@@ -1996,6 +2032,12 @@ function Get-DecisionRegistry {
                 }
             }
         }
+
+        # V2.5 Execution Intelligence: lifecycle + escalation risk
+        $e.decisionStatus       = Get-DecisionLifecycleStatus -Entry $e -Now $now
+        $e.timeToEscalationRisk = Get-EscalationRisk -Kind 'decision' -Entry $e -Now $now
+        # A decided item should no longer be flagged as requiring a decision.
+        if ($e.decisionStatus -eq 'Decided') { $e.decisionRequired = $false }
     }
 
     # Sort: open before closed; within each group, oldest first
@@ -2036,6 +2078,17 @@ function Build-DecisionRegistryMarkdown {
             "$act"
         }
 
+        $lifecycleText = if ($e.decisionStatus) { $e.decisionStatus } else { '-' }
+        $outcomeText   = if ($e.decisionOutcome) { $e.decisionOutcome } else { '-' }
+        $escText       = if ($null -ne $e.timeToEscalationRisk) { "$($e.timeToEscalationRisk) day(s)" } else { 'n/a' }
+        $linkedText    = if ($e.linkedActions -and @($e.linkedActions).Count -gt 0) {
+            (@($e.linkedActions) | ForEach-Object {
+                $ownerBit = if ($_.owner) { " owner: $($_.owner)" } else { '' }
+                $dueBit   = if ($_.dueBy) { " due: $($_.dueBy)" } else { '' }
+                "  - [$($_.status)] $($_.text)$ownerBit$dueBit"
+            }) -join "`n"
+        } else { '  - (no linked actions)' }
+
         return @"
 ### $($e.decisionId) - $($e.title)
 
@@ -2044,9 +2097,14 @@ function Build-DecisionRegistryMarkdown {
 - Escalation Path: $escalationText
 - Stakeholders: $stakeText
 - Status: **$($e.status)**
+- Lifecycle: **$lifecycleText**
+- Outcome: $outcomeText
+- Time to escalation: **$escText**
 - First seen: **$($e.firstSeenDate)** ($($e.decisionAgeDays) days ago)
 - Last seen: **$($e.lastSeenDate)** ($($e.recencyDays) days ago)
 - Follow-up: $actionText
+- Linked actions:
+$linkedText
 - Sources:
 $sources
 
@@ -2106,6 +2164,11 @@ function Build-DecisionRegistryJson {
             decisionRequired    = $e.decisionRequired
             decisionPrompt      = $e.decisionPrompt
             decisionDeadline    = $e.decisionDeadline
+            decisionStatus      = $e.decisionStatus
+            decisionOutcome     = $e.decisionOutcome
+            completionSignal    = $e.completionSignal
+            linkedActions       = @($e.linkedActions)
+            timeToEscalationRisk= $e.timeToEscalationRisk
             owner               = $e.owner
             ownerConfidence     = $e.ownerConfidence
             escalationPath      = @($e.escalationPath)
@@ -2125,17 +2188,25 @@ function Build-DecisionRegistryJson {
     $closedCount   = @($Decisions | Where-Object { $_.status -eq 'closed' }).Count
     $ownedCount    = @($Decisions | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
     $pendingCount  = @($Decisions | Where-Object { $_.decisionRequired }).Count
+    $decidedCount  = @($Decisions | Where-Object { $_.decisionStatus -eq 'Decided' }).Count
+    $expiredCount  = @($Decisions | Where-Object { $_.decisionStatus -eq 'Expired' }).Count
+    $lifecyclePending = @($Decisions | Where-Object { $_.decisionStatus -eq 'Pending' }).Count
 
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V2.0'
+        version     = 'V2.5'
         totals      = [ordered]@{
             total              = $Decisions.Count
             open               = $openCount
             closed             = $closedCount
             authorativelyOwned = $ownedCount
             pendingDecisions   = $pendingCount
+            lifecycle          = [ordered]@{
+                pending = $lifecyclePending
+                decided = $decidedCount
+                expired = $expiredCount
+            }
         }
         decisions   = @($items)
     }
@@ -2237,6 +2308,173 @@ function Get-DeadlineFromContext {
         return $parsed.ToString('yyyy-MM-dd')
     }
     return ''
+}
+
+# --- V2.5 Execution Intelligence: lifecycle + outcomes + linked actions -----
+
+function Get-OutcomeFromContext {
+    <#
+        Extracts the `**Outcome:**` / `**Decision:**` / `**Resolution:**` /
+        `**Result:**` line body from a context block. Empty string on miss.
+    #>
+    param([string] $Context)
+    if ([string]::IsNullOrWhiteSpace($Context)) { return '' }
+    $m = [regex]::Match($Context, '(?im)^\s*(?:[-*>]\s+)?\*\*(?:Outcome|Resolution|Result)[:\s]?\*\*\s*(.+?)\s*$')
+    if (-not $m.Success) { return '' }
+    $val = ($m.Groups[1].Value -replace '\s+', ' ').Trim().TrimEnd('.', ',', ';', ':')
+    if ($val.Length -gt 240) { $val = $val.Substring(0, 237) + '...' }
+    return $val
+}
+
+function Get-CompletionSignalFromContext {
+    <#
+        Scans a context block for explicit completion markers.
+        Returns one of: 'completed' | 'in-progress' | ''.
+    #>
+    param([string] $Context)
+    if ([string]::IsNullOrWhiteSpace($Context)) { return '' }
+    if ($Context -match '(?im)^\s*(?:[-*>]\s+)?\*\*(?:Completed|Done|Delivered|Shipped|Signed[- ]off)[:\s]?\*\*') { return 'completed' }
+    if ($Context -match '(?i)\bstatus[:\s]+(?:done|completed|closed|resolved|delivered|shipped|signed[- ]off)\b') { return 'completed' }
+    if ($Context -match '(?im)^\s*(?:[-*>]\s+)?\*\*(?:In[- ]progress|WIP|Working|Underway)[:\s]?\*\*') { return 'in-progress' }
+    if ($Context -match '(?i)\bstatus[:\s]+(?:in[- ]progress|wip|working|underway|active)\b') { return 'in-progress' }
+    return ''
+}
+
+function Get-LinkedActionsFromContext {
+    <#
+        Extracts `**Action:** ...` lines from a context block, plus any inline
+        owner and due-date hints (e.g. `(owner: X, due: 2026-07-20)`). Returns
+        an array of small hashtables. Cap at 5 to keep JSON small.
+    #>
+    param([string] $Context)
+    $out = [System.Collections.Generic.List[hashtable]]::new()
+    if ([string]::IsNullOrWhiteSpace($Context)) { return @() }
+    $lines = ($Context -replace "`r`n", "`n") -split "`n"
+    foreach ($line in $lines) {
+        if ([string]::IsNullOrWhiteSpace($line)) { continue }
+        $m = [regex]::Match($line, '(?i)^\s*(?:[-*>]\s+)?\*\*(?:Action|Next\s*step|Follow[- ]up|Task)[:\s]?\*\*\s*(.+?)\s*$')
+        if (-not $m.Success) { continue }
+        $body = $m.Groups[1].Value.Trim()
+        if ($body.Length -lt 3 -or $body.Length -gt 240) { continue }
+        $owner = ''
+        $due   = ''
+        $status = ''
+        $ownerM = [regex]::Match($body, '(?i)\(?\s*owner[:\s]+([^),]+?)\s*(?:[,)]|$)')
+        if ($ownerM.Success) { $owner = $ownerM.Groups[1].Value.Trim() }
+        $dueM = [regex]::Match($body, '(?i)\bdue[:\s]+([0-9]{4}-[0-9]{2}-[0-9]{2}|[0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{2,4}|[A-Z][a-z]{2,8}\s+\d{1,2}(?:,\s*\d{4})?)')
+        if ($dueM.Success) {
+            $rawDue = $dueM.Groups[1].Value.Trim()
+            [datetime] $parsed = [datetime]::MinValue
+            if ([datetime]::TryParse($rawDue, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $parsed)) {
+                $due = $parsed.ToString('yyyy-MM-dd')
+            } else { $due = $rawDue }
+        }
+        if     ($body -match '(?i)\b(done|completed|delivered|shipped|signed[- ]off|closed|resolved)\b') { $status = 'completed' }
+        elseif ($body -match '(?i)\b(in[- ]progress|wip|working|underway|started)\b')                    { $status = 'in-progress' }
+        elseif ($body -match '(?i)\b(blocked|waiting|stalled)\b')                                        { $status = 'blocked' }
+        else                                                                                             { $status = 'pending' }
+        # Strip trailing metadata parens for cleaner text
+        $text = ($body -replace '\s*\((?:owner|due)[:\s].*?\)\s*$', '').Trim()
+        if ($text.Length -gt 200) { $text = $text.Substring(0, 197) + '...' }
+        $out.Add([ordered]@{
+            text   = $text
+            owner  = $owner
+            dueBy  = $due
+            status = $status
+        })
+        if ($out.Count -ge 5) { break }
+    }
+    return @($out)
+}
+
+function Get-DecisionLifecycleStatus {
+    <#
+        Computes the V2.5 lifecycle bucket for a decision entry.
+        Buckets: 'Decided' | 'Expired' | 'Pending'.
+
+        - Decided : source status is 'closed' OR any linked action is 'completed'
+                    OR a completion signal was captured OR an explicit outcome is present.
+        - Expired : still open AND decisionDeadline is in the past by 3+ days
+                    OR decisionAgeDays >= 30 and no outcome + no completed action.
+        - Pending : otherwise (still awaiting a decision).
+    #>
+    param([hashtable] $Entry, [datetime] $Now)
+
+    $hasOutcome = -not [string]::IsNullOrWhiteSpace([string]$Entry.decisionOutcome)
+    $completionSignal = if ($Entry.ContainsKey('completionSignal')) { [string]$Entry.completionSignal } else { '' }
+    $completedAction = $false
+    if ($Entry.ContainsKey('linkedActions') -and $Entry.linkedActions) {
+        foreach ($a in @($Entry.linkedActions)) {
+            if ($a -is [System.Collections.IDictionary] -and $a.status -eq 'completed') { $completedAction = $true; break }
+        }
+    }
+
+    if ($Entry.status -eq 'closed' -or $completionSignal -eq 'completed' -or $completedAction -or $hasOutcome) {
+        return 'Decided'
+    }
+
+    $deadline = [string]$Entry.decisionDeadline
+    if ($deadline) {
+        [datetime] $parsedDl = [datetime]::MinValue
+        if ([datetime]::TryParseExact($deadline, 'yyyy-MM-dd', [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $parsedDl)) {
+            if (($Now - $parsedDl).TotalDays -ge 3) { return 'Expired' }
+        }
+    }
+    if ([int]$Entry.decisionAgeDays -ge 30) { return 'Expired' }
+    return 'Pending'
+}
+
+# --- V2.5 Escalation prediction --------------------------------------------
+
+function Get-EscalationRisk {
+    <#
+        Predicts days until an entry needs escalation (0 = escalate today).
+        Returns $null when not applicable (closed / decided with outcome).
+
+        Decisions:
+          - Decided or closed -> $null
+          - decisionAgeDays >= 14 -> 0
+          - deadline present -> max(0, daysUntilDeadline - 3)
+          - else -> max(0, 14 - decisionAgeDays)
+
+        Risks:
+          - closed -> $null
+          - High severity -> 0
+          - agingDays >= 14 -> 0
+          - trend 'increasing' -> max(1, floor((14 - agingDays) / 2))
+          - else -> max(0, 14 - agingDays)
+    #>
+    param(
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [hashtable] $Entry,
+        [datetime]  $Now
+    )
+    if ($Kind -eq 'decision') {
+        if ($Entry.status -eq 'closed') { return $null }
+        $lifecycle = if ($Entry.ContainsKey('decisionStatus')) { [string]$Entry.decisionStatus } else { '' }
+        if ($lifecycle -eq 'Decided') { return $null }
+        $age = if ($Entry.ContainsKey('decisionAgeDays')) { [int]$Entry.decisionAgeDays } else { 0 }
+        if ($age -ge 14) { return 0 }
+        $deadline = [string]$Entry.decisionDeadline
+        if ($deadline) {
+            [datetime] $parsedDl = [datetime]::MinValue
+            if ([datetime]::TryParseExact($deadline, 'yyyy-MM-dd', [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::None, [ref] $parsedDl)) {
+                $delta = [int][Math]::Floor(($parsedDl - $Now).TotalDays) - 3
+                return [int][Math]::Max(0, $delta)
+            }
+        }
+        return [int][Math]::Max(0, 14 - $age)
+    }
+    else {
+        if ($Entry.status -eq 'closed') { return $null }
+        if ($Entry.severity -eq 'High') { return 0 }
+        $age = if ($Entry.ContainsKey('agingDays')) { [int]$Entry.agingDays } else { 0 }
+        if ($age -ge 14) { return 0 }
+        if ($Entry.trend -eq 'increasing') {
+            return [int][Math]::Max(1, [Math]::Floor((14 - $age) / 2.0))
+        }
+        return [int][Math]::Max(0, 14 - $age)
+    }
 }
 
 function Get-StructuredRiskAction {
@@ -2533,6 +2771,9 @@ function Get-RiskRegister {
 
         # V2.0 David Brain: confidence score
         $e.riskConfidence = Get-EntryConfidence -Entry $e
+
+        # V2.5 Execution Intelligence: escalation prediction
+        $e.timeToEscalationRisk = Get-EscalationRisk -Kind 'risk' -Entry $e -Now $now
     }
 
     $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
@@ -2578,6 +2819,7 @@ function Build-RiskRegisterMarkdown {
         } else {
             "$act"
         }
+        $escText = if ($null -ne $e.timeToEscalationRisk) { "$($e.timeToEscalationRisk) day(s)" } else { 'n/a' }
 
         return @"
 ### $($e.riskId) - $($e.title)
@@ -2589,6 +2831,7 @@ function Build-RiskRegisterMarkdown {
 - Severity: **$($e.severity)**
 - Status: **$($e.status)**
 - Trend: **$($e.trend)**
+- Time to escalation: **$escText**
 - First seen: **$($e.firstSeenDate)** ($($e.agingDays) days ago)
 - Last seen: **$($e.lastSeenDate)** ($($e.recencyDays) days ago)
 - Recommended action: $actionText
@@ -2669,6 +2912,7 @@ function Build-RiskRegisterJson {
             sourceFiles       = @($e.sourceFiles)
             impact            = $e.impact
             riskConfidence    = $e.riskConfidence
+            timeToEscalationRisk = $e.timeToEscalationRisk
             recommendedAction = $e.recommendedAction
         }
     }
@@ -2678,11 +2922,12 @@ function Build-RiskRegisterJson {
     $highCount   = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.severity -eq 'High' }).Count
     $risingCount = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.trend    -eq 'increasing' }).Count
     $ownedCount  = @($Risks | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
+    $imminentCount = @($Risks | Where-Object { $_.status -ne 'closed' -and $null -ne $_.timeToEscalationRisk -and [int]$_.timeToEscalationRisk -le 3 }).Count
 
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V2.0'
+        version     = 'V2.5'
         totals      = [ordered]@{
             total          = $Risks.Count
             open           = $openCount
@@ -2690,6 +2935,7 @@ function Build-RiskRegisterJson {
             high           = $highCount
             rising         = $risingCount
             authorativelyOwned = $ownedCount
+            imminentEscalation = $imminentCount
         }
         risks       = @($items)
     }
@@ -2814,6 +3060,11 @@ function New-InboxItem {
         severity        = if ($Kind -eq 'risk') { $Entry.severity } else { $null }
         trend           = if ($Kind -eq 'risk') { $Entry.trend } else { $null }
         decisionRequired= if ($Kind -eq 'decision') { $Entry.decisionRequired } else { $false }
+        # V2.5 execution intelligence pass-through
+        decisionStatus       = if ($Kind -eq 'decision' -and $Entry.ContainsKey('decisionStatus')) { [string]$Entry.decisionStatus } else { '' }
+        decisionOutcome      = if ($Kind -eq 'decision' -and $Entry.ContainsKey('decisionOutcome')) { [string]$Entry.decisionOutcome } else { '' }
+        timeToEscalationRisk = if ($Entry.ContainsKey('timeToEscalationRisk')) { $Entry.timeToEscalationRisk } else { $null }
+        linkedActionCount    = if ($Kind -eq 'decision' -and $Entry.ContainsKey('linkedActions')) { @($Entry.linkedActions).Count } else { 0 }
         impact          = $Entry.impact
         rationale       = if ($act -is [System.Collections.IDictionary]) { [string]$act.rationale } else { '' }
     }
@@ -2821,13 +3072,14 @@ function New-InboxItem {
 
 function Get-DavidInbox {
     <#
-        Ranks the top items David should decide/action today.
+        Ranks the items David should decide/action today.
         Includes:
-          - Any decision with decisionRequired=true
+          - Any decision with decisionRequired=true and lifecycle != 'Decided'
           - Any risk with severity=High AND ownerConfidence != 'unknown'
           - Any decision or risk whose action priority is P1 (Escalate today)
-        Sort: priority asc, then deadline asc (empty last), then confidence desc,
-        then ageDays desc.
+          - Any entry whose timeToEscalationRisk is <=3 (imminent escalation)
+        Sort: priority asc, then timeToEscalationRisk asc (nulls last), then
+        deadline asc (empty last), then confidence desc, then ageDays desc.
     #>
     param(
         [object[]] $Decisions,
@@ -2836,7 +3088,7 @@ function Get-DavidInbox {
 
     $items = [System.Collections.Generic.List[hashtable]]::new()
 
-    foreach ($d in ($Decisions | Where-Object { $_.decisionRequired })) {
+    foreach ($d in ($Decisions | Where-Object { $_.decisionRequired -and $_.decisionStatus -ne 'Decided' })) {
         $items.Add((New-InboxItem -Kind 'decision' -Entry $d))
     }
     foreach ($r in $Risks) {
@@ -2844,50 +3096,176 @@ function Get-DavidInbox {
         $isHigh = ($r.severity -eq 'High')
         $act = $r.recommendedAction
         $isP1 = ($act -is [System.Collections.IDictionary] -and $act.priority -eq 1)
-        if (($isHigh -and $r.ownerConfidence -ne 'unknown') -or $isP1) {
+        $imminent = ($null -ne $r.timeToEscalationRisk -and [int]$r.timeToEscalationRisk -le 3)
+        if (($isHigh -and $r.ownerConfidence -ne 'unknown') -or $isP1 -or $imminent) {
             $items.Add((New-InboxItem -Kind 'risk' -Entry $r))
         }
     }
 
     return @($items | Sort-Object `
         @{ Expression = { [int]$_.priority }; Ascending = $true },
+        @{ Expression = { if ($null -ne $_.timeToEscalationRisk) { [int]$_.timeToEscalationRisk } else { 9999 } }; Ascending = $true },
         @{ Expression = { if ($_.deadline) { $_.deadline } else { '9999-12-31' } }; Ascending = $true },
         @{ Expression = { [double]$_.confidence }; Descending = $true },
         @{ Expression = { [int]$_.ageDays }; Descending = $true })
+}
+
+# V2.5 stopwords for cluster theme extraction (below).
+$script:CLUSTER_STOPWORDS = @(
+    'the','and','for','with','from','into','onto','this','that','these','those',
+    'about','around','over','under','through','after','before','than','then',
+    'have','has','had','was','were','been','being','will','would','should','could',
+    'a','an','of','to','in','on','at','by','as','is','are','be','it','its',
+    'not','no','yes','or','but','if','so','do','does','did','doing',
+    'we','you','he','she','they','their','our','my','your','his','her',
+    'decision','decisions','risk','risks','issue','issues','need','needs','please',
+    'update','status','week','weekly','daily','morning','next','upcoming',
+    'action','actions','follow','followup','task','tasks','question','pending',
+    'high','medium','low','open','closed','resolved','escalate','tbd','deadline',
+    'confirm','approval','required','requires','confirming','approving'
+)
+
+function Get-DecisionClusters {
+    <#
+        Groups inbox items into clusters using two dimensions:
+          1) workstream (primary key; items without workstream group under '(none)')
+          2) theme (bag-of-words heuristic within a workstream cluster)
+
+        Returns a sorted array of hashtables:
+          @{ workstream; theme; itemCount; p1Count; topPriority;
+             minEscalationRisk; itemIds; kinds }
+    #>
+    param([object[]] $Items)
+
+    $byWs = @{}
+    foreach ($it in @($Items | Where-Object { $null -ne $_ })) {
+        $ws = if ($it.workstream) { [string]$it.workstream } else { '(none)' }
+        if (-not $byWs.ContainsKey($ws)) { $byWs[$ws] = [System.Collections.Generic.List[hashtable]]::new() }
+        $byWs[$ws].Add($it)
+    }
+
+    $clusters = [System.Collections.Generic.List[hashtable]]::new()
+    foreach ($ws in @($byWs.Keys)) {
+        $wsItems = @($byWs[$ws])
+        # Extract theme tokens from titles: 4+ char lowercase words, minus stopwords.
+        $tokenIndex = @{}   # token -> list of items
+        foreach ($it in $wsItems) {
+            $title = if ($it.title) { [string]$it.title } else { '' }
+            $tokens = [regex]::Matches($title.ToLowerInvariant(), '[a-z]{4,}') | ForEach-Object { $_.Value }
+            $unique = @($tokens | Sort-Object -Unique) | Where-Object { $script:CLUSTER_STOPWORDS -notcontains $_ }
+            foreach ($t in $unique) {
+                if (-not $tokenIndex.ContainsKey($t)) { $tokenIndex[$t] = [System.Collections.Generic.List[hashtable]]::new() }
+                $tokenIndex[$t].Add($it)
+            }
+        }
+
+        # Greedy: pick the token that covers the most uncovered items, repeat.
+        $covered = [System.Collections.Generic.HashSet[string]]::new()
+        $themeBuckets = [System.Collections.Generic.List[hashtable]]::new()
+        while ($true) {
+            $best = $null
+            $bestCount = 1
+            foreach ($t in @($tokenIndex.Keys)) {
+                $available = @($tokenIndex[$t] | Where-Object { -not $covered.Contains([string]$_.id) })
+                if ($available.Count -gt $bestCount) {
+                    $bestCount = $available.Count
+                    $best = $t
+                }
+            }
+            if (-not $best) { break }
+            $group = @($tokenIndex[$best] | Where-Object { -not $covered.Contains([string]$_.id) })
+            foreach ($g in $group) { [void]$covered.Add([string]$g.id) }
+            $themeBuckets.Add(@{ theme = $best; items = $group })
+        }
+
+        # Any leftover items form a '(misc)' bucket.
+        $leftover = @($wsItems | Where-Object { -not $covered.Contains([string]$_.id) })
+        if ($leftover.Count -gt 0) { $themeBuckets.Add(@{ theme = '(misc)'; items = $leftover }) }
+
+        foreach ($b in $themeBuckets) {
+            $group = @($b.items)
+            $priorities = @($group | ForEach-Object { [int]$_.priority })
+            $top = if ($priorities.Count -gt 0) { ($priorities | Measure-Object -Minimum).Minimum } else { 5 }
+            $p1 = @($group | Where-Object { [int]$_.priority -eq 1 }).Count
+            $ttrs = @($group | Where-Object { $null -ne $_.timeToEscalationRisk } | ForEach-Object { [int]$_.timeToEscalationRisk })
+            $minTtr = if ($ttrs.Count -gt 0) { ($ttrs | Measure-Object -Minimum).Minimum } else { $null }
+            $ids = @($group | ForEach-Object { [string]$_.id })
+            $kinds = @($group | ForEach-Object { [string]$_.kind } | Sort-Object -Unique)
+            $clusters.Add([ordered]@{
+                workstream        = $ws
+                theme             = $b.theme
+                itemCount         = $group.Count
+                topPriority       = $top
+                p1Count           = $p1
+                minEscalationRisk = $minTtr
+                kinds             = $kinds
+                itemIds           = $ids
+            })
+        }
+    }
+
+    return @($clusters | Sort-Object `
+        @{ Expression = { [int]$_.topPriority }; Ascending = $true },
+        @{ Expression = { -[int]$_.p1Count }; Ascending = $true },
+        @{ Expression = { -[int]$_.itemCount }; Ascending = $true },
+        @{ Expression = { [string]$_.workstream }; Ascending = $true })
 }
 
 function Build-DavidInboxMarkdown {
     param(
         [object[]] $Items,
         [string]   $NowStamp,
-        [int]      $Top = 10
+        [int]      $P1Cap = 5,
+        [int]      $P2Cap = 10,
+        [int]      $P3Cap = 10
     )
     $Items = @($Items | Where-Object { $null -ne $_ })
-    $selected = $Items | Select-Object -First $Top
 
-    $rows = if ($selected.Count -gt 0) {
-        ($selected | ForEach-Object {
-            $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
-            $ownerText = if ($_.owner) { $_.owner } else { 'unassigned' }
-            $sevBit = if ($_.kind -eq 'risk') { " (severity: $($_.severity), trend: $($_.trend))" } else { '' }
-            $flagBit = if ($_.decisionRequired) { ' [DECISION REQUIRED]' } else { '' }
-            @"
-### P$($_.priority) $($_.verb) - $wsName$flagBit
+    $p1 = @($Items | Where-Object { [int]$_.priority -eq 1 } | Select-Object -First $P1Cap)
+    $p2 = @($Items | Where-Object { [int]$_.priority -eq 2 } | Select-Object -First $P2Cap)
+    $p3 = @($Items | Where-Object { [int]$_.priority -eq 3 } | Select-Object -First $P3Cap)
 
-- **What**: $($_.title)$sevBit
-- **Owner**: $ownerText ($($_.ownerConfidence))
-- **Deadline**: $($_.deadline)
-- **Confidence**: $($_.confidence)
-- **Age**: $($_.ageDays) days
-- **Rationale**: $($_.rationale)
-$(if ($_.impact) { "- **Impact**: $($_.impact)`n" } else { '' })
-- **Source**: $($_.kind) $($_.id)
+    function _RenderInbox($it) {
+        $wsName = if ($it.workstream) { $it.workstream } else { '(no workstream)' }
+        $ownerText = if ($it.owner) { $it.owner } else { 'unassigned' }
+        $sevBit = if ($it.kind -eq 'risk') { " (severity: $($it.severity), trend: $($it.trend))" } else { '' }
+        $flagBit = if ($it.decisionRequired) { ' [DECISION REQUIRED]' } else { '' }
+        $ttrBit = if ($null -ne $it.timeToEscalationRisk) { " [escalation in $($it.timeToEscalationRisk)d]" } else { '' }
+        $lifecycleBit = if ($it.decisionStatus) { " [$($it.decisionStatus)]" } else { '' }
+        $outcomeBit   = if ($it.decisionOutcome) { "`n- **Outcome**: $($it.decisionOutcome)" } else { '' }
+        $impactBit    = if ($it.impact) { "`n- **Impact**: $($it.impact)" } else { '' }
+        $linkedBit    = if ([int]$it.linkedActionCount -gt 0) { "`n- **Linked actions**: $($it.linkedActionCount)" } else { '' }
+        @"
+### P$($it.priority) $($it.verb) - $wsName$lifecycleBit$flagBit$ttrBit
+
+- **What**: $($it.title)$sevBit
+- **Owner**: $ownerText ($($it.ownerConfidence))
+- **Deadline**: $($it.deadline)
+- **Confidence**: $($it.confidence)
+- **Age**: $($it.ageDays) days
+- **Rationale**: $($it.rationale)$outcomeBit$impactBit$linkedBit
+- **Source**: $($it.kind) $($it.id)
 
 "@
-        }) -join ''
-    } else {
-        "_Nothing on David's plate today - all quiet._`n"
     }
+
+    $renderTier = {
+        param($list)
+        if ($list.Count -gt 0) { ($list | ForEach-Object { _RenderInbox $_ }) -join '' }
+        else { "_None._`n" }
+    }
+
+    $p1Block = & $renderTier $p1
+    $p2Block = & $renderTier $p2
+    $p3Block = & $renderTier $p3
+
+    $clusters = Get-DecisionClusters -Items $Items
+    $clusterRows = if ($clusters.Count -gt 0) {
+        ($clusters | ForEach-Object {
+            $minTtr = if ($null -ne $_.minEscalationRisk) { "$($_.minEscalationRisk)d" } else { '-' }
+            "- **$($_.workstream)** / _$($_.theme)_ - $($_.itemCount) item(s), P$($_.topPriority), $($_.p1Count) P1, min escalation: $minTtr"
+        }) -join "`n"
+    } else { '_No clusters detected._' }
 
     return @"
 <!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
@@ -2896,16 +3274,32 @@ $(if ($_.impact) { "- **Impact**: $($_.impact)`n" } else { '' })
 
 Generated: $NowStamp
 
-Top $($selected.Count) items combining pending decisions, high-severity risks with a known owner, and P1 actions.
-Sorted by priority (P1 first), then deadline, then confidence, then age.
+Candidates: **$($Items.Count)** | P1: **$($p1.Count) (cap $P1Cap)** | P2: **$($p2.Count) (cap $P2Cap)** | P3: **$($p3.Count) (cap $P3Cap)**
 
-$rows
+Sort: priority asc, then time to escalation, then deadline, then confidence, then age.
+
+## P1 - Escalate today (top $P1Cap)
+
+$p1Block
+
+## P2 - Confirm or investigate this week (top $P2Cap)
+
+$p2Block
+
+## P3 - Review this week (top $P3Cap)
+
+$p3Block
+
+## Clusters (workstream / theme)
+
+$clusterRows
 
 ## How this list was built
 
-- **Decisions**: any entry where ``decisionRequired = true`` (explicit ``Question:``/``TBD:`` marker OR heuristic promotion of P1/P2 recorded decisions).
-- **Risks**: any open High-severity risk with a known owner, OR any risk whose structured action is P1 (Escalate today).
-- Sort order guarantees the earliest deadline / highest confidence at the top.
+- **Decisions**: any entry where ``decisionRequired = true`` AND lifecycle != Decided (explicit ``Question:``/``TBD:`` marker OR heuristic promotion of P1/P2 recorded decisions).
+- **Risks**: any open High-severity risk with a known owner, OR any risk whose structured action is P1, OR any risk whose ``timeToEscalationRisk <= 3``.
+- Tiers are capped: P1 top $P1Cap so David sees a real inbox (not a wall). P2/P3 keep visibility on the next 10 each.
+- Clusters group inbox items by workstream first, then by the most common non-stopword token in their titles (theme). Use them to batch decisions with a single owner conversation.
 "@
 }
 
@@ -2913,15 +3307,24 @@ function Build-DavidInboxJson {
     param(
         [object[]] $Items,
         [string]   $GeneratedIso,
-        [int]      $Top = 10
+        [int]      $P1Cap = 5,
+        [int]      $P2Cap = 10,
+        [int]      $P3Cap = 10
     )
     $Items = @($Items | Where-Object { $null -ne $_ })
-    $selected = @($Items | Select-Object -First $Top)
+
+    $p1 = @($Items | Where-Object { [int]$_.priority -eq 1 } | Select-Object -First $P1Cap)
+    $p2 = @($Items | Where-Object { [int]$_.priority -eq 2 } | Select-Object -First $P2Cap)
+    $p3 = @($Items | Where-Object { [int]$_.priority -eq 3 } | Select-Object -First $P3Cap)
+    $selected = @($p1 + $p2 + $p3)
+
+    $clusters = Get-DecisionClusters -Items $Items
 
     $out = [ordered]@{
         generated = $GeneratedIso
         generator = 'scripts/generate-current-focus.ps1'
-        version   = 'V2.0'
+        version   = 'V2.5'
+        caps      = [ordered]@{ p1 = $P1Cap; p2 = $P2Cap; p3 = $P3Cap }
         totals    = [ordered]@{
             candidates    = $Items.Count
             selected      = $selected.Count
@@ -2932,7 +3335,20 @@ function Build-DavidInboxJson {
                 p4 = @($Items | Where-Object { $_.priority -eq 4 }).Count
                 p5 = @($Items | Where-Object { $_.priority -eq 5 }).Count
             }
+            tiers         = [ordered]@{
+                p1Shown = $p1.Count
+                p2Shown = $p2.Count
+                p3Shown = $p3.Count
+            }
+            clusters      = $clusters.Count
+            imminentEscalation = @($Items | Where-Object { $null -ne $_.timeToEscalationRisk -and [int]$_.timeToEscalationRisk -le 3 }).Count
         }
+        tiers     = [ordered]@{
+            p1 = @($p1)
+            p2 = @($p2)
+            p3 = @($p3)
+        }
+        clusters  = @($clusters)
         items     = @($selected)
     }
     return $out | ConvertTo-Json -Depth 6
@@ -3090,8 +3506,8 @@ $json = Build-Json $finalResults $meta
 [System.IO.File]::WriteAllText($OUT_JSON, $json, (New-Object System.Text.UTF8Encoding($false)))
 
 $inboxItems = @(Get-DavidInbox -Decisions $decisions -Risks $risks)
-$inboxMd    = Build-DavidInboxMarkdown -Items $inboxItems -NowStamp $meta.generated -Top 10
-$inboxJson  = Build-DavidInboxJson     -Items $inboxItems -GeneratedIso $generatedIso -Top 10
+$inboxMd    = Build-DavidInboxMarkdown -Items $inboxItems -NowStamp $meta.generated -P1Cap 5 -P2Cap 10 -P3Cap 10
+$inboxJson  = Build-DavidInboxJson     -Items $inboxItems -GeneratedIso $generatedIso -P1Cap 5 -P2Cap 10 -P3Cap 10
 [System.IO.File]::WriteAllText($OUT_INBOX_MD,   $inboxMd,   (New-Object System.Text.UTF8Encoding($false)))
 [System.IO.File]::WriteAllText($OUT_INBOX_JSON, $inboxJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_INBOX_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green

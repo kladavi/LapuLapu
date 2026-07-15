@@ -129,6 +129,13 @@ type StructuredAction = {
   rationale?: string;
 };
 
+type LinkedAction = {
+  text?: string;
+  owner?: string;
+  dueBy?: string;
+  status?: string;
+};
+
 type DecisionEntry = {
   decisionId?: string;
   title?: string;
@@ -153,12 +160,25 @@ type DecisionEntry = {
   decisionDeadline?: string;
   impact?: string;
   decisionConfidence?: number;
+  // V2.5 additions
+  decisionStatus?: string;
+  decisionOutcome?: string;
+  completionSignal?: string;
+  linkedActions?: LinkedAction[];
+  timeToEscalationRisk?: number | null;
 };
 
 type DecisionRegistry = {
   generated?: string;
   version?: string;
-  totals?: { total?: number; open?: number; closed?: number; authorativelyOwned?: number };
+  totals?: {
+    total?: number;
+    open?: number;
+    closed?: number;
+    authorativelyOwned?: number;
+    pendingDecisions?: number;
+    lifecycle?: { pending?: number; decided?: number; expired?: number };
+  };
   decisions?: DecisionEntry[];
 };
 
@@ -183,12 +203,22 @@ type RiskEntry = {
   // V2.0 additions
   impact?: string;
   riskConfidence?: number;
+  // V2.5 additions
+  timeToEscalationRisk?: number | null;
 };
 
 type RiskRegistry = {
   generated?: string;
   version?: string;
-  totals?: { total?: number; open?: number; closed?: number; high?: number; rising?: number; authorativelyOwned?: number };
+  totals?: {
+    total?: number;
+    open?: number;
+    closed?: number;
+    high?: number;
+    rising?: number;
+    authorativelyOwned?: number;
+    imminentEscalation?: number;
+  };
   risks?: RiskEntry[];
 };
 
@@ -220,12 +250,38 @@ type InboxItem = {
   decisionRequired?: boolean;
   impact?: string;
   rationale?: string;
+  // V2.5 additions
+  decisionStatus?: string;
+  decisionOutcome?: string;
+  timeToEscalationRisk?: number | null;
+  linkedActionCount?: number;
+};
+
+type InboxCluster = {
+  workstream?: string;
+  theme?: string;
+  itemCount?: number;
+  topPriority?: number;
+  p1Count?: number;
+  minEscalationRisk?: number | null;
+  kinds?: string[];
+  itemIds?: string[];
 };
 
 type DavidInbox = {
   generated?: string;
   version?: string;
-  totals?: { candidates?: number; selected?: number; byPriority?: { p1?: number; p2?: number; p3?: number; p4?: number; p5?: number } };
+  caps?: { p1?: number; p2?: number; p3?: number };
+  totals?: {
+    candidates?: number;
+    selected?: number;
+    byPriority?: { p1?: number; p2?: number; p3?: number; p4?: number; p5?: number };
+    tiers?: { p1Shown?: number; p2Shown?: number; p3Shown?: number };
+    clusters?: number;
+    imminentEscalation?: number;
+  };
+  tiers?: { p1?: InboxItem[]; p2?: InboxItem[]; p3?: InboxItem[] };
+  clusters?: InboxCluster[];
   items?: InboxItem[];
 };
 
@@ -262,6 +318,30 @@ function priorityBadgeClass(priority?: number): string {
   if (priority === 2) return "bg-amber-50 text-amber-800 border-amber-200";
   if (priority === 3) return "bg-blue-50 text-blue-800 border-blue-200";
   return "bg-slate-100 text-slate-600 border-slate-200";
+}
+
+function lifecycleBadgeClass(status?: string): string {
+  switch (status) {
+    case "Decided": return "bg-green-50 text-green-800 border-green-200";
+    case "Expired": return "bg-red-50 text-red-800 border-red-200";
+    case "Pending": return "bg-amber-50 text-amber-800 border-amber-200";
+    default:        return "bg-slate-100 text-slate-600 border-slate-200";
+  }
+}
+
+function escalationBadgeClass(days?: number | null): string {
+  if (days === null || days === undefined) return "bg-slate-100 text-slate-500 border-slate-200";
+  if (days <= 0) return "bg-red-50 text-red-800 border-red-200";
+  if (days <= 3) return "bg-amber-50 text-amber-800 border-amber-200";
+  if (days <= 7) return "bg-blue-50 text-blue-800 border-blue-200";
+  return "bg-slate-100 text-slate-600 border-slate-200";
+}
+
+function escalationLabel(days?: number | null): string {
+  if (days === null || days === undefined) return "n/a";
+  if (days <= 0) return "escalate today";
+  if (days === 1) return "escalate in 1 day";
+  return `escalate in ${days} days`;
 }
 
 function confidenceLabel(confidence?: number): string {
@@ -783,99 +863,219 @@ export function DashboardTab({ onNavigate }: Props) {
         </div>
       )}
 
-      {/* David's Priority Inbox (V2.0) - highest signal card, top of page */}
+      {/* David's Priority Inbox (V2.5) - highest signal card, top of page */}
       <div className="rounded-xl border-2 border-red-200 bg-red-50/30 p-4">
         <div className="flex items-baseline justify-between mb-2">
-          <h3 className="font-semibold text-th-text-secondary">David&apos;s Priority Inbox</h3>
+          <h3 className="font-semibold text-th-text-secondary">
+            David&apos;s Priority Inbox
+            {davidInbox?.version && (
+              <span className="ml-2 text-[11px] font-mono text-th-text-faint">{davidInbox.version}</span>
+            )}
+          </h3>
           {davidInbox?.generated && (
             <span className="text-xs text-th-text-faint">Generated {davidInbox.generated}</span>
           )}
         </div>
-        {davidInbox?.items?.length ? (
-          <div className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
-                Candidates: <strong>{davidInbox.totals?.candidates ?? 0}</strong>
-              </span>
-              <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
-                Selected: <strong>{davidInbox.totals?.selected ?? 0}</strong>
-              </span>
-              {(davidInbox.totals?.byPriority?.p1 ?? 0) > 0 && (
-                <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
-                  P1: <strong>{davidInbox.totals?.byPriority?.p1 ?? 0}</strong>
-                </span>
-              )}
-              {(davidInbox.totals?.byPriority?.p2 ?? 0) > 0 && (
-                <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-amber-800">
-                  P2: <strong>{davidInbox.totals?.byPriority?.p2 ?? 0}</strong>
-                </span>
-              )}
-            </div>
+        {davidInbox && (davidInbox.tiers || davidInbox.items?.length) ? (
+          (() => {
+            const p1Items = davidInbox.tiers?.p1 ?? (davidInbox.items ?? []).filter((i) => i.priority === 1);
+            const p2Items = davidInbox.tiers?.p2 ?? (davidInbox.items ?? []).filter((i) => i.priority === 2);
+            const p3Items = davidInbox.tiers?.p3 ?? (davidInbox.items ?? []).filter((i) => i.priority === 3);
+            const p1Cap = davidInbox.caps?.p1 ?? 5;
+            const p2Cap = davidInbox.caps?.p2 ?? 10;
+            const p3Cap = davidInbox.caps?.p3 ?? 10;
+            const clusters = davidInbox.clusters ?? [];
+            const imminent = davidInbox.totals?.imminentEscalation ?? 0;
 
-            <div className="space-y-2">
-              {davidInbox.items.map((it, idx) => (
-                <div key={it.id ?? `${it.kind}-${idx}`} className="rounded-md border border-th-border bg-th-surface p-2">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="text-sm font-medium text-th-text break-words">
-                        {it.verb ? <span className="font-semibold">{it.verb}: </span> : null}
-                        {it.title ?? "(no title)"}
-                      </div>
-                      <div className="mt-0.5 text-xs text-th-text-muted">
-                        <span className="uppercase font-mono mr-2">{it.kind}</span>
-                        {it.workstream ? <span className="font-medium">{it.workstream}</span> : <span className="italic">no workstream</span>}
-                        {it.id ? <span className="font-mono"> · {it.id}</span> : null}
-                      </div>
-                      <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
-                        {it.owner ? (
-                          <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(it.ownerConfidence)}`}>
-                            owner: {it.owner}
-                          </span>
-                        ) : (
-                          <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 font-medium text-slate-600">
-                            owner: unassigned
-                          </span>
-                        )}
-                        {it.decisionRequired && (
-                          <span className="inline-block rounded-full border border-red-200 bg-red-50 px-1.5 py-0.5 font-medium text-red-800">
-                            DECISION REQUIRED
-                          </span>
-                        )}
-                        {typeof it.confidence === "number" && (
-                          <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted" title={`raw ${it.confidence.toFixed(2)}`}>
-                            confidence: {confidenceLabel(it.confidence)} ({it.confidence.toFixed(2)})
-                          </span>
-                        )}
-                      </div>
+            const renderItem = (it: InboxItem, idx: number) => (
+              <div key={it.id ?? `${it.kind}-${idx}`} className="rounded-md border border-th-border bg-th-surface p-2">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium text-th-text break-words">
+                      {it.verb ? <span className="font-semibold">{it.verb}: </span> : null}
+                      {it.title ?? "(no title)"}
                     </div>
-                    <div className="flex flex-col items-end gap-1 shrink-0 text-xs tabular-nums">
-                      <span className={`inline-block rounded-full border px-2 py-0.5 font-mono ${priorityBadgeClass(it.priority)}`}>
-                        P{it.priority ?? "?"}
-                      </span>
-                      <span className="text-th-text-muted">by {it.deadline || it.dueBy || "-"}</span>
-                      {typeof it.ageDays === "number" && (
-                        <span className="text-th-text-faint">aging {it.ageDays}d</span>
+                    <div className="mt-0.5 text-xs text-th-text-muted">
+                      <span className="uppercase font-mono mr-2">{it.kind}</span>
+                      {it.workstream ? <span className="font-medium">{it.workstream}</span> : <span className="italic">no workstream</span>}
+                      {it.id ? <span className="font-mono"> · {it.id}</span> : null}
+                    </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
+                      {it.owner ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(it.ownerConfidence)}`}>
+                          owner: {it.owner}
+                        </span>
+                      ) : (
+                        <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 font-medium text-slate-600">
+                          owner: unassigned
+                        </span>
+                      )}
+                      {it.decisionStatus && (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${lifecycleBadgeClass(it.decisionStatus)}`}>
+                          {it.decisionStatus}
+                        </span>
+                      )}
+                      {it.decisionRequired && (
+                        <span className="inline-block rounded-full border border-red-200 bg-red-50 px-1.5 py-0.5 font-medium text-red-800">
+                          DECISION REQUIRED
+                        </span>
+                      )}
+                      {(it.timeToEscalationRisk !== undefined && it.timeToEscalationRisk !== null) && (
+                        <span
+                          className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${escalationBadgeClass(it.timeToEscalationRisk)}`}
+                          title="Predicted days until this needs escalation"
+                        >
+                          {escalationLabel(it.timeToEscalationRisk)}
+                        </span>
+                      )}
+                      {typeof it.confidence === "number" && (
+                        <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted" title={`raw ${it.confidence.toFixed(2)}`}>
+                          confidence: {confidenceLabel(it.confidence)} ({it.confidence.toFixed(2)})
+                        </span>
+                      )}
+                      {typeof it.linkedActionCount === "number" && it.linkedActionCount > 0 && (
+                        <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-0.5 font-medium text-blue-800" title="Linked follow-up actions">
+                          {it.linkedActionCount} linked action{it.linkedActionCount === 1 ? "" : "s"}
+                        </span>
                       )}
                     </div>
                   </div>
-                  {it.rationale && (
-                    <p className="mt-1 text-xs text-th-text-secondary">
-                      <span className="font-medium">Why: </span>{it.rationale}
-                    </p>
+                  <div className="flex flex-col items-end gap-1 shrink-0 text-xs tabular-nums">
+                    <span className={`inline-block rounded-full border px-2 py-0.5 font-mono ${priorityBadgeClass(it.priority)}`}>
+                      P{it.priority ?? "?"}
+                    </span>
+                    <span className="text-th-text-muted">by {it.deadline || it.dueBy || "-"}</span>
+                    {typeof it.ageDays === "number" && (
+                      <span className="text-th-text-faint">aging {it.ageDays}d</span>
+                    )}
+                  </div>
+                </div>
+                {it.decisionOutcome && (
+                  <p className="mt-1 text-xs text-th-text-secondary">
+                    <span className="font-medium">Outcome: </span>{it.decisionOutcome}
+                  </p>
+                )}
+                {it.rationale && (
+                  <p className="mt-1 text-xs text-th-text-secondary">
+                    <span className="font-medium">Why: </span>{it.rationale}
+                  </p>
+                )}
+                {it.impact && (
+                  <p className="mt-1 text-xs text-th-text-secondary">
+                    <span className="font-medium">Impact: </span>{it.impact}
+                  </p>
+                )}
+              </div>
+            );
+
+            const renderTier = (label: string, cap: number, items: InboxItem[], borderClass: string) => (
+              <div className={`rounded-md border ${borderClass} bg-th-surface/50 p-2`}>
+                <div className="mb-2 flex items-baseline gap-2 text-xs text-th-text-secondary">
+                  <strong>{label}</strong>
+                  <span className="text-th-text-faint">
+                    ({items.length} shown / cap {cap})
+                  </span>
+                </div>
+                {items.length ? (
+                  <div className="space-y-2">{items.map((it, idx) => renderItem(it, idx))}</div>
+                ) : (
+                  <p className="text-xs italic text-th-text-faint">No items in this tier.</p>
+                )}
+              </div>
+            );
+
+            return (
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                    Candidates: <strong>{davidInbox.totals?.candidates ?? 0}</strong>
+                  </span>
+                  <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                    Selected: <strong>{davidInbox.totals?.selected ?? 0}</strong>
+                  </span>
+                  {(davidInbox.totals?.byPriority?.p1 ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
+                      P1: <strong>{davidInbox.totals?.byPriority?.p1 ?? 0}</strong>
+                    </span>
                   )}
-                  {it.impact && (
-                    <p className="mt-1 text-xs text-th-text-secondary">
-                      <span className="font-medium">Impact: </span>{it.impact}
-                    </p>
+                  {(davidInbox.totals?.byPriority?.p2 ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-amber-800">
+                      P2: <strong>{davidInbox.totals?.byPriority?.p2 ?? 0}</strong>
+                    </span>
+                  )}
+                  {(davidInbox.totals?.byPriority?.p3 ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-blue-800">
+                      P3: <strong>{davidInbox.totals?.byPriority?.p3 ?? 0}</strong>
+                    </span>
+                  )}
+                  {imminent > 0 && (
+                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800" title="Items whose predicted escalation window is <= 3 days">
+                      Imminent escalation: <strong>{imminent}</strong>
+                    </span>
+                  )}
+                  {clusters.length > 0 && (
+                    <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-2 py-0.5 text-th-text-secondary">
+                      Clusters: <strong>{clusters.length}</strong>
+                    </span>
                   )}
                 </div>
-              ))}
-            </div>
 
-            <p className="text-xs text-th-text-faint">
-              Source: 00-context/generated/david-inbox.json - regenerated daily by scripts/run-matryoshka-pipeline.ps1.
-            </p>
-          </div>
+                {renderTier("P1 - Escalate today", p1Cap, p1Items, "border-red-200")}
+                {renderTier("P2 - Confirm or investigate this week", p2Cap, p2Items, "border-amber-200")}
+                {renderTier("P3 - Review this week", p3Cap, p3Items, "border-blue-200")}
+
+                {clusters.length > 0 && (
+                  <div className="rounded-md border border-th-border bg-th-surface/60 p-2">
+                    <div className="mb-2 text-xs font-semibold text-th-text-secondary">Clusters (workstream / theme)</div>
+                    <div className="grid gap-1.5 md:grid-cols-2">
+                      {clusters.slice(0, 12).map((c, idx) => (
+                        <div
+                          key={`${c.workstream ?? "(none)"}-${c.theme ?? "(misc)"}-${idx}`}
+                          className="flex items-center justify-between gap-2 rounded border border-th-border bg-th-surface p-1.5 text-xs"
+                        >
+                          <div className="min-w-0">
+                            <div className="font-medium text-th-text truncate">
+                              {c.workstream || "(no workstream)"}
+                              <span className="mx-1 text-th-text-faint">/</span>
+                              <em className="text-th-text-muted">{c.theme || "(misc)"}</em>
+                            </div>
+                            <div className="text-[11px] text-th-text-faint">
+                              {c.kinds?.join(" + ") || ""}
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1 shrink-0">
+                            <span className={`inline-block rounded-full border px-1.5 py-0.5 font-mono ${priorityBadgeClass(c.topPriority)}`}>
+                              P{c.topPriority ?? "?"}
+                            </span>
+                            <span className="rounded border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-secondary">
+                              {c.itemCount ?? 0} items
+                            </span>
+                            {typeof c.p1Count === "number" && c.p1Count > 0 && (
+                              <span className="rounded-full border border-red-200 bg-red-50 px-1.5 py-0.5 text-red-800">
+                                {c.p1Count} P1
+                              </span>
+                            )}
+                            {(c.minEscalationRisk !== undefined && c.minEscalationRisk !== null) && (
+                              <span
+                                className={`rounded-full border px-1.5 py-0.5 ${escalationBadgeClass(c.minEscalationRisk)}`}
+                                title="Minimum days-to-escalation across the cluster"
+                              >
+                                {escalationLabel(c.minEscalationRisk)}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-xs text-th-text-faint">
+                  Source: 00-context/generated/david-inbox.json - regenerated by scripts/generate-current-focus.ps1.
+                </p>
+              </div>
+            );
+          })()
         ) : (
           <p className="text-sm text-th-text-faint italic">
             Priority inbox not available. Regenerate to produce 00-context/generated/david-inbox.json.
@@ -1201,6 +1401,7 @@ export function DashboardTab({ onNavigate }: Props) {
               const actionText = formatAction(d.recommendedFollowUp);
               const actionPriority = typeof d.recommendedFollowUp === "object" ? d.recommendedFollowUp?.priority : undefined;
               const escalation = d.escalationPath ?? [];
+              const linkedCount = d.linkedActions?.length ?? 0;
               return (
               <div key={d.decisionId ?? `${d.workstream}-${d.title}`} className="rounded-md border border-th-border p-2">
                 <div className="flex items-start justify-between gap-3">
@@ -1214,6 +1415,22 @@ export function DashboardTab({ onNavigate }: Props) {
                       {d.owner || d.ownerConfidence ? (
                         <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(d.ownerConfidence)}`} title={`ownerConfidence: ${d.ownerConfidence ?? "unknown"}`}>
                           owner: {d.owner || "unassigned"} · {d.ownerConfidence ?? "unknown"}
+                        </span>
+                      ) : null}
+                      {d.decisionStatus ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${lifecycleBadgeClass(d.decisionStatus)}`} title="V2.5 lifecycle bucket">
+                          {d.decisionStatus}
+                        </span>
+                      ) : null}
+                      {(d.timeToEscalationRisk !== undefined && d.timeToEscalationRisk !== null) ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${escalationBadgeClass(d.timeToEscalationRisk)}`}
+                              title="Predicted days until escalation">
+                          {escalationLabel(d.timeToEscalationRisk)}
+                        </span>
+                      ) : null}
+                      {linkedCount > 0 ? (
+                        <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-0.5 font-medium text-blue-800">
+                          {linkedCount} linked action{linkedCount === 1 ? "" : "s"}
                         </span>
                       ) : null}
                       {escalation.length > 0 ? (
@@ -1258,6 +1475,28 @@ export function DashboardTab({ onNavigate }: Props) {
                     <span className="font-medium">Follow-up: </span>{actionText}
                   </p>
                 )}
+                {d.decisionOutcome && (
+                  <p className="mt-1 text-xs text-th-text-secondary">
+                    <span className="font-medium">Outcome: </span>{d.decisionOutcome}
+                  </p>
+                )}
+                {d.linkedActions && d.linkedActions.length > 0 && (
+                  <ul className="mt-1 ml-4 list-disc text-xs text-th-text-secondary space-y-0.5">
+                    {d.linkedActions.map((la, i) => (
+                      <li key={`${d.decisionId}-la-${i}`}>
+                        <span className={`inline-block rounded border px-1 py-0 mr-1 text-[10px] font-mono ${
+                          la.status === "completed" ? "border-green-200 bg-green-50 text-green-800" :
+                          la.status === "in-progress" ? "border-blue-200 bg-blue-50 text-blue-800" :
+                          la.status === "blocked" ? "border-red-200 bg-red-50 text-red-800" :
+                          "border-slate-200 bg-slate-50 text-slate-700"
+                        }`}>{la.status ?? "pending"}</span>
+                        {la.text}
+                        {la.owner ? <span className="text-th-text-faint"> · {la.owner}</span> : null}
+                        {la.dueBy ? <span className="text-th-text-faint"> · due {la.dueBy}</span> : null}
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 {d.sourceFiles && d.sourceFiles.length > 0 && (
                   <p className="mt-1 text-xs text-th-text-faint break-all">
                     Sources: {d.sourceFiles.slice(0, 2).join(", ")}
@@ -1283,6 +1522,21 @@ export function DashboardTab({ onNavigate }: Props) {
                   {escalationCandidates.length > 0 && (
                     <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
                       Escalate ({escalationCandidates.length}) 14+ days
+                    </span>
+                  )}
+                  {(totals.lifecycle?.pending ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-amber-800" title="V2.5 lifecycle: awaiting a decision">
+                      Pending: <strong>{totals.lifecycle?.pending ?? 0}</strong>
+                    </span>
+                  )}
+                  {(totals.lifecycle?.decided ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-green-200 bg-green-50 px-2 py-0.5 text-green-800" title="V2.5 lifecycle: outcome or completion recorded">
+                      Decided: <strong>{totals.lifecycle?.decided ?? 0}</strong>
+                    </span>
+                  )}
+                  {(totals.lifecycle?.expired ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800" title="V2.5 lifecycle: past deadline or aged out">
+                      Expired: <strong>{totals.lifecycle?.expired ?? 0}</strong>
                     </span>
                   )}
                   {decisionRegistry.generated && (
@@ -1421,6 +1675,12 @@ export function DashboardTab({ onNavigate }: Props) {
                             owner: {r.owner || "unassigned"} · {r.ownerConfidence ?? "unknown"}
                           </span>
                         ) : null}
+                        {(r.timeToEscalationRisk !== undefined && r.timeToEscalationRisk !== null) ? (
+                          <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${escalationBadgeClass(r.timeToEscalationRisk)}`}
+                                title="Predicted days until escalation">
+                            {escalationLabel(r.timeToEscalationRisk)}
+                          </span>
+                        ) : null}
                         {escalation.length > 0 ? (
                           <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted">
                             escalate → {escalation.join(" → ")}
@@ -1481,6 +1741,11 @@ export function DashboardTab({ onNavigate }: Props) {
                   <span className="inline-block rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-amber-800">
                     Rising: <strong>{risingCount}</strong>
                   </span>
+                  {(totals.imminentEscalation ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800" title="Predicted to need escalation within 3 days">
+                      Imminent: <strong>{totals.imminentEscalation ?? 0}</strong>
+                    </span>
+                  )}
                   {riskRegistry.generated && (
                     <span className="ml-auto text-th-text-faint">Generated {riskRegistry.generated}</span>
                   )}
