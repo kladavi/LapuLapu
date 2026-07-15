@@ -103,6 +103,20 @@ type BriefingJson = {
   sourceInputs?: BriefingSource[];
 };
 
+type PipelineHealth = {
+  lastRun?: string;
+  status?: string;
+  message?: string;
+  lastActivityFile?: string;
+  lastActivityHash?: string;
+  currentFocusGenerated?: boolean;
+  trendsGenerated?: boolean;
+  morningBriefingGenerated?: boolean;
+  jsonValidated?: boolean;
+  gitCommitted?: boolean;
+  lastCommitHash?: string;
+};
+
 function safeJsonParse<T>(raw: string | undefined): T | null {
   if (!raw || !raw.trim()) return null;
   try {
@@ -225,6 +239,7 @@ export function DashboardTab({ onNavigate }: Props) {
   );
   const trendsJson   = safeJsonParse<TrendJson>(data.rawFiles["00-context/generated/current-focus-trends.json"]);
   const briefingJson = safeJsonParse<BriefingJson>(data.rawFiles["00-context/generated/morning-briefing.json"]);
+  const pipelineHealth = safeJsonParse<PipelineHealth>(data.rawFiles["00-context/generated/pipeline-health.json"]);
 
   // Merge JSON enrichment into markdown-derived items by name
   if (currentFocus && focusJson?.workstreams?.length) {
@@ -609,6 +624,85 @@ export function DashboardTab({ onNavigate }: Props) {
           </div>
         </div>
       )}
+
+      {/* Automation status */}
+      <div className="rounded-xl border border-th-border bg-th-surface p-4">
+        <h3 className="font-semibold text-th-text-secondary mb-2">Automation Status</h3>
+        {pipelineHealth ? (
+          (() => {
+            const status = (pipelineHealth.status ?? "unknown").toLowerCase();
+            const badgeClass =
+              status === "success"
+                ? "bg-green-100 text-green-800 border-green-200"
+                : status === "no-op"
+                ? "bg-blue-50 text-blue-800 border-blue-200"
+                : status === "error"
+                ? "bg-red-50 text-red-800 border-red-200"
+                : "bg-slate-100 text-slate-700 border-slate-200";
+            const shortHash = pipelineHealth.lastCommitHash
+              ? pipelineHealth.lastCommitHash.slice(0, 7)
+              : "-";
+            return (
+              <div className="space-y-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={`inline-block rounded-full border px-2 py-0.5 text-xs font-medium ${badgeClass}`}>
+                    {pipelineHealth.status ?? "unknown"}
+                  </span>
+                  {pipelineHealth.jsonValidated ? (
+                    <span className="inline-block rounded-full border border-green-200 bg-green-50 px-2 py-0.5 text-[10px] font-medium text-green-700">
+                      JSON validated
+                    </span>
+                  ) : (
+                    <span className="inline-block rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                      JSON not validated this run
+                    </span>
+                  )}
+                  {pipelineHealth.gitCommitted && (
+                    <span className="inline-block rounded-full border border-purple-200 bg-purple-50 px-2 py-0.5 text-[10px] font-medium text-purple-700">
+                      Committed
+                    </span>
+                  )}
+                </div>
+
+                {pipelineHealth.message && (
+                  <p className="text-sm text-th-text-secondary">{pipelineHealth.message}</p>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-xs text-th-text-muted tabular-nums">
+                  <div>
+                    <span className="text-th-text-faint">Last run: </span>
+                    <span className="text-th-text">{pipelineHealth.lastRun ?? "-"}</span>
+                  </div>
+                  <div>
+                    <span className="text-th-text-faint">Last commit: </span>
+                    <span className="font-mono text-th-text">{shortHash}</span>
+                  </div>
+                  <div className="break-all">
+                    <span className="text-th-text-faint">Last activity recap: </span>
+                    <span className="font-mono text-th-text">{pipelineHealth.lastActivityFile || "-"}</span>
+                  </div>
+                  <div>
+                    <span className="text-th-text-faint">Artifacts: </span>
+                    <span className="text-th-text">
+                      focus:{pipelineHealth.currentFocusGenerated ? "✓" : "·"}
+                      {" "}trends:{pipelineHealth.trendsGenerated ? "✓" : "·"}
+                      {" "}briefing:{pipelineHealth.morningBriefingGenerated ? "✓" : "·"}
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-th-text-faint">
+                  Source: 00-context/generated/pipeline-health.json - refreshed by scripts/run-matryoshka-pipeline.ps1.
+                </p>
+              </div>
+            );
+          })()
+        ) : (
+          <p className="text-sm text-th-text-faint italic">
+            No pipeline health data. Run scripts/run-matryoshka-pipeline.ps1 to generate 00-context/generated/pipeline-health.json.
+          </p>
+        )}
+      </div>
 
       {/* Latest weekly */}
       <div className="rounded-xl border border-th-border bg-th-surface p-4">

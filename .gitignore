@@ -4,6 +4,9 @@
 node_modules/
 .next/
 
+# Pipeline transcripts (local audit only)
+logs/
+
 # OS artefacts
 .DS_Store
 Thumbs.db

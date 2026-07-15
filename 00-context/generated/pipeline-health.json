@@ -1,0 +1,13 @@
+{
+  "lastRun": "2026-07-14T16:42:04",
+  "status": "no-op",
+  "message": "Recap hash unchanged since previous run.",
+  "lastActivityFile": "2026-07-14-14-day-activity.md",
+  "lastActivityHash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+  "currentFocusGenerated": false,
+  "trendsGenerated": false,
+  "morningBriefingGenerated": false,
+  "jsonValidated": false,
+  "gitCommitted": false,
+  "lastCommitHash": "af8df826783b15f78e58eb0932891b708fe8b724"
+}
