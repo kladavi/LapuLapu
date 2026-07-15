@@ -208,6 +208,54 @@ function Read-ScoringModel($path) {
     return $model
 }
 
+# --- V1.8 Ownership Intelligence: ownership-map parser ----------------------
+# Reads 00-context/ownership-map.yaml into id -> { owner, escalationPath, stakeholders }.
+# Used as the PRIMARY source for owner resolution in registries.
+
+function Read-OwnershipMap($path) {
+    $result = @{}
+    if (-not (Test-Path -LiteralPath $path)) { return $result }
+    $lines       = Read-FileLines $path
+    $currentId   = $null
+    $listContext = ''
+    $inOwnership = $false
+
+    foreach ($raw in $lines) {
+        if ($raw -match '^\s*#' -or [string]::IsNullOrWhiteSpace($raw)) { continue }
+        if ($raw -match '^ownership:\s*$')  { $inOwnership = $true; continue }
+        if (-not $inOwnership) { continue }
+
+        # Workstream id at 2-space indent
+        if ($raw -match '^  ([a-z0-9\-]+):\s*$') {
+            $currentId = $Matches[1]
+            $result[$currentId] = @{
+                owner          = ''
+                escalationPath = [System.Collections.Generic.List[string]]::new()
+                stakeholders   = [System.Collections.Generic.List[string]]::new()
+            }
+            $listContext = ''
+            continue
+        }
+        if (-not $currentId) { continue }
+
+        switch -Regex ($raw) {
+            '^    owner:\s*(.+)$'                 { $result[$currentId].owner = $Matches[1].Trim(); $listContext = ''; break }
+            '^    escalationPath:\s*(\[\])?\s*$'  { $listContext = 'escalation'; break }
+            '^    stakeholders:\s*(\[\])?\s*$'    { $listContext = 'stakeholders'; break }
+            '^      - (.+)$' {
+                $val = $Matches[1].Trim()
+                switch ($listContext) {
+                    'escalation'   { $result[$currentId].escalationPath.Add($val) }
+                    'stakeholders' { $result[$currentId].stakeholders.Add($val) }
+                }
+                break
+            }
+            '^    [a-z]' { $listContext = '' }
+        }
+    }
+    return $result
+}
+
 # --- V1.2 additions: source weighting + activity windows --------------------
 # These are additive helpers. Existing scoring paths (Get-SourceFiles /
 # Measure-WorkstreamSignals) are untouched so V1.1 output remains identical
@@ -1341,21 +1389,30 @@ function Build-MorningBriefingMarkdown {
     $risingBlock = if ($risingRisks.Count -gt 0) {
         ($risingRisks | ForEach-Object {
             $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
-            "- **$wsName** - $($_.severity) severity, aging $($_.agingDays) days`n  - $($_.title) [$($_.riskId)]"
+            $ownerText = if ($_.owner) { "owner: $($_.owner)" } else { 'owner: unassigned' }
+            $act = $_.recommendedAction
+            $actLine = if ($act -is [System.Collections.IDictionary]) { "P$($act.priority) $($act.verb) by $($act.dueBy)" } else { '' }
+            "- **$wsName** - $($_.severity) severity, aging $($_.agingDays) days, $ownerText`n  - $($_.title) [$($_.riskId)]`n  - $actLine"
         }) -join "`n"
     } else { '_No rising risks in the current window._' }
 
     $topRisksBlock = if ($topRisks.Count -gt 0) {
         ($topRisks | ForEach-Object {
             $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
-            "- **$wsName** - $($_.severity) severity, $($_.trend) trend, aging $($_.agingDays) days`n  - $($_.title) [$($_.riskId)]"
+            $ownerText = if ($_.owner) { "owner: $($_.owner)" } else { 'owner: unassigned' }
+            $act = $_.recommendedAction
+            $actLine = if ($act -is [System.Collections.IDictionary]) { "P$($act.priority) $($act.verb) by $($act.dueBy)" } else { '' }
+            "- **$wsName** - $($_.severity) severity, $($_.trend) trend, aging $($_.agingDays) days, $ownerText`n  - $($_.title) [$($_.riskId)]`n  - $actLine"
         }) -join "`n"
     } else { '_No open risks in the registry._' }
 
     $decisionBlock = if ($pendingDecisions.Count -gt 0) {
         ($pendingDecisions | ForEach-Object {
             $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
-            "- **$wsName** - Pending $($_.decisionAgeDays) days`n  - $($_.title) [$($_.decisionId)]"
+            $ownerText = if ($_.owner) { "owner: $($_.owner)" } else { 'owner: unassigned' }
+            $act = $_.recommendedFollowUp
+            $actLine = if ($act -is [System.Collections.IDictionary]) { "P$($act.priority) $($act.verb) by $($act.dueBy)" } else { '' }
+            "- **$wsName** - Pending $($_.decisionAgeDays) days, $ownerText`n  - $($_.title) [$($_.decisionId)]`n  - $actLine"
         }) -join "`n"
     } else {
         '_No pending decisions in the registry._'
@@ -1461,9 +1518,15 @@ function Build-MorningBriefingJson {
             riskId            = $r.riskId
             workstream        = $r.workstream
             title             = $r.title
+            owner             = $r.owner
+            ownerConfidence   = $r.ownerConfidence
+            escalationPath    = @($r.escalationPath)
             severity          = $r.severity
             trend             = $r.trend
             agingDays         = $r.agingDays
+            recencyDays       = $r.recencyDays
+            firstSeenDate     = $r.firstSeenDate
+            lastSeenDate      = $r.lastSeenDate
             recommendedAction = $r.recommendedAction
         }
     }
@@ -1473,8 +1536,13 @@ function Build-MorningBriefingJson {
             riskId            = $r.riskId
             workstream        = $r.workstream
             title             = $r.title
+            owner             = $r.owner
+            ownerConfidence   = $r.ownerConfidence
             severity          = $r.severity
             agingDays         = $r.agingDays
+            recencyDays       = $r.recencyDays
+            firstSeenDate     = $r.firstSeenDate
+            lastSeenDate      = $r.lastSeenDate
             recommendedAction = $r.recommendedAction
         }
     }
@@ -1546,7 +1614,12 @@ function Build-MorningBriefingJson {
             workstream      = $e.workstream
             title           = $e.title
             owner           = $e.owner
+            ownerConfidence = $e.ownerConfidence
+            escalationPath  = @($e.escalationPath)
             decisionAgeDays = $e.decisionAgeDays
+            recencyDays     = $e.recencyDays
+            firstSeenDate   = $e.firstSeenDate
+            lastSeenDate    = $e.lastSeenDate
             dateDetected    = $e.dateDetected
             followUp        = $e.recommendedFollowUp
         }
@@ -1597,7 +1670,7 @@ function Build-MorningBriefingJson {
     $out = [ordered]@{
         generated                     = $GeneratedIso
         generator                     = 'scripts/generate-current-focus.ps1'
-        version                       = 'V1.7'
+        version                       = 'V1.8'
         executiveSnapshot             = $execSnap
         primaryFocus                  = @($primaryList)
         risingRisks                   = @($risingList)
@@ -1630,26 +1703,81 @@ function New-DecisionId {
     } finally { $sha1.Dispose() }
 }
 
+function Get-StructuredDecisionAction {
+    <#
+        Converts the ad-hoc `recommendedFollowUp` string into a structured object.
+        Verbs: Track (fresh), Confirm (aging 7+), Escalate (14+), Archive (closed).
+    #>
+    param([hashtable] $Entry, [datetime] $Now)
+
+    $rawTitle = if ($Entry.title) { [string]$Entry.title } else { '' }
+    $subject  = if ($rawTitle.Length -gt 100) { $rawTitle.Substring(0, 97) + '...' } else { $rawTitle }
+    $owner    = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+
+    if ($Entry.status -eq 'closed') {
+        return [ordered]@{
+            priority     = 5
+            verb         = 'Archive'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = $Now.AddDays(30).ToString('yyyy-MM-dd')
+            rationale    = 'Decision closed; archive after next reporting cycle.'
+        }
+    }
+    if ($Entry.decisionAgeDays -ge 14) {
+        return [ordered]@{
+            priority     = 1
+            verb         = 'Escalate'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = $Now.ToString('yyyy-MM-dd')
+            rationale    = 'Pending 14+ days without resolution - escalate today.'
+        }
+    }
+    if ($Entry.decisionAgeDays -ge 7) {
+        return [ordered]@{
+            priority     = 2
+            verb         = 'Confirm'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = Get-EndOfWeekDate $Now
+            rationale    = 'Aging 7+ days - confirm status and communicate resolution this week.'
+        }
+    }
+    return [ordered]@{
+        priority     = 4
+        verb         = 'Track'
+        subject      = $subject
+        targetOwner  = $owner
+        dueBy        = $Now.AddDays(7).ToString('yyyy-MM-dd')
+        rationale    = 'Fresh decision - monitor for follow-through.'
+    }
+}
+
 function Get-DecisionRegistry {
     <#
         Scans context-eligible file records for decision-signal phrases and
-        returns a list of deduplicated decision entries with age, workstream,
-        owner (best-effort), status, and recommended follow-up.
+        returns deduplicated decision entries with V1.8 fields:
+          - firstSeenDate / lastSeenDate / decisionAgeDays / recencyDays
+          - owner + ownerConfidence + escalationPath + stakeholders
+          - recommendedFollowUp as a structured object
     #>
     param(
         [System.Collections.Generic.List[hashtable]] $Records,
         [object[]] $Workstreams,
-        [hashtable] $Model
+        [hashtable] $Model,
+        [hashtable] $OwnershipMap = @{}
     )
 
     $now = Get-Date
 
-    # Alias -> workstream name (lowercased keys)
     $aliasMap = @{}
+    $nameToId = @{}
     foreach ($ws in $Workstreams) {
         $aliasMap[$ws.name.ToLowerInvariant()] = $ws.name
         $aliasMap[$ws.id.ToLowerInvariant()]   = $ws.name
         foreach ($a in $ws.aliases) { $aliasMap[$a.ToLowerInvariant()] = $ws.name }
+        $nameToId[$ws.name] = $ws.id
     }
     $aliasKeys = @($aliasMap.Keys | Sort-Object { -($_.Length) })
 
@@ -1739,14 +1867,21 @@ function Get-DecisionRegistry {
                     decisionId          = $decisionId
                     title               = $title
                     dateDetected        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                    firstSeenDate       = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                    lastSeenDate        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
                     status              = $status
                     owner               = $owner
+                    ownerConfidence     = 'unknown'
+                    escalationPath      = [System.Collections.Generic.List[string]]::new()
+                    stakeholders        = [System.Collections.Generic.List[string]]::new()
                     workstream          = $workstream
                     sourceFiles         = [System.Collections.Generic.List[string]]::new()
                     decisionAgeDays     = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+                    recencyDays         = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
                     decisionSummary     = $summary
-                    recommendedFollowUp = ''
+                    recommendedFollowUp = $null
                     _detectedOn         = $rec.LastWriteTime
+                    _lastSeenOn         = $rec.LastWriteTime
                 }
             }
 
@@ -1755,11 +1890,17 @@ function Get-DecisionRegistry {
             if (-not $entry.owner      -and $owner)      { $entry.owner      = $owner }
             if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
 
-            # Earliest detection wins
+            # firstSeen = earliest, lastSeen = latest
             if ($rec.LastWriteTime -lt $entry._detectedOn) {
                 $entry._detectedOn     = $rec.LastWriteTime
                 $entry.dateDetected    = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.firstSeenDate   = $rec.LastWriteTime.ToString('yyyy-MM-dd')
                 $entry.decisionAgeDays = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+            }
+            if ($rec.LastWriteTime -gt $entry._lastSeenOn) {
+                $entry._lastSeenOn  = $rec.LastWriteTime
+                $entry.lastSeenDate = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.recencyDays  = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
             }
 
             # Any closed sighting closes the decision
@@ -1768,15 +1909,29 @@ function Get-DecisionRegistry {
     }
 
     foreach ($e in $decisions.Values) {
-        if ($e.status -eq 'closed') {
-            $e.recommendedFollowUp = 'Archive after next weekly reporting cycle.'
-        } elseif ($e.decisionAgeDays -ge 14) {
-            $e.recommendedFollowUp = 'Escalate: pending 14+ days without resolution.'
-        } elseif ($e.decisionAgeDays -ge 7) {
-            $e.recommendedFollowUp = 'Confirm status this week.'
-        } else {
-            $e.recommendedFollowUp = 'Monitor for follow-through.'
+        # V1.8 owner resolution + confidence
+        $mapEntry = $null
+        if ($e.workstream -and $nameToId.ContainsKey($e.workstream)) {
+            $wsId = $nameToId[$e.workstream]
+            if ($OwnershipMap.ContainsKey($wsId)) { $mapEntry = $OwnershipMap[$wsId] }
         }
+        if ($mapEntry -and $mapEntry.owner) {
+            $e.owner           = $mapEntry.owner
+            $e.ownerConfidence = 'workstream-map'
+            foreach ($n in $mapEntry.escalationPath) {
+                if (-not $e.escalationPath.Contains($n)) { $e.escalationPath.Add($n) }
+            }
+            foreach ($n in $mapEntry.stakeholders) {
+                if (-not $e.stakeholders.Contains($n)) { $e.stakeholders.Add($n) }
+            }
+        } elseif ($e.owner) {
+            $e.ownerConfidence = 'name-proximity'
+        } else {
+            $e.ownerConfidence = 'unknown'
+        }
+
+        # V1.8 structured action
+        $e.recommendedFollowUp = Get-StructuredDecisionAction -Entry $e -Now $now
     }
 
     # Sort: open before closed; within each group, oldest first
@@ -1802,14 +1957,32 @@ function Build-DecisionRegistryMarkdown {
         $sources   = if ($e.sourceFiles.Count -gt 0) {
             ($e.sourceFiles | Select-Object -First 5 | ForEach-Object { "  - ``$_``" }) -join "`n"
         } else { '  - (no source captured)' }
+
+        $escalationText = if ($e.escalationPath -and $e.escalationPath.Count -gt 0) {
+            ($e.escalationPath -join ' -> ')
+        } else { '-' }
+        $stakeText = if ($e.stakeholders -and $e.stakeholders.Count -gt 0) {
+            ($e.stakeholders -join ', ')
+        } else { '-' }
+
+        $act = $e.recommendedFollowUp
+        $actionText = if ($act -is [System.Collections.IDictionary]) {
+            "P$($act.priority) - $($act.verb): $($act.subject) (owner: $($act.targetOwner), by $($act.dueBy))"
+        } else {
+            "$act"
+        }
+
         return @"
 ### $($e.decisionId) - $($e.title)
 
 - Workstream: **$wsText**
-- Owner: **$ownerText**
+- Owner: **$ownerText** _(confidence: $($e.ownerConfidence))_
+- Escalation Path: $escalationText
+- Stakeholders: $stakeText
 - Status: **$($e.status)**
-- Age: **$($e.decisionAgeDays) days** (detected $($e.dateDetected))
-- Follow-up: $($e.recommendedFollowUp)
+- First seen: **$($e.firstSeenDate)** ($($e.decisionAgeDays) days ago)
+- Last seen: **$($e.lastSeenDate)** ($($e.recencyDays) days ago)
+- Follow-up: $actionText
 - Sources:
 $sources
 
@@ -1862,11 +2035,17 @@ function Build-DecisionRegistryJson {
             decisionId          = $e.decisionId
             title               = $e.title
             dateDetected        = $e.dateDetected
+            firstSeenDate       = $e.firstSeenDate
+            lastSeenDate        = $e.lastSeenDate
             status              = $e.status
             owner               = $e.owner
+            ownerConfidence     = $e.ownerConfidence
+            escalationPath      = @($e.escalationPath)
+            stakeholders        = @($e.stakeholders)
             workstream          = $e.workstream
             sourceFiles         = @($e.sourceFiles)
             decisionAgeDays     = $e.decisionAgeDays
+            recencyDays         = $e.recencyDays
             decisionSummary     = $e.decisionSummary
             recommendedFollowUp = $e.recommendedFollowUp
         }
@@ -1874,15 +2053,17 @@ function Build-DecisionRegistryJson {
 
     $openCount   = @($Decisions | Where-Object { $_.status -ne 'closed' }).Count
     $closedCount = @($Decisions | Where-Object { $_.status -eq 'closed' }).Count
+    $ownedCount  = @($Decisions | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
 
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V1.6'
+        version     = 'V1.8'
         totals      = [ordered]@{
-            total  = $Decisions.Count
-            open   = $openCount
-            closed = $closedCount
+            total              = $Decisions.Count
+            open               = $openCount
+            closed             = $closedCount
+            authorativelyOwned = $ownedCount
         }
         decisions   = @($items)
     }
@@ -1907,26 +2088,116 @@ function New-RiskId {
     } finally { $sha1.Dispose() }
 }
 
+# --- V1.8 Ownership Intelligence: shared helpers ----------------------------
+
+function Get-EndOfWeekDate {
+    param([datetime] $Now)
+    # Friday of the current work-week. If already Fri-Sun, roll to next Friday.
+    $offset = (5 - [int]$Now.DayOfWeek + 7) % 7
+    if ($offset -eq 0 -and $Now.DayOfWeek -eq [DayOfWeek]::Friday -and $Now.Hour -ge 17) { $offset = 7 }
+    if ($offset -eq 0 -and $Now.DayOfWeek -in @([DayOfWeek]::Saturday, [DayOfWeek]::Sunday)) { $offset = 5 }
+    return $Now.AddDays($offset).Date.ToString('yyyy-MM-dd')
+}
+
+function Get-StructuredRiskAction {
+    <#
+        Converts the ad-hoc `recommendedAction` string into a structured object
+        with priority (1-5), verb, subject, targetOwner, dueBy (ISO date), and
+        a short rationale. Consumers (dashboard, briefing, action engine) can
+        render or execute against this shape.
+    #>
+    param([hashtable] $Entry, [datetime] $Now)
+
+    $rawTitle = if ($Entry.title) { [string]$Entry.title } else { '' }
+    $subject  = if ($rawTitle.Length -gt 100) { $rawTitle.Substring(0, 97) + '...' } else { $rawTitle }
+    $owner    = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+
+    if ($Entry.status -eq 'closed') {
+        return [ordered]@{
+            priority     = 5
+            verb         = 'Archive'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = $Now.AddDays(30).ToString('yyyy-MM-dd')
+            rationale    = 'Risk marked closed; archive after next reporting cycle.'
+        }
+    }
+    if ($Entry.severity -eq 'High') {
+        return [ordered]@{
+            priority     = 1
+            verb         = 'Escalate'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = $Now.ToString('yyyy-MM-dd')
+            rationale    = 'High severity - notify workstream owner today.'
+        }
+    }
+    if ($Entry.trend -eq 'increasing' -and $Entry.agingDays -ge 7) {
+        return [ordered]@{
+            priority     = 2
+            verb         = 'Investigate'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = Get-EndOfWeekDate $Now
+            rationale    = 'Rising signal aged 7+ days - confirm mitigation this week.'
+        }
+    }
+    if ($Entry.agingDays -ge 14) {
+        return [ordered]@{
+            priority     = 2
+            verb         = 'Escalate'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = Get-EndOfWeekDate $Now
+            rationale    = 'Unresolved 14+ days - escalate this week.'
+        }
+    }
+    if ($Entry.agingDays -ge 7) {
+        return [ordered]@{
+            priority     = 3
+            verb         = 'Review'
+            subject      = $subject
+            targetOwner  = $owner
+            dueBy        = Get-EndOfWeekDate $Now
+            rationale    = 'Aging 7+ days - review mitigation plan this week.'
+        }
+    }
+    return [ordered]@{
+        priority     = 4
+        verb         = 'Monitor'
+        subject      = $subject
+        targetOwner  = $owner
+        dueBy        = $Now.AddDays(7).ToString('yyyy-MM-dd')
+        rationale    = 'Fresh signal - continue to observe.'
+    }
+}
+
 function Get-RiskRegister {
     <#
         Scans context-eligible file records for risk-signal phrases and returns
-        deduplicated risk entries. Aging comes from earliest sighting; trend is
-        based on the ratio of current-window mentions vs previous-window mentions.
+        deduplicated risk entries with V1.8 fields:
+          - firstSeenDate / lastSeenDate / agingDays / recencyDays
+          - owner + ownerConfidence (workstream-map | name-proximity | unknown)
+          - escalationPath / stakeholders
+          - recommendedAction as a structured object
     #>
     param(
         [System.Collections.Generic.List[hashtable]] $Records,
         [object[]] $Workstreams,
-        [hashtable] $Model
+        [hashtable] $Model,
+        [hashtable] $OwnershipMap = @{}
     )
 
     $now = Get-Date
 
-    # Alias -> workstream name (longest-first for greedy match)
-    $aliasMap = @{}
+    # Alias -> workstream (longest-first for greedy match); also track workstream.id
+    $aliasMap = @{}     # lowercased alias -> workstream name
+    $nameToId = @{}     # workstream name -> workstream id (for ownership-map lookup)
     foreach ($ws in $Workstreams) {
         $aliasMap[$ws.name.ToLowerInvariant()] = $ws.name
         $aliasMap[$ws.id.ToLowerInvariant()]   = $ws.name
         foreach ($a in $ws.aliases) { $aliasMap[$a.ToLowerInvariant()] = $ws.name }
+        $nameToId[$ws.name] = $ws.id
     }
     $aliasKeys = @($aliasMap.Keys | Sort-Object { -($_.Length) })
 
@@ -2031,15 +2302,22 @@ function Get-RiskRegister {
                     title               = $title
                     workstream          = $workstream
                     owner               = $owner
+                    ownerConfidence     = 'unknown'
+                    escalationPath      = [System.Collections.Generic.List[string]]::new()
+                    stakeholders        = [System.Collections.Generic.List[string]]::new()
                     severity            = $severity
                     status              = $status
                     trend               = 'stable'
                     sourceFiles         = [System.Collections.Generic.List[string]]::new()
                     agingDays           = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
-                    recommendedAction   = ''
+                    recencyDays         = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+                    recommendedAction   = $null
                     dateDetected        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                    firstSeenDate       = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                    lastSeenDate        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
                     keyword             = $keyword
                     _detectedOn         = $rec.LastWriteTime
+                    _lastSeenOn         = $rec.LastWriteTime
                     _currentCount       = 0
                     _previousCount      = 0
                 }
@@ -2056,10 +2334,17 @@ function Get-RiskRegister {
 
             if ($status -eq 'closed') { $entry.status = 'closed' }
 
+            # firstSeen = earliest, lastSeen = latest
             if ($rec.LastWriteTime -lt $entry._detectedOn) {
-                $entry._detectedOn  = $rec.LastWriteTime
-                $entry.dateDetected = $rec.LastWriteTime.ToString('yyyy-MM-dd')
-                $entry.agingDays    = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+                $entry._detectedOn   = $rec.LastWriteTime
+                $entry.dateDetected  = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.firstSeenDate = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.agingDays     = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+            }
+            if ($rec.LastWriteTime -gt $entry._lastSeenOn) {
+                $entry._lastSeenOn  = $rec.LastWriteTime
+                $entry.lastSeenDate = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.recencyDays  = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
             }
 
             switch ($rec.Window) {
@@ -2076,19 +2361,29 @@ function Get-RiskRegister {
         elseif ($cur -lt $prev -and $prev -gt 0) { $e.trend = 'decreasing' }
         else                                     { $e.trend = 'stable' }
 
-        if ($e.status -eq 'closed') {
-            $e.recommendedAction = 'Archive after next weekly reporting cycle.'
-        } elseif ($e.severity -eq 'High') {
-            $e.recommendedAction = 'Escalate to workstream owner immediately.'
-        } elseif ($e.trend -eq 'increasing' -and $e.agingDays -ge 7) {
-            $e.recommendedAction = 'Investigate: signal is rising and 7+ days aged.'
-        } elseif ($e.agingDays -ge 14) {
-            $e.recommendedAction = 'Escalate: unresolved 14+ days.'
-        } elseif ($e.agingDays -ge 7) {
-            $e.recommendedAction = 'Review this week; confirm mitigation plan.'
-        } else {
-            $e.recommendedAction = 'Monitor and log next update.'
+        # V1.8 owner resolution + confidence
+        $mapEntry = $null
+        if ($e.workstream -and $nameToId.ContainsKey($e.workstream)) {
+            $wsId = $nameToId[$e.workstream]
+            if ($OwnershipMap.ContainsKey($wsId)) { $mapEntry = $OwnershipMap[$wsId] }
         }
+        if ($mapEntry -and $mapEntry.owner) {
+            $e.owner           = $mapEntry.owner
+            $e.ownerConfidence = 'workstream-map'
+            foreach ($n in $mapEntry.escalationPath) {
+                if (-not $e.escalationPath.Contains($n)) { $e.escalationPath.Add($n) }
+            }
+            foreach ($n in $mapEntry.stakeholders) {
+                if (-not $e.stakeholders.Contains($n)) { $e.stakeholders.Add($n) }
+            }
+        } elseif ($e.owner) {
+            $e.ownerConfidence = 'name-proximity'
+        } else {
+            $e.ownerConfidence = 'unknown'
+        }
+
+        # V1.8 structured action (replaces canned string)
+        $e.recommendedAction = Get-StructuredRiskAction -Entry $e -Now $now
     }
 
     $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
@@ -2119,16 +2414,35 @@ function Build-RiskRegisterMarkdown {
         $sources   = if ($e.sourceFiles.Count -gt 0) {
             ($e.sourceFiles | Select-Object -First 5 | ForEach-Object { "  - ``$_``" }) -join "`n"
         } else { '  - (no source captured)' }
+
+        $escalationText = if ($e.escalationPath -and $e.escalationPath.Count -gt 0) {
+            ($e.escalationPath -join ' -> ')
+        } else { '-' }
+        $stakeText = if ($e.stakeholders -and $e.stakeholders.Count -gt 0) {
+            ($e.stakeholders -join ', ')
+        } else { '-' }
+
+        # Structured action is a hashtable now
+        $act = $e.recommendedAction
+        $actionText = if ($act -is [System.Collections.IDictionary]) {
+            "P$($act.priority) - $($act.verb): $($act.subject) (owner: $($act.targetOwner), by $($act.dueBy))"
+        } else {
+            "$act"
+        }
+
         return @"
 ### $($e.riskId) - $($e.title)
 
 - Workstream: **$wsText**
-- Owner: **$ownerText**
+- Owner: **$ownerText** _(confidence: $($e.ownerConfidence))_
+- Escalation Path: $escalationText
+- Stakeholders: $stakeText
 - Severity: **$($e.severity)**
 - Status: **$($e.status)**
 - Trend: **$($e.trend)**
-- Aging: **$($e.agingDays) days** (detected $($e.dateDetected))
-- Recommended action: $($e.recommendedAction)
+- First seen: **$($e.firstSeenDate)** ($($e.agingDays) days ago)
+- Last seen: **$($e.lastSeenDate)** ($($e.recencyDays) days ago)
+- Recommended action: $actionText
 - Sources:
 $sources
 
@@ -2192,10 +2506,16 @@ function Build-RiskRegisterJson {
             title             = $e.title
             workstream        = $e.workstream
             owner             = $e.owner
+            ownerConfidence   = $e.ownerConfidence
+            escalationPath    = @($e.escalationPath)
+            stakeholders      = @($e.stakeholders)
             severity          = $e.severity
             status            = $e.status
             trend             = $e.trend
             agingDays         = $e.agingDays
+            recencyDays       = $e.recencyDays
+            firstSeenDate     = $e.firstSeenDate
+            lastSeenDate      = $e.lastSeenDate
             dateDetected      = $e.dateDetected
             sourceFiles       = @($e.sourceFiles)
             recommendedAction = $e.recommendedAction
@@ -2206,17 +2526,19 @@ function Build-RiskRegisterJson {
     $closedCount = @($Risks | Where-Object { $_.status -eq 'closed' }).Count
     $highCount   = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.severity -eq 'High' }).Count
     $risingCount = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.trend    -eq 'increasing' }).Count
+    $ownedCount  = @($Risks | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
 
     $out = [ordered]@{
         generated   = $GeneratedIso
         generator   = 'scripts/generate-current-focus.ps1'
-        version     = 'V1.7'
+        version     = 'V1.8'
         totals      = [ordered]@{
-            total    = $Risks.Count
-            open     = $openCount
-            closed   = $closedCount
-            high     = $highCount
-            rising   = $risingCount
+            total          = $Risks.Count
+            open           = $openCount
+            closed         = $closedCount
+            high           = $highCount
+            rising         = $risingCount
+            authorativelyOwned = $ownedCount
         }
         risks       = @($items)
     }
@@ -2236,13 +2558,14 @@ $overrides     = Read-Overrides       (Join-Path $CTX 'priority-overrides.yaml')
 $model         = Read-ScoringModel    (Join-Path $CTX 'scoring-model.yaml')
 $sourceWeights = Read-SourceWeights   (Join-Path $CTX 'source-weights.yaml')
 $activityWin   = Read-ActivityWindows (Join-Path $CTX 'activity-windows.yaml')
+$ownershipMap  = Read-OwnershipMap    (Join-Path $CTX 'ownership-map.yaml')
 
 # Preserve attention formula on the model if the parser did not capture it.
 if ($model -is [hashtable] -and -not $model.ContainsKey('attention_formula')) {
     $model['attention_formula'] = $null
 }
 
-Write-Host "Loaded $($workstreams.Count) workstreams, $($overrides.Count) overrides, $($sourceWeights.Count) source-weight rules."
+Write-Host "Loaded $($workstreams.Count) workstreams, $($overrides.Count) overrides, $($sourceWeights.Count) source-weight rules, $($ownershipMap.Count) ownership entries."
 
 # Collect source files (legacy path retained for V1.1 evidence/mention tallies)
 $allFiles = Get-SourceFiles $ROOT $SCAN_FOLDERS
@@ -2342,7 +2665,7 @@ Write-Host "Written: $($OUT_TRENDS_MD.Replace($ROOT,'').TrimStart('\'))"   -Fore
 Write-Host "Written: $($OUT_TRENDS_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
 # --- V1.6 Decision Registry (must run before the briefing so it can consume it) ---
-$decisions       = Get-DecisionRegistry -Records $records -Workstreams $workstreams -Model $model
+$decisions       = @(Get-DecisionRegistry -Records $records -Workstreams $workstreams -Model $model -OwnershipMap $ownershipMap)
 $decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated
 $decRegJson      = Build-DecisionRegistryJson     -Decisions $decisions -GeneratedIso $generatedIso
 [System.IO.File]::WriteAllText($OUT_DECREG_MD,   $decRegMd,   (New-Object System.Text.UTF8Encoding($false)))
@@ -2351,7 +2674,7 @@ Write-Host "Written: $($OUT_DECREG_MD.Replace($ROOT,'').TrimStart('\'))"   -Fore
 Write-Host "Written: $($OUT_DECREG_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
 # --- V1.7 Risk Register (must run before the briefing so it can consume it) ---
-$risks         = @(Get-RiskRegister -Records $records -Workstreams $workstreams -Model $model)
+$risks         = @(Get-RiskRegister -Records $records -Workstreams $workstreams -Model $model -OwnershipMap $ownershipMap)
 $riskRegMd     = Build-RiskRegisterMarkdown -Risks $risks -NowStamp $meta.generated
 $riskRegJson   = Build-RiskRegisterJson     -Risks $risks -GeneratedIso $generatedIso
 [System.IO.File]::WriteAllText($OUT_RISKREG_MD,   $riskRegMd,   (New-Object System.Text.UTF8Encoding($false)))

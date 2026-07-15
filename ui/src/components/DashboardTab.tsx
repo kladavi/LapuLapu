@@ -117,23 +117,38 @@ type PipelineHealth = {
   lastCommitHash?: string;
 };
 
+type StructuredAction = {
+  priority?: number;
+  verb?: string;
+  subject?: string;
+  targetOwner?: string;
+  dueBy?: string;
+  rationale?: string;
+};
+
 type DecisionEntry = {
   decisionId?: string;
   title?: string;
   dateDetected?: string;
+  firstSeenDate?: string;
+  lastSeenDate?: string;
   status?: string;
   owner?: string;
+  ownerConfidence?: string;
+  escalationPath?: string[];
+  stakeholders?: string[];
   workstream?: string;
   sourceFiles?: string[];
   decisionAgeDays?: number;
+  recencyDays?: number;
   decisionSummary?: string;
-  recommendedFollowUp?: string;
+  recommendedFollowUp?: string | StructuredAction;
 };
 
 type DecisionRegistry = {
   generated?: string;
   version?: string;
-  totals?: { total?: number; open?: number; closed?: number };
+  totals?: { total?: number; open?: number; closed?: number; authorativelyOwned?: number };
   decisions?: DecisionEntry[];
 };
 
@@ -142,21 +157,46 @@ type RiskEntry = {
   title?: string;
   workstream?: string;
   owner?: string;
+  ownerConfidence?: string;
+  escalationPath?: string[];
+  stakeholders?: string[];
   severity?: string;
   status?: string;
   trend?: string;
   agingDays?: number;
+  recencyDays?: number;
+  firstSeenDate?: string;
+  lastSeenDate?: string;
   dateDetected?: string;
   sourceFiles?: string[];
-  recommendedAction?: string;
+  recommendedAction?: string | StructuredAction;
 };
 
 type RiskRegistry = {
   generated?: string;
   version?: string;
-  totals?: { total?: number; open?: number; closed?: number; high?: number; rising?: number };
+  totals?: { total?: number; open?: number; closed?: number; high?: number; rising?: number; authorativelyOwned?: number };
   risks?: RiskEntry[];
 };
+
+// Renders either the new structured action object or the legacy string.
+function formatAction(action?: string | StructuredAction): string {
+  if (!action) return "";
+  if (typeof action === "string") return action;
+  const parts: string[] = [];
+  if (action.priority) parts.push(`P${action.priority}`);
+  if (action.verb) parts.push(action.verb);
+  if (action.subject) parts.push(`- ${action.subject}`);
+  if (action.targetOwner) parts.push(`(owner: ${action.targetOwner})`);
+  if (action.dueBy) parts.push(`by ${action.dueBy}`);
+  return parts.join(" ");
+}
+
+function ownerBadgeClass(confidence?: string): string {
+  if (confidence === "workstream-map") return "bg-green-50 text-green-800 border-green-200";
+  if (confidence === "name-proximity") return "bg-amber-50 text-amber-800 border-amber-200";
+  return "bg-slate-100 text-slate-600 border-slate-200";
+}
 
 function safeJsonParse<T>(raw: string | undefined): T | null {
   if (!raw || !raw.trim()) return null;
@@ -968,15 +1008,36 @@ export function DashboardTab({ onNavigate }: Props) {
             const closedCount = totals.closed ?? closedDecisions.length;
             const totalCount = totals.total ?? decisions.length;
 
-            const renderEntry = (d: DecisionEntry) => (
+            const renderEntry = (d: DecisionEntry) => {
+              const actionText = formatAction(d.recommendedFollowUp);
+              const actionPriority = typeof d.recommendedFollowUp === "object" ? d.recommendedFollowUp?.priority : undefined;
+              const escalation = d.escalationPath ?? [];
+              return (
               <div key={d.decisionId ?? `${d.workstream}-${d.title}`} className="rounded-md border border-th-border p-2">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <div className="text-sm font-medium text-th-text break-words">{d.title ?? "(no title)"}</div>
                     <div className="mt-0.5 text-xs text-th-text-muted">
                       {d.workstream ? <span className="font-medium">{d.workstream}</span> : <span className="italic">no workstream</span>}
-                      {d.owner ? <span> · owner: {d.owner}</span> : null}
                       {d.decisionId ? <span className="font-mono"> · {d.decisionId}</span> : null}
+                    </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
+                      {d.owner || d.ownerConfidence ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(d.ownerConfidence)}`} title={`ownerConfidence: ${d.ownerConfidence ?? "unknown"}`}>
+                          owner: {d.owner || "unassigned"} · {d.ownerConfidence ?? "unknown"}
+                        </span>
+                      ) : null}
+                      {escalation.length > 0 ? (
+                        <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted">
+                          escalate → {escalation.join(" → ")}
+                        </span>
+                      ) : null}
+                      {d.firstSeenDate ? (
+                        <span className="text-th-text-faint">first {d.firstSeenDate}</span>
+                      ) : null}
+                      {d.lastSeenDate ? (
+                        <span className="text-th-text-faint">last {d.lastSeenDate}</span>
+                      ) : null}
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-1 shrink-0 text-xs">
@@ -994,11 +1055,18 @@ export function DashboardTab({ onNavigate }: Props) {
                     <span className="tabular-nums text-th-text-muted">
                       Pending {d.decisionAgeDays ?? 0} days
                     </span>
+                    {actionPriority ? (
+                      <span className={`inline-block rounded-full border px-1.5 py-0.5 font-mono ${
+                        actionPriority === 1 ? "bg-red-50 text-red-800 border-red-200" :
+                        actionPriority === 2 ? "bg-amber-50 text-amber-800 border-amber-200" :
+                        "bg-slate-100 text-slate-600 border-slate-200"
+                      }`}>P{actionPriority}</span>
+                    ) : null}
                   </div>
                 </div>
-                {d.recommendedFollowUp && (
+                {actionText && (
                   <p className="mt-1 text-xs text-th-text-secondary">
-                    <span className="font-medium">Follow-up: </span>{d.recommendedFollowUp}
+                    <span className="font-medium">Follow-up: </span>{actionText}
                   </p>
                 )}
                 {d.sourceFiles && d.sourceFiles.length > 0 && (
@@ -1008,7 +1076,8 @@ export function DashboardTab({ onNavigate }: Props) {
                   </p>
                 )}
               </div>
-            );
+              );
+            };
 
             return (
               <div className="space-y-3">
@@ -1140,6 +1209,9 @@ export function DashboardTab({ onNavigate }: Props) {
 
             const renderRisk = (r: RiskEntry) => {
               const t = trendGlyph(r.trend);
+              const actionText = formatAction(r.recommendedAction);
+              const actionPriority = typeof r.recommendedAction === "object" ? r.recommendedAction?.priority : undefined;
+              const escalation = r.escalationPath ?? [];
               return (
                 <div key={r.riskId ?? `${r.workstream}-${r.title}`} className="rounded-md border border-th-border p-2">
                   <div className="flex items-start justify-between gap-3">
@@ -1147,8 +1219,25 @@ export function DashboardTab({ onNavigate }: Props) {
                       <div className="text-sm font-medium text-th-text break-words">{r.title ?? "(no title)"}</div>
                       <div className="mt-0.5 text-xs text-th-text-muted">
                         {r.workstream ? <span className="font-medium">{r.workstream}</span> : <span className="italic">no workstream</span>}
-                        {r.owner ? <span> · owner: {r.owner}</span> : null}
                         {r.riskId ? <span className="font-mono"> · {r.riskId}</span> : null}
+                      </div>
+                      <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
+                        {r.owner || r.ownerConfidence ? (
+                          <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(r.ownerConfidence)}`} title={`ownerConfidence: ${r.ownerConfidence ?? "unknown"}`}>
+                            owner: {r.owner || "unassigned"} · {r.ownerConfidence ?? "unknown"}
+                          </span>
+                        ) : null}
+                        {escalation.length > 0 ? (
+                          <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted">
+                            escalate → {escalation.join(" → ")}
+                          </span>
+                        ) : null}
+                        {r.firstSeenDate ? (
+                          <span className="text-th-text-faint">first {r.firstSeenDate}</span>
+                        ) : null}
+                        {r.lastSeenDate ? (
+                          <span className="text-th-text-faint">last {r.lastSeenDate}</span>
+                        ) : null}
                       </div>
                     </div>
                     <div className="flex flex-col items-end gap-1 shrink-0 text-xs">
@@ -1159,11 +1248,18 @@ export function DashboardTab({ onNavigate }: Props) {
                       <span className="tabular-nums text-th-text-muted">
                         Aging {r.agingDays ?? 0}d
                       </span>
+                      {actionPriority ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-mono ${
+                          actionPriority === 1 ? "bg-red-50 text-red-800 border-red-200" :
+                          actionPriority === 2 ? "bg-amber-50 text-amber-800 border-amber-200" :
+                          "bg-slate-100 text-slate-600 border-slate-200"
+                        }`}>P{actionPriority}</span>
+                      ) : null}
                     </div>
                   </div>
-                  {r.recommendedAction && (
+                  {actionText && (
                     <p className="mt-1 text-xs text-th-text-secondary">
-                      <span className="font-medium">Action: </span>{r.recommendedAction}
+                      <span className="font-medium">Action: </span>{actionText}
                     </p>
                   )}
                   {r.sourceFiles && r.sourceFiles.length > 0 && (

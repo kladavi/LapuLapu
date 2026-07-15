@@ -1,0 +1,96 @@
+# <!-- HUMAN -->
+# Human-maintained ownership overrides for Project Matryoshka.
+#
+# This is the PRIMARY source for `owner` and `escalationPath` on any
+# extracted decision, risk, or workstream card. When a workstream id is
+# present here, the generator uses this data with ownerConfidence
+# `workstream-map` (highest). When absent, the generator falls back to
+# stakeholder-name proximity (ownerConfidence `name-proximity`, lower).
+#
+# Fields:
+#   owner            string  - authoritative owner name
+#   escalationPath   list    - names to escalate to, in order
+#   stakeholders     list    - additional stakeholders to keep informed
+#
+# Names must match the stakeholder registry in scoring-model.yaml so that
+# proximity fallback and this map produce consistent labels.
+#
+# Populate as ground truth is confirmed. Leaving an entry commented out
+# means the generator falls back to name-proximity for that workstream.
+
+ownership:
+  gocc-transition:
+    owner: Balaji Ravi
+    escalationPath:
+      - Birger Fjaellman
+    stakeholders:
+      - Jonan
+      - Hari
+
+  rapid-recovery:
+    owner: Balaji Ravi
+    escalationPath:
+      - Birger Fjaellman
+    stakeholders:
+      - Deb
+      - Kelvin
+
+  mmm-l2:
+    owner: Hari
+    escalationPath:
+      - Balaji Ravi
+      - Birger Fjaellman
+    stakeholders:
+      - Jonan
+      - Kelvin
+
+  gbo-batch-transition:
+    owner: Rowena
+    escalationPath:
+      - Balaji Ravi
+      - Birger Fjaellman
+    stakeholders:
+      - Manish
+      - Rasheersh
+
+  cmdb-mapping:
+    owner: Rasheersh
+    escalationPath:
+      - Balaji Ravi
+    stakeholders:
+      - Hari
+      - Manish
+
+  employee-xp:
+    owner: Deb
+    escalationPath:
+      - Balaji Ravi
+    stakeholders:
+      - Hari
+
+  developer-xp:
+    owner: Deb
+    escalationPath:
+      - Balaji Ravi
+    stakeholders:
+      - Kelvin
+
+  adx-registration:
+    owner: Kelvin
+    escalationPath:
+      - Balaji Ravi
+    stakeholders:
+      - Hari
+
+  cyberark-governance:
+    owner: Manish
+    escalationPath:
+      - Balaji Ravi
+      - Birger Fjaellman
+    stakeholders: []
+
+  capacity-management:
+    owner: Rasheersh
+    escalationPath:
+      - Balaji Ravi
+    stakeholders: []
