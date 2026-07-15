@@ -26,6 +26,8 @@ $OUT_TRENDS_MD   = Join-Path $GEN 'current-focus-trends.md'
 $OUT_TRENDS_JSON = Join-Path $GEN 'current-focus-trends.json'
 $OUT_BRIEF_MD    = Join-Path $GEN 'morning-briefing.md'
 $OUT_BRIEF_JSON  = Join-Path $GEN 'morning-briefing.json'
+$OUT_DECREG_MD   = Join-Path $GEN 'decision-registry.md'
+$OUT_DECREG_JSON = Join-Path $GEN 'decision-registry.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -320,7 +322,10 @@ $script:GENERATED_ARTIFACTS = @(
     'current-focus-trends.md',
     'current-focus-trends.json',
     'morning-briefing.md',
-    'morning-briefing.json'
+    'morning-briefing.json',
+    'decision-registry.md',
+    'decision-registry.json',
+    'pipeline-health.json'
 )
 
 function Get-SourceWeightForPath {
@@ -1288,6 +1293,7 @@ function Build-MorningBriefingMarkdown {
         [hashtable] $AttentionMap,
         [System.Collections.Generic.List[hashtable]] $Records,
         [hashtable] $Windows,
+        [object[]] $DecisionRegistry,
         [string]   $NowStamp
     )
 
@@ -1303,9 +1309,8 @@ function Build-MorningBriefingMarkdown {
         )
     })
 
-    $decisions = @($all | Where-Object {
-        $_.signal_counts.ContainsKey('decision_logged') -and $_.signal_counts['decision_logged'] -gt 0
-    } | Select-Object -First 6)
+    # V1.6 Decision Pressure: registry-based, oldest open first.
+    $pendingDecisions = @($DecisionRegistry | Where-Object { $_.status -ne 'closed' } | Select-Object -First 8)
 
     $escalated = @($all | Where-Object {
         $_.signal_counts.ContainsKey('escalation') -and $_.signal_counts['escalation'] -gt 0
@@ -1334,9 +1339,14 @@ function Build-MorningBriefingMarkdown {
         }) -join "`n"
     } else { '_No rising risks flagged in the current window._' }
 
-    $decisionBlock = if ($decisions.Count -gt 0) {
-        ($decisions | ForEach-Object { "- **$($_.workstream.name)**: decision_logged signals = $($_.signal_counts['decision_logged'])." }) -join "`n"
-    } else { '_No decision-heavy workstreams detected in the current window._' }
+    $decisionBlock = if ($pendingDecisions.Count -gt 0) {
+        ($pendingDecisions | ForEach-Object {
+            $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
+            "- **$wsName** - Pending $($_.decisionAgeDays) days`n  - $($_.title) [$($_.decisionId)]"
+        }) -join "`n"
+    } else {
+        '_No pending decisions in the registry._'
+    }
 
     $escalatedBlock = if ($escalated.Count -gt 0) {
         ($escalated | ForEach-Object { "- **$($_.workstream.name)** - escalation signal detected." }) -join "`n"
@@ -1408,6 +1418,7 @@ function Build-MorningBriefingJson {
         [hashtable] $AttentionMap,
         [System.Collections.Generic.List[hashtable]] $Records,
         [hashtable] $Windows,
+        [object[]] $DecisionRegistry,
         [string]   $GeneratedIso
     )
 
@@ -1476,6 +1487,19 @@ function Build-MorningBriefingJson {
         }
     }
 
+    # V1.6 Decision Pressure: registry-derived, oldest open decisions first.
+    $decisionPressureList = foreach ($e in ($DecisionRegistry | Where-Object { $_.status -ne 'closed' } | Select-Object -First 10)) {
+        [ordered]@{
+            decisionId      = $e.decisionId
+            workstream      = $e.workstream
+            title           = $e.title
+            owner           = $e.owner
+            decisionAgeDays = $e.decisionAgeDays
+            dateDetected    = $e.dateDetected
+            followUp        = $e.recommendedFollowUp
+        }
+    }
+
     $escList = foreach ($e in $escalated) {
         [ordered]@{
             id               = $e.workstream.id
@@ -1521,14 +1545,292 @@ function Build-MorningBriefingJson {
     $out = [ordered]@{
         generated                     = $GeneratedIso
         generator                     = 'scripts/generate-current-focus.ps1'
-        version                       = 'V1.4'
+        version                       = 'V1.6'
         executiveSnapshot             = $execSnap
         primaryFocus                  = @($primaryList)
         risingRisks                   = @($risingList)
         decisionWatch                 = @($decisionList)
+        decisionPressure              = @($decisionPressureList)
         blockedOrEscalationCandidates = @($escList)
         recommendedActionsForDavid    = @($actionList)
         sourceInputs                  = @($sourceList)
+    }
+    return $out | ConvertTo-Json -Depth 6
+}
+
+# --- V1.6 Decision Intelligence ---------------------------------------------
+
+$script:DECISION_KEYWORDS = @(
+    'Decision', 'Decided', 'Approved', 'Agreed', 'Consensus',
+    'Green Light', 'Proceed with', 'Selected', 'Chosen'
+)
+
+function New-DecisionId {
+    param([string] $Seed)
+    $sha1 = [System.Security.Cryptography.SHA1]::Create()
+    try {
+        $bytes = [System.Text.Encoding]::UTF8.GetBytes($Seed.ToLowerInvariant())
+        $hash  = $sha1.ComputeHash($bytes)
+        $hex   = -join ($hash | ForEach-Object { $_.ToString('x2') })
+        return 'D-' + $hex.Substring(0, 10)
+    } finally { $sha1.Dispose() }
+}
+
+function Get-DecisionRegistry {
+    <#
+        Scans context-eligible file records for decision-signal phrases and
+        returns a list of deduplicated decision entries with age, workstream,
+        owner (best-effort), status, and recommended follow-up.
+    #>
+    param(
+        [System.Collections.Generic.List[hashtable]] $Records,
+        [object[]] $Workstreams,
+        [hashtable] $Model
+    )
+
+    $now = Get-Date
+
+    # Alias -> workstream name (lowercased keys)
+    $aliasMap = @{}
+    foreach ($ws in $Workstreams) {
+        $aliasMap[$ws.name.ToLowerInvariant()] = $ws.name
+        $aliasMap[$ws.id.ToLowerInvariant()]   = $ws.name
+        foreach ($a in $ws.aliases) { $aliasMap[$a.ToLowerInvariant()] = $ws.name }
+    }
+    $aliasKeys = @($aliasMap.Keys | Sort-Object { -($_.Length) })
+
+    $stakeKeys = @($Model.stakeholder_weights.Keys)
+
+    # Line-level decision phrase capture (bullet or heading prefix tolerated)
+    $keywordAlt = ($script:DECISION_KEYWORDS | ForEach-Object { [regex]::Escape($_) }) -join '|'
+    $decisionRegex = '(?im)^\s*(?:[-*>]\s+)?(?:\*\*)?(' + $keywordAlt + ')(?:\*\*)?\s*[:\-]\s*(.+?)\s*$'
+
+    $decisions = @{}
+
+    foreach ($rec in $Records) {
+        if (-not $rec.IncludeForContext) { continue }
+        try {
+            $content = Get-Content -LiteralPath $rec.FullPath -Raw -Encoding UTF8 -ErrorAction Stop
+        } catch { continue }
+        if ([string]::IsNullOrWhiteSpace($content)) { continue }
+
+        $normalised = $content -replace "`r`n", "`n"
+        $lines = $normalised -split "`n"
+        $currentHeading = ''
+        $headingRegex   = '^##\s+(D\d+\s*[\u2014\-]\s*.+?)\s*$'
+
+        for ($i = 0; $i -lt $lines.Count; $i++) {
+            $line = $lines[$i]
+            if ([string]::IsNullOrWhiteSpace($line)) { continue }
+
+            $h = [regex]::Match($line, $headingRegex)
+            if ($h.Success) {
+                $currentHeading = ($h.Groups[1].Value -replace '\s+', ' ').Trim()
+                continue
+            }
+
+            $m = [regex]::Match($line, $decisionRegex)
+            if (-not $m.Success) { continue }
+
+            $keyword = $m.Groups[1].Value
+            $body    = ($m.Groups[2].Value.Trim() -replace '\s+', ' ')
+            # Strip Markdown emphasis that leaks in from patterns like `**Decision:** Approved`
+            $body = $body -replace '^\s*\*+\s*', ''
+            $body = $body -replace '\s*\*+\s*$', ''
+            $body = $body.Trim().TrimEnd('.', ',', ';', ':')
+            if ($body.Length -lt 2 -or $body.Length -gt 300) { continue }
+
+            # Small context window (5 lines around) for workstream / owner / status / summary heuristics
+            $ctxStart = [Math]::Max(0, $i - 3)
+            $ctxEnd   = [Math]::Min($lines.Count - 1, $i + 6)
+            $context  = ($lines[$ctxStart..$ctxEnd] -join "`n")
+            $lcContext = $context.ToLowerInvariant()
+
+            # Prefer H2 heading as title when the file uses the `## Dxxx — Title` convention.
+            $titleRaw = if ($currentHeading) { $currentHeading } else { $body }
+            $title    = if ($titleRaw.Length -gt 140) { $titleRaw.Substring(0, 137) + '...' } else { $titleRaw }
+
+            # If a "**Summary:** ..." line exists nearby, capture it as the summary.
+            $summaryMatch = [regex]::Match($context, '(?im)^\s*\*\*Summary:\*\*\s*(.+?)\s*$')
+            $summary = if ($summaryMatch.Success) {
+                ($summaryMatch.Groups[1].Value -replace '\s+', ' ').Trim()
+            } else {
+                "${keyword}: $body"
+            }
+            if ($summary.Length -gt 240) { $summary = $summary.Substring(0, 237) + '...' }
+
+            # Workstream via longest-alias-first
+            $workstream = ''
+            foreach ($k in $aliasKeys) {
+                if ($lcContext -match ('\b' + [regex]::Escape($k) + '\b')) {
+                    $workstream = $aliasMap[$k]; break
+                }
+            }
+
+            # Owner via stakeholder name presence in context
+            $owner = ''
+            foreach ($n in $stakeKeys) {
+                if ($context -match ('(?i)\b' + [regex]::Escape($n) + '\b')) { $owner = $n; break }
+            }
+
+            # Status heuristic
+            $status = 'open'
+            if ($context -match '(?i)\b(closed|resolved|superseded|reversed|deprecated)\b') { $status = 'closed' }
+
+            $seed = ($workstream + '|' + $title + '|' + $rec.RelPath)
+            $decisionId = New-DecisionId -Seed $seed
+
+            if (-not $decisions.ContainsKey($decisionId)) {
+                $decisions[$decisionId] = @{
+                    decisionId          = $decisionId
+                    title               = $title
+                    dateDetected        = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                    status              = $status
+                    owner               = $owner
+                    workstream          = $workstream
+                    sourceFiles         = [System.Collections.Generic.List[string]]::new()
+                    decisionAgeDays     = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+                    decisionSummary     = $summary
+                    recommendedFollowUp = ''
+                    _detectedOn         = $rec.LastWriteTime
+                }
+            }
+
+            $entry = $decisions[$decisionId]
+            if (-not $entry.sourceFiles.Contains($rec.RelPath)) { $entry.sourceFiles.Add($rec.RelPath) }
+            if (-not $entry.owner      -and $owner)      { $entry.owner      = $owner }
+            if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
+
+            # Earliest detection wins
+            if ($rec.LastWriteTime -lt $entry._detectedOn) {
+                $entry._detectedOn     = $rec.LastWriteTime
+                $entry.dateDetected    = $rec.LastWriteTime.ToString('yyyy-MM-dd')
+                $entry.decisionAgeDays = [int][Math]::Max(0, ($now - $rec.LastWriteTime).TotalDays)
+            }
+
+            # Any closed sighting closes the decision
+            if ($status -eq 'closed') { $entry.status = 'closed' }
+        }
+    }
+
+    foreach ($e in $decisions.Values) {
+        if ($e.status -eq 'closed') {
+            $e.recommendedFollowUp = 'Archive after next weekly reporting cycle.'
+        } elseif ($e.decisionAgeDays -ge 14) {
+            $e.recommendedFollowUp = 'Escalate: pending 14+ days without resolution.'
+        } elseif ($e.decisionAgeDays -ge 7) {
+            $e.recommendedFollowUp = 'Confirm status this week.'
+        } else {
+            $e.recommendedFollowUp = 'Monitor for follow-through.'
+        }
+    }
+
+    # Sort: open before closed; within each group, oldest first
+    return @($decisions.Values | Sort-Object `
+        @{ Expression = { if ($_.status -eq 'closed') { 1 } else { 0 } }; Ascending = $true },
+        @{ Expression = { $_.decisionAgeDays };                            Descending = $true })
+}
+
+function Build-DecisionRegistryMarkdown {
+    param(
+        [object[]] $Decisions,
+        [string]   $NowStamp
+    )
+
+    $open      = @($Decisions | Where-Object { $_.status -ne 'closed' })
+    $closed    = @($Decisions | Where-Object { $_.status -eq 'closed' })
+    $escalate  = @($open | Where-Object { $_.decisionAgeDays -ge 14 })
+    $recent    = @($closed | Sort-Object { $_._detectedOn } -Descending | Select-Object -First 8)
+
+    function _RenderEntry($e) {
+        $ownerText = if ($e.owner) { $e.owner } else { '-' }
+        $wsText    = if ($e.workstream) { $e.workstream } else { '-' }
+        $sources   = if ($e.sourceFiles.Count -gt 0) {
+            ($e.sourceFiles | Select-Object -First 5 | ForEach-Object { "  - ``$_``" }) -join "`n"
+        } else { '  - (no source captured)' }
+        return @"
+### $($e.decisionId) - $($e.title)
+
+- Workstream: **$wsText**
+- Owner: **$ownerText**
+- Status: **$($e.status)**
+- Age: **$($e.decisionAgeDays) days** (detected $($e.dateDetected))
+- Follow-up: $($e.recommendedFollowUp)
+- Sources:
+$sources
+
+"@
+    }
+
+    $openBlock     = if ($open.Count -gt 0)     { ($open     | ForEach-Object { _RenderEntry $_ }) -join '' } else { "_No open decisions detected._`n" }
+    $escalateBlock = if ($escalate.Count -gt 0) { ($escalate | ForEach-Object { _RenderEntry $_ }) -join '' } else { "_No decisions past the 14-day escalation threshold._`n" }
+    $closedBlock   = if ($recent.Count -gt 0)   { ($recent   | ForEach-Object { _RenderEntry $_ }) -join '' } else { "_No recently closed decisions._`n" }
+
+    return @"
+<!-- GENERATED FILE: Do not edit directly. Regenerate using scripts/generate-current-focus.ps1 -->
+
+# Decision Registry
+
+Generated: $NowStamp
+
+Total: **$($Decisions.Count)** decisions ($($open.Count) open / $($closed.Count) closed)
+
+## Oldest Unresolved Decisions (escalation candidates)
+
+$escalateBlock
+
+## Open Decisions
+
+$openBlock
+
+## Recently Closed Decisions
+
+$closedBlock
+
+## Notes
+
+Decisions are auto-extracted from context-eligible files (see 00-context/source-weights.yaml).
+Follow-up recommendations are age-based:
+- 0-6 days: Monitor
+- 7-13 days: Confirm status this week
+- 14+ days: Escalate
+"@
+}
+
+function Build-DecisionRegistryJson {
+    param(
+        [object[]] $Decisions,
+        [string]   $GeneratedIso
+    )
+
+    $items = foreach ($e in $Decisions) {
+        [ordered]@{
+            decisionId          = $e.decisionId
+            title               = $e.title
+            dateDetected        = $e.dateDetected
+            status              = $e.status
+            owner               = $e.owner
+            workstream          = $e.workstream
+            sourceFiles         = @($e.sourceFiles)
+            decisionAgeDays     = $e.decisionAgeDays
+            decisionSummary     = $e.decisionSummary
+            recommendedFollowUp = $e.recommendedFollowUp
+        }
+    }
+
+    $openCount   = @($Decisions | Where-Object { $_.status -ne 'closed' }).Count
+    $closedCount = @($Decisions | Where-Object { $_.status -eq 'closed' }).Count
+
+    $out = [ordered]@{
+        generated   = $GeneratedIso
+        generator   = 'scripts/generate-current-focus.ps1'
+        version     = 'V1.6'
+        totals      = [ordered]@{
+            total  = $Decisions.Count
+            open   = $openCount
+            closed = $closedCount
+        }
+        decisions   = @($items)
     }
     return $out | ConvertTo-Json -Depth 6
 }
@@ -1651,9 +1953,18 @@ $trendsJson = Build-TrendsJson     -Workstreams $workstreams -AttentionMap $atte
 Write-Host "Written: $($OUT_TRENDS_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
 Write-Host "Written: $($OUT_TRENDS_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
-# --- V1.4 Morning briefing ---
-$briefMd   = Build-MorningBriefingMarkdown -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -NowStamp $meta.generated
-$briefJson = Build-MorningBriefingJson     -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -GeneratedIso $generatedIso
+# --- V1.6 Decision Registry (must run before the briefing so it can consume it) ---
+$decisions       = Get-DecisionRegistry -Records $records -Workstreams $workstreams -Model $model
+$decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated
+$decRegJson      = Build-DecisionRegistryJson     -Decisions $decisions -GeneratedIso $generatedIso
+[System.IO.File]::WriteAllText($OUT_DECREG_MD,   $decRegMd,   (New-Object System.Text.UTF8Encoding($false)))
+[System.IO.File]::WriteAllText($OUT_DECREG_JSON, $decRegJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_DECREG_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
+Write-Host "Written: $($OUT_DECREG_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+
+# --- V1.4 Morning briefing (enriched with decision registry in V1.6) ---
+$briefMd   = Build-MorningBriefingMarkdown -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -NowStamp $meta.generated
+$briefJson = Build-MorningBriefingJson     -FinalResults $finalResults -AttentionMap $attentionMap -Records $records -Windows $activityWin -DecisionRegistry $decisions -GeneratedIso $generatedIso
 [System.IO.File]::WriteAllText($OUT_BRIEF_MD,   $briefMd,   (New-Object System.Text.UTF8Encoding($false)))
 [System.IO.File]::WriteAllText($OUT_BRIEF_JSON, $briefJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_BRIEF_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green

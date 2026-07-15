@@ -2,7 +2,7 @@
 
 # Lapu-Lapu Morning Briefing
 
-Generated: 2026-07-14 16:27
+Generated: 2026-07-15 10:09
 
 ## Executive Snapshot
 
@@ -20,7 +20,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (367% vs prior 14 days).
+- Trend: ↑ increasing (334.1% vs prior 14 days).
 - Activity score: 100 (current window).
 - Previous-window activity: 112.8.
 
@@ -36,7 +36,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (279.8% vs prior 14 days).
+- Trend: ↑ increasing (253% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 136.8.
 
@@ -52,7 +52,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (214.3% vs prior 14 days).
+- Trend: ↑ increasing (192.1% vs prior 14 days).
 - Activity score: 97.4 (current window).
 - Previous-window activity: 163.2.
 
@@ -67,7 +67,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (279.8% vs prior 14 days).
+- Trend: ↑ increasing (253% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 136.8.
 
@@ -82,7 +82,7 @@ Why it matters:
 - High strategic weight (8/10).
 
 What changed:
-- Trend: ↑ increasing (411.3% vs prior 14 days).
+- Trend: ↑ increasing (375.3% vs prior 14 days).
 - Activity score: 98.6 (current window).
 - Previous-window activity: 101.6.
 
@@ -92,25 +92,35 @@ Recommended next action:
 
 ## Rising Risks
 
-- **MMM L2** ↑ 367% delta; risk_logged: 33, escalation: 19.
-- **Rapid Recovery** ↑ 279.8% delta; risk_logged: 36, escalation: 23.
-- **GBO Batch Transition** ↑ 214.3% delta; risk_logged: 28, escalation: 17.
+- **MMM L2** ↑ 334.1% delta; risk_logged: 33, escalation: 19.
+- **Rapid Recovery** ↑ 253% delta; risk_logged: 36, escalation: 23.
+- **GBO Batch Transition** ↑ 192.1% delta; risk_logged: 28, escalation: 17.
 - **CyberArk Governance** ↑ 100% delta; risk_logged: 11, escalation: 4.
-- **GOCC Transition** ↑ 279.8% delta; risk_logged: 39, escalation: 26.
-- **Capacity Management** ↑ 1011% delta; risk_logged: 16, escalation: 8.
-- **CMDB Mapping** ↑ 411.3% delta; risk_logged: 27, escalation: 15.
-- **Employee XP Dashboard** ↑ 472.4% delta; risk_logged: 29, escalation: 18.
-- **Developer XP Dashboard** ↑ 472.4% delta; risk_logged: 28, escalation: 16.
-- **ADX Registration** ↑ 554.2% delta; risk_logged: 21, escalation: 8.
+- **GOCC Transition** ↑ 253% delta; risk_logged: 39, escalation: 26.
+- **Capacity Management** ↑ 932.7% delta; risk_logged: 16, escalation: 8.
+- **CMDB Mapping** ↑ 375.3% delta; risk_logged: 27, escalation: 15.
+- **Employee XP Dashboard** ↑ 432.1% delta; risk_logged: 29, escalation: 18.
+- **Developer XP Dashboard** ↑ 432.1% delta; risk_logged: 28, escalation: 16.
+- **ADX Registration** ↑ 508.1% delta; risk_logged: 21, escalation: 8.
 
 ## Decision Watch
 
-- **MMM L2**: decision_logged signals = 30.
-- **Rapid Recovery**: decision_logged signals = 34.
-- **GBO Batch Transition**: decision_logged signals = 25.
-- **CyberArk Governance**: decision_logged signals = 8.
-- **GOCC Transition**: decision_logged signals = 37.
-- **Capacity Management**: decision_logged signals = 13.
+- **Developer XP Dashboard** - Pending 12 days
+  - D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO [D-7f991874c7]
+- **Employee XP Dashboard** - Pending 12 days
+  - D004 — Agreed: Japan Incident Documentation & CI Standards [D-ec111d7bcc]
+- **Capacity Management** - Pending 12 days
+  - D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar... [D-0ac2a0c612]
+- **GBO Batch Transition** - Pending 12 days
+  - D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline [D-f91314563c]
+- **Rapid Recovery** - Pending 12 days
+  - D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution [D-64c97dd4cc]
+- **ADX Registration** - Pending 12 days
+  - D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes [D-fadd968d28]
+- **Rapid Recovery** - Pending 12 days
+  - D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP [D-6f81d99006]
+- **Rapid Recovery** - Pending 12 days
+  - D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness [D-d059b9808f]
 
 ## Blocked / Escalation Candidates
 
