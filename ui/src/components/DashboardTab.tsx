@@ -199,6 +199,9 @@ type DecisionEntry = {
   // V4.0 Phase 5
   contextSummary?: string;
   contextMetadata?: ItemContextMetadata;
+  // V4.0 Phase 1c
+  matryoshkaStatus?: string;         // 'red' | 'amber' | 'green'
+  matryoshkaStatusReason?: string;
 };
 
 type DecisionRegistry = {
@@ -255,6 +258,9 @@ type RiskEntry = {
   // V4.0 Phase 5
   contextSummary?: string;
   contextMetadata?: ItemContextMetadata;
+  // V4.0 Phase 1c
+  matryoshkaStatus?: string;         // 'red' | 'amber' | 'green'
+  matryoshkaStatusReason?: string;
 };
 
 type RiskRegistry = {
@@ -448,6 +454,16 @@ function deltaBadgeLabel(delta?: ItemDelta): string {
 
 // V4.0 Phase 5: renders a collapsible <details> panel with the context
 // summary + structured metadata (actors, last mention, primary source).
+// V4.0 Phase 1c: status-ladder pill colour per canonical status.
+function matryoshkaStatusBadgeClass(status?: string): string {
+  switch ((status ?? "").toLowerCase()) {
+    case "red":   return "bg-red-100 text-red-900 border-red-300";
+    case "amber": return "bg-amber-100 text-amber-900 border-amber-300";
+    case "green": return "bg-green-100 text-green-900 border-green-300";
+    default:      return "bg-slate-100 text-slate-600 border-slate-200";
+  }
+}
+
 function ContextPanel({
   contextSummary,
   contextMetadata,
@@ -1936,6 +1952,12 @@ export function DashboardTab({ onNavigate }: Props) {
                     }`}>
                       {d.status ?? "open"}
                     </span>
+                    {d.matryoshkaStatus ? (
+                      <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium uppercase tracking-wide ${matryoshkaStatusBadgeClass(d.matryoshkaStatus)}`}
+                            title={`V4.0 Phase 1c: ${d.matryoshkaStatusReason ?? "no reason"}`}>
+                        {d.matryoshkaStatus}
+                      </span>
+                    ) : null}
                     <span className="tabular-nums text-th-text-muted">
                       Pending {d.decisionAgeDays ?? 0} days
                     </span>
@@ -2202,6 +2224,12 @@ export function DashboardTab({ onNavigate }: Props) {
                     </div>
                     <div className="flex flex-col items-end gap-1 shrink-0 text-xs">
                       {severityBadge(r.severity)}
+                      {r.matryoshkaStatus ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium uppercase tracking-wide ${matryoshkaStatusBadgeClass(r.matryoshkaStatus)}`}
+                              title={`V4.0 Phase 1c: ${r.matryoshkaStatusReason ?? "no reason"}`}>
+                          {r.matryoshkaStatus}
+                        </span>
+                      ) : null}
                       <span className={`tabular-nums ${t.cls}`} title={t.label}>
                         {t.symbol} {t.label}
                       </span>
