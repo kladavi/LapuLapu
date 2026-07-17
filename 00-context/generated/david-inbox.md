@@ -2,7 +2,7 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-17 09:37
+Generated: 2026-07-17 11:23
 
 Candidates: **36** | P1: **5 (cap 5)** | P2: **9 (cap 10)** | P3: **0 (cap 10)**
 
@@ -42,15 +42,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Source**: decision D-0ac2a0c612
 ### P1 Escalate - Rapid Recovery [escalation in 0d]
 
-- **What**: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... (severity: High, trend: increasing)
-- **Owner**: Balaji Ravi (workstream-map)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.79
-- **Age**: 4 days
-- **Rationale**: High severity - notify workstream owner today.
-- **Source**: risk R-b493137b8f
-### P1 Escalate - Rapid Recovery [escalation in 0d]
-
 - **What**: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... (severity: High, trend: increasing)
 - **Owner**: Balaji Ravi (workstream-map)
 - **Deadline**: 2026-07-17
@@ -58,6 +49,15 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Age**: 4 days
 - **Rationale**: High severity - notify workstream owner today.
 - **Source**: risk R-bafab65c68
+### P1 Escalate - Rapid Recovery [escalation in 0d]
+
+- **What**: Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement... (severity: High, trend: increasing)
+- **Owner**: Balaji Ravi (workstream-map)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.79
+- **Age**: 4 days
+- **Rationale**: High severity - notify workstream owner today.
+- **Source**: risk R-2b2a241d9c
 
 
 ## P2 - Confirm or investigate this week (top 10)
@@ -91,6 +91,15 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Source**: risk R-b882fa398a
 ### P2 Escalate - GOCC Transition [escalation in 0d]
 
+- **What**: Weekly project status, CR review, and risk review governance forums (severity: Medium, trend: decreasing)
+- **Owner**: Balaji Ravi (workstream-map)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.69
+- **Age**: 28 days
+- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Source**: risk R-d57894861d
+### P2 Escalate - GOCC Transition [escalation in 0d]
+
 - **What**: Strong dependency on cross-team alignment (GOCC, PS, GBO) (severity: Medium, trend: decreasing)
 - **Owner**: Balaji Ravi (workstream-map)
 - **Deadline**: 2026-07-17
@@ -107,15 +116,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Age**: 87 days
 - **Rationale**: Unresolved 14+ days - escalate this week.
 - **Source**: risk R-f5518c28bc
-### P2 Escalate - CMDB Mapping [escalation in 0d]
-
-- **What**: Weekly project status, CR review, and risk review governance forums (severity: Medium, trend: decreasing)
-- **Owner**: Rasheersh (workstream-map)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.69
-- **Age**: 28 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-f02ad44a72
 ### P2 Escalate - CMDB Mapping [escalation in 0d]
 
 - **What**: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts) (severity: Medium, trend: stable)
@@ -155,18 +155,19 @@ _None._
 - **CyberArk Governance** / _(misc)_ - 4 item(s), P1, 4 P1, min escalation: 0d
 - **Developer XP Dashboard** / _(misc)_ - 3 item(s), P1, 3 P1, min escalation: 0d
 - **Rapid Recovery** / _escalation_ - 3 item(s), P1, 3 P1, min escalation: 0d
-- **GBO Batch Transition** / _operating_ - 3 item(s), P1, 2 P1, min escalation: 0d
+- **GBO Batch Transition** / _september_ - 3 item(s), P1, 2 P1, min escalation: 0d
 - **(none)** / _escalation_ - 2 item(s), P1, 2 P1, min escalation: 0d
 - **ADX Registration** / _(misc)_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **Capacity Management** / _capacity_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **Rapid Recovery** / _restart_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **CMDB Mapping** / _(misc)_ - 3 item(s), P1, 1 P1, min escalation: 0d
-- **GBO Batch Transition** / _(misc)_ - 3 item(s), P1, 1 P1, min escalation: 0d
+- **Capacity Management** / _management_ - 2 item(s), P1, 2 P1, min escalation: 0d
+- **Rapid Recovery** / _rehearsal_ - 2 item(s), P1, 2 P1, min escalation: 0d
+- **CMDB Mapping** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **CyberArk Governance** / _cyberark_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **GOCC Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **GOCC Transition** / _team_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Rapid Recovery** / _recovery_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **Rapid Recovery** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **Capacity Management** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **GOCC Transition** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
+- **MMM L2** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
+- **GBO Batch Transition** / _(misc)_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **(none)** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
 
 ## How this list was built
