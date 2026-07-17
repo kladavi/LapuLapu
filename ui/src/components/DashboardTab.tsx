@@ -173,6 +173,8 @@ type DecisionEntry = {
   // V3.0 additions
   outcomeQuality?: string;      // 'High' | 'Medium' | 'Low' | 'Unknown'
   recurrenceCount?: number;
+  // V4.0 Phase 3
+  stale?: boolean;
 };
 
 type DecisionRegistry = {
@@ -216,6 +218,8 @@ type RiskEntry = {
   riskConfidence?: number;
   // V2.5 additions
   timeToEscalationRisk?: number | null;
+  // V4.0 Phase 3
+  stale?: boolean;
 };
 
 type RiskRegistry = {
@@ -1658,8 +1662,11 @@ export function DashboardTab({ onNavigate }: Props) {
         {decisionRegistry?.decisions?.length ? (
           (() => {
             const decisions = decisionRegistry.decisions ?? [];
-            const openDecisions = decisions.filter((d) => (d.status ?? "open") !== "closed");
-            const closedDecisions = decisions.filter((d) => d.status === "closed");
+            // V4.0 Phase 3: stale items collapse out of default surfacing.
+            const staleDecisions = decisions.filter((d) => d.stale === true);
+            const liveDecisions = decisions.filter((d) => d.stale !== true);
+            const openDecisions = liveDecisions.filter((d) => (d.status ?? "open") !== "closed");
+            const closedDecisions = liveDecisions.filter((d) => d.status === "closed");
             const oldestUnresolved = [...openDecisions]
               .sort((a, b) => (b.decisionAgeDays ?? 0) - (a.decisionAgeDays ?? 0))
               .slice(0, 6);
@@ -1813,6 +1820,11 @@ export function DashboardTab({ onNavigate }: Props) {
                   <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-2 py-0.5 text-slate-700">
                     Closed: <strong>{closedCount}</strong>
                   </span>
+                  {staleDecisions.length > 0 && (
+                    <span className="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-0.5 text-slate-600" title="V4.0 Phase 3: aged 30+d or 14+d without update; hidden from default surfacing.">
+                      Stale (hidden): <strong>{staleDecisions.length}</strong>
+                    </span>
+                  )}
                   {escalationCandidates.length > 0 && (
                     <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800">
                       Escalate ({escalationCandidates.length}) 14+ days
@@ -1892,7 +1904,10 @@ export function DashboardTab({ onNavigate }: Props) {
         {riskRegistry?.risks?.length ? (
           (() => {
             const risks = riskRegistry.risks ?? [];
-            const openRisks = risks.filter((r) => (r.status ?? "open") !== "closed");
+            // V4.0 Phase 3: stale items collapse out of default surfacing.
+            const staleRisks = risks.filter((r) => r.stale === true);
+            const liveRisks = risks.filter((r) => r.stale !== true);
+            const openRisks = liveRisks.filter((r) => (r.status ?? "open") !== "closed");
             const severityRank: Record<string, number> = { High: 0, Medium: 1, Low: 2 };
             const bySeverityAndAge = (a: RiskEntry, b: RiskEntry) => {
               const sa = severityRank[a.severity ?? "Medium"] ?? 1;
@@ -2043,6 +2058,11 @@ export function DashboardTab({ onNavigate }: Props) {
                   {(totals.imminentEscalation ?? 0) > 0 && (
                     <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 text-red-800" title="Predicted to need escalation within 3 days">
                       Imminent: <strong>{totals.imminentEscalation ?? 0}</strong>
+                    </span>
+                  )}
+                  {staleRisks.length > 0 && (
+                    <span className="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-0.5 text-slate-600" title="V4.0 Phase 3: aged 30+d or 14+d without update; hidden from default surfacing.">
+                      Stale (hidden): <strong>{staleRisks.length}</strong>
                     </span>
                   )}
                   {riskRegistry.generated && (
