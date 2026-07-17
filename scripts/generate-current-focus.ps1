@@ -1811,6 +1811,43 @@ function New-DecisionId {
     } finally { $sha1.Dispose() }
 }
 
+function Get-StaleFlag {
+    <#
+        V4.0 Phase 3: staleness predicate.
+        Returns $true when an entry should be hidden from the priority inbox
+        and collapsed on registers.
+
+        Rules (in order):
+          - Actively updated in last 7 days   -> NOT stale
+          - Actively worked (DO/DECIDE class) -> NOT stale
+          - High severity risk (equivalent to red) -> NOT stale
+          - Age > 30 days                     -> STALE
+          - No update in > 14 days            -> STALE
+          - Otherwise                         -> NOT stale
+    #>
+    param([hashtable] $Entry, [string] $Kind)
+
+    $age = 0
+    if ($Kind -eq 'decision' -and $Entry.decisionAgeDays) { $age = [int]$Entry.decisionAgeDays }
+    elseif ($Kind -eq 'risk' -and $Entry.agingDays)       { $age = [int]$Entry.agingDays }
+
+    $daysSinceUpdate = if ($null -ne $Entry.recencyDays) { [int]$Entry.recencyDays } else { $age }
+
+    if ($daysSinceUpdate -le 7) { return $false }
+
+    $act = if ($Kind -eq 'decision') { $Entry.recommendedFollowUp } else { $Entry.recommendedAction }
+    if ($act -is [System.Collections.IDictionary]) {
+        $cls = [string]$act.actionClass
+        if ($cls -eq 'DO' -or $cls -eq 'DECIDE') { return $false }
+    }
+
+    if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { return $false }
+
+    if ($age -gt 30) { return $true }
+    if ($daysSinceUpdate -gt 14) { return $true }
+    return $false
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -2183,6 +2220,10 @@ function Get-DecisionRegistry {
             $e.recommendedFollowUp.dueBy = $e.decisionDeadline
         }
 
+        # V4.0 Phase 3: staleness flag (must run AFTER action classification
+        # because it consults the actionClass).
+        $e.stale = Get-StaleFlag -Entry $e -Kind 'decision'
+
         # V2.0 David Brain: confidence score
         $e.decisionConfidence = Get-EntryConfidence -Entry $e
 
@@ -2378,6 +2419,7 @@ function Build-DecisionRegistryJson {
             decisionSummary     = $e.decisionSummary
             impact              = $e.impact
             decisionConfidence  = $e.decisionConfidence
+            stale               = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
@@ -3205,6 +3247,9 @@ function Get-RiskRegister {
 
         # V2.5 Execution Intelligence: escalation prediction
         $e.timeToEscalationRisk = Get-EscalationRisk -Kind 'risk' -Entry $e -Now $now
+
+        # V4.0 Phase 3: staleness flag
+        $e.stale = Get-StaleFlag -Entry $e -Kind 'risk'
     }
 
     $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
@@ -3347,6 +3392,7 @@ function Build-RiskRegisterJson {
             impact            = $e.impact
             riskConfidence    = $e.riskConfidence
             timeToEscalationRisk = $e.timeToEscalationRisk
+            stale             = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
             recommendedAction = $e.recommendedAction
         }
     }
@@ -3544,10 +3590,14 @@ function Get-DavidInbox {
     $items = [System.Collections.Generic.List[hashtable]]::new()
 
     foreach ($d in ($Decisions | Where-Object { $_.decisionRequired -and $_.decisionStatus -ne 'Decided' })) {
+        # V4.0 Phase 3: exclude stale entries from priority inbox.
+        if ($d.ContainsKey('stale') -and $d.stale) { continue }
         $items.Add((New-InboxItem -Kind 'decision' -Entry $d))
     }
     foreach ($r in $Risks) {
         if ($r.status -eq 'closed') { continue }
+        # V4.0 Phase 3: exclude stale risks from priority inbox.
+        if ($r.ContainsKey('stale') -and $r.stale) { continue }
         $isHigh = ($r.severity -eq 'High')
         $act = $r.recommendedAction
         $isP1 = ($act -is [System.Collections.IDictionary] -and $act.priority -eq 1)
