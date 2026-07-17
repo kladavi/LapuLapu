@@ -1966,20 +1966,26 @@ function ConvertTo-MatryoshkaCandidate {
     if ($Entry.impact) { $whyItMatters = [string]$Entry.impact }
     elseif ($Kind -eq 'decision' -and $Entry.decisionPrompt) { $whyItMatters = [string]$Entry.decisionPrompt }
 
-    # Derive V4 status from V3 signals (proper Get-MatryoshkaStatus lands with
-    # canonical emit in a later sprint).
-    $status = 'green'
-    if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { $status = 'red' }
-    elseif ($actionClass -eq 'BLOCKED') { $status = 'red' }
-    elseif ($ownerConfidence -eq 'low') { $status = 'amber' }
-    elseif ($confScore -lt 0.4)         { $status = 'amber' }
+    # V4.0 Phase 1c: use the canonical status ladder when available (populated
+    # by Apply-MatryoshkaStatus). Falls back to inline derivation for entries
+    # that pre-date the enrichment pass.
+    if ($Entry.ContainsKey('matryoshkaStatus') -and $Entry.matryoshkaStatus) {
+        $status       = [string]$Entry.matryoshkaStatus
+        $statusReason = if ($Entry.matryoshkaStatusReason) { [string]$Entry.matryoshkaStatusReason } else { '' }
+    } else {
+        $status = 'green'
+        if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { $status = 'red' }
+        elseif ($actionClass -eq 'BLOCKED') { $status = 'red' }
+        elseif ($ownerConfidence -eq 'low') { $status = 'amber' }
+        elseif ($confScore -lt 0.4)         { $status = 'amber' }
 
-    $statusReason =
-        if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { 'high-severity risk' }
-        elseif ($actionClass -eq 'BLOCKED')                   { 'blocked action_class' }
-        elseif ($ownerConfidence -eq 'low')                   { 'owner not confirmed' }
-        elseif ($confScore -lt 0.4)                           { "low confidence ($confScore)" }
-        else                                                  { 'active progress, no blockers' }
+        $statusReason =
+            if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { 'high-severity risk' }
+            elseif ($actionClass -eq 'BLOCKED')                   { 'blocked action_class' }
+            elseif ($ownerConfidence -eq 'low')                   { 'owner not confirmed' }
+            elseif ($confScore -lt 0.4)                           { "low confidence ($confScore)" }
+            else                                                  { 'active progress, no blockers' }
+    }
 
     $matType = if ($Kind -eq 'decision') { 'decision' } else { 'risk' }
     $entryId = if ($Kind -eq 'decision') { [string]$Entry.decisionId } else { [string]$Entry.riskId }
@@ -2829,6 +2835,125 @@ function Apply-ContextLinking {
     }
 }
 
+# V4.0 Phase 1c - Deterministic status ladder.
+# First-match-wins rules. Red requires a HARD signal; soft signals only warrant
+# amber. Trend direction is intentionally not a status input.
+
+function Get-MatryoshkaStatus {
+    <#
+        Returns @{ status = 'red'|'amber'|'green'; reason = <string> }.
+        Consumes V3.x + Phase 5 enriched fields directly (no adapter needed).
+    #>
+    param(
+        [hashtable] $Entry,
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [datetime]  $Now
+    )
+
+    $reasons = [System.Collections.Generic.List[string]]::new()
+    $status  = 'green'
+
+    $act = if ($Kind -eq 'decision') { $Entry.recommendedFollowUp } else { $Entry.recommendedAction }
+    $actionClass = ''
+    $nextAction  = ''
+    if ($act -is [System.Collections.IDictionary]) {
+        if ($act.actionClass) { $actionClass = [string]$act.actionClass }
+        if ($act.nextAction)  { $nextAction  = [string]$act.nextAction  }
+    }
+
+    $contextText = ''
+    if ($Entry.ContainsKey('contextSummary') -and $Entry.contextSummary) {
+        $contextText = [string]$Entry.contextSummary
+    }
+    elseif ($Kind -eq 'decision' -and $Entry.decisionSummary) { $contextText = [string]$Entry.decisionSummary }
+    elseif ($Kind -eq 'risk' -and $Entry.impact)              { $contextText = [string]$Entry.impact }
+
+    $ownerConfidence = if ($Entry.ownerConfidence) { [string]$Entry.ownerConfidence } else { 'low' }
+    # V4 taxonomy remap - workstream-map / name-proximity / unknown all pre-date Sprint 10a.
+    switch ($ownerConfidence) {
+        'workstream-map' { $ownerConfidence = 'low'    }
+        'name-proximity' { $ownerConfidence = 'medium' }
+        'unknown'        { $ownerConfidence = 'low'    }
+    }
+
+    $confidenceScore = if ($Entry.ContainsKey('unifiedConfidence') -and $Entry.unifiedConfidence) {
+        [double]$Entry.unifiedConfidence
+    } elseif ($Kind -eq 'decision' -and $Entry.decisionConfidence) {
+        [double]$Entry.decisionConfidence
+    } elseif ($Kind -eq 'risk' -and $Entry.riskConfidence) {
+        [double]$Entry.riskConfidence
+    } else { 0.0 }
+
+    # --- RED (hard signals only) ---
+    if ($actionClass -eq 'BLOCKED') {
+        $status = 'red'; $reasons.Add('BLOCKED by external dependency')
+    }
+    if ($contextText -match '(?i)\b(blocker|show[- ]?stopper|critical|urgent|compliance gap|outage)\b') {
+        $status = 'red'; $reasons.Add('blocker keyword in context')
+    }
+    if ($Kind -eq 'decision' -and $Entry.decisionDeadline) {
+        $deadlineStr = [string]$Entry.decisionDeadline
+        if ($deadlineStr -match '^\d{4}-\d{2}-\d{2}') {
+            $todayStr = $Now.ToString('yyyy-MM-dd')
+            if ($deadlineStr -lt $todayStr) {
+                $status = 'red'; $reasons.Add("deadline breached ($deadlineStr)")
+            }
+        }
+    }
+    if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') {
+        $status = 'red'; $reasons.Add('high-severity risk')
+    }
+
+    # --- AMBER (only if not already red) ---
+    if ($status -ne 'red') {
+        if ($nextAction -match '(?i)\b(awaiting|waiting|uncertain|pending|tbd)\b') {
+            $status = 'amber'; $reasons.Add('waiting on external input')
+        }
+        if ($confidenceScore -lt 0.4) {
+            $status = 'amber'; $reasons.Add(("low confidence ({0:F2})" -f $confidenceScore))
+        }
+        if ($ownerConfidence -eq 'low') {
+            $status = 'amber'; $reasons.Add('owner not confirmed')
+        }
+    }
+
+    # --- GREEN (default) ---
+    if ($status -eq 'green' -and $reasons.Count -eq 0) {
+        $reasons.Add('active progress, no blockers')
+    }
+
+    return @{
+        status = $status
+        reason = ($reasons -join '; ')
+    }
+}
+
+function Apply-MatryoshkaStatus {
+    <#
+        V4.0 Phase 1c orchestrator: stamps `matryoshkaStatus` +
+        `matryoshkaStatusReason` on every live decision + risk entry using
+        Get-MatryoshkaStatus. Non-destructive - V3.x `status` fields untouched.
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks,
+        [datetime] $Now
+    )
+
+    $counts = @{ red = 0; amber = 0; green = 0 }
+    foreach ($kind in @('decision','risk')) {
+        $entries = if ($kind -eq 'decision') { $Decisions } else { $Risks }
+        foreach ($e in $entries) {
+            if (-not $e) { continue }
+            $res = Get-MatryoshkaStatus -Entry $e -Kind $kind -Now $Now
+            $e.matryoshkaStatus       = [string]$res.status
+            $e.matryoshkaStatusReason = [string]$res.reason
+            $counts[$res.status] += 1
+        }
+    }
+    return $counts
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -3412,6 +3537,8 @@ function Build-DecisionRegistryJson {
             delta               = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
             contextSummary      = if ($e.ContainsKey('contextSummary'))  { [string]$e.contextSummary } else { '' }
             contextMetadata     = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
+            matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
+            matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
@@ -4399,6 +4526,8 @@ function Build-RiskRegisterJson {
             delta             = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
             contextSummary    = if ($e.ContainsKey('contextSummary'))  { [string]$e.contextSummary } else { '' }
             contextMetadata   = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
+            matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
+            matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
             recommendedAction = $e.recommendedAction
         }
     }
@@ -5383,6 +5512,14 @@ $script:MAT_DAILY_DELTA_PRIOR_DATE = $deltaResult.priorDate
 $contextResult = Apply-ContextLinking -Decisions $decisions -Risks $risks -RootPath $ROOT -Model $model
 Write-Host ("Context linking: enriched {0} entries; {1} carry stakeholder actors" -f `
     $contextResult.enrichedCount, $contextResult.actorHits) -ForegroundColor Yellow
+
+# --- V4.0 Phase 1c: Deterministic status ladder ---------------------------
+# Populates matryoshkaStatus + matryoshkaStatusReason on every entry using the
+# canonical Get-MatryoshkaStatus rules. Runs AFTER context linking so the
+# context_summary blocker-keyword check has real text to scan.
+$statusCounts = Apply-MatryoshkaStatus -Decisions $decisions -Risks $risks -Now (Get-Date)
+Write-Host ("Matryoshka status ladder: {0} red / {1} amber / {2} green" -f `
+    $statusCounts.red, $statusCounts.amber, $statusCounts.green) -ForegroundColor Yellow
 
 # --- V1.6 Decision Registry JSON/MD emit ---
 $decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated

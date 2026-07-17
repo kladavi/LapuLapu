@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T19:21:46",
+  "generated": "2026-07-17T19:28:00",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V4.0-phase1-validator",
   "totals": {
@@ -13,14 +13,98 @@
   },
   "rejections": [
     {
-      "itemId": "D-d059b9808f",
+      "itemId": "D-4fc5c25a1c",
       "itemKind": "decision",
-      "title": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
+      "title": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
       "workstream": "Rapid Recovery",
       "owner": "David Klan",
       "errors": [
         {
-          "itemId": "D-d059b9808f",
+          "itemId": "D-4fc5c25a1c",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-ec111d7bcc",
+      "itemKind": "decision",
+      "title": "D004 — Agreed: Japan Incident Documentation & CI Standards",
+      "workstream": "Employee XP Dashboard",
+      "owner": "George Francis Fermo",
+      "errors": [
+        {
+          "itemId": "D-ec111d7bcc",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-f91314563c",
+      "itemKind": "decision",
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "workstream": "GBO Batch Transition",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-f91314563c",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-9a895e8ecb",
+      "itemKind": "decision",
+      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+      "workstream": "",
+      "owner": "Birger Fjaellman",
+      "errors": [
+        {
+          "itemId": "D-9a895e8ecb",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-fadd968d28",
+      "itemKind": "decision",
+      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "workstream": "ADX Registration",
+      "owner": "Balaji Ravi",
+      "errors": [
+        {
+          "itemId": "D-fadd968d28",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-40250bb7d6",
+      "itemKind": "decision",
+      "title": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
+      "workstream": "CyberArk Governance",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-40250bb7d6",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-0ac2a0c612",
+      "itemKind": "decision",
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "workstream": "Capacity Management",
+      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
+      "errors": [
+        {
+          "itemId": "D-0ac2a0c612",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -55,112 +139,28 @@
       ]
     },
     {
-      "itemId": "D-59805c75f5",
+      "itemId": "D-6f81d99006",
       "itemKind": "decision",
-      "title": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
       "workstream": "Rapid Recovery",
-      "owner": "Balaji Ravi",
+      "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "D-59805c75f5",
+          "itemId": "D-6f81d99006",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
       ]
     },
     {
-      "itemId": "D-02c40deef8",
+      "itemId": "D-d059b9808f",
       "itemKind": "decision",
-      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
-      "workstream": "",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-02c40deef8",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-40250bb7d6",
-      "itemKind": "decision",
-      "title": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
-      "workstream": "CyberArk Governance",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-40250bb7d6",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-30ae77972e",
-      "itemKind": "decision",
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "D-30ae77972e",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-f91314563c",
-      "itemKind": "decision",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "workstream": "GBO Batch Transition",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-f91314563c",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-4fc5c25a1c",
-      "itemKind": "decision",
-      "title": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
+      "title": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
       "workstream": "Rapid Recovery",
       "owner": "David Klan",
       "errors": [
         {
-          "itemId": "D-4fc5c25a1c",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-7f991874c7",
-      "itemKind": "decision",
-      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
-      "workstream": "Developer XP Dashboard",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-7f991874c7",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-fadd968d28",
-      "itemKind": "decision",
-      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-      "workstream": "ADX Registration",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "D-fadd968d28",
+          "itemId": "D-d059b9808f",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -181,14 +181,28 @@
       ]
     },
     {
-      "itemId": "D-b27c5d17f9",
+      "itemId": "D-30ae77972e",
       "itemKind": "decision",
-      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
-      "workstream": "",
-      "owner": "David Klan",
+      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
+      "workstream": "GBO Batch Transition",
+      "owner": "Birger Fjaellman",
       "errors": [
         {
-          "itemId": "D-b27c5d17f9",
+          "itemId": "D-30ae77972e",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-59805c75f5",
+      "itemKind": "decision",
+      "title": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+      "workstream": "Rapid Recovery",
+      "owner": "Balaji Ravi",
+      "errors": [
+        {
+          "itemId": "D-59805c75f5",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -209,56 +223,28 @@
       ]
     },
     {
-      "itemId": "D-6f81d99006",
+      "itemId": "D-b27c5d17f9",
       "itemKind": "decision",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "D-6f81d99006",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-0ac2a0c612",
-      "itemKind": "decision",
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "workstream": "Capacity Management",
-      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
-      "errors": [
-        {
-          "itemId": "D-0ac2a0c612",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-ec111d7bcc",
-      "itemKind": "decision",
-      "title": "D004 — Agreed: Japan Incident Documentation & CI Standards",
-      "workstream": "Employee XP Dashboard",
-      "owner": "George Francis Fermo",
-      "errors": [
-        {
-          "itemId": "D-ec111d7bcc",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-9a895e8ecb",
-      "itemKind": "decision",
-      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
       "workstream": "",
-      "owner": "Birger Fjaellman",
+      "owner": "David Klan",
       "errors": [
         {
-          "itemId": "D-9a895e8ecb",
+          "itemId": "D-b27c5d17f9",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-7f991874c7",
+      "itemKind": "decision",
+      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "workstream": "Developer XP Dashboard",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-7f991874c7",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -273,6 +259,20 @@
       "errors": [
         {
           "itemId": "D-e275b159e5",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-02c40deef8",
+      "itemKind": "decision",
+      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+      "workstream": "",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-02c40deef8",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -307,14 +307,14 @@
       ]
     },
     {
-      "itemId": "R-1c3d9c0e3b",
+      "itemId": "R-cd89918f9c",
       "itemKind": "risk",
-      "title": "Vendor Escalation",
-      "workstream": "MMM L2",
+      "title": "Review and operationalize the vendor escalation format",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-1c3d9c0e3b",
+          "itemId": "R-cd89918f9c",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -335,14 +335,14 @@
       ]
     },
     {
-      "itemId": "R-cd89918f9c",
+      "itemId": "R-1c3d9c0e3b",
       "itemKind": "risk",
-      "title": "Review and operationalize the vendor escalation format",
-      "workstream": "Rapid Recovery",
+      "title": "Vendor Escalation",
+      "workstream": "MMM L2",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-cd89918f9c",
+          "itemId": "R-1c3d9c0e3b",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -363,20 +363,6 @@
       ]
     },
     {
-      "itemId": "R-8ad2d2ce2f",
-      "itemKind": "risk",
-      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-8ad2d2ce2f",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
       "itemId": "R-d7f568105f",
       "itemKind": "risk",
       "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
@@ -391,42 +377,14 @@
       ]
     },
     {
-      "itemId": "R-b493137b8f",
+      "itemId": "R-8ad2d2ce2f",
       "itemKind": "risk",
-      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
-      "workstream": "Rapid Recovery",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "workstream": "Developer XP Dashboard",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-b493137b8f",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-121760730c",
-      "itemKind": "risk",
-      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-121760730c",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-2b2a241d9c",
-      "itemKind": "risk",
-      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-2b2a241d9c",
+          "itemId": "R-8ad2d2ce2f",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -447,70 +405,42 @@
       ]
     },
     {
-      "itemId": "R-b8d4414c4c",
+      "itemId": "R-121760730c",
       "itemKind": "risk",
-      "title": "Continue escalation on VNet issues",
-      "workstream": "",
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "workstream": "Capacity Management",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-b8d4414c4c",
+          "itemId": "R-121760730c",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-228ae1101c",
+      "itemId": "R-b493137b8f",
       "itemKind": "risk",
-      "title": "Required escalation to GAM",
-      "workstream": "CyberArk Governance",
+      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-228ae1101c",
+          "itemId": "R-b493137b8f",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-ca48836978",
+      "itemId": "R-2b2a241d9c",
       "itemKind": "risk",
-      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
-      "workstream": "CyberArk Governance",
+      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-ca48836978",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-e3dd5be6ae",
-      "itemKind": "risk",
-      "title": "⚠️ Vendor-managed apps without clear escalation model",
-      "workstream": "CMDB Mapping",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-e3dd5be6ae",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-b7a381d02b",
-      "itemKind": "risk",
-      "title": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-b7a381d02b",
+          "itemId": "R-2b2a241d9c",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -531,6 +461,34 @@
       ]
     },
     {
+      "itemId": "R-bf28edfac4",
+      "itemKind": "risk",
+      "title": "🚨 Compliance gap (CyberArk not enforced)",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-bf28edfac4",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-e3dd5be6ae",
+      "itemKind": "risk",
+      "title": "⚠️ Vendor-managed apps without clear escalation model",
+      "workstream": "CMDB Mapping",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-e3dd5be6ae",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
       "itemId": "R-9bfa424dbf",
       "itemKind": "risk",
       "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
@@ -539,6 +497,48 @@
       "errors": [
         {
           "itemId": "R-9bfa424dbf",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-228ae1101c",
+      "itemKind": "risk",
+      "title": "Required escalation to GAM",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-228ae1101c",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-b7a381d02b",
+      "itemKind": "risk",
+      "title": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-b7a381d02b",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-b8d4414c4c",
+      "itemKind": "risk",
+      "title": "Continue escalation on VNet issues",
+      "workstream": "",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-b8d4414c4c",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -559,14 +559,14 @@
       ]
     },
     {
-      "itemId": "R-bf28edfac4",
+      "itemId": "R-ca48836978",
       "itemKind": "risk",
-      "title": "🚨 Compliance gap (CyberArk not enforced)",
+      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
       "workstream": "CyberArk Governance",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-bf28edfac4",
+          "itemId": "R-ca48836978",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -587,28 +587,14 @@
       ]
     },
     {
-      "itemId": "R-1de6e7cdee",
+      "itemId": "R-41bb9b1c39",
       "itemKind": "risk",
-      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-1de6e7cdee",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-a3a724c1be",
-      "itemKind": "risk",
-      "title": "Validate escalation paths",
+      "title": "Red requires a hard signal only: blocker keyword, deadline breach, high-severity risk, or blocked action_class. Soft signals cannot combi...",
       "workstream": "",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-a3a724c1be",
+          "itemId": "R-41bb9b1c39",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -629,6 +615,20 @@
       ]
     },
     {
+      "itemId": "R-a3a724c1be",
+      "itemKind": "risk",
+      "title": "Validate escalation paths",
+      "workstream": "",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-a3a724c1be",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
       "itemId": "R-b1cf205d0f",
       "itemKind": "risk",
       "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
@@ -643,14 +643,14 @@
       ]
     },
     {
-      "itemId": "R-41bb9b1c39",
+      "itemId": "R-1de6e7cdee",
       "itemKind": "risk",
-      "title": "Red requires a hard signal only: blocker keyword, deadline breach, high-severity risk, or blocked action_class. Soft signals cannot combi...",
-      "workstream": "",
+      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-41bb9b1c39",
+          "itemId": "R-1de6e7cdee",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -671,20 +671,6 @@
       ]
     },
     {
-      "itemId": "R-ae3cccdff8",
-      "itemKind": "risk",
-      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
-      "workstream": "CMDB Mapping",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-ae3cccdff8",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
       "itemId": "R-f5518c28bc",
       "itemKind": "risk",
       "title": "Streamline risk framework and automate compliance",
@@ -699,14 +685,14 @@
       ]
     },
     {
-      "itemId": "R-f02ad44a72",
+      "itemId": "R-ae3cccdff8",
       "itemKind": "risk",
-      "title": "Weekly project status, CR review, and risk review governance forums",
+      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
       "workstream": "CMDB Mapping",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-f02ad44a72",
+          "itemId": "R-ae3cccdff8",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -727,28 +713,28 @@
       ]
     },
     {
-      "itemId": "R-b882fa398a",
+      "itemId": "R-f02ad44a72",
       "itemKind": "risk",
-      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
-      "workstream": "GBO Batch Transition",
+      "title": "Weekly project status, CR review, and risk review governance forums",
+      "workstream": "CMDB Mapping",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-b882fa398a",
+          "itemId": "R-f02ad44a72",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-59131ed59a",
+      "itemId": "R-fff605c5dd",
       "itemKind": "risk",
-      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
-      "workstream": "Capacity Management",
+      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
+      "workstream": "ADX Registration",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-59131ed59a",
+          "itemId": "R-fff605c5dd",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -769,20 +755,6 @@
       ]
     },
     {
-      "itemId": "R-8d9f37dcce",
-      "itemKind": "risk",
-      "title": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-8d9f37dcce",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
       "itemId": "R-2fc8ec9c90",
       "itemKind": "risk",
       "title": "CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...",
@@ -791,6 +763,34 @@
       "errors": [
         {
           "itemId": "R-2fc8ec9c90",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-59131ed59a",
+      "itemKind": "risk",
+      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-59131ed59a",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-8d9f37dcce",
+      "itemKind": "risk",
+      "title": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-8d9f37dcce",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -811,14 +811,14 @@
       ]
     },
     {
-      "itemId": "R-d5365064d3",
+      "itemId": "R-7af7bceb58",
       "itemKind": "risk",
-      "title": "Credentials dependency",
+      "title": "⚠️ Auditability concern",
       "workstream": "MMM L2",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-d5365064d3",
+          "itemId": "R-7af7bceb58",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -839,14 +839,28 @@
       ]
     },
     {
-      "itemId": "R-7af7bceb58",
+      "itemId": "R-d5365064d3",
       "itemKind": "risk",
-      "title": "⚠️ Auditability concern",
+      "title": "Credentials dependency",
       "workstream": "MMM L2",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-7af7bceb58",
+          "itemId": "R-d5365064d3",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-2884ed4872",
+      "itemKind": "risk",
+      "title": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-2884ed4872",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -861,6 +875,20 @@
       "errors": [
         {
           "itemId": "R-ad7b2a1025",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-6f6e73c0c0",
+      "itemKind": "risk",
+      "title": "Dependency relationships",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-6f6e73c0c0",
           "field": "why_it_matters",
           "reason": "missing required field"
         }
@@ -882,34 +910,6 @@
           "itemId": "R-1a32480547",
           "field": "next_action",
           "reason": "must start with an approved imperative verb (Send/Ask/Confirm/Decide/Investigate/Deploy/Create/Publish/Write/Complete/Finish/Implement/Escalate/Contact/Choose/Approve/Assign/Close/Draft/Schedule/Present/Sign/Verify)"
-        }
-      ]
-    },
-    {
-      "itemId": "R-6f6e73c0c0",
-      "itemKind": "risk",
-      "title": "Dependency relationships",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-6f6e73c0c0",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-2884ed4872",
-      "itemKind": "risk",
-      "title": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-2884ed4872",
-          "field": "why_it_matters",
-          "reason": "missing required field"
         }
       ]
     }
