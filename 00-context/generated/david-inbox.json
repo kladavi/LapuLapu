@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-16T06:10:17",
+  "generated": "2026-07-17T09:37:19",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "caps": {
@@ -8,1779 +8,1744 @@
     "p3": 10
   },
   "totals": {
-    "candidates": 24,
-    "selected": 15,
+    "candidates": 36,
+    "selected": 14,
     "byPriority": {
-      "p1": 10,
-      "p2": 14,
+      "p1": 27,
+      "p2": 9,
       "p3": 0,
       "p4": 0,
       "p5": 0
     },
     "tiers": {
       "p1Shown": 5,
-      "p2Shown": 10,
+      "p2Shown": 9,
       "p3Shown": 0
     },
-    "clusters": 12,
-    "imminentEscalation": 24,
-    "personalized": 24
+    "clusters": 16,
+    "imminentEscalation": 36,
+    "personalized": 36
   },
   "tiers": {
     "p1": [
       {
-        "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
-        "linkedActionCount": 0,
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 1,
+        "rankingScore": 0.5,
+        "ageDays": 14,
+        "deadline": "2026-07-17",
+        "priority": 1,
+        "outcomeQuality": "Unknown",
+        "severity": null,
+        "timeToEscalationRisk": 0,
+        "actionSource": "inferred",
+        "decisionStatus": "Pending",
+        "confidence": 0.69,
+        "id": "D-6f81d99006",
+        "verb": "Escalate",
         "owner": "Balaji Ravi",
-        "actionSource": "",
-        "deadline": "2026-07-16",
+        "workstream": "Rapid Recovery",
+        "decisionRequired": true,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "decision",
+        "rationale": "Pending 14+ days without resolution - escalate today.",
         "personalizationSignals": [
           {
-            "delta": 0.15,
+            "source": "workstream-boost",
             "reason": "preferred workstream: Rapid Recovery",
-            "source": "workstream-boost"
+            "delta": 0.15
           },
           {
-            "delta": 0.05,
+            "source": "owner-boost",
             "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
+            "delta": 0.05
           },
           {
-            "delta": 0.15,
+            "source": "kind-boost",
+            "reason": "kind bias: decision",
+            "delta": 0.05
+          },
+          {
+            "source": "imminent-escalation",
             "reason": "escalates in 0d",
-            "source": "imminent-escalation"
+            "delta": 0.15
           },
           {
-            "delta": -0.05,
+            "source": "inferred-action",
+            "reason": "no explicit **Action:** marker - inference applied",
+            "delta": 0.05
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
             "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
+            "delta": -0.05
           }
         ],
-        "kind": "risk",
-        "verb": "Escalate",
-        "rationale": "High severity - notify workstream owner today.",
-        "priority": 1,
-        "decisionRequired": false,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Rapid Recovery",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-16",
-        "id": "R-b493137b8f",
-        "ageDays": 3,
-        "rankingScore": 0.3,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.79,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": "increasing",
-        "severity": "High"
+        "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+        "trend": null,
+        "recurrenceCount": 1
       },
       {
-        "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
-        "linkedActionCount": 0,
-        "owner": "Balaji Ravi",
-        "actionSource": "",
-        "deadline": "2026-07-16",
-        "personalizationSignals": [
-          {
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 0d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "risk",
-        "verb": "Escalate",
-        "rationale": "High severity - notify workstream owner today.",
-        "priority": 1,
-        "decisionRequired": false,
         "ownerConfidence": "workstream-map",
-        "workstream": "Rapid Recovery",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-16",
-        "id": "R-bafab65c68",
-        "ageDays": 3,
-        "rankingScore": 0.3,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.79,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": "increasing",
-        "severity": "High"
-      },
-      {
-        "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
-        "linkedActionCount": 0,
-        "owner": "Balaji Ravi",
-        "actionSource": "",
-        "deadline": "2026-07-16",
-        "personalizationSignals": [
-          {
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 0d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "risk",
-        "verb": "Escalate",
-        "rationale": "High severity - notify workstream owner today.",
+        "linkedActionCount": 1,
+        "rankingScore": 0.43,
+        "ageDays": 14,
+        "deadline": "2026-07-17",
         "priority": 1,
-        "decisionRequired": false,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Rapid Recovery",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-16",
-        "id": "R-2b2a241d9c",
-        "ageDays": 3,
-        "rankingScore": 0.3,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.79,
         "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": "increasing",
-        "severity": "High"
-      },
-      {
-        "title": "Review and operationalize the vendor escalation format",
-        "linkedActionCount": 0,
-        "owner": "Balaji Ravi",
-        "actionSource": "",
-        "deadline": "2026-07-16",
-        "personalizationSignals": [
-          {
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 0d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "risk",
+        "severity": null,
+        "timeToEscalationRisk": 0,
+        "actionSource": "inferred",
+        "decisionStatus": "Pending",
+        "confidence": 0.69,
+        "id": "D-fadd968d28",
         "verb": "Escalate",
-        "rationale": "High severity - notify workstream owner today.",
-        "priority": 1,
-        "decisionRequired": false,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Rapid Recovery",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-16",
-        "id": "R-cd89918f9c",
-        "ageDays": 86,
-        "rankingScore": 0.3,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.59,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": "stable",
-        "severity": "High"
-      },
-      {
-        "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
-        "linkedActionCount": 0,
         "owner": "Kelvin",
-        "actionSource": "",
-        "deadline": "2026-07-16",
+        "workstream": "ADX Registration",
+        "decisionRequired": true,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "decision",
+        "rationale": "Pending 14+ days without resolution - escalate today.",
         "personalizationSignals": [
           {
-            "delta": 0.08,
+            "source": "workstream-boost",
             "reason": "preferred workstream: ADX Registration",
-            "source": "workstream-boost"
+            "delta": 0.08
           },
           {
-            "delta": 0.15,
+            "source": "kind-boost",
+            "reason": "kind bias: decision",
+            "delta": 0.05
+          },
+          {
+            "source": "imminent-escalation",
             "reason": "escalates in 0d",
-            "source": "imminent-escalation"
+            "delta": 0.15
+          },
+          {
+            "source": "inferred-action",
+            "reason": "no explicit **Action:** marker - inference applied",
+            "delta": 0.05
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
           }
         ],
-        "kind": "risk",
-        "verb": "Escalate",
-        "rationale": "High severity - notify workstream owner today.",
-        "priority": 1,
-        "decisionRequired": false,
+        "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+        "trend": null,
+        "recurrenceCount": 1
+      },
+      {
         "ownerConfidence": "workstream-map",
-        "workstream": "ADX Registration",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-16",
-        "id": "R-d7f568105f",
-        "ageDays": 6,
-        "rankingScore": 0.23,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.79,
+        "linkedActionCount": 1,
+        "rankingScore": 0.41,
+        "ageDays": 14,
+        "deadline": "2026-07-17",
+        "priority": 1,
         "outcomeQuality": "Unknown",
+        "severity": null,
+        "timeToEscalationRisk": 0,
+        "actionSource": "inferred",
+        "decisionStatus": "Pending",
+        "confidence": 0.69,
+        "id": "D-0ac2a0c612",
+        "verb": "Escalate",
+        "owner": "Rasheersh",
+        "workstream": "Capacity Management",
+        "decisionRequired": true,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
         "impact": "",
-        "recurrenceCount": 1,
+        "kind": "decision",
+        "rationale": "Pending 14+ days without resolution - escalate today.",
+        "personalizationSignals": [
+          {
+            "source": "workstream-boost",
+            "reason": "preferred workstream: Capacity Management",
+            "delta": 0.08
+          },
+          {
+            "source": "owner-boost",
+            "reason": "preferred owner: Rasheersh",
+            "delta": 0.03
+          },
+          {
+            "source": "kind-boost",
+            "reason": "kind bias: decision",
+            "delta": 0.05
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "inferred-action",
+            "reason": "no explicit **Action:** marker - inference applied",
+            "delta": 0.05
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+        "trend": null,
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": 0.4,
+        "ageDays": 4,
+        "deadline": "2026-07-17",
+        "priority": 1,
+        "outcomeQuality": "Unknown",
+        "severity": "High",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.79,
+        "id": "R-b493137b8f",
+        "verb": "Escalate",
+        "owner": "Balaji Ravi",
+        "workstream": "Rapid Recovery",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "High severity - notify workstream owner today.",
+        "personalizationSignals": [
+          {
+            "source": "workstream-boost",
+            "reason": "preferred workstream: Rapid Recovery",
+            "delta": 0.15
+          },
+          {
+            "source": "owner-boost",
+            "reason": "preferred owner: Balaji Ravi",
+            "delta": 0.05
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
         "trend": "increasing",
-        "severity": "High"
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": 0.4,
+        "ageDays": 4,
+        "deadline": "2026-07-17",
+        "priority": 1,
+        "outcomeQuality": "Unknown",
+        "severity": "High",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.79,
+        "id": "R-bafab65c68",
+        "verb": "Escalate",
+        "owner": "Balaji Ravi",
+        "workstream": "Rapid Recovery",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "High severity - notify workstream owner today.",
+        "personalizationSignals": [
+          {
+            "source": "workstream-boost",
+            "reason": "preferred workstream: Rapid Recovery",
+            "delta": 0.15
+          },
+          {
+            "source": "owner-boost",
+            "reason": "preferred owner: Balaji Ravi",
+            "delta": 0.05
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
+        "trend": "increasing",
+        "recurrenceCount": 1
       }
     ],
     "p2": [
       {
-        "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-        "linkedActionCount": 1,
-        "owner": "Kelvin",
-        "actionSource": "inferred",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.08,
-            "reason": "preferred workstream: ADX Registration",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          }
-        ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-        "priority": 2,
-        "decisionRequired": true,
         "ownerConfidence": "workstream-map",
-        "workstream": "ADX Registration",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-fadd968d28",
-        "ageDays": 13,
-        "rankingScore": 0.33,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
-      },
-      {
-        "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-        "linkedActionCount": 1,
-        "owner": "Deb",
-        "actionSource": "inferred",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.03,
-            "reason": "preferred owner: Deb",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          }
-        ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-        "priority": 2,
-        "decisionRequired": true,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Developer XP Dashboard",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-3ced6cbb47",
-        "ageDays": 13,
-        "rankingScore": 0.28,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
-      },
-      {
-        "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-        "linkedActionCount": 1,
-        "owner": "Balaji Ravi",
-        "actionSource": "inferred",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          },
-          {
-            "delta": -0.2,
-            "reason": "owner Balaji Ravi already at capacity",
-            "source": "overloaded-owner"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-        "priority": 2,
-        "decisionRequired": true,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Rapid Recovery",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-6f81d99006",
-        "ageDays": 13,
+        "linkedActionCount": 0,
         "rankingScore": 0.2,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
-      },
-      {
-        "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-        "linkedActionCount": 1,
-        "owner": "Rasheersh",
-        "actionSource": "inferred",
+        "ageDays": 87,
         "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.08,
-            "reason": "preferred workstream: Capacity Management",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.03,
-            "reason": "preferred owner: Rasheersh",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          },
-          {
-            "delta": -0.2,
-            "reason": "owner Rasheersh already at capacity",
-            "source": "overloaded-owner"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
         "priority": 2,
-        "decisionRequired": true,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Capacity Management",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-0ac2a0c612",
-        "ageDays": 13,
-        "rankingScore": 0.11,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
         "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
-      },
-      {
-        "title": "2026_Birger_Plan Ideas.docx (\"Risk\", \"Infrastructure & Architecture\", \"Operational Resilience\", and \"Disaster Recovery\" sections)",
-        "linkedActionCount": 0,
-        "owner": "Balaji Ravi",
-        "actionSource": "",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 0d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": -0.2,
-            "reason": "owner Balaji Ravi already at capacity",
-            "source": "overloaded-owner"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "risk",
-        "verb": "Escalate",
-        "rationale": "Unresolved 14+ days - escalate this week.",
-        "priority": 2,
-        "decisionRequired": false,
-        "ownerConfidence": "workstream-map",
-        "workstream": "Rapid Recovery",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-17",
-        "id": "R-65e39d4c98",
-        "ageDays": 86,
-        "rankingScore": 0.1,
+        "severity": "Medium",
         "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
         "confidence": 0.59,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": "stable",
-        "severity": "Medium"
-      },
-      {
-        "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-        "linkedActionCount": 1,
-        "owner": "Rowena",
-        "actionSource": "inferred",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.1,
-            "reason": "preferred workstream: GBO Batch Transition",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          },
-          {
-            "delta": -0.2,
-            "reason": "owner Rowena already at capacity",
-            "source": "overloaded-owner"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-        "priority": 2,
-        "decisionRequired": true,
-        "ownerConfidence": "workstream-map",
-        "workstream": "GBO Batch Transition",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-30ae77972e",
-        "ageDays": 13,
-        "rankingScore": 0.1,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
-      },
-      {
-        "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-        "linkedActionCount": 1,
-        "owner": "Rowena",
-        "actionSource": "inferred",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": 0.1,
-            "reason": "preferred workstream: GBO Batch Transition",
-            "source": "workstream-boost"
-          },
-          {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          },
-          {
-            "delta": -0.2,
-            "reason": "owner Rowena already at capacity",
-            "source": "overloaded-owner"
-          },
-          {
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-        "priority": 2,
-        "decisionRequired": true,
-        "ownerConfidence": "workstream-map",
-        "workstream": "GBO Batch Transition",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-f91314563c",
-        "ageDays": 13,
-        "rankingScore": 0.1,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
-      },
-      {
-        "title": "Streamline risk framework and automate compliance",
-        "linkedActionCount": 0,
-        "owner": "",
-        "actionSource": "",
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "delta": -0.1,
-            "reason": "confidence 0.09 < 0.4",
-            "source": "low-confidence"
-          },
-          {
-            "delta": 0.15,
-            "reason": "escalates in 0d",
-            "source": "imminent-escalation"
-          }
-        ],
-        "kind": "risk",
+        "id": "R-65e39d4c98",
         "verb": "Escalate",
-        "rationale": "Unresolved 14+ days - escalate this week.",
-        "priority": 2,
-        "decisionRequired": false,
-        "ownerConfidence": "unknown",
-        "workstream": "",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-17",
-        "id": "R-f5518c28bc",
-        "ageDays": 86,
-        "rankingScore": 0.05,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.09,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": "stable",
-        "severity": "Medium"
-      },
-      {
-        "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-        "linkedActionCount": 1,
         "owner": "Balaji Ravi",
-        "actionSource": "inferred",
-        "deadline": "2026-07-17",
+        "workstream": "Rapid Recovery",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
         "personalizationSignals": [
           {
-            "delta": 0.05,
+            "source": "workstream-boost",
+            "reason": "preferred workstream: Rapid Recovery",
+            "delta": 0.15
+          },
+          {
+            "source": "owner-boost",
             "reason": "preferred owner: Balaji Ravi",
-            "source": "owner-boost"
+            "delta": 0.05
           },
           {
-            "delta": 0.05,
-            "reason": "kind bias: decision",
-            "source": "kind-boost"
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
           },
           {
-            "delta": 0.15,
-            "reason": "escalates in 1d",
-            "source": "imminent-escalation"
-          },
-          {
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied",
-            "source": "inferred-action"
-          },
-          {
-            "delta": -0.2,
+            "source": "overloaded-owner",
             "reason": "owner Balaji Ravi already at capacity",
-            "source": "overloaded-owner"
+            "delta": -0.2
           },
           {
-            "delta": -0.05,
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
             "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
+            "delta": -0.05
           }
         ],
-        "kind": "decision",
-        "verb": "Confirm",
-        "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-        "priority": 2,
-        "decisionRequired": true,
-        "ownerConfidence": "workstream-map",
-        "workstream": "GOCC Transition",
-        "decisionOutcome": "",
-        "decisionStatus": "Pending",
-        "dueBy": "2026-07-17",
-        "id": "D-e275b159e5",
-        "ageDays": 13,
-        "rankingScore": 0.05,
-        "timeToEscalationRisk": 1,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
-        "trend": null,
-        "severity": null
+        "title": "2026_Birger_Plan Ideas.docx (\"Risk\", \"Infrastructure & Architecture\", \"Operational Resilience\", and \"Disaster Recovery\" sections)",
+        "trend": "stable",
+        "recurrenceCount": 1
       },
       {
-        "title": "Weekly project governance forums (status, CR review, risk review)",
+        "ownerConfidence": "workstream-map",
         "linkedActionCount": 0,
-        "owner": "Rowena",
-        "actionSource": "",
+        "rankingScore": 0.1,
+        "ageDays": 28,
         "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.69,
+        "id": "R-f1afae75e8",
+        "verb": "Escalate",
+        "owner": "Rowena",
+        "workstream": "GBO Batch Transition",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
         "personalizationSignals": [
           {
-            "delta": 0.1,
+            "source": "workstream-boost",
             "reason": "preferred workstream: GBO Batch Transition",
-            "source": "workstream-boost"
+            "delta": 0.1
           },
           {
-            "delta": 0.15,
+            "source": "imminent-escalation",
             "reason": "escalates in 0d",
-            "source": "imminent-escalation"
+            "delta": 0.15
           },
           {
-            "delta": -0.2,
+            "source": "overloaded-owner",
             "reason": "owner Rowena already at capacity",
-            "source": "overloaded-owner"
+            "delta": -0.2
           },
           {
-            "delta": -0.05,
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
             "reason": "signal is noisier when owner is over-capacity",
-            "source": "learning:overloaded-owner"
+            "delta": -0.05
           }
         ],
-        "kind": "risk",
-        "verb": "Escalate",
-        "rationale": "Unresolved 14+ days - escalate this week.",
-        "priority": 2,
-        "decisionRequired": false,
-        "ownerConfidence": "workstream-map",
-        "workstream": "GBO Batch Transition",
-        "decisionOutcome": "",
-        "decisionStatus": "",
-        "dueBy": "2026-07-17",
-        "id": "R-f1afae75e8",
-        "ageDays": 27,
-        "rankingScore": -0.0,
-        "timeToEscalationRisk": 0,
-        "confidence": 0.69,
-        "outcomeQuality": "Unknown",
-        "impact": "",
-        "recurrenceCount": 1,
+        "title": "Weekly project governance forums (status, CR review, risk review)",
         "trend": "decreasing",
-        "severity": "Medium"
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": 0.1,
+        "ageDays": 21,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.69,
+        "id": "R-b882fa398a",
+        "verb": "Escalate",
+        "owner": "Rowena",
+        "workstream": "GBO Batch Transition",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
+        "personalizationSignals": [
+          {
+            "source": "workstream-boost",
+            "reason": "preferred workstream: GBO Batch Transition",
+            "delta": 0.1
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "overloaded-owner",
+            "reason": "owner Rowena already at capacity",
+            "delta": -0.2
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
+        "trend": "decreasing",
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": 0.05,
+        "ageDays": 28,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.69,
+        "id": "R-c7355ab891",
+        "verb": "Escalate",
+        "owner": "Balaji Ravi",
+        "workstream": "GOCC Transition",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
+        "personalizationSignals": [
+          {
+            "source": "owner-boost",
+            "reason": "preferred owner: Balaji Ravi",
+            "delta": 0.05
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "overloaded-owner",
+            "reason": "owner Balaji Ravi already at capacity",
+            "delta": -0.2
+          },
+          {
+            "source": "learning:delayed-workstream",
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "delta": 0.1
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
+        "trend": "decreasing",
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "unknown",
+        "linkedActionCount": 0,
+        "rankingScore": 0.05,
+        "ageDays": 87,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.09,
+        "id": "R-f5518c28bc",
+        "verb": "Escalate",
+        "owner": "",
+        "workstream": "",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
+        "personalizationSignals": [
+          {
+            "source": "low-confidence",
+            "reason": "confidence 0.09 < 0.4",
+            "delta": -0.1
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          }
+        ],
+        "title": "Streamline risk framework and automate compliance",
+        "trend": "stable",
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": -0.07,
+        "ageDays": 28,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.69,
+        "id": "R-f02ad44a72",
+        "verb": "Escalate",
+        "owner": "Rasheersh",
+        "workstream": "CMDB Mapping",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
+        "personalizationSignals": [
+          {
+            "source": "owner-boost",
+            "reason": "preferred owner: Rasheersh",
+            "delta": 0.03
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "overloaded-owner",
+            "reason": "owner Rasheersh already at capacity",
+            "delta": -0.2
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Weekly project status, CR review, and risk review governance forums",
+        "trend": "decreasing",
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": -0.07,
+        "ageDays": 87,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.59,
+        "id": "R-ae3cccdff8",
+        "verb": "Escalate",
+        "owner": "Rasheersh",
+        "workstream": "CMDB Mapping",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Unresolved 14+ days - escalate this week.",
+        "personalizationSignals": [
+          {
+            "source": "owner-boost",
+            "reason": "preferred owner: Rasheersh",
+            "delta": 0.03
+          },
+          {
+            "source": "imminent-escalation",
+            "reason": "escalates in 0d",
+            "delta": 0.15
+          },
+          {
+            "source": "overloaded-owner",
+            "reason": "owner Rasheersh already at capacity",
+            "delta": -0.2
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
+        "trend": "stable",
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": -0.15,
+        "ageDays": 7,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 3,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.79,
+        "id": "R-1a32480547",
+        "verb": "Investigate",
+        "owner": "Rowena",
+        "workstream": "GBO Batch Transition",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Rising signal aged 7+ days - confirm mitigation this week.",
+        "personalizationSignals": [
+          {
+            "source": "workstream-boost",
+            "reason": "preferred workstream: GBO Batch Transition",
+            "delta": 0.1
+          },
+          {
+            "source": "overloaded-owner",
+            "reason": "owner Rowena already at capacity",
+            "delta": -0.2
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogiparthy (Windows Lead), Birger Fjaellman (JP...",
+        "trend": "increasing",
+        "recurrenceCount": 1
+      },
+      {
+        "ownerConfidence": "workstream-map",
+        "linkedActionCount": 0,
+        "rankingScore": -0.25,
+        "ageDays": 7,
+        "deadline": "2026-07-17",
+        "priority": 2,
+        "outcomeQuality": "Unknown",
+        "severity": "Medium",
+        "timeToEscalationRisk": 3,
+        "actionSource": "",
+        "decisionStatus": "",
+        "confidence": 0.79,
+        "id": "R-b1cf205d0f",
+        "verb": "Investigate",
+        "owner": "Manish",
+        "workstream": "CyberArk Governance",
+        "decisionRequired": false,
+        "dueBy": "2026-07-17",
+        "decisionOutcome": "",
+        "impact": "",
+        "kind": "risk",
+        "rationale": "Rising signal aged 7+ days - confirm mitigation this week.",
+        "personalizationSignals": [
+          {
+            "source": "overloaded-owner",
+            "reason": "owner Manish already at capacity",
+            "delta": -0.2
+          },
+          {
+            "source": "learning:overloaded-owner",
+            "reason": "signal is noisier when owner is over-capacity",
+            "delta": -0.05
+          }
+        ],
+        "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
+        "trend": "increasing",
+        "recurrenceCount": 1
       }
     ],
     "p3": []
   },
   "clusters": [
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
         "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-b4eb5d0b0e",
+        "R-418fd20708",
+        "R-370a8742e5",
+        "R-f5170184ab"
+      ],
+      "itemCount": 4,
+      "p1Count": 4,
+      "theme": "(misc)",
+      "workstream": "CyberArk Governance",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "decision",
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "D-3ced6cbb47",
+        "R-8ad2d2ce2f",
+        "R-a682bf10b6"
+      ],
+      "itemCount": 3,
+      "p1Count": 3,
+      "theme": "(misc)",
+      "workstream": "Developer XP Dashboard",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-2b2a241d9c",
+        "R-9956258d27",
+        "R-cd89918f9c"
+      ],
+      "itemCount": 3,
+      "p1Count": 3,
+      "theme": "escalation",
+      "workstream": "Rapid Recovery",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "decision",
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "D-f91314563c",
+        "D-30ae77972e",
+        "R-b882fa398a"
+      ],
+      "itemCount": 3,
+      "p1Count": 2,
+      "theme": "operating",
+      "workstream": "GBO Batch Transition",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-38ddfd38ca",
+        "R-f386376f94"
       ],
       "itemCount": 2,
       "p1Count": 2,
-      "workstream": "Rapid Recovery",
-      "theme": "review",
-      "itemIds": [
-        "R-2b2a241d9c",
-        "R-cd89918f9c"
-      ]
-    },
-    {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
-      "kinds": [
-        "risk"
-      ],
-      "itemCount": 2,
-      "p1Count": 1,
+      "theme": "escalation",
       "workstream": "(none)",
-      "theme": "(misc)",
-      "itemIds": [
-        "R-f386376f94",
-        "R-f5518c28bc"
-      ]
+      "topPriority": 1.0
     },
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
         "decision",
         "risk"
       ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "D-fadd968d28",
+        "R-d7f568105f"
+      ],
       "itemCount": 2,
-      "p1Count": 1,
+      "p1Count": 2,
+      "theme": "(misc)",
       "workstream": "ADX Registration",
-      "theme": "(misc)",
-      "itemIds": [
-        "R-d7f568105f",
-        "D-fadd968d28"
-      ]
+      "topPriority": 1.0
     },
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
         "decision",
         "risk"
       ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "D-0ac2a0c612",
+        "R-aa0c3f050b"
+      ],
       "itemCount": 2,
-      "p1Count": 1,
-      "workstream": "Capacity Management",
+      "p1Count": 2,
       "theme": "capacity",
-      "itemIds": [
-        "R-aa0c3f050b",
-        "D-0ac2a0c612"
-      ]
+      "workstream": "Capacity Management",
+      "topPriority": 1.0
     },
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
         "decision",
         "risk"
       ],
-      "itemCount": 2,
-      "p1Count": 1,
-      "workstream": "Developer XP Dashboard",
-      "theme": "(misc)",
+      "minEscalationRisk": 0.0,
       "itemIds": [
-        "R-8ad2d2ce2f",
-        "D-3ced6cbb47"
-      ]
+        "D-6f81d99006",
+        "R-bafab65c68"
+      ],
+      "itemCount": 2,
+      "p1Count": 2,
+      "theme": "restart",
+      "workstream": "Rapid Recovery",
+      "topPriority": 1.0
     },
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
         "risk"
       ],
-      "itemCount": 2,
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-e9ea38b553",
+        "R-f02ad44a72",
+        "R-ae3cccdff8"
+      ],
+      "itemCount": 3,
       "p1Count": 1,
-      "workstream": "GBO Batch Transition",
       "theme": "(misc)",
+      "workstream": "CMDB Mapping",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
       "itemIds": [
         "R-52c6e63cae",
-        "R-f1afae75e8"
-      ]
+        "R-f1afae75e8",
+        "R-1a32480547"
+      ],
+      "itemCount": 3,
+      "p1Count": 1,
+      "theme": "(misc)",
+      "workstream": "GBO Batch Transition",
+      "topPriority": 1.0
     },
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
-        "decision",
         "risk"
       ],
-      "itemCount": 2,
-      "p1Count": 1,
-      "workstream": "Rapid Recovery",
-      "theme": "restart",
+      "minEscalationRisk": 0.0,
       "itemIds": [
-        "R-bafab65c68",
-        "D-6f81d99006"
-      ]
-    },
-    {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
-      "kinds": [
-        "risk"
+        "R-4cc75b6b1d",
+        "R-b1cf205d0f"
       ],
       "itemCount": 2,
       "p1Count": 1,
-      "workstream": "Rapid Recovery",
-      "theme": "recovery",
+      "theme": "cyberark",
+      "workstream": "CyberArk Governance",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-e6dc58ac09",
+        "R-c7355ab891"
+      ],
+      "itemCount": 2,
+      "p1Count": 1,
+      "theme": "team",
+      "workstream": "GOCC Transition",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
       "itemIds": [
         "R-b493137b8f",
         "R-65e39d4c98"
-      ]
+      ],
+      "itemCount": 2,
+      "p1Count": 1,
+      "theme": "recovery",
+      "workstream": "Rapid Recovery",
+      "topPriority": 1.0
     },
     {
-      "minEscalationRisk": 0.0,
-      "topPriority": 1.0,
       "kinds": [
         "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-121760730c"
       ],
       "itemCount": 1,
       "p1Count": 1,
+      "theme": "(misc)",
       "workstream": "Capacity Management",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "decision"
+      ],
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "D-e275b159e5"
+      ],
+      "itemCount": 1,
+      "p1Count": 1,
       "theme": "(misc)",
-      "itemIds": [
-        "R-121760730c"
-      ]
-    },
-    {
-      "minEscalationRisk": 0.0,
-      "topPriority": 2.0,
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "itemCount": 3,
-      "p1Count": 0,
-      "workstream": "GBO Batch Transition",
-      "theme": "operating",
-      "itemIds": [
-        "D-30ae77972e",
-        "D-f91314563c",
-        "R-b882fa398a"
-      ]
-    },
-    {
-      "minEscalationRisk": 0.0,
-      "topPriority": 2.0,
-      "kinds": [
-        "risk"
-      ],
-      "itemCount": 2,
-      "p1Count": 0,
-      "workstream": "CMDB Mapping",
-      "theme": "(misc)",
-      "itemIds": [
-        "R-f02ad44a72",
-        "R-ae3cccdff8"
-      ]
-    },
-    {
-      "minEscalationRisk": 0.0,
-      "topPriority": 2.0,
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "itemCount": 2,
-      "p1Count": 0,
       "workstream": "GOCC Transition",
-      "theme": "(misc)",
+      "topPriority": 1.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
       "itemIds": [
-        "D-e275b159e5",
-        "R-c7355ab891"
-      ]
+        "R-f5518c28bc"
+      ],
+      "itemCount": 1,
+      "p1Count": 0,
+      "theme": "(misc)",
+      "workstream": "(none)",
+      "topPriority": 2.0
     }
   ],
   "items": [
     {
-      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
-      "linkedActionCount": 0,
-      "owner": "Balaji Ravi",
-      "actionSource": "",
-      "deadline": "2026-07-16",
-      "personalizationSignals": [
-        {
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "High severity - notify workstream owner today.",
-      "priority": 1,
-      "decisionRequired": false,
       "ownerConfidence": "workstream-map",
-      "workstream": "Rapid Recovery",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-16",
-      "id": "R-b493137b8f",
-      "ageDays": 3,
-      "rankingScore": 0.3,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.79,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "increasing",
-      "severity": "High"
-    },
-    {
-      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
-      "linkedActionCount": 0,
-      "owner": "Balaji Ravi",
-      "actionSource": "",
-      "deadline": "2026-07-16",
-      "personalizationSignals": [
-        {
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "High severity - notify workstream owner today.",
-      "priority": 1,
-      "decisionRequired": false,
-      "ownerConfidence": "workstream-map",
-      "workstream": "Rapid Recovery",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-16",
-      "id": "R-bafab65c68",
-      "ageDays": 3,
-      "rankingScore": 0.3,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.79,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "increasing",
-      "severity": "High"
-    },
-    {
-      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
-      "linkedActionCount": 0,
-      "owner": "Balaji Ravi",
-      "actionSource": "",
-      "deadline": "2026-07-16",
-      "personalizationSignals": [
-        {
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "High severity - notify workstream owner today.",
-      "priority": 1,
-      "decisionRequired": false,
-      "ownerConfidence": "workstream-map",
-      "workstream": "Rapid Recovery",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-16",
-      "id": "R-2b2a241d9c",
-      "ageDays": 3,
-      "rankingScore": 0.3,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.79,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "increasing",
-      "severity": "High"
-    },
-    {
-      "title": "Review and operationalize the vendor escalation format",
-      "linkedActionCount": 0,
-      "owner": "Balaji Ravi",
-      "actionSource": "",
-      "deadline": "2026-07-16",
-      "personalizationSignals": [
-        {
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "High severity - notify workstream owner today.",
-      "priority": 1,
-      "decisionRequired": false,
-      "ownerConfidence": "workstream-map",
-      "workstream": "Rapid Recovery",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-16",
-      "id": "R-cd89918f9c",
-      "ageDays": 86,
-      "rankingScore": 0.3,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.59,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "stable",
-      "severity": "High"
-    },
-    {
-      "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
-      "linkedActionCount": 0,
-      "owner": "Kelvin",
-      "actionSource": "",
-      "deadline": "2026-07-16",
-      "personalizationSignals": [
-        {
-          "delta": 0.08,
-          "reason": "preferred workstream: ADX Registration",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        }
-      ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "High severity - notify workstream owner today.",
-      "priority": 1,
-      "decisionRequired": false,
-      "ownerConfidence": "workstream-map",
-      "workstream": "ADX Registration",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-16",
-      "id": "R-d7f568105f",
-      "ageDays": 6,
-      "rankingScore": 0.23,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.79,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "increasing",
-      "severity": "High"
-    },
-    {
-      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
       "linkedActionCount": 1,
-      "owner": "Kelvin",
-      "actionSource": "inferred",
+      "rankingScore": 0.5,
+      "ageDays": 14,
       "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.08,
-          "reason": "preferred workstream: ADX Registration",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "kind bias: decision",
-          "source": "kind-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
-        }
-      ],
-      "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
-      "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "ADX Registration",
-      "decisionOutcome": "",
+      "priority": 1,
+      "outcomeQuality": "Unknown",
+      "severity": null,
+      "timeToEscalationRisk": 0,
+      "actionSource": "inferred",
       "decisionStatus": "Pending",
-      "dueBy": "2026-07-17",
-      "id": "D-fadd968d28",
-      "ageDays": 13,
-      "rankingScore": 0.33,
-      "timeToEscalationRisk": 1,
       "confidence": 0.69,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": null,
-      "severity": null
-    },
-    {
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "linkedActionCount": 1,
-      "owner": "Deb",
-      "actionSource": "inferred",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.03,
-          "reason": "preferred owner: Deb",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "kind bias: decision",
-          "source": "kind-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
-        }
-      ],
-      "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
-      "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "Developer XP Dashboard",
-      "decisionOutcome": "",
-      "decisionStatus": "Pending",
-      "dueBy": "2026-07-17",
-      "id": "D-3ced6cbb47",
-      "ageDays": 13,
-      "rankingScore": 0.28,
-      "timeToEscalationRisk": 1,
-      "confidence": 0.69,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": null,
-      "severity": null
-    },
-    {
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "linkedActionCount": 1,
-      "owner": "Balaji Ravi",
-      "actionSource": "inferred",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "kind bias: decision",
-          "source": "kind-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
-        },
-        {
-          "delta": -0.2,
-          "reason": "owner Balaji Ravi already at capacity",
-          "source": "overloaded-owner"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
-      "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "Rapid Recovery",
-      "decisionOutcome": "",
-      "decisionStatus": "Pending",
-      "dueBy": "2026-07-17",
       "id": "D-6f81d99006",
-      "ageDays": 13,
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 1,
-      "confidence": 0.69,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": null,
-      "severity": null
-    },
-    {
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "linkedActionCount": 1,
-      "owner": "Rasheersh",
-      "actionSource": "inferred",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.08,
-          "reason": "preferred workstream: Capacity Management",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.03,
-          "reason": "preferred owner: Rasheersh",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "kind bias: decision",
-          "source": "kind-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
-        },
-        {
-          "delta": -0.2,
-          "reason": "owner Rasheersh already at capacity",
-          "source": "overloaded-owner"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
-      "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "Capacity Management",
-      "decisionOutcome": "",
-      "decisionStatus": "Pending",
-      "dueBy": "2026-07-17",
-      "id": "D-0ac2a0c612",
-      "ageDays": 13,
-      "rankingScore": 0.11,
-      "timeToEscalationRisk": 1,
-      "confidence": 0.69,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": null,
-      "severity": null
-    },
-    {
-      "title": "2026_Birger_Plan Ideas.docx (\"Risk\", \"Infrastructure & Architecture\", \"Operational Resilience\", and \"Disaster Recovery\" sections)",
-      "linkedActionCount": 0,
-      "owner": "Balaji Ravi",
-      "actionSource": "",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": -0.2,
-          "reason": "owner Balaji Ravi already at capacity",
-          "source": "overloaded-owner"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "risk",
       "verb": "Escalate",
-      "rationale": "Unresolved 14+ days - escalate this week.",
-      "priority": 2,
-      "decisionRequired": false,
-      "ownerConfidence": "workstream-map",
+      "owner": "Balaji Ravi",
       "workstream": "Rapid Recovery",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-17",
-      "id": "R-65e39d4c98",
-      "ageDays": 86,
-      "rankingScore": 0.1,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.59,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "stable",
-      "severity": "Medium"
-    },
-    {
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "linkedActionCount": 1,
-      "owner": "Rowena",
-      "actionSource": "inferred",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.1,
-          "reason": "preferred workstream: GBO Batch Transition",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "kind bias: decision",
-          "source": "kind-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
-        },
-        {
-          "delta": -0.2,
-          "reason": "owner Rowena already at capacity",
-          "source": "overloaded-owner"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
       "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "GBO Batch Transition",
-      "decisionOutcome": "",
-      "decisionStatus": "Pending",
       "dueBy": "2026-07-17",
-      "id": "D-30ae77972e",
-      "ageDays": 13,
-      "rankingScore": 0.1,
-      "timeToEscalationRisk": 1,
-      "confidence": 0.69,
-      "outcomeQuality": "Unknown",
+      "decisionOutcome": "",
       "impact": "",
-      "recurrenceCount": 1,
-      "trend": null,
-      "severity": null
-    },
-    {
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "linkedActionCount": 1,
-      "owner": "Rowena",
-      "actionSource": "inferred",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.1,
-          "reason": "preferred workstream: GBO Batch Transition",
-          "source": "workstream-boost"
-        },
-        {
-          "delta": 0.05,
-          "reason": "kind bias: decision",
-          "source": "kind-boost"
-        },
-        {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
-        },
-        {
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
-        },
-        {
-          "delta": -0.2,
-          "reason": "owner Rowena already at capacity",
-          "source": "overloaded-owner"
-        },
-        {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
-        }
-      ],
       "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
-      "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "GBO Batch Transition",
-      "decisionOutcome": "",
-      "decisionStatus": "Pending",
-      "dueBy": "2026-07-17",
-      "id": "D-f91314563c",
-      "ageDays": 13,
-      "rankingScore": 0.1,
-      "timeToEscalationRisk": 1,
-      "confidence": 0.69,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": null,
-      "severity": null
-    },
-    {
-      "title": "Streamline risk framework and automate compliance",
-      "linkedActionCount": 0,
-      "owner": "",
-      "actionSource": "",
-      "deadline": "2026-07-17",
+      "rationale": "Pending 14+ days without resolution - escalate today.",
       "personalizationSignals": [
         {
-          "delta": -0.1,
-          "reason": "confidence 0.09 < 0.4",
-          "source": "low-confidence"
+          "source": "workstream-boost",
+          "reason": "preferred workstream: Rapid Recovery",
+          "delta": 0.15
         },
         {
-          "delta": 0.15,
-          "reason": "escalates in 0d",
-          "source": "imminent-escalation"
-        }
-      ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "Unresolved 14+ days - escalate this week.",
-      "priority": 2,
-      "decisionRequired": false,
-      "ownerConfidence": "unknown",
-      "workstream": "",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-17",
-      "id": "R-f5518c28bc",
-      "ageDays": 86,
-      "rankingScore": 0.05,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.09,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
-      "trend": "stable",
-      "severity": "Medium"
-    },
-    {
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "linkedActionCount": 1,
-      "owner": "Balaji Ravi",
-      "actionSource": "inferred",
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "delta": 0.05,
+          "source": "owner-boost",
           "reason": "preferred owner: Balaji Ravi",
-          "source": "owner-boost"
+          "delta": 0.05
         },
         {
-          "delta": 0.05,
+          "source": "kind-boost",
           "reason": "kind bias: decision",
-          "source": "kind-boost"
+          "delta": 0.05
         },
         {
-          "delta": 0.15,
-          "reason": "escalates in 1d",
-          "source": "imminent-escalation"
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
         },
         {
-          "delta": 0.05,
+          "source": "inferred-action",
           "reason": "no explicit **Action:** marker - inference applied",
-          "source": "inferred-action"
+          "delta": 0.05
         },
         {
-          "delta": -0.2,
-          "reason": "owner Balaji Ravi already at capacity",
-          "source": "overloaded-owner"
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
         },
         {
-          "delta": -0.05,
+          "source": "learning:overloaded-owner",
           "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
+          "delta": -0.05
         }
       ],
-      "kind": "decision",
-      "verb": "Confirm",
-      "rationale": "Aging 7+ days - confirm status and communicate resolution this week.",
-      "priority": 2,
-      "decisionRequired": true,
-      "ownerConfidence": "workstream-map",
-      "workstream": "GOCC Transition",
-      "decisionOutcome": "",
-      "decisionStatus": "Pending",
-      "dueBy": "2026-07-17",
-      "id": "D-e275b159e5",
-      "ageDays": 13,
-      "rankingScore": 0.05,
-      "timeToEscalationRisk": 1,
-      "confidence": 0.69,
-      "outcomeQuality": "Unknown",
-      "impact": "",
-      "recurrenceCount": 1,
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
       "trend": null,
-      "severity": null
+      "recurrenceCount": 1
     },
     {
-      "title": "Weekly project governance forums (status, CR review, risk review)",
-      "linkedActionCount": 0,
-      "owner": "Rowena",
-      "actionSource": "",
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 1,
+      "rankingScore": 0.43,
+      "ageDays": 14,
       "deadline": "2026-07-17",
+      "priority": 1,
+      "outcomeQuality": "Unknown",
+      "severity": null,
+      "timeToEscalationRisk": 0,
+      "actionSource": "inferred",
+      "decisionStatus": "Pending",
+      "confidence": 0.69,
+      "id": "D-fadd968d28",
+      "verb": "Escalate",
+      "owner": "Kelvin",
+      "workstream": "ADX Registration",
+      "decisionRequired": true,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "decision",
+      "rationale": "Pending 14+ days without resolution - escalate today.",
       "personalizationSignals": [
         {
-          "delta": 0.1,
-          "reason": "preferred workstream: GBO Batch Transition",
-          "source": "workstream-boost"
+          "source": "workstream-boost",
+          "reason": "preferred workstream: ADX Registration",
+          "delta": 0.08
         },
         {
-          "delta": 0.15,
+          "source": "kind-boost",
+          "reason": "kind bias: decision",
+          "delta": 0.05
+        },
+        {
+          "source": "imminent-escalation",
           "reason": "escalates in 0d",
-          "source": "imminent-escalation"
+          "delta": 0.15
         },
         {
-          "delta": -0.2,
-          "reason": "owner Rowena already at capacity",
-          "source": "overloaded-owner"
+          "source": "inferred-action",
+          "reason": "no explicit **Action:** marker - inference applied",
+          "delta": 0.05
         },
         {
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity",
-          "source": "learning:overloaded-owner"
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
         }
       ],
-      "kind": "risk",
-      "verb": "Escalate",
-      "rationale": "Unresolved 14+ days - escalate this week.",
-      "priority": 2,
-      "decisionRequired": false,
+      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "trend": null,
+      "recurrenceCount": 1
+    },
+    {
       "ownerConfidence": "workstream-map",
-      "workstream": "GBO Batch Transition",
-      "decisionOutcome": "",
-      "decisionStatus": "",
-      "dueBy": "2026-07-17",
-      "id": "R-f1afae75e8",
-      "ageDays": 27,
-      "rankingScore": -0.0,
-      "timeToEscalationRisk": 0,
-      "confidence": 0.69,
+      "linkedActionCount": 1,
+      "rankingScore": 0.41,
+      "ageDays": 14,
+      "deadline": "2026-07-17",
+      "priority": 1,
       "outcomeQuality": "Unknown",
+      "severity": null,
+      "timeToEscalationRisk": 0,
+      "actionSource": "inferred",
+      "decisionStatus": "Pending",
+      "confidence": 0.69,
+      "id": "D-0ac2a0c612",
+      "verb": "Escalate",
+      "owner": "Rasheersh",
+      "workstream": "Capacity Management",
+      "decisionRequired": true,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
       "impact": "",
-      "recurrenceCount": 1,
+      "kind": "decision",
+      "rationale": "Pending 14+ days without resolution - escalate today.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: Capacity Management",
+          "delta": 0.08
+        },
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Rasheersh",
+          "delta": 0.03
+        },
+        {
+          "source": "kind-boost",
+          "reason": "kind bias: decision",
+          "delta": 0.05
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "inferred-action",
+          "reason": "no explicit **Action:** marker - inference applied",
+          "delta": 0.05
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "trend": null,
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": 0.4,
+      "ageDays": 4,
+      "deadline": "2026-07-17",
+      "priority": 1,
+      "outcomeQuality": "Unknown",
+      "severity": "High",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.79,
+      "id": "R-b493137b8f",
+      "verb": "Escalate",
+      "owner": "Balaji Ravi",
+      "workstream": "Rapid Recovery",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "High severity - notify workstream owner today.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: Rapid Recovery",
+          "delta": 0.15
+        },
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Balaji Ravi",
+          "delta": 0.05
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "trend": "increasing",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": 0.4,
+      "ageDays": 4,
+      "deadline": "2026-07-17",
+      "priority": 1,
+      "outcomeQuality": "Unknown",
+      "severity": "High",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.79,
+      "id": "R-bafab65c68",
+      "verb": "Escalate",
+      "owner": "Balaji Ravi",
+      "workstream": "Rapid Recovery",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "High severity - notify workstream owner today.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: Rapid Recovery",
+          "delta": 0.15
+        },
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Balaji Ravi",
+          "delta": 0.05
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
+      "trend": "increasing",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": 0.2,
+      "ageDays": 87,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.59,
+      "id": "R-65e39d4c98",
+      "verb": "Escalate",
+      "owner": "Balaji Ravi",
+      "workstream": "Rapid Recovery",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: Rapid Recovery",
+          "delta": 0.15
+        },
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Balaji Ravi",
+          "delta": 0.05
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Balaji Ravi already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "2026_Birger_Plan Ideas.docx (\"Risk\", \"Infrastructure & Architecture\", \"Operational Resilience\", and \"Disaster Recovery\" sections)",
+      "trend": "stable",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": 0.1,
+      "ageDays": 28,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.69,
+      "id": "R-f1afae75e8",
+      "verb": "Escalate",
+      "owner": "Rowena",
+      "workstream": "GBO Batch Transition",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: GBO Batch Transition",
+          "delta": 0.1
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Rowena already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Weekly project governance forums (status, CR review, risk review)",
       "trend": "decreasing",
-      "severity": "Medium"
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": 0.1,
+      "ageDays": 21,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.69,
+      "id": "R-b882fa398a",
+      "verb": "Escalate",
+      "owner": "Rowena",
+      "workstream": "GBO Batch Transition",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: GBO Batch Transition",
+          "delta": 0.1
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Rowena already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
+      "trend": "decreasing",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": 0.05,
+      "ageDays": 28,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.69,
+      "id": "R-c7355ab891",
+      "verb": "Escalate",
+      "owner": "Balaji Ravi",
+      "workstream": "GOCC Transition",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Balaji Ravi",
+          "delta": 0.05
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Balaji Ravi already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:delayed-workstream",
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "delta": 0.1
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
+      "trend": "decreasing",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "unknown",
+      "linkedActionCount": 0,
+      "rankingScore": 0.05,
+      "ageDays": 87,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.09,
+      "id": "R-f5518c28bc",
+      "verb": "Escalate",
+      "owner": "",
+      "workstream": "",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "low-confidence",
+          "reason": "confidence 0.09 < 0.4",
+          "delta": -0.1
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        }
+      ],
+      "title": "Streamline risk framework and automate compliance",
+      "trend": "stable",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": -0.07,
+      "ageDays": 28,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.69,
+      "id": "R-f02ad44a72",
+      "verb": "Escalate",
+      "owner": "Rasheersh",
+      "workstream": "CMDB Mapping",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Rasheersh",
+          "delta": 0.03
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Rasheersh already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Weekly project status, CR review, and risk review governance forums",
+      "trend": "decreasing",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": -0.07,
+      "ageDays": 87,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.59,
+      "id": "R-ae3cccdff8",
+      "verb": "Escalate",
+      "owner": "Rasheersh",
+      "workstream": "CMDB Mapping",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Unresolved 14+ days - escalate this week.",
+      "personalizationSignals": [
+        {
+          "source": "owner-boost",
+          "reason": "preferred owner: Rasheersh",
+          "delta": 0.03
+        },
+        {
+          "source": "imminent-escalation",
+          "reason": "escalates in 0d",
+          "delta": 0.15
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Rasheersh already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
+      "trend": "stable",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": -0.15,
+      "ageDays": 7,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 3,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.79,
+      "id": "R-1a32480547",
+      "verb": "Investigate",
+      "owner": "Rowena",
+      "workstream": "GBO Batch Transition",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Rising signal aged 7+ days - confirm mitigation this week.",
+      "personalizationSignals": [
+        {
+          "source": "workstream-boost",
+          "reason": "preferred workstream: GBO Batch Transition",
+          "delta": 0.1
+        },
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Rowena already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogiparthy (Windows Lead), Birger Fjaellman (JP...",
+      "trend": "increasing",
+      "recurrenceCount": 1
+    },
+    {
+      "ownerConfidence": "workstream-map",
+      "linkedActionCount": 0,
+      "rankingScore": -0.25,
+      "ageDays": 7,
+      "deadline": "2026-07-17",
+      "priority": 2,
+      "outcomeQuality": "Unknown",
+      "severity": "Medium",
+      "timeToEscalationRisk": 3,
+      "actionSource": "",
+      "decisionStatus": "",
+      "confidence": 0.79,
+      "id": "R-b1cf205d0f",
+      "verb": "Investigate",
+      "owner": "Manish",
+      "workstream": "CyberArk Governance",
+      "decisionRequired": false,
+      "dueBy": "2026-07-17",
+      "decisionOutcome": "",
+      "impact": "",
+      "kind": "risk",
+      "rationale": "Rising signal aged 7+ days - confirm mitigation this week.",
+      "personalizationSignals": [
+        {
+          "source": "overloaded-owner",
+          "reason": "owner Manish already at capacity",
+          "delta": -0.2
+        },
+        {
+          "source": "learning:overloaded-owner",
+          "reason": "signal is noisier when owner is over-capacity",
+          "delta": -0.05
+        }
+      ],
+      "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
+      "trend": "increasing",
+      "recurrenceCount": 1
     }
   ]
 }

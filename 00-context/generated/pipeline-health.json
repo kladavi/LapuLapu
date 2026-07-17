@@ -1,13 +1,13 @@
 {
-  "lastRun": "2026-07-15T09:47:05",
-  "status": "no-op",
-  "message": "Recap hash unchanged since previous run.",
+  "lastRun": "2026-07-16T06:10:49",
+  "status": "success",
+  "message": "New recap processed and committed.",
   "lastActivityFile": "2026-07-14-14-day-activity.md",
-  "lastActivityHash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
-  "currentFocusGenerated": false,
-  "trendsGenerated": false,
-  "morningBriefingGenerated": false,
-  "jsonValidated": false,
-  "gitCommitted": false,
-  "lastCommitHash": "af8df826783b15f78e58eb0932891b708fe8b724"
+  "lastActivityHash": "293805A6BDAB9F2194B265FC29D9DA2AABAFC00AE4EAE8108B56C91E44D221B7",
+  "currentFocusGenerated": true,
+  "trendsGenerated": true,
+  "morningBriefingGenerated": true,
+  "jsonValidated": true,
+  "gitCommitted": true,
+  "lastCommitHash": "82877083d79b237e8fa5d37bd3f88e2d2d139c55"
 }
