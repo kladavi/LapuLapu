@@ -23,6 +23,8 @@
 - **Relevance:** 78/100
 - **Tags:** #project:lapu-lapu #system:azure #system:cmdb #domain:cost #worktype:hygiene #area:cmdb-mapping
 - **Description:** Identify orphan VMs flagged in Q2 Azure cost report. Cross-reference with CMDB records. Decommission or onboard to Terraform state as appropriate. Report cost impact.
+- **Updates:**
+  - **2026-07-17 (Source: 20260716 - Lapu-Lapu and GOCC.md):** Delta App Interfaces v1 document located (covering Ingenium, NDM, print server, ServerF web services and API calls) — to be saved into the vault and reviewed for gaps against current CMDB mappings. In parallel, Rae to update the monitoring application list by excluding client-server and low-priority applications, focusing on web-based and high-value systems, and send the filtered list back to David for feedback. Improves CMDB completeness input for T121 dashboard reporting.
 
 ---
 
@@ -62,6 +64,9 @@
 - **Relevance:** 85/100
 - **Tags:** #project:lapu-lapu #program:r2r #program:mmm #worktype:observability #area:adx-registration #area:cmdb-mapping #area:mmm-l2
 - **Description:** Achieve MMM L2 maturity for all Gold applications by mid-FY2027. Requires infrastructure alerts with AIOps reconciliation, application transaction alerts via xMatters, synthetics monitoring with login checks, and application logging into ADX with pattern alerts.
+- **Updates:**
+  - **2026-07-17 (Source: 20260714 Lapu-Lapu ETS, GOCC and Obs.md):** Dev XP URL validation ~60% complete (77 of 225 URLs remaining); 2 Ingenium firewall gaps outstanding (1x 401 credential error, 1x server-side); New Relic UAT alert policy pending creation + assignment to GOCC Middleware; credential-ownership handoff between Mark and Sangram still blocking functional monitoring. Extends T118 (Dev XP alerting tuning) with the validation-completion prerequisite.
+  - **2026-07-17 (Source: 20260716 - Lapu-Lapu and GOCC.md):** File-system alert-routing verification — Balaji to supply file-system list for Ingenium app + DB servers, Mary to verify New Relic disk-usage alert destinations (prod + non-prod), Dennis to check alert configurations. Addresses suspected gap where current file-system alerts may not reach the correct engineering infrastructure team.
 
 ---
 
@@ -1972,3 +1977,101 @@
 - **Tags:** #project:lapu-lapu #domain:cyberark #domain:security #domain:governance #domain:risk #worktype:audit
 - **Description:** Extend the CyberArk work beyond the T143/T144 account-level remediation to address broader privileged-access governance concerns surfaced in the 2026-07-09 CyberArk Privileged Access Review: role concentration across CyberArk Safes, evidence gaps for approval / risk acceptance, and unclear challenge ownership. Drive four specific follow-ups: (a) request ServiceNow approval history for the flagged Safes / role assignments; (b) request IIQ certification records to confirm periodic recertification is happening; (c) identify the automated control responsible for excessive-privilege / Segregation-of-Duties (SoD) monitoring and confirm it is producing evidence; (d) confirm Archer / CAP tracking is opened once issue owners are named, so remediation is governed rather than ad-hoc. Coordinate with IAM / PAS / Information Risk with Safe and Application Owners. Complements T143 (single-account close-out) and T144 (Japan Semi-Managed sweep) by lifting the workstream from account hygiene to enterprise privileged-access governance.
 - **Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
+
+---
+
+## T147 — Confirm MPS Guardia (AWMS) URLs/Endpoints and Vendor Escalation Model for GOCC Onboarding
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** T003 (Rapid Recovery Plan) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to David Klan — confirm before mobilising)_
+- **Systems:** #system:cmdb #system:newrelic
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #area:cmdb-mapping #domain:vendor-management #worktype:onboarding #owner-unconfirmed
+- **Description:** Resolve the AWMS/MPS naming inconsistency across CMDB and LeanIX and lock in the vendor (Fujifilm Services) escalation model before GOCC can accept ownership. Confirm the final URL/endpoint list, secure vendor primary + backup contacts and SLA/MTTR expectations, and align RRP/AVP traceability so monitoring routes correctly. Blocks GOCC transition for this vendor-managed application.
+- **Source:** Inbox — archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T148 — Expand Philippines Branch Laptop Dashboard from Pilot to Full Gold-Application Coverage
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to Donna + Vignesh — confirm before mobilising)_
+- **Systems:** #system:newrelic
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:employee-xp #artifact:dashboard #worktype:monitoring #owner-unconfirmed
+- **Description:** Expand the Philippines Branch Laptop Dashboard from its current 2-URL pilot to full coverage of Gold-priority applications used in PH branches, targeting end-of-week completion. Establish the manual-onboarding hand-off gate that unlocks moving from pilot to decision-useful. Feeds T128 (Laptop monitoring) capability.
+- **Source:** Inbox — archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T149 — Onboard Non-Gold Japan Applications into Lapu-Lapu Monitoring (Phase 2, ~5 Categories)
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** T005 (MMM L2 Dashboard) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to Rae Judavar — confirm before mobilising)_
+- **Systems:** #system:cmdb #system:leanix #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #area:non-gold-onboarding #worktype:onboarding #worktype:monitoring #owner-unconfirmed
+- **Description:** Onboard non-Gold Japan applications into the Lapu-Lapu monitoring framework across five categories: Desktop, File transfer, ID components, Batch, Microservices APIs (excluding decommissioned / already-onboarded). Close LeanIX gaps for Document Video Library, Japan OK Wave, and HULFT (no MetalRating assigned — blocks Lapu-Lapu prioritisation). Distribute intake forms to app owners; align monitoring approach with the Observability team for non-URL systems. David to connect Rae with VA Desktop owner and Takuro Sekimoto (Doc Video Library / FAQ).
+- **Source:** Inbox — archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T150 — Drive Japan East/West VNet Provisioning to Closure with Weekly Escalation Cadence
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:infra
+- **Assigned:** _Unassigned (meeting attributed to Adrian — confirm before mobilising)_
+- **Systems:** #system:azure
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #area:networking #domain:escalation #domain:infrastructure #severity:high #owner-unconfirmed
+- **Description:** Continue driving Japan East/West VNet provisioning to closure — ongoing subnet provisioning issues (RITM09472830 subnet request completed, but Kyle's SR and DEV/PROD server provisioning still pending). Adrian to include David and Vidya on all escalation comms; establish a weekly cadence with root-cause and resolution timeline visibility until closed. Reduces the platform-readiness risk blocking application onboarding.
+- **Source:** Inbox — archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T151 — Align Pulse Safe Approval Workflow with GOCC 24/7 Operating Model
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** T003 (Rapid Recovery Plan) → H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to David Klan + Akane Mochida — confirm before mobilising)_
+- **Systems:** #system:pulse #system:cyberark
+- **Relevance:** 72/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #domain:approval-workflow #worktype:process #owner-unconfirmed
+- **Description:** Pulse workflow is operational (daily reports + failure notifications) but the Safe-approval step is not aligned with a 24/7 operations model — approval currently blocks outage response outside business hours. Engage Akane Mochida to include GOCC in the approval workflow so GOCC can approve Safe access on their own coverage window. Removes an approval bottleneck that materially delays incident response.
+- **Source:** Inbox — archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T152 — CMDB Mapping Review Session (Balaji + Yegor) for Amazon Connect, AML, JCUS, BPM, ServerF
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** T002 (CMDB Mapping) → H-3 (AI Ops / Incident Troubleshooting) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to Balaji Ravi — confirm before mobilising)_
+- **Systems:** #system:cmdb
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:cmdb-mapping #worktype:review #owner-unconfirmed
+- **Description:** Convene a working session between Balaji and Yegor to review current CMDB mappings for Amazon Connect (v3.0), AML Manager (v2.0), JCUS (restructured as microservice), and BPM (recently submitted), and to sort out the ServerF technical mapping (single physical server acting as shared drive / SFTP / Ingenium UI — currently inconsistent CI relationships). Identify missing items and drive iterative mapping updates. Feeds T002 and T121 (dashboard/reporting completeness).
+- **Source:** Inbox — archive/20260716 - Lapu-Lapu and GOCC.md
+
+---
+
+## T153 — Establish Common GOCC Application Access ID for Ingenium (CyberArk-Managed)
+- **Status:** Open
+- **Created:** 2026-07-17
+- **Objective Chain:** T003 (Rapid Recovery Plan) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to Balaji Ravi — confirm before mobilising)_
+- **Systems:** #system:cyberark #system:ingenium #system:servicenow
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #area:gocc-transition #domain:identity #domain:cyberark #worktype:access #owner-unconfirmed
+- **Description:** Ingenium health checks today rely on individuals using their own accounts via ServiceNowAppMgmt requests — this does not scale to GOCC 24/7 operations. Balaji to confirm with Sai and Engineering Infrastructure the creation of a common Ingenium application-access ID that is CyberArk-managed with reduced privileges, extracted from ServiceNow user data cross-referenced against application access lists. Runbook must precede full GOCC application ownership. Complements T143/T144 (semi-managed CyberArk sweep) by adding the affirmative GOCC-side identity.
+- **Source:** Inbox — archive/20260716 - Lapu-Lapu and GOCC.md
