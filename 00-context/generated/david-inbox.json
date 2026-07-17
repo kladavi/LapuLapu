@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T17:30:41",
+  "generated": "2026-07-17T19:21:46",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "caps": {
@@ -43,949 +43,931 @@
   "tiers": {
     "p1": [
       {
-        "delta": {
-          "daysSinceLastTouched": 14,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "impact": "",
-        "confidence": 0.44,
-        "recurrenceCount": 1,
-        "priority": 1,
-        "ownerConfidence": "medium",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Pending 14 days - direct outreach to owner today.",
-        "verb": "Escalate",
-        "linkedActionCount": 1,
-        "id": "D-fadd968d28",
-        "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-        "kind": "decision",
-        "dueBy": "2026-07-17",
-        "trend": null,
-        "actionSource": "inferred",
-        "severity": null,
-        "outcomeQuality": "Unknown",
-        "ageDays": 14,
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.08,
-            "reason": "preferred workstream: ADX Registration"
-          },
-          {
-            "source": "owner-boost",
-            "delta": 0.05,
-            "reason": "preferred owner: Balaji Ravi"
-          },
-          {
-            "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          },
-          {
-            "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
-          },
-          {
-            "source": "learning:delayed-workstream",
-            "delta": 0.1,
-            "reason": "workstream has delayed decisions - boost escalate confidence"
-          }
-        ],
-        "workstream": "ADX Registration",
-        "actionClass": "FOLLOW_UP",
-        "rankingScore": 0.48,
         "timeToEscalationRisk": 0,
-        "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 14 days without resolution",
-        "suggestedOwner": "",
-        "decisionOutcome": "",
-        "owner": "Balaji Ravi"
-      },
-      {
-        "delta": {
-          "daysSinceLastTouched": 14,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "impact": "",
-        "confidence": 0.69,
-        "recurrenceCount": 1,
-        "priority": 1,
-        "ownerConfidence": "high",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Pending 14 days - David to escalate to Balaji Ravi today.",
-        "verb": "Escalate",
-        "linkedActionCount": 1,
-        "id": "D-f91314563c",
-        "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-        "kind": "decision",
-        "dueBy": "2026-07-17",
-        "trend": null,
-        "actionSource": "inferred",
-        "severity": null,
-        "outcomeQuality": "Unknown",
-        "ageDays": 14,
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.1,
-            "reason": "preferred workstream: GBO Batch Transition"
-          },
-          {
-            "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          },
-          {
-            "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
-          },
-          {
-            "source": "learning:delayed-workstream",
-            "delta": 0.1,
-            "reason": "workstream has delayed decisions - boost escalate confidence"
-          }
-        ],
-        "workstream": "GBO Batch Transition",
-        "actionClass": "DO",
-        "rankingScore": 0.45,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
-        "suggestedOwner": "",
-        "decisionOutcome": "",
-        "owner": "David Klan"
-      },
-      {
-        "delta": {
-          "daysSinceLastTouched": 14,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "impact": "",
-        "confidence": 0.69,
-        "recurrenceCount": 1,
-        "priority": 1,
-        "ownerConfidence": "high",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Pending 14 days - direct outreach to owner today.",
-        "verb": "Escalate",
-        "linkedActionCount": 1,
-        "id": "D-0ac2a0c612",
-        "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-        "kind": "decision",
-        "dueBy": "2026-07-17",
-        "trend": null,
-        "actionSource": "inferred",
-        "severity": null,
-        "outcomeQuality": "Unknown",
-        "ageDays": 14,
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.08,
-            "reason": "preferred workstream: Capacity Management"
-          },
-          {
-            "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          },
-          {
-            "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
-          },
-          {
-            "source": "learning:delayed-workstream",
-            "delta": 0.1,
-            "reason": "workstream has delayed decisions - boost escalate confidence"
-          }
-        ],
-        "workstream": "Capacity Management",
-        "actionClass": "FOLLOW_UP",
-        "rankingScore": 0.43,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution",
-        "suggestedOwner": "",
-        "decisionOutcome": "",
-        "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)"
-      },
-      {
-        "delta": {
-          "daysSinceLastTouched": 14,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "impact": "",
-        "confidence": 0.44,
-        "recurrenceCount": 1,
-        "priority": 1,
-        "ownerConfidence": "medium",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Pending 14 days - direct outreach to owner today.",
-        "verb": "Escalate",
-        "linkedActionCount": 1,
-        "id": "D-30ae77972e",
         "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-        "kind": "decision",
-        "dueBy": "2026-07-17",
-        "trend": null,
-        "actionSource": "inferred",
-        "severity": null,
         "outcomeQuality": "Unknown",
-        "ageDays": 14,
-        "deadline": "2026-07-17",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.1,
-            "reason": "preferred workstream: GBO Batch Transition"
-          },
-          {
-            "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          },
-          {
-            "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
-          },
-          {
-            "source": "learning:delayed-workstream",
-            "delta": 0.1,
-            "reason": "workstream has delayed decisions - boost escalate confidence"
-          },
-          {
-            "source": "learning:overloaded-owner",
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity"
-          }
-        ],
-        "workstream": "GBO Batch Transition",
-        "actionClass": "FOLLOW_UP",
-        "rankingScore": 0.4,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Contact Birger Fjaellman today - decision on GBO Batch Transition aged 14 days without resolution",
-        "suggestedOwner": "",
-        "decisionOutcome": "",
-        "owner": "Birger Fjaellman"
-      },
-      {
         "delta": {
           "daysSinceLastTouched": 14,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.44,
-        "recurrenceCount": 1,
-        "priority": 1,
-        "ownerConfidence": "medium",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Pending 14 days - direct outreach to owner today.",
-        "verb": "Escalate",
-        "linkedActionCount": 1,
-        "id": "D-e275b159e5",
-        "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-        "kind": "decision",
-        "dueBy": "2026-07-17",
-        "trend": null,
         "actionSource": "inferred",
         "severity": null,
-        "outcomeQuality": "Unknown",
-        "ageDays": 14,
+        "priority": 1,
+        "ownerConfidence": "medium",
+        "owner": "Balaji Ravi",
+        "suggestedOwner": "",
+        "rationale": "Pending 14 days - direct outreach to owner today.",
+        "trend": null,
+        "actionClass": "FOLLOW_UP",
+        "dueBy": "2026-07-17",
+        "recurrenceCount": 1,
+        "workstream": "GBO Batch Transition",
+        "id": "D-30ae77972e",
+        "verb": "Escalate",
         "deadline": "2026-07-17",
+        "linkedActionCount": 1,
+        "decisionOutcome": "",
+        "confidence": 0.44,
+        "decisionStatus": "Pending",
+        "rankingScore": 0.5,
+        "nextAction": "Contact Balaji Ravi today - decision on GBO Batch Transition aged 14 days without resolution",
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: GBO Batch Transition",
+            "source": "workstream-boost",
+            "delta": 0.1
+          },
+          {
+            "reason": "preferred owner: Balaji Ravi",
+            "source": "owner-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "kind bias: decision",
             "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
+            "delta": 0.05
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           },
           {
+            "reason": "no explicit **Action:** marker - inference applied",
             "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
+            "delta": 0.05
           },
           {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
             "source": "learning:delayed-workstream",
-            "delta": 0.1,
-            "reason": "workstream has delayed decisions - boost escalate confidence"
+            "delta": 0.1
+          }
+        ]
+      },
+      {
+        "timeToEscalationRisk": 0,
+        "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+        "outcomeQuality": "Unknown",
+        "delta": {
+          "daysSinceLastTouched": 14,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "actionSource": "inferred",
+        "severity": null,
+        "priority": 1,
+        "ownerConfidence": "medium",
+        "owner": "Balaji Ravi",
+        "suggestedOwner": "",
+        "rationale": "Pending 14 days - direct outreach to owner today.",
+        "trend": null,
+        "actionClass": "FOLLOW_UP",
+        "dueBy": "2026-07-17",
+        "recurrenceCount": 1,
+        "workstream": "ADX Registration",
+        "id": "D-fadd968d28",
+        "verb": "Escalate",
+        "deadline": "2026-07-17",
+        "linkedActionCount": 1,
+        "decisionOutcome": "",
+        "confidence": 0.44,
+        "decisionStatus": "Pending",
+        "rankingScore": 0.48,
+        "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 14 days without resolution",
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: ADX Registration",
+            "source": "workstream-boost",
+            "delta": 0.08
           },
           {
-            "source": "learning:overloaded-owner",
-            "delta": -0.05,
-            "reason": "signal is noisier when owner is over-capacity"
+            "reason": "preferred owner: Balaji Ravi",
+            "source": "owner-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "kind bias: decision",
+            "source": "kind-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "no explicit **Action:** marker - inference applied",
+            "source": "inferred-action",
+            "delta": 0.05
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
           }
-        ],
-        "workstream": "GOCC Transition",
-        "actionClass": "FOLLOW_UP",
-        "rankingScore": 0.3,
+        ]
+      },
+      {
         "timeToEscalationRisk": 0,
-        "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 14 days without resolution",
+        "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+        "outcomeQuality": "Unknown",
+        "delta": {
+          "daysSinceLastTouched": 14,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "actionSource": "inferred",
+        "severity": null,
+        "priority": 1,
+        "ownerConfidence": "high",
+        "owner": "David Klan",
         "suggestedOwner": "",
+        "rationale": "Pending 14 days - David to escalate to Balaji Ravi today.",
+        "trend": null,
+        "actionClass": "DO",
+        "dueBy": "2026-07-17",
+        "recurrenceCount": 1,
+        "workstream": "GBO Batch Transition",
+        "id": "D-f91314563c",
+        "verb": "Escalate",
+        "deadline": "2026-07-17",
+        "linkedActionCount": 1,
         "decisionOutcome": "",
-        "owner": "Birger Fjaellman"
+        "confidence": 0.69,
+        "decisionStatus": "Pending",
+        "rankingScore": 0.45,
+        "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: GBO Batch Transition",
+            "source": "workstream-boost",
+            "delta": 0.1
+          },
+          {
+            "reason": "kind bias: decision",
+            "source": "kind-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "no explicit **Action:** marker - inference applied",
+            "source": "inferred-action",
+            "delta": 0.05
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          }
+        ]
+      },
+      {
+        "timeToEscalationRisk": 0,
+        "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+        "outcomeQuality": "Unknown",
+        "delta": {
+          "daysSinceLastTouched": 14,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "actionSource": "inferred",
+        "severity": null,
+        "priority": 1,
+        "ownerConfidence": "high",
+        "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
+        "suggestedOwner": "",
+        "rationale": "Pending 14 days - direct outreach to owner today.",
+        "trend": null,
+        "actionClass": "FOLLOW_UP",
+        "dueBy": "2026-07-17",
+        "recurrenceCount": 1,
+        "workstream": "Capacity Management",
+        "id": "D-0ac2a0c612",
+        "verb": "Escalate",
+        "deadline": "2026-07-17",
+        "linkedActionCount": 1,
+        "decisionOutcome": "",
+        "confidence": 0.69,
+        "decisionStatus": "Pending",
+        "rankingScore": 0.43,
+        "nextAction": "Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution",
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Capacity Management",
+            "source": "workstream-boost",
+            "delta": 0.08
+          },
+          {
+            "reason": "kind bias: decision",
+            "source": "kind-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "no explicit **Action:** marker - inference applied",
+            "source": "inferred-action",
+            "delta": 0.05
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          }
+        ]
+      },
+      {
+        "timeToEscalationRisk": 0,
+        "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+        "outcomeQuality": "Unknown",
+        "delta": {
+          "daysSinceLastTouched": 14,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "actionSource": "inferred",
+        "severity": null,
+        "priority": 1,
+        "ownerConfidence": "medium",
+        "owner": "Birger Fjaellman",
+        "suggestedOwner": "",
+        "rationale": "Pending 14 days - direct outreach to owner today.",
+        "trend": null,
+        "actionClass": "FOLLOW_UP",
+        "dueBy": "2026-07-17",
+        "recurrenceCount": 1,
+        "workstream": "GOCC Transition",
+        "id": "D-e275b159e5",
+        "verb": "Escalate",
+        "deadline": "2026-07-17",
+        "linkedActionCount": 1,
+        "decisionOutcome": "",
+        "confidence": 0.44,
+        "decisionStatus": "Pending",
+        "rankingScore": 0.35,
+        "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 14 days without resolution",
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "kind bias: decision",
+            "source": "kind-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "no explicit **Action:** marker - inference applied",
+            "source": "inferred-action",
+            "delta": 0.05
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          }
+        ]
       }
     ],
     "p2": [
       {
+        "timeToEscalationRisk": 0,
+        "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 14,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.19,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Owner not yet confirmed; ownership must precede action.",
-        "verb": "Confirm",
-        "linkedActionCount": 1,
-        "id": "D-6f81d99006",
-        "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-        "kind": "decision",
-        "dueBy": "2026-07-24",
-        "trend": null,
         "actionSource": "inferred",
         "severity": null,
-        "outcomeQuality": "Unknown",
-        "ageDays": 14,
-        "deadline": "2026-07-24",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
-          },
-          {
-            "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
-          },
-          {
-            "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.19 < 0.4"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          },
-          {
-            "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
-          }
-        ],
-        "workstream": "Rapid Recovery",
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
+        "rationale": "Owner not yet confirmed; ownership must precede action.",
+        "trend": null,
         "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "D-6f81d99006",
+        "verb": "Confirm",
+        "deadline": "2026-07-24",
+        "linkedActionCount": 1,
+        "decisionOutcome": "",
+        "confidence": 0.19,
+        "decisionStatus": "Pending",
         "rankingScore": 0.3,
-        "timeToEscalationRisk": 0,
         "nextAction": "Assign an owner for Rapid Recovery before this decision can move",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "kind bias: decision",
+            "source": "kind-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "no explicit **Action:** marker - inference applied",
+            "source": "inferred-action",
+            "delta": 0.05
+          }
+        ]
       },
       {
-        "delta": {
-          "daysSinceLastTouched": 4,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "impact": "",
-        "confidence": 0.29,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-bafab65c68",
+        "timeToEscalationRisk": 0,
         "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "increasing",
-        "actionSource": "",
-        "severity": "High",
         "outcomeQuality": "Unknown",
-        "ageDays": 4,
-        "deadline": "2026-07-24",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
-          },
-          {
-            "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.29 < 0.4"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          }
-        ],
-        "workstream": "Rapid Recovery",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.2,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
-      },
-      {
         "delta": {
           "daysSinceLastTouched": 4,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.29,
-        "recurrenceCount": 1,
+        "actionSource": "",
+        "severity": "High",
         "priority": 2,
         "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "increasing",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "R-bafab65c68",
         "verb": "Investigate",
+        "deadline": "2026-07-24",
         "linkedActionCount": 0,
-        "id": "R-2b2a241d9c",
+        "decisionOutcome": "",
+        "confidence": 0.29,
+        "decisionStatus": "",
+        "rankingScore": 0.2,
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "ageDays": 4,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.29 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ]
+      },
+      {
+        "timeToEscalationRisk": 0,
         "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "increasing",
-        "actionSource": "",
-        "severity": "High",
         "outcomeQuality": "Unknown",
-        "ageDays": 4,
-        "deadline": "2026-07-24",
-        "personalizationSignals": [
-          {
-            "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
-          },
-          {
-            "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.29 < 0.4"
-          },
-          {
-            "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
-          }
-        ],
-        "workstream": "Rapid Recovery",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.2,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
-      },
-      {
         "delta": {
           "daysSinceLastTouched": 4,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.29,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-b493137b8f",
-        "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "increasing",
         "actionSource": "",
         "severity": "High",
-        "outcomeQuality": "Unknown",
-        "ageDays": 4,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "increasing",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "R-2b2a241d9c",
+        "verb": "Investigate",
         "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.29,
+        "decisionStatus": "",
+        "rankingScore": 0.2,
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "ageDays": 4,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: Rapid Recovery",
             "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
+            "delta": 0.15
           },
           {
+            "reason": "confidence 0.29 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.29 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           }
-        ],
-        "workstream": "Rapid Recovery",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.2,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       },
       {
+        "timeToEscalationRisk": 0,
+        "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+        "outcomeQuality": "Unknown",
+        "delta": {
+          "daysSinceLastTouched": 4,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "actionSource": "",
+        "severity": "High",
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "increasing",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "R-b493137b8f",
+        "verb": "Investigate",
+        "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.29,
+        "decisionStatus": "",
+        "rankingScore": 0.2,
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "ageDays": 4,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.29 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ]
+      },
+      {
+        "timeToEscalationRisk": 0,
+        "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 1,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.29,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-aa18501480",
-        "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "increasing",
         "actionSource": "",
         "severity": "High",
-        "outcomeQuality": "Unknown",
-        "ageDays": 1,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "increasing",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "R-aa18501480",
+        "verb": "Investigate",
         "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.29,
+        "decisionStatus": "",
+        "rankingScore": 0.2,
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "ageDays": 1,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: Rapid Recovery",
             "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
+            "delta": 0.15
           },
           {
+            "reason": "confidence 0.29 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.29 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           }
-        ],
-        "workstream": "Rapid Recovery",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.2,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       },
       {
+        "timeToEscalationRisk": 0,
+        "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 0,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.29,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-1de6e7cdee",
-        "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "increasing",
         "actionSource": "",
         "severity": "High",
-        "outcomeQuality": "Unknown",
-        "ageDays": 0,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "increasing",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "R-1de6e7cdee",
+        "verb": "Investigate",
         "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.29,
+        "decisionStatus": "",
+        "rankingScore": 0.2,
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "ageDays": 0,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: Rapid Recovery",
             "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
+            "delta": 0.15
           },
           {
+            "reason": "confidence 0.29 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.29 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           }
-        ],
-        "workstream": "Rapid Recovery",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.2,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       },
       {
+        "timeToEscalationRisk": 0,
+        "title": "Review and operationalize the vendor escalation format",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 87,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.09,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-cd89918f9c",
-        "title": "Review and operationalize the vendor escalation format",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "stable",
         "actionSource": "",
         "severity": "High",
-        "outcomeQuality": "Unknown",
-        "ageDays": 87,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Balaji Ravi",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "stable",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Rapid Recovery",
+        "id": "R-cd89918f9c",
+        "verb": "Investigate",
         "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.09,
+        "decisionStatus": "",
+        "rankingScore": 0.2,
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "ageDays": 87,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: Rapid Recovery",
             "source": "workstream-boost",
-            "delta": 0.15,
-            "reason": "preferred workstream: Rapid Recovery"
+            "delta": 0.15
           },
           {
+            "reason": "confidence 0.09 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.09 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           }
-        ],
-        "workstream": "Rapid Recovery",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.2,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "suggestedOwner": "Balaji Ravi",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       },
       {
+        "timeToEscalationRisk": 0,
+        "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 21,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.19,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-b882fa398a",
-        "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "decreasing",
         "actionSource": "",
         "severity": "Medium",
-        "outcomeQuality": "Unknown",
-        "ageDays": 21,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Rowena",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "decreasing",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "GBO Batch Transition",
+        "id": "R-b882fa398a",
+        "verb": "Investigate",
         "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.19,
+        "decisionStatus": "",
+        "rankingScore": 0.15,
+        "nextAction": "Assign an owner for GBO Batch Transition risk before it can be actioned",
+        "ageDays": 21,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: GBO Batch Transition",
             "source": "workstream-boost",
-            "delta": 0.1,
-            "reason": "preferred workstream: GBO Batch Transition"
+            "delta": 0.1
           },
           {
+            "reason": "confidence 0.19 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.19 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           }
-        ],
-        "workstream": "GBO Batch Transition",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.15,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for GBO Batch Transition risk before it can be actioned",
-        "suggestedOwner": "Rowena",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       },
       {
+        "timeToEscalationRisk": 0,
+        "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 14,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.19,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": true,
-        "decisionStatus": "Pending",
-        "rationale": "Owner not yet confirmed; ownership must precede action.",
-        "verb": "Confirm",
-        "linkedActionCount": 1,
-        "id": "D-3ced6cbb47",
-        "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-        "kind": "decision",
-        "dueBy": "2026-07-24",
-        "trend": null,
         "actionSource": "inferred",
         "severity": null,
-        "outcomeQuality": "Unknown",
-        "ageDays": 14,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Deb",
+        "rationale": "Owner not yet confirmed; ownership must precede action.",
+        "trend": null,
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "Developer XP Dashboard",
+        "id": "D-3ced6cbb47",
+        "verb": "Confirm",
         "deadline": "2026-07-24",
+        "linkedActionCount": 1,
+        "decisionOutcome": "",
+        "confidence": 0.19,
+        "decisionStatus": "Pending",
+        "rankingScore": 0.15,
+        "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
+        "ageDays": 14,
+        "decisionRequired": true,
+        "kind": "decision",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "kind bias: decision",
             "source": "kind-boost",
-            "delta": 0.05,
-            "reason": "kind bias: decision"
+            "delta": 0.05
           },
           {
+            "reason": "confidence 0.19 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.19 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           },
           {
+            "reason": "no explicit **Action:** marker - inference applied",
             "source": "inferred-action",
-            "delta": 0.05,
-            "reason": "no explicit **Action:** marker - inference applied"
+            "delta": 0.05
           }
-        ],
-        "workstream": "Developer XP Dashboard",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.15,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
-        "suggestedOwner": "Deb",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       },
       {
+        "timeToEscalationRisk": 0,
+        "title": "Vendor Escalation",
+        "outcomeQuality": "Unknown",
         "delta": {
           "daysSinceLastTouched": 87,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "impact": "",
-        "confidence": 0.09,
-        "recurrenceCount": 1,
-        "priority": 2,
-        "ownerConfidence": "low",
-        "decisionRequired": false,
-        "decisionStatus": "",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "verb": "Investigate",
-        "linkedActionCount": 0,
-        "id": "R-1c3d9c0e3b",
-        "title": "Vendor Escalation",
-        "kind": "risk",
-        "dueBy": "2026-07-24",
-        "trend": "stable",
         "actionSource": "",
         "severity": "High",
-        "outcomeQuality": "Unknown",
-        "ageDays": 87,
+        "priority": 2,
+        "ownerConfidence": "low",
+        "owner": "Unassigned",
+        "suggestedOwner": "Hari",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "trend": "stable",
+        "actionClass": "DECIDE",
+        "dueBy": "2026-07-24",
+        "recurrenceCount": 1,
+        "workstream": "MMM L2",
+        "id": "R-1c3d9c0e3b",
+        "verb": "Investigate",
         "deadline": "2026-07-24",
+        "linkedActionCount": 0,
+        "decisionOutcome": "",
+        "confidence": 0.09,
+        "decisionStatus": "",
+        "rankingScore": 0.15,
+        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
+        "ageDays": 87,
+        "decisionRequired": false,
+        "kind": "risk",
+        "impact": "",
         "personalizationSignals": [
           {
+            "reason": "preferred workstream: MMM L2",
             "source": "workstream-boost",
-            "delta": 0.1,
-            "reason": "preferred workstream: MMM L2"
+            "delta": 0.1
           },
           {
+            "reason": "confidence 0.09 < 0.4",
             "source": "low-confidence",
-            "delta": -0.1,
-            "reason": "confidence 0.09 < 0.4"
+            "delta": -0.1
           },
           {
+            "reason": "escalates in 0d",
             "source": "imminent-escalation",
-            "delta": 0.15,
-            "reason": "escalates in 0d"
+            "delta": 0.15
           }
-        ],
-        "workstream": "MMM L2",
-        "actionClass": "DECIDE",
-        "rankingScore": 0.15,
-        "timeToEscalationRisk": 0,
-        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
-        "suggestedOwner": "Hari",
-        "decisionOutcome": "",
-        "owner": "Unassigned"
+        ]
       }
     ],
     "p3": []
   },
   "clusters": [
     {
-      "topPriority": 1.0,
-      "minEscalationRisk": 0.0,
-      "theme": "september",
-      "itemIds": [
-        "D-f91314563c",
-        "D-30ae77972e",
-        "R-b882fa398a"
-      ],
       "kinds": [
         "decision",
         "risk"
       ],
+      "minEscalationRisk": 0.0,
       "p1Count": 2,
+      "theme": "operating",
+      "itemIds": [
+        "D-30ae77972e",
+        "D-f91314563c",
+        "R-b882fa398a"
+      ],
       "workstream": "GBO Batch Transition",
-      "itemCount": 3
+      "itemCount": 3,
+      "topPriority": 1.0
     },
     {
-      "topPriority": 1.0,
+      "kinds": [
+        "decision",
+        "risk"
+      ],
       "minEscalationRisk": 0.0,
+      "p1Count": 1,
       "theme": "(misc)",
       "itemIds": [
         "D-fadd968d28",
         "R-d7f568105f"
       ],
+      "workstream": "ADX Registration",
+      "itemCount": 2,
+      "topPriority": 1.0
+    },
+    {
       "kinds": [
         "decision",
         "risk"
       ],
-      "p1Count": 1,
-      "workstream": "ADX Registration",
-      "itemCount": 2
-    },
-    {
-      "topPriority": 1.0,
       "minEscalationRisk": 0.0,
-      "theme": "capacity",
+      "p1Count": 1,
+      "theme": "management",
       "itemIds": [
         "D-0ac2a0c612",
         "R-aa0c3f050b"
       ],
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "p1Count": 1,
       "workstream": "Capacity Management",
-      "itemCount": 2
+      "itemCount": 2,
+      "topPriority": 1.0
     },
     {
-      "topPriority": 1.0,
+      "kinds": [
+        "decision"
+      ],
       "minEscalationRisk": 0.0,
+      "p1Count": 1,
       "theme": "(misc)",
       "itemIds": [
         "D-e275b159e5"
       ],
-      "kinds": [
-        "decision"
-      ],
-      "p1Count": 1,
       "workstream": "GOCC Transition",
-      "itemCount": 1
+      "itemCount": 1,
+      "topPriority": 1.0
     },
     {
-      "topPriority": 2.0,
-      "minEscalationRisk": 0.0,
-      "theme": "escalation",
-      "itemIds": [
-        "R-b8d4414c4c",
-        "R-a3a724c1be",
-        "R-64c0ccc1e6",
-        "R-f386376f94"
-      ],
       "kinds": [
+        "decision",
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "(none)",
-      "itemCount": 4
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "R-b2ee8b777e",
@@ -993,34 +975,50 @@
         "R-f5518c28bc",
         "D-8391860e44"
       ],
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "p1Count": 0,
       "workstream": "(none)",
-      "itemCount": 4
+      "itemCount": 4,
+      "topPriority": 2.0
     },
     {
-      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
+      "theme": "escalation",
+      "itemIds": [
+        "R-b8d4414c4c",
+        "R-a3a724c1be",
+        "R-64c0ccc1e6",
+        "R-f386376f94"
+      ],
+      "workstream": "(none)",
+      "itemCount": 4,
+      "topPriority": 2.0
+    },
+    {
+      "kinds": [
+        "risk"
+      ],
+      "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
-        "R-228ae1101c",
-        "R-ca48836978",
+        "R-0dcce4bb79",
         "R-b7a381d02b",
-        "R-0dcce4bb79"
+        "R-ca48836978",
+        "R-228ae1101c"
       ],
+      "workstream": "CyberArk Governance",
+      "itemCount": 4,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "CyberArk Governance",
-      "itemCount": 4
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "escalation",
       "itemIds": [
         "R-2b2a241d9c",
@@ -1028,1003 +1026,995 @@
         "R-1de6e7cdee",
         "R-cd89918f9c"
       ],
+      "workstream": "Rapid Recovery",
+      "itemCount": 4,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "Rapid Recovery",
-      "itemCount": 4
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "R-e3dd5be6ae",
         "R-f02ad44a72",
         "R-ae3cccdff8"
       ],
-      "kinds": [
-        "risk"
-      ],
-      "p1Count": 0,
       "workstream": "CMDB Mapping",
-      "itemCount": 3
+      "itemCount": 3,
+      "topPriority": 2.0
     },
     {
-      "topPriority": 2.0,
+      "kinds": [
+        "decision",
+        "risk"
+      ],
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "D-3ced6cbb47",
         "R-8ad2d2ce2f",
         "R-9bfa424dbf"
       ],
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "p1Count": 0,
       "workstream": "Developer XP Dashboard",
-      "itemCount": 3
+      "itemCount": 3,
+      "topPriority": 2.0
     },
     {
-      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "cyberark",
       "itemIds": [
         "R-bf28edfac4",
         "R-b1cf205d0f"
       ],
+      "workstream": "CyberArk Governance",
+      "itemCount": 2,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "CyberArk Governance",
-      "itemCount": 2
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "team",
       "itemIds": [
         "R-27c07d48fd",
         "R-c7355ab891"
       ],
+      "workstream": "GOCC Transition",
+      "itemCount": 2,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "GOCC Transition",
-      "itemCount": 2
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "ingenium",
       "itemIds": [
         "R-bafab65c68",
         "R-b493137b8f"
       ],
+      "workstream": "Rapid Recovery",
+      "itemCount": 2,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "Rapid Recovery",
-      "itemCount": 2
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "R-121760730c"
       ],
+      "workstream": "Capacity Management",
+      "itemCount": 1,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "risk"
       ],
-      "p1Count": 0,
-      "workstream": "Capacity Management",
-      "itemCount": 1
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "R-1c3d9c0e3b"
       ],
-      "kinds": [
-        "risk"
-      ],
-      "p1Count": 0,
       "workstream": "MMM L2",
-      "itemCount": 1
+      "itemCount": 1,
+      "topPriority": 2.0
     },
     {
-      "topPriority": 2.0,
+      "kinds": [
+        "decision"
+      ],
       "minEscalationRisk": 12.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "D-c54ce48b2b"
       ],
+      "workstream": "Project Matryoshka",
+      "itemCount": 1,
+      "topPriority": 2.0
+    },
+    {
       "kinds": [
         "decision"
       ],
-      "p1Count": 0,
-      "workstream": "Project Matryoshka",
-      "itemCount": 1
-    },
-    {
-      "topPriority": 2.0,
       "minEscalationRisk": 0.0,
+      "p1Count": 0,
       "theme": "(misc)",
       "itemIds": [
         "D-6f81d99006"
       ],
-      "kinds": [
-        "decision"
-      ],
-      "p1Count": 0,
       "workstream": "Rapid Recovery",
-      "itemCount": 1
+      "itemCount": 1,
+      "topPriority": 2.0
     }
   ],
   "items": [
     {
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "impact": "",
-      "confidence": 0.44,
-      "recurrenceCount": 1,
-      "priority": 1,
-      "ownerConfidence": "medium",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
-      "rationale": "Pending 14 days - direct outreach to owner today.",
-      "verb": "Escalate",
-      "linkedActionCount": 1,
-      "id": "D-fadd968d28",
-      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-      "kind": "decision",
-      "dueBy": "2026-07-17",
-      "trend": null,
-      "actionSource": "inferred",
-      "severity": null,
-      "outcomeQuality": "Unknown",
-      "ageDays": 14,
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "source": "workstream-boost",
-          "delta": 0.08,
-          "reason": "preferred workstream: ADX Registration"
-        },
-        {
-          "source": "owner-boost",
-          "delta": 0.05,
-          "reason": "preferred owner: Balaji Ravi"
-        },
-        {
-          "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
-        },
-        {
-          "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
-        },
-        {
-          "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
-        },
-        {
-          "source": "learning:delayed-workstream",
-          "delta": 0.1,
-          "reason": "workstream has delayed decisions - boost escalate confidence"
-        }
-      ],
-      "workstream": "ADX Registration",
-      "actionClass": "FOLLOW_UP",
-      "rankingScore": 0.48,
       "timeToEscalationRisk": 0,
-      "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 14 days without resolution",
-      "suggestedOwner": "",
-      "decisionOutcome": "",
-      "owner": "Balaji Ravi"
-    },
-    {
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "impact": "",
-      "confidence": 0.69,
-      "recurrenceCount": 1,
-      "priority": 1,
-      "ownerConfidence": "high",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
-      "rationale": "Pending 14 days - David to escalate to Balaji Ravi today.",
-      "verb": "Escalate",
-      "linkedActionCount": 1,
-      "id": "D-f91314563c",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "kind": "decision",
-      "dueBy": "2026-07-17",
-      "trend": null,
-      "actionSource": "inferred",
-      "severity": null,
-      "outcomeQuality": "Unknown",
-      "ageDays": 14,
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "source": "workstream-boost",
-          "delta": 0.1,
-          "reason": "preferred workstream: GBO Batch Transition"
-        },
-        {
-          "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
-        },
-        {
-          "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
-        },
-        {
-          "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
-        },
-        {
-          "source": "learning:delayed-workstream",
-          "delta": 0.1,
-          "reason": "workstream has delayed decisions - boost escalate confidence"
-        }
-      ],
-      "workstream": "GBO Batch Transition",
-      "actionClass": "DO",
-      "rankingScore": 0.45,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
-      "suggestedOwner": "",
-      "decisionOutcome": "",
-      "owner": "David Klan"
-    },
-    {
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "impact": "",
-      "confidence": 0.69,
-      "recurrenceCount": 1,
-      "priority": 1,
-      "ownerConfidence": "high",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
-      "rationale": "Pending 14 days - direct outreach to owner today.",
-      "verb": "Escalate",
-      "linkedActionCount": 1,
-      "id": "D-0ac2a0c612",
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "kind": "decision",
-      "dueBy": "2026-07-17",
-      "trend": null,
-      "actionSource": "inferred",
-      "severity": null,
-      "outcomeQuality": "Unknown",
-      "ageDays": 14,
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "source": "workstream-boost",
-          "delta": 0.08,
-          "reason": "preferred workstream: Capacity Management"
-        },
-        {
-          "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
-        },
-        {
-          "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
-        },
-        {
-          "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
-        },
-        {
-          "source": "learning:delayed-workstream",
-          "delta": 0.1,
-          "reason": "workstream has delayed decisions - boost escalate confidence"
-        }
-      ],
-      "workstream": "Capacity Management",
-      "actionClass": "FOLLOW_UP",
-      "rankingScore": 0.43,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution",
-      "suggestedOwner": "",
-      "decisionOutcome": "",
-      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)"
-    },
-    {
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "impact": "",
-      "confidence": 0.44,
-      "recurrenceCount": 1,
-      "priority": 1,
-      "ownerConfidence": "medium",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
-      "rationale": "Pending 14 days - direct outreach to owner today.",
-      "verb": "Escalate",
-      "linkedActionCount": 1,
-      "id": "D-30ae77972e",
       "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "kind": "decision",
-      "dueBy": "2026-07-17",
-      "trend": null,
-      "actionSource": "inferred",
-      "severity": null,
       "outcomeQuality": "Unknown",
-      "ageDays": 14,
-      "deadline": "2026-07-17",
-      "personalizationSignals": [
-        {
-          "source": "workstream-boost",
-          "delta": 0.1,
-          "reason": "preferred workstream: GBO Batch Transition"
-        },
-        {
-          "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
-        },
-        {
-          "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
-        },
-        {
-          "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
-        },
-        {
-          "source": "learning:delayed-workstream",
-          "delta": 0.1,
-          "reason": "workstream has delayed decisions - boost escalate confidence"
-        },
-        {
-          "source": "learning:overloaded-owner",
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity"
-        }
-      ],
-      "workstream": "GBO Batch Transition",
-      "actionClass": "FOLLOW_UP",
-      "rankingScore": 0.4,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Contact Birger Fjaellman today - decision on GBO Batch Transition aged 14 days without resolution",
-      "suggestedOwner": "",
-      "decisionOutcome": "",
-      "owner": "Birger Fjaellman"
-    },
-    {
       "delta": {
         "daysSinceLastTouched": 14,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.44,
-      "recurrenceCount": 1,
+      "actionSource": "inferred",
+      "severity": null,
       "priority": 1,
       "ownerConfidence": "medium",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
+      "owner": "Balaji Ravi",
+      "suggestedOwner": "",
       "rationale": "Pending 14 days - direct outreach to owner today.",
-      "verb": "Escalate",
-      "linkedActionCount": 1,
-      "id": "D-e275b159e5",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "kind": "decision",
-      "dueBy": "2026-07-17",
       "trend": null,
-      "actionSource": "inferred",
-      "severity": null,
-      "outcomeQuality": "Unknown",
-      "ageDays": 14,
+      "actionClass": "FOLLOW_UP",
+      "dueBy": "2026-07-17",
+      "recurrenceCount": 1,
+      "workstream": "GBO Batch Transition",
+      "id": "D-30ae77972e",
+      "verb": "Escalate",
       "deadline": "2026-07-17",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.44,
+      "decisionStatus": "Pending",
+      "rankingScore": 0.5,
+      "nextAction": "Contact Balaji Ravi today - decision on GBO Batch Transition aged 14 days without resolution",
+      "ageDays": 14,
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: GBO Batch Transition",
+          "source": "workstream-boost",
+          "delta": 0.1
+        },
+        {
+          "reason": "preferred owner: Balaji Ravi",
+          "source": "owner-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "kind bias: decision",
           "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
+          "delta": 0.05
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         },
         {
+          "reason": "no explicit **Action:** marker - inference applied",
           "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
+          "delta": 0.05
         },
         {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
           "source": "learning:delayed-workstream",
-          "delta": 0.1,
-          "reason": "workstream has delayed decisions - boost escalate confidence"
-        },
-        {
-          "source": "learning:overloaded-owner",
-          "delta": -0.05,
-          "reason": "signal is noisier when owner is over-capacity"
+          "delta": 0.1
         }
-      ],
-      "workstream": "GOCC Transition",
-      "actionClass": "FOLLOW_UP",
-      "rankingScore": 0.3,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 14 days without resolution",
-      "suggestedOwner": "",
-      "decisionOutcome": "",
-      "owner": "Birger Fjaellman"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 14,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.19,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
-      "rationale": "Owner not yet confirmed; ownership must precede action.",
-      "verb": "Confirm",
-      "linkedActionCount": 1,
-      "id": "D-6f81d99006",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "kind": "decision",
-      "dueBy": "2026-07-24",
-      "trend": null,
       "actionSource": "inferred",
       "severity": null,
-      "outcomeQuality": "Unknown",
+      "priority": 1,
+      "ownerConfidence": "medium",
+      "owner": "Balaji Ravi",
+      "suggestedOwner": "",
+      "rationale": "Pending 14 days - direct outreach to owner today.",
+      "trend": null,
+      "actionClass": "FOLLOW_UP",
+      "dueBy": "2026-07-17",
+      "recurrenceCount": 1,
+      "workstream": "ADX Registration",
+      "id": "D-fadd968d28",
+      "verb": "Escalate",
+      "deadline": "2026-07-17",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.44,
+      "decisionStatus": "Pending",
+      "rankingScore": 0.48,
+      "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 14 days without resolution",
       "ageDays": 14,
-      "deadline": "2026-07-24",
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: ADX Registration",
           "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
+          "delta": 0.08
         },
         {
+          "reason": "preferred owner: Balaji Ravi",
+          "source": "owner-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "kind bias: decision",
           "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
+          "delta": 0.05
         },
         {
-          "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.19 < 0.4"
-        },
-        {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         },
         {
+          "reason": "no explicit **Action:** marker - inference applied",
           "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
+          "delta": 0.05
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
         }
-      ],
-      "workstream": "Rapid Recovery",
+      ]
+    },
+    {
+      "timeToEscalationRisk": 0,
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "outcomeQuality": "Unknown",
+      "delta": {
+        "daysSinceLastTouched": 14,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "actionSource": "inferred",
+      "severity": null,
+      "priority": 1,
+      "ownerConfidence": "high",
+      "owner": "David Klan",
+      "suggestedOwner": "",
+      "rationale": "Pending 14 days - David to escalate to Balaji Ravi today.",
+      "trend": null,
+      "actionClass": "DO",
+      "dueBy": "2026-07-17",
+      "recurrenceCount": 1,
+      "workstream": "GBO Batch Transition",
+      "id": "D-f91314563c",
+      "verb": "Escalate",
+      "deadline": "2026-07-17",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.69,
+      "decisionStatus": "Pending",
+      "rankingScore": 0.45,
+      "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
+      "ageDays": 14,
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: GBO Batch Transition",
+          "source": "workstream-boost",
+          "delta": 0.1
+        },
+        {
+          "reason": "kind bias: decision",
+          "source": "kind-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "no explicit **Action:** marker - inference applied",
+          "source": "inferred-action",
+          "delta": 0.05
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        }
+      ]
+    },
+    {
+      "timeToEscalationRisk": 0,
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "outcomeQuality": "Unknown",
+      "delta": {
+        "daysSinceLastTouched": 14,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "actionSource": "inferred",
+      "severity": null,
+      "priority": 1,
+      "ownerConfidence": "high",
+      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
+      "suggestedOwner": "",
+      "rationale": "Pending 14 days - direct outreach to owner today.",
+      "trend": null,
+      "actionClass": "FOLLOW_UP",
+      "dueBy": "2026-07-17",
+      "recurrenceCount": 1,
+      "workstream": "Capacity Management",
+      "id": "D-0ac2a0c612",
+      "verb": "Escalate",
+      "deadline": "2026-07-17",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.69,
+      "decisionStatus": "Pending",
+      "rankingScore": 0.43,
+      "nextAction": "Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution",
+      "ageDays": 14,
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Capacity Management",
+          "source": "workstream-boost",
+          "delta": 0.08
+        },
+        {
+          "reason": "kind bias: decision",
+          "source": "kind-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "no explicit **Action:** marker - inference applied",
+          "source": "inferred-action",
+          "delta": 0.05
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        }
+      ]
+    },
+    {
+      "timeToEscalationRisk": 0,
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "outcomeQuality": "Unknown",
+      "delta": {
+        "daysSinceLastTouched": 14,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "actionSource": "inferred",
+      "severity": null,
+      "priority": 1,
+      "ownerConfidence": "medium",
+      "owner": "Birger Fjaellman",
+      "suggestedOwner": "",
+      "rationale": "Pending 14 days - direct outreach to owner today.",
+      "trend": null,
+      "actionClass": "FOLLOW_UP",
+      "dueBy": "2026-07-17",
+      "recurrenceCount": 1,
+      "workstream": "GOCC Transition",
+      "id": "D-e275b159e5",
+      "verb": "Escalate",
+      "deadline": "2026-07-17",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.44,
+      "decisionStatus": "Pending",
+      "rankingScore": 0.35,
+      "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 14 days without resolution",
+      "ageDays": 14,
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
+      "personalizationSignals": [
+        {
+          "reason": "kind bias: decision",
+          "source": "kind-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "no explicit **Action:** marker - inference applied",
+          "source": "inferred-action",
+          "delta": 0.05
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        }
+      ]
+    },
+    {
+      "timeToEscalationRisk": 0,
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "outcomeQuality": "Unknown",
+      "delta": {
+        "daysSinceLastTouched": 14,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "actionSource": "inferred",
+      "severity": null,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
+      "rationale": "Owner not yet confirmed; ownership must precede action.",
+      "trend": null,
       "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "D-6f81d99006",
+      "verb": "Confirm",
+      "deadline": "2026-07-24",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.19,
+      "decisionStatus": "Pending",
       "rankingScore": 0.3,
-      "timeToEscalationRisk": 0,
       "nextAction": "Assign an owner for Rapid Recovery before this decision can move",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      "ageDays": 14,
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "kind bias: decision",
+          "source": "kind-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "no explicit **Action:** marker - inference applied",
+          "source": "inferred-action",
+          "delta": 0.05
+        }
+      ]
     },
     {
-      "delta": {
-        "daysSinceLastTouched": 4,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "impact": "",
-      "confidence": 0.29,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-bafab65c68",
+      "timeToEscalationRisk": 0,
       "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "increasing",
-      "actionSource": "",
-      "severity": "High",
       "outcomeQuality": "Unknown",
-      "ageDays": 4,
-      "deadline": "2026-07-24",
-      "personalizationSignals": [
-        {
-          "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
-        },
-        {
-          "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.29 < 0.4"
-        },
-        {
-          "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
-        }
-      ],
-      "workstream": "Rapid Recovery",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
-    },
-    {
       "delta": {
         "daysSinceLastTouched": 4,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.29,
-      "recurrenceCount": 1,
+      "actionSource": "",
+      "severity": "High",
       "priority": 2,
       "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
       "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "increasing",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "R-bafab65c68",
       "verb": "Investigate",
+      "deadline": "2026-07-24",
       "linkedActionCount": 0,
-      "id": "R-2b2a241d9c",
+      "decisionOutcome": "",
+      "confidence": 0.29,
+      "decisionStatus": "",
+      "rankingScore": 0.2,
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "ageDays": 4,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.29 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ]
+    },
+    {
+      "timeToEscalationRisk": 0,
       "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "increasing",
-      "actionSource": "",
-      "severity": "High",
       "outcomeQuality": "Unknown",
-      "ageDays": 4,
-      "deadline": "2026-07-24",
-      "personalizationSignals": [
-        {
-          "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
-        },
-        {
-          "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.29 < 0.4"
-        },
-        {
-          "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
-        }
-      ],
-      "workstream": "Rapid Recovery",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
-    },
-    {
       "delta": {
         "daysSinceLastTouched": 4,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.29,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-b493137b8f",
-      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "increasing",
       "actionSource": "",
       "severity": "High",
-      "outcomeQuality": "Unknown",
-      "ageDays": 4,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "increasing",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "R-2b2a241d9c",
+      "verb": "Investigate",
       "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.29,
+      "decisionStatus": "",
+      "rankingScore": 0.2,
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "ageDays": 4,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: Rapid Recovery",
           "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
+          "delta": 0.15
         },
         {
+          "reason": "confidence 0.29 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.29 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         }
-      ],
-      "workstream": "Rapid Recovery",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "outcomeQuality": "Unknown",
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "actionSource": "",
+      "severity": "High",
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "increasing",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "R-b493137b8f",
+      "verb": "Investigate",
+      "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.29,
+      "decisionStatus": "",
+      "rankingScore": 0.2,
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "ageDays": 4,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.29 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ]
+    },
+    {
+      "timeToEscalationRisk": 0,
+      "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 1,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.29,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-aa18501480",
-      "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "increasing",
       "actionSource": "",
       "severity": "High",
-      "outcomeQuality": "Unknown",
-      "ageDays": 1,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "increasing",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "R-aa18501480",
+      "verb": "Investigate",
       "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.29,
+      "decisionStatus": "",
+      "rankingScore": 0.2,
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "ageDays": 1,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: Rapid Recovery",
           "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
+          "delta": 0.15
         },
         {
+          "reason": "confidence 0.29 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.29 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         }
-      ],
-      "workstream": "Rapid Recovery",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 0,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.29,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-1de6e7cdee",
-      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "increasing",
       "actionSource": "",
       "severity": "High",
-      "outcomeQuality": "Unknown",
-      "ageDays": 0,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "increasing",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "R-1de6e7cdee",
+      "verb": "Investigate",
       "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.29,
+      "decisionStatus": "",
+      "rankingScore": 0.2,
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "ageDays": 0,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: Rapid Recovery",
           "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
+          "delta": 0.15
         },
         {
+          "reason": "confidence 0.29 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.29 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         }
-      ],
-      "workstream": "Rapid Recovery",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "Review and operationalize the vendor escalation format",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 87,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.09,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-cd89918f9c",
-      "title": "Review and operationalize the vendor escalation format",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "stable",
       "actionSource": "",
       "severity": "High",
-      "outcomeQuality": "Unknown",
-      "ageDays": 87,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Balaji Ravi",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "stable",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Rapid Recovery",
+      "id": "R-cd89918f9c",
+      "verb": "Investigate",
       "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.09,
+      "decisionStatus": "",
+      "rankingScore": 0.2,
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "ageDays": 87,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: Rapid Recovery",
           "source": "workstream-boost",
-          "delta": 0.15,
-          "reason": "preferred workstream: Rapid Recovery"
+          "delta": 0.15
         },
         {
+          "reason": "confidence 0.09 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.09 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         }
-      ],
-      "workstream": "Rapid Recovery",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.2,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "suggestedOwner": "Balaji Ravi",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 21,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.19,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-b882fa398a",
-      "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "decreasing",
       "actionSource": "",
       "severity": "Medium",
-      "outcomeQuality": "Unknown",
-      "ageDays": 21,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Rowena",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "decreasing",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "GBO Batch Transition",
+      "id": "R-b882fa398a",
+      "verb": "Investigate",
       "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.19,
+      "decisionStatus": "",
+      "rankingScore": 0.15,
+      "nextAction": "Assign an owner for GBO Batch Transition risk before it can be actioned",
+      "ageDays": 21,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: GBO Batch Transition",
           "source": "workstream-boost",
-          "delta": 0.1,
-          "reason": "preferred workstream: GBO Batch Transition"
+          "delta": 0.1
         },
         {
+          "reason": "confidence 0.19 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.19 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         }
-      ],
-      "workstream": "GBO Batch Transition",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.15,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for GBO Batch Transition risk before it can be actioned",
-      "suggestedOwner": "Rowena",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 14,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.19,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": true,
-      "decisionStatus": "Pending",
-      "rationale": "Owner not yet confirmed; ownership must precede action.",
-      "verb": "Confirm",
-      "linkedActionCount": 1,
-      "id": "D-3ced6cbb47",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "kind": "decision",
-      "dueBy": "2026-07-24",
-      "trend": null,
       "actionSource": "inferred",
       "severity": null,
-      "outcomeQuality": "Unknown",
-      "ageDays": 14,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Deb",
+      "rationale": "Owner not yet confirmed; ownership must precede action.",
+      "trend": null,
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "Developer XP Dashboard",
+      "id": "D-3ced6cbb47",
+      "verb": "Confirm",
       "deadline": "2026-07-24",
+      "linkedActionCount": 1,
+      "decisionOutcome": "",
+      "confidence": 0.19,
+      "decisionStatus": "Pending",
+      "rankingScore": 0.15,
+      "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
+      "ageDays": 14,
+      "decisionRequired": true,
+      "kind": "decision",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "kind bias: decision",
           "source": "kind-boost",
-          "delta": 0.05,
-          "reason": "kind bias: decision"
+          "delta": 0.05
         },
         {
+          "reason": "confidence 0.19 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.19 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         },
         {
+          "reason": "no explicit **Action:** marker - inference applied",
           "source": "inferred-action",
-          "delta": 0.05,
-          "reason": "no explicit **Action:** marker - inference applied"
+          "delta": 0.05
         }
-      ],
-      "workstream": "Developer XP Dashboard",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.15,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
-      "suggestedOwner": "Deb",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     },
     {
+      "timeToEscalationRisk": 0,
+      "title": "Vendor Escalation",
+      "outcomeQuality": "Unknown",
       "delta": {
         "daysSinceLastTouched": 87,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "impact": "",
-      "confidence": 0.09,
-      "recurrenceCount": 1,
-      "priority": 2,
-      "ownerConfidence": "low",
-      "decisionRequired": false,
-      "decisionStatus": "",
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "verb": "Investigate",
-      "linkedActionCount": 0,
-      "id": "R-1c3d9c0e3b",
-      "title": "Vendor Escalation",
-      "kind": "risk",
-      "dueBy": "2026-07-24",
-      "trend": "stable",
       "actionSource": "",
       "severity": "High",
-      "outcomeQuality": "Unknown",
-      "ageDays": 87,
+      "priority": 2,
+      "ownerConfidence": "low",
+      "owner": "Unassigned",
+      "suggestedOwner": "Hari",
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "trend": "stable",
+      "actionClass": "DECIDE",
+      "dueBy": "2026-07-24",
+      "recurrenceCount": 1,
+      "workstream": "MMM L2",
+      "id": "R-1c3d9c0e3b",
+      "verb": "Investigate",
       "deadline": "2026-07-24",
+      "linkedActionCount": 0,
+      "decisionOutcome": "",
+      "confidence": 0.09,
+      "decisionStatus": "",
+      "rankingScore": 0.15,
+      "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
+      "ageDays": 87,
+      "decisionRequired": false,
+      "kind": "risk",
+      "impact": "",
       "personalizationSignals": [
         {
+          "reason": "preferred workstream: MMM L2",
           "source": "workstream-boost",
-          "delta": 0.1,
-          "reason": "preferred workstream: MMM L2"
+          "delta": 0.1
         },
         {
+          "reason": "confidence 0.09 < 0.4",
           "source": "low-confidence",
-          "delta": -0.1,
-          "reason": "confidence 0.09 < 0.4"
+          "delta": -0.1
         },
         {
+          "reason": "escalates in 0d",
           "source": "imminent-escalation",
-          "delta": 0.15,
-          "reason": "escalates in 0d"
+          "delta": 0.15
         }
-      ],
-      "workstream": "MMM L2",
-      "actionClass": "DECIDE",
-      "rankingScore": 0.15,
-      "timeToEscalationRisk": 0,
-      "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
-      "suggestedOwner": "Hari",
-      "decisionOutcome": "",
-      "owner": "Unassigned"
+      ]
     }
   ]
 }
