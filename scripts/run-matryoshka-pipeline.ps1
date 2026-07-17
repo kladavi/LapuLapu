@@ -62,11 +62,12 @@ function Get-PwshPath {
 function Read-StateFile {
     param([string] $Path)
     $default = [ordered]@{
-        lastProcessedActivityFile = ''
-        lastProcessedActivityHash = ''
-        lastSuccessfulRun         = ''
-        lastCommitHash            = ''
-        status                    = 'initialized'
+        lastProcessedActivityFile      = ''
+        lastProcessedActivityHash      = ''
+        lastProcessedCorpusSignature   = ''
+        lastSuccessfulRun              = ''
+        lastCommitHash                 = ''
+        status                         = 'initialized'
     }
     if (-not (Test-Path -LiteralPath $Path)) {
         ($default | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
@@ -111,8 +112,10 @@ function New-HealthObject {
         lastRun                  = ''
         status                   = 'unknown'
         message                  = ''
+        triggeredBy              = ''
         lastActivityFile         = ''
         lastActivityHash         = ''
+        lastCorpusSignature      = ''
         currentFocusGenerated    = $false
         trendsGenerated          = $false
         morningBriefingGenerated = $false
@@ -132,6 +135,64 @@ function Save-HealthFile {
     ($Health | ConvertTo-Json -Depth 5) | Set-Content -LiteralPath $Path -Encoding UTF8
 }
 
+# --- V3.1 addition: corpus signature ------------------------------------------
+# Compute a lightweight fingerprint of every corpus file the generator scans.
+# Trigger fires when the fingerprint changes OR when a new 14-day recap arrives.
+# We intentionally hash a manifest string (path|size|mtime) rather than every
+# file's contents so it stays fast on large inboxes.
+
+$CorpusScanFolders = @(
+    '00-context',
+    '01-inbox',
+    (Join-Path '01-inbox' 'copilot-activity'),
+    '02-work',
+    (Join-Path '03-reporting' 'weekly'),
+    'docs'
+)
+$CorpusExts = @('.md', '.txt', '.eml', '.yaml', '.yml')
+# Generated artifacts must not participate in the signature or the pipeline
+# would loop forever (its own outputs would look like new inputs).
+$CorpusExcludeSubstrings = @(
+    '00-context\generated',
+    '00-context/generated',
+    '00-context\automation-state.json',
+    '00-context/automation-state.json'
+)
+
+function Get-CorpusSignature {
+    $sb = [System.Text.StringBuilder]::new()
+    foreach ($folder in $CorpusScanFolders) {
+        $abs = Join-Path $RepoRoot $folder
+        if (-not (Test-Path -LiteralPath $abs)) { continue }
+        Get-ChildItem -LiteralPath $abs -File -Recurse -ErrorAction SilentlyContinue |
+            Where-Object {
+                $ext = $_.Extension.ToLowerInvariant()
+                if ($CorpusExts -notcontains $ext) { return $false }
+                foreach ($ex in $CorpusExcludeSubstrings) {
+                    if ($_.FullName -like "*$ex*") { return $false }
+                }
+                return $true
+            } |
+            Sort-Object FullName |
+            ForEach-Object {
+                $rel = $_.FullName.Substring($RepoRoot.Length).TrimStart('\','/')
+                [void]$sb.Append($rel)
+                [void]$sb.Append('|')
+                [void]$sb.Append($_.Length)
+                [void]$sb.Append('|')
+                [void]$sb.Append($_.LastWriteTimeUtc.Ticks)
+                [void]$sb.Append("`n")
+            }
+    }
+    if ($sb.Length -eq 0) { return '' }
+    $bytes = [System.Text.Encoding]::UTF8.GetBytes($sb.ToString())
+    $sha   = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $hash = $sha.ComputeHash($bytes)
+        return (-join ($hash | ForEach-Object { $_.ToString('x2') }))
+    } finally { $sha.Dispose() }
+}
+
 # --- Locate newest recap ----------------------------------------------------
 
 function Invoke-MatryoshkaPipeline {
@@ -139,43 +200,54 @@ function Invoke-MatryoshkaPipeline {
 
     Write-Log "Pipeline start. Repo: $RepoRoot"
 
-    if (-not (Test-Path -LiteralPath $ActivityDir)) {
-        Write-Log "Activity directory not found: $ActivityDir"
-        $Health.status  = 'no-op'
-        $Health.message = 'Activity directory not found.'
-        return
-    }
-
-    $latest = Get-ChildItem -LiteralPath $ActivityDir -File -Filter '*-14-day-activity.md' -ErrorAction SilentlyContinue |
-              Sort-Object LastWriteTime -Descending |
-              Select-Object -First 1
-
-    if (-not $latest) {
-        Write-Log 'No 14-day activity recap found. Exiting.'
-        $Health.status  = 'no-op'
-        $Health.message = 'No 14-day activity recap found.'
-        return
-    }
-
-    Write-Log "Latest recap: $($latest.Name) (modified $($latest.LastWriteTime.ToString('s')))"
-    $Health.lastActivityFile = $latest.Name
-
-    # --- Compare against automation-state ---------------------------------------
-
     $state = Read-StateFile -Path $StateFile
-    $hash  = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
-    $Health.lastActivityHash = $hash
 
-    if ($state.lastProcessedActivityHash -eq $hash) {
-        Write-Log 'Recap already processed (hash unchanged). Nothing to do.'
+    # --- Trigger 1: newest 14-day activity recap (optional) --------------------
+    $recapChanged = $false
+    $hash = ''
+    $latest = $null
+    if (Test-Path -LiteralPath $ActivityDir) {
+        $latest = Get-ChildItem -LiteralPath $ActivityDir -File -Filter '*-14-day-activity.md' -ErrorAction SilentlyContinue |
+                  Sort-Object LastWriteTime -Descending |
+                  Select-Object -First 1
+    }
+    if ($latest) {
+        Write-Log "Latest recap: $($latest.Name) (modified $($latest.LastWriteTime.ToString('s')))"
+        $Health.lastActivityFile = $latest.Name
+        $hash = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
+        $Health.lastActivityHash = $hash
+        if ($state.lastProcessedActivityHash -ne $hash) {
+            $recapChanged = $true
+            Write-Log "Recap hash changed. Previous: '$($state.lastProcessedActivityHash)'  new: '$hash'"
+        }
+    } else {
+        Write-Log 'No 14-day activity recap found.'
+    }
+
+    # --- Trigger 2 (V3.1): corpus signature ------------------------------------
+    Write-Log 'Computing corpus signature.'
+    $corpusSig = Get-CorpusSignature
+    $Health.lastCorpusSignature = $corpusSig
+    $corpusChanged = ($state.lastProcessedCorpusSignature -ne $corpusSig)
+    if ($corpusChanged) {
+        Write-Log "Corpus signature changed. Previous: '$($state.lastProcessedCorpusSignature)'  new: '$corpusSig'"
+    } else {
+        Write-Log 'Corpus signature unchanged since previous run.'
+    }
+
+    if (-not $recapChanged -and -not $corpusChanged) {
+        Write-Log 'Nothing to do: no new recap and no corpus changes.'
         $Health.status         = 'no-op'
-        $Health.message        = 'Recap hash unchanged since previous run.'
-        # Carry forward last known good commit hash so the dashboard remains useful.
+        $Health.message        = 'No new recap and corpus signature unchanged.'
+        $Health.triggeredBy    = 'none'
         $Health.lastCommitHash = $state.lastCommitHash
         return
     }
 
-    Write-Log "New content detected. Previous hash: '$($state.lastProcessedActivityHash)'  new hash: '$hash'"
+    $Health.triggeredBy = if ($recapChanged -and $corpusChanged) { 'recap+corpus' }
+                          elseif ($recapChanged)                  { 'recap' }
+                          else                                     { 'corpus' }
+    Write-Log "Trigger: $($Health.triggeredBy)"
 
     # --- Run generator ----------------------------------------------------------
 
@@ -208,10 +280,15 @@ function Invoke-MatryoshkaPipeline {
     # --- Update automation-state.json -------------------------------------------
 
     $now = (Get-Date).ToString('s')
-    $state.lastProcessedActivityFile = $latest.Name
-    $state.lastProcessedActivityHash = $hash
-    $state.lastSuccessfulRun         = $now
-    $state.status                    = 'success'
+    if ($latest) {
+        $state.lastProcessedActivityFile = $latest.Name
+        $state.lastProcessedActivityHash = $hash
+    }
+    # Recompute corpus signature AFTER generator run so the generator's own
+    # mtime changes on control YAMLs don't cause a phantom retrigger.
+    $state.lastProcessedCorpusSignature = Get-CorpusSignature
+    $state.lastSuccessfulRun            = $now
+    $state.status                       = 'success'
     Save-StateFile -State $state -Path $StateFile
     Write-Log "Automation state updated (lastSuccessfulRun=$now)."
 
@@ -221,7 +298,7 @@ function Invoke-MatryoshkaPipeline {
     git status --short
 
     git add `
-        '01-inbox/copilot-activity' `
+        '01-inbox' `
         '00-context/generated' `
         '00-context/automation-state.json'
 
