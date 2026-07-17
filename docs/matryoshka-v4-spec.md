@@ -4,7 +4,14 @@
 **Feedback source**: [`05-memory/feedback/2026-07-live-test.md`](../05-memory/feedback/2026-07-live-test.md)
 **Current baseline**: V3.1 (adaptive intelligence + corpus-signature trigger, live at `6cc43b3`)
 **Author**: David Klan · Manulife ETS Japan
-**Date**: 2026-07-17
+**Date**: 2026-07-17 (rev1)
+
+## Revision history
+
+| Rev | Date | Changes |
+|---|---|---|
+| 0 | 2026-07-17 | Initial spec covering Phases 1–8. |
+| 1 | 2026-07-17 | Review-feedback pass. **Gap 1**: `next_action` quality validation (min words, approved verbs, banned vague verbs). **Gap 2**: `why_it_matters` clarity — must contain impact/dependency signal words. **Gap 3**: Explicit deterministic status rules (new Phase 1c). **Gap 4**: `context_metadata` layer added alongside text summary (Phase 5a-bis). **Gaps 5 + 6**: New Phase 9 — Current Focus Model with Priority Inbox / Dashboard selection logic and `engaged` signal. |
 
 ---
 
@@ -75,6 +82,11 @@ export interface MatryoshkaItem {
   source: string;                    // primary source (canonical repo-relative path)
   source_uri?: string;               // clickable if applicable (Teams URL etc)
   context_summary: string;           // 2-3 sentences from the source paragraph
+  context_metadata: {                // rev1 (Gap 4): structured metadata layer alongside text
+    last_mention: string;            // ISO — most recent occurrence in corpus
+    last_activity: string;           // ISO — most recent update touching this item
+    actors: string[];                // people named in the source context
+  };
   related_items: string[];           // IDs of related MatryoshkaItems
 
   // --- CONFIDENCE + DEDUPE (Phase 6) ---
@@ -85,6 +97,10 @@ export interface MatryoshkaItem {
   first_seen: string;                // ISO
   last_updated: string;              // ISO
   activity_log: MatryoshkaActivityLogEntry[];
+
+  // --- ENGAGEMENT (rev1, Gap 6) ---
+  engaged: boolean;                  // true if David's activity is detected in log or source
+  engagement_reason: string;         // human-readable why (e.g. "Teams chat contribution 2026-07-15")
 
   // --- DELTA (Phase 4, computed at emit time) ---
   delta: {
@@ -135,6 +151,30 @@ export function validateItem(candidate: Partial<MatryoshkaItem>):
     errors.push({ itemId: candidate.id!, field: "title", reason: "title must not start with imperative verb — that's what action_class is for" });
   }
 
+  // rev1 (Gap 1): next_action QUALITY, not just presence
+  if (candidate.next_action) {
+    const words = candidate.next_action.trim().split(/\s+/).filter(Boolean);
+    if (words.length < 5) {
+      errors.push({ itemId: candidate.id!, field: "next_action", reason: "must be at least 5 meaningful words" });
+    }
+    const approvedVerb = /^\s*(Send|Ask|Confirm|Decide|Investigate|Deploy|Create|Publish|Write|Complete|Finish|Implement|Escalate|Contact|Choose|Approve)\b/i;
+    if (!approvedVerb.test(candidate.next_action)) {
+      errors.push({ itemId: candidate.id!, field: "next_action", reason: "must start with an approved imperative verb (Send/Ask/Confirm/Decide/Investigate/Deploy/Create/Publish/Write/Complete/Finish/Implement/Escalate/Contact/Choose/Approve)" });
+    }
+    const vagueVerb = /\b(look into|handle|review|monitor|track|watch|touch base|circle back)\b/i;
+    if (vagueVerb.test(candidate.next_action)) {
+      errors.push({ itemId: candidate.id!, field: "next_action", reason: "contains vague verb (look into / handle / review / monitor / track / watch / touch base / circle back) — replace with concrete action" });
+    }
+  }
+
+  // rev1 (Gap 2): why_it_matters CLARITY, not just 1 sentence
+  if (candidate.why_it_matters) {
+    const signalWords = /\b(because|so that|otherwise|risk|impact|blocks|delays|prevents|enables|requires|deadline|outcome|drives)\b/i;
+    if (!signalWords.test(candidate.why_it_matters)) {
+      errors.push({ itemId: candidate.id!, field: "why_it_matters", reason: "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)" });
+    }
+  }
+
   return errors.length ? { ok: false, errors } : { ok: true, item: candidate as MatryoshkaItem };
 }
 ```
@@ -142,6 +182,57 @@ export function validateItem(candidate: Partial<MatryoshkaItem>):
 **Rejection log**: `00-context/generated/rejected-items.md` and `.json`. Every rejected candidate lands here with the field(s) that failed. Fixable — creators see exactly what's missing.
 
 **Where to plug in**: rewrite `New-InboxItem` in `scripts/generate-current-focus.ps1` as a builder that fails closed. Same for `Get-DecisionRegistry` and `Get-RiskRegister` finalizer loops. All three funnel through `Test-MatryoshkaItem`.
+
+### 1c. Deterministic status rules (rev1, Gap 3)
+
+Status is not a free-text field — it is computed from item state via a strict rules ladder. First match wins. Red requires a hard signal; soft signals only warrant amber.
+
+```powershell
+function Get-MatryoshkaStatus {
+    param([hashtable] $Entry, [datetime] $Now)
+    $reasons = [System.Collections.Generic.List[string]]::new()
+    $status  = 'green'
+
+    # --- RED (hard signals only) ---
+    if ($Entry.action_class -eq 'BLOCKED') { $status = 'red'; $reasons.Add('BLOCKED by external dependency') }
+    if ($Entry.context_summary -match '(?i)\b(blocker|show[- ]?stopper|critical|urgent|compliance gap|outage)\b') {
+        $status = 'red'; $reasons.Add('blocker keyword in context')
+    }
+    if ($Entry.decisionDeadline -and ($Entry.decisionDeadline -lt $Now.ToString('yyyy-MM-dd'))) {
+        $status = 'red'; $reasons.Add('deadline breached')
+    }
+    if ($Entry.type -eq 'risk' -and $Entry.severity -eq 'High') {
+        $status = 'red'; $reasons.Add('high-severity risk')
+    }
+
+    # --- AMBER (only if not already red) ---
+    if ($status -ne 'red') {
+        if ($Entry.next_action -match '(?i)\b(awaiting|waiting|uncertain|pending|tbd)\b') {
+            $status = 'amber'; $reasons.Add('waiting on external input')
+        }
+        if ($Entry.confidence_score -lt 0.4) {
+            $status = 'amber'; $reasons.Add("low confidence ($($Entry.confidence_score))")
+        }
+        if ($Entry.owner_confidence -eq 'low') {
+            $status = 'amber'; $reasons.Add('owner not confirmed')
+        }
+    }
+
+    # --- GREEN (default) ---
+    if ($status -eq 'green' -and $reasons.Count -eq 0) {
+        $reasons.Add('active progress, no blockers')
+    }
+
+    return @{ status = $status; status_reason = ($reasons -join '; ') }
+}
+```
+
+**Guardrails against the "everything is amber/red" problem from live-test feedback**:
+- `owner_confidence = low` alone downgrades to amber (not red) — unconfirmed ownership doesn't red-flag every item.
+- `confidence_score < 0.4` alone downgrades to amber — orphan-corpus noise stays amber.
+- Red requires a hard signal only: blocker keyword, deadline breach, high-severity risk, or blocked action_class. Soft signals cannot combine into red.
+- Trend direction is intentionally NOT a status input — it drives the delta ribbon (Phase 4d) instead.
+- The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3.x because 90% of items contained "escalate" in their action text. In V4, red is reserved for genuine blockers.
 
 ---
 
@@ -315,6 +406,49 @@ function Get-ContextSummary {
     return $summary
 }
 ```
+
+### 5a-bis. `context_metadata` layer (rev1, Gap 4)
+
+Text proximity alone doesn't explain WHAT the item is about — the live-test complaint *"I don't remember what this refers to (85 day aging)"* is a proximity-not-meaning failure. Add a structured metadata layer alongside the text slice so David sees actors + timestamps without reading the whole slice.
+
+```powershell
+function Get-ContextMetadata {
+    param([hashtable] $Entry, [object[]] $Records, [hashtable] $StakeholderNames)
+    $mentions = @()
+    foreach ($rec in $Records) {
+        if ($Entry.sourceFiles -contains $rec.RelPath) {
+            $mentions += @{ path = $rec.RelPath; mtime = $rec.LastWriteTime }
+        }
+    }
+    $mentions = @($mentions | Sort-Object mtime -Descending)
+
+    $lastMention = if ($mentions.Count -gt 0) { $mentions[0].mtime.ToString('s') } else { $Entry.last_updated }
+
+    # Actors = intersection of stakeholder names and text of the primary source
+    $primary = if ($mentions.Count -gt 0) { $mentions[0].path } else { $Entry.source }
+    $primaryText = if (Test-Path (Join-Path $ROOT $primary)) {
+        Get-Content (Join-Path $ROOT $primary) -Raw -Encoding UTF8
+    } else { '' }
+    $actors = @()
+    foreach ($n in @($StakeholderNames.Keys)) {
+        if ($primaryText -match ('(?i)\b' + [regex]::Escape($n) + '\b')) { $actors += $n }
+    }
+
+    return @{
+        last_mention  = $lastMention
+        last_activity = $Entry.last_updated
+        actors        = @($actors | Sort-Object -Unique)
+    }
+}
+```
+
+Consumers render this alongside the summary as:
+
+> **Last mention**: 2026-07-14 (`01-inbox/archive/20260714-....md`)
+> **Actors**: David, Balaji, Jonan, Dennis
+> **Last activity**: 2026-07-17 (item updated)
+
+For the 85-day vendor-escalation item that inspired this gap: `actors` would populate with the names in the archived email thread, and `last_mention` would surface as 2026-04-21 — immediately answering *"what does this refer to?"* without requiring the full source-file open.
 
 ### 5b. `related_items` matching
 
@@ -508,6 +642,108 @@ Removes the ~45 min Step 2 in the live-test log. Requires chat-approval for tone
 
 ---
 
+## 🌐 Phase 9 — Current Focus Model (rev1, Gaps 5 + 6)
+
+Filtering + delta produce a *pool of eligible items*. This phase defines the **selection logic** that determines what shows in Priority Inbox vs. Dashboard vs. Deep-Dive, and adds an explicit `engaged` signal so David sees the work he is actually driving.
+
+### 9a. Selection: Priority Inbox
+
+```
+Priority Inbox = items where:
+  stale = false
+  AND action_class ∈ {DO, DECIDE, FOLLOW_UP}
+  AND (
+       status = red
+       OR delta.updated_since_yesterday = true
+       OR (first_seen within last 7 days)
+       OR engaged = true
+      )
+```
+
+Capped as before: P1 top 5, P2 top 10, P3 top 10. Sort key remains priority → rankingScore → deadline → confidence → age.
+
+**Not shown in Priority Inbox** (still available elsewhere):
+- `INVESTIGATE` items → Investigations tab (they need thinking, not action-today)
+- `BLOCKED` items → Blockers panel (visible but grouped; David watches for state changes)
+- Stale items → collapsed disclosure
+
+### 9b. Selection: Dashboard workstream cards
+
+```
+Workstream card visible items = items where:
+  stale = false
+  AND (
+       engaged = true
+       OR action_class ∈ {DO, DECIDE}
+       OR delta.updated_since_yesterday = true
+      )
+```
+
+Everything else on a workstream folds into a "See all N" expander. This is what makes each workstream card readable at a glance.
+
+### 9c. `engaged` detection
+
+```powershell
+function Get-EngagedFlag {
+    param([hashtable] $Entry, [string[]] $DavidAliases = @('David Klan','David','kladavi'))
+    $reasons = [System.Collections.Generic.List[string]]::new()
+
+    # Signal 1: David appears in activity_log
+    foreach ($a in @($Entry.activity_log)) {
+        $src = if ($a.source) { [string]$a.source } else { '' }
+        if ($src -match ('(?i)' + ($DavidAliases -join '|'))) {
+            $reasons.Add("David active in $($a.event) at $($a.timestamp)")
+            break
+        }
+    }
+
+    # Signal 2: David named as owner or suggested_owner
+    if ($DavidAliases -contains [string]$Entry.owner) {
+        $reasons.Add('David is the confirmed owner')
+    } elseif ($DavidAliases -contains [string]$Entry.suggested_owner) {
+        $reasons.Add('David is the suggested owner')
+    }
+
+    # Signal 3: David named in most recent source paragraph (context_metadata.actors)
+    if ($Entry.context_metadata -and $Entry.context_metadata.actors) {
+        foreach ($actor in @($Entry.context_metadata.actors)) {
+            if ($DavidAliases -contains [string]$actor) {
+                $reasons.Add('David named in source context')
+                break
+            }
+        }
+    }
+
+    # Signal 4: Recent Teams chat / email URL in source_uri (external engagement)
+    if ($Entry.source_uri -match '(?i)teams\.microsoft\.com/l/chat|mailto:|/messaging/') {
+        $reasons.Add('active Teams/email thread linked')
+    }
+
+    if ($reasons.Count -gt 0) {
+        return @{ engaged = $true; engagement_reason = ($reasons -join '; ') }
+    }
+    return @{ engaged = $false; engagement_reason = '' }
+}
+```
+
+### 9d. Real-corpus fix from feedback
+
+From live-test: *"There is an ongoing chat with chronic setup issues and it requires me to step in and sort things out… It should be clear that this is something I am engaged in and has direct linkage to Dev/Emp XP Dashboards."*
+
+Currently: no item on the dashboard reflects that work. Under Phase 9:
+- Add `**Source-URI:** https://teams.microsoft.com/l/chat/…` to the source file that describes the New Relic minion setup effort.
+- Generator ingests it → `source_uri` populated → Signal 4 fires → `engaged = true`.
+- Item shows up on both Dev XP and Employee XP workstream cards with an **"Engaged"** pill.
+- David sees his own work reflected — closing the "system doesn't show what I'm actually doing" loop.
+
+### 9e. Dashboard rendering additions
+
+- **Engaged pill** (green) on every item where `engaged = true`, with tooltip = `engagement_reason`.
+- **Priority Inbox header** now shows `Engaged today: N` alongside `Candidates`, `Selected`, tier counts.
+- Workstream card headers show `You are on N items here` when any `engaged` items exist.
+
+---
+
 ## 📋 Before / After — three real items
 
 ### Item A — the redundant Ingenium risks
@@ -624,9 +860,9 @@ Total: ~7 packages across 4 sprints. Sprint 10a alone probably solves 40% of the
 
 | Requirement | Where covered |
 |---|---|
-| 1. Updated schema definition | Phase 1a — TypeScript `MatryoshkaItem` |
-| 2. Transformation logic | Phase 1b + Phase 2b + Phase 6b + Phase 7 |
-| 3. Filtering rules implementation | Phase 3a-b (stale) + Phase 1 (validation reject) |
+| 1. Updated schema definition | Phase 1a — TypeScript `MatryoshkaItem` (rev1 adds: `engaged`, `engagement_reason`, `context_metadata`) |
+| 2. Transformation logic | Phase 1b (rev1 quality gates) + Phase 1c (status rules, rev1) + Phase 2b + Phase 6b + Phase 7 + Phase 9c (engaged, rev1) |
+| 3. Filtering rules implementation | Phase 3a-b (stale) + Phase 1b (validation reject, tightened in rev1) + Phase 9a-b (Priority Inbox + Dashboard selection, rev1) |
 | 4. Delta tracking implementation approach | Phase 4a-d |
 | 5. Example before/after for 3 items | Items A / B / C above (real IDs from live-test) |
 | 6. Assumptions clearly stated | "Assumptions" section above |
