@@ -2,43 +2,43 @@
 
 # Current Focus Trends
 
-Generated: 2026-07-17 15:20
+Generated: 2026-07-17 16:02
 Current window: 14 days
 Previous window: 14 days (offset 14 days)
 
 ## Executive Summary
 
-In the last 14 days, 10 workstream(s) are increasing, 0 decreasing, and 2 stable. Rising: **CyberArk Governance, ADX Registration, Employee XP Dashboard, Developer XP Dashboard, MMM L2, Capacity Management, CMDB Mapping, GOCC Transition, Rapid Recovery, GBO Batch Transition**.
+In the last 14 days, 10 workstream(s) are increasing, 0 decreasing, and 2 stable. Rising: **CyberArk Governance, ADX Registration, Employee XP Dashboard, Developer XP Dashboard, Capacity Management, MMM L2, CMDB Mapping, GOCC Transition, Rapid Recovery, GBO Batch Transition**.
 
 ## Trend Table
 
 | Workstream | Current Activity Score | Previous Activity Score | Delta | Delta % | Trend | Reason |
 |---|---:|---:|---:|---:|---|---|
-| CyberArk Governance | 864.91 | 100.1 | 764.81 | +764.1% | ↑ increasing | Activity signals up 764% vs prior 14 days. |
-| ADX Registration | 855.52 | 144.1 | 711.42 | +493.7% | ↑ increasing | Activity signals up 494% vs prior 14 days. |
-| Employee XP Dashboard | 855.52 | 144.1 | 711.42 | +493.7% | ↑ increasing | Activity signals up 494% vs prior 14 days. |
-| Developer XP Dashboard | 855.52 | 144.1 | 711.42 | +493.7% | ↑ increasing | Activity signals up 494% vs prior 14 days. |
-| MMM L2 | 878.37 | 168.1 | 710.27 | +422.5% | ↑ increasing | Activity signals up 423% vs prior 14 days. |
-| Capacity Management | 821.16 | 157.7 | 663.46 | +420.7% | ↑ increasing | Activity signals up 421% vs prior 14 days. |
-| CMDB Mapping | 872.98 | 168.1 | 704.88 | +419.3% | ↑ increasing | Activity signals up 419% vs prior 14 days. |
-| GOCC Transition | 872.98 | 192.1 | 680.88 | +354.4% | ↑ increasing | Activity signals up 354% vs prior 14 days. |
-| Rapid Recovery | 872.98 | 192.1 | 680.88 | +354.4% | ↑ increasing | Activity signals up 354% vs prior 14 days. |
-| GBO Batch Transition | 855.52 | 194.5 | 661.02 | +339.9% | ↑ increasing | Activity signals up 340% vs prior 14 days. |
+| CyberArk Governance | 862.47 | 100.1 | 762.37 | +761.6% | ↑ increasing | Activity signals up 762% vs prior 14 days. |
+| ADX Registration | 853.1 | 134.5 | 718.6 | +534.3% | ↑ increasing | Activity signals up 534% vs prior 14 days. |
+| Employee XP Dashboard | 853.1 | 134.5 | 718.6 | +534.3% | ↑ increasing | Activity signals up 534% vs prior 14 days. |
+| Developer XP Dashboard | 853.1 | 134.5 | 718.6 | +534.3% | ↑ increasing | Activity signals up 534% vs prior 14 days. |
+| Capacity Management | 818.84 | 148.1 | 670.74 | +452.9% | ↑ increasing | Activity signals up 453% vs prior 14 days. |
+| MMM L2 | 875.89 | 158.5 | 717.39 | +452.6% | ↑ increasing | Activity signals up 453% vs prior 14 days. |
+| CMDB Mapping | 870.51 | 158.5 | 712.01 | +449.2% | ↑ increasing | Activity signals up 449% vs prior 14 days. |
+| GOCC Transition | 870.51 | 182.5 | 688.01 | +377.0% | ↑ increasing | Activity signals up 377% vs prior 14 days. |
+| Rapid Recovery | 870.51 | 182.5 | 688.01 | +377.0% | ↑ increasing | Activity signals up 377% vs prior 14 days. |
+| GBO Batch Transition | 853.1 | 184.9 | 668.2 | +361.4% | ↑ increasing | Activity signals up 361% vs prior 14 days. |
 | Project Matryoshka | 0 | 0 | 0 | 0.0% | → stable | No recent activity in either window. |
 | Lapu-Lapu Corpus Care | 0 | 0 | 0 | 0.0% | → stable | No recent activity in either window. |
 
 ## Increasing Attention
 
-- **CyberArk Governance** ↑ delta 764.1%. Activity signals up 764% vs prior 14 days.
-- **ADX Registration** ↑ delta 493.7%. Activity signals up 494% vs prior 14 days.
-- **Employee XP Dashboard** ↑ delta 493.7%. Activity signals up 494% vs prior 14 days.
-- **Developer XP Dashboard** ↑ delta 493.7%. Activity signals up 494% vs prior 14 days.
-- **MMM L2** ↑ delta 422.5%. Activity signals up 423% vs prior 14 days.
-- **Capacity Management** ↑ delta 420.7%. Activity signals up 421% vs prior 14 days.
-- **CMDB Mapping** ↑ delta 419.3%. Activity signals up 419% vs prior 14 days.
-- **GOCC Transition** ↑ delta 354.4%. Activity signals up 354% vs prior 14 days.
-- **Rapid Recovery** ↑ delta 354.4%. Activity signals up 354% vs prior 14 days.
-- **GBO Batch Transition** ↑ delta 339.9%. Activity signals up 340% vs prior 14 days.
+- **CyberArk Governance** ↑ delta 761.6%. Activity signals up 762% vs prior 14 days.
+- **ADX Registration** ↑ delta 534.3%. Activity signals up 534% vs prior 14 days.
+- **Employee XP Dashboard** ↑ delta 534.3%. Activity signals up 534% vs prior 14 days.
+- **Developer XP Dashboard** ↑ delta 534.3%. Activity signals up 534% vs prior 14 days.
+- **Capacity Management** ↑ delta 452.9%. Activity signals up 453% vs prior 14 days.
+- **MMM L2** ↑ delta 452.6%. Activity signals up 453% vs prior 14 days.
+- **CMDB Mapping** ↑ delta 449.2%. Activity signals up 449% vs prior 14 days.
+- **GOCC Transition** ↑ delta 377%. Activity signals up 377% vs prior 14 days.
+- **Rapid Recovery** ↑ delta 377%. Activity signals up 377% vs prior 14 days.
+- **GBO Batch Transition** ↑ delta 361.4%. Activity signals up 361% vs prior 14 days.
 
 ## Decreasing Attention
 

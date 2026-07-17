@@ -587,6 +587,17 @@ export function DashboardTab({ onNavigate }: Props) {
   const riskRegistry = safeJsonParse<RiskRegistry>(data.rawFiles["00-context/generated/risk-register.json"]);
   const davidInbox   = safeJsonParse<DavidInbox>(data.rawFiles["00-context/generated/david-inbox.json"]);
   const executionInsights = safeJsonParse<ExecutionInsights>(data.rawFiles["00-context/generated/execution-insights.json"]);
+  // V4.0 Phase 1: quality-gate validation report
+  const rejectedItems = safeJsonParse<{
+    generated?: string;
+    version?: string;
+    totals?: {
+      candidates?: number;
+      accepted?: number;
+      rejected?: number;
+      byField?: Record<string, number>;
+    };
+  }>(data.rawFiles["00-context/generated/rejected-items.json"]);
 
   // Merge JSON enrichment into markdown-derived items by name
   if (currentFocus && focusJson?.workstreams?.length) {
@@ -969,6 +980,30 @@ export function DashboardTab({ onNavigate }: Props) {
                 })}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* V4.0 Phase 1 migration validator status - subtle strip above priority inbox */}
+      {rejectedItems?.totals && (rejectedItems.totals.rejected ?? 0) > 0 && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50/60 p-3">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-amber-900">
+            <span className="font-semibold uppercase tracking-wide">V4.0 migration validator</span>
+            <span>
+              <strong>{rejectedItems.totals.accepted ?? 0}</strong> of{" "}
+              <strong>{rejectedItems.totals.candidates ?? 0}</strong> live items pass Phase 1 gates.
+            </span>
+            <span className="inline-block rounded-full border border-amber-300 bg-amber-100 px-2 py-0.5 font-medium">
+              {rejectedItems.totals.rejected ?? 0} rejected
+            </span>
+            {rejectedItems.totals.byField && Object.entries(rejectedItems.totals.byField).slice(0, 4).map(([field, count]) => (
+              <span key={field} className="inline-block rounded-full border border-slate-300 bg-white px-2 py-0.5 text-slate-700">
+                <span className="font-mono">{field}</span>: {count}
+              </span>
+            ))}
+            <span className="ml-auto text-amber-700 italic">
+              See 00-context/generated/rejected-items.md for per-item details
+            </span>
           </div>
         </div>
       )}
