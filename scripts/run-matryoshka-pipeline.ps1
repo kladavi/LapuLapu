@@ -214,11 +214,19 @@ function Invoke-MatryoshkaPipeline {
     if ($latest) {
         Write-Log "Latest recap: $($latest.Name) (modified $($latest.LastWriteTime.ToString('s')))"
         $Health.lastActivityFile = $latest.Name
-        $hash = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
-        $Health.lastActivityHash = $hash
-        if ($state.lastProcessedActivityHash -ne $hash) {
-            $recapChanged = $true
-            Write-Log "Recap hash changed. Previous: '$($state.lastProcessedActivityHash)'  new: '$hash'"
+        # V4.0 Phase 8a: 0-byte guard - do NOT mark an empty recap as processed.
+        # An empty file is treated as if no recap arrived at all: recap trigger stays
+        # false, corpus-signature trigger can still fire if other files changed.
+        if ($latest.Length -eq 0) {
+            Write-Log "WARNING: latest recap '$($latest.Name)' is 0 bytes - not treating as new content."
+            $Health.lastActivityHash = ''
+        } else {
+            $hash = (Get-FileHash -LiteralPath $latest.FullName -Algorithm SHA256).Hash
+            $Health.lastActivityHash = $hash
+            if ($state.lastProcessedActivityHash -ne $hash) {
+                $recapChanged = $true
+                Write-Log "Recap hash changed. Previous: '$($state.lastProcessedActivityHash)'  new: '$hash'"
+            }
         }
     } else {
         Write-Log 'No 14-day activity recap found.'
@@ -280,9 +288,12 @@ function Invoke-MatryoshkaPipeline {
     # --- Update automation-state.json -------------------------------------------
 
     $now = (Get-Date).ToString('s')
-    if ($latest) {
+    # Only mark the recap as processed if it was a real (non-empty) file that we
+    # actually hashed. 0-byte guard (V4.0 Phase 8a) leaves this untouched so the
+    # recap re-fires the moment content arrives.
+    if ($latest -and $latest.Length -gt 0 -and $Health.lastActivityHash) {
         $state.lastProcessedActivityFile = $latest.Name
-        $state.lastProcessedActivityHash = $hash
+        $state.lastProcessedActivityHash = $Health.lastActivityHash
     }
     # Recompute corpus signature AFTER generator run so the generator's own
     # mtime changes on control YAMLs don't cause a phantom retrigger.

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T11:46:02",
+  "generated": "2026-07-17T15:00:56",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V1.3",
   "currentWindowDays": 14,
@@ -31,112 +31,112 @@
     {
       "id": "adx-registration",
       "name": "ADX Registration",
-      "currentActivityScore": 729.53,
-      "previousActivityScore": 53.6,
-      "delta": 675.93,
-      "deltaPercent": 1261.1,
+      "currentActivityScore": 856.7,
+      "previousActivityScore": 144.1,
+      "delta": 712.6,
+      "deltaPercent": 494.5,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 1261% vs prior 14 days."
+      "trendReason": "Activity signals up 495% vs prior 14 days."
     },
     {
       "id": "cmdb-mapping",
       "name": "CMDB Mapping",
-      "currentActivityScore": 747.26,
-      "previousActivityScore": 100.8,
-      "delta": 646.46,
-      "deltaPercent": 641.3,
+      "currentActivityScore": 874.19,
+      "previousActivityScore": 168.1,
+      "delta": 706.09,
+      "deltaPercent": 420.0,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 641% vs prior 14 days."
+      "trendReason": "Activity signals up 420% vs prior 14 days."
     },
     {
       "id": "employee-xp",
       "name": "Employee XP Dashboard",
-      "currentActivityScore": 729.53,
-      "previousActivityScore": 53.6,
-      "delta": 675.93,
-      "deltaPercent": 1261.1,
+      "currentActivityScore": 856.7,
+      "previousActivityScore": 144.1,
+      "delta": 712.6,
+      "deltaPercent": 494.5,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 1261% vs prior 14 days."
+      "trendReason": "Activity signals up 495% vs prior 14 days."
     },
     {
       "id": "developer-xp",
       "name": "Developer XP Dashboard",
-      "currentActivityScore": 729.53,
-      "previousActivityScore": 53.6,
-      "delta": 675.93,
-      "deltaPercent": 1261.1,
+      "currentActivityScore": 856.7,
+      "previousActivityScore": 144.1,
+      "delta": 712.6,
+      "deltaPercent": 494.5,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 1261% vs prior 14 days."
+      "trendReason": "Activity signals up 495% vs prior 14 days."
     },
     {
       "id": "gocc-transition",
       "name": "GOCC Transition",
-      "currentActivityScore": 747.26,
-      "previousActivityScore": 124.8,
-      "delta": 622.46,
-      "deltaPercent": 498.8,
+      "currentActivityScore": 874.19,
+      "previousActivityScore": 192.1,
+      "delta": 682.09,
+      "deltaPercent": 355.1,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 499% vs prior 14 days."
+      "trendReason": "Activity signals up 355% vs prior 14 days."
     },
     {
       "id": "mmm-l2",
       "name": "MMM L2",
-      "currentActivityScore": 752.73,
-      "previousActivityScore": 100.8,
-      "delta": 651.93,
-      "deltaPercent": 646.8,
+      "currentActivityScore": 879.59,
+      "previousActivityScore": 168.1,
+      "delta": 711.49,
+      "deltaPercent": 423.3,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 647% vs prior 14 days."
+      "trendReason": "Activity signals up 423% vs prior 14 days."
     },
     {
       "id": "rapid-recovery",
       "name": "Rapid Recovery",
-      "currentActivityScore": 747.26,
-      "previousActivityScore": 124.8,
-      "delta": 622.46,
-      "deltaPercent": 498.8,
+      "currentActivityScore": 874.19,
+      "previousActivityScore": 192.1,
+      "delta": 682.09,
+      "deltaPercent": 355.1,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 499% vs prior 14 days."
+      "trendReason": "Activity signals up 355% vs prior 14 days."
     },
     {
       "id": "gbo-batch-transition",
       "name": "GBO Batch Transition",
-      "currentActivityScore": 729.53,
-      "previousActivityScore": 127.2,
-      "delta": 602.33,
-      "deltaPercent": 473.5,
+      "currentActivityScore": 856.7,
+      "previousActivityScore": 194.5,
+      "delta": 662.2,
+      "deltaPercent": 340.5,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 474% vs prior 14 days."
+      "trendReason": "Activity signals up 340% vs prior 14 days."
     },
     {
       "id": "cyberark-governance",
       "name": "CyberArk Governance",
-      "currentActivityScore": 739.07,
-      "previousActivityScore": 9.6,
-      "delta": 729.47,
-      "deltaPercent": 7598.7,
+      "currentActivityScore": 866.11,
+      "previousActivityScore": 100.1,
+      "delta": 766.01,
+      "deltaPercent": 765.2,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 7599% vs prior 14 days."
+      "trendReason": "Activity signals up 765% vs prior 14 days."
     },
     {
       "id": "capacity-management",
       "name": "Capacity Management",
-      "currentActivityScore": 704.94,
-      "previousActivityScore": 67.2,
-      "delta": 637.74,
-      "deltaPercent": 949.0,
+      "currentActivityScore": 822.3,
+      "previousActivityScore": 157.7,
+      "delta": 664.6,
+      "deltaPercent": 421.4,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "trendReason": "Activity signals up 949% vs prior 14 days."
+      "trendReason": "Activity signals up 421% vs prior 14 days."
     }
   ]
 }
