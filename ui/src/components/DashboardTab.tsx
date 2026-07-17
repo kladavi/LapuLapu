@@ -175,6 +175,10 @@ type DecisionEntry = {
   recurrenceCount?: number;
   // V4.0 Phase 3
   stale?: boolean;
+  // V4.0 Phase 6
+  unifiedConfidence?: number;
+  mentionCount?: number;
+  mergedFrom?: string[];
 };
 
 type DecisionRegistry = {
@@ -190,6 +194,8 @@ type DecisionRegistry = {
     outcomeQuality?: { high?: number; medium?: number; low?: number; unknown?: number };
     recurring?: number;
     inferredActions?: number;
+    mergedGroups?: number;
+    mergedItems?: number;
   };
   decisions?: DecisionEntry[];
 };
@@ -220,6 +226,10 @@ type RiskEntry = {
   timeToEscalationRisk?: number | null;
   // V4.0 Phase 3
   stale?: boolean;
+  // V4.0 Phase 6
+  unifiedConfidence?: number;
+  mentionCount?: number;
+  mergedFrom?: string[];
 };
 
 type RiskRegistry = {
@@ -233,6 +243,8 @@ type RiskRegistry = {
     rising?: number;
     authorativelyOwned?: number;
     imminentEscalation?: number;
+    mergedGroups?: number;
+    mergedItems?: number;
   };
   risks?: RiskEntry[];
 };
@@ -1755,6 +1767,12 @@ export function DashboardTab({ onNavigate }: Props) {
                           recurring {d.recurrenceCount}x
                         </span>
                       ) : null}
+                      {d.mergedFrom && d.mergedFrom.length > 0 ? (
+                        <span className="inline-block rounded-full border border-violet-200 bg-violet-50 px-1.5 py-0.5 font-medium text-violet-800"
+                              title={`V4.0 Phase 6: absorbed ${d.mergedFrom.length} similar item(s): ${d.mergedFrom.join(", ")}`}>
+                          merged {d.mergedFrom.length}
+                        </span>
+                      ) : null}
                       {(d.timeToEscalationRisk !== undefined && d.timeToEscalationRisk !== null) ? (
                         <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${escalationBadgeClass(d.timeToEscalationRisk)}`}
                               title="Predicted days until escalation">
@@ -1858,6 +1876,11 @@ export function DashboardTab({ onNavigate }: Props) {
                   {staleDecisions.length > 0 && (
                     <span className="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-0.5 text-slate-600" title="V4.0 Phase 3: aged 30+d or 14+d without update; hidden from default surfacing.">
                       Stale (hidden): <strong>{staleDecisions.length}</strong>
+                    </span>
+                  )}
+                  {(totals.mergedGroups ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-violet-800" title="V4.0 Phase 6: fuzzy dedup merged similar decisions into representative winners.">
+                      Merged: <strong>{totals.mergedGroups}</strong> group(s) / {totals.mergedItems ?? 0} item(s)
                     </span>
                   )}
                   {escalationCandidates.length > 0 && (
@@ -2030,6 +2053,12 @@ export function DashboardTab({ onNavigate }: Props) {
                             {escalationLabel(r.timeToEscalationRisk)}
                           </span>
                         ) : null}
+                        {r.mergedFrom && r.mergedFrom.length > 0 ? (
+                          <span className="inline-block rounded-full border border-violet-200 bg-violet-50 px-1.5 py-0.5 font-medium text-violet-800"
+                                title={`V4.0 Phase 6: absorbed ${r.mergedFrom.length} similar item(s): ${r.mergedFrom.join(", ")}`}>
+                            merged {r.mergedFrom.length}
+                          </span>
+                        ) : null}
                         {escalation.length > 0 ? (
                           <span className="inline-block rounded-full border border-th-border bg-th-surface-alt px-1.5 py-0.5 text-th-text-muted">
                             escalate → {escalation.join(" → ")}
@@ -2098,6 +2127,11 @@ export function DashboardTab({ onNavigate }: Props) {
                   {staleRisks.length > 0 && (
                     <span className="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-0.5 text-slate-600" title="V4.0 Phase 3: aged 30+d or 14+d without update; hidden from default surfacing.">
                       Stale (hidden): <strong>{staleRisks.length}</strong>
+                    </span>
+                  )}
+                  {(totals.mergedGroups ?? 0) > 0 && (
+                    <span className="inline-block rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-violet-800" title="V4.0 Phase 6: fuzzy dedup merged similar risks into representative winners.">
+                      Merged: <strong>{totals.mergedGroups}</strong> group(s) / {totals.mergedItems ?? 0} item(s)
                     </span>
                   )}
                   {riskRegistry.generated && (
