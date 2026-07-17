@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T17:16:25",
+  "generated": "2026-07-17T17:30:41",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
@@ -14,6 +14,54 @@
     "mergedItems": 0
   },
   "risks": [
+    {
+      "riskId": "R-cd89918f9c",
+      "title": "Review and operationalize the vendor escalation format",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Balaji Ravi",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Deb",
+        "Kelvin"
+      ],
+      "severity": "High",
+      "status": "open",
+      "trend": "stable",
+      "agingDays": 87,
+      "recencyDays": 87,
+      "firstSeenDate": "2026-04-21",
+      "lastSeenDate": "2026-04-21",
+      "dateDetected": "2026-04-21",
+      "sourceFiles": [
+        "01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt"
+      ],
+      "impact": "",
+      "riskConfidence": 0.09,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.156,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 87,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "subject": "Review and operationalize the vendor escalation format",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
     {
       "riskId": "R-1c3d9c0e3b",
       "title": "Vendor Escalation",
@@ -47,6 +95,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 87,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -85,55 +138,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 87,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for this risk risk before it can be actioned",
         "subject": "Standardization of templates, CI identification, and escalation procedures to reduce",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-cd89918f9c",
-      "title": "Review and operationalize the vendor escalation format",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Balaji Ravi",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Deb",
-        "Kelvin"
-      ],
-      "severity": "High",
-      "status": "open",
-      "trend": "stable",
-      "agingDays": 87,
-      "recencyDays": 87,
-      "firstSeenDate": "2026-04-21",
-      "lastSeenDate": "2026-04-21",
-      "dateDetected": "2026-04-21",
-      "sourceFiles": [
-        "01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt"
-      ],
-      "impact": "",
-      "riskConfidence": 0.09,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.156,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "subject": "Review and operationalize the vendor escalation format",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -168,54 +183,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 11,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
         "subject": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a ...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-8ad2d2ce2f",
-      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Deb",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 7,
-      "recencyDays": 7,
-      "firstSeenDate": "2026-07-10",
-      "lastSeenDate": "2026-07-10",
-      "dateDetected": "2026-07-10",
-      "sourceFiles": [
-        "01-inbox/archive/W28_copilot.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
-        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -252,12 +230,109 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 7,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for ADX Registration risk before it can be actioned",
         "subject": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium in...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-8ad2d2ce2f",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Deb",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 7,
+      "recencyDays": 7,
+      "firstSeenDate": "2026-07-10",
+      "lastSeenDate": "2026-07-10",
+      "dateDetected": "2026-07-10",
+      "sourceFiles": [
+        "01-inbox/archive/W28_copilot.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 7,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-121760730c",
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Rasheersh",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 4,
+      "recencyDays": 4,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "dateDetected": "2026-07-13",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.386,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -295,6 +370,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -338,52 +418,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
         "subject": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timel...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-121760730c",
-      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Rasheersh",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 4,
-      "recencyDays": 4,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "dateDetected": "2026-07-13",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.386,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -421,94 +466,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
         "subject": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequenc...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-b7a381d02b",
-      "title": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Manish",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
-        "subject": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-ca48836978",
-      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Manish",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
-        "subject": "🚨 High operational risk (manual renewals + hidden dependencies)",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -546,174 +514,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
         "subject": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, sim...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-228ae1101c",
-      "title": "Required escalation to GAM",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Manish",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
-        "subject": "Required escalation to GAM",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-9bfa424dbf",
-      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Deb",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
-        "subject": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-b8d4414c4c",
-      "title": "Continue escalation on VNet issues",
-      "workstream": "",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "Continue escalation on VNet issues",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-bf28edfac4",
-      "title": "🚨 Compliance gap (CyberArk not enforced)",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Manish",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.356,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
-        "subject": "🚨 Compliance gap (CyberArk not enforced)",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -749,6 +560,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -792,12 +608,106 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for GOCC Transition risk before it can be actioned",
         "subject": "Team to secure **contact + escalation path",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-b8d4414c4c",
+      "title": "Continue escalation on VNet issues",
+      "workstream": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "subject": "Continue escalation on VNet issues",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-ca48836978",
+      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Manish",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
+        "subject": "🚨 High operational risk (manual renewals + hidden dependencies)",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -835,12 +745,379 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for CMDB Mapping risk before it can be actioned",
         "subject": "⚠️ Vendor-managed apps without clear escalation model",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-9bfa424dbf",
+      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Deb",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+        "subject": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-228ae1101c",
+      "title": "Required escalation to GAM",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Manish",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
+        "subject": "Required escalation to GAM",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-b7a381d02b",
+      "title": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Manish",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
+        "subject": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-bf28edfac4",
+      "title": "🚨 Compliance gap (CyberArk not enforced)",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Manish",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.356,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
+        "subject": "🚨 Compliance gap (CyberArk not enforced)",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-b2ee8b777e",
+      "title": "Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...",
+      "workstream": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "docs/matryoshka-v4-spec.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.366,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "subject": "Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — ...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-a3a724c1be",
+      "title": "Validate escalation paths",
+      "workstream": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.386,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "subject": "Validate escalation paths",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-64c0ccc1e6",
+      "title": "The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged \"red\" under V3...",
+      "workstream": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "docs/matryoshka-v4-spec.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.366,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "subject": "The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarifica...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-1de6e7cdee",
+      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Balaji Ravi",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Deb",
+        "Kelvin"
+      ],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.386,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "subject": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -873,6 +1150,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -914,207 +1196,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
         "subject": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-64c0ccc1e6",
-      "title": "The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged \"red\" under V3...",
-      "workstream": "",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 0,
-      "recencyDays": 0,
-      "firstSeenDate": "2026-07-17",
-      "lastSeenDate": "2026-07-17",
-      "dateDetected": "2026-07-17",
-      "sourceFiles": [
-        "docs/matryoshka-v4-spec.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.366,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarifica...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-a3a724c1be",
-      "title": "Validate escalation paths",
-      "workstream": "",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 0,
-      "recencyDays": 0,
-      "firstSeenDate": "2026-07-17",
-      "lastSeenDate": "2026-07-17",
-      "dateDetected": "2026-07-17",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.386,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "Validate escalation paths",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-b2ee8b777e",
-      "title": "Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...",
-      "workstream": "",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 0,
-      "recencyDays": 0,
-      "firstSeenDate": "2026-07-17",
-      "lastSeenDate": "2026-07-17",
-      "dateDetected": "2026-07-17",
-      "sourceFiles": [
-        "docs/matryoshka-v4-spec.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.366,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — ...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-1de6e7cdee",
-      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Balaji Ravi",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Deb",
-        "Kelvin"
-      ],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 0,
-      "recencyDays": 0,
-      "firstSeenDate": "2026-07-17",
-      "lastSeenDate": "2026-07-17",
-      "dateDetected": "2026-07-17",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.386,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "subject": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-f5518c28bc",
-      "title": "Streamline risk framework and automate compliance",
-      "workstream": "",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "stable",
-      "agingDays": 87,
-      "recencyDays": 87,
-      "firstSeenDate": "2026-04-21",
-      "lastSeenDate": "2026-04-21",
-      "dateDetected": "2026-04-21",
-      "sourceFiles": [
-        "00-context/objectives.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.09,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.166,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "Streamline risk framework and automate compliance",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -1152,6 +1244,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": true,
+      "delta": {
+        "daysSinceLastTouched": 87,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
@@ -1161,6 +1258,49 @@
         "targetOwner": "Birger Fjaellman",
         "dueBy": "2026-07-24",
         "rationale": "Unresolved 87 days - contact owner this week."
+      }
+    },
+    {
+      "riskId": "R-f5518c28bc",
+      "title": "Streamline risk framework and automate compliance",
+      "workstream": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "stable",
+      "agingDays": 87,
+      "recencyDays": 87,
+      "firstSeenDate": "2026-04-21",
+      "lastSeenDate": "2026-04-21",
+      "dateDetected": "2026-04-21",
+      "sourceFiles": [
+        "00-context/objectives.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.09,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.166,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 87,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "subject": "Streamline risk framework and automate compliance",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       }
     },
     {
@@ -1195,6 +1335,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 87,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -1204,50 +1349,6 @@
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-f1afae75e8",
-      "title": "Weekly project governance forums (status, CR review, risk review)",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "medium",
-      "suggestedOwner": "",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Manish",
-        "Rasheersh"
-      ],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "stable",
-      "agingDays": 28,
-      "recencyDays": 28,
-      "firstSeenDate": "2026-06-19",
-      "lastSeenDate": "2026-06-19",
-      "dateDetected": "2026-06-19",
-      "sourceFiles": [
-        "01-inbox/archive/W25_copilot.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.44,
-      "timeToEscalationRisk": 0,
-      "unifiedConfidence": 0.373,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": true,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Escalate",
-        "actionClass": "FOLLOW_UP",
-        "nextAction": "Confirm with Balaji Ravi why GBO Batch Transition remains unresolved after 28 days",
-        "subject": "Weekly project governance forums (status, CR review, risk review)",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-24",
-        "rationale": "Unresolved 28 days - contact owner this week."
       }
     },
     {
@@ -1282,6 +1383,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 28,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -1294,18 +1400,18 @@
       }
     },
     {
-      "riskId": "R-d57894861d",
+      "riskId": "R-f02ad44a72",
       "title": "Weekly project status, CR review, and risk review governance forums",
-      "workstream": "GOCC Transition",
+      "workstream": "CMDB Mapping",
       "owner": "Unassigned",
       "ownerConfidence": "low",
-      "suggestedOwner": "Balaji Ravi",
+      "suggestedOwner": "Rasheersh",
       "escalationPath": [
-        "Birger Fjaellman"
+        "Balaji Ravi"
       ],
       "stakeholders": [
-        "Jonan",
-        "Hari"
+        "Hari",
+        "Manish"
       ],
       "severity": "Medium",
       "status": "open",
@@ -1325,15 +1431,69 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 28,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for GOCC Transition risk before it can be actioned",
+        "nextAction": "Assign an owner for CMDB Mapping risk before it can be actioned",
         "subject": "Weekly project status, CR review, and risk review governance forums",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-f1afae75e8",
+      "title": "Weekly project governance forums (status, CR review, risk review)",
+      "workstream": "GBO Batch Transition",
+      "owner": "Birger Fjaellman",
+      "ownerConfidence": "medium",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Manish",
+        "Rasheersh"
+      ],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "stable",
+      "agingDays": 28,
+      "recencyDays": 28,
+      "firstSeenDate": "2026-06-19",
+      "lastSeenDate": "2026-06-19",
+      "dateDetected": "2026-06-19",
+      "sourceFiles": [
+        "01-inbox/archive/W25_copilot.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.44,
+      "timeToEscalationRisk": 0,
+      "unifiedConfidence": 0.373,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": true,
+      "delta": {
+        "daysSinceLastTouched": 28,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Escalate",
+        "actionClass": "FOLLOW_UP",
+        "nextAction": "Confirm with Birger Fjaellman why GBO Batch Transition remains unresolved after 28 days",
+        "subject": "Weekly project governance forums (status, CR review, risk review)",
+        "targetOwner": "Birger Fjaellman",
+        "dueBy": "2026-07-24",
+        "rationale": "Unresolved 28 days - contact owner this week."
       }
     },
     {
@@ -1369,12 +1529,62 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 21,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for GBO Batch Transition risk before it can be actioned",
         "subject": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-a18adafc06",
+      "title": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Rasheersh",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 4,
+      "recencyDays": 4,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "dateDetected": "2026-07-13",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 5,
+      "unifiedConfidence": 0.386,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "subject": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity ris...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -1409,6 +1619,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -1449,52 +1664,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
         "subject": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-a18adafc06",
-      "title": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Rasheersh",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 4,
-      "recencyDays": 4,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "dateDetected": "2026-07-13",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 5,
-      "unifiedConfidence": 0.386,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-        "subject": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity ris...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -1530,6 +1710,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -1573,6 +1758,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 2,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -1585,20 +1775,14 @@
       }
     },
     {
-      "riskId": "R-d5365064d3",
-      "title": "Credentials dependency",
-      "workstream": "MMM L2",
+      "riskId": "R-601cba16b2",
+      "title": "⚠️ Dependency on manual URL onboarding",
+      "workstream": "",
       "owner": "Unassigned",
       "ownerConfidence": "low",
-      "suggestedOwner": "Hari",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Jonan",
-        "Kelvin"
-      ],
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
       "severity": "Medium",
       "status": "open",
       "trend": "increasing",
@@ -1617,12 +1801,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
-        "subject": "Credentials dependency",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "subject": "⚠️ Dependency on manual URL onboarding",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -1661,6 +1850,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
@@ -1673,14 +1867,20 @@
       }
     },
     {
-      "riskId": "R-601cba16b2",
-      "title": "⚠️ Dependency on manual URL onboarding",
-      "workstream": "",
+      "riskId": "R-d5365064d3",
+      "title": "Credentials dependency",
+      "workstream": "MMM L2",
       "owner": "Unassigned",
       "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
+      "suggestedOwner": "Hari",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Jonan",
+        "Kelvin"
+      ],
       "severity": "Medium",
       "status": "open",
       "trend": "increasing",
@@ -1699,54 +1899,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 1,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "⚠️ Dependency on manual URL onboarding",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-2884ed4872",
-      "title": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Deb",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 0,
-      "recencyDays": 0,
-      "firstSeenDate": "2026-07-17",
-      "lastSeenDate": "2026-07-17",
-      "dateDetected": "2026-07-17",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 7,
-      "unifiedConfidence": 0.386,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
-        "subject": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
+        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
+        "subject": "Credentials dependency",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -1779,52 +1942,17 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for this risk risk before it can be actioned",
         "subject": "`BLOCKED` items → Blockers panel (visible but grouped; David watches for state changes)",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-6f6e73c0c0",
-      "title": "Dependency relationships",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Rasheersh",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 0,
-      "recencyDays": 0,
-      "firstSeenDate": "2026-07-17",
-      "lastSeenDate": "2026-07-17",
-      "dateDetected": "2026-07-17",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 7,
-      "unifiedConfidence": 0.386,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-        "subject": "Dependency relationships",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -1863,6 +1991,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
@@ -1872,6 +2005,98 @@
         "targetOwner": "Birger Fjaellman",
         "dueBy": "2026-07-24",
         "rationale": "Fresh signal - continue to observe."
+      }
+    },
+    {
+      "riskId": "R-6f6e73c0c0",
+      "title": "Dependency relationships",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Rasheersh",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 7,
+      "unifiedConfidence": 0.386,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "subject": "Dependency relationships",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-2884ed4872",
+      "title": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Deb",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-17-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 7,
+      "unifiedConfidence": 0.386,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+        "subject": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       }
     },
     {
@@ -1905,6 +2130,11 @@
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 7,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",

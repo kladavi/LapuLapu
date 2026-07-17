@@ -2308,6 +2308,297 @@ function Merge-DuplicateEntries {
     }
 }
 
+# V4.0 Phase 4 - Daily Delta System.
+# Persists a rolling per-day snapshot of all live decisions + risks under
+# 00-context/generated/snapshots/YYYY-MM-DD.json, computes added/removed/changed
+# vs. the most recent prior snapshot, and stamps a `delta` object on every
+# entry (days_since_last_touched, updated_since_yesterday, change_summary).
+
+function Get-SnapshotDir {
+    return (Join-Path $GEN 'snapshots')
+}
+
+function Get-ItemFingerprint {
+    <#
+        V4.0 Phase 4b: content-only SHA1 of `title|owner|status|next_action|last_updated`.
+        Intentionally ignores confidence/aging/log so timestamp drift alone
+        does not register as a change.
+    #>
+    param([hashtable] $Item)
+    $seed = @(
+        [string]$Item.title,
+        [string]$Item.owner,
+        [string]$Item.status,
+        [string]$Item.nextAction,
+        [string]$Item.lastSeenDate
+    ) -join '|'
+    $sha1 = [System.Security.Cryptography.SHA1]::Create()
+    try {
+        $bytes = [System.Text.Encoding]::UTF8.GetBytes($seed.ToLowerInvariant())
+        $hash  = $sha1.ComputeHash($bytes)
+        return (-join ($hash | ForEach-Object { $_.ToString('x2') })).Substring(0, 16)
+    } finally { $sha1.Dispose() }
+}
+
+function ConvertTo-SnapshotEntry {
+    <#
+        V4.0 Phase 4a: minimal, stable per-item shape for snapshotting.
+        Deliberately narrow so fingerprints are content-driven.
+    #>
+    param(
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [hashtable] $Entry
+    )
+    $act = if ($Kind -eq 'decision') { $Entry.recommendedFollowUp } else { $Entry.recommendedAction }
+    $nextAction = ''
+    if ($act -is [System.Collections.IDictionary] -and $act.nextAction) { $nextAction = [string]$act.nextAction }
+
+    $status = 'open'
+    if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { $status = 'red' }
+    elseif ($Entry.status -eq 'closed')                   { $status = 'closed' }
+    elseif ($Entry.ownerConfidence -eq 'low')             { $status = 'amber' }
+
+    $item = [ordered]@{
+        id           = if ($Kind -eq 'decision') { [string]$Entry.decisionId } else { [string]$Entry.riskId }
+        kind         = $Kind
+        title        = if ($Entry.title) { [string]$Entry.title } else { '' }
+        owner        = if ($Entry.owner) { [string]$Entry.owner } else { 'Unassigned' }
+        workstream   = if ($Entry.workstream) { [string]$Entry.workstream } else { '' }
+        status       = $status
+        nextAction   = $nextAction
+        lastSeenDate = if ($Entry.lastSeenDate) { [string]$Entry.lastSeenDate } else { '' }
+        stale        = if ($Entry.ContainsKey('stale')) { [bool]$Entry.stale } else { $false }
+    }
+    $item.fingerprint = Get-ItemFingerprint -Item $item
+    return $item
+}
+
+function Get-DailyDelta {
+    <#
+        V4.0 Phase 4b: computes { added, removed, changed, stale } between two
+        snapshot arrays. Also returns per-id change hashtables for downstream
+        `change_summary` synthesis.
+    #>
+    param([object[]] $Today, [object[]] $Yesterday)
+
+    $todayList = @($Today | Where-Object { $null -ne $_ })
+    $yList     = @($Yesterday | Where-Object { $null -ne $_ })
+
+    $ymap = @{}; foreach ($y in $yList)     { $ymap[[string]$y.id] = $y }
+    $tmap = @{}; foreach ($t in $todayList) { $tmap[[string]$t.id] = $t }
+
+    $addedIds     = [System.Collections.Generic.List[string]]::new()
+    $removedIds   = [System.Collections.Generic.List[string]]::new()
+    $changedIds   = [System.Collections.Generic.List[string]]::new()
+    $staleIds     = [System.Collections.Generic.List[string]]::new()
+    $unchangedIds = [System.Collections.Generic.List[string]]::new()
+
+    foreach ($t in $todayList) {
+        $tid = [string]$t.id
+        if ([bool]$t.stale) { $staleIds.Add($tid) }
+        if (-not $ymap.ContainsKey($tid)) {
+            $addedIds.Add($tid)
+            continue
+        }
+        if ([string]$t.fingerprint -ne [string]$ymap[$tid].fingerprint) {
+            $changedIds.Add($tid)
+        } elseif (-not [bool]$t.stale) {
+            $unchangedIds.Add($tid)
+        }
+    }
+    foreach ($y in $yList) {
+        $yid = [string]$y.id
+        if (-not $tmap.ContainsKey($yid)) { $removedIds.Add($yid) }
+    }
+
+    return @{
+        added     = @($addedIds)
+        removed   = @($removedIds)
+        changed   = @($changedIds)
+        stale     = @($staleIds)
+        unchanged = @($unchangedIds)
+        todayMap  = $tmap
+        priorMap  = $ymap
+    }
+}
+
+function Get-ChangeSummary {
+    <#
+        Human-readable diff between a prior and current snapshot entry.
+        Returns '' when the entry is unchanged.
+    #>
+    param([hashtable] $Prior, [hashtable] $Current)
+    if (-not $Prior -or -not $Current) { return '' }
+    $bits = [System.Collections.Generic.List[string]]::new()
+    if ([string]$Prior.owner -ne [string]$Current.owner) {
+        $bits.Add("owner: $($Prior.owner) -> $($Current.owner)")
+    }
+    if ([string]$Prior.status -ne [string]$Current.status) {
+        $bits.Add("status: $($Prior.status) -> $($Current.status)")
+    }
+    if ([string]$Prior.nextAction -ne [string]$Current.nextAction) {
+        $bits.Add('next-action rephrased')
+    }
+    if ([string]$Prior.title -ne [string]$Current.title) {
+        $bits.Add('title updated')
+    }
+    if ([bool]$Prior.stale -ne [bool]$Current.stale) {
+        $bits.Add($(if ($Current.stale) { 'became stale' } else { 'no longer stale' }))
+    }
+    return ($bits -join '; ')
+}
+
+function Get-PriorSnapshot {
+    <#
+        Loads the most recent snapshot dated strictly earlier than $TodayIso.
+        Returns @{ date; items = @() } or $null if none exists.
+    #>
+    param([string] $TodayIso)
+    $dir = Get-SnapshotDir
+    if (-not (Test-Path $dir)) { return $null }
+    $files = @(Get-ChildItem $dir -Filter '*.json' -File -ErrorAction SilentlyContinue |
+                Where-Object { $_.BaseName -match '^\d{4}-\d{2}-\d{2}$' -and $_.BaseName -lt $TodayIso } |
+                Sort-Object BaseName -Descending)
+    if ($files.Count -eq 0) { return $null }
+    try {
+        $raw = Get-Content -LiteralPath $files[0].FullName -Raw -Encoding UTF8
+        $obj = $raw | ConvertFrom-Json -AsHashtable
+        return @{ date = $files[0].BaseName; items = @($obj.items) }
+    } catch {
+        return $null
+    }
+}
+
+function Write-DailySnapshot {
+    <#
+        Persists today's snapshot and updates snapshots/INDEX.json.
+        Trims snapshots older than 30 days (rolling retention).
+    #>
+    param(
+        [string]   $TodayIso,
+        [object[]] $Items,
+        [hashtable] $DeltaSummary,
+        [string]   $GeneratedIso
+    )
+    $dir = Get-SnapshotDir
+    if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+
+    $snap = [ordered]@{
+        date      = $TodayIso
+        generated = $GeneratedIso
+        version   = 'V4.0-phase4-snapshot'
+        itemCount = @($Items).Count
+        items     = @($Items)
+    }
+    $snapPath = Join-Path $dir "$TodayIso.json"
+    [System.IO.File]::WriteAllText($snapPath, ($snap | ConvertTo-Json -Depth 6), (New-Object System.Text.UTF8Encoding($false)))
+
+    # Update INDEX.json (append/replace today's row, trim to last 30 rows).
+    $indexPath = Join-Path $dir 'INDEX.json'
+    $index = [ordered]@{ updated = $GeneratedIso; snapshots = @() }
+    if (Test-Path $indexPath) {
+        try {
+            $raw = Get-Content -LiteralPath $indexPath -Raw -Encoding UTF8
+            $existing = $raw | ConvertFrom-Json -AsHashtable
+            if ($existing.snapshots) { $index.snapshots = @($existing.snapshots) }
+        } catch { }
+    }
+    $index.snapshots = @($index.snapshots | Where-Object { [string]$_.date -ne $TodayIso })
+    $index.snapshots += [ordered]@{
+        date        = $TodayIso
+        itemCount   = @($Items).Count
+        addedIds    = @($DeltaSummary.added)
+        removedIds  = @($DeltaSummary.removed)
+        changedIds  = @($DeltaSummary.changed)
+        staleCount  = @($DeltaSummary.stale).Count
+    }
+    $index.snapshots = @($index.snapshots | Sort-Object { $_.date } -Descending | Select-Object -First 60)
+    $index.updated = $GeneratedIso
+    [System.IO.File]::WriteAllText($indexPath, ($index | ConvertTo-Json -Depth 5), (New-Object System.Text.UTF8Encoding($false)))
+
+    # Retention: delete snapshot files older than 30 days.
+    $cutoff = (Get-Date).AddDays(-30).ToString('yyyy-MM-dd')
+    Get-ChildItem $dir -Filter '*.json' -File -ErrorAction SilentlyContinue |
+        Where-Object { $_.BaseName -match '^\d{4}-\d{2}-\d{2}$' -and $_.BaseName -lt $cutoff } |
+        ForEach-Object {
+            try { Remove-Item $_.FullName -Force -ErrorAction Stop } catch { }
+        }
+
+    return $snapPath
+}
+
+function Apply-DailyDelta {
+    <#
+        Stamps a `delta` hashtable onto every live decision + risk entry using
+        the diff against yesterday's snapshot. Fields:
+          - daysSinceLastTouched
+          - updatedSinceYesterday
+          - changeSummary (present only when non-empty)
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks,
+        [datetime] $Now
+    )
+
+    $todayIso  = $Now.ToString('yyyy-MM-dd')
+    $prior     = Get-PriorSnapshot -TodayIso $todayIso
+    $priorMap  = @{}
+    if ($prior -and $prior.items) {
+        foreach ($p in @($prior.items)) { $priorMap[[string]$p.id] = $p }
+    }
+
+    $todaySnaps = [System.Collections.Generic.List[hashtable]]::new()
+    foreach ($d in $Decisions) { if ($d) { $todaySnaps.Add((ConvertTo-SnapshotEntry -Kind 'decision' -Entry $d)) } }
+    foreach ($r in $Risks)     { if ($r) { $todaySnaps.Add((ConvertTo-SnapshotEntry -Kind 'risk'     -Entry $r)) } }
+
+    $delta = Get-DailyDelta -Today @($todaySnaps) -Yesterday @(if ($prior) { $prior.items } else { @() })
+
+    $priorDateStr = if ($prior) { $prior.date } else { $todayIso }
+    $priorDate = try { [datetime]::ParseExact($priorDateStr, 'yyyy-MM-dd', $null) } catch { $Now.Date }
+
+    $stamp = {
+        param($entries, $kind)
+        foreach ($e in $entries) {
+            if (-not $e) { continue }
+            $id = if ($kind -eq 'decision') { [string]$e.decisionId } else { [string]$e.riskId }
+            $todaySnap = $null
+            foreach ($s in $todaySnaps) { if ([string]$s.id -eq $id) { $todaySnap = $s; break } }
+            $priorSnap = if ($priorMap.ContainsKey($id)) { $priorMap[$id] } else { $null }
+
+            $lastSeen = if ($e.lastSeenDate) {
+                try { [datetime]::ParseExact([string]$e.lastSeenDate, 'yyyy-MM-dd', $null) } catch { $priorDate }
+            } else { $priorDate }
+            $days = [int](($Now.Date - $lastSeen.Date).TotalDays)
+            if ($days -lt 0) { $days = 0 }
+
+            $updated = $false
+            if (-not $priorSnap) {
+                $updated = $true
+            } elseif ($todaySnap -and [string]$todaySnap.fingerprint -ne [string]$priorSnap.fingerprint) {
+                $updated = $true
+            }
+
+            $summary = if ($priorSnap -and $todaySnap) { Get-ChangeSummary -Prior $priorSnap -Current $todaySnap } else { '' }
+            if (-not $priorSnap) { $summary = 'first appearance' }
+
+            $e.delta = [ordered]@{
+                daysSinceLastTouched   = $days
+                updatedSinceYesterday  = $updated
+                changeSummary          = $summary
+            }
+        }
+    }
+    & $stamp $Decisions 'decision'
+    & $stamp $Risks     'risk'
+
+    return @{
+        delta       = $delta
+        snapshots   = @($todaySnaps)
+        priorDate   = $priorDateStr
+    }
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -2888,6 +3179,7 @@ function Build-DecisionRegistryJson {
             mentionCount        = if ($e.ContainsKey('mentionCount'))     { [int]$e.mentionCount }        else { @($e.sourceFiles).Count }
             mergedFrom          = if ($e.ContainsKey('mergedFrom'))       { @($e.mergedFrom) }            else { @() }
             stale               = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
+            delta               = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
@@ -3872,6 +4164,7 @@ function Build-RiskRegisterJson {
             mentionCount      = if ($e.ContainsKey('mentionCount'))     { [int]$e.mentionCount }        else { @($e.sourceFiles).Count }
             mergedFrom        = if ($e.ContainsKey('mergedFrom'))       { @($e.mergedFrom) }            else { @() }
             stale             = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
+            delta             = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
             recommendedAction = $e.recommendedAction
         }
     }
@@ -4043,6 +4336,8 @@ function New-InboxItem {
         personalizationSignals = @()
         impact          = $Entry.impact
         rationale       = if ($act -is [System.Collections.IDictionary]) { [string]$act.rationale } else { '' }
+        # V4.0 Phase 4: daily-delta pass-through
+        delta           = if ($Entry.ContainsKey('delta') -and $Entry.delta) { $Entry.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
     }
 }
 
@@ -4655,6 +4950,20 @@ function Build-DavidInboxJson {
 
     $clusters = Get-DecisionClusters -Items $Items
 
+    # V4.0 Phase 4: daily-delta ribbon (populated by Apply-DailyDelta earlier
+    # in Main). Falls back to zeros if the delta pass has not run.
+    $deltaRibbon = if ($script:MAT_DAILY_DELTA) {
+        [ordered]@{
+            addedCount     = @($script:MAT_DAILY_DELTA.added).Count
+            changedCount   = @($script:MAT_DAILY_DELTA.changed).Count
+            removedCount   = @($script:MAT_DAILY_DELTA.removed).Count
+            staleCount     = @($script:MAT_DAILY_DELTA.stale).Count
+            comparedAgainst = if ($script:MAT_DAILY_DELTA_PRIOR_DATE) { [string]$script:MAT_DAILY_DELTA_PRIOR_DATE } else { '' }
+        }
+    } else {
+        [ordered]@{ addedCount = 0; changedCount = 0; removedCount = 0; staleCount = 0; comparedAgainst = '' }
+    }
+
     $out = [ordered]@{
         generated = $GeneratedIso
         generator = 'scripts/generate-current-focus.ps1'
@@ -4678,7 +4987,9 @@ function Build-DavidInboxJson {
             clusters      = $clusters.Count
             imminentEscalation = @($Items | Where-Object { $null -ne $_.timeToEscalationRisk -and [int]$_.timeToEscalationRisk -le 3 }).Count
             personalized  = @($Items | Where-Object { @($_.personalizationSignals).Count -gt 0 }).Count
+            dailyDelta    = $deltaRibbon
         }
+        dailyDelta = $deltaRibbon
         tiers     = [ordered]@{
             p1 = @($p1)
             p2 = @($p2)
@@ -4812,6 +5123,27 @@ Write-Host "Written: $($OUT_TRENDS_JSON.Replace($ROOT,'').TrimStart('\'))" -Fore
 
 # --- V1.6 Decision Registry (must run before the briefing so it can consume it) ---
 $decisions       = @(Get-DecisionRegistry -Records $records -Workstreams $workstreams -Model $model -OwnershipMap $ownershipMap)
+
+# --- V1.7 Risk Register (must run before the briefing so it can consume it) ---
+$risks         = @(Get-RiskRegister -Records $records -Workstreams $workstreams -Model $model -OwnershipMap $ownershipMap)
+
+# --- V4.0 Phase 4: Daily delta + rolling snapshot -------------------------
+# Must run AFTER both registries finalize and BEFORE the JSON emitters so the
+# `delta` object lands on every entry. Persists today's snapshot + INDEX and
+# trims files older than 30 days.
+$deltaResult = Apply-DailyDelta -Decisions $decisions -Risks $risks -Now (Get-Date)
+$snapshotPath = Write-DailySnapshot -TodayIso ((Get-Date).ToString('yyyy-MM-dd')) -Items @($deltaResult.snapshots) -DeltaSummary $deltaResult.delta -GeneratedIso $generatedIso
+Write-Host "Written: $($snapshotPath.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+Write-Host ("Daily delta: +{0} added / {1} changed / {2} removed / {3} stale (vs {4})" -f `
+    @($deltaResult.delta.added).Count, `
+    @($deltaResult.delta.changed).Count, `
+    @($deltaResult.delta.removed).Count, `
+    @($deltaResult.delta.stale).Count, `
+    $deltaResult.priorDate) -ForegroundColor Yellow
+$script:MAT_DAILY_DELTA = $deltaResult.delta
+$script:MAT_DAILY_DELTA_PRIOR_DATE = $deltaResult.priorDate
+
+# --- V1.6 Decision Registry JSON/MD emit ---
 $decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated
 $decRegJson      = Build-DecisionRegistryJson     -Decisions $decisions -GeneratedIso $generatedIso
 [System.IO.File]::WriteAllText($OUT_DECREG_MD,   $decRegMd,   (New-Object System.Text.UTF8Encoding($false)))
@@ -4819,8 +5151,7 @@ $decRegJson      = Build-DecisionRegistryJson     -Decisions $decisions -Generat
 Write-Host "Written: $($OUT_DECREG_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
 Write-Host "Written: $($OUT_DECREG_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 
-# --- V1.7 Risk Register (must run before the briefing so it can consume it) ---
-$risks         = @(Get-RiskRegister -Records $records -Workstreams $workstreams -Model $model -OwnershipMap $ownershipMap)
+# --- V1.7 Risk Register JSON/MD emit ---
 $riskRegMd     = Build-RiskRegisterMarkdown -Risks $risks -NowStamp $meta.generated
 $riskRegJson   = Build-RiskRegisterJson     -Risks $risks -GeneratedIso $generatedIso
 [System.IO.File]::WriteAllText($OUT_RISKREG_MD,   $riskRegMd,   (New-Object System.Text.UTF8Encoding($false)))
