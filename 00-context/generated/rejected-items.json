@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T17:30:41",
+  "generated": "2026-07-17T19:21:46",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V4.0-phase1-validator",
   "totals": {
@@ -8,123 +8,10 @@
     "rejected": 64,
     "byField": {
       "why_it_matters": 64,
-      "context_summary": 43,
       "next_action": 1
     }
   },
   "rejections": [
-    {
-      "itemId": "D-02c40deef8",
-      "itemKind": "decision",
-      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
-      "workstream": "",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-02c40deef8",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-0ac2a0c612",
-      "itemKind": "decision",
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "workstream": "Capacity Management",
-      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
-      "errors": [
-        {
-          "itemId": "D-0ac2a0c612",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-f91314563c",
-      "itemKind": "decision",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "workstream": "GBO Batch Transition",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-f91314563c",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-59805c75f5",
-      "itemKind": "decision",
-      "title": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
-      "workstream": "Rapid Recovery",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "D-59805c75f5",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-7f991874c7",
-      "itemKind": "decision",
-      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
-      "workstream": "Developer XP Dashboard",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-7f991874c7",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-b27c5d17f9",
-      "itemKind": "decision",
-      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
-      "workstream": "",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-b27c5d17f9",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-6f81d99006",
-      "itemKind": "decision",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "D-6f81d99006",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-ad83b89db6",
-      "itemKind": "decision",
-      "title": "D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds",
-      "workstream": "MMM L2",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-ad83b89db6",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
     {
       "itemId": "D-d059b9808f",
       "itemKind": "decision",
@@ -134,62 +21,6 @@
       "errors": [
         {
           "itemId": "D-d059b9808f",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-9a895e8ecb",
-      "itemKind": "decision",
-      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
-      "workstream": "",
-      "owner": "Birger Fjaellman",
-      "errors": [
-        {
-          "itemId": "D-9a895e8ecb",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-64c97dd4cc",
-      "itemKind": "decision",
-      "title": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
-      "workstream": "Rapid Recovery",
-      "owner": "Birger Fjaellman",
-      "errors": [
-        {
-          "itemId": "D-64c97dd4cc",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-3ced6cbb47",
-      "itemKind": "decision",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "D-3ced6cbb47",
-          "field": "why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-e275b159e5",
-      "itemKind": "decision",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "workstream": "GOCC Transition",
-      "owner": "Birger Fjaellman",
-      "errors": [
-        {
-          "itemId": "D-e275b159e5",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -210,6 +41,48 @@
       ]
     },
     {
+      "itemId": "D-ad83b89db6",
+      "itemKind": "decision",
+      "title": "D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds",
+      "workstream": "MMM L2",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-ad83b89db6",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-59805c75f5",
+      "itemKind": "decision",
+      "title": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
+      "workstream": "Rapid Recovery",
+      "owner": "Balaji Ravi",
+      "errors": [
+        {
+          "itemId": "D-59805c75f5",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-02c40deef8",
+      "itemKind": "decision",
+      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+      "workstream": "",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-02c40deef8",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
       "itemId": "D-40250bb7d6",
       "itemKind": "decision",
       "title": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
@@ -224,14 +97,28 @@
       ]
     },
     {
-      "itemId": "D-ec111d7bcc",
+      "itemId": "D-30ae77972e",
       "itemKind": "decision",
-      "title": "D004 — Agreed: Japan Incident Documentation & CI Standards",
-      "workstream": "Employee XP Dashboard",
-      "owner": "George Francis Fermo",
+      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
+      "workstream": "GBO Batch Transition",
+      "owner": "Balaji Ravi",
       "errors": [
         {
-          "itemId": "D-ec111d7bcc",
+          "itemId": "D-30ae77972e",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-f91314563c",
+      "itemKind": "decision",
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "workstream": "GBO Batch Transition",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-f91314563c",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -252,6 +139,20 @@
       ]
     },
     {
+      "itemId": "D-7f991874c7",
+      "itemKind": "decision",
+      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "workstream": "Developer XP Dashboard",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-7f991874c7",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
       "itemId": "D-fadd968d28",
       "itemKind": "decision",
       "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
@@ -266,14 +167,112 @@
       ]
     },
     {
-      "itemId": "D-30ae77972e",
+      "itemId": "D-64c97dd4cc",
       "itemKind": "decision",
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "workstream": "GBO Batch Transition",
+      "title": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
+      "workstream": "Rapid Recovery",
       "owner": "Birger Fjaellman",
       "errors": [
         {
-          "itemId": "D-30ae77972e",
+          "itemId": "D-64c97dd4cc",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-b27c5d17f9",
+      "itemKind": "decision",
+      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
+      "workstream": "",
+      "owner": "David Klan",
+      "errors": [
+        {
+          "itemId": "D-b27c5d17f9",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-3ced6cbb47",
+      "itemKind": "decision",
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "D-3ced6cbb47",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-6f81d99006",
+      "itemKind": "decision",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "D-6f81d99006",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-0ac2a0c612",
+      "itemKind": "decision",
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "workstream": "Capacity Management",
+      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
+      "errors": [
+        {
+          "itemId": "D-0ac2a0c612",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-ec111d7bcc",
+      "itemKind": "decision",
+      "title": "D004 — Agreed: Japan Incident Documentation & CI Standards",
+      "workstream": "Employee XP Dashboard",
+      "owner": "George Francis Fermo",
+      "errors": [
+        {
+          "itemId": "D-ec111d7bcc",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-9a895e8ecb",
+      "itemKind": "decision",
+      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+      "workstream": "",
+      "owner": "Birger Fjaellman",
+      "errors": [
+        {
+          "itemId": "D-9a895e8ecb",
+          "field": "why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "D-e275b159e5",
+      "itemKind": "decision",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "workstream": "GOCC Transition",
+      "owner": "Birger Fjaellman",
+      "errors": [
+        {
+          "itemId": "D-e275b159e5",
           "field": "why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -308,25 +307,6 @@
       ]
     },
     {
-      "itemId": "R-cd89918f9c",
-      "itemKind": "risk",
-      "title": "Review and operationalize the vendor escalation format",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-cd89918f9c",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-cd89918f9c",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
       "itemId": "R-1c3d9c0e3b",
       "itemKind": "risk",
       "title": "Vendor Escalation",
@@ -336,11 +316,6 @@
         {
           "itemId": "R-1c3d9c0e3b",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-1c3d9c0e3b",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -356,10 +331,19 @@
           "itemId": "R-f386376f94",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-cd89918f9c",
+      "itemKind": "risk",
+      "title": "Review and operationalize the vendor escalation format",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-f386376f94",
-          "field": "context_summary",
+          "itemId": "R-cd89918f9c",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -375,10 +359,19 @@
           "itemId": "R-aa0c3f050b",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-8ad2d2ce2f",
+      "itemKind": "risk",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-aa0c3f050b",
-          "field": "context_summary",
+          "itemId": "R-8ad2d2ce2f",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -394,29 +387,19 @@
           "itemId": "R-d7f568105f",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-d7f568105f",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-8ad2d2ce2f",
+      "itemId": "R-b493137b8f",
       "itemKind": "risk",
-      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
-      "workstream": "Developer XP Dashboard",
+      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-8ad2d2ce2f",
+          "itemId": "R-b493137b8f",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-8ad2d2ce2f",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -432,30 +415,6 @@
           "itemId": "R-121760730c",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-121760730c",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-b493137b8f",
-      "itemKind": "risk",
-      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-b493137b8f",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-b493137b8f",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
@@ -469,11 +428,6 @@
         {
           "itemId": "R-2b2a241d9c",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-2b2a241d9c",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -489,68 +443,6 @@
           "itemId": "R-bafab65c68",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-bafab65c68",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-aa18501480",
-      "itemKind": "risk",
-      "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-aa18501480",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-aa18501480",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-0dcce4bb79",
-      "itemKind": "risk",
-      "title": "🚨 Network instability (VNet) → platform readiness risk",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-0dcce4bb79",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-0dcce4bb79",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-27c07d48fd",
-      "itemKind": "risk",
-      "title": "Team to secure **contact + escalation path",
-      "workstream": "GOCC Transition",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-27c07d48fd",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-27c07d48fd",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
@@ -564,68 +456,6 @@
         {
           "itemId": "R-b8d4414c4c",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-b8d4414c4c",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-ca48836978",
-      "itemKind": "risk",
-      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-ca48836978",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-ca48836978",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-e3dd5be6ae",
-      "itemKind": "risk",
-      "title": "⚠️ Vendor-managed apps without clear escalation model",
-      "workstream": "CMDB Mapping",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-e3dd5be6ae",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-e3dd5be6ae",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-9bfa424dbf",
-      "itemKind": "risk",
-      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-9bfa424dbf",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-9bfa424dbf",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -641,10 +471,33 @@
           "itemId": "R-228ae1101c",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-ca48836978",
+      "itemKind": "risk",
+      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
+      "workstream": "CyberArk Governance",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-228ae1101c",
-          "field": "context_summary",
+          "itemId": "R-ca48836978",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-e3dd5be6ae",
+      "itemKind": "risk",
+      "title": "⚠️ Vendor-managed apps without clear escalation model",
+      "workstream": "CMDB Mapping",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-e3dd5be6ae",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -660,10 +513,47 @@
           "itemId": "R-b7a381d02b",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-aa18501480",
+      "itemKind": "risk",
+      "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-b7a381d02b",
-          "field": "context_summary",
+          "itemId": "R-aa18501480",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-9bfa424dbf",
+      "itemKind": "risk",
+      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-9bfa424dbf",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-27c07d48fd",
+      "itemKind": "risk",
+      "title": "Team to secure **contact + escalation path",
+      "workstream": "GOCC Transition",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-27c07d48fd",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -679,67 +569,19 @@
           "itemId": "R-bf28edfac4",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-bf28edfac4",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-b2ee8b777e",
+      "itemId": "R-0dcce4bb79",
       "itemKind": "risk",
-      "title": "Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...",
-      "workstream": "",
+      "title": "🚨 Network instability (VNet) → platform readiness risk",
+      "workstream": "CyberArk Governance",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-b2ee8b777e",
+          "itemId": "R-0dcce4bb79",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-b2ee8b777e",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-a3a724c1be",
-      "itemKind": "risk",
-      "title": "Validate escalation paths",
-      "workstream": "",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-a3a724c1be",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-a3a724c1be",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-64c0ccc1e6",
-      "itemKind": "risk",
-      "title": "The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged \"red\" under V3...",
-      "workstream": "",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-64c0ccc1e6",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-64c0ccc1e6",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -755,29 +597,33 @@
           "itemId": "R-1de6e7cdee",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-a3a724c1be",
+      "itemKind": "risk",
+      "title": "Validate escalation paths",
+      "workstream": "",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-1de6e7cdee",
-          "field": "context_summary",
+          "itemId": "R-a3a724c1be",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-41bb9b1c39",
+      "itemId": "R-b2ee8b777e",
       "itemKind": "risk",
-      "title": "Red requires a hard signal only: blocker keyword, deadline breach, high-severity risk, or blocked action_class. Soft signals cannot combi...",
+      "title": "Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...",
       "workstream": "",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-41bb9b1c39",
+          "itemId": "R-b2ee8b777e",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-41bb9b1c39",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -793,29 +639,33 @@
           "itemId": "R-b1cf205d0f",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-41bb9b1c39",
+      "itemKind": "risk",
+      "title": "Red requires a hard signal only: blocker keyword, deadline breach, high-severity risk, or blocked action_class. Soft signals cannot combi...",
+      "workstream": "",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-b1cf205d0f",
-          "field": "context_summary",
+          "itemId": "R-41bb9b1c39",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-f5518c28bc",
+      "itemId": "R-64c0ccc1e6",
       "itemKind": "risk",
-      "title": "Streamline risk framework and automate compliance",
+      "title": "The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged \"red\" under V3...",
       "workstream": "",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-f5518c28bc",
+          "itemId": "R-64c0ccc1e6",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-f5518c28bc",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -831,29 +681,19 @@
           "itemId": "R-ae3cccdff8",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-ae3cccdff8",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
     {
-      "itemId": "R-c7355ab891",
+      "itemId": "R-f5518c28bc",
       "itemKind": "risk",
-      "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
-      "workstream": "GOCC Transition",
+      "title": "Streamline risk framework and automate compliance",
+      "workstream": "",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-c7355ab891",
+          "itemId": "R-f5518c28bc",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-c7355ab891",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -869,10 +709,19 @@
           "itemId": "R-f02ad44a72",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-c7355ab891",
+      "itemKind": "risk",
+      "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
+      "workstream": "GOCC Transition",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-f02ad44a72",
-          "field": "context_summary",
+          "itemId": "R-c7355ab891",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -888,10 +737,19 @@
           "itemId": "R-b882fa398a",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-59131ed59a",
+      "itemKind": "risk",
+      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
+      "workstream": "Capacity Management",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-b882fa398a",
-          "field": "context_summary",
+          "itemId": "R-59131ed59a",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -907,30 +765,6 @@
           "itemId": "R-a18adafc06",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-a18adafc06",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-59131ed59a",
-      "itemKind": "risk",
-      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-59131ed59a",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-59131ed59a",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
@@ -944,11 +778,6 @@
         {
           "itemId": "R-8d9f37dcce",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-8d9f37dcce",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -964,11 +793,6 @@
           "itemId": "R-2fc8ec9c90",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-2fc8ec9c90",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
@@ -982,49 +806,6 @@
         {
           "itemId": "R-5a110d3d32",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-5a110d3d32",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-601cba16b2",
-      "itemKind": "risk",
-      "title": "⚠️ Dependency on manual URL onboarding",
-      "workstream": "",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-601cba16b2",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-601cba16b2",
-          "field": "context_summary",
-          "reason": "missing required field"
-        }
-      ]
-    },
-    {
-      "itemId": "R-7af7bceb58",
-      "itemKind": "risk",
-      "title": "⚠️ Auditability concern",
-      "workstream": "MMM L2",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-7af7bceb58",
-          "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-7af7bceb58",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]
@@ -1040,10 +821,33 @@
           "itemId": "R-d5365064d3",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
+        }
+      ]
+    },
+    {
+      "itemId": "R-601cba16b2",
+      "itemKind": "risk",
+      "title": "⚠️ Dependency on manual URL onboarding",
+      "workstream": "",
+      "owner": "Unassigned",
+      "errors": [
         {
-          "itemId": "R-d5365064d3",
-          "field": "context_summary",
+          "itemId": "R-601cba16b2",
+          "field": "why_it_matters",
+          "reason": "missing required field"
+        }
+      ]
+    },
+    {
+      "itemId": "R-7af7bceb58",
+      "itemKind": "risk",
+      "title": "⚠️ Auditability concern",
+      "workstream": "MMM L2",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-7af7bceb58",
+          "field": "why_it_matters",
           "reason": "missing required field"
         }
       ]
@@ -1059,11 +863,6 @@
           "itemId": "R-ad7b2a1025",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-ad7b2a1025",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
@@ -1077,11 +876,6 @@
         {
           "itemId": "R-1a32480547",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-1a32480547",
-          "field": "context_summary",
           "reason": "missing required field"
         },
         {
@@ -1102,11 +896,6 @@
           "itemId": "R-6f6e73c0c0",
           "field": "why_it_matters",
           "reason": "missing required field"
-        },
-        {
-          "itemId": "R-6f6e73c0c0",
-          "field": "context_summary",
-          "reason": "missing required field"
         }
       ]
     },
@@ -1120,11 +909,6 @@
         {
           "itemId": "R-2884ed4872",
           "field": "why_it_matters",
-          "reason": "missing required field"
-        },
-        {
-          "itemId": "R-2884ed4872",
-          "field": "context_summary",
           "reason": "missing required field"
         }
       ]

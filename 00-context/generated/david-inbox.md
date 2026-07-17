@@ -2,7 +2,7 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-17 17:30
+Generated: 2026-07-17 19:21
 
 Candidates: **40** | P1: **5 (cap 5)** | P2: **10 (cap 10)** | P3: **0 (cap 10)**
 
@@ -10,6 +10,17 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 ## P1 - Escalate today (top 5)
 
+### [FOLLOW_UP] P1 - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
+
+- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **Owner**: Balaji Ravi (medium)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.44
+- **Age**: 14 days
+- **Next**: Contact Balaji Ravi today - decision on GBO Batch Transition aged 14 days without resolution
+- **Rationale**: Pending 14 days - direct outreach to owner today.
+- **Linked actions**: 1
+- **Source**: decision D-30ae77972e
 ### [FOLLOW_UP] P1 - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
@@ -43,17 +54,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Rationale**: Pending 14 days - direct outreach to owner today.
 - **Linked actions**: 1
 - **Source**: decision D-0ac2a0c612
-### [FOLLOW_UP] P1 - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
-
-- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
-- **Owner**: Birger Fjaellman (medium)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.44
-- **Age**: 14 days
-- **Next**: Contact Birger Fjaellman today - decision on GBO Batch Transition aged 14 days without resolution
-- **Rationale**: Pending 14 days - direct outreach to owner today.
-- **Linked actions**: 1
-- **Source**: decision D-30ae77972e
 ### [FOLLOW_UP] P1 - GOCC Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope
@@ -180,12 +180,12 @@ _None._
 
 ## Clusters (workstream / theme)
 
-- **GBO Batch Transition** / _september_ - 3 item(s), P1, 2 P1, min escalation: 0d
+- **GBO Batch Transition** / _operating_ - 3 item(s), P1, 2 P1, min escalation: 0d
 - **ADX Registration** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Capacity Management** / _capacity_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **Capacity Management** / _management_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **GOCC Transition** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **(none)** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
 - **(none)** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **(none)** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
 - **CyberArk Governance** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
 - **Rapid Recovery** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
 - **CMDB Mapping** / _(misc)_ - 3 item(s), P2, 0 P1, min escalation: 0d

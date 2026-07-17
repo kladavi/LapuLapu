@@ -1954,8 +1954,13 @@ function ConvertTo-MatryoshkaCandidate {
     }
 
     $contextSummary = ''
-    if ($Kind -eq 'decision' -and $Entry.decisionSummary) { $contextSummary = [string]$Entry.decisionSummary }
-    elseif ($Kind -eq 'risk' -and $Entry.impact)          { $contextSummary = [string]$Entry.impact }
+    # V4.0 Phase 5: prefer the source-paragraph excerpt when Apply-ContextLinking
+    # has already enriched the entry. Falls back to V3 free-text on unenriched runs.
+    if ($Entry.ContainsKey('contextSummary') -and -not [string]::IsNullOrWhiteSpace([string]$Entry.contextSummary)) {
+        $contextSummary = [string]$Entry.contextSummary
+    }
+    elseif ($Kind -eq 'decision' -and $Entry.decisionSummary) { $contextSummary = [string]$Entry.decisionSummary }
+    elseif ($Kind -eq 'risk' -and $Entry.impact)              { $contextSummary = [string]$Entry.impact }
 
     $whyItMatters = ''
     if ($Entry.impact) { $whyItMatters = [string]$Entry.impact }
@@ -2599,6 +2604,231 @@ function Apply-DailyDelta {
     }
 }
 
+# V4.0 Phase 5 - Context linking.
+# Reads the primary source file for each entry and captures:
+#   - contextSummary: 2 lines before + matched line + 2 lines after (per spec 5a)
+#   - contextMetadata: last_mention timestamp + last_activity + actors named in
+#     the source paragraph (per spec 5a-bis)
+# Deterministic pattern matching only, no LLM. Cached per file so we don't
+# re-read a source multiple times per pass.
+
+$script:MAT_SOURCE_TEXT_CACHE = @{}
+
+function Get-CachedSourceLines {
+    param([string] $AbsPath)
+    if ([string]::IsNullOrWhiteSpace($AbsPath)) { return @() }
+    if (-not (Test-Path -LiteralPath $AbsPath)) { return @() }
+    if ($script:MAT_SOURCE_TEXT_CACHE.ContainsKey($AbsPath)) {
+        return $script:MAT_SOURCE_TEXT_CACHE[$AbsPath]
+    }
+    try {
+        $raw = Get-Content -LiteralPath $AbsPath -Raw -Encoding UTF8 -ErrorAction Stop
+        $lines = @(($raw -replace "`r`n", "`n") -split "`n")
+    } catch {
+        $lines = @()
+    }
+    $script:MAT_SOURCE_TEXT_CACHE[$AbsPath] = $lines
+    return $lines
+}
+
+function Get-ContextSummary {
+    <#
+        V4.0 Phase 5a: extracts a 5-line window around a matched line in the
+        source file. Falls back to the first non-empty line of the file when
+        no seed match is found. Trimmed to 300 chars.
+    #>
+    param(
+        [string] $AbsSourcePath,
+        [string] $SeedText
+    )
+    if ([string]::IsNullOrWhiteSpace($AbsSourcePath)) { return '' }
+    $lines = Get-CachedSourceLines -AbsPath $AbsSourcePath
+    if ($lines.Count -eq 0) { return '' }
+
+    $idx = -1
+    if (-not [string]::IsNullOrWhiteSpace($SeedText)) {
+        # Try successively shorter prefixes of the seed so we still match when
+        # the title was truncated / rephrased.
+        $trimmed = ($SeedText -replace '^\s*[-*>#]+\s*', '').Trim()
+        $candidates = @()
+        if ($trimmed.Length -ge 60) { $candidates += $trimmed.Substring(0, 60) }
+        if ($trimmed.Length -ge 40) { $candidates += $trimmed.Substring(0, 40) }
+        if ($trimmed.Length -ge 20) { $candidates += $trimmed.Substring(0, 20) }
+        $candidates += $trimmed
+
+        foreach ($cand in $candidates) {
+            if ([string]::IsNullOrWhiteSpace($cand)) { continue }
+            $needle = $cand.ToLowerInvariant()
+            for ($i = 0; $i -lt $lines.Count; $i++) {
+                if (($lines[$i]).ToLowerInvariant().Contains($needle)) {
+                    $idx = $i
+                    break
+                }
+            }
+            if ($idx -ge 0) { break }
+        }
+    }
+
+    if ($idx -lt 0) {
+        # Fallback: first non-empty, non-frontmatter, non-heading line.
+        for ($i = 0; $i -lt $lines.Count; $i++) {
+            $l = $lines[$i].Trim()
+            if ([string]::IsNullOrWhiteSpace($l)) { continue }
+            if ($l -match '^---\s*$') { continue }
+            if ($l -match '^\s*(type|source|date|generated_on|status|window_days)\s*:') { continue }
+            $idx = $i
+            break
+        }
+    }
+    if ($idx -lt 0) { return '' }
+
+    $start = [Math]::Max(0, $idx - 2)
+    $end   = [Math]::Min($lines.Count - 1, $idx + 2)
+    $window = @($lines[$start..$end]) -join ' '
+    $summary = ($window -replace '\s+', ' ').Trim()
+    if ($summary.Length -gt 300) { $summary = $summary.Substring(0, 297) + '...' }
+    return $summary
+}
+
+function Get-ContextActors {
+    <#
+        Returns the set of stakeholder names mentioned in the primary source
+        file for an entry.
+    #>
+    param(
+        [string]   $AbsSourcePath,
+        [string[]] $StakeholderNames
+    )
+    if ([string]::IsNullOrWhiteSpace($AbsSourcePath) -or -not $StakeholderNames -or $StakeholderNames.Count -eq 0) { return @() }
+    $lines = Get-CachedSourceLines -AbsPath $AbsSourcePath
+    if ($lines.Count -eq 0) { return @() }
+    $text = ($lines -join "`n").ToLowerInvariant()
+    $hits = [System.Collections.Generic.List[string]]::new()
+    foreach ($n in $StakeholderNames) {
+        if ([string]::IsNullOrWhiteSpace($n)) { continue }
+        $needle = $n.ToLowerInvariant()
+        $needleFirstToken = ($needle -split '\s+' | Select-Object -First 1)
+        $pattern = '\b' + [regex]::Escape($needle) + '\b'
+        if ($text -match $pattern) { $hits.Add($n); continue }
+        # Also match on just the first-name token for people-style names.
+        if ($needleFirstToken -and $needleFirstToken.Length -ge 4) {
+            $patternFirst = '\b' + [regex]::Escape($needleFirstToken) + '\b'
+            if ($text -match $patternFirst) { $hits.Add($n) }
+        }
+    }
+    return @($hits | Sort-Object -Unique)
+}
+
+function Get-ContextMetadata {
+    <#
+        V4.0 Phase 5a-bis: structured metadata layer alongside the text summary.
+        Returns { lastMention; lastActivity; actors; primarySource }.
+    #>
+    param(
+        [hashtable] $Entry,
+        [string]    $RootPath,
+        [string[]]  $StakeholderNames
+    )
+    $sourceFiles = @($Entry.sourceFiles)
+    if ($sourceFiles.Count -eq 0) {
+        return @{
+            lastMention   = if ($Entry.lastSeenDate) { [string]$Entry.lastSeenDate } else { '' }
+            lastActivity  = if ($Entry.lastSeenDate) { [string]$Entry.lastSeenDate } else { '' }
+            actors        = @()
+            primarySource = ''
+        }
+    }
+
+    # Primary source = most-recently-modified among the entry's sourceFiles.
+    $best = $null
+    $bestTime = [datetime]::MinValue
+    foreach ($rel in $sourceFiles) {
+        if ([string]::IsNullOrWhiteSpace($rel)) { continue }
+        $abs = Join-Path $RootPath $rel
+        if (-not (Test-Path -LiteralPath $abs)) { continue }
+        $item = Get-Item -LiteralPath $abs -ErrorAction SilentlyContinue
+        if (-not $item) { continue }
+        if ($item.LastWriteTime -gt $bestTime) {
+            $bestTime = $item.LastWriteTime
+            $best     = $rel
+        }
+    }
+    if (-not $best) { $best = [string]$sourceFiles[0] }
+
+    $absPrimary = Join-Path $RootPath $best
+    $actors = Get-ContextActors -AbsSourcePath $absPrimary -StakeholderNames $StakeholderNames
+
+    $lastMention = if ($bestTime -ne [datetime]::MinValue) { $bestTime.ToString('yyyy-MM-dd') }
+                   elseif ($Entry.lastSeenDate) { [string]$Entry.lastSeenDate }
+                   else { '' }
+    $lastActivity = if ($Entry.lastSeenDate) { [string]$Entry.lastSeenDate } else { $lastMention }
+
+    return @{
+        lastMention   = $lastMention
+        lastActivity  = $lastActivity
+        actors        = @($actors)
+        primarySource = $best
+    }
+}
+
+function Apply-ContextLinking {
+    <#
+        V4.0 Phase 5 orchestrator: enriches every decision + risk entry with
+        contextSummary + contextMetadata built from its primary source file.
+        Refreshes contextSummary in preference to the V3 free-text summary but
+        keeps the V3 fields intact for backward compat.
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks,
+        [string]   $RootPath,
+        [hashtable] $Model
+    )
+
+    $script:MAT_SOURCE_TEXT_CACHE = @{}
+    $stakeholderNames = @()
+    if ($Model -and $Model.stakeholder_weights) {
+        $stakeholderNames = @($Model.stakeholder_weights.Keys)
+    }
+
+    $enrichedCount = 0
+    $actorHits     = 0
+    foreach ($kind in @('decision','risk')) {
+        $entries = if ($kind -eq 'decision') { $Decisions } else { $Risks }
+        foreach ($e in $entries) {
+            if (-not $e) { continue }
+            $meta = Get-ContextMetadata -Entry $e -RootPath $RootPath -StakeholderNames $stakeholderNames
+            $seed = if ($e.title) { [string]$e.title } else { '' }
+            $abs  = if ($meta.primarySource) { Join-Path $RootPath ([string]$meta.primarySource) } else { '' }
+            $summary = if ($abs) { Get-ContextSummary -AbsSourcePath $abs -SeedText $seed } else { '' }
+            # Fall back to existing V3 free-text if the source read produced nothing.
+            if ([string]::IsNullOrWhiteSpace($summary)) {
+                if ($kind -eq 'decision' -and $e.decisionSummary) { $summary = [string]$e.decisionSummary }
+                elseif ($kind -eq 'risk' -and $e.impact)          { $summary = [string]$e.impact }
+            }
+
+            $e.contextSummary  = $summary
+            $e.contextMetadata = [ordered]@{
+                lastMention   = [string]$meta.lastMention
+                lastActivity  = [string]$meta.lastActivity
+                actors        = @($meta.actors)
+                primarySource = [string]$meta.primarySource
+            }
+            $enrichedCount++
+            if (@($meta.actors).Count -gt 0) { $actorHits++ }
+        }
+    }
+
+    # Free the cache once we're done - up to 100 source files may have been
+    # slurped into memory during enrichment.
+    $script:MAT_SOURCE_TEXT_CACHE = @{}
+
+    return @{
+        enrichedCount = $enrichedCount
+        actorHits     = $actorHits
+    }
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -3180,6 +3410,8 @@ function Build-DecisionRegistryJson {
             mergedFrom          = if ($e.ContainsKey('mergedFrom'))       { @($e.mergedFrom) }            else { @() }
             stale               = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
             delta               = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
+            contextSummary      = if ($e.ContainsKey('contextSummary'))  { [string]$e.contextSummary } else { '' }
+            contextMetadata     = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
@@ -4165,6 +4397,8 @@ function Build-RiskRegisterJson {
             mergedFrom        = if ($e.ContainsKey('mergedFrom'))       { @($e.mergedFrom) }            else { @() }
             stale             = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
             delta             = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
+            contextSummary    = if ($e.ContainsKey('contextSummary'))  { [string]$e.contextSummary } else { '' }
+            contextMetadata   = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
             recommendedAction = $e.recommendedAction
         }
     }
@@ -5142,6 +5376,13 @@ Write-Host ("Daily delta: +{0} added / {1} changed / {2} removed / {3} stale (vs
     $deltaResult.priorDate) -ForegroundColor Yellow
 $script:MAT_DAILY_DELTA = $deltaResult.delta
 $script:MAT_DAILY_DELTA_PRIOR_DATE = $deltaResult.priorDate
+
+# --- V4.0 Phase 5: Context linking (source-paragraph summary + actors) ----
+# Enriches every decision + risk entry with contextSummary + contextMetadata
+# by reading each entry's primary source file. Deterministic, no LLM.
+$contextResult = Apply-ContextLinking -Decisions $decisions -Risks $risks -RootPath $ROOT -Model $model
+Write-Host ("Context linking: enriched {0} entries; {1} carry stakeholder actors" -f `
+    $contextResult.enrichedCount, $contextResult.actorHits) -ForegroundColor Yellow
 
 # --- V1.6 Decision Registry JSON/MD emit ---
 $decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated

@@ -138,6 +138,14 @@ type ItemDelta = {
   changeSummary?: string;
 };
 
+// V4.0 Phase 5: context linking metadata attached to every decision / risk.
+type ItemContextMetadata = {
+  lastMention?: string;    // ISO date - most recent source-file mtime
+  lastActivity?: string;   // ISO date - most recent workspace update touching this entry
+  actors?: string[];       // stakeholder names named in the source paragraph
+  primarySource?: string;  // repo-relative path to the primary source file
+};
+
 type LinkedAction = {
   text?: string;
   owner?: string;
@@ -188,6 +196,9 @@ type DecisionEntry = {
   mergedFrom?: string[];
   // V4.0 Phase 4
   delta?: ItemDelta;
+  // V4.0 Phase 5
+  contextSummary?: string;
+  contextMetadata?: ItemContextMetadata;
 };
 
 type DecisionRegistry = {
@@ -241,6 +252,9 @@ type RiskEntry = {
   mergedFrom?: string[];
   // V4.0 Phase 4
   delta?: ItemDelta;
+  // V4.0 Phase 5
+  contextSummary?: string;
+  contextMetadata?: ItemContextMetadata;
 };
 
 type RiskRegistry = {
@@ -430,6 +444,48 @@ function deltaBadgeLabel(delta?: ItemDelta): string {
   if (days === 0) return "No change today";
   if (days === 1) return "No change 1d";
   return `No change ${days}d`;
+}
+
+// V4.0 Phase 5: renders a collapsible <details> panel with the context
+// summary + structured metadata (actors, last mention, primary source).
+function ContextPanel({
+  contextSummary,
+  contextMetadata,
+}: {
+  contextSummary?: string;
+  contextMetadata?: ItemContextMetadata;
+}): React.ReactElement | null {
+  const summary = (contextSummary ?? "").trim();
+  const actors = contextMetadata?.actors ?? [];
+  const primary = contextMetadata?.primarySource ?? "";
+  const lastMention = contextMetadata?.lastMention ?? "";
+  const lastActivity = contextMetadata?.lastActivity ?? "";
+  if (!summary && actors.length === 0 && !primary) return null;
+  return (
+    <details className="mt-2 rounded border border-th-border bg-th-surface-alt/60 px-2 py-1 text-xs text-th-text-muted">
+      <summary className="cursor-pointer select-none font-medium text-th-text-secondary">
+        Context
+        {actors.length > 0 && <span className="ml-2 text-th-text-faint">({actors.length} actor{actors.length === 1 ? "" : "s"})</span>}
+        {lastMention && <span className="ml-2 text-th-text-faint">· last mention {lastMention}</span>}
+      </summary>
+      <div className="mt-1.5 space-y-1">
+        {summary && (
+          <div className="whitespace-pre-wrap text-th-text">{summary}</div>
+        )}
+        <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
+          {actors.map((a) => (
+            <span key={a} className="inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-0.5 font-medium text-blue-800">
+              {a}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-th-text-faint">
+          {primary && <span className="font-mono">source: {primary}</span>}
+          {lastActivity && lastActivity !== lastMention && <span>last activity: {lastActivity}</span>}
+        </div>
+      </div>
+    </details>
+  );
 }
 
 function ownerBadgeClass(confidence?: string): string {
@@ -1928,6 +1984,7 @@ export function DashboardTab({ onNavigate }: Props) {
                     {d.sourceFiles.length > 2 ? ` (+${d.sourceFiles.length - 2} more)` : ""}
                   </p>
                 )}
+                <ContextPanel contextSummary={d.contextSummary} contextMetadata={d.contextMetadata} />
               </div>
               );
             };
@@ -2171,6 +2228,7 @@ export function DashboardTab({ onNavigate }: Props) {
                       {r.sourceFiles.length > 2 ? ` (+${r.sourceFiles.length - 2} more)` : ""}
                     </p>
                   )}
+                  <ContextPanel contextSummary={r.contextSummary} contextMetadata={r.contextMetadata} />
                 </div>
               );
             };
