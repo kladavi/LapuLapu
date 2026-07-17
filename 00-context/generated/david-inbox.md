@@ -2,7 +2,7 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-17 16:02
+Generated: 2026-07-17 17:16
 
 Candidates: **40** | P1: **5 (cap 5)** | P2: **10 (cap 10)** | P3: **0 (cap 10)**
 
@@ -10,6 +10,17 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 ## P1 - Escalate today (top 5)
 
+### [FOLLOW_UP] P1 - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
+
+- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **Owner**: Balaji Ravi (medium)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.44
+- **Age**: 14 days
+- **Next**: Contact Balaji Ravi today - decision on GBO Batch Transition aged 14 days without resolution
+- **Rationale**: Pending 14 days - direct outreach to owner today.
+- **Linked actions**: 1
+- **Source**: decision D-30ae77972e
 ### [FOLLOW_UP] P1 - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
@@ -43,17 +54,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Rationale**: Pending 14 days - direct outreach to owner today.
 - **Linked actions**: 1
 - **Source**: decision D-0ac2a0c612
-### [FOLLOW_UP] P1 - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
-
-- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
-- **Owner**: Birger Fjaellman (medium)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.44
-- **Age**: 14 days
-- **Next**: Contact Birger Fjaellman today - decision on GBO Batch Transition aged 14 days without resolution
-- **Rationale**: Pending 14 days - direct outreach to owner today.
-- **Linked actions**: 1
-- **Source**: decision D-30ae77972e
 ### [FOLLOW_UP] P1 - GOCC Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope
@@ -73,7 +73,7 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 - **What**: D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.19
 - **Age**: 14 days
 - **Next**: Assign an owner for Rapid Recovery before this decision can move
@@ -82,29 +82,9 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Source**: decision D-6f81d99006
 ### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
 
-- **What**: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.29
-- **Age**: 4 days
-- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-b493137b8f
-### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
-
-- **What**: Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement... (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.29
-- **Age**: 4 days
-- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-2b2a241d9c
-### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
-
 - **What**: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.29
 - **Age**: 4 days
 - **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
@@ -112,9 +92,29 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Source**: risk R-bafab65c68
 ### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
 
+- **What**: Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement... (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 4 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-2b2a241d9c
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 4 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-b493137b8f
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
 - **What**: RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a... (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.29
 - **Age**: 1 days
 - **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
@@ -124,7 +124,7 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 - **What**: Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】 (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.29
 - **Age**: 0 days
 - **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
@@ -134,7 +134,7 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 - **What**: Review and operationalize the vendor escalation format (severity: High, trend: stable)
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.09
 - **Age**: 87 days
 - **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
@@ -144,7 +144,7 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 - **What**: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ... (severity: Medium, trend: decreasing)
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.19
 - **Age**: 21 days
 - **Next**: Assign an owner for GBO Batch Transition risk before it can be actioned
@@ -154,23 +154,23 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 - **What**: D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.19
 - **Age**: 14 days
 - **Next**: Assign an owner for Developer XP Dashboard before this decision can move
 - **Rationale**: Owner not yet confirmed; ownership must precede action.
 - **Linked actions**: 1
 - **Source**: decision D-3ced6cbb47
-### [DECIDE] P2 - GBO Batch Transition [escalation in 0d]
+### [DECIDE] P2 - MMM L2 [escalation in 0d]
 
 - **What**: Vendor Escalation (severity: High, trend: stable)
 - **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
+- **Deadline**: 2026-07-24
 - **Confidence**: 0.09
 - **Age**: 87 days
-- **Next**: Assign an owner for GBO Batch Transition risk before it can be actioned
+- **Next**: Assign an owner for MMM L2 risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-52c6e63cae
+- **Source**: risk R-1c3d9c0e3b
 
 
 ## P3 - Review this week (top 10)
@@ -182,19 +182,19 @@ _None._
 
 - **GBO Batch Transition** / _september_ - 3 item(s), P1, 2 P1, min escalation: 0d
 - **ADX Registration** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Capacity Management** / _capacity_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **GOCC Transition** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **(none)** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **Capacity Management** / _management_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **GOCC Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **(none)** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **(none)** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
 - **CyberArk Governance** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
 - **Rapid Recovery** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
-- **CMDB Mapping** / _(misc)_ - 3 item(s), P2, 0 P1, min escalation: 0d
 - **Developer XP Dashboard** / _(misc)_ - 3 item(s), P2, 0 P1, min escalation: 0d
+- **CMDB Mapping** / _(misc)_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **CyberArk Governance** / _cyberark_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **GOCC Transition** / _team_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **Rapid Recovery** / _ingenium_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **Capacity Management** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
-- **GBO Batch Transition** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
+- **MMM L2** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
 - **Project Matryoshka** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 12d
 - **Rapid Recovery** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
 

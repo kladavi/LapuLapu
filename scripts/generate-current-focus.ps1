@@ -2041,6 +2041,273 @@ function Get-StaleFlag {
     return $false
 }
 
+# V4.0 Phase 6 - Dedup + unified confidence.
+# Fuzzy-groups items by Jaccard-token similarity on their normalized titles
+# (within same workstream + kind), keeps the freshest as the winner, records
+# the merged IDs on `mergedFrom`, and unions source-file lists so the confidence
+# formula sees all mentions. Confidence uses the V4.0 unified formula.
+
+$script:MAT_TITLE_STOPWORDS = @(
+    'a','an','the','of','to','for','and','or','in','on','at','by','with','from',
+    'is','are','was','were','be','been','being','has','have','had','do','does',
+    'this','that','these','those','it','its','as','but','if','not','no','yes',
+    'we','they','you','i','our','your','their',
+    'into','including','includes','include','onto','upon','via','across','about',
+    'per','also','still','then','than','some','any','more','most','less','when',
+    'while','before','after','over','under','between','among','both','either','each'
+)
+
+function Get-TitleTokens {
+    <#
+        Extracts meaningful (>=3 char) tokens from a title, lower-cased, with
+        stopwords removed. Used by the Phase 6 Jaccard similarity check.
+    #>
+    param([string] $Title)
+    if ([string]::IsNullOrWhiteSpace($Title)) { return @() }
+    $norm = Get-NormalizedTitle -Title $Title
+    if (-not $norm) { return @() }
+    $tokens = @($norm -split '[^a-z0-9]+' | Where-Object { $_ -and $_.Length -ge 3 -and ($script:MAT_TITLE_STOPWORDS -notcontains $_) })
+    return @($tokens | Sort-Object -Unique)
+}
+
+function Get-JaccardSimilarity {
+    param([string[]] $A, [string[]] $B)
+    if (-not $A -or -not $B) { return 0.0 }
+    $aSet = @($A | Sort-Object -Unique)
+    $bSet = @($B | Sort-Object -Unique)
+    if ($aSet.Count -eq 0 -or $bSet.Count -eq 0) { return 0.0 }
+    $bLookup = @{}
+    foreach ($t in $bSet) { $bLookup[$t] = $true }
+    $intersection = 0
+    foreach ($t in $aSet) { if ($bLookup.ContainsKey($t)) { $intersection++ } }
+    $union = $aSet.Count + $bSet.Count - $intersection
+    if ($union -eq 0) { return 0.0 }
+    return ([double]$intersection) / [double]$union
+}
+
+function Test-TitleSimilarity {
+    <#
+        V4.0 Phase 6a similarity predicate: returns $true if two token sets
+        describe the same underlying item. Uses TWO heuristics because raw
+        extracted titles from V3.x are noisy paragraph fragments:
+          1. Jaccard >= $JaccardThreshold (default 0.5) - catches concise-title dupes
+          2. Containment >= $ContainmentThreshold AND intersection >= 3 - catches
+             the "same short phrase quoted inside two longer sentences" case
+             (Ingenium rehearsal example from the spec).
+        Either passing counts as a match.
+    #>
+    param(
+        [string[]] $A,
+        [string[]] $B,
+        [double]   $JaccardThreshold = 0.5,
+        [double]   $ContainmentThreshold = 0.7,
+        [int]      $MinIntersectionForContainment = 3
+    )
+    if (-not $A -or -not $B) { return $false }
+    $aSet = @($A | Sort-Object -Unique)
+    $bSet = @($B | Sort-Object -Unique)
+    if ($aSet.Count -eq 0 -or $bSet.Count -eq 0) { return $false }
+    $bLookup = @{}
+    foreach ($t in $bSet) { $bLookup[$t] = $true }
+    $intersection = 0
+    foreach ($t in $aSet) { if ($bLookup.ContainsKey($t)) { $intersection++ } }
+    if ($intersection -eq 0) { return $false }
+
+    $union = $aSet.Count + $bSet.Count - $intersection
+    $jaccard = if ($union -gt 0) { ([double]$intersection) / [double]$union } else { 0.0 }
+    if ($jaccard -ge $JaccardThreshold) { return $true }
+
+    $minSet = [Math]::Min($aSet.Count, $bSet.Count)
+    if ($minSet -gt 0) {
+        $containment = ([double]$intersection) / [double]$minSet
+        if ($containment -ge $ContainmentThreshold -and $intersection -ge $MinIntersectionForContainment) {
+            return $true
+        }
+    }
+    return $false
+}
+
+function Get-SourceQualityWeight {
+    <#
+        V4.0 Phase 6c: source-quality weight for the unified confidence formula.
+        High-signal authoritative sources (curated 02-work + 00-context/generated
+        registers) score 1.0. Meeting/status/reporting sources score 0.7. Inbox
+        archive material scores 0.4. Anything else defaults to 0.5.
+    #>
+    param([string[]] $SourceFiles)
+    if (-not $SourceFiles -or @($SourceFiles).Count -eq 0) { return 0.5 }
+    $best = 0.0
+    foreach ($p in @($SourceFiles)) {
+        $lc = ([string]$p).ToLowerInvariant() -replace '\\','/'
+        $score = 0.5
+        if ($lc -match '(?i)02-work/(tasks|decisions|key-results)\.md$') { $score = 1.0 }
+        elseif ($lc -match '(?i)00-context/generated/') { $score = 1.0 }
+        elseif ($lc -match '(?i)03-reporting/') { $score = 0.7 }
+        elseif ($lc -match '(?i)01-inbox/copilot-activity/') { $score = 0.7 }
+        elseif ($lc -match '(?i)01-inbox/archive/') { $score = 0.4 }
+        elseif ($lc -match '(?i)01-inbox/') { $score = 0.6 }
+        if ($score -gt $best) { $best = $score }
+    }
+    return $best
+}
+
+function Get-UnifiedConfidence {
+    <#
+        V4.0 Phase 6c unified confidence formula:
+            0.4 * owner_confidence_weight (high=1.0, medium=0.5, low=0.0)
+          + 0.3 * min(1, log10(mention_count+1) / log10(6))
+          + 0.2 * recency_weight (1.0 if <=7d, linear to 0 at 30d)
+          + 0.1 * source_quality_weight
+        Clamped to [0,1].
+    #>
+    param([hashtable] $Entry, [string] $Kind)
+
+    $oc = if ($Entry.ownerConfidence) { [string]$Entry.ownerConfidence } else { 'low' }
+    $ocWeight = switch ($oc) {
+        'high'           { 1.0 }
+        'medium'         { 0.5 }
+        'name-proximity' { 0.5 }
+        default          { 0.0 }
+    }
+
+    $mentions = if ($Entry.sourceFiles) { @($Entry.sourceFiles).Count } else { 0 }
+    if ($mentions -lt 1) { $mentions = 1 }
+    $mentionTerm = 0.0
+    if ($mentions -gt 0) {
+        $numer = [Math]::Log10([double]($mentions + 1))
+        $denom = [Math]::Log10(6.0)
+        $mentionTerm = $numer / $denom
+        if ($mentionTerm -gt 1.0) { $mentionTerm = 1.0 }
+    }
+
+    $recency = if ($null -ne $Entry.recencyDays) { [double]$Entry.recencyDays } else {
+        if ($Kind -eq 'decision' -and $Entry.decisionAgeDays) { [double]$Entry.decisionAgeDays }
+        elseif ($Kind -eq 'risk' -and $Entry.agingDays)       { [double]$Entry.agingDays }
+        else { 30.0 }
+    }
+    $recencyWeight = 0.0
+    if ($recency -le 7)      { $recencyWeight = 1.0 }
+    elseif ($recency -ge 30) { $recencyWeight = 0.0 }
+    else                     { $recencyWeight = (30.0 - $recency) / 23.0 }
+
+    $sourceWeight = Get-SourceQualityWeight -SourceFiles $Entry.sourceFiles
+
+    $score = (0.4 * $ocWeight) + (0.3 * $mentionTerm) + (0.2 * $recencyWeight) + (0.1 * $sourceWeight)
+    if ($score -lt 0.0) { $score = 0.0 }
+    if ($score -gt 1.0) { $score = 1.0 }
+    return [Math]::Round($score, 3)
+}
+
+function Merge-DuplicateEntries {
+    <#
+        V4.0 Phase 6a-b: fuzzy dedup pass across a set of already-finalized
+        decision or risk entries. Groups by Jaccard token similarity >= 0.6 on
+        their normalized titles, within the same workstream + kind. In each
+        group the entry with the most recent lastSeenDate is the winner; loser
+        IDs are stored on the winner's `mergedFrom` array and their source files
+        are unioned into the winner's sourceFiles. `mentionCount`,
+        `unifiedConfidence`, and (a refreshed) `stale` flag are recomputed on
+        the winner. Loser entries are dropped from the returned collection.
+
+        Returns @{ items = <deduped entries>; mergedGroups = @(...) }.
+    #>
+    param(
+        [object[]] $Entries,
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [double]   $Threshold = 0.5
+    )
+
+    $entries = @($Entries | Where-Object { $null -ne $_ })
+    if ($entries.Count -eq 0) { return @{ items = @(); mergedGroups = @() } }
+
+    # Pre-compute tokens for each entry.
+    $meta = @()
+    foreach ($e in $entries) {
+        $meta += [pscustomobject]@{
+            Entry    = $e
+            Tokens   = Get-TitleTokens -Title ([string]$e.title)
+            Group    = -1
+            LastSeen = if ($e.lastSeenDate) { [string]$e.lastSeenDate } else { '' }
+        }
+    }
+
+    # Greedy grouping: each entry joins the first group it exceeds threshold
+    # against (representative-based), respecting workstream + kind.
+    $groupReps = @()   # array of meta entries that represent each group
+    $groupIdx  = 0
+    foreach ($m in $meta) {
+        $joined = $false
+        for ($g = 0; $g -lt $groupReps.Count; $g++) {
+            $rep = $groupReps[$g]
+            if ([string]$rep.Entry.workstream -ne [string]$m.Entry.workstream) { continue }
+            if (Test-TitleSimilarity -A $m.Tokens -B $rep.Tokens -JaccardThreshold $Threshold) {
+                $m.Group = $g
+                $joined  = $true
+                break
+            }
+        }
+        if (-not $joined) {
+            $m.Group    = $groupIdx
+            $groupReps += $m
+            $groupIdx++
+        }
+    }
+
+    $mergedGroups = [System.Collections.Generic.List[hashtable]]::new()
+    $winners      = [System.Collections.Generic.List[hashtable]]::new()
+
+    for ($g = 0; $g -lt $groupIdx; $g++) {
+        $members = @($meta | Where-Object { $_.Group -eq $g })
+        if ($members.Count -eq 1) {
+            $solo = $members[0].Entry
+            $solo.mentionCount      = if ($solo.sourceFiles) { @($solo.sourceFiles).Count } else { 1 }
+            $solo.mergedFrom        = @()
+            $solo.unifiedConfidence = Get-UnifiedConfidence -Entry $solo -Kind $Kind
+            $winners.Add($solo)
+            continue
+        }
+
+        # Winner = most recent lastSeenDate (fall back to age asc = age smallest = freshest).
+        $sorted = $members | Sort-Object -Property @{ Expression = { $_.LastSeen }; Descending = $true }
+        $winnerMeta = $sorted[0]
+        $winner     = $winnerMeta.Entry
+
+        $losers = @($sorted | Select-Object -Skip 1 | ForEach-Object { $_.Entry })
+
+        $unionSources = [System.Collections.Generic.List[string]]::new()
+        foreach ($p in @($winner.sourceFiles)) { if ($p -and -not $unionSources.Contains($p)) { $unionSources.Add($p) } }
+        foreach ($l in $losers) {
+            foreach ($p in @($l.sourceFiles)) { if ($p -and -not $unionSources.Contains($p)) { $unionSources.Add($p) } }
+        }
+        $winner.sourceFiles = @($unionSources)
+
+        $mergedIds = @($losers | ForEach-Object { if ($Kind -eq 'decision') { $_.decisionId } else { $_.riskId } })
+        $winner.mergedFrom   = @($mergedIds)
+        $winner.mentionCount = $unionSources.Count + $losers.Count   # unique source files + duplicate item mentions
+
+        # Recompute freshness-sensitive fields on the winner using its own
+        # (winner's) lastSeenDate; other losers dropped.
+        $winner.unifiedConfidence = Get-UnifiedConfidence -Entry $winner -Kind $Kind
+        # Refresh staleness on the winner in case source-union bumps it out of stale.
+        $winner.stale = Get-StaleFlag -Entry $winner -Kind $Kind
+
+        $winners.Add($winner)
+
+        $mergedGroups.Add(@{
+            winnerId  = if ($Kind -eq 'decision') { $winner.decisionId } else { $winner.riskId }
+            mergedIds = @($mergedIds)
+            title     = [string]$winner.title
+            workstream = [string]$winner.workstream
+            confidence = [double]$winner.unifiedConfidence
+        })
+    }
+
+    return @{
+        items        = @($winners)
+        mergedGroups = @($mergedGroups)
+    }
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -2468,7 +2735,12 @@ function Get-DecisionRegistry {
     }
 
     # Sort: open before closed; within each group, oldest first
-    return @($decisions.Values | Sort-Object `
+    # V4.0 Phase 6: fuzzy-dedup groups of similar decisions within the same
+    # workstream. Winner (freshest lastSeenDate) absorbs source files + IDs.
+    $dedupResult = Merge-DuplicateEntries -Entries @($decisions.Values) -Kind 'decision'
+    $script:MAT_MERGED_DECISIONS = @($dedupResult.mergedGroups)
+    $deduped = @($dedupResult.items)
+    return @($deduped | Sort-Object `
         @{ Expression = { if ($_.status -eq 'closed') { 1 } else { 0 } }; Ascending = $true },
         @{ Expression = { $_.decisionAgeDays };                            Descending = $true })
 }
@@ -2612,6 +2884,9 @@ function Build-DecisionRegistryJson {
             decisionSummary     = $e.decisionSummary
             impact              = $e.impact
             decisionConfidence  = $e.decisionConfidence
+            unifiedConfidence   = if ($e.ContainsKey('unifiedConfidence')) { [double]$e.unifiedConfidence } else { 0.0 }
+            mentionCount        = if ($e.ContainsKey('mentionCount'))     { [int]$e.mentionCount }        else { @($e.sourceFiles).Count }
+            mergedFrom          = if ($e.ContainsKey('mergedFrom'))       { @($e.mergedFrom) }            else { @() }
             stale               = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
             recommendedFollowUp = $e.recommendedFollowUp
         }
@@ -2655,8 +2930,11 @@ function Build-DecisionRegistryJson {
             }
             recurring          = $recurringCount
             inferredActions    = $inferredActionCount
+            mergedGroups       = if ($script:MAT_MERGED_DECISIONS) { @($script:MAT_MERGED_DECISIONS).Count } else { 0 }
+            mergedItems        = if ($script:MAT_MERGED_DECISIONS) { @(@($script:MAT_MERGED_DECISIONS) | ForEach-Object { @($_.mergedIds).Count } | Measure-Object -Sum).Sum } else { 0 }
         }
         decisions   = @($items)
+        mergedGroups = if ($script:MAT_MERGED_DECISIONS) { @($script:MAT_MERGED_DECISIONS) } else { @() }
     }
     return $out | ConvertTo-Json -Depth 6
 }
@@ -3446,7 +3724,12 @@ function Get-RiskRegister {
     }
 
     $severityRank = @{ 'High' = 0; 'Medium' = 1; 'Low' = 2 }
-    return @($risks.Values | Sort-Object `
+    # V4.0 Phase 6: fuzzy-dedup groups of similar risks within the same
+    # workstream. Winner (freshest lastSeenDate) absorbs source files + IDs.
+    $dedupResult = Merge-DuplicateEntries -Entries @($risks.Values) -Kind 'risk'
+    $script:MAT_MERGED_RISKS = @($dedupResult.mergedGroups)
+    $deduped = @($dedupResult.items)
+    return @($deduped | Sort-Object `
         @{ Expression = { if ($_.status -eq 'closed') { 1 } else { 0 } }; Ascending = $true },
         @{ Expression = { $severityRank[$_.severity] };                    Ascending = $true },
         @{ Expression = { $_.agingDays };                                  Descending = $true })
@@ -3585,6 +3868,9 @@ function Build-RiskRegisterJson {
             impact            = $e.impact
             riskConfidence    = $e.riskConfidence
             timeToEscalationRisk = $e.timeToEscalationRisk
+            unifiedConfidence = if ($e.ContainsKey('unifiedConfidence')) { [double]$e.unifiedConfidence } else { 0.0 }
+            mentionCount      = if ($e.ContainsKey('mentionCount'))     { [int]$e.mentionCount }        else { @($e.sourceFiles).Count }
+            mergedFrom        = if ($e.ContainsKey('mergedFrom'))       { @($e.mergedFrom) }            else { @() }
             stale             = if ($e.ContainsKey('stale')) { [bool]$e.stale } else { $false }
             recommendedAction = $e.recommendedAction
         }
@@ -3609,8 +3895,11 @@ function Build-RiskRegisterJson {
             rising         = $risingCount
             authorativelyOwned = $ownedCount
             imminentEscalation = $imminentCount
+            mergedGroups   = if ($script:MAT_MERGED_RISKS) { @($script:MAT_MERGED_RISKS).Count } else { 0 }
+            mergedItems    = if ($script:MAT_MERGED_RISKS) { @(@($script:MAT_MERGED_RISKS) | ForEach-Object { @($_.mergedIds).Count } | Measure-Object -Sum).Sum } else { 0 }
         }
         risks       = @($items)
+        mergedGroups = if ($script:MAT_MERGED_RISKS) { @($script:MAT_MERGED_RISKS) } else { @() }
     }
     return $out | ConvertTo-Json -Depth 6
 }
