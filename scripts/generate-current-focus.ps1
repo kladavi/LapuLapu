@@ -34,6 +34,9 @@ $OUT_INBOX_MD    = Join-Path $GEN 'david-inbox.md'
 $OUT_INBOX_JSON  = Join-Path $GEN 'david-inbox.json'
 $OUT_INSIGHTS_MD   = Join-Path $GEN 'execution-insights.md'
 $OUT_INSIGHTS_JSON = Join-Path $GEN 'execution-insights.json'
+# V4.0 Phase 1: quality-gate rejection log
+$OUT_REJECTED_MD   = Join-Path $GEN 'rejected-items.md'
+$OUT_REJECTED_JSON = Join-Path $GEN 'rejected-items.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -464,6 +467,8 @@ $script:GENERATED_ARTIFACTS = @(
     'risk-register.json',
     'david-inbox.md',
     'david-inbox.json',
+    'rejected-items.md',
+    'rejected-items.json',
     'pipeline-health.json'
 )
 
@@ -1809,6 +1814,194 @@ function New-DecisionId {
         $hex   = -join ($hash | ForEach-Object { $_.ToString('x2') })
         return 'D-' + $hex.Substring(0, 10)
     } finally { $sha1.Dispose() }
+}
+
+# V4.0 Phase 1 - Canonical MatryoshkaItem validation.
+# Mirror of ui/src/lib/matryoshka-item.ts validateItem(). Runs the same quality
+# gates in PowerShell so the generator can produce 00-context/generated/rejected-items.json
+# during the V3-to-V4 migration window.
+
+$script:MAT_REQUIRED_FIELDS = @(
+    'id', 'type', 'title', 'owner', 'owner_confidence',
+    'why_it_matters', 'next_action', 'action_class',
+    'status', 'status_reason', 'aging_days',
+    'source', 'context_summary', 'confidence_score',
+    'first_seen', 'last_updated'
+)
+
+$script:MAT_APPROVED_VERBS_REGEX = '(?i)^\s*(Send|Ask|Confirm|Decide|Investigate|Deploy|Create|Publish|Write|Complete|Finish|Implement|Escalate|Contact|Choose|Approve|Assign|Close|Draft|Schedule|Present|Review with|Sign|Verify)\b'
+$script:MAT_VAGUE_VERBS_REGEX   = '(?i)\b(look into|handle|touch base|circle back|keep an eye|check on)\b'
+$script:MAT_IMPACT_WORDS_REGEX  = '(?i)\b(because|so that|otherwise|risk|impact|blocks|delays|prevents|enables|requires|deadline|outcome|drives|unblocks|depends on)\b'
+$script:MAT_BANNED_TITLE_REGEX  = '(?i)^\s*(escalate|todo|fix)\s*:'
+
+function Test-MatryoshkaItem {
+    <#
+        V4.0 Phase 1 validator. Given a candidate hashtable with MatryoshkaItem-
+        shaped fields, returns:
+            @{ ok = $true;  item = <candidate> }
+            @{ ok = $false; errors = @(@{ itemId; field; reason }, ...) }
+        Mirrors ui/src/lib/matryoshka-item.ts validateItem() rules 1:1.
+    #>
+    param([hashtable] $Candidate)
+
+    $errors = [System.Collections.Generic.List[hashtable]]::new()
+    $id = if ($Candidate.ContainsKey('id') -and $Candidate.id) { [string]$Candidate.id } else { '(no-id)' }
+
+    foreach ($f in $script:MAT_REQUIRED_FIELDS) {
+        $v = $null
+        if ($Candidate.ContainsKey($f)) { $v = $Candidate[$f] }
+        $missing = $false
+        if ($null -eq $v) { $missing = $true }
+        elseif ($v -is [string] -and [string]::IsNullOrWhiteSpace($v)) { $missing = $true }
+        if ($missing) {
+            $errors.Add(@{ itemId = $id; field = $f; reason = 'missing required field' })
+        }
+    }
+
+    $title = if ($Candidate.ContainsKey('title')) { [string]$Candidate.title } else { '' }
+    if ($title) {
+        if ($title.Length -gt 140) {
+            $errors.Add(@{ itemId = $id; field = 'title'; reason = 'exceeds 140 chars' })
+        }
+        if ($title -match $script:MAT_BANNED_TITLE_REGEX) {
+            $errors.Add(@{ itemId = $id; field = 'title'; reason = "title must not start with imperative verb (Escalate/Todo/Fix) - that's what action_class is for" })
+        }
+    }
+
+    $why = if ($Candidate.ContainsKey('why_it_matters')) { [string]$Candidate.why_it_matters } else { '' }
+    if ($why) {
+        $sentences = @($why -split '[.!?]' | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+        if ($sentences.Count -gt 1) {
+            $errors.Add(@{ itemId = $id; field = 'why_it_matters'; reason = 'must be exactly 1 sentence' })
+        }
+        if ($why -notmatch $script:MAT_IMPACT_WORDS_REGEX) {
+            $errors.Add(@{ itemId = $id; field = 'why_it_matters'; reason = 'must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)' })
+        }
+    }
+
+    $next = if ($Candidate.ContainsKey('next_action')) { [string]$Candidate.next_action } else { '' }
+    if ($next) {
+        $words = @($next.Trim() -split '\s+' | Where-Object { $_ })
+        if ($words.Count -lt 5) {
+            $errors.Add(@{ itemId = $id; field = 'next_action'; reason = 'must be at least 5 meaningful words' })
+        }
+        if ($next -notmatch $script:MAT_APPROVED_VERBS_REGEX) {
+            $errors.Add(@{ itemId = $id; field = 'next_action'; reason = 'must start with an approved imperative verb (Send/Ask/Confirm/Decide/Investigate/Deploy/Create/Publish/Write/Complete/Finish/Implement/Escalate/Contact/Choose/Approve/Assign/Close/Draft/Schedule/Present/Sign/Verify)' })
+        }
+        if ($next -match $script:MAT_VAGUE_VERBS_REGEX) {
+            $errors.Add(@{ itemId = $id; field = 'next_action'; reason = 'contains vague verb (look into / handle / touch base / circle back / keep an eye / check on) - replace with concrete action' })
+        }
+    }
+
+    if ($Candidate.ContainsKey('confidence_score') -and $null -ne $Candidate.confidence_score) {
+        $cs = [double]$Candidate.confidence_score
+        if ($cs -lt 0.0 -or $cs -gt 1.0) {
+            $errors.Add(@{ itemId = $id; field = 'confidence_score'; reason = 'must be in [0,1]' })
+        }
+    }
+
+    if ($Candidate.ContainsKey('aging_days') -and $null -ne $Candidate.aging_days -and [int]$Candidate.aging_days -lt 0) {
+        $errors.Add(@{ itemId = $id; field = 'aging_days'; reason = 'must be non-negative' })
+    }
+
+    if ($errors.Count -eq 0) {
+        return @{ ok = $true; item = $Candidate }
+    }
+    return @{ ok = $false; errors = @($errors) }
+}
+
+function ConvertTo-MatryoshkaCandidate {
+    <#
+        V4.0 Phase 1 adapter. Maps a V3.x decision or risk entry hashtable to a
+        MatryoshkaItem-shaped candidate hashtable so it can be run through
+        Test-MatryoshkaItem. Preserves V3 field values; fills in V4-only fields
+        with best-effort derivations (or leaves them blank so the validator
+        will flag the specific gap).
+    #>
+    param(
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [hashtable] $Entry
+    )
+
+    $act = if ($Kind -eq 'decision') { $Entry.recommendedFollowUp } else { $Entry.recommendedAction }
+    $actionClass = ''
+    $nextAction  = ''
+    if ($act -is [System.Collections.IDictionary]) {
+        if ($act.actionClass) { $actionClass = [string]$act.actionClass }
+        if ($act.nextAction)  { $nextAction  = [string]$act.nextAction  }
+    }
+
+    $ownerConfidence = if ($Entry.ownerConfidence) { [string]$Entry.ownerConfidence } else { '' }
+    # V4 taxonomy only has high|medium|low - remap legacy V3 values.
+    switch ($ownerConfidence) {
+        'workstream-map' { $ownerConfidence = 'low'    }
+        'name-proximity' { $ownerConfidence = 'medium' }
+        'unknown'        { $ownerConfidence = 'low'    }
+    }
+
+    $ageDays = if ($Kind -eq 'decision') { [int]([Math]::Max(0, [int]$Entry.decisionAgeDays)) } else { [int]([Math]::Max(0, [int]$Entry.agingDays)) }
+    $firstSeen  = if ($Entry.firstSeenDate) { [string]$Entry.firstSeenDate } else { '' }
+    $lastUpdate = if ($Entry.lastSeenDate)  { [string]$Entry.lastSeenDate  } else { '' }
+    $confScore  = 0.0
+    if ($Kind -eq 'decision' -and $Entry.decisionConfidence) { $confScore = [double]$Entry.decisionConfidence }
+    elseif ($Kind -eq 'risk' -and $Entry.riskConfidence)     { $confScore = [double]$Entry.riskConfidence }
+    if ($confScore -gt 1.0) { $confScore = 1.0 }
+    if ($confScore -lt 0.0) { $confScore = 0.0 }
+
+    $primarySource = ''
+    if ($Entry.sourceFiles -and @($Entry.sourceFiles).Count -gt 0) {
+        $primarySource = [string](@($Entry.sourceFiles)[0])
+    }
+
+    $contextSummary = ''
+    if ($Kind -eq 'decision' -and $Entry.decisionSummary) { $contextSummary = [string]$Entry.decisionSummary }
+    elseif ($Kind -eq 'risk' -and $Entry.impact)          { $contextSummary = [string]$Entry.impact }
+
+    $whyItMatters = ''
+    if ($Entry.impact) { $whyItMatters = [string]$Entry.impact }
+    elseif ($Kind -eq 'decision' -and $Entry.decisionPrompt) { $whyItMatters = [string]$Entry.decisionPrompt }
+
+    # Derive V4 status from V3 signals (proper Get-MatryoshkaStatus lands with
+    # canonical emit in a later sprint).
+    $status = 'green'
+    if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { $status = 'red' }
+    elseif ($actionClass -eq 'BLOCKED') { $status = 'red' }
+    elseif ($ownerConfidence -eq 'low') { $status = 'amber' }
+    elseif ($confScore -lt 0.4)         { $status = 'amber' }
+
+    $statusReason =
+        if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') { 'high-severity risk' }
+        elseif ($actionClass -eq 'BLOCKED')                   { 'blocked action_class' }
+        elseif ($ownerConfidence -eq 'low')                   { 'owner not confirmed' }
+        elseif ($confScore -lt 0.4)                           { "low confidence ($confScore)" }
+        else                                                  { 'active progress, no blockers' }
+
+    $matType = if ($Kind -eq 'decision') { 'decision' } else { 'risk' }
+    $entryId = if ($Kind -eq 'decision') { [string]$Entry.decisionId } else { [string]$Entry.riskId }
+
+    return @{
+        id                = $entryId
+        type              = $matType
+        title             = if ($Entry.title) { [string]$Entry.title } else { '' }
+        owner             = if ($Entry.owner) { [string]$Entry.owner } else { '' }
+        suggested_owner   = if ($Entry.ContainsKey('suggestedOwner')) { [string]$Entry.suggestedOwner } else { '' }
+        owner_confidence  = $ownerConfidence
+        why_it_matters    = $whyItMatters
+        next_action       = $nextAction
+        action_class      = $actionClass
+        workstream        = if ($Entry.workstream) { [string]$Entry.workstream } else { '' }
+        status            = $status
+        status_reason     = $statusReason
+        aging_days        = $ageDays
+        stale             = if ($Entry.ContainsKey('stale')) { [bool]$Entry.stale } else { $false }
+        source            = $primarySource
+        context_summary   = $contextSummary
+        related_items     = @()
+        confidence_score  = $confScore
+        merged_from       = @()
+        first_seen        = $firstSeen
+        last_updated      = $lastUpdate
+    }
 }
 
 function Get-StaleFlag {
@@ -4384,6 +4577,126 @@ $briefJson = Build-MorningBriefingJson     -FinalResults $finalResults -Attentio
 [System.IO.File]::WriteAllText($OUT_BRIEF_JSON, $briefJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_BRIEF_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
 Write-Host "Written: $($OUT_BRIEF_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+
+# --- V4.0 Phase 1: quality-gate validation pass -----------------------------
+# Runs every non-stale decision + risk through Test-MatryoshkaItem. Writes
+# 00-context/generated/rejected-items.{md,json} showing where the current V3.x
+# corpus does NOT yet satisfy the V4.0 canonical contract. Warnings only - the
+# generator still emits V3.x artifacts. This lets us see the migration gap
+# before Phase 1's fail-closed emitters land.
+
+$rejectionRecords = [System.Collections.Generic.List[hashtable]]::new()
+$acceptedCount = 0
+$candidateCount = 0
+$fieldFailures = @{}
+foreach ($kind in @('decision','risk')) {
+    $source = if ($kind -eq 'decision') { $decisions } else { $risks }
+    foreach ($entry in $source) {
+        # Only validate live (non-stale, non-closed) items - stale items are
+        # already excluded from surfacing so their V4 gaps aren't user-facing.
+        if ($entry.ContainsKey('stale') -and $entry.stale) { continue }
+        if ($entry.status -eq 'closed') { continue }
+        $candidateCount++
+        $candidate = ConvertTo-MatryoshkaCandidate -Kind $kind -Entry $entry
+        $result = Test-MatryoshkaItem -Candidate $candidate
+        if ($result.ok) {
+            $acceptedCount++
+            continue
+        }
+        foreach ($err in $result.errors) {
+            $key = [string]$err.field
+            if (-not $fieldFailures.ContainsKey($key)) { $fieldFailures[$key] = 0 }
+            $fieldFailures[$key] = [int]$fieldFailures[$key] + 1
+        }
+        $rejectionRecords.Add(@{
+            itemId     = $candidate.id
+            itemKind   = $kind
+            title      = $candidate.title
+            workstream = $candidate.workstream
+            owner      = $candidate.owner
+            errors     = @($result.errors)
+        })
+    }
+}
+
+$byFieldOrdered = [ordered]@{}
+foreach ($k in ($fieldFailures.Keys | Sort-Object { -[int]$fieldFailures[$_] })) {
+    $byFieldOrdered[$k] = [int]$fieldFailures[$k]
+}
+
+$rejectedReport = [ordered]@{
+    generated = $generatedIso
+    generator = 'scripts/generate-current-focus.ps1'
+    version   = 'V4.0-phase1-validator'
+    totals    = [ordered]@{
+        candidates = $candidateCount
+        accepted   = $acceptedCount
+        rejected   = $rejectionRecords.Count
+        byField    = $byFieldOrdered
+    }
+    rejections = @($rejectionRecords | ForEach-Object {
+        [ordered]@{
+            itemId     = $_.itemId
+            itemKind   = $_.itemKind
+            title      = $_.title
+            workstream = $_.workstream
+            owner      = $_.owner
+            errors     = @($_.errors | ForEach-Object {
+                [ordered]@{
+                    itemId = $_.itemId
+                    field  = $_.field
+                    reason = $_.reason
+                }
+            })
+        }
+    })
+}
+$rejectedJson = $rejectedReport | ConvertTo-Json -Depth 8
+
+$rejectedMdLines = [System.Collections.Generic.List[string]]::new()
+$rejectedMdLines.Add('# V4.0 Phase 1 - Rejected Items') | Out-Null
+$rejectedMdLines.Add('') | Out-Null
+$rejectedMdLines.Add("_Generated: $($meta.generated)_") | Out-Null
+$rejectedMdLines.Add('') | Out-Null
+$rejectedMdLines.Add("Validated **$candidateCount** live decision/risk candidates against the V4.0 canonical schema. **$acceptedCount** pass; **$($rejectionRecords.Count)** need fixing before the V4.0 fail-closed emitters land.") | Out-Null
+$rejectedMdLines.Add('') | Out-Null
+$rejectedMdLines.Add('## Failure counts by field') | Out-Null
+$rejectedMdLines.Add('') | Out-Null
+if ($byFieldOrdered.Count -gt 0) {
+    $rejectedMdLines.Add('| Field | Count |') | Out-Null
+    $rejectedMdLines.Add('|---|---:|') | Out-Null
+    foreach ($k in $byFieldOrdered.Keys) {
+        $rejectedMdLines.Add("| $k | $($byFieldOrdered[$k]) |") | Out-Null
+    }
+} else {
+    $rejectedMdLines.Add('_No failures._') | Out-Null
+}
+$rejectedMdLines.Add('') | Out-Null
+$rejectedMdLines.Add('## Rejections (top 30)') | Out-Null
+$rejectedMdLines.Add('') | Out-Null
+$topRejections = @($rejectionRecords | Select-Object -First 30)
+if ($topRejections.Count -eq 0) {
+    $rejectedMdLines.Add('_All candidates passed._') | Out-Null
+} else {
+    foreach ($r in $topRejections) {
+        $rejectedMdLines.Add("### $($r.itemKind) $($r.itemId) - $($r.workstream)") | Out-Null
+        $rejectedMdLines.Add('') | Out-Null
+        $rejectedMdLines.Add("- **Title:** $($r.title)") | Out-Null
+        $rejectedMdLines.Add("- **Owner:** $($r.owner)") | Out-Null
+        $rejectedMdLines.Add('- **Errors:**') | Out-Null
+        foreach ($e in $r.errors) {
+            $rejectedMdLines.Add("  - `$($e.field)`: $($e.reason)") | Out-Null
+        }
+        $rejectedMdLines.Add('') | Out-Null
+    }
+}
+$rejectedMd = ($rejectedMdLines -join "`n")
+
+[System.IO.File]::WriteAllText($OUT_REJECTED_MD,   $rejectedMd,   (New-Object System.Text.UTF8Encoding($false)))
+[System.IO.File]::WriteAllText($OUT_REJECTED_JSON, $rejectedJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_REJECTED_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
+Write-Host "Written: $($OUT_REJECTED_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+Write-Host "V4.0 validation: $acceptedCount accepted, $($rejectionRecords.Count) rejected of $candidateCount live candidates" -ForegroundColor Yellow
 
 # Summary to console
 Write-Host ""

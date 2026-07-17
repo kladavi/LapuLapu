@@ -2,7 +2,7 @@
 
 # Lapu-Lapu Morning Briefing
 
-Generated: 2026-07-17 15:20
+Generated: 2026-07-17 16:02
 
 ## Executive Snapshot
 
@@ -20,9 +20,9 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (422.5% vs prior 14 days).
+- Trend: ↑ increasing (452.6% vs prior 14 days).
 - Activity score: 100 (current window).
-- Previous-window activity: 168.1.
+- Previous-window activity: 158.5.
 
 Recommended next action:
 - Review progress this week. Ensure blockers are visible to stakeholders.
@@ -36,9 +36,9 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (354.4% vs prior 14 days).
+- Trend: ↑ increasing (377% vs prior 14 days).
 - Activity score: 99.4 (current window).
-- Previous-window activity: 192.1.
+- Previous-window activity: 182.5.
 
 Recommended next action:
 - Review progress this week. Ensure blockers are visible to stakeholders.
@@ -52,9 +52,9 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (339.9% vs prior 14 days).
+- Trend: ↑ increasing (361.4% vs prior 14 days).
 - Activity score: 97.4 (current window).
-- Previous-window activity: 194.5.
+- Previous-window activity: 184.9.
 
 Recommended next action:
 - Review progress this week. Ensure blockers are visible to stakeholders.
@@ -67,9 +67,9 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (354.4% vs prior 14 days).
+- Trend: ↑ increasing (377% vs prior 14 days).
 - Activity score: 99.4 (current window).
-- Previous-window activity: 192.1.
+- Previous-window activity: 182.5.
 
 Recommended next action:
 - Review progress this week. Ensure blockers are visible to stakeholders.
@@ -82,9 +82,9 @@ Why it matters:
 - High strategic weight (8/10).
 
 What changed:
-- Trend: ↑ increasing (419.3% vs prior 14 days).
+- Trend: ↑ increasing (449.2% vs prior 14 days).
 - Activity score: 99.4 (current window).
-- Previous-window activity: 168.1.
+- Previous-window activity: 158.5.
 
 Recommended next action:
 - Review progress this week. Ensure blockers are visible to stakeholders.
@@ -92,15 +92,15 @@ Recommended next action:
 
 ## Top 5 Risks
 
-- **Rapid Recovery** - High severity, stable trend, aging 87 days, owner: Unassigned
-  - Review and operationalize the vendor escalation format [R-cd89918f9c]
-  - [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned
-- **MMM L2** - High severity, stable trend, aging 87 days, owner: Unassigned
-  - Vendor Escalation [R-1c3d9c0e3b]
-  - [DECIDE] P2 - Assign an owner for MMM L2 risk before it can be actioned
 - **(no workstream)** - High severity, stable trend, aging 87 days, owner: Unassigned
   - Standardization of templates, CI identification, and escalation procedures to reduce [R-f386376f94]
   - [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned
+- **Rapid Recovery** - High severity, stable trend, aging 87 days, owner: Unassigned
+  - Review and operationalize the vendor escalation format [R-cd89918f9c]
+  - [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned
+- **GBO Batch Transition** - High severity, stable trend, aging 87 days, owner: Unassigned
+  - Vendor Escalation [R-52c6e63cae]
+  - [DECIDE] P2 - Assign an owner for GBO Batch Transition risk before it can be actioned
 - **Capacity Management** - High severity, increasing trend, aging 11 days, owner: Unassigned
   - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management [R-aa0c3f050b]
   - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
@@ -120,7 +120,7 @@ Recommended next action:
   - Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es... [R-d7f568105f]
   - [DECIDE] P2 - Assign an owner for ADX Registration risk before it can be actioned
 - **Capacity Management** - Medium severity, aging 4 days, owner: Unassigned
-  - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d... [R-a18adafc06]
+  - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu... [R-8d9f37dcce]
   - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
 - **Capacity Management** - Medium severity, aging 4 days, owner: Unassigned
   - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f... [R-59131ed59a]
@@ -129,35 +129,35 @@ Recommended next action:
   - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ... [R-2fc8ec9c90]
   - [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned
 - **Capacity Management** - Medium severity, aging 4 days, owner: Unassigned
-  - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu... [R-8d9f37dcce]
+  - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d... [R-a18adafc06]
   - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
 - **Rapid Recovery** - High severity, aging 4 days, owner: Unassigned
-  - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... [R-b493137b8f]
+  - The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... [R-bafab65c68]
   - [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned
 
 ## Decision Watch
 
-- **GBO Batch Transition** - Pending 14 days, owner: Balaji Ravi
-  - D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September [D-30ae77972e]
-  - [FOLLOW_UP] P1 - Contact Balaji Ravi today - decision on GBO Batch Transition aged 14 days without resolution
 - **(no workstream)** - Pending 14 days, owner: David Klan
   - D001 — Deferred: Ad-Hoc Dashboard Request from Marketing [D-b27c5d17f9]
   - [DO] P1 - Send escalation on this decision to the workstream lead today
-- **Developer XP Dashboard** - Pending 14 days, owner: Balaji Ravi
-  - D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon [D-66e0bd8e95]
-  - [FOLLOW_UP] P1 - Contact Balaji Ravi today - decision on Developer XP Dashboard aged 14 days without resolution
+- **Rapid Recovery** - Pending 14 days, owner: Unassigned
+  - D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP [D-6f81d99006]
+  - [DECIDE] P2 - Assign an owner for Rapid Recovery before this decision can move
 - **Capacity Management** - Pending 14 days, owner: Debamalya Das (delivery), David Klan (Lapu-Lapu integration)
   - D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar... [D-0ac2a0c612]
   - [FOLLOW_UP] P1 - Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution
-- **CyberArk Governance** - Pending 14 days, owner: David Klan
-  - D002 — Agreed: GOCC Delivery Model for Japan Monitoring [D-40250bb7d6]
-  - [DO] P1 - Send escalation on CyberArk Governance to Balaji Ravi today
+- **Rapid Recovery** - Pending 14 days, owner: David Klan
+  - D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition [D-4fc5c25a1c]
+  - [DO] P1 - Send escalation on Rapid Recovery to Birger Fjaellman today
+- **(no workstream)** - Pending 14 days, owner: Birger Fjaellman
+  - D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset [D-9a895e8ecb]
+  - [FOLLOW_UP] P1 - Contact Birger Fjaellman today - decision on this decision aged 14 days without resolution
 - **GBO Batch Transition** - Pending 14 days, owner: David Klan
   - D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline [D-f91314563c]
   - [DO] P1 - Send escalation on GBO Batch Transition to Balaji Ravi today
-- **(no workstream)** - Pending 14 days, owner: David Klan
-  - D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests [D-02c40deef8]
-  - [DO] P1 - Send escalation on this decision to the workstream lead today
+- **CyberArk Governance** - Pending 14 days, owner: David Klan
+  - D002 — Agreed: GOCC Delivery Model for Japan Monitoring [D-40250bb7d6]
+  - [DO] P1 - Send escalation on CyberArk Governance to Balaji Ravi today
 - **Rapid Recovery** - Pending 14 days, owner: Balaji Ravi
   - D011 — Agreed: Mandatory RRP Template with Controlled Publishing [D-59805c75f5]
   - [FOLLOW_UP] P1 - Contact Balaji Ravi today - decision on Rapid Recovery aged 14 days without resolution
