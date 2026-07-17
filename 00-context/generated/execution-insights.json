@@ -1,30 +1,16 @@
 {
-  "generated": "2026-07-17T15:00:56",
+  "generated": "2026-07-17T15:12:17",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
     "delayedDecisions": 7,
     "missedDeadlines": 0,
-    "overloadedOwners": 1,
+    "overloadedOwners": 0,
     "recurringDecisions": 0,
     "stalePendingByWorkstream": 0,
     "highSeverityAgedRisks": 3
   },
   "delayedDecisions": [
-    {
-      "id": "D-6f81d99006",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "ageDays": 14
-    },
-    {
-      "id": "D-f91314563c",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "workstream": "GBO Batch Transition",
-      "owner": "David Klan",
-      "ageDays": 14
-    },
     {
       "id": "D-fadd968d28",
       "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
@@ -36,7 +22,28 @@
       "id": "D-30ae77972e",
       "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
       "workstream": "GBO Batch Transition",
+      "owner": "Balaji Ravi",
+      "ageDays": 14
+    },
+    {
+      "id": "D-6f81d99006",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "ageDays": 14
+    },
+    {
+      "id": "D-e275b159e5",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "workstream": "GOCC Transition",
       "owner": "Birger Fjaellman",
+      "ageDays": 14
+    },
+    {
+      "id": "D-f91314563c",
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "workstream": "GBO Batch Transition",
+      "owner": "David Klan",
       "ageDays": 14
     },
     {
@@ -52,26 +59,10 @@
       "workstream": "Capacity Management",
       "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
       "ageDays": 14
-    },
-    {
-      "id": "D-e275b159e5",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "workstream": "GOCC Transition",
-      "owner": "Birger Fjaellman",
-      "ageDays": 14
     }
   ],
   "missedDeadlines": [],
-  "overloadedOwners": [
-    {
-      "owner": "Birger Fjaellman",
-      "itemCount": 5,
-      "decisions": 2,
-      "risks": 3,
-      "p1Count": 2,
-      "avgConfidence": 0.44
-    }
-  ],
+  "overloadedOwners": [],
   "recurringDecisions": [],
   "stalePendingByWorkstream": [],
   "highSeverityAgedRisks": [
@@ -83,9 +74,9 @@
       "ageDays": 87
     },
     {
-      "id": "R-52c6e63cae",
+      "id": "R-1c3d9c0e3b",
       "title": "Vendor Escalation",
-      "workstream": "GBO Batch Transition",
+      "workstream": "MMM L2",
       "owner": "Unassigned",
       "ageDays": 87
     },

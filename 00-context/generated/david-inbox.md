@@ -2,131 +2,174 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-17 15:00
+Generated: 2026-07-17 15:12
 
-Candidates: **40** | P1: **5 (cap 5)** | P2: **7 (cap 10)** | P3: **0 (cap 10)**
+Candidates: **42** | P1: **5 (cap 5)** | P2: **10 (cap 10)** | P3: **0 (cap 10)**
 
 Sort: priority asc, then time to escalation, then deadline, then confidence, then age.
 
 ## P1 - Escalate today (top 5)
 
-### P1 Escalate - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 0d]
+### [FOLLOW_UP] P1 - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
+
+- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **Owner**: Balaji Ravi (medium)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.44
+- **Age**: 14 days
+- **Next**: Contact Balaji Ravi today - decision on GBO Batch Transition aged 14 days without resolution
+- **Rationale**: Pending 14 days - direct outreach to owner today.
+- **Linked actions**: 1
+- **Source**: decision D-30ae77972e
+### [FOLLOW_UP] P1 - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
 - **Owner**: Balaji Ravi (medium)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.44
 - **Age**: 14 days
-- **Rationale**: Pending 14+ days without resolution - escalate today.
+- **Next**: Contact Balaji Ravi today - decision on ADX Registration aged 14 days without resolution
+- **Rationale**: Pending 14 days - direct outreach to owner today.
 - **Linked actions**: 1
 - **Source**: decision D-fadd968d28
-### P1 Escalate - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
+### [DO] P1 - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline
 - **Owner**: David Klan (high)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.69
 - **Age**: 14 days
-- **Rationale**: Pending 14+ days without resolution - escalate today.
+- **Next**: Send escalation on GBO Batch Transition to Balaji Ravi today
+- **Rationale**: Pending 14 days - David to escalate to Balaji Ravi today.
 - **Linked actions**: 1
 - **Source**: decision D-f91314563c
-### P1 Escalate - Capacity Management [Pending] [DECISION REQUIRED] [escalation in 0d]
+### [FOLLOW_UP] P1 - Capacity Management [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...
 - **Owner**: Debamalya Das (delivery), David Klan (Lapu-Lapu integration) (high)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.69
 - **Age**: 14 days
-- **Rationale**: Pending 14+ days without resolution - escalate today.
+- **Next**: Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution
+- **Rationale**: Pending 14 days - direct outreach to owner today.
 - **Linked actions**: 1
 - **Source**: decision D-0ac2a0c612
-### P1 Escalate - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
+### [FOLLOW_UP] P1 - GOCC Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
 
-- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **What**: D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope
 - **Owner**: Birger Fjaellman (medium)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.44
 - **Age**: 14 days
-- **Rationale**: Pending 14+ days without resolution - escalate today.
+- **Next**: Contact Birger Fjaellman today - decision on GOCC Transition aged 14 days without resolution
+- **Rationale**: Pending 14 days - direct outreach to owner today.
 - **Linked actions**: 1
-- **Source**: decision D-30ae77972e
-### P1 Escalate - Rapid Recovery [Pending] [DECISION REQUIRED] [escalation in 0d]
-
-- **What**: D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 14 days
-- **Rationale**: Pending 14+ days without resolution - escalate today.
-- **Linked actions**: 1
-- **Source**: decision D-6f81d99006
+- **Source**: decision D-e275b159e5
 
 
 ## P2 - Confirm or investigate this week (top 10)
 
-### P2 Escalate - ADX Registration [escalation in 0d]
-
-- **What**: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ... (severity: Medium, trend: decreasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 21 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-fff605c5dd
-### P2 Escalate - GOCC Transition [escalation in 0d]
-
-- **What**: Strong dependency on cross-team alignment (GOCC, PS, GBO) (severity: Medium, trend: stable)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 28 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-c7355ab891
-### P2 Escalate - GOCC Transition [escalation in 0d]
-
-- **What**: Weekly project status, CR review, and risk review governance forums (severity: Medium, trend: stable)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 28 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-d57894861d
-### P2 Escalate - GBO Batch Transition [escalation in 0d]
+### [FOLLOW_UP] P2 - GBO Batch Transition [escalation in 0d]
 
 - **What**: Weekly project governance forums (status, CR review, risk review) (severity: Medium, trend: stable)
-- **Owner**: Birger Fjaellman (medium)
+- **Owner**: Balaji Ravi (medium)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.44
 - **Age**: 28 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Next**: Confirm with Balaji Ravi why GBO Batch Transition remains unresolved after 28 days
+- **Rationale**: Unresolved 28 days - contact owner this week.
 - **Source**: risk R-f1afae75e8
-### P2 Escalate - Rapid Recovery [escalation in 0d]
+### [FOLLOW_UP] P2 - Rapid Recovery [escalation in 0d]
 
 - **What**: 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections) (severity: Medium, trend: stable)
 - **Owner**: Birger Fjaellman (medium)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.34
 - **Age**: 87 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Next**: Confirm with Birger Fjaellman why Rapid Recovery remains unresolved after 87 days
+- **Rationale**: Unresolved 87 days - contact owner this week.
 - **Source**: risk R-65e39d4c98
-### P2 Escalate - CMDB Mapping [escalation in 0d]
+### [DECIDE] P2 - Rapid Recovery [Pending] [DECISION REQUIRED] [escalation in 0d]
 
-- **What**: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts) (severity: Medium, trend: stable)
+- **What**: D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.19
+- **Age**: 14 days
+- **Next**: Assign an owner for Rapid Recovery before this decision can move
+- **Rationale**: Owner not yet confirmed; ownership must precede action.
+- **Linked actions**: 1
+- **Source**: decision D-6f81d99006
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement... (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.29
+- **Age**: 4 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-2b2a241d9c
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.29
+- **Age**: 4 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-bafab65c68
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.29
+- **Age**: 4 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-b493137b8f
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a... (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.29
+- **Age**: 1 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-aa18501480
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】 (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.29
+- **Age**: 0 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-1de6e7cdee
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
+- **What**: Review and operationalize the vendor escalation format (severity: High, trend: stable)
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.09
 - **Age**: 87 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-ae3cccdff8
-### P2 Escalate - (no workstream) [escalation in 0d]
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-cd89918f9c
+### [DECIDE] P2 - GBO Batch Transition [escalation in 0d]
 
-- **What**: Streamline risk framework and automate compliance (severity: Medium, trend: stable)
+- **What**: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ... (severity: Medium, trend: decreasing)
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-17
-- **Confidence**: 0.09
-- **Age**: 87 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-f5518c28bc
+- **Confidence**: 0.19
+- **Age**: 21 days
+- **Next**: Assign an owner for GBO Batch Transition risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-b882fa398a
 
 
 ## P3 - Review this week (top 10)
@@ -136,23 +179,24 @@ _None._
 
 ## Clusters (workstream / theme)
 
-- **(none)** / _escalation_ - 4 item(s), P1, 4 P1, min escalation: 0d
-- **CyberArk Governance** / _(misc)_ - 4 item(s), P1, 4 P1, min escalation: 0d
-- **Rapid Recovery** / _escalation_ - 4 item(s), P1, 4 P1, min escalation: 0d
-- **Developer XP Dashboard** / _(misc)_ - 3 item(s), P1, 3 P1, min escalation: 0d
-- **(none)** / _(misc)_ - 3 item(s), P1, 2 P1, min escalation: 0d
-- **Capacity Management** / _management_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **CyberArk Governance** / _cyberark_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **GBO Batch Transition** / _agreed_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **Rapid Recovery** / _restart_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **ADX Registration** / _japan_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **CMDB Mapping** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **GBO Batch Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **GBO Batch Transition** / _september_ - 3 item(s), P1, 2 P1, min escalation: 0d
+- **ADX Registration** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **Capacity Management** / _capacity_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **GOCC Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **GOCC Transition** / _team_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Rapid Recovery** / _recovery_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **ADX Registration** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **Capacity Management** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
+- **(none)** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **(none)** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **CyberArk Governance** / _(misc)_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **Rapid Recovery** / _escalation_ - 4 item(s), P2, 0 P1, min escalation: 0d
+- **Developer XP Dashboard** / _(misc)_ - 3 item(s), P2, 0 P1, min escalation: 0d
+- **CMDB Mapping** / _(misc)_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **CyberArk Governance** / _cyberark_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **GOCC Transition** / _team_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **Rapid Recovery** / _recovery_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **Rapid Recovery** / _restart_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **Capacity Management** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
+- **GBO Batch Transition** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
+- **MMM L2** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
+- **Project Matryoshka** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 12d
 
 ## How this list was built
 
