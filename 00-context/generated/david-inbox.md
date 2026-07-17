@@ -2,7 +2,7 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-17 14:56
+Generated: 2026-07-17 15:00
 
 Candidates: **40** | P1: **5 (cap 5)** | P2: **7 (cap 10)** | P3: **0 (cap 10)**
 
@@ -10,16 +10,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 ## P1 - Escalate today (top 5)
 
-### P1 Escalate - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
-
-- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
-- **Owner**: Balaji Ravi (medium)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.44
-- **Age**: 14 days
-- **Rationale**: Pending 14+ days without resolution - escalate today.
-- **Linked actions**: 1
-- **Source**: decision D-30ae77972e
 ### P1 Escalate - ADX Registration [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
@@ -50,6 +40,16 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Rationale**: Pending 14+ days without resolution - escalate today.
 - **Linked actions**: 1
 - **Source**: decision D-0ac2a0c612
+### P1 Escalate - GBO Batch Transition [Pending] [DECISION REQUIRED] [escalation in 0d]
+
+- **What**: D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
+- **Owner**: Birger Fjaellman (medium)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.44
+- **Age**: 14 days
+- **Rationale**: Pending 14+ days without resolution - escalate today.
+- **Linked actions**: 1
+- **Source**: decision D-30ae77972e
 ### P1 Escalate - Rapid Recovery [Pending] [DECISION REQUIRED] [escalation in 0d]
 
 - **What**: D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
@@ -64,10 +64,37 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 
 ## P2 - Confirm or investigate this week (top 10)
 
+### P2 Escalate - ADX Registration [escalation in 0d]
+
+- **What**: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ... (severity: Medium, trend: decreasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.19
+- **Age**: 21 days
+- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Source**: risk R-fff605c5dd
+### P2 Escalate - GOCC Transition [escalation in 0d]
+
+- **What**: Strong dependency on cross-team alignment (GOCC, PS, GBO) (severity: Medium, trend: stable)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.19
+- **Age**: 28 days
+- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Source**: risk R-c7355ab891
+### P2 Escalate - GOCC Transition [escalation in 0d]
+
+- **What**: Weekly project status, CR review, and risk review governance forums (severity: Medium, trend: stable)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-17
+- **Confidence**: 0.19
+- **Age**: 28 days
+- **Rationale**: Unresolved 14+ days - escalate this week.
+- **Source**: risk R-d57894861d
 ### P2 Escalate - GBO Batch Transition [escalation in 0d]
 
 - **What**: Weekly project governance forums (status, CR review, risk review) (severity: Medium, trend: stable)
-- **Owner**: Balaji Ravi (medium)
+- **Owner**: Birger Fjaellman (medium)
 - **Deadline**: 2026-07-17
 - **Confidence**: 0.44
 - **Age**: 28 days
@@ -82,33 +109,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Age**: 87 days
 - **Rationale**: Unresolved 14+ days - escalate this week.
 - **Source**: risk R-65e39d4c98
-### P2 Escalate - GBO Batch Transition [escalation in 0d]
-
-- **What**: Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ... (severity: Medium, trend: decreasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 21 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-b882fa398a
-### P2 Escalate - GOCC Transition [escalation in 0d]
-
-- **What**: Strong dependency on cross-team alignment (GOCC, PS, GBO) (severity: Medium, trend: stable)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 28 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-c7355ab891
-### P2 Escalate - CMDB Mapping [escalation in 0d]
-
-- **What**: Weekly project status, CR review, and risk review governance forums (severity: Medium, trend: stable)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-17
-- **Confidence**: 0.19
-- **Age**: 28 days
-- **Rationale**: Unresolved 14+ days - escalate this week.
-- **Source**: risk R-f02ad44a72
 ### P2 Escalate - CMDB Mapping [escalation in 0d]
 
 - **What**: Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts) (severity: Medium, trend: stable)
@@ -141,18 +141,18 @@ _None._
 - **Rapid Recovery** / _escalation_ - 4 item(s), P1, 4 P1, min escalation: 0d
 - **Developer XP Dashboard** / _(misc)_ - 3 item(s), P1, 3 P1, min escalation: 0d
 - **(none)** / _(misc)_ - 3 item(s), P1, 2 P1, min escalation: 0d
-- **GBO Batch Transition** / _september_ - 3 item(s), P1, 2 P1, min escalation: 0d
-- **ADX Registration** / _(misc)_ - 2 item(s), P1, 2 P1, min escalation: 0d
 - **Capacity Management** / _management_ - 2 item(s), P1, 2 P1, min escalation: 0d
 - **CyberArk Governance** / _cyberark_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **Rapid Recovery** / _rehearsal_ - 2 item(s), P1, 2 P1, min escalation: 0d
-- **CMDB Mapping** / _(misc)_ - 3 item(s), P1, 1 P1, min escalation: 0d
+- **GBO Batch Transition** / _agreed_ - 2 item(s), P1, 2 P1, min escalation: 0d
+- **Rapid Recovery** / _restart_ - 2 item(s), P1, 2 P1, min escalation: 0d
+- **ADX Registration** / _japan_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **CMDB Mapping** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **GBO Batch Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **GOCC Transition** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
 - **GOCC Transition** / _team_ - 2 item(s), P1, 1 P1, min escalation: 0d
-- **Rapid Recovery** / _(misc)_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **Rapid Recovery** / _recovery_ - 2 item(s), P1, 1 P1, min escalation: 0d
+- **ADX Registration** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
 - **Capacity Management** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **GOCC Transition** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **MMM L2** / _(misc)_ - 1 item(s), P1, 1 P1, min escalation: 0d
-- **GBO Batch Transition** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
 
 ## How this list was built
 

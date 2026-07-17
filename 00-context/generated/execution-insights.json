@@ -1,35 +1,21 @@
 {
-  "generated": "2026-07-17T14:56:00",
+  "generated": "2026-07-17T15:00:56",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
     "delayedDecisions": 7,
     "missedDeadlines": 0,
-    "overloadedOwners": 0,
+    "overloadedOwners": 1,
     "recurringDecisions": 0,
     "stalePendingByWorkstream": 0,
     "highSeverityAgedRisks": 3
   },
   "delayedDecisions": [
     {
-      "id": "D-30ae77972e",
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "ageDays": 14
-    },
-    {
-      "id": "D-e275b159e5",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "workstream": "GOCC Transition",
-      "owner": "Birger Fjaellman",
-      "ageDays": 14
-    },
-    {
-      "id": "D-0ac2a0c612",
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "workstream": "Capacity Management",
-      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
+      "id": "D-6f81d99006",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
       "ageDays": 14
     },
     {
@@ -40,17 +26,17 @@
       "ageDays": 14
     },
     {
-      "id": "D-6f81d99006",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "ageDays": 14
-    },
-    {
       "id": "D-fadd968d28",
       "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
       "workstream": "ADX Registration",
       "owner": "Balaji Ravi",
+      "ageDays": 14
+    },
+    {
+      "id": "D-30ae77972e",
+      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
+      "workstream": "GBO Batch Transition",
+      "owner": "Birger Fjaellman",
       "ageDays": 14
     },
     {
@@ -59,17 +45,47 @@
       "workstream": "Developer XP Dashboard",
       "owner": "Unassigned",
       "ageDays": 14
+    },
+    {
+      "id": "D-0ac2a0c612",
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "workstream": "Capacity Management",
+      "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
+      "ageDays": 14
+    },
+    {
+      "id": "D-e275b159e5",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "workstream": "GOCC Transition",
+      "owner": "Birger Fjaellman",
+      "ageDays": 14
     }
   ],
   "missedDeadlines": [],
-  "overloadedOwners": [],
+  "overloadedOwners": [
+    {
+      "owner": "Birger Fjaellman",
+      "itemCount": 5,
+      "decisions": 2,
+      "risks": 3,
+      "p1Count": 2,
+      "avgConfidence": 0.44
+    }
+  ],
   "recurringDecisions": [],
   "stalePendingByWorkstream": [],
   "highSeverityAgedRisks": [
     {
-      "id": "R-1c3d9c0e3b",
+      "id": "R-cd89918f9c",
+      "title": "Review and operationalize the vendor escalation format",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "ageDays": 87
+    },
+    {
+      "id": "R-52c6e63cae",
       "title": "Vendor Escalation",
-      "workstream": "MMM L2",
+      "workstream": "GBO Batch Transition",
       "owner": "Unassigned",
       "ageDays": 87
     },
@@ -77,13 +93,6 @@
       "id": "R-f386376f94",
       "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
       "workstream": "",
-      "owner": "Unassigned",
-      "ageDays": 87
-    },
-    {
-      "id": "R-cd89918f9c",
-      "title": "Review and operationalize the vendor escalation format",
-      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "ageDays": 87
     }

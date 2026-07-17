@@ -1,15 +1,15 @@
 {
-  "lastRun": "2026-07-17T11:46:34",
+  "lastRun": "2026-07-17T14:58:31",
   "status": "success",
-  "message": "New recap processed and committed.",
+  "message": "Generator ran but produced no diffs to commit.",
   "triggeredBy": "corpus",
-  "lastActivityFile": "2026-07-17-14-day-activity.md",
-  "lastActivityHash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
-  "lastCorpusSignature": "b69bdce96bf3e77b7c481ed607b6e3dd3f9a182b748b4d634f4f6aae549d8450",
+  "lastActivityFile": "2026-07-18-14-day-activity.md",
+  "lastActivityHash": "",
+  "lastCorpusSignature": "94eee0c3f83e5b523f1a129cf9f31ef88aa8df797834fa3f50e5b77aa362ac21",
   "currentFocusGenerated": true,
   "trendsGenerated": true,
   "morningBriefingGenerated": true,
   "jsonValidated": true,
-  "gitCommitted": true,
+  "gitCommitted": false,
   "lastCommitHash": "420da103855a6687347bc9dd104ffe185db378fd"
 }

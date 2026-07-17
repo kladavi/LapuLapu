@@ -1953,6 +1953,8 @@ function Get-DecisionRegistry {
             $outcome          = Get-OutcomeFromContext -Context $context
             $linkedActions    = Get-LinkedActionsFromContext -Context $context
             $completionSignal = Get-CompletionSignalFromContext -Context $context
+            # V4.0 Phase 7: explicit ownership marker
+            $explicitOwner    = Get-OwnerFromContext -Context $context
 
             # V2.5 fallback: `**Decision:** <ResolutionVerb>` (Approved / Deferred /
             # Rejected / Superseded / Reversed / Deprecated / Locked / Confirmed)
@@ -1994,6 +1996,8 @@ function Get-DecisionRegistry {
                     status              = $status
                     owner               = $owner
                     ownerConfidence     = 'unknown'
+                    suggestedOwner      = ''
+                    _explicitOwner      = $explicitOwner
                     escalationPath      = [System.Collections.Generic.List[string]]::new()
                     stakeholders        = [System.Collections.Generic.List[string]]::new()
                     workstream          = $workstream
@@ -2031,6 +2035,8 @@ function Get-DecisionRegistry {
             if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
             if (-not $entry.impact     -and $impact)     { $entry.impact     = $impact }
             if (-not $entry.decisionDeadline -and $explicitDeadline) { $entry.decisionDeadline = $explicitDeadline }
+            # V4.0 Phase 7: prefer explicit owner marker if found in any sighting
+            if (-not $entry._explicitOwner -and $explicitOwner) { $entry._explicitOwner = $explicitOwner }
             # V2.5: prefer any captured outcome; upgrade completionSignal (completed trumps in-progress)
             if (-not $entry.decisionOutcome -and $outcome) { $entry.decisionOutcome = $outcome }
             if ($completionSignal -eq 'completed') { $entry.completionSignal = 'completed' }
@@ -2072,25 +2078,39 @@ function Get-DecisionRegistry {
     }
 
     foreach ($e in $decisions.Values) {
-        # V1.8 owner resolution + confidence
+        # V4.0 Phase 7 ownership hierarchy:
+        #   high   = explicit **Owner:** marker in source context
+        #   medium = name-proximity (stakeholder appears in nearby text)
+        #   low    = only workstream-map suggestion, or truly unowned
+        # Escalation path + stakeholders always come from the map (structural, not ownership).
         $mapEntry = $null
         if ($e.workstream -and $nameToId.ContainsKey($e.workstream)) {
             $wsId = $nameToId[$e.workstream]
             if ($OwnershipMap.ContainsKey($wsId)) { $mapEntry = $OwnershipMap[$wsId] }
         }
-        if ($mapEntry -and $mapEntry.owner) {
-            $e.owner           = $mapEntry.owner
-            $e.ownerConfidence = 'workstream-map'
+        if ($mapEntry) {
             foreach ($n in $mapEntry.escalationPath) {
                 if (-not $e.escalationPath.Contains($n)) { $e.escalationPath.Add($n) }
             }
             foreach ($n in $mapEntry.stakeholders) {
                 if (-not $e.stakeholders.Contains($n)) { $e.stakeholders.Add($n) }
             }
+        }
+        if ($e._explicitOwner) {
+            $e.owner = $e._explicitOwner
+            $e.suggestedOwner = ''
+            $e.ownerConfidence = 'high'
         } elseif ($e.owner) {
-            $e.ownerConfidence = 'name-proximity'
+            $e.suggestedOwner = ''
+            $e.ownerConfidence = 'medium'
+        } elseif ($mapEntry -and $mapEntry.owner) {
+            $e.owner = 'Unassigned'
+            $e.suggestedOwner = $mapEntry.owner
+            $e.ownerConfidence = 'low'
         } else {
-            $e.ownerConfidence = 'unknown'
+            $e.owner = 'Unassigned'
+            $e.suggestedOwner = ''
+            $e.ownerConfidence = 'low'
         }
 
         # V1.8 structured action
@@ -2285,6 +2305,7 @@ function Build-DecisionRegistryJson {
             recurrenceCount     = $e.recurrenceCount
             owner               = $e.owner
             ownerConfidence     = $e.ownerConfidence
+            suggestedOwner      = if ($e.ContainsKey('suggestedOwner')) { [string]$e.suggestedOwner } else { '' }
             escalationPath      = @($e.escalationPath)
             stakeholders        = @($e.stakeholders)
             workstream          = $e.workstream
@@ -2300,7 +2321,7 @@ function Build-DecisionRegistryJson {
 
     $openCount     = @($Decisions | Where-Object { $_.status -ne 'closed' }).Count
     $closedCount   = @($Decisions | Where-Object { $_.status -eq 'closed' }).Count
-    $ownedCount    = @($Decisions | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
+    $ownedCount    = @($Decisions | Where-Object { $_.ownerConfidence -in @('high', 'medium', 'workstream-map', 'name-proximity') }).Count
     $pendingCount  = @($Decisions | Where-Object { $_.decisionRequired }).Count
     $decidedCount  = @($Decisions | Where-Object { $_.decisionStatus -eq 'Decided' }).Count
     $expiredCount  = @($Decisions | Where-Object { $_.decisionStatus -eq 'Expired' }).Count
@@ -2384,6 +2405,11 @@ function Get-EntryConfidence {
     param([hashtable] $Entry)
     $score = 0.0
     switch ($Entry.ownerConfidence) {
+        # V4.0 taxonomy
+        'high'           { $score += 0.5 }
+        'medium'         { $score += 0.25 }
+        'low'            { $score += 0.0 }
+        # V3.x backward-compat (in case any legacy value slips through)
         'workstream-map' { $score += 0.5 }
         'name-proximity' { $score += 0.25 }
         default          { $score += 0.0 }
@@ -2452,6 +2478,24 @@ function Get-OutcomeFromContext {
     if (-not $m.Success) { return '' }
     $val = ($m.Groups[1].Value -replace '\s+', ' ').Trim().TrimEnd('.', ',', ';', ':')
     if ($val.Length -gt 240) { $val = $val.Substring(0, 237) + '...' }
+    return $val
+}
+
+function Get-OwnerFromContext {
+    <#
+        V4.0 Phase 7: extracts an explicit `**Owner:**` marker from a context
+        block. Returns the raw owner name (no verification against ownership map).
+        Empty string on miss.
+
+        Presence of this marker is the only signal that produces
+        ownerConfidence='high' in the V4 hierarchy.
+    #>
+    param([string] $Context)
+    if ([string]::IsNullOrWhiteSpace($Context)) { return '' }
+    $m = [regex]::Match($Context, '(?im)^\s*(?:[-*>]\s+)?\*\*Owner[:\s]?\*\*\s*(.+?)\s*$')
+    if (-not $m.Success) { return '' }
+    $val = ($m.Groups[1].Value -replace '\s+', ' ').Trim().TrimEnd('.', ',', ';', ':')
+    if ($val.Length -gt 100) { $val = $val.Substring(0, 100) }
     return $val
 }
 
@@ -2901,6 +2945,8 @@ function Get-RiskRegister {
 
             # V2.0: extract business impact from context if present.
             $impact = Get-ImpactFromContext -Context $context
+            # V4.0 Phase 7: explicit ownership marker
+            $explicitOwner = Get-OwnerFromContext -Context $context
 
             $workstream = ''
             foreach ($k in $aliasKeys) {
@@ -2936,6 +2982,8 @@ function Get-RiskRegister {
                     workstream          = $workstream
                     owner               = $owner
                     ownerConfidence     = 'unknown'
+                    suggestedOwner      = ''
+                    _explicitOwner      = $explicitOwner
                     escalationPath      = [System.Collections.Generic.List[string]]::new()
                     stakeholders        = [System.Collections.Generic.List[string]]::new()
                     severity            = $severity
@@ -2963,6 +3011,8 @@ function Get-RiskRegister {
             if (-not $entry.owner      -and $owner)      { $entry.owner = $owner }
             if (-not $entry.workstream -and $workstream) { $entry.workstream = $workstream }
             if (-not $entry.impact     -and $impact)     { $entry.impact = $impact }
+            # V4.0 Phase 7: prefer explicit owner marker if found in any sighting
+            if (-not $entry._explicitOwner -and $explicitOwner) { $entry._explicitOwner = $explicitOwner }
 
             # Severity may only escalate up
             if ($severity -eq 'High') { $entry.severity = 'High' }
@@ -2997,25 +3047,35 @@ function Get-RiskRegister {
         elseif ($cur -lt $prev -and $prev -gt 0) { $e.trend = 'decreasing' }
         else                                     { $e.trend = 'stable' }
 
-        # V1.8 owner resolution + confidence
+        # V4.0 Phase 7 ownership hierarchy (see decision registry for full comment)
         $mapEntry = $null
         if ($e.workstream -and $nameToId.ContainsKey($e.workstream)) {
             $wsId = $nameToId[$e.workstream]
             if ($OwnershipMap.ContainsKey($wsId)) { $mapEntry = $OwnershipMap[$wsId] }
         }
-        if ($mapEntry -and $mapEntry.owner) {
-            $e.owner           = $mapEntry.owner
-            $e.ownerConfidence = 'workstream-map'
+        if ($mapEntry) {
             foreach ($n in $mapEntry.escalationPath) {
                 if (-not $e.escalationPath.Contains($n)) { $e.escalationPath.Add($n) }
             }
             foreach ($n in $mapEntry.stakeholders) {
                 if (-not $e.stakeholders.Contains($n)) { $e.stakeholders.Add($n) }
             }
+        }
+        if ($e._explicitOwner) {
+            $e.owner = $e._explicitOwner
+            $e.suggestedOwner = ''
+            $e.ownerConfidence = 'high'
         } elseif ($e.owner) {
-            $e.ownerConfidence = 'name-proximity'
+            $e.suggestedOwner = ''
+            $e.ownerConfidence = 'medium'
+        } elseif ($mapEntry -and $mapEntry.owner) {
+            $e.owner = 'Unassigned'
+            $e.suggestedOwner = $mapEntry.owner
+            $e.ownerConfidence = 'low'
         } else {
-            $e.ownerConfidence = 'unknown'
+            $e.owner = 'Unassigned'
+            $e.suggestedOwner = ''
+            $e.ownerConfidence = 'low'
         }
 
         # V1.8 structured action (replaces canned string)
@@ -3151,6 +3211,7 @@ function Build-RiskRegisterJson {
             workstream        = $e.workstream
             owner             = $e.owner
             ownerConfidence   = $e.ownerConfidence
+            suggestedOwner    = if ($e.ContainsKey('suggestedOwner')) { [string]$e.suggestedOwner } else { '' }
             escalationPath    = @($e.escalationPath)
             stakeholders      = @($e.stakeholders)
             severity          = $e.severity
@@ -3173,7 +3234,7 @@ function Build-RiskRegisterJson {
     $closedCount = @($Risks | Where-Object { $_.status -eq 'closed' }).Count
     $highCount   = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.severity -eq 'High' }).Count
     $risingCount = @($Risks | Where-Object { $_.status -ne 'closed' -and $_.trend    -eq 'increasing' }).Count
-    $ownedCount  = @($Risks | Where-Object { $_.ownerConfidence -eq 'workstream-map' }).Count
+    $ownedCount  = @($Risks | Where-Object { $_.ownerConfidence -in @('high', 'medium', 'workstream-map', 'name-proximity') }).Count
     $imminentCount = @($Risks | Where-Object { $_.status -ne 'closed' -and $null -ne $_.timeToEscalationRisk -and [int]$_.timeToEscalationRisk -le 3 }).Count
 
     $out = [ordered]@{
@@ -3303,6 +3364,7 @@ function New-InboxItem {
         workstream      = $Entry.workstream
         owner           = $Entry.owner
         ownerConfidence = $Entry.ownerConfidence
+        suggestedOwner  = if ($Entry.ContainsKey('suggestedOwner')) { [string]$Entry.suggestedOwner } else { '' }
         priority        = $priority
         verb            = $verb
         dueBy           = $dueBy
@@ -3365,7 +3427,10 @@ function Get-DavidInbox {
         $act = $r.recommendedAction
         $isP1 = ($act -is [System.Collections.IDictionary] -and $act.priority -eq 1)
         $imminent = ($null -ne $r.timeToEscalationRisk -and [int]$r.timeToEscalationRisk -le 3)
-        if (($isHigh -and $r.ownerConfidence -ne 'unknown') -or $isP1 -or $imminent) {
+        # V4.0 Phase 7: include High risks when there's any ownership signal at all
+        # (explicit/proximity OR at least a workstream-map suggestion)
+        $hasOwnershipSignal = ($r.ownerConfidence -in @('high','medium','workstream-map','name-proximity')) -or ($r.suggestedOwner)
+        if (($isHigh -and $hasOwnershipSignal) -or $isP1 -or $imminent) {
             $items.Add((New-InboxItem -Kind 'risk' -Entry $r))
         }
     }
@@ -3663,7 +3728,7 @@ function Get-ExecutionInsights {
                 p1Count      = $_.p1
                 avgConfidence= $avg
             }
-        } | Where-Object { [int]$_.itemCount -ge $OverloadThreshold } |
+        } | Where-Object { [int]$_.itemCount -ge $OverloadThreshold -and $_.owner -notin @('Unassigned', 'unassigned', '') } |
             Sort-Object @{ Expression = { -[int]$_.itemCount } }, @{ Expression = { -[int]$_.p1Count } }
     )
 

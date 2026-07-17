@@ -146,6 +146,7 @@ type DecisionEntry = {
   status?: string;
   owner?: string;
   ownerConfidence?: string;
+  suggestedOwner?: string;                // V4.0 Phase 7
   escalationPath?: string[];
   stakeholders?: string[];
   workstream?: string;
@@ -195,6 +196,7 @@ type RiskEntry = {
   workstream?: string;
   owner?: string;
   ownerConfidence?: string;
+  suggestedOwner?: string;                // V4.0 Phase 7
   escalationPath?: string[];
   stakeholders?: string[];
   severity?: string;
@@ -246,6 +248,7 @@ type InboxItem = {
   workstream?: string;
   owner?: string;
   ownerConfidence?: string;
+  suggestedOwner?: string;                // V4.0 Phase 7
   priority?: number;
   verb?: string;
   dueBy?: string;
@@ -346,9 +349,26 @@ function formatAction(action?: string | StructuredAction): string {
 }
 
 function ownerBadgeClass(confidence?: string): string {
+  // V4.0 Phase 7 taxonomy: high (explicit marker) / medium (name-proximity) / low (suggestion or unowned)
+  if (confidence === "high") return "bg-green-50 text-green-800 border-green-200";
+  if (confidence === "medium") return "bg-amber-50 text-amber-800 border-amber-200";
+  if (confidence === "low") return "bg-slate-100 text-slate-600 border-slate-200";
+  // Legacy V3.x values (backward compatibility during migration window)
   if (confidence === "workstream-map") return "bg-green-50 text-green-800 border-green-200";
   if (confidence === "name-proximity") return "bg-amber-50 text-amber-800 border-amber-200";
   return "bg-slate-100 text-slate-600 border-slate-200";
+}
+
+function ownerConfidenceLabel(confidence?: string): string {
+  // V4.0 human-readable label; V3.x fallback for legacy artifacts
+  switch (confidence) {
+    case "high":            return "confirmed";
+    case "medium":          return "named in source";
+    case "low":             return "unassigned";
+    case "workstream-map":  return "confirmed (legacy)";
+    case "name-proximity":  return "named in source (legacy)";
+    default:                return confidence ?? "unknown";
+  }
 }
 
 function healthClass(status?: string): { stripe: string; badge: string } {
@@ -964,9 +984,15 @@ export function DashboardTab({ onNavigate }: Props) {
                       {it.id ? <span className="font-mono"> · {it.id}</span> : null}
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
-                      {it.owner ? (
-                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(it.ownerConfidence)}`}>
+                      {it.owner && it.owner !== "Unassigned" ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(it.ownerConfidence)}`}
+                              title={`ownerConfidence: ${ownerConfidenceLabel(it.ownerConfidence)}`}>
                           owner: {it.owner}
+                        </span>
+                      ) : it.suggestedOwner ? (
+                        <span className="inline-block rounded-full border border-slate-300 bg-slate-50 px-1.5 py-0.5 font-medium text-slate-700"
+                              title="V4.0: workstream suggestion only. Add **Owner:** to source to confirm.">
+                          unassigned <span className="text-slate-500">· suggested: {it.suggestedOwner}</span>
                         </span>
                       ) : (
                         <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-1.5 py-0.5 font-medium text-slate-600">
@@ -1626,9 +1652,14 @@ export function DashboardTab({ onNavigate }: Props) {
                       {d.decisionId ? <span className="font-mono"> · {d.decisionId}</span> : null}
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
-                      {d.owner || d.ownerConfidence ? (
-                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(d.ownerConfidence)}`} title={`ownerConfidence: ${d.ownerConfidence ?? "unknown"}`}>
-                          owner: {d.owner || "unassigned"} · {d.ownerConfidence ?? "unknown"}
+                      {d.owner && d.owner !== "Unassigned" ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(d.ownerConfidence)}`} title={`ownerConfidence: ${ownerConfidenceLabel(d.ownerConfidence)}`}>
+                          owner: {d.owner} · {ownerConfidenceLabel(d.ownerConfidence)}
+                        </span>
+                      ) : d.suggestedOwner ? (
+                        <span className="inline-block rounded-full border border-slate-300 bg-slate-50 px-1.5 py-0.5 font-medium text-slate-700"
+                              title="V4.0: workstream-map suggestion only. Add **Owner:** to source file to confirm.">
+                          unassigned · suggested: {d.suggestedOwner}
                         </span>
                       ) : null}
                       {d.decisionStatus ? (
@@ -1897,9 +1928,14 @@ export function DashboardTab({ onNavigate }: Props) {
                         {r.riskId ? <span className="font-mono"> · {r.riskId}</span> : null}
                       </div>
                       <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px]">
-                        {r.owner || r.ownerConfidence ? (
-                          <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(r.ownerConfidence)}`} title={`ownerConfidence: ${r.ownerConfidence ?? "unknown"}`}>
-                            owner: {r.owner || "unassigned"} · {r.ownerConfidence ?? "unknown"}
+                        {r.owner && r.owner !== "Unassigned" ? (
+                          <span className={`inline-block rounded-full border px-1.5 py-0.5 font-medium ${ownerBadgeClass(r.ownerConfidence)}`} title={`ownerConfidence: ${ownerConfidenceLabel(r.ownerConfidence)}`}>
+                            owner: {r.owner} · {ownerConfidenceLabel(r.ownerConfidence)}
+                          </span>
+                        ) : r.suggestedOwner ? (
+                          <span className="inline-block rounded-full border border-slate-300 bg-slate-50 px-1.5 py-0.5 font-medium text-slate-700"
+                                title="V4.0: workstream-map suggestion only. Add **Owner:** to source file to confirm.">
+                            unassigned · suggested: {r.suggestedOwner}
                           </span>
                         ) : null}
                         {(r.timeToEscalationRisk !== undefined && r.timeToEscalationRisk !== null) ? (
