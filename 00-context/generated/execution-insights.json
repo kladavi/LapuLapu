@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T11:23:18",
+  "generated": "2026-07-17T11:46:02",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
@@ -12,17 +12,10 @@
   },
   "delayedDecisions": [
     {
-      "id": "D-30ae77972e",
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "workstream": "GBO Batch Transition",
-      "owner": "Rowena",
-      "ageDays": 14
-    },
-    {
-      "id": "D-0ac2a0c612",
-      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
-      "workstream": "Capacity Management",
-      "owner": "Rasheersh",
+      "id": "D-6f81d99006",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
+      "owner": "Balaji Ravi",
       "ageDays": 14
     },
     {
@@ -47,6 +40,13 @@
       "ageDays": 14
     },
     {
+      "id": "D-0ac2a0c612",
+      "title": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...",
+      "workstream": "Capacity Management",
+      "owner": "Rasheersh",
+      "ageDays": 14
+    },
+    {
       "id": "D-3ced6cbb47",
       "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
       "workstream": "Developer XP Dashboard",
@@ -54,10 +54,10 @@
       "ageDays": 14
     },
     {
-      "id": "D-6f81d99006",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
-      "owner": "Balaji Ravi",
+      "id": "D-30ae77972e",
+      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
+      "workstream": "GBO Batch Transition",
+      "owner": "Rowena",
       "ageDays": 14
     }
   ],
@@ -65,26 +65,26 @@
   "overloadedOwners": [
     {
       "owner": "Balaji Ravi",
-      "itemCount": 11,
+      "itemCount": 10,
       "decisions": 2,
-      "risks": 9,
+      "risks": 8,
       "p1Count": 8,
       "avgConfidence": 0.72
     },
     {
       "owner": "Rasheersh",
-      "itemCount": 9,
+      "itemCount": 10,
       "decisions": 1,
-      "risks": 8,
+      "risks": 9,
       "p1Count": 4,
-      "avgConfidence": 0.75
+      "avgConfidence": 0.74
     },
     {
       "owner": "Manish",
       "itemCount": 7,
       "decisions": 0,
       "risks": 7,
-      "p1Count": 5,
+      "p1Count": 6,
       "avgConfidence": 0.79
     },
     {
@@ -100,18 +100,18 @@
       "itemCount": 5,
       "decisions": 2,
       "risks": 3,
-      "p1Count": 2,
-      "avgConfidence": 0.71
+      "p1Count": 3,
+      "avgConfidence": 0.69
     }
   ],
   "recurringDecisions": [],
   "stalePendingByWorkstream": [],
   "highSeverityAgedRisks": [
     {
-      "id": "R-1c3d9c0e3b",
-      "title": "Vendor Escalation",
-      "workstream": "MMM L2",
-      "owner": "Hari",
+      "id": "R-f386376f94",
+      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
+      "workstream": "",
+      "owner": "",
       "ageDays": 87
     },
     {
@@ -122,10 +122,10 @@
       "ageDays": 87
     },
     {
-      "id": "R-f386376f94",
-      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
-      "workstream": "",
-      "owner": "",
+      "id": "R-52c6e63cae",
+      "title": "Vendor Escalation",
+      "workstream": "GBO Batch Transition",
+      "owner": "Rowena",
       "ageDays": 87
     }
   ]

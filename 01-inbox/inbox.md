@@ -4,6 +4,38 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-07-16 — Lapu-Lapu and GOCC Meeting: CMDB Mapping, GOCC IDs, File-System Alerting, DR/RRP, Delta Interfaces** #processed
+  - **Source:** archive/20260716 - Lapu-Lapu and GOCC.md
+  - **From:** Meeting notes (David, Yegor, Birger, Jonan, Dennis, Balaji, Mark, Mary, Rae) plus AI-generated summary and follow-up task list
+  - **Focus:** CMDB mapping status for Amazon Connect / AML / JCUS / BPM / ServerF; ID management gaps for GOCC Ingenium access; file-system monitoring alert routing; DR test + RRP tabletop rehearsal prep; Delta App Interfaces documentation; service-mapping tool evaluation (Rovo — Atlassian's Confluence-licensed AI agent — evaluated but not adopted this cycle; Yegor to share prompt example with the team as knowledge-share, no follow-up task).
+  - **Key outcomes:**
+    1. CMDB mapping is iterative — several apps confirmed complete/in-progress; ServerF technical mapping still needs redesign (multi-role server with inconsistent CI relationships).
+    2. Gap identified: no application-specific GOCC ID for Ingenium — Balaji to establish CyberArk-managed common access ID with Sai/Engineering Infra.
+    3. File-system monitoring routing unverified — Balaji to supply list, Mary to check, Dennis to confirm alert config.
+    4. RRP tabletop rehearsal planned; Dennis confirming MIM participation (Mike Toddick, Max/Maximilian for Asia; Sir Dennis + Sir Angelo from AMS) — feeds existing T145.
+    5. Delta App Interfaces v1 document located — to be reviewed against CMDB coverage.
+    6. Rovo (Atlassian AI agent) prompt example to be shared by Yegor — information sharing only, no formal follow-up.
+  - **Actions extracted → T152, T153**
+  - **Actions consolidated → T002 (Delta App Interfaces + monitoring-list filter), T005 (file-system alert routing)**
+  - **Actions referenced → T121, T143, T144, T145**
+
+- **2026-07-14 — Lapu-Lapu ETS, GOCC and Observability Meeting: Naming, Dev XP Validation, Non-Gold Onboarding, CyberArk Incident, VNet, MMM L2, Pulse Approval** #processed
+  - **Source:** archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md
+  - **From:** Meeting agenda + notes covering GOCC / Observability / GBO + side-quests + 8 topic sections with consolidated P1-P4 action tracker
+  - **Focus:** Eight discrete workstreams surfaced simultaneously — AWMS naming and vendor escalation, Dev XP URL validation (77/225 remaining), Philippines Branch Laptop Dashboard coverage, Phase 2 non-Gold onboarding (5 categories), CyberArk password renewal incident (compliance gap), Japan East/West VNet instability, MMM L2 Definition-of-Done and reporting clarity, Pulse Safe approval alignment to GOCC 24/7.
+  - **Key outcomes:**
+    1. MPS Guardia (AWMS) can proceed to GOCC onboarding despite CMDB/LeanIX naming inconsistency — vendor (Fujifilm) escalation model still needs formalising.
+    2. Dev XP Dashboard: 77/225 URLs remaining; New Relic UAT alert policy pending; credential ownership blocking functional monitoring.
+    3. PH Branch Laptop Dashboard scaling from 2 URLs pilot to full Gold coverage (end-of-week target).
+    4. Phase 2 non-Gold onboarding: 5 app categories in scope; LeanIX MetalRating gaps for Document Video Library, Japan OK Wave, HULFT.
+    5. CyberArk password-renewal incident reinforced compliance direction: Full CyberArk registration + automated lifecycle + auditability — reinforces T143/T144/T146 as the enterprise remediation program.
+    6. VNet issues escalated — Adrian to include David + Vidya in escalation comms; RITM09472830 subnet request completed but DEV/PROD server provisioning still open.
+    7. MMM L2 status accuracy questioned; no single source of truth for reporting vs. actual readiness.
+    8. Pulse workflow operational but Safe-approval step incompatible with 24/7 GOCC coverage.
+  - **Actions extracted → T147, T148, T149, T150, T151**
+  - **Actions consolidated → T005 (Dev XP URL validation + UAT alert policy)**
+  - **Actions referenced → T118, T121, T128, T143, T144, T146**
+
 - **2026-07-10 — W28 Copilot-Generated Work Summary (Recap Artifact)** #processed
   - **Source:** archive/W28_copilot.md
   - **From:** Copilot-generated week-in-review recap (David Klan working notes, week of 2026-07-06 → 2026-07-10; distribution set to Birger, Hari, Kelvin, Jonan, Deb, Balaji, Joan)

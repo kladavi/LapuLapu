@@ -1,31 +1,25 @@
 {
-  "generated": "2026-07-17T11:23:18",
+  "generated": "2026-07-17T11:46:02",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
     "total": 38,
     "open": 37,
     "closed": 1,
-    "high": 20,
+    "high": 21,
     "rising": 27,
     "authorativelyOwned": 34,
-    "imminentEscalation": 29
+    "imminentEscalation": 28
   },
   "risks": [
     {
-      "riskId": "R-1c3d9c0e3b",
-      "title": "Vendor Escalation",
-      "workstream": "MMM L2",
-      "owner": "Hari",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Jonan",
-        "Kelvin"
-      ],
+      "riskId": "R-f386376f94",
+      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
+      "workstream": "",
+      "owner": "",
+      "ownerConfidence": "unknown",
+      "escalationPath": [],
+      "stakeholders": [],
       "severity": "High",
       "status": "open",
       "trend": "stable",
@@ -38,13 +32,13 @@
         "01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt"
       ],
       "impact": "",
-      "riskConfidence": 0.59,
+      "riskConfidence": 0.09,
       "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
-        "subject": "Vendor Escalation",
-        "targetOwner": "Hari",
+        "subject": "Standardization of templates, CI identification, and escalation procedures to reduce",
+        "targetOwner": "unassigned",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -86,13 +80,19 @@
       }
     },
     {
-      "riskId": "R-f386376f94",
-      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
-      "workstream": "",
-      "owner": "",
-      "ownerConfidence": "unknown",
-      "escalationPath": [],
-      "stakeholders": [],
+      "riskId": "R-52c6e63cae",
+      "title": "Vendor Escalation",
+      "workstream": "GBO Batch Transition",
+      "owner": "Rowena",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Manish",
+        "Rasheersh"
+      ],
       "severity": "High",
       "status": "open",
       "trend": "stable",
@@ -105,13 +105,13 @@
         "01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt"
       ],
       "impact": "",
-      "riskConfidence": 0.09,
+      "riskConfidence": 0.59,
       "timeToEscalationRisk": 0,
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
-        "subject": "Standardization of templates, CI identification, and escalation procedures to reduce",
-        "targetOwner": "unassigned",
+        "subject": "Vendor Escalation",
+        "targetOwner": "Rowena",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -145,6 +145,41 @@
         "verb": "Escalate",
         "subject": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a ...",
         "targetOwner": "Rasheersh",
+        "dueBy": "2026-07-17",
+        "rationale": "High severity - notify workstream owner today."
+      }
+    },
+    {
+      "riskId": "R-8ad2d2ce2f",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Deb",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 7,
+      "recencyDays": 7,
+      "firstSeenDate": "2026-07-10",
+      "lastSeenDate": "2026-07-10",
+      "dateDetected": "2026-07-10",
+      "sourceFiles": [
+        "01-inbox/archive/W28_copilot.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 1,
+        "verb": "Escalate",
+        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
+        "targetOwner": "Deb",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -185,27 +220,25 @@
       }
     },
     {
-      "riskId": "R-8ad2d2ce2f",
-      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Deb",
+      "riskId": "R-121760730c",
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "workstream": "Capacity Management",
+      "owner": "Rasheersh",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
         "Balaji Ravi"
       ],
-      "stakeholders": [
-        "Kelvin"
-      ],
+      "stakeholders": [],
       "severity": "High",
       "status": "open",
       "trend": "increasing",
-      "agingDays": 7,
-      "recencyDays": 7,
-      "firstSeenDate": "2026-07-10",
-      "lastSeenDate": "2026-07-10",
-      "dateDetected": "2026-07-10",
+      "agingDays": 4,
+      "recencyDays": 4,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "dateDetected": "2026-07-13",
       "sourceFiles": [
-        "01-inbox/archive/W28_copilot.md"
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -213,8 +246,8 @@
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
-        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
-        "targetOwner": "Deb",
+        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
+        "targetOwner": "Rasheersh",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
@@ -328,25 +361,26 @@
       }
     },
     {
-      "riskId": "R-121760730c",
-      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-      "workstream": "Capacity Management",
-      "owner": "Rasheersh",
+      "riskId": "R-b7a381d02b",
+      "title": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
+      "workstream": "CyberArk Governance",
+      "owner": "Manish",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
-        "Balaji Ravi"
+        "Balaji Ravi",
+        "Birger Fjaellman"
       ],
       "stakeholders": [],
       "severity": "High",
       "status": "open",
       "trend": "increasing",
-      "agingDays": 4,
-      "recencyDays": 4,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "dateDetected": "2026-07-13",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -354,14 +388,48 @@
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
-        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
-        "targetOwner": "Rasheersh",
+        "subject": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
+        "targetOwner": "Manish",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
     },
     {
-      "riskId": "R-e9ea38b553",
+      "riskId": "R-0dcce4bb79",
+      "title": "🚨 Network instability (VNet) → platform readiness risk",
+      "workstream": "CyberArk Governance",
+      "owner": "Manish",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 1,
+        "verb": "Escalate",
+        "subject": "🚨 Network instability (VNet) → platform readiness risk",
+        "targetOwner": "Manish",
+        "dueBy": "2026-07-17",
+        "rationale": "High severity - notify workstream owner today."
+      }
+    },
+    {
+      "riskId": "R-e3dd5be6ae",
       "title": "⚠️ Vendor-managed apps without clear escalation model",
       "workstream": "CMDB Mapping",
       "owner": "Rasheersh",
@@ -382,7 +450,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -397,39 +465,8 @@
       }
     },
     {
-      "riskId": "R-38ddfd38ca",
-      "title": "Continue escalation on VNet issues",
-      "workstream": "",
-      "owner": "",
-      "ownerConfidence": "unknown",
-      "escalationPath": [],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.29,
-      "timeToEscalationRisk": 0,
-      "recommendedAction": {
-        "priority": 1,
-        "verb": "Escalate",
-        "subject": "Continue escalation on VNet issues",
-        "targetOwner": "unassigned",
-        "dueBy": "2026-07-17",
-        "rationale": "High severity - notify workstream owner today."
-      }
-    },
-    {
-      "riskId": "R-370a8742e5",
-      "title": "Required escalation to GAM",
+      "riskId": "R-bf28edfac4",
+      "title": "🚨 Compliance gap (CyberArk not enforced)",
       "workstream": "CyberArk Governance",
       "owner": "Manish",
       "ownerConfidence": "workstream-map",
@@ -447,7 +484,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -455,14 +492,45 @@
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
-        "subject": "Required escalation to GAM",
+        "subject": "🚨 Compliance gap (CyberArk not enforced)",
         "targetOwner": "Manish",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
     },
     {
-      "riskId": "R-9956258d27",
+      "riskId": "R-b8d4414c4c",
+      "title": "Continue escalation on VNet issues",
+      "workstream": "",
+      "owner": "",
+      "ownerConfidence": "unknown",
+      "escalationPath": [],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.29,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 1,
+        "verb": "Escalate",
+        "subject": "Continue escalation on VNet issues",
+        "targetOwner": "unassigned",
+        "dueBy": "2026-07-17",
+        "rationale": "High severity - notify workstream owner today."
+      }
+    },
+    {
+      "riskId": "R-aa18501480",
       "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
       "workstream": "Rapid Recovery",
       "owner": "Balaji Ravi",
@@ -483,7 +551,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260716 - Lapu-Lapu and GOCC.md"
+        "01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -498,109 +566,7 @@
       }
     },
     {
-      "riskId": "R-4cc75b6b1d",
-      "title": "🚨 Compliance gap (CyberArk not enforced)",
-      "workstream": "CyberArk Governance",
-      "owner": "Manish",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "timeToEscalationRisk": 0,
-      "recommendedAction": {
-        "priority": 1,
-        "verb": "Escalate",
-        "subject": "🚨 Compliance gap (CyberArk not enforced)",
-        "targetOwner": "Manish",
-        "dueBy": "2026-07-17",
-        "rationale": "High severity - notify workstream owner today."
-      }
-    },
-    {
-      "riskId": "R-b4eb5d0b0e",
-      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
-      "workstream": "CyberArk Governance",
-      "owner": "Manish",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "timeToEscalationRisk": 0,
-      "recommendedAction": {
-        "priority": 1,
-        "verb": "Escalate",
-        "subject": "🚨 High operational risk (manual renewals + hidden dependencies)",
-        "targetOwner": "Manish",
-        "dueBy": "2026-07-17",
-        "rationale": "High severity - notify workstream owner today."
-      }
-    },
-    {
-      "riskId": "R-418fd20708",
-      "title": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
-      "workstream": "CyberArk Governance",
-      "owner": "Manish",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "High",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 1,
-      "recencyDays": 1,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "dateDetected": "2026-07-16",
-      "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "timeToEscalationRisk": 0,
-      "recommendedAction": {
-        "priority": 1,
-        "verb": "Escalate",
-        "subject": "⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk",
-        "targetOwner": "Manish",
-        "dueBy": "2026-07-17",
-        "rationale": "High severity - notify workstream owner today."
-      }
-    },
-    {
-      "riskId": "R-a682bf10b6",
+      "riskId": "R-9bfa424dbf",
       "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
       "workstream": "Developer XP Dashboard",
       "owner": "Deb",
@@ -620,7 +586,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -635,8 +601,8 @@
       }
     },
     {
-      "riskId": "R-f5170184ab",
-      "title": "🚨 Network instability (VNet) → platform readiness risk",
+      "riskId": "R-228ae1101c",
+      "title": "Required escalation to GAM",
       "workstream": "CyberArk Governance",
       "owner": "Manish",
       "ownerConfidence": "workstream-map",
@@ -654,7 +620,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -662,14 +628,48 @@
       "recommendedAction": {
         "priority": 1,
         "verb": "Escalate",
-        "subject": "🚨 Network instability (VNet) → platform readiness risk",
+        "subject": "Required escalation to GAM",
         "targetOwner": "Manish",
         "dueBy": "2026-07-17",
         "rationale": "High severity - notify workstream owner today."
       }
     },
     {
-      "riskId": "R-e6dc58ac09",
+      "riskId": "R-ca48836978",
+      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
+      "workstream": "CyberArk Governance",
+      "owner": "Manish",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "severity": "High",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 1,
+      "recencyDays": 1,
+      "firstSeenDate": "2026-07-16",
+      "lastSeenDate": "2026-07-16",
+      "dateDetected": "2026-07-16",
+      "sourceFiles": [
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 1,
+        "verb": "Escalate",
+        "subject": "🚨 High operational risk (manual renewals + hidden dependencies)",
+        "targetOwner": "Manish",
+        "dueBy": "2026-07-17",
+        "rationale": "High severity - notify workstream owner today."
+      }
+    },
+    {
+      "riskId": "R-27c07d48fd",
       "title": "Team to secure **contact + escalation path",
       "workstream": "GOCC Transition",
       "owner": "Balaji Ravi",
@@ -690,7 +690,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -705,39 +705,37 @@
       }
     },
     {
-      "riskId": "R-ae3cccdff8",
-      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
-      "workstream": "CMDB Mapping",
-      "owner": "Rasheersh",
+      "riskId": "R-b1cf205d0f",
+      "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
+      "workstream": "CyberArk Governance",
+      "owner": "Manish",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
-        "Balaji Ravi"
+        "Balaji Ravi",
+        "Birger Fjaellman"
       ],
-      "stakeholders": [
-        "Hari",
-        "Manish"
-      ],
-      "severity": "Medium",
+      "stakeholders": [],
+      "severity": "High",
       "status": "open",
-      "trend": "stable",
-      "agingDays": 87,
-      "recencyDays": 87,
-      "firstSeenDate": "2026-04-21",
-      "lastSeenDate": "2026-04-21",
-      "dateDetected": "2026-04-21",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
       "sourceFiles": [
-        "00-context/objectives.md"
+        "02-work/tasks.md"
       ],
       "impact": "",
-      "riskConfidence": 0.59,
+      "riskConfidence": 0.79,
       "timeToEscalationRisk": 0,
       "recommendedAction": {
-        "priority": 2,
+        "priority": 1,
         "verb": "Escalate",
-        "subject": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wr...",
-        "targetOwner": "Rasheersh",
+        "subject": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings...",
+        "targetOwner": "Manish",
         "dueBy": "2026-07-17",
-        "rationale": "Unresolved 14+ days - escalate this week."
+        "rationale": "High severity - notify workstream owner today."
       }
     },
     {
@@ -808,8 +806,44 @@
       }
     },
     {
-      "riskId": "R-d57894861d",
-      "title": "Weekly project status, CR review, and risk review governance forums",
+      "riskId": "R-ae3cccdff8",
+      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
+      "workstream": "CMDB Mapping",
+      "owner": "Rasheersh",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Hari",
+        "Manish"
+      ],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "stable",
+      "agingDays": 87,
+      "recencyDays": 87,
+      "firstSeenDate": "2026-04-21",
+      "lastSeenDate": "2026-04-21",
+      "dateDetected": "2026-04-21",
+      "sourceFiles": [
+        "00-context/objectives.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.59,
+      "timeToEscalationRisk": 0,
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Escalate",
+        "subject": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wr...",
+        "targetOwner": "Rasheersh",
+        "dueBy": "2026-07-17",
+        "rationale": "Unresolved 14+ days - escalate this week."
+      }
+    },
+    {
+      "riskId": "R-c7355ab891",
+      "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
       "workstream": "GOCC Transition",
       "owner": "Balaji Ravi",
       "ownerConfidence": "workstream-map",
@@ -837,7 +871,7 @@
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
-        "subject": "Weekly project status, CR review, and risk review governance forums",
+        "subject": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
         "targetOwner": "Balaji Ravi",
         "dueBy": "2026-07-17",
         "rationale": "Unresolved 14+ days - escalate this week."
@@ -881,17 +915,17 @@
       }
     },
     {
-      "riskId": "R-c7355ab891",
-      "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
-      "workstream": "GOCC Transition",
-      "owner": "Balaji Ravi",
+      "riskId": "R-f02ad44a72",
+      "title": "Weekly project status, CR review, and risk review governance forums",
+      "workstream": "CMDB Mapping",
+      "owner": "Rasheersh",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
-        "Birger Fjaellman"
+        "Balaji Ravi"
       ],
       "stakeholders": [
-        "Jonan",
-        "Hari"
+        "Hari",
+        "Manish"
       ],
       "severity": "Medium",
       "status": "open",
@@ -910,25 +944,23 @@
       "recommendedAction": {
         "priority": 2,
         "verb": "Escalate",
-        "subject": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
-        "targetOwner": "Balaji Ravi",
+        "subject": "Weekly project status, CR review, and risk review governance forums",
+        "targetOwner": "Rasheersh",
         "dueBy": "2026-07-17",
         "rationale": "Unresolved 14+ days - escalate this week."
       }
     },
     {
-      "riskId": "R-b882fa398a",
+      "riskId": "R-fff605c5dd",
       "title": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...",
-      "workstream": "GBO Batch Transition",
-      "owner": "Rowena",
+      "workstream": "ADX Registration",
+      "owner": "Kelvin",
       "ownerConfidence": "workstream-map",
       "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
+        "Balaji Ravi"
       ],
       "stakeholders": [
-        "Manish",
-        "Rasheersh"
+        "Hari"
       ],
       "severity": "Medium",
       "status": "open",
@@ -948,85 +980,14 @@
         "priority": 2,
         "verb": "Escalate",
         "subject": "Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, a...",
-        "targetOwner": "Rowena",
+        "targetOwner": "Kelvin",
         "dueBy": "2026-07-17",
         "rationale": "Unresolved 14+ days - escalate this week."
       }
     },
     {
-      "riskId": "R-1a32480547",
-      "title": "Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogiparthy (Windows Lead), Birger Fjaellman (JP...",
-      "workstream": "GBO Batch Transition",
-      "owner": "Rowena",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Manish",
-        "Rasheersh"
-      ],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 7,
-      "recencyDays": 7,
-      "firstSeenDate": "2026-07-10",
-      "lastSeenDate": "2026-07-10",
-      "dateDetected": "2026-07-10",
-      "sourceFiles": [
-        "01-inbox/inbox.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "timeToEscalationRisk": 3,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "subject": "Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogipar...",
-        "targetOwner": "Rowena",
-        "dueBy": "2026-07-17",
-        "rationale": "Rising signal aged 7+ days - confirm mitigation this week."
-      }
-    },
-    {
-      "riskId": "R-b1cf205d0f",
-      "title": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)",
-      "workstream": "CyberArk Governance",
-      "owner": "Manish",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 7,
-      "recencyDays": 7,
-      "firstSeenDate": "2026-07-10",
-      "lastSeenDate": "2026-07-10",
-      "dateDetected": "2026-07-10",
-      "sourceFiles": [
-        "02-work/tasks.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "timeToEscalationRisk": 3,
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "subject": "Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings...",
-        "targetOwner": "Manish",
-        "dueBy": "2026-07-17",
-        "rationale": "Rising signal aged 7+ days - confirm mitigation this week."
-      }
-    },
-    {
-      "riskId": "R-59131ed59a",
-      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
+      "riskId": "R-8d9f37dcce",
+      "title": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...",
       "workstream": "Capacity Management",
       "owner": "Rasheersh",
       "ownerConfidence": "workstream-map",
@@ -1051,7 +1012,7 @@
       "recommendedAction": {
         "priority": 4,
         "verb": "Monitor",
-        "subject": "Capacity Management is strategically important but should remain Watch unless delivery risk incre...",
+        "subject": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella...",
         "targetOwner": "Rasheersh",
         "dueBy": "2026-07-24",
         "rationale": "Fresh signal - continue to observe."
@@ -1092,6 +1053,39 @@
       }
     },
     {
+      "riskId": "R-59131ed59a",
+      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
+      "workstream": "Capacity Management",
+      "owner": "Rasheersh",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 4,
+      "recencyDays": 4,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "dateDetected": "2026-07-13",
+      "sourceFiles": [
+        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 5,
+      "recommendedAction": {
+        "priority": 4,
+        "verb": "Monitor",
+        "subject": "Capacity Management is strategically important but should remain Watch unless delivery risk incre...",
+        "targetOwner": "Rasheersh",
+        "dueBy": "2026-07-24",
+        "rationale": "Fresh signal - continue to observe."
+      }
+    },
+    {
       "riskId": "R-a18adafc06",
       "title": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...",
       "workstream": "Capacity Management",
@@ -1119,39 +1113,6 @@
         "priority": 4,
         "verb": "Monitor",
         "subject": "Weekly and H1 reporting state that the plan is split into six work packages and that capacity ris...",
-        "targetOwner": "Rasheersh",
-        "dueBy": "2026-07-24",
-        "rationale": "Fresh signal - continue to observe."
-      }
-    },
-    {
-      "riskId": "R-8d9f37dcce",
-      "title": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...",
-      "workstream": "Capacity Management",
-      "owner": "Rasheersh",
-      "ownerConfidence": "workstream-map",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [],
-      "severity": "Medium",
-      "status": "open",
-      "trend": "increasing",
-      "agingDays": 4,
-      "recencyDays": 4,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "dateDetected": "2026-07-13",
-      "sourceFiles": [
-        "01-inbox/copilot-activity/2026-07-13-14-day-activity.md"
-      ],
-      "impact": "",
-      "riskConfidence": 0.79,
-      "timeToEscalationRisk": 5,
-      "recommendedAction": {
-        "priority": 4,
-        "verb": "Monitor",
-        "subject": "Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magella...",
         "targetOwner": "Rasheersh",
         "dueBy": "2026-07-24",
         "rationale": "Fresh signal - continue to observe."
@@ -1194,7 +1155,7 @@
       }
     },
     {
-      "riskId": "R-b1e140fff4",
+      "riskId": "R-601cba16b2",
       "title": "⚠️ Dependency on manual URL onboarding",
       "workstream": "",
       "owner": "",
@@ -1210,7 +1171,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.29,
@@ -1225,7 +1186,7 @@
       }
     },
     {
-      "riskId": "R-8f325809d6",
+      "riskId": "R-d5365064d3",
       "title": "Credentials dependency",
       "workstream": "MMM L2",
       "owner": "Hari",
@@ -1247,7 +1208,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -1262,7 +1223,7 @@
       }
     },
     {
-      "riskId": "R-987993bc51",
+      "riskId": "R-7af7bceb58",
       "title": "⚠️ Auditability concern",
       "workstream": "MMM L2",
       "owner": "Hari",
@@ -1284,7 +1245,7 @@
       "lastSeenDate": "2026-07-16",
       "dateDetected": "2026-07-16",
       "sourceFiles": [
-        "01-inbox/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
+        "01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md"
       ],
       "impact": "",
       "riskConfidence": 0.79,
@@ -1294,6 +1255,43 @@
         "verb": "Monitor",
         "subject": "⚠️ Auditability concern",
         "targetOwner": "Hari",
+        "dueBy": "2026-07-24",
+        "rationale": "Fresh signal - continue to observe."
+      }
+    },
+    {
+      "riskId": "R-1a32480547",
+      "title": "Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogiparthy (Windows Lead), Birger Fjaellman (JP...",
+      "workstream": "GBO Batch Transition",
+      "owner": "Rowena",
+      "ownerConfidence": "workstream-map",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Manish",
+        "Rasheersh"
+      ],
+      "severity": "Medium",
+      "status": "open",
+      "trend": "increasing",
+      "agingDays": 0,
+      "recencyDays": 0,
+      "firstSeenDate": "2026-07-17",
+      "lastSeenDate": "2026-07-17",
+      "dateDetected": "2026-07-17",
+      "sourceFiles": [
+        "01-inbox/inbox.md"
+      ],
+      "impact": "",
+      "riskConfidence": 0.79,
+      "timeToEscalationRisk": 7,
+      "recommendedAction": {
+        "priority": 4,
+        "verb": "Monitor",
+        "subject": "Attendees:** Karen Escalona, Shunsuke Miura (JP CAB), Manoj Kondody (P2G Lead), Sreekanth Dogipar...",
+        "targetOwner": "Rowena",
         "dueBy": "2026-07-24",
         "rationale": "Fresh signal - continue to observe."
       }

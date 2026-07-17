@@ -1,15 +1,15 @@
 {
-  "lastRun": "2026-07-17T09:37:51",
+  "lastRun": "2026-07-17T11:23:56",
   "status": "success",
   "message": "New recap processed and committed.",
-  "triggeredBy": "corpus",
-  "lastActivityFile": "2026-07-14-14-day-activity.md",
-  "lastActivityHash": "293805A6BDAB9F2194B265FC29D9DA2AABAFC00AE4EAE8108B56C91E44D221B7",
-  "lastCorpusSignature": "88d7428ce2d14444b3a40841ce36a62f24e9ae7a79c82a832803e44599dc9463",
+  "triggeredBy": "recap+corpus",
+  "lastActivityFile": "2026-07-17-14-day-activity.md",
+  "lastActivityHash": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+  "lastCorpusSignature": "8f797dfe931872a766c818e1e672775333d6cb9bcb90d7fad8e39e135b7d660b",
   "currentFocusGenerated": true,
   "trendsGenerated": true,
   "morningBriefingGenerated": true,
   "jsonValidated": true,
   "gitCommitted": true,
-  "lastCommitHash": "c31db03f8ce55417ccbd8c431fb86b1181c57b2a"
+  "lastCommitHash": "53c0d950818c594c51027ea95a48b0cd3fe11f8f"
 }
