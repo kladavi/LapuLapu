@@ -123,6 +123,8 @@ type PipelineHealth = {
 type StructuredAction = {
   priority?: number;
   verb?: string;
+  actionClass?: string;                 // V4.0 Phase 2: DO | DECIDE | FOLLOW_UP | INVESTIGATE | BLOCKED
+  nextAction?: string;                  // V4.0 Phase 2: imperative sentence
   subject?: string;
   targetOwner?: string;
   dueBy?: string;
@@ -251,6 +253,8 @@ type InboxItem = {
   suggestedOwner?: string;                // V4.0 Phase 7
   priority?: number;
   verb?: string;
+  actionClass?: string;                   // V4.0 Phase 2
+  nextAction?: string;                    // V4.0 Phase 2
   dueBy?: string;
   deadline?: string;
   confidence?: number;
@@ -339,6 +343,13 @@ type ExecutionInsights = {
 function formatAction(action?: string | StructuredAction): string {
   if (!action) return "";
   if (typeof action === "string") return action;
+  // V4.0 Phase 2: prefer imperative next-action sentence when available.
+  if (action.nextAction) {
+    const cls = action.actionClass ? `[${action.actionClass}] ` : "";
+    const pri = action.priority ? `P${action.priority} ` : "";
+    const due = action.dueBy ? ` (by ${action.dueBy})` : "";
+    return `${cls}${pri}${action.nextAction}${due}`;
+  }
   const parts: string[] = [];
   if (action.priority) parts.push(`P${action.priority}`);
   if (action.verb) parts.push(action.verb);
@@ -346,6 +357,18 @@ function formatAction(action?: string | StructuredAction): string {
   if (action.targetOwner) parts.push(`(owner: ${action.targetOwner})`);
   if (action.dueBy) parts.push(`by ${action.dueBy}`);
   return parts.join(" ");
+}
+
+// V4.0 Phase 2: colored pill per action class.
+function actionClassBadgeClass(actionClass?: string): string {
+  switch (actionClass) {
+    case "DO":          return "bg-green-100 text-green-900 border-green-300";
+    case "DECIDE":      return "bg-blue-100 text-blue-900 border-blue-300";
+    case "INVESTIGATE": return "bg-purple-100 text-purple-900 border-purple-300";
+    case "FOLLOW_UP":   return "bg-amber-100 text-amber-900 border-amber-300";
+    case "BLOCKED":     return "bg-slate-200 text-slate-800 border-slate-300";
+    default:            return "bg-slate-100 text-slate-600 border-slate-200";
+  }
 }
 
 function ownerBadgeClass(confidence?: string): string {
@@ -974,10 +997,23 @@ export function DashboardTab({ onNavigate }: Props) {
               <div key={it.id ?? `${it.kind}-${idx}`} className="rounded-md border border-th-border bg-th-surface p-2">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      {it.actionClass ? (
+                        <span className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${actionClassBadgeClass(it.actionClass)}`}>
+                          {it.actionClass}
+                        </span>
+                      ) : it.verb ? (
+                        <span className="text-xs font-semibold text-th-text-secondary">{it.verb}</span>
+                      ) : null}
+                    </div>
                     <div className="text-sm font-medium text-th-text break-words">
-                      {it.verb ? <span className="font-semibold">{it.verb}: </span> : null}
                       {it.title ?? "(no title)"}
                     </div>
+                    {it.nextAction ? (
+                      <div className="mt-1 text-xs text-th-text-secondary italic">
+                        Next: {it.nextAction}
+                      </div>
+                    ) : null}
                     <div className="mt-0.5 text-xs text-th-text-muted">
                       <span className="uppercase font-mono mr-2">{it.kind}</span>
                       {it.workstream ? <span className="font-medium">{it.workstream}</span> : <span className="italic">no workstream</span>}

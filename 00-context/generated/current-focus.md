@@ -3,7 +3,7 @@
 
 Project: **Project Matryoshka V1.2 - David Brain**
 Scope: **Lapu-Lapu**
-Generated: **2026-07-17 15:02**
+Generated: **2026-07-17 15:12**
 Primary activity window: **14 days**
 Secondary reference window: **60 days**
 
@@ -20,8 +20,8 @@ Primary focus: **MMM L2, Rapid Recovery, GBO Batch Transition, GOCC Transition, 
 ### MMM L2
 
 **Status:** P1  **Score:** 100  **Override:** Yes - Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
-**Attention:** 100  **Activity:** 100  **Strategic:** 100  **Trend:** ↑ +423.3%
-**Mentions:** 527  **Signals:** task_created: 42, decision_logged: 39, chat_mention: 46, risk_logged: 41, email_mention: 25, escalation: 25, meeting_mention: 38
+**Attention:** 100  **Activity:** 100  **Strategic:** 100  **Trend:** ↑ +422.8%
+**Mentions:** 527  **Signals:** decision_logged: 39, email_mention: 25, chat_mention: 46, risk_logged: 41, task_created: 42, escalation: 25, meeting_mention: 38
 
 Monitoring maturity and observability readiness workstream.
 
@@ -37,8 +37,8 @@ Monitoring maturity and observability readiness workstream.
 ### Rapid Recovery
 
 **Status:** P1  **Score:** 99.6  **Override:** Yes - Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
-**Attention:** 99.6  **Activity:** 99.4  **Strategic:** 100  **Trend:** ↑ +355.1%
-**Mentions:** 665  **Signals:** task_created: 44, decision_logged: 43, chat_mention: 48, risk_logged: 44, email_mention: 23, escalation: 29, meeting_mention: 35
+**Attention:** 99.6  **Activity:** 99.4  **Strategic:** 100  **Trend:** ↑ +354.7%
+**Mentions:** 665  **Signals:** decision_logged: 43, email_mention: 23, chat_mention: 48, risk_logged: 44, task_created: 44, escalation: 29, meeting_mention: 35
 
 Recovery readiness for Gold applications and critical operational scenarios.
 
@@ -54,8 +54,8 @@ Recovery readiness for Gold applications and critical operational scenarios.
 ### GBO Batch Transition
 
 **Status:** P1  **Score:** 96.4  **Override:** Yes - Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
-**Attention:** 96.4  **Activity:** 97.4  **Strategic:** 90  **Trend:** ↑ +340.5%
-**Mentions:** 429  **Signals:** task_created: 34, decision_logged: 32, chat_mention: 38, risk_logged: 35, email_mention: 21, escalation: 21, meeting_mention: 31
+**Attention:** 96.4  **Activity:** 97.4  **Strategic:** 90  **Trend:** ↑ +340.1%
+**Mentions:** 429  **Signals:** decision_logged: 32, email_mention: 21, chat_mention: 38, risk_logged: 35, task_created: 34, escalation: 21, meeting_mention: 31
 
 Transition of batch operations into the GBO operating model.
 
@@ -71,8 +71,8 @@ Transition of batch operations into the GBO operating model.
 ### GOCC Transition
 
 **Status:** P1  **Score:** 82.6  **Override:** No
-**Attention:** 82.6  **Activity:** 99.4  **Strategic:** 90  **Trend:** ↑ +355.1%
-**Mentions:** 1204  **Signals:** task_created: 49, decision_logged: 45, chat_mention: 51, risk_logged: 46, email_mention: 23, escalation: 32, meeting_mention: 37
+**Attention:** 82.6  **Activity:** 99.4  **Strategic:** 90  **Trend:** ↑ +354.7%
+**Mentions:** 1204  **Signals:** decision_logged: 45, email_mention: 23, chat_mention: 51, risk_logged: 46, task_created: 49, escalation: 32, meeting_mention: 37
 
 Transition of operational support activities to GOCC.
 
@@ -88,8 +88,8 @@ Transition of operational support activities to GOCC.
 ### CMDB Mapping
 
 **Status:** P1  **Score:** 80.6  **Override:** No
-**Attention:** 80.6  **Activity:** 99.4  **Strategic:** 80  **Trend:** ↑ +420%
-**Mentions:** 369  **Signals:** task_created: 32, decision_logged: 29, chat_mention: 32, risk_logged: 34, email_mention: 17, escalation: 21, meeting_mention: 28
+**Attention:** 80.6  **Activity:** 99.4  **Strategic:** 80  **Trend:** ↑ +419.6%
+**Mentions:** 369  **Signals:** decision_logged: 29, email_mention: 17, chat_mention: 32, risk_logged: 34, task_created: 32, escalation: 21, meeting_mention: 28
 
 Ownership and service relationship foundation for operational readiness.
 
@@ -105,8 +105,8 @@ Ownership and service relationship foundation for operational readiness.
 ### Developer XP Dashboard
 
 **Status:** P1  **Score:** 75.4  **Override:** No
-**Attention:** 75.4  **Activity:** 97.4  **Strategic:** 60  **Trend:** ↑ +494.5%
-**Mentions:** 265  **Signals:** task_created: 36, decision_logged: 34, chat_mention: 36, risk_logged: 35, email_mention: 20, escalation: 21, meeting_mention: 28
+**Attention:** 75.4  **Activity:** 97.4  **Strategic:** 60  **Trend:** ↑ +494.1%
+**Mentions:** 265  **Signals:** decision_logged: 34, email_mention: 20, chat_mention: 36, risk_logged: 35, task_created: 36, escalation: 21, meeting_mention: 28
 
 Dashboard tracking developer and non-production technology experience.
 
@@ -122,8 +122,8 @@ Dashboard tracking developer and non-production technology experience.
 ### Employee XP Dashboard
 
 **Status:** P1  **Score:** 75.4  **Override:** No
-**Attention:** 75.4  **Activity:** 97.4  **Strategic:** 60  **Trend:** ↑ +494.5%
-**Mentions:** 202  **Signals:** task_created: 37, decision_logged: 35, chat_mention: 37, risk_logged: 36, email_mention: 20, escalation: 23, meeting_mention: 30
+**Attention:** 75.4  **Activity:** 97.4  **Strategic:** 60  **Trend:** ↑ +494.1%
+**Mentions:** 202  **Signals:** decision_logged: 35, email_mention: 20, chat_mention: 37, risk_logged: 36, task_created: 37, escalation: 23, meeting_mention: 30
 
 Dashboard tracking employee-facing technology experience.
 
@@ -139,8 +139,8 @@ Dashboard tracking employee-facing technology experience.
 ### ADX Registration
 
 **Status:** P1  **Score:** 73.4  **Override:** No
-**Attention:** 73.4  **Activity:** 97.4  **Strategic:** 50  **Trend:** ↑ +494.5%
-**Mentions:** 248  **Signals:** task_created: 25, decision_logged: 23, chat_mention: 27, risk_logged: 28, email_mention: 20, escalation: 12, meeting_mention: 24
+**Attention:** 73.4  **Activity:** 97.4  **Strategic:** 50  **Trend:** ↑ +494.1%
+**Mentions:** 248  **Signals:** decision_logged: 23, email_mention: 20, chat_mention: 27, risk_logged: 28, task_created: 25, escalation: 12, meeting_mention: 24
 
 Application registration and logging visibility workstream.
 
@@ -163,8 +163,8 @@ _None._
 ### CyberArk Governance
 
 **Status:** Watch  **Score:** 84.6  **Override:** Yes - Governance risk is material but should not displace core delivery work unless escalated.
-**Attention:** 84.6  **Activity:** 98.5  **Strategic:** 80  **Trend:** ↑ +765.2%
-**Mentions:** 274  **Signals:** task_created: 17, decision_logged: 14, chat_mention: 18, risk_logged: 16, email_mention: 11, escalation: 8, meeting_mention: 15
+**Attention:** 84.6  **Activity:** 98.5  **Strategic:** 80  **Trend:** ↑ +764.6%
+**Mentions:** 274  **Signals:** decision_logged: 14, email_mention: 11, chat_mention: 18, risk_logged: 16, task_created: 17, escalation: 8, meeting_mention: 15
 
 Privileged access governance and service-account risk workstream.
 
@@ -180,8 +180,8 @@ Privileged access governance and service-account risk workstream.
 ### Capacity Management
 
 **Status:** Watch  **Score:** 79.6  **Override:** Yes - CAP-48585 is strategically important but should be tracked as a watch item unless delivery risk increases.
-**Attention:** 79.6  **Activity:** 93.5  **Strategic:** 70  **Trend:** ↑ +421.4%
-**Mentions:** 224  **Signals:** task_created: 23, decision_logged: 19, chat_mention: 23, risk_logged: 21, email_mention: 15, escalation: 12, meeting_mention: 17
+**Attention:** 79.6  **Activity:** 93.5  **Strategic:** 70  **Trend:** ↑ +421%
+**Mentions:** 224  **Signals:** decision_logged: 19, email_mention: 15, chat_mention: 23, risk_logged: 21, task_created: 23, escalation: 12, meeting_mention: 17
 
 Capacity management corrective action and operational forecasting.
 
@@ -197,6 +197,23 @@ Capacity management corrective action and operational forecasting.
 
 ## Parking Lot
 
+### Project Matryoshka
+
+**Status:** ParkingLot  **Score:** 12.5  **Override:** No
+**Attention:** 12.5  **Activity:** 0  **Strategic:** 50  **Trend:** → 0%
+**Mentions:** 10  **Signals:** decision_logged: 3, email_mention: 4, chat_mention: 1, risk_logged: 3, task_created: 2, escalation: 2, meeting_mention: 2
+
+
+
+**Evidence:**
+- `docs/matryoshka-v4-spec.md`
+- `docs/matryoshka-charter.md`
+- `docs/project-matryoshka-v1-milestones.md`
+- `docs/README.md`
+- `docs/matryoshka-v1.1.md`
+
+**Recommended next action:**
+- Parked. Revisit when capacity allows.
 ### Lapu-Lapu Corpus Care
 
 **Status:** ParkingLot  **Score:** 12.5  **Override:** No
@@ -210,37 +227,20 @@ Capacity management corrective action and operational forecasting.
 
 **Recommended next action:**
 - Parked. Revisit when capacity allows.
-### Project Matryoshka
-
-**Status:** ParkingLot  **Score:** 12.5  **Override:** No
-**Attention:** 12.5  **Activity:** 0  **Strategic:** 50  **Trend:** → 0%
-**Mentions:** 10  **Signals:** task_created: 2, decision_logged: 3, chat_mention: 1, risk_logged: 3, email_mention: 4, escalation: 2, meeting_mention: 2
-
-
-
-**Evidence:**
-- `docs/matryoshka-v4-spec.md`
-- `docs/matryoshka-charter.md`
-- `docs/project-matryoshka-v1-milestones.md`
-- `docs/README.md`
-- `docs/matryoshka-v1.1.md`
-
-**Recommended next action:**
-- Parked. Revisit when capacity allows.
 
 
 ## Blocked / Escalation Candidates
 
-- **Developer XP Dashboard** - escalation signal detected.
-- **CyberArk Governance** - escalation signal detected.
-- **ADX Registration** - escalation signal detected.
-- **MMM L2** - escalation signal detected.
-- **CMDB Mapping** - escalation signal detected.
-- **Rapid Recovery** - escalation signal detected.
-- **Capacity Management** - escalation signal detected.
-- **Project Matryoshka** - escalation signal detected.
-- **GBO Batch Transition** - escalation signal detected.
 - **GOCC Transition** - escalation signal detected.
+- **Project Matryoshka** - escalation signal detected.
+- **CyberArk Governance** - escalation signal detected.
+- **MMM L2** - escalation signal detected.
+- **GBO Batch Transition** - escalation signal detected.
+- **Rapid Recovery** - escalation signal detected.
+- **ADX Registration** - escalation signal detected.
+- **Developer XP Dashboard** - escalation signal detected.
+- **CMDB Mapping** - escalation signal detected.
+- **Capacity Management** - escalation signal detected.
 - **Employee XP Dashboard** - escalation signal detected.
 
 ---
@@ -259,8 +259,8 @@ Capacity management corrective action and operational forecasting.
 | Developer XP Dashboard | P1 | 75.4 |  | `01-inbox/copilot-activity/2026-07-17-14-day-activity.md` | Review & report |
 | Employee XP Dashboard | P1 | 75.4 |  | `01-inbox/copilot-activity/2026-07-17-14-day-activity.md` | Review & report |
 | ADX Registration | P1 | 73.4 |  | `01-inbox/copilot-activity/2026-07-17-14-day-activity.md` | Review & report |
-| Lapu-Lapu Corpus Care | ParkingLot | 12.5 |  | `-` | Park |
 | Project Matryoshka | ParkingLot | 12.5 |  | `docs/matryoshka-v4-spec.md` | Park |
+| Lapu-Lapu Corpus Care | ParkingLot | 12.5 |  | `-` | Park |
 
 ---
 
@@ -268,9 +268,9 @@ Capacity management corrective action and operational forecasting.
 
 - **CyberArk Governance** -> Watch: Governance risk is material but should not displace core delivery work unless escalated.
 - **MMM L2** -> P1: Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.
+- **GBO Batch Transition** -> P1: Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
 - **Rapid Recovery** -> P1: Recovery readiness is a core Robust Technical Core deliverable for Gold applications.
 - **Capacity Management** -> Watch: CAP-48585 is strategically important but should be tracked as a watch item unless delivery risk increases.
-- **GBO Batch Transition** -> P1: Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.
 
 ---
 

@@ -1479,7 +1479,11 @@ function Build-MorningBriefingMarkdown {
             $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
             $ownerText = if ($_.owner) { "owner: $($_.owner)" } else { 'owner: unassigned' }
             $act = $_.recommendedAction
-            $actLine = if ($act -is [System.Collections.IDictionary]) { "P$($act.priority) $($act.verb) by $($act.dueBy)" } else { '' }
+            $actLine = if ($act -is [System.Collections.IDictionary]) {
+                $cls = if ($act.actionClass) { "[$($act.actionClass)] " } else { '' }
+                $nxt = if ($act.nextAction) { $act.nextAction } else { "$($act.verb) by $($act.dueBy)" }
+                "${cls}P$($act.priority) - $nxt"
+            } else { '' }
             "- **$wsName** - $($_.severity) severity, aging $($_.agingDays) days, $ownerText`n  - $($_.title) [$($_.riskId)]`n  - $actLine"
         }) -join "`n"
     } else { '_No rising risks in the current window._' }
@@ -1489,7 +1493,11 @@ function Build-MorningBriefingMarkdown {
             $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
             $ownerText = if ($_.owner) { "owner: $($_.owner)" } else { 'owner: unassigned' }
             $act = $_.recommendedAction
-            $actLine = if ($act -is [System.Collections.IDictionary]) { "P$($act.priority) $($act.verb) by $($act.dueBy)" } else { '' }
+            $actLine = if ($act -is [System.Collections.IDictionary]) {
+                $cls = if ($act.actionClass) { "[$($act.actionClass)] " } else { '' }
+                $nxt = if ($act.nextAction) { $act.nextAction } else { "$($act.verb) by $($act.dueBy)" }
+                "${cls}P$($act.priority) - $nxt"
+            } else { '' }
             "- **$wsName** - $($_.severity) severity, $($_.trend) trend, aging $($_.agingDays) days, $ownerText`n  - $($_.title) [$($_.riskId)]`n  - $actLine"
         }) -join "`n"
     } else { '_No open risks in the registry._' }
@@ -1499,7 +1507,11 @@ function Build-MorningBriefingMarkdown {
             $wsName = if ($_.workstream) { $_.workstream } else { '(no workstream)' }
             $ownerText = if ($_.owner) { "owner: $($_.owner)" } else { 'owner: unassigned' }
             $act = $_.recommendedFollowUp
-            $actLine = if ($act -is [System.Collections.IDictionary]) { "P$($act.priority) $($act.verb) by $($act.dueBy)" } else { '' }
+            $actLine = if ($act -is [System.Collections.IDictionary]) {
+                $cls = if ($act.actionClass) { "[$($act.actionClass)] " } else { '' }
+                $nxt = if ($act.nextAction) { $act.nextAction } else { "$($act.verb) by $($act.dueBy)" }
+                "${cls}P$($act.priority) - $nxt"
+            } else { '' }
             "- **$wsName** - Pending $($_.decisionAgeDays) days, $ownerText`n  - $($_.title) [$($_.decisionId)]`n  - $actLine"
         }) -join "`n"
     } else {
@@ -1802,38 +1814,85 @@ function New-DecisionId {
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
-        Verbs: Track (fresh), Confirm (aging 7+), Escalate (14+), Archive (closed).
+        V4.0 Phase 2: adds `actionClass` (DO | DECIDE | FOLLOW_UP | INVESTIGATE | BLOCKED)
+        and imperative `nextAction` sentence. Legacy `verb` retained for back-compat.
+
+        Classification rules:
+          - Unassigned owner  -> DECIDE (assign owner first)
+          - status=closed     -> DECIDE (archive-or-reopen)
+          - age >= 14, owner is David  -> DO (David escalates today)
+          - age >= 14, other owner     -> FOLLOW_UP (contact owner today)
+          - age >= 7                   -> FOLLOW_UP (confirm this week)
+          - fresh                      -> FOLLOW_UP (check in in 7 days)
     #>
     param([hashtable] $Entry, [datetime] $Now)
 
     $rawTitle = if ($Entry.title) { [string]$Entry.title } else { '' }
     $subject  = if ($rawTitle.Length -gt 100) { $rawTitle.Substring(0, 97) + '...' } else { $rawTitle }
     $owner    = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+    $ownerIsDavid = $owner -match '(?i)^\s*david(\s+klan)?\s*$'
+    $isUnassigned = $owner -match '(?i)^\s*unassigned\s*$'
+    $escTarget = if ($Entry.escalationPath -and @($Entry.escalationPath).Count -gt 0) {
+        [string](@($Entry.escalationPath)[0])
+    } else { 'the workstream lead' }
+    $wsLabel = if ($Entry.workstream) { [string]$Entry.workstream } else { 'this decision' }
+    $decisionAge = if ($Entry.decisionAgeDays) { [int]$Entry.decisionAgeDays } else { 0 }
+
+    if ($isUnassigned) {
+        return [ordered]@{
+            priority     = 2
+            verb         = 'Confirm'
+            actionClass  = 'DECIDE'
+            nextAction   = "Assign an owner for $wsLabel before this decision can move"
+            subject      = $subject
+            targetOwner  = 'Unassigned'
+            dueBy        = Get-EndOfWeekDate $Now
+            rationale    = 'Owner not yet confirmed; ownership must precede action.'
+        }
+    }
 
     if ($Entry.status -eq 'closed') {
         return [ordered]@{
             priority     = 5
             verb         = 'Archive'
+            actionClass  = 'DECIDE'
+            nextAction   = "Decide whether to archive $($Entry.decisionId) or reopen"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = $Now.AddDays(30).ToString('yyyy-MM-dd')
             rationale    = 'Decision closed; archive after next reporting cycle.'
         }
     }
-    if ($Entry.decisionAgeDays -ge 14) {
+    if ($decisionAge -ge 14) {
+        if ($ownerIsDavid) {
+            return [ordered]@{
+                priority     = 1
+                verb         = 'Escalate'
+                actionClass  = 'DO'
+                nextAction   = "Send escalation on $wsLabel to $escTarget today"
+                subject      = $subject
+                targetOwner  = $owner
+                dueBy        = $Now.ToString('yyyy-MM-dd')
+                rationale    = "Pending $decisionAge days - David to escalate to $escTarget today."
+            }
+        }
         return [ordered]@{
             priority     = 1
             verb         = 'Escalate'
+            actionClass  = 'FOLLOW_UP'
+            nextAction   = "Contact $owner today - decision on $wsLabel aged $decisionAge days without resolution"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = $Now.ToString('yyyy-MM-dd')
-            rationale    = 'Pending 14+ days without resolution - escalate today.'
+            rationale    = "Pending $decisionAge days - direct outreach to owner today."
         }
     }
-    if ($Entry.decisionAgeDays -ge 7) {
+    if ($decisionAge -ge 7) {
         return [ordered]@{
             priority     = 2
             verb         = 'Confirm'
+            actionClass  = 'FOLLOW_UP'
+            nextAction   = "Confirm status with $owner this week and record outcome"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = Get-EndOfWeekDate $Now
@@ -1843,6 +1902,8 @@ function Get-StructuredDecisionAction {
     return [ordered]@{
         priority     = 4
         verb         = 'Track'
+        actionClass  = 'FOLLOW_UP'
+        nextAction   = "Check in with $owner in 7 days on $wsLabel"
         subject      = $subject
         targetOwner  = $owner
         dueBy        = $Now.AddDays(7).ToString('yyyy-MM-dd')
@@ -2205,7 +2266,9 @@ function Build-DecisionRegistryMarkdown {
 
         $act = $e.recommendedFollowUp
         $actionText = if ($act -is [System.Collections.IDictionary]) {
-            "P$($act.priority) - $($act.verb): $($act.subject) (owner: $($act.targetOwner), by $($act.dueBy))"
+            $classBit = if ($act.actionClass) { "[$($act.actionClass)] " } else { '' }
+            $nextBit  = if ($act.nextAction) { $act.nextAction } else { "$($act.verb): $($act.subject)" }
+            "${classBit}P$($act.priority) - $nextBit (owner: $($act.targetOwner), by $($act.dueBy))"
         } else {
             "$act"
         }
@@ -2777,19 +2840,53 @@ function Get-StructuredRiskAction {
     <#
         Converts the ad-hoc `recommendedAction` string into a structured object
         with priority (1-5), verb, subject, targetOwner, dueBy (ISO date), and
-        a short rationale. Consumers (dashboard, briefing, action engine) can
-        render or execute against this shape.
+        a short rationale.
+
+        V4.0 Phase 2: adds `actionClass` (DO | DECIDE | FOLLOW_UP | INVESTIGATE | BLOCKED)
+        and imperative `nextAction` sentence. Legacy `verb` retained for back-compat.
+
+        Classification rules:
+          - Unassigned owner            -> DECIDE (assign owner first)
+          - status=closed               -> DECIDE (archive-or-reopen)
+          - severity=High, David-owned  -> DO (David escalates today)
+          - severity=High, other owner  -> FOLLOW_UP (contact owner today)
+          - trend=increasing & age>=7   -> INVESTIGATE (understand root cause)
+          - age >= 14                   -> FOLLOW_UP (owner unresponsive)
+          - age >= 7                    -> FOLLOW_UP (review mitigation)
+          - fresh                       -> FOLLOW_UP (monitor)
     #>
     param([hashtable] $Entry, [datetime] $Now)
 
     $rawTitle = if ($Entry.title) { [string]$Entry.title } else { '' }
     $subject  = if ($rawTitle.Length -gt 100) { $rawTitle.Substring(0, 97) + '...' } else { $rawTitle }
     $owner    = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+    $ownerIsDavid = $owner -match '(?i)^\s*david(\s+klan)?\s*$'
+    $isUnassigned = $owner -match '(?i)^\s*unassigned\s*$'
+    $escTarget = if ($Entry.escalationPath -and @($Entry.escalationPath).Count -gt 0) {
+        [string](@($Entry.escalationPath)[0])
+    } else { 'the workstream lead' }
+    $wsLabel = if ($Entry.workstream) { [string]$Entry.workstream } else { 'this risk' }
+    $ageDays = if ($Entry.agingDays) { [int]$Entry.agingDays } else { 0 }
+
+    if ($isUnassigned) {
+        return [ordered]@{
+            priority     = 2
+            verb         = 'Investigate'
+            actionClass  = 'DECIDE'
+            nextAction   = "Assign an owner for $wsLabel risk before it can be actioned"
+            subject      = $subject
+            targetOwner  = 'Unassigned'
+            dueBy        = Get-EndOfWeekDate $Now
+            rationale    = 'Owner not yet confirmed; ownership must precede mitigation.'
+        }
+    }
 
     if ($Entry.status -eq 'closed') {
         return [ordered]@{
             priority     = 5
             verb         = 'Archive'
+            actionClass  = 'DECIDE'
+            nextAction   = "Decide whether to archive $($Entry.riskId) or reopen"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = $Now.AddDays(30).ToString('yyyy-MM-dd')
@@ -2797,39 +2894,59 @@ function Get-StructuredRiskAction {
         }
     }
     if ($Entry.severity -eq 'High') {
+        if ($ownerIsDavid) {
+            return [ordered]@{
+                priority     = 1
+                verb         = 'Escalate'
+                actionClass  = 'DO'
+                nextAction   = "Send escalation on $wsLabel to $escTarget today"
+                subject      = $subject
+                targetOwner  = $owner
+                dueBy        = $Now.ToString('yyyy-MM-dd')
+                rationale    = 'High severity - David to escalate today.'
+            }
+        }
         return [ordered]@{
             priority     = 1
             verb         = 'Escalate'
+            actionClass  = 'FOLLOW_UP'
+            nextAction   = "Contact $owner today about high-severity $wsLabel risk"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = $Now.ToString('yyyy-MM-dd')
-            rationale    = 'High severity - notify workstream owner today.'
+            rationale    = 'High severity - direct outreach to owner today.'
         }
     }
-    if ($Entry.trend -eq 'increasing' -and $Entry.agingDays -ge 7) {
+    if ($Entry.trend -eq 'increasing' -and $ageDays -ge 7) {
         return [ordered]@{
             priority     = 2
             verb         = 'Investigate'
+            actionClass  = 'INVESTIGATE'
+            nextAction   = "Investigate why $wsLabel risk trend is increasing (aged $ageDays days)"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = Get-EndOfWeekDate $Now
-            rationale    = 'Rising signal aged 7+ days - confirm mitigation this week.'
+            rationale    = 'Rising signal aged 7+ days - understand root cause this week.'
         }
     }
-    if ($Entry.agingDays -ge 14) {
+    if ($ageDays -ge 14) {
         return [ordered]@{
             priority     = 2
             verb         = 'Escalate'
+            actionClass  = 'FOLLOW_UP'
+            nextAction   = "Confirm with $owner why $wsLabel remains unresolved after $ageDays days"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = Get-EndOfWeekDate $Now
-            rationale    = 'Unresolved 14+ days - escalate this week.'
+            rationale    = "Unresolved $ageDays days - contact owner this week."
         }
     }
-    if ($Entry.agingDays -ge 7) {
+    if ($ageDays -ge 7) {
         return [ordered]@{
             priority     = 3
             verb         = 'Review'
+            actionClass  = 'FOLLOW_UP'
+            nextAction   = "Review mitigation plan for $wsLabel with $owner this week"
             subject      = $subject
             targetOwner  = $owner
             dueBy        = Get-EndOfWeekDate $Now
@@ -2839,6 +2956,8 @@ function Get-StructuredRiskAction {
     return [ordered]@{
         priority     = 4
         verb         = 'Monitor'
+        actionClass  = 'FOLLOW_UP'
+        nextAction   = "Monitor $wsLabel - re-check in 7 days"
         subject      = $subject
         targetOwner  = $owner
         dueBy        = $Now.AddDays(7).ToString('yyyy-MM-dd')
@@ -3127,7 +3246,9 @@ function Build-RiskRegisterMarkdown {
         # Structured action is a hashtable now
         $act = $e.recommendedAction
         $actionText = if ($act -is [System.Collections.IDictionary]) {
-            "P$($act.priority) - $($act.verb): $($act.subject) (owner: $($act.targetOwner), by $($act.dueBy))"
+            $classBit = if ($act.actionClass) { "[$($act.actionClass)] " } else { '' }
+            $nextBit  = if ($act.nextAction) { $act.nextAction } else { "$($act.verb): $($act.subject)" }
+            "${classBit}P$($act.priority) - $nextBit (owner: $($act.targetOwner), by $($act.dueBy))"
         } else {
             "$act"
         }
@@ -3355,6 +3476,8 @@ function New-InboxItem {
     }
     $priority = if ($act -is [System.Collections.IDictionary] -and $act.priority) { [int]$act.priority } else { 3 }
     $verb     = if ($act -is [System.Collections.IDictionary]) { [string]$act.verb } else { '' }
+    $actionClass = if ($act -is [System.Collections.IDictionary] -and $act.actionClass) { [string]$act.actionClass } else { '' }
+    $nextAction  = if ($act -is [System.Collections.IDictionary] -and $act.nextAction)  { [string]$act.nextAction }  else { '' }
     $dueBy    = if ($act -is [System.Collections.IDictionary]) { [string]$act.dueBy } else { '' }
 
     return [ordered]@{
@@ -3367,6 +3490,8 @@ function New-InboxItem {
         suggestedOwner  = if ($Entry.ContainsKey('suggestedOwner')) { [string]$Entry.suggestedOwner } else { '' }
         priority        = $priority
         verb            = $verb
+        actionClass     = $actionClass
+        nextAction      = $nextAction
         dueBy           = $dueBy
         deadline        = if ($Kind -eq 'decision' -and $Entry.decisionDeadline) { $Entry.decisionDeadline } else { $dueBy }
         confidence      = [Math]::Round($confidence, 2)
@@ -3911,14 +4036,16 @@ function Build-DavidInboxMarkdown {
         $outcomeBit   = if ($it.decisionOutcome) { "`n- **Outcome**: $($it.decisionOutcome)" } else { '' }
         $impactBit    = if ($it.impact) { "`n- **Impact**: $($it.impact)" } else { '' }
         $linkedBit    = if ([int]$it.linkedActionCount -gt 0) { "`n- **Linked actions**: $($it.linkedActionCount)" } else { '' }
+        $classLabel   = if ($it.actionClass) { $it.actionClass } else { $it.verb }
+        $nextLine     = if ($it.nextAction) { "`n- **Next**: $($it.nextAction)" } else { '' }
         @"
-### P$($it.priority) $($it.verb) - $wsName$lifecycleBit$flagBit$ttrBit
+### [$classLabel] P$($it.priority) - $wsName$lifecycleBit$flagBit$ttrBit
 
 - **What**: $($it.title)$sevBit
 - **Owner**: $ownerText ($($it.ownerConfidence))
 - **Deadline**: $($it.deadline)
 - **Confidence**: $($it.confidence)
-- **Age**: $($it.ageDays) days
+- **Age**: $($it.ageDays) days$nextLine
 - **Rationale**: $($it.rationale)$outcomeBit$impactBit$linkedBit
 - **Source**: $($it.kind) $($it.id)
 
