@@ -131,6 +131,13 @@ type StructuredAction = {
   rationale?: string;
 };
 
+// V4.0 Phase 4: daily-delta metadata attached to every decision / risk / inbox item.
+type ItemDelta = {
+  daysSinceLastTouched?: number;
+  updatedSinceYesterday?: boolean;
+  changeSummary?: string;
+};
+
 type LinkedAction = {
   text?: string;
   owner?: string;
@@ -179,6 +186,8 @@ type DecisionEntry = {
   unifiedConfidence?: number;
   mentionCount?: number;
   mergedFrom?: string[];
+  // V4.0 Phase 4
+  delta?: ItemDelta;
 };
 
 type DecisionRegistry = {
@@ -230,6 +239,8 @@ type RiskEntry = {
   unifiedConfidence?: number;
   mentionCount?: number;
   mergedFrom?: string[];
+  // V4.0 Phase 4
+  delta?: ItemDelta;
 };
 
 type RiskRegistry = {
@@ -291,6 +302,8 @@ type InboxItem = {
   actionSource?: string;
   rankingScore?: number;
   personalizationSignals?: PersonalizationSignal[];
+  // V4.0 Phase 4
+  delta?: ItemDelta;
 };
 
 type PersonalizationSignal = {
@@ -322,6 +335,20 @@ type DavidInbox = {
     clusters?: number;
     imminentEscalation?: number;
     personalized?: number;
+    dailyDelta?: {
+      addedCount?: number;
+      changedCount?: number;
+      removedCount?: number;
+      staleCount?: number;
+      comparedAgainst?: string;
+    };
+  };
+  dailyDelta?: {
+    addedCount?: number;
+    changedCount?: number;
+    removedCount?: number;
+    staleCount?: number;
+    comparedAgainst?: string;
   };
   tiers?: { p1?: InboxItem[]; p2?: InboxItem[]; p3?: InboxItem[] };
   clusters?: InboxCluster[];
@@ -385,6 +412,24 @@ function actionClassBadgeClass(actionClass?: string): string {
     case "BLOCKED":     return "bg-slate-200 text-slate-800 border-slate-300";
     default:            return "bg-slate-100 text-slate-600 border-slate-200";
   }
+}
+
+// V4.0 Phase 4: per-item delta pill classes + label.
+function deltaBadgeClass(delta?: ItemDelta): string {
+  if (!delta) return "bg-slate-100 text-slate-500 border-slate-200";
+  if (delta.updatedSinceYesterday) return "bg-green-100 text-green-900 border-green-300";
+  const days = delta.daysSinceLastTouched ?? 0;
+  if (days <= 7)  return "bg-slate-100 text-slate-700 border-slate-200";
+  if (days <= 14) return "bg-amber-50 text-amber-800 border-amber-200";
+  return "bg-slate-200 text-slate-700 border-slate-300";
+}
+function deltaBadgeLabel(delta?: ItemDelta): string {
+  if (!delta) return "no delta";
+  if (delta.updatedSinceYesterday) return "Updated today";
+  const days = delta.daysSinceLastTouched ?? 0;
+  if (days === 0) return "No change today";
+  if (days === 1) return "No change 1d";
+  return `No change ${days}d`;
 }
 
 function ownerBadgeClass(confidence?: string): string {
@@ -1033,6 +1078,26 @@ export function DashboardTab({ onNavigate }: Props) {
             <span className="text-xs text-th-text-faint">Generated {davidInbox.generated}</span>
           )}
         </div>
+        {davidInbox?.dailyDelta && (
+          <div className="mb-3 flex flex-wrap items-center gap-2 rounded-md border border-th-border bg-th-surface px-3 py-1.5 text-xs">
+            <span className="font-semibold uppercase tracking-wide text-th-text-secondary">Today&apos;s Movement</span>
+            <span className="inline-block rounded-full border border-green-200 bg-green-50 px-2 py-0.5 font-medium text-green-800">
+              +{davidInbox.dailyDelta.addedCount ?? 0} new
+            </span>
+            <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 font-medium text-blue-800">
+              {davidInbox.dailyDelta.changedCount ?? 0} changed
+            </span>
+            <span className="inline-block rounded-full border border-red-200 bg-red-50 px-2 py-0.5 font-medium text-red-800">
+              -{davidInbox.dailyDelta.removedCount ?? 0} removed
+            </span>
+            <span className="inline-block rounded-full border border-slate-300 bg-slate-100 px-2 py-0.5 font-medium text-slate-700">
+              {davidInbox.dailyDelta.staleCount ?? 0} stale
+            </span>
+            {davidInbox.dailyDelta.comparedAgainst && (
+              <span className="ml-auto text-th-text-faint">vs snapshot {davidInbox.dailyDelta.comparedAgainst}</span>
+            )}
+          </div>
+        )}
         {davidInbox && (davidInbox.tiers || davidInbox.items?.length) ? (
           (() => {
             const p1Items = davidInbox.tiers?.p1 ?? (davidInbox.items ?? []).filter((i) => i.priority === 1);
@@ -1055,6 +1120,12 @@ export function DashboardTab({ onNavigate }: Props) {
                         </span>
                       ) : it.verb ? (
                         <span className="text-xs font-semibold text-th-text-secondary">{it.verb}</span>
+                      ) : null}
+                      {it.delta ? (
+                        <span className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-medium ${deltaBadgeClass(it.delta)}`}
+                              title={it.delta.changeSummary ? `V4.0 Phase 4: ${it.delta.changeSummary}` : "V4.0 Phase 4: daily-delta tracking"}>
+                          {deltaBadgeLabel(it.delta)}
+                        </span>
                       ) : null}
                     </div>
                     <div className="text-sm font-medium text-th-text break-words">
