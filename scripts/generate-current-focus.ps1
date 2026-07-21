@@ -1854,7 +1854,10 @@ function Test-MatryoshkaItem {
         if ($null -eq $v) { $missing = $true }
         elseif ($v -is [string] -and [string]::IsNullOrWhiteSpace($v)) { $missing = $true }
         if ($missing) {
-            $errors.Add(@{ itemId = $id; field = $f; reason = 'missing required field' })
+            # V4.0 Sprint 15: promote the missing-why gap to its own error code
+            # so the rejected-items report separates 'missing' from 'weak/generic/duplicate'.
+            $fieldLabel = if ($f -eq 'why_it_matters') { 'missing_why_it_matters' } else { $f }
+            $errors.Add(@{ itemId = $id; field = $fieldLabel; reason = 'missing required field' })
         }
     }
 
@@ -1869,13 +1872,31 @@ function Test-MatryoshkaItem {
     }
 
     $why = if ($Candidate.ContainsKey('why_it_matters')) { [string]$Candidate.why_it_matters } else { '' }
-    if ($why) {
+    if ([string]::IsNullOrWhiteSpace($why)) {
+        # Only report 'missing' if the required-field pass didn't already flag it.
+        # (It always does; skip to avoid double-counting.)
+    }
+    else {
+        # V4.0 Sprint 15 validator v2: split the single 'why_it_matters' error
+        # into distinct categories so the rejected-items report shows exactly
+        # where the semantic gap is.
+        $isGeneric = ($why -match $script:MAT_WHY_GENERIC_REGEX) -or ($why.Trim().Length -lt 15)
+        if ($isGeneric) {
+            $errors.Add(@{ itemId = $id; field = 'generic_why_it_matters'; reason = 'matches generic pattern (needs attention / tbd / follow up required) - replace with concrete impact statement' })
+        }
         $sentences = @($why -split '[.!?]' | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
         if ($sentences.Count -gt 1) {
             $errors.Add(@{ itemId = $id; field = 'why_it_matters'; reason = 'must be exactly 1 sentence' })
         }
-        if ($why -notmatch $script:MAT_IMPACT_WORDS_REGEX) {
-            $errors.Add(@{ itemId = $id; field = 'why_it_matters'; reason = 'must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)' })
+        if (-not $isGeneric -and $why -notmatch $script:MAT_IMPACT_WORDS_REGEX) {
+            $errors.Add(@{ itemId = $id; field = 'weak_why_it_matters'; reason = 'must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)' })
+        }
+        # Duplicate check: was this exact string seen 2+ times across the corpus?
+        if ($script:MAT_WHY_FINGERPRINTS -is [System.Collections.IDictionary]) {
+            $fp = ($why.Trim().ToLowerInvariant())
+            if ($fp -and $script:MAT_WHY_FINGERPRINTS.ContainsKey($fp) -and [int]$script:MAT_WHY_FINGERPRINTS[$fp] -ge 2) {
+                $errors.Add(@{ itemId = $id; field = 'duplicate_why_it_matters'; reason = ("shares why_it_matters with {0} other item(s) - each item needs a specific impact statement" -f ([int]$script:MAT_WHY_FINGERPRINTS[$fp] - 1)) })
+            }
         }
     }
 
@@ -1963,7 +1984,11 @@ function ConvertTo-MatryoshkaCandidate {
     elseif ($Kind -eq 'risk' -and $Entry.impact)              { $contextSummary = [string]$Entry.impact }
 
     $whyItMatters = ''
-    if ($Entry.impact) { $whyItMatters = [string]$Entry.impact }
+    # V4.0 Sprint 15: prefer the canonical extractor output when available.
+    if ($Entry.ContainsKey('whyItMatters') -and -not [string]::IsNullOrWhiteSpace([string]$Entry.whyItMatters)) {
+        $whyItMatters = [string]$Entry.whyItMatters
+    }
+    elseif ($Entry.impact) { $whyItMatters = [string]$Entry.impact }
     elseif ($Kind -eq 'decision' -and $Entry.decisionPrompt) { $whyItMatters = [string]$Entry.decisionPrompt }
 
     # V4.0 Phase 1c: use the canonical status ladder when available (populated
@@ -2833,6 +2858,182 @@ function Apply-ContextLinking {
         enrichedCount = $enrichedCount
         actorHits     = $actorHits
     }
+}
+
+# --- V4.0 Sprint 15 - Semantic Impact Extraction (why_it_matters) ---------
+# 4-tier extraction ladder producing a single-sentence impact statement
+# per entry. Tiers (highest confidence first):
+#   Tier 1: explicit rationale (because / due to / so that / ...)
+#   Tier 2: risk consequence  (blocks / delays / prevents / ...)  [risks]
+#   Tier 3: decision impact   (unblocks / cannot proceed / ...)   [decisions]
+#   Tier 4: context fallback  (first impact-word sentence from contextSummary)
+# Rejects generic phrases (Needs attention / Important issue / TBD / ...).
+
+$script:MAT_WHY_TIER1_REGEX  = '(?i)\b(because|due to|so that|in order to|required for|needed to|to enable|to avoid|otherwise|as a result|hence|thereby)\b'
+$script:MAT_WHY_TIER2_REGEX  = '(?i)\b(may delay|will delay|delays|blocks|prevents|impacts|at risk|risks to|results in|leads to|causes|jeopardis|jeopardiz|disrupts|breach|breaches|violates|non-compliance|compliance gap|dependency|dependent on)\b'
+$script:MAT_WHY_TIER3_REGEX  = '(?i)\b(unblocks|enables|before .* can (proceed|begin|start)|cannot proceed|pending decision|awaiting decision|until (a |this |the )?decision|approval required|approval needed|holds up|held up|gating)\b'
+$script:MAT_WHY_GENERIC_REGEX = '(?i)^(needs attention|important issue|follow[- ]up required|see above|tbd|placeholder|no summary( available)?|refer to (context|source)|to be determined|update required|pending)[.!?\s]*$'
+
+function Split-IntoSentences {
+    <#
+        Deterministic sentence splitter. Splits on . ! ? boundaries.
+        Preserves in-sentence punctuation like Mr./Dr. only imperfectly;
+        that's acceptable for impact extraction (we favour a slightly-long
+        sentence over a broken one).
+    #>
+    param([string] $Text)
+    if ([string]::IsNullOrWhiteSpace($Text)) { return @() }
+    $t = ($Text -replace '\s+', ' ').Trim()
+    # Fold bullet markers into sentence-ending punctuation.
+    $t = $t -replace '(?m)^\s*[-*•]\s+', '. '
+    $parts = [System.Text.RegularExpressions.Regex]::Split($t, '(?<=[.!?])\s+')
+    $out = [System.Collections.Generic.List[string]]::new()
+    foreach ($p in $parts) {
+        $s = $p.Trim()
+        if ([string]::IsNullOrWhiteSpace($s)) { continue }
+        # Strip trailing punctuation duplicates but keep one.
+        $s = $s -replace '\s*[.!?]+\s*$', '.'
+        if ($s.Length -lt 8) { continue }              # too short to be an impact sentence
+        if ($s.Length -gt 260) { $s = $s.Substring(0, 259) + '…' }
+        [void]$out.Add($s)
+    }
+    return @($out)
+}
+
+function Test-GenericWhy {
+    <#
+        Returns $true when the candidate string matches a rejected generic phrase.
+    #>
+    param([string] $Text)
+    if ([string]::IsNullOrWhiteSpace($Text)) { return $true }
+    $t = $Text.Trim()
+    if ($t.Length -lt 15) { return $true }
+    if ($t -match $script:MAT_WHY_GENERIC_REGEX) { return $true }
+    return $false
+}
+
+function Get-WhyItMatters {
+    <#
+        V4.0 Sprint 15 extraction ladder.
+        Returns @{
+            text       = <single-sentence impact statement, or ''>
+            confidence = <double 0..1>
+            source     = <'explicit-rationale'|'risk-consequence'|'decision-impact'|'context-fallback'|'none'>
+        }
+    #>
+    param(
+        [hashtable] $Entry,
+        [ValidateSet('decision','risk')] [string] $Kind
+    )
+
+    # --- Assemble the source-text pool in preference order.
+    $sources = [System.Collections.Generic.List[string]]::new()
+    if ($Entry.contextSummary)                                       { [void]$sources.Add([string]$Entry.contextSummary) }
+    if ($Kind -eq 'risk'     -and $Entry.impact)                     { [void]$sources.Add([string]$Entry.impact) }
+    if ($Kind -eq 'decision' -and $Entry.decisionPrompt)             { [void]$sources.Add([string]$Entry.decisionPrompt) }
+    if ($Kind -eq 'decision' -and $Entry.decisionSummary)            { [void]$sources.Add([string]$Entry.decisionSummary) }
+
+    $combined = ($sources -join ' ')
+    $sentences = @(Split-IntoSentences -Text $combined)
+
+    if ($sentences.Count -eq 0) {
+        return @{ text = ''; confidence = 0.0; source = 'none' }
+    }
+
+    # --- Tier 1: explicit rationale ---
+    foreach ($s in $sentences) {
+        if ($s -match $script:MAT_WHY_TIER1_REGEX -and -not (Test-GenericWhy -Text $s)) {
+            return @{ text = $s; confidence = 0.90; source = 'explicit-rationale' }
+        }
+    }
+
+    # --- Tier 2: risk consequence (risks + decisions with consequence language) ---
+    if ($Kind -eq 'risk') {
+        foreach ($s in $sentences) {
+            if ($s -match $script:MAT_WHY_TIER2_REGEX -and -not (Test-GenericWhy -Text $s)) {
+                return @{ text = $s; confidence = 0.75; source = 'risk-consequence' }
+            }
+        }
+    }
+
+    # --- Tier 3: decision impact ---
+    if ($Kind -eq 'decision') {
+        foreach ($s in $sentences) {
+            if ($s -match $script:MAT_WHY_TIER3_REGEX -and -not (Test-GenericWhy -Text $s)) {
+                return @{ text = $s; confidence = 0.65; source = 'decision-impact' }
+            }
+        }
+        # Decisions may still surface tier-2 consequence phrasing (unblocks / dependency).
+        foreach ($s in $sentences) {
+            if ($s -match $script:MAT_WHY_TIER2_REGEX -and -not (Test-GenericWhy -Text $s)) {
+                return @{ text = $s; confidence = 0.60; source = 'decision-impact' }
+            }
+        }
+    }
+
+    # --- Tier 4: context fallback ---
+    # Pick the first non-generic sentence that mentions ANY impact word.
+    foreach ($s in $sentences) {
+        if ($s -match $script:MAT_IMPACT_WORDS_REGEX -and -not (Test-GenericWhy -Text $s)) {
+            return @{ text = $s; confidence = 0.30; source = 'context-fallback' }
+        }
+    }
+
+    # No impact-word sentence found - return the first meaningful sentence at
+    # very low confidence so downstream can decide whether to keep it.
+    foreach ($s in $sentences) {
+        if (-not (Test-GenericWhy -Text $s)) {
+            return @{ text = $s; confidence = 0.15; source = 'context-fallback' }
+        }
+    }
+
+    return @{ text = ''; confidence = 0.0; source = 'none' }
+}
+
+function Apply-WhyItMatters {
+    <#
+        V4.0 Sprint 15 orchestrator: stamps whyItMatters + whyItMattersConfidence
+        + whyItMattersSource on every live decision + risk entry. Returns
+        aggregate counts for the pipeline log.
+
+        Non-destructive: existing V3 impact / decisionPrompt / decisionSummary
+        fields are left in place. Downstream consumers (validator, canonical
+        emit, weekly report) prefer whyItMatters when non-empty.
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks
+    )
+
+    $counts = @{
+        total          = 0
+        tier1          = 0
+        tier2          = 0
+        tier3          = 0
+        tier4          = 0
+        none           = 0
+        highConfidence = 0    # >= 0.6
+    }
+    foreach ($kind in @('decision','risk')) {
+        $entries = if ($kind -eq 'decision') { $Decisions } else { $Risks }
+        foreach ($e in $entries) {
+            if (-not $e) { continue }
+            $res = Get-WhyItMatters -Entry $e -Kind $kind
+            $e.whyItMatters           = [string]$res.text
+            $e.whyItMattersConfidence = [double]$res.confidence
+            $e.whyItMattersSource     = [string]$res.source
+            $counts.total += 1
+            switch ($res.source) {
+                'explicit-rationale' { $counts.tier1 += 1 }
+                'risk-consequence'   { $counts.tier2 += 1 }
+                'decision-impact'    { $counts.tier3 += 1 }
+                'context-fallback'   { $counts.tier4 += 1 }
+                default              { $counts.none  += 1 }
+            }
+            if ([double]$res.confidence -ge 0.6) { $counts.highConfidence += 1 }
+        }
+    }
+    return $counts
 }
 
 # V4.0 Phase 1c - Deterministic status ladder.
@@ -3864,6 +4065,9 @@ function Build-DecisionRegistryJson {
             delta               = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
             contextSummary      = if ($e.ContainsKey('contextSummary'))  { [string]$e.contextSummary } else { '' }
             contextMetadata     = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
+            whyItMatters           = if ($e.ContainsKey('whyItMatters'))           { [string]$e.whyItMatters }           else { '' }
+            whyItMattersConfidence = if ($e.ContainsKey('whyItMattersConfidence')) { [double]$e.whyItMattersConfidence } else { 0.0 }
+            whyItMattersSource     = if ($e.ContainsKey('whyItMattersSource'))     { [string]$e.whyItMattersSource }     else { 'none' }
             matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
             matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
             focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
@@ -4857,6 +5061,9 @@ function Build-RiskRegisterJson {
             delta             = if ($e.ContainsKey('delta') -and $e.delta) { $e.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
             contextSummary    = if ($e.ContainsKey('contextSummary'))  { [string]$e.contextSummary } else { '' }
             contextMetadata   = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
+            whyItMatters           = if ($e.ContainsKey('whyItMatters'))           { [string]$e.whyItMatters }           else { '' }
+            whyItMattersConfidence = if ($e.ContainsKey('whyItMattersConfidence')) { [double]$e.whyItMattersConfidence } else { 0.0 }
+            whyItMattersSource     = if ($e.ContainsKey('whyItMattersSource'))     { [string]$e.whyItMattersSource }     else { 'none' }
             matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
             matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
             focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
@@ -5855,6 +6062,16 @@ $contextResult = Apply-ContextLinking -Decisions $decisions -Risks $risks -RootP
 Write-Host ("Context linking: enriched {0} entries; {1} carry stakeholder actors" -f `
     $contextResult.enrichedCount, $contextResult.actorHits) -ForegroundColor Yellow
 
+# --- V4.0 Sprint 15: Why-it-matters extraction ----------------------------
+# 4-tier ladder producing a single-sentence impact statement per entry.
+# Runs AFTER context linking so the extractor has the source-paragraph excerpt
+# available, and BEFORE the status ladder + priority score so downstream can
+# key off whyItMattersConfidence.
+$whyStats = Apply-WhyItMatters -Decisions $decisions -Risks $risks
+Write-Host ("Why-it-matters: T1={0} / T2={1} / T3={2} / T4={3} / none={4} (high-confidence: {5}/{6})" -f `
+    $whyStats.tier1, $whyStats.tier2, $whyStats.tier3, $whyStats.tier4, $whyStats.none, `
+    $whyStats.highConfidence, $whyStats.total) -ForegroundColor Yellow
+
 # --- V4.0 Phase 1c: Deterministic status ladder ---------------------------
 # Populates matryoshkaStatus + matryoshkaStatusReason on every entry using the
 # canonical Get-MatryoshkaStatus rules. Runs AFTER context linking so the
@@ -5943,6 +6160,29 @@ $rejectionRecords = [System.Collections.Generic.List[hashtable]]::new()
 $acceptedCount = 0
 $candidateCount = 0
 $fieldFailures = @{}
+
+# V4.0 Sprint 15: pre-compute why_it_matters fingerprint counts so
+# Test-MatryoshkaItem can flag duplicates (validator v2 new check).
+$script:MAT_WHY_FINGERPRINTS = @{}
+foreach ($kind in @('decision','risk')) {
+    $source = if ($kind -eq 'decision') { $decisions } else { $risks }
+    foreach ($entry in $source) {
+        if ($entry.ContainsKey('stale') -and $entry.stale) { continue }
+        if ($entry.status -eq 'closed') { continue }
+        $why = ''
+        if ($entry.ContainsKey('whyItMatters') -and $entry.whyItMatters) { $why = [string]$entry.whyItMatters }
+        elseif ($entry.impact)                                            { $why = [string]$entry.impact }
+        $fp = $why.Trim().ToLowerInvariant()
+        if ($fp) {
+            if ($script:MAT_WHY_FINGERPRINTS.ContainsKey($fp)) {
+                $script:MAT_WHY_FINGERPRINTS[$fp] = [int]$script:MAT_WHY_FINGERPRINTS[$fp] + 1
+            } else {
+                $script:MAT_WHY_FINGERPRINTS[$fp] = 1
+            }
+        }
+    }
+}
+
 foreach ($kind in @('decision','risk')) {
     $source = if ($kind -eq 'decision') { $decisions } else { $risks }
     foreach ($entry in $source) {

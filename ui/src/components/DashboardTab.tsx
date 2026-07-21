@@ -211,6 +211,10 @@ type DecisionEntry = {
   // V4.0 Phase 5
   contextSummary?: string;
   contextMetadata?: ItemContextMetadata;
+  // V4.0 Sprint 15
+  whyItMatters?: string;
+  whyItMattersConfidence?: number;
+  whyItMattersSource?: string;
   // V4.0 Phase 1c
   matryoshkaStatus?: string;         // 'red' | 'amber' | 'green'
   matryoshkaStatusReason?: string;
@@ -282,6 +286,10 @@ type RiskEntry = {
   // V4.0 Phase 5
   contextSummary?: string;
   contextMetadata?: ItemContextMetadata;
+  // V4.0 Sprint 15
+  whyItMatters?: string;
+  whyItMattersConfidence?: number;
+  whyItMattersSource?: string;
   // V4.0 Phase 1c
   matryoshkaStatus?: string;         // 'red' | 'amber' | 'green'
   matryoshkaStatusReason?: string;

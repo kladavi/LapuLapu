@@ -2,27 +2,12 @@
 
 # Risk Register
 
-Generated: 2026-07-21 12:14
+Generated: 2026-07-21 12:47
 
-Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
+Total: **62** risks (61 open / 1 closed / 40 high-severity / 52 rising)
 
 ## Highest Severity Open Risks
 
-### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
-
-- Workstream: **-**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-1c3d9c0e3b - Vendor Escalation
 
 - Workstream: **MMM L2**
@@ -38,36 +23,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for MMM L2 risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-cd89918f9c - Review and operationalize the vendor escalation format
+### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
 
-- Workstream: **Rapid Recovery**
+- Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
+- Escalation Path: -
+- Stakeholders: -
 - Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (91 days ago)
 - Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-aa0c3f050b - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management
-
-- Workstream: **Capacity Management**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **decreasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-06** (15 days ago)
-- Last seen: **2026-07-06** (15 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `03-reporting/weekly/2026-H1.md`
 ### R-d7f568105f - Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...
 
 - Workstream: **ADX Registration**
@@ -83,51 +53,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for ADX Registration risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W28_copilot.md`
-### R-8ad2d2ce2f - Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-10** (11 days ago)
-- Last seen: **2026-07-10** (11 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W28_copilot.md`
-### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
-
-- Workstream: **Capacity Management**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2b2a241d9c - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
-
-- Workstream: **Rapid Recovery**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-bafab65c68 - The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...
 
 - Workstream: **Rapid Recovery**
@@ -141,6 +66,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-07-13** (8 days ago)
 - Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
+
+- Workstream: **Capacity Management**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
@@ -158,37 +98,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-bf28edfac4 - 🚨 Compliance gap (CyberArk not enforced)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-aa18501480 - RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+### R-2b2a241d9c - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
 
 - Workstream: **Rapid Recovery**
 - Owner: **Unassigned** _(confidence: low)_
@@ -198,56 +108,11 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
-  - `01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md`
-### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-27c07d48fd - Team to secure **contact + escalation path
-
-- Workstream: **GOCC Transition**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-228ae1101c - Required escalation to GAM
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
 
 - Workstream: **CyberArk Governance**
@@ -278,7 +143,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+### R-b8d4414c4c - Continue escalation on VNet issues
+
+- Workstream: **-**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-228ae1101c - Required escalation to GAM
 
 - Workstream: **CyberArk Governance**
 - Owner: **Unassigned** _(confidence: low)_
@@ -293,11 +173,41 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b8d4414c4c - Continue escalation on VNet issues
+### R-27c07d48fd - Team to secure **contact + escalation path
 
-- Workstream: **-**
+- Workstream: **GOCC Transition**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-aa18501480 - RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+
+- Workstream: **Rapid Recovery**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md`
+### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **High**
 - Status: **open**
@@ -305,7 +215,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Time to escalation: **0 day(s)**
 - First seen: **2026-07-16** (5 days ago)
 - Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-1de6e7cdee - Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】
@@ -323,21 +233,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-b1cf205d0f - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `02-work/tasks.md`
 ### R-a3a724c1be - Validate escalation paths
 
 - Workstream: **-**
@@ -353,7 +248,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-b2ee8b777e - Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...
+### R-b1cf205d0f - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-17** (4 days ago)
+- Last seen: **2026-07-17** (4 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `02-work/tasks.md`
+### R-64c0ccc1e6 - The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3...
 
 - Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
@@ -383,7 +293,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
-### R-64c0ccc1e6 - The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3...
+### R-b2ee8b777e - Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...
 
 - Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
@@ -398,6 +308,312 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
+### R-ee800eb07c - Next: Send escalation on GBO Batch Transition to Balaji Ravi today
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-354c457368 - Next: Send escalation on MMM L2 to Balaji Ravi today
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-66f602574a - Next: Assign an owner for Developer XP Dashboard risk before it can be actioned
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-eddc03d0c9 - [ISSUE] (risk/High) ⚠️ Vendor-managed apps without clear escalation model — owner: Unassigned (suggested: Rasheersh); score 86
+
+- Workstream: **Employee XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Employee XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-d87e46e95d - [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation ...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GBO Batch Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-4650d3f155 - Next: Send escalation on Developer XP Dashboard to Balaji Ravi today
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-b951311837 - Next: Assign an owner for MMM L2 risk before it can be actioned
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-058a05f1f2 - [ISSUE] (risk/High) The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP doc...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-74c533a641 - Next: Assign an owner for GOCC Transition risk before it can be actioned
+
+- Workstream: **Employee XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Employee XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-a8d13870b6 - [ISSUE] (risk/High) Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privilege...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/W28_copilot.md`
+### R-489090b1dd - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-90c533d7c0 - [ISSUE] (risk/High) ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined — owner: Unassigned (suggested: Deb); s...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-f780ab9313 - [ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98
+
+- Workstream: **Rapid Recovery**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity Rapid Recovery risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
+### R-c7ab29e0af - Next: Send escalation on Rapid Recovery to Birger Fjaellman today
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-35dbbad7a0 - [ISSUE] (risk/High) Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback an...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-1b9a3d39d2 - [ISSUE] (risk/High) 🚨 Compliance gap (CyberArk not enforced) — score 86
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-c1294ba1e7 - [ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-2a93e28551 - [ISSUE] (risk/High) 🚨 Network instability (VNet) → platform readiness risk — score 86
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-d2cac6f77e - Next: Assign an owner for Rapid Recovery risk before it can be actioned
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-7d03262269 - [ISSUE] (risk/High) CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for cap...
+
+- Workstream: **Capacity Management**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `03-reporting/weekly/2026-H1.md`
 
 
 ## Fastest Growing Risks (increasing trend)
@@ -417,51 +633,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for ADX Registration risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W28_copilot.md`
-### R-8ad2d2ce2f - Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-10** (11 days ago)
-- Last seen: **2026-07-10** (11 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W28_copilot.md`
-### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
-
-- Workstream: **Capacity Management**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2b2a241d9c - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
-
-- Workstream: **Rapid Recovery**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-bafab65c68 - The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...
 
 - Workstream: **Rapid Recovery**
@@ -475,6 +646,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-07-13** (8 days ago)
 - Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
+
+- Workstream: **Capacity Management**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
@@ -492,37 +678,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-bf28edfac4 - 🚨 Compliance gap (CyberArk not enforced)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-aa18501480 - RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+### R-2b2a241d9c - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
 
 - Workstream: **Rapid Recovery**
 - Owner: **Unassigned** _(confidence: low)_
@@ -532,56 +688,11 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
-  - `01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md`
-### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-27c07d48fd - Team to secure **contact + escalation path
-
-- Workstream: **GOCC Transition**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-228ae1101c - Required escalation to GAM
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
 
 - Workstream: **CyberArk Governance**
@@ -612,7 +723,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+### R-b8d4414c4c - Continue escalation on VNet issues
+
+- Workstream: **-**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-228ae1101c - Required escalation to GAM
 
 - Workstream: **CyberArk Governance**
 - Owner: **Unassigned** _(confidence: low)_
@@ -627,11 +753,41 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b8d4414c4c - Continue escalation on VNet issues
+### R-27c07d48fd - Team to secure **contact + escalation path
 
-- Workstream: **-**
+- Workstream: **GOCC Transition**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-aa18501480 - RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+
+- Workstream: **Rapid Recovery**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md`
+### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **High**
 - Status: **open**
@@ -639,7 +795,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Time to escalation: **0 day(s)**
 - First seen: **2026-07-16** (5 days ago)
 - Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-1de6e7cdee - Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】
@@ -657,21 +813,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-b1cf205d0f - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `02-work/tasks.md`
 ### R-a3a724c1be - Validate escalation paths
 
 - Workstream: **-**
@@ -687,7 +828,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-b2ee8b777e - Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...
+### R-b1cf205d0f - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-17** (4 days ago)
+- Last seen: **2026-07-17** (4 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `02-work/tasks.md`
+### R-64c0ccc1e6 - The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3...
 
 - Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
@@ -717,7 +873,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
-### R-64c0ccc1e6 - The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3...
+### R-b2ee8b777e - Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...
 
 - Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
@@ -732,7 +888,313 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
-### R-a18adafc06 - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...
+### R-ee800eb07c - Next: Send escalation on GBO Batch Transition to Balaji Ravi today
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-354c457368 - Next: Send escalation on MMM L2 to Balaji Ravi today
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-66f602574a - Next: Assign an owner for Developer XP Dashboard risk before it can be actioned
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-eddc03d0c9 - [ISSUE] (risk/High) ⚠️ Vendor-managed apps without clear escalation model — owner: Unassigned (suggested: Rasheersh); score 86
+
+- Workstream: **Employee XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Employee XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-d87e46e95d - [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation ...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GBO Batch Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-4650d3f155 - Next: Send escalation on Developer XP Dashboard to Balaji Ravi today
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-b951311837 - Next: Assign an owner for MMM L2 risk before it can be actioned
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-058a05f1f2 - [ISSUE] (risk/High) The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP doc...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-74c533a641 - Next: Assign an owner for GOCC Transition risk before it can be actioned
+
+- Workstream: **Employee XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Employee XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-a8d13870b6 - [ISSUE] (risk/High) Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privilege...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/W28_copilot.md`
+### R-489090b1dd - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-90c533d7c0 - [ISSUE] (risk/High) ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined — owner: Unassigned (suggested: Deb); s...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-f780ab9313 - [ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98
+
+- Workstream: **Rapid Recovery**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity Rapid Recovery risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
+### R-c7ab29e0af - Next: Send escalation on Rapid Recovery to Birger Fjaellman today
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-35dbbad7a0 - [ISSUE] (risk/High) Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback an...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-1b9a3d39d2 - [ISSUE] (risk/High) 🚨 Compliance gap (CyberArk not enforced) — score 86
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-c1294ba1e7 - [ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-2a93e28551 - [ISSUE] (risk/High) 🚨 Network instability (VNet) → platform readiness risk — score 86
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-d2cac6f77e - Next: Assign an owner for Rapid Recovery risk before it can be actioned
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-7d03262269 - [ISSUE] (risk/High) CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for cap...
+
+- Workstream: **Capacity Management**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `03-reporting/weekly/2026-H1.md`
+### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
 
 - Workstream: **Capacity Management**
 - Owner: **Unassigned** _(confidence: low)_
@@ -747,22 +1209,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **Medium**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **3 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
+### R-a18adafc06 - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...
 
 - Workstream: **Capacity Management**
 - Owner: **Unassigned** _(confidence: low)_
@@ -790,6 +1237,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-07-13** (8 days ago)
 - Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **3 day(s)**
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-5a110d3d32 - CMDB serves as a foundational dependency for downstream operational initiatives. 【6-0fbe0a】
@@ -852,21 +1314,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-2884ed4872 - CMDB Mapping appears to be the strongest dependency across nearly every other workstream
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **Medium**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **5 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
 ### R-ad7b2a1025 - `BLOCKED` items → Blockers panel (visible but grouped; David watches for state changes)
 
 - Workstream: **-**
@@ -882,6 +1329,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
+### R-2884ed4872 - CMDB Mapping appears to be the strongest dependency across nearly every other workstream
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **5 day(s)**
+- First seen: **2026-07-17** (4 days ago)
+- Last seen: **2026-07-17** (4 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
 ### R-6f6e73c0c0 - Dependency relationships
 
 - Workstream: **Capacity Management**
@@ -912,25 +1374,40 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [FOLLOW_UP] P4 - Monitor GBO Batch Transition - re-check in 7 days (owner: Birger Fjaellman, by 2026-07-28)
 - Sources:
   - `01-inbox/inbox.md`
+### R-8d4d49e7c3 - [ISSUE] (risk/High) Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehea...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **7 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-d93f8c71e6 - Next: Assign an owner for ADX Registration risk before it can be actioned
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **7 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
 
 
 ## Oldest / Escalated Risks (14+ days)
 
-### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
-
-- Workstream: **-**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-1c3d9c0e3b - Vendor Escalation
 
 - Workstream: **MMM L2**
@@ -946,36 +1423,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for MMM L2 risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-cd89918f9c - Review and operationalize the vendor escalation format
+### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
 
-- Workstream: **Rapid Recovery**
+- Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
+- Escalation Path: -
+- Stakeholders: -
 - Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (91 days ago)
 - Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-aa0c3f050b - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management
-
-- Workstream: **Capacity Management**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **decreasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-06** (15 days ago)
-- Last seen: **2026-07-06** (15 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `03-reporting/weekly/2026-H1.md`
 ### R-ae3cccdff8 - Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
 
 - Workstream: **CMDB Mapping**
@@ -989,21 +1451,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-04-21** (91 days ago)
 - Last seen: **2026-04-21** (91 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `00-context/objectives.md`
-### R-65e39d4c98 - 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
-
-- Workstream: **Rapid Recovery**
-- Owner: **Birger Fjaellman** _(confidence: medium)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **Medium**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why Rapid Recovery remains unresolved after 91 days (owner: Birger Fjaellman, by 2026-07-24)
 - Sources:
   - `00-context/objectives.md`
 ### R-f5518c28bc - Streamline risk framework and automate compliance
@@ -1021,10 +1468,40 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `00-context/objectives.md`
+### R-65e39d4c98 - 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
+
+- Workstream: **Rapid Recovery**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-04-21** (91 days ago)
+- Last seen: **2026-04-21** (91 days ago)
+- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why Rapid Recovery remains unresolved after 91 days (owner: Birger Fjaellman, by 2026-07-24)
+- Sources:
+  - `00-context/objectives.md`
+### R-d57894861d - Weekly project status, CR review, and risk review governance forums
+
+- Workstream: **GOCC Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-06-19** (32 days ago)
+- Last seen: **2026-06-19** (32 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/W25_copilot.md`
 ### R-f1afae75e8 - Weekly project governance forums (status, CR review, risk review)
 
 - Workstream: **GBO Batch Transition**
-- Owner: **Balaji Ravi** _(confidence: medium)_
+- Owner: **Birger Fjaellman** _(confidence: medium)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: Manish, Rasheersh
 - Severity: **Medium**
@@ -1033,22 +1510,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-19** (32 days ago)
 - Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [FOLLOW_UP] P2 - Confirm with Balaji Ravi why GBO Batch Transition remains unresolved after 32 days (owner: Balaji Ravi, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W25_copilot.md`
-### R-f02ad44a72 - Weekly project status, CR review, and risk review governance forums
-
-- Workstream: **CMDB Mapping**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **Medium**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why GBO Batch Transition remains unresolved after 32 days (owner: Birger Fjaellman, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
@@ -1066,40 +1528,25 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
-### R-fff605c5dd - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
+### R-b882fa398a - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
 
-- Workstream: **ADX Registration**
+- Workstream: **GBO Batch Transition**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
 - Severity: **Medium**
 - Status: **open**
 - Trend: **decreasing**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-26** (25 days ago)
 - Last seen: **2026-06-26** (25 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for ADX Registration risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for GBO Batch Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `03-reporting/weekly/2026-W26.md`
 
 
 ## All Open Risks
 
-### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
-
-- Workstream: **-**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
 ### R-1c3d9c0e3b - Vendor Escalation
 
 - Workstream: **MMM L2**
@@ -1115,36 +1562,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for MMM L2 risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-cd89918f9c - Review and operationalize the vendor escalation format
+### R-f386376f94 - Standardization of templates, CI identification, and escalation procedures to reduce
 
-- Workstream: **Rapid Recovery**
+- Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
+- Escalation Path: -
+- Stakeholders: -
 - Severity: **High**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-04-21** (91 days ago)
 - Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-aa0c3f050b - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management
-
-- Workstream: **Capacity Management**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **decreasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-06** (15 days ago)
-- Last seen: **2026-07-06** (15 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `03-reporting/weekly/2026-H1.md`
 ### R-d7f568105f - Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...
 
 - Workstream: **ADX Registration**
@@ -1160,51 +1592,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for ADX Registration risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W28_copilot.md`
-### R-8ad2d2ce2f - Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-10** (11 days ago)
-- Last seen: **2026-07-10** (11 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W28_copilot.md`
-### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
-
-- Workstream: **Capacity Management**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2b2a241d9c - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
-
-- Workstream: **Rapid Recovery**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-bafab65c68 - The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...
 
 - Workstream: **Rapid Recovery**
@@ -1218,6 +1605,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-07-13** (8 days ago)
 - Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-121760730c - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
+
+- Workstream: **Capacity Management**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-b493137b8f - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
@@ -1235,37 +1637,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-bf28edfac4 - 🚨 Compliance gap (CyberArk not enforced)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-aa18501480 - RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+### R-2b2a241d9c - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
 
 - Workstream: **Rapid Recovery**
 - Owner: **Unassigned** _(confidence: low)_
@@ -1275,56 +1647,11 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
-  - `01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md`
-### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-27c07d48fd - Team to secure **contact + escalation path
-
-- Workstream: **GOCC Transition**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-228ae1101c - Required escalation to GAM
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
 
 - Workstream: **CyberArk Governance**
@@ -1355,7 +1682,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+### R-b8d4414c4c - Continue escalation on VNet issues
+
+- Workstream: **-**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-228ae1101c - Required escalation to GAM
 
 - Workstream: **CyberArk Governance**
 - Owner: **Unassigned** _(confidence: low)_
@@ -1370,11 +1712,41 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b8d4414c4c - Continue escalation on VNet issues
+### R-27c07d48fd - Team to secure **contact + escalation path
 
-- Workstream: **-**
+- Workstream: **GOCC Transition**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-aa18501480 - RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+
+- Workstream: **Rapid Recovery**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (5 days ago)
+- Last seen: **2026-07-16** (5 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260716 - Lapu-Lapu and GOCC.md`
+### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **High**
 - Status: **open**
@@ -1382,7 +1754,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Time to escalation: **0 day(s)**
 - First seen: **2026-07-16** (5 days ago)
 - Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-1de6e7cdee - Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】
@@ -1400,21 +1772,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-b1cf205d0f - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `02-work/tasks.md`
 ### R-a3a724c1be - Validate escalation paths
 
 - Workstream: **-**
@@ -1430,7 +1787,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-b2ee8b777e - Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...
+### R-b1cf205d0f - Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Concern, 2026-07-09)
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-17** (4 days ago)
+- Last seen: **2026-07-17** (4 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `02-work/tasks.md`
+### R-64c0ccc1e6 - The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3...
 
 - Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
@@ -1460,7 +1832,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
-### R-64c0ccc1e6 - The `escalation` keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged "red" under V3...
+### R-b2ee8b777e - Stale items are **collapsed on Decision Watch / Risk Register** under a `Stale (N)` disclosure — one click to expand for context, but not...
 
 - Workstream: **-**
 - Owner: **Unassigned** _(confidence: low)_
@@ -1475,6 +1847,312 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
+### R-ee800eb07c - Next: Send escalation on GBO Batch Transition to Balaji Ravi today
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-354c457368 - Next: Send escalation on MMM L2 to Balaji Ravi today
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-66f602574a - Next: Assign an owner for Developer XP Dashboard risk before it can be actioned
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-eddc03d0c9 - [ISSUE] (risk/High) ⚠️ Vendor-managed apps without clear escalation model — owner: Unassigned (suggested: Rasheersh); score 86
+
+- Workstream: **Employee XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Employee XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-d87e46e95d - [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation ...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GBO Batch Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-4650d3f155 - Next: Send escalation on Developer XP Dashboard to Balaji Ravi today
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-b951311837 - Next: Assign an owner for MMM L2 risk before it can be actioned
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-058a05f1f2 - [ISSUE] (risk/High) The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP doc...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-74c533a641 - Next: Assign an owner for GOCC Transition risk before it can be actioned
+
+- Workstream: **Employee XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Employee XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-a8d13870b6 - [ISSUE] (risk/High) Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privilege...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/W28_copilot.md`
+### R-489090b1dd - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-90c533d7c0 - [ISSUE] (risk/High) ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined — owner: Unassigned (suggested: Deb); s...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity Developer XP Dashboard risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-f780ab9313 - [ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98
+
+- Workstream: **Rapid Recovery**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity Rapid Recovery risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
+### R-c7ab29e0af - Next: Send escalation on Rapid Recovery to Birger Fjaellman today
+
+- Workstream: **GOCC Transition**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Birger Fjaellman today about high-severity GOCC Transition risk (owner: Birger Fjaellman, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-35dbbad7a0 - [ISSUE] (risk/High) Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback an...
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-1b9a3d39d2 - [ISSUE] (risk/High) 🚨 Compliance gap (CyberArk not enforced) — score 86
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-c1294ba1e7 - [ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-2a93e28551 - [ISSUE] (risk/High) 🚨 Network instability (VNet) → platform readiness risk — score 86
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-d2cac6f77e - Next: Assign an owner for Rapid Recovery risk before it can be actioned
+
+- Workstream: **GBO Batch Transition**
+- Owner: **Balaji Ravi** _(confidence: medium)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [FOLLOW_UP] P1 - Contact Balaji Ravi today about high-severity GBO Batch Transition risk (owner: Balaji Ravi, by 2026-07-21)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-7d03262269 - [ISSUE] (risk/High) CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for cap...
+
+- Workstream: **Capacity Management**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+  - `03-reporting/weekly/2026-H1.md`
 ### R-ae3cccdff8 - Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
 
 - Workstream: **CMDB Mapping**
@@ -1488,21 +2166,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-04-21** (91 days ago)
 - Last seen: **2026-04-21** (91 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `00-context/objectives.md`
-### R-65e39d4c98 - 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
-
-- Workstream: **Rapid Recovery**
-- Owner: **Birger Fjaellman** _(confidence: medium)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Deb, Kelvin
-- Severity: **Medium**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
-- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why Rapid Recovery remains unresolved after 91 days (owner: Birger Fjaellman, by 2026-07-24)
 - Sources:
   - `00-context/objectives.md`
 ### R-f5518c28bc - Streamline risk framework and automate compliance
@@ -1520,10 +2183,40 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `00-context/objectives.md`
+### R-65e39d4c98 - 2026_Birger_Plan Ideas.docx ("Risk", "Infrastructure & Architecture", "Operational Resilience", and "Disaster Recovery" sections)
+
+- Workstream: **Rapid Recovery**
+- Owner: **Birger Fjaellman** _(confidence: medium)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Deb, Kelvin
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-04-21** (91 days ago)
+- Last seen: **2026-04-21** (91 days ago)
+- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why Rapid Recovery remains unresolved after 91 days (owner: Birger Fjaellman, by 2026-07-24)
+- Sources:
+  - `00-context/objectives.md`
+### R-d57894861d - Weekly project status, CR review, and risk review governance forums
+
+- Workstream: **GOCC Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-06-19** (32 days ago)
+- Last seen: **2026-06-19** (32 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/W25_copilot.md`
 ### R-f1afae75e8 - Weekly project governance forums (status, CR review, risk review)
 
 - Workstream: **GBO Batch Transition**
-- Owner: **Balaji Ravi** _(confidence: medium)_
+- Owner: **Birger Fjaellman** _(confidence: medium)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: Manish, Rasheersh
 - Severity: **Medium**
@@ -1532,22 +2225,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-19** (32 days ago)
 - Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [FOLLOW_UP] P2 - Confirm with Balaji Ravi why GBO Batch Transition remains unresolved after 32 days (owner: Balaji Ravi, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W25_copilot.md`
-### R-f02ad44a72 - Weekly project status, CR review, and risk review governance forums
-
-- Workstream: **CMDB Mapping**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **Medium**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why GBO Batch Transition remains unresolved after 32 days (owner: Birger Fjaellman, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
@@ -1565,22 +2243,22 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
-### R-fff605c5dd - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
+### R-b882fa398a - Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
 
-- Workstream: **ADX Registration**
+- Workstream: **GBO Batch Transition**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: Manish, Rasheersh
 - Severity: **Medium**
 - Status: **open**
 - Trend: **decreasing**
 - Time to escalation: **0 day(s)**
 - First seen: **2026-06-26** (25 days ago)
 - Last seen: **2026-06-26** (25 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for ADX Registration risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Recommended action: [DECIDE] P2 - Assign an owner for GBO Batch Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `03-reporting/weekly/2026-W26.md`
-### R-a18adafc06 - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...
+### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
 
 - Workstream: **Capacity Management**
 - Owner: **Unassigned** _(confidence: low)_
@@ -1595,22 +2273,7 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **Medium**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **3 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
-### R-59131ed59a - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...
+### R-a18adafc06 - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d...
 
 - Workstream: **Capacity Management**
 - Owner: **Unassigned** _(confidence: low)_
@@ -1638,6 +2301,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - First seen: **2026-07-13** (8 days ago)
 - Last seen: **2026-07-13** (8 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
+### R-2fc8ec9c90 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **3 day(s)**
+- First seen: **2026-07-13** (8 days ago)
+- Last seen: **2026-07-13** (8 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
 ### R-5a110d3d32 - CMDB serves as a foundational dependency for downstream operational initiatives. 【6-0fbe0a】
@@ -1700,21 +2378,6 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-2884ed4872 - CMDB Mapping appears to be the strongest dependency across nearly every other workstream
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **Medium**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **5 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
 ### R-ad7b2a1025 - `BLOCKED` items → Blockers panel (visible but grouped; David watches for state changes)
 
 - Workstream: **-**
@@ -1730,6 +2393,21 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `docs/matryoshka-v4-spec.md`
+### R-2884ed4872 - CMDB Mapping appears to be the strongest dependency across nearly every other workstream
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **5 day(s)**
+- First seen: **2026-07-17** (4 days ago)
+- Last seen: **2026-07-17** (4 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
 ### R-6f6e73c0c0 - Dependency relationships
 
 - Workstream: **Capacity Management**
@@ -1760,6 +2438,36 @@ Total: **46** risks (45 open / 1 closed / 26 high-severity / 34 rising)
 - Recommended action: [FOLLOW_UP] P4 - Monitor GBO Batch Transition - re-check in 7 days (owner: Birger Fjaellman, by 2026-07-28)
 - Sources:
   - `01-inbox/inbox.md`
+### R-8d4d49e7c3 - [ISSUE] (risk/High) Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehea...
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **7 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
+### R-d93f8c71e6 - Next: Assign an owner for ADX Registration risk before it can be actioned
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **Medium**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **7 day(s)**
+- First seen: **2026-07-21** (0 days ago)
+- Last seen: **2026-07-21** (0 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `03-reporting/weekly/2026-W30.md`
 
 
 ## Recently Closed Risks
