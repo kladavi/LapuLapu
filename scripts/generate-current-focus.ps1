@@ -1940,6 +1940,88 @@ function Add-TitleDropRecord {
     })
 }
 
+# --- V4.0 Sprint 20 - Source Classification --------------------------------
+# Per-file gating that determines whether the decision / risk / action
+# extractors are allowed to fire against a given source. Prevents pipeline
+# feedback loops (weekly report Next: strings re-ingested as new risks) and
+# keeps meeting transcripts / commentary from being auto-promoted into
+# decisions or risks.
+#
+# Classes (path-prefix based):
+#   REPORT     -> generator output; CONTEXT only. No decision/risk extraction.
+#   RECAP      -> Copilot activity recap; RISK yes, DECISION no, ACTION no.
+#                 Transcripts surface risks but shouldn't create decisions.
+#   GOVERNANCE -> 00-context/*.md governance/config; CONTEXT only.
+#   DOCS       -> docs/*.md; CONTEXT only.
+#   WORK       -> 02-work/*, 90-assets/*, and inbox items; full extraction.
+#   INBOX      -> 01-inbox/* (root, not the copilot-activity sub-tree);
+#                 full extraction - this is where decisions live.
+
+$script:SOURCE_CLASS_DROPS = @{
+    decision = 0
+    risk     = 0
+    action   = 0
+    files    = @{}
+}
+
+function Get-SourceClass {
+    <#
+        V4.0 Sprint 20: returns @{
+          class            = 'REPORT|RECAP|GOVERNANCE|DOCS|WORK|INBOX'
+          allowDecisions   = <bool>
+          allowRisks       = <bool>
+          allowActions     = <bool>
+        } for a given repo-relative path.
+    #>
+    param([string] $RelPath)
+
+    $norm = ($RelPath -replace '\\', '/').ToLowerInvariant()
+
+    # Generator output - never re-ingest.
+    if ($norm -match '^03-reporting/') {
+        return @{ class = 'REPORT';     allowDecisions = $false; allowRisks = $false; allowActions = $false }
+    }
+    if ($norm -match '^00-context/generated/') {
+        return @{ class = 'GENERATED';  allowDecisions = $false; allowRisks = $false; allowActions = $false }
+    }
+    # Copilot recap - risks surface here but not decisions/actions (transcripts).
+    if ($norm -match '^01-inbox/copilot-activity/') {
+        return @{ class = 'RECAP';      allowDecisions = $false; allowRisks = $true;  allowActions = $false }
+    }
+    # Governance / config markdown at 00-context root - context only.
+    if ($norm -match '^00-context/[^/]+\.md$') {
+        return @{ class = 'GOVERNANCE'; allowDecisions = $false; allowRisks = $false; allowActions = $false }
+    }
+    # Design docs - context only.
+    if ($norm -match '^docs/') {
+        return @{ class = 'DOCS';       allowDecisions = $false; allowRisks = $false; allowActions = $false }
+    }
+    # 02-work is the primary decision/risk home.
+    if ($norm -match '^02-work/') {
+        return @{ class = 'WORK';       allowDecisions = $true;  allowRisks = $true;  allowActions = $true }
+    }
+    # 90-assets contains historic decision records + org data.
+    if ($norm -match '^90-assets/') {
+        return @{ class = 'ASSETS';     allowDecisions = $true;  allowRisks = $true;  allowActions = $true }
+    }
+    # Inbox (non-recap sub-tree) - decisions land here via meeting notes/emails.
+    if ($norm -match '^01-inbox/') {
+        return @{ class = 'INBOX';      allowDecisions = $true;  allowRisks = $true;  allowActions = $true }
+    }
+    # Default: permissive but the extractor's own guards still apply.
+    return @{ class = 'OTHER';          allowDecisions = $true;  allowRisks = $true;  allowActions = $true }
+}
+
+function Add-SourceClassDrop {
+    param([string] $Kind, [string] $SourcePath, [string] $Class)
+    if ($Kind -eq 'decision') { $script:SOURCE_CLASS_DROPS.decision += 1 }
+    if ($Kind -eq 'risk')     { $script:SOURCE_CLASS_DROPS.risk     += 1 }
+    if ($Kind -eq 'action')   { $script:SOURCE_CLASS_DROPS.action   += 1 }
+    if (-not $script:SOURCE_CLASS_DROPS.files.ContainsKey($SourcePath)) {
+        $script:SOURCE_CLASS_DROPS.files[$SourcePath] = $Class
+    }
+}
+
 function Test-MatryoshkaItem {
     <#
         V4.0 Phase 1 validator. Given a candidate hashtable with MatryoshkaItem-
@@ -3867,6 +3949,13 @@ function Get-DecisionRegistry {
 
     foreach ($rec in $Records) {
         if (-not $rec.IncludeForContext) { continue }
+        # V4.0 Sprint 20: source classification - skip files where decision
+        # extraction is not permitted (reports, recaps, docs, governance).
+        $srcClass = Get-SourceClass -RelPath $rec.RelPath
+        if (-not $srcClass.allowDecisions) {
+            Add-SourceClassDrop -Kind 'decision' -SourcePath $rec.RelPath -Class $srcClass.class
+            continue
+        }
         try {
             $content = Get-Content -LiteralPath $rec.FullPath -Raw -Encoding UTF8 -ErrorAction Stop
         } catch { continue }
@@ -4971,6 +5060,13 @@ function Get-RiskRegister {
 
     foreach ($rec in $Records) {
         if (-not $rec.IncludeForContext) { continue }
+        # V4.0 Sprint 20: source classification - skip files where risk
+        # extraction is not permitted (reports, docs, governance).
+        $srcClass = Get-SourceClass -RelPath $rec.RelPath
+        if (-not $srcClass.allowRisks) {
+            Add-SourceClassDrop -Kind 'risk' -SourcePath $rec.RelPath -Class $srcClass.class
+            continue
+        }
         try {
             $content = Get-Content -LiteralPath $rec.FullPath -Raw -Encoding UTF8 -ErrorAction Stop
         } catch { continue }
@@ -6675,6 +6771,12 @@ if ($titleDrops.Count -gt 0) {
 } else {
     Write-Host "Title normalization: 0 candidates dropped" -ForegroundColor Yellow
 }
+
+# V4.0 Sprint 20: report Source-Classification skips for the pipeline log.
+$scd = $script:SOURCE_CLASS_DROPS
+$scFiles = ($scd.files.GetEnumerator() | Group-Object { $_.Value } | Sort-Object Count -Descending | Select-Object -First 4 | ForEach-Object { "$($_.Name)=$($_.Count)" })
+Write-Host ("Source classification: skipped {0} decision-file scan(s) + {1} risk-file scan(s); classes: {2}" -f `
+    $scd.decision, $scd.risk, ($scFiles -join ', ')) -ForegroundColor Yellow
 
 # Summary to console
 Write-Host ""
