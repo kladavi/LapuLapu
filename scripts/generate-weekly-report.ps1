@@ -315,19 +315,159 @@ $sb = [System.Text.StringBuilder]::new()
 [void]$sb.AppendLine()
 [void]$sb.AppendLine('---')
 
-# --- Executive Summary skeleton --------------------------------------------
+# --- Executive Summary (V4.0 Sprint 18: automated from canonical items) ---
+# Groups items by primary objective (O1/O3/O4/O6 map to the 4 headline
+# pillars). Composes 1-2 sentence narratives per pillar from the top-scoring
+# item's whyItMatters + a delta callout when new items arrived this week.
+
+# Objective code -> display header (order matters for output layout)
+$objectiveHeaders = [ordered]@{
+    'O1' = 'Frictionless Customer Experience'
+    'O4' = 'Robust Technical Core'
+    'O3' = 'Outstanding Colleague Experience'
+    'O6' = 'Technology Transformation through AI & Automation'
+}
+
+# Build workstream-name -> primary objective (first-listed wins).
+$wsObjective = @{}
+foreach ($ws in @($focus.workstreams)) {
+    $objs = @($ws.primary_objectives)
+    if ($objs.Count -gt 0) {
+        $wsObjective[[string]$ws.name] = [string]$objs[0]
+    }
+}
+
+function Get-ItemNarrative {
+    <#
+        Extracts a compact narrative fragment from an item for the executive
+        summary. Only accepts Sprint 15 Tier 1/2/3 extractions
+        (whyItMattersConfidence >= 0.6). T4 context fallbacks are excluded
+        because they surface source-markdown noise. Returns '' when no clean
+        semantic why is available.
+    #>
+    param($Item)
+    $why  = if ($Item.whyItMatters)           { [string]$Item.whyItMatters }           else { '' }
+    $conf = if ($Item.whyItMattersConfidence) { [double]$Item.whyItMattersConfidence } else { 0.0 }
+    if (-not $why -or $conf -lt 0.6) { return '' }
+
+    # Cleanup pass.
+    $t = ($why -replace '\s+', ' ').Trim()
+    $t = $t -replace '^\s*(?:\*|\-|•|##+|\[[^\]]*\])\s+', ''
+    $t = $t -replace '^\s*"[^"]{1,40}"\s*:\s*[0-9.]+\s*', ''
+    $t = $t -replace '\*\*', ''
+    $t = $t.Trim().TrimEnd('.').Trim(':').Trim()
+
+    if ($t.Length -lt 25) { return '' }
+    $letterCount = ([regex]::Matches($t, '[A-Za-z]')).Count
+    if ($letterCount -lt 20) { return '' }
+    $letterRatio = if ($t.Length -gt 0) { $letterCount / [double]$t.Length } else { 0.0 }
+    if ($letterRatio -lt 0.55) { return '' }
+
+    if ($t.Length -gt 180) { $t = $t.Substring(0, 179) + '…' }
+    return $t + '.'
+}
+
+function Get-ObjectiveNarrative {
+    <#
+        Composes a 1-3 sentence narrative for a single objective, sourced from
+        the top 2-3 highest-scoring items in workstreams belonging to that
+        objective. Returns an empty string when no items are in scope.
+    #>
+    param([string] $ObjCode, [object[]] $CandidatePool, [hashtable] $WsObjective)
+
+    $inScope = @($CandidatePool | Where-Object {
+        $ws = if ($_.workstream) { [string]$_.workstream } else { '' }
+        $WsObjective[$ws] -eq $ObjCode
+    })
+    if ($inScope.Count -eq 0) { return '' }
+
+    $ranked = @($inScope | Sort-Object { -[int]$_.priorityScore })
+    $top    = @($ranked | Select-Object -First 3)
+
+    $sentences = [System.Collections.Generic.List[string]]::new()
+    $seen      = [System.Collections.Generic.HashSet[string]]::new()
+    foreach ($it in $top) {
+        $frag = Get-ItemNarrative -Item $it
+        if (-not $frag) { continue }
+        $key = $frag.Substring(0, [Math]::Min(80, $frag.Length)).ToLowerInvariant()
+        if (-not $seen.Add($key)) { continue }
+        # Prepend workstream tag for readability.
+        $ws = if ($it.workstream) { [string]$it.workstream } else { '' }
+        $tag = if ($ws) { "**${ws}**: " } else { '' }
+        [void]$sentences.Add($tag + $frag)
+        if ($sentences.Count -ge 3) { break }
+    }
+    if ($sentences.Count -eq 0) { return '' }
+    return ($sentences -join ' ')
+}
+
+# Pool: any item that passed the confidence gate above (decisions + risks).
+$execPool = @($decisions + $risks)
+
 [void]$sb.AppendLine()
 [void]$sb.AppendLine('**Executive Summary**')
 [void]$sb.AppendLine()
-[void]$sb.AppendLine('> _This section is a structural placeholder. Fill in with 2-3 sentence narrative per objective._')
+[void]$sb.AppendLine('> _Auto-generated from canonical Matryoshka items. Adjust tone before publishing._')
 [void]$sb.AppendLine()
-foreach ($obj in @(
-    'Frictionless Customer Experience',
-    'Robust Technical Core',
-    'Outstanding Colleague Experience',
-    'Technology Transformation through AI & Automation'
-)) {
-    [void]$sb.AppendLine(('**{0}:** _(narrative)_' -f $obj))
+
+foreach ($code in $objectiveHeaders.Keys) {
+    $header    = $objectiveHeaders[$code]
+    $narrative = Get-ObjectiveNarrative -ObjCode $code -CandidatePool $execPool -WsObjective $wsObjective
+    if (-not $narrative) {
+        # Count how many items belong to this objective so the reader knows
+        # whether "no narrative" means "nothing here" vs "nothing extractable".
+        $ct = @($execPool | Where-Object { $wsObjective[[string]$_.workstream] -eq $code }).Count
+        if ($ct -gt 0) {
+            $narrative = "_${ct} item(s) in scope but no high-confidence semantic extraction available - see detailed sections below._"
+        } else {
+            $narrative = '_No signals surfaced this week._'
+        }
+    }
+    [void]$sb.AppendLine(('**{0}:** {1}' -f $header, $narrative))
+    [void]$sb.AppendLine()
+}
+
+# --- Top Risks / Top Decisions / New Issues / Workstreams Requiring Attention ---
+$topRisks     = @($risks     | Sort-Object { -[int]$_.priorityScore } | Select-Object -First 5)
+$topDecisions = @($decisions | Sort-Object { -[int]$_.priorityScore } | Select-Object -First 5)
+$newItems     = @($execPool  | Where-Object { Test-NewThisWeek -Item $_ } | Sort-Object { -[int]$_.priorityScore } | Select-Object -First 6)
+$attentionWs  = @($focus.workstreams | Where-Object { $_.health -and $_.health.status -eq 'Red' } | Sort-Object { -[double]$_.score })
+
+if ($topRisks.Count -gt 0) {
+    [void]$sb.AppendLine('**Top Risks**')
+    foreach ($r in $topRisks) {
+        $why = Get-ItemNarrative -Item $r
+        $tag = if ($why) { " — $why" } else { '' }
+        [void]$sb.AppendLine(('- [{0}] {1} (score {2}){3}' -f `
+            ([string]$r.workstream), [string]$r.title, [int]$r.priorityScore, $tag))
+    }
+    [void]$sb.AppendLine()
+}
+if ($topDecisions.Count -gt 0) {
+    [void]$sb.AppendLine('**Top Decisions**')
+    foreach ($d in $topDecisions) {
+        $why = Get-ItemNarrative -Item $d
+        $tag = if ($why) { " — $why" } else { '' }
+        [void]$sb.AppendLine(('- [{0}] {1} (score {2}){3}' -f `
+            ([string]$d.workstream), [string]$d.title, [int]$d.priorityScore, $tag))
+    }
+    [void]$sb.AppendLine()
+}
+if ($newItems.Count -gt 0) {
+    [void]$sb.AppendLine('**New Issues This Week**')
+    foreach ($n in $newItems) {
+        $kind = if ($n.riskId) { 'risk' } elseif ($n.decisionId) { 'decision' } else { 'item' }
+        [void]$sb.AppendLine(('- [NEW] [{0}] ({1}) {2} (score {3})' -f `
+            ([string]$n.workstream), $kind, [string]$n.title, [int]$n.priorityScore))
+    }
+    [void]$sb.AppendLine()
+}
+if ($attentionWs.Count -gt 0) {
+    [void]$sb.AppendLine('**Workstreams Requiring Attention**')
+    foreach ($ws in $attentionWs) {
+        $reason = if ($ws.health.reason) { [string]$ws.health.reason } else { 'multiple red signals' }
+        [void]$sb.AppendLine(('- **{0}** ({1}) — {2}' -f [string]$ws.name, [string]$ws.category, $reason))
+    }
     [void]$sb.AppendLine()
 }
 [void]$sb.AppendLine('---')
