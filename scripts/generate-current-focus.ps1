@@ -39,6 +39,8 @@ $OUT_REJECTED_MD   = Join-Path $GEN 'rejected-items.md'
 $OUT_REJECTED_JSON = Join-Path $GEN 'rejected-items.json'
 # V4.0 Sprint 16: canonical MatryoshkaItem system-of-record
 $OUT_ITEMS_JSON    = Join-Path $GEN 'matryoshka-items.json'
+# V4.0 Sprint 23: canonical markdown discovery index
+$OUT_INDEX_JSON    = Join-Path $GEN 'matryoshka-index.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -472,6 +474,7 @@ $script:GENERATED_ARTIFACTS = @(
     'rejected-items.md',
     'rejected-items.json',
     'matryoshka-items.json',
+    'matryoshka-index.json',
     'pipeline-health.json'
 )
 
@@ -6921,6 +6924,123 @@ $itemsJson = $itemsReport | ConvertTo-Json -Depth 8
 [System.IO.File]::WriteAllText($OUT_ITEMS_JSON, $itemsJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_ITEMS_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 Write-Host ("Canonical items: {0} total ({1} validated / {2} rejected)" -f $canonicalItems.Count, $validatedItems.Count, $rejectedItems.Count) -ForegroundColor Yellow
+
+# --- V4.0 Sprint 23: Canonical Markdown Index -----------------------------
+# Discovery layer emitted at 00-context/generated/matryoshka-index.json.
+# Two parts:
+#   documents = every durable markdown artifact (frontmatter-scanned)
+#   items     = every canonical Matryoshka item (from $canonicalItems)
+# Enables Sprint 24 Quartz + future navigators to enumerate content without
+# scanning the corpus every time.
+
+function Read-FrontmatterFields {
+    param([string] $AbsPath)
+    try {
+        $raw = Get-Content -LiteralPath $AbsPath -Raw -Encoding UTF8 -ErrorAction Stop
+    } catch { return $null }
+    if ([string]::IsNullOrWhiteSpace($raw)) { return $null }
+    # Must start with '---' followed by content and closing '---'
+    $m = [regex]::Match($raw, '(?s)\A\s*---\s*\r?\n(.+?)\r?\n---\s*\r?\n')
+    if (-not $m.Success) { return $null }
+    $block = $m.Groups[1].Value
+    $out = [ordered]@{}
+    foreach ($line in ($block -split "`r?`n")) {
+        if ($line -match '^\s*#') { continue }
+        $kv = [regex]::Match($line, '^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*(.*)\s*$')
+        if (-not $kv.Success) { continue }
+        $key = $kv.Groups[1].Value
+        $val = $kv.Groups[2].Value.Trim()
+        # Strip surrounding quotes if present.
+        if ($val -match '^"(.*)"$') { $val = $Matches[1] }
+        elseif ($val -match "^'(.*)'\s*$") { $val = $Matches[1] }
+        $out[$key] = $val
+    }
+    return $out
+}
+
+$indexDocuments = [System.Collections.Generic.List[hashtable]]::new()
+
+# Scan durable markdown artifacts across known content locations.
+$indexScanRoots = @(
+    (Join-Path $ROOT '00-context\generated'),
+    (Join-Path $ROOT '03-reporting\weekly'),
+    (Join-Path $ROOT '01-inbox\copilot-activity'),
+    (Join-Path $ROOT '02-work')
+)
+foreach ($root in $indexScanRoots) {
+    if (-not (Test-Path $root)) { continue }
+    $files = @(Get-ChildItem -LiteralPath $root -Recurse -File -Filter '*.md' -ErrorAction SilentlyContinue)
+    foreach ($f in $files) {
+        $rel = ($f.FullName.Replace($ROOT, '').TrimStart('\','/')) -replace '\\', '/'
+        $fm  = Read-FrontmatterFields -AbsPath $f.FullName
+        if ($fm) {
+            $entry = [ordered]@{
+                path       = $rel
+                type       = if ($fm.Contains('type'))       { [string]$fm['type'] }       else { 'unknown' }
+                title      = if ($fm.Contains('title'))      { [string]$fm['title'] }      else { $f.BaseName }
+                generated  = if ($fm.Contains('generated'))  { [string]$fm['generated'] }  else { if ($fm.Contains('generatedAt')) { [string]$fm['generatedAt'] } else { '' } }
+                generator  = if ($fm.Contains('generator'))  { [string]$fm['generator'] }  else { '' }
+                version    = if ($fm.Contains('version'))    { [string]$fm['version'] }    else { '' }
+                workstream = if ($fm.Contains('workstream')) { [string]$fm['workstream'] } else { '' }
+                status     = if ($fm.Contains('status'))     { [string]$fm['status'] }     else { '' }
+                weekId     = if ($fm.Contains('weekId'))     { [string]$fm['weekId'] }     else { '' }
+                lastWrite  = $f.LastWriteTime.ToString('yyyy-MM-ddTHH:mm:ss')
+                size       = [int]$f.Length
+            }
+        } else {
+            # Fallback: still index the file (without a type) so navigators can see it exists.
+            $entry = [ordered]@{
+                path       = $rel
+                type       = 'no-frontmatter'
+                title      = $f.BaseName
+                generated  = ''
+                generator  = ''
+                version    = ''
+                workstream = ''
+                status     = ''
+                weekId     = ''
+                lastWrite  = $f.LastWriteTime.ToString('yyyy-MM-ddTHH:mm:ss')
+                size       = [int]$f.Length
+            }
+        }
+        [void]$indexDocuments.Add($entry)
+    }
+}
+
+# Compact item entries: id + type + workstream + status + priorityScore + path
+$indexItems = @($canonicalItems | ForEach-Object {
+    [ordered]@{
+        id            = [string]$_.id
+        type          = [string]$_.type
+        title         = [string]$_.title
+        workstream    = [string]$_.workstream
+        owner         = [string]$_.owner
+        status        = [string]$_.status
+        priorityScore = [int]$_.priority_score
+        validated     = [bool]$_.validated
+        source        = [string]$_.source
+        # Cross-reference back to whichever registry MD contains it.
+        indexPath     = if ($_.type -eq 'decision') { '00-context/generated/decision-registry.md#' + $_.id } elseif ($_.type -eq 'risk') { '00-context/generated/risk-register.md#' + $_.id } else { '' }
+    }
+})
+
+$indexReport = [ordered]@{
+    generated = $generatedIso
+    generator = 'scripts/generate-current-focus.ps1'
+    version   = 'V4.0-sprint23'
+    schema    = 'ui/src/lib/matryoshka-item.ts (MatryoshkaItem)'
+    totals    = [ordered]@{
+        documents = $indexDocuments.Count
+        items     = $indexItems.Count
+        byDocType = ($indexDocuments | Group-Object type | Sort-Object Name | ForEach-Object { @{ type = $_.Name; count = $_.Count } })
+    }
+    documents = @($indexDocuments | Sort-Object path)
+    items     = @($indexItems | Sort-Object { -[int]$_.priorityScore })
+}
+$indexJson = $indexReport | ConvertTo-Json -Depth 8
+[System.IO.File]::WriteAllText($OUT_INDEX_JSON, $indexJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_INDEX_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+Write-Host ("Canonical index: {0} documents + {1} items indexed" -f $indexDocuments.Count, $indexItems.Count) -ForegroundColor Yellow
 
 # V4.0 Sprint 19: report Corpus title-normalization drops for the pipeline log.
 $titleDrops = @($script:MAT_TITLE_DROPS)

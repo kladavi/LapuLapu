@@ -3,7 +3,7 @@
 type: rejected-items
 title: "Rejected Items (validator v2)"
 generator: scripts/generate-current-focus.ps1
-generated: 2026-07-21T14:34:09
+generated: 2026-07-21T14:47:54
 version: V4.0-sprint22
 schema: ui/src/lib/matryoshka-item.ts
 accepted_count: 15
@@ -12,7 +12,7 @@ rejected_count: 25
 ---
 # V4.0 Phase 1 - Rejected Items
 
-_Generated: 2026-07-21 14:34_
+_Generated: 2026-07-21 14:47_
 
 Validated **40** live decision/risk candidates against the V4.0 canonical schema. **15** pass; **25** need fixing before the V4.0 fail-closed emitters land.
 
@@ -26,9 +26,23 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 
 ## Rejections (top 30)
 
+### decision D-6f81d99006 - Rapid Recovery
+
+- **Title:** D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+
 ### decision D-b27c5d17f9 - 
 
 - **Title:** D001 — Deferred: Ad-Hoc Dashboard Request from Marketing
+- **Owner:** David Klan
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+
+### decision D-f91314563c - GBO Batch Transition
+
+- **Title:** D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline
 - **Owner:** David Klan
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -47,30 +61,16 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-6f81d99006 - Rapid Recovery
+### risk R-f386376f94 - 
 
-- **Title:** D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
+- **Title:** Standardization of templates, CI identification, and escalation procedures to reduce
 - **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-f91314563c - GBO Batch Transition
-
-- **Title:** D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline
-- **Owner:** David Klan
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
 ### risk R-cd89918f9c - Rapid Recovery
 
 - **Title:** Review and operationalize the vendor escalation format
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-f386376f94 - 
-
-- **Title:** Standardization of templates, CI identification, and escalation procedures to reduce
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -82,16 +82,16 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-42b8e43469 - Rapid Recovery
+### risk R-121760730c - Capacity Management
 
-- **Title:** The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati
+- **Title:** MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-89b7b9975e - Rapid Recovery
+### risk R-42b8e43469 - Rapid Recovery
 
-- **Title:** Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement
+- **Title:** The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -103,9 +103,9 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-121760730c - Capacity Management
+### risk R-89b7b9975e - Rapid Recovery
 
-- **Title:** MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
+- **Title:** Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -117,9 +117,9 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-99ac5e814c - Rapid Recovery
+### risk R-38e1cf13ff - GOCC Transition
 
-- **Title:** RRP Tabletop Exercise Planning: David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a
+- **Title:** Team to secure contact + escalation path
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -131,13 +131,6 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-38e1cf13ff - GOCC Transition
-
-- **Title:** Team to secure contact + escalation path
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
 ### risk R-b8d4414c4c - 
 
 - **Title:** Continue escalation on VNet issues
@@ -145,9 +138,9 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-a3a724c1be - 
+### risk R-99ac5e814c - Rapid Recovery
 
-- **Title:** Validate escalation paths
+- **Title:** RRP Tabletop Exercise Planning: David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -155,6 +148,13 @@ Validated **40** live decision/risk candidates against the V4.0 canonical schema
 ### risk R-1de6e7cdee - Rapid Recovery
 
 - **Title:** Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+
+### risk R-a3a724c1be - 
+
+- **Title:** Validate escalation paths
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
