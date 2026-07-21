@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T14:34:09",
+  "generated": "2026-07-21T14:47:54",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
@@ -12,24 +12,10 @@
   },
   "delayedDecisions": [
     {
-      "id": "D-e275b159e5",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "workstream": "GOCC Transition",
-      "owner": "Birger Fjaellman",
-      "ageDays": 18
-    },
-    {
-      "id": "D-3ced6cbb47",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "workstream": "Developer XP Dashboard",
+      "id": "D-6f81d99006",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
-      "ageDays": 18
-    },
-    {
-      "id": "D-30ae77972e",
-      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
       "ageDays": 18
     },
     {
@@ -40,10 +26,10 @@
       "ageDays": 18
     },
     {
-      "id": "D-6f81d99006",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
+      "id": "D-f91314563c",
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "workstream": "GBO Batch Transition",
+      "owner": "David Klan",
       "ageDays": 18
     },
     {
@@ -54,10 +40,24 @@
       "ageDays": 18
     },
     {
-      "id": "D-f91314563c",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "id": "D-e275b159e5",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "workstream": "GOCC Transition",
+      "owner": "Birger Fjaellman",
+      "ageDays": 18
+    },
+    {
+      "id": "D-30ae77972e",
+      "title": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
       "workstream": "GBO Batch Transition",
-      "owner": "David Klan",
+      "owner": "Balaji Ravi",
+      "ageDays": 18
+    },
+    {
+      "id": "D-3ced6cbb47",
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
       "ageDays": 18
     }
   ],
@@ -67,16 +67,16 @@
   "stalePendingByWorkstream": [],
   "highSeverityAgedRisks": [
     {
-      "id": "R-cd89918f9c",
-      "title": "Review and operationalize the vendor escalation format",
-      "workstream": "Rapid Recovery",
+      "id": "R-f386376f94",
+      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
+      "workstream": "",
       "owner": "Unassigned",
       "ageDays": 91
     },
     {
-      "id": "R-f386376f94",
-      "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
-      "workstream": "",
+      "id": "R-cd89918f9c",
+      "title": "Review and operationalize the vendor escalation format",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "ageDays": 91
     }
