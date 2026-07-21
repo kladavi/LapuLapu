@@ -1840,6 +1840,106 @@ $script:MAT_VAGUE_VERBS_REGEX   = '(?i)\b(look into|handle|touch base|circle bac
 $script:MAT_IMPACT_WORDS_REGEX  = '(?i)\b(because|so that|otherwise|risk|impact|blocks|delays|prevents|enables|requires|deadline|outcome|drives|unblocks|depends on)\b'
 $script:MAT_BANNED_TITLE_REGEX  = '(?i)^\s*(escalate|todo|fix)\s*:'
 
+# --- V4.0 Sprint 19 - Corpus Title Normalization ---------------------------
+# Applied at decision + risk extraction time to eliminate malformed titles
+# BEFORE they enter the canonical model. Two-stage:
+#   1. Normalize-CorpusTitle: strip source-markup noise (bold, tags, prefixes)
+#   2. Test-CorpusTitleValid: reject titles that are still garbage after cleanup
+# Extraction sites `continue` past any candidate that fails validation so
+# downstream consumers (registry, matryoshka-items.json, weekly report,
+# dashboard) never see the noise. Drop counts are logged to pipeline output.
+
+$script:MAT_TITLE_STRIP_TAGS_REGEX     = '(?i)\s*\[(?:ISSUE|NEW|WIP|TODO|BLOCKED|DRAFT|DEFERRED|CLOSED|OPEN|risk[^\]]*|decision[^\]]*|action[^\]]*|score[^\]]*)\]\s*'
+$script:MAT_TITLE_STRIP_SCORE_REGEX    = '(?i)\s*[\(\[]?score\s*\d+[\)\]]?\s*'
+$script:MAT_TITLE_STRIP_OWNER_REGEX    = '(?i)\s+[-—–]?\s*owner\s*:\s*[^;\r\n]+'
+$script:MAT_TITLE_STRIP_SEVERITY_REGEX = '(?i)\s*\((?:risk|decision|action|item)/[a-z]+\)\s*'
+$script:MAT_TITLE_STRIP_META_REGEX     = '(?i)\s*(?:next\s*:|source\s*:|via\s*:|by\s*:|conf\s*:|generated_?on\s*:).*$'
+$script:MAT_TITLE_STRIP_ELLIPSIS       = '(?:\s*(?:\.{3}|…)\s*[-—–]?.*)$'
+
+function Normalize-CorpusTitle {
+    <#
+        V4.0 Sprint 19: strips known-noisy markup fragments from a raw title
+        candidate BEFORE it enters the canonical model. Returns the cleaned
+        string. Idempotent - running twice produces the same result.
+    #>
+    param([string] $Raw)
+    if ([string]::IsNullOrWhiteSpace($Raw)) { return '' }
+    $t = ($Raw -replace '\s+', ' ').Trim()
+    # Repeat until stable so nested `[ISSUE] [ISSUE]` gets fully unwound.
+    for ($i = 0; $i -lt 3; $i++) {
+        $before = $t
+        $t = $t -replace $script:MAT_TITLE_STRIP_TAGS_REGEX,     ' '
+        $t = $t -replace $script:MAT_TITLE_STRIP_SCORE_REGEX,    ' '
+        $t = $t -replace $script:MAT_TITLE_STRIP_OWNER_REGEX,    ''
+        $t = $t -replace $script:MAT_TITLE_STRIP_SEVERITY_REGEX, ' '
+        $t = $t -replace $script:MAT_TITLE_STRIP_META_REGEX,     ''
+        $t = $t -replace '\*\*', ''
+        $t = $t -replace '__', ''
+        $t = $t -replace '`+', ''
+        $t = $t -replace '^\s*(?:#{1,6}|>+)\s*', ''
+        $t = $t -replace '^\s*[-*•]\s+', ''
+        $t = $t -replace $script:MAT_TITLE_STRIP_ELLIPSIS, ''
+        $t = $t.Trim().Trim(':', '—', '-', '–', '.', ',', ';')
+        $t = ($t -replace '\s+', ' ').Trim()
+        if ($t -eq $before) { break }
+    }
+    return $t
+}
+
+function Test-CorpusTitleValid {
+    <#
+        V4.0 Sprint 19: returns @{ ok = <bool>; reason = <string> }.
+        Rejects titles that are still noise after Normalize-CorpusTitle.
+        Rules:
+          - non-empty, >= 3 chars
+          - not entirely numeric / decimal score (0.05, 70, 0.083)
+          - not a bare person name (single stakeholder identifier)
+          - at least 3 meaningful word tokens
+          - at least one alphabetic character
+    #>
+    param([string] $Title, [string[]] $StakeholderNames = @())
+    if ([string]::IsNullOrWhiteSpace($Title)) {
+        return @{ ok = $false; reason = 'empty after normalization' }
+    }
+    $t = $Title.Trim()
+    if ($t.Length -lt 3) {
+        return @{ ok = $false; reason = 'too short' }
+    }
+    if ($t -match '^\s*\-?\d+(?:\.\d+)?\s*$') {
+        return @{ ok = $false; reason = "numeric-only title '$t'" }
+    }
+    if ($t -match '^\s*(?:score\s+)?\d+(?:\.\d+)?\s*(?:score)?\s*$') {
+        return @{ ok = $false; reason = "score fragment '$t'" }
+    }
+    $letterCount = ([regex]::Matches($t, '[A-Za-z]')).Count
+    if ($letterCount -lt 3) {
+        return @{ ok = $false; reason = 'insufficient alphabetic content' }
+    }
+    $words = @($t -split '\s+' | Where-Object { $_ -match '[A-Za-z]' -and $_.Length -ge 2 })
+    if ($words.Count -lt 3) {
+        return @{ ok = $false; reason = "only $($words.Count) meaningful word(s)" }
+    }
+    foreach ($n in $StakeholderNames) {
+        if ($n -and $t -match ('^\s*' + [regex]::Escape($n) + '\s*$')) {
+            return @{ ok = $false; reason = "person-name-only '$n'" }
+        }
+    }
+    return @{ ok = $true; reason = '' }
+}
+
+$script:MAT_TITLE_DROPS = [System.Collections.Generic.List[hashtable]]::new()
+
+function Add-TitleDropRecord {
+    param([string] $Kind, [string] $RawTitle, [string] $NormalizedTitle, [string] $Reason, [string] $SourcePath)
+    [void]$script:MAT_TITLE_DROPS.Add(@{
+        kind       = $Kind
+        rawTitle   = $RawTitle
+        normalized = $NormalizedTitle
+        reason     = $Reason
+        source     = $SourcePath
+    })
+}
+
 function Test-MatryoshkaItem {
     <#
         V4.0 Phase 1 validator. Given a candidate hashtable with MatryoshkaItem-
@@ -3813,6 +3913,17 @@ function Get-DecisionRegistry {
             $titleRaw = if ($currentHeading) { $currentHeading } else { $body }
             $title    = if ($titleRaw.Length -gt 140) { $titleRaw.Substring(0, 137) + '...' } else { $titleRaw }
 
+            # V4.0 Sprint 19: normalize + validate title BEFORE record creation.
+            # Malformed / numeric-only / bare-name titles get dropped and logged
+            # so downstream consumers never see them.
+            $normalizedTitle = Normalize-CorpusTitle -Raw $title
+            $titleCheck = Test-CorpusTitleValid -Title $normalizedTitle -StakeholderNames $stakeKeys
+            if (-not $titleCheck.ok) {
+                Add-TitleDropRecord -Kind 'decision' -RawTitle $title -NormalizedTitle $normalizedTitle -Reason $titleCheck.reason -SourcePath $rec.RelPath
+                continue
+            }
+            $title = $normalizedTitle
+
             # If a "**Summary:** ..." line exists nearby, capture it as the summary.
             $summaryMatch = [regex]::Match($context, '(?im)^\s*\*\*Summary:\*\*\s*(.+?)\s*$')
             $summary = if ($summaryMatch.Success) {
@@ -4907,6 +5018,15 @@ function Get-RiskRegister {
 
             $titleRaw = if ($currentHeading) { $currentHeading } else { $body }
             $title    = if ($titleRaw.Length -gt 140) { $titleRaw.Substring(0, 137) + '...' } else { $titleRaw }
+
+            # V4.0 Sprint 19: normalize + validate risk title BEFORE record creation.
+            $normalizedTitle = Normalize-CorpusTitle -Raw $title
+            $titleCheck = Test-CorpusTitleValid -Title $normalizedTitle -StakeholderNames $stakeKeys
+            if (-not $titleCheck.ok) {
+                Add-TitleDropRecord -Kind 'risk' -RawTitle $title -NormalizedTitle $normalizedTitle -Reason $titleCheck.reason -SourcePath $rec.RelPath
+                continue
+            }
+            $title = $normalizedTitle
 
             # V2.0: extract business impact from context if present.
             $impact = Get-ImpactFromContext -Context $context
@@ -6544,6 +6664,17 @@ $itemsJson = $itemsReport | ConvertTo-Json -Depth 8
 [System.IO.File]::WriteAllText($OUT_ITEMS_JSON, $itemsJson, (New-Object System.Text.UTF8Encoding($false)))
 Write-Host "Written: $($OUT_ITEMS_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 Write-Host ("Canonical items: {0} total ({1} validated / {2} rejected)" -f $canonicalItems.Count, $validatedItems.Count, $rejectedItems.Count) -ForegroundColor Yellow
+
+# V4.0 Sprint 19: report Corpus title-normalization drops for the pipeline log.
+$titleDrops = @($script:MAT_TITLE_DROPS)
+if ($titleDrops.Count -gt 0) {
+    $decDrops  = @($titleDrops | Where-Object { $_.kind -eq 'decision' }).Count
+    $riskDrops = @($titleDrops | Where-Object { $_.kind -eq 'risk' }).Count
+    $topReasons = @($titleDrops | Group-Object { $_.reason } | Sort-Object Count -Descending | Select-Object -First 3 | ForEach-Object { "$($_.Name) ($($_.Count))" })
+    Write-Host ("Title normalization: dropped {0} decision + {1} risk candidate(s); top: {2}" -f $decDrops, $riskDrops, ($topReasons -join '; ')) -ForegroundColor Yellow
+} else {
+    Write-Host "Title normalization: 0 candidates dropped" -ForegroundColor Yellow
+}
 
 # Summary to console
 Write-Host ""
