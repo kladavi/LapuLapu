@@ -3062,6 +3062,69 @@ $script:MAT_WHY_TIER2_REGEX  = '(?i)\b(may delay|will delay|delays|blocks|preven
 $script:MAT_WHY_TIER3_REGEX  = '(?i)\b(unblocks|enables|before .* can (proceed|begin|start)|cannot proceed|pending decision|awaiting decision|until (a |this |the )?decision|approval required|approval needed|holds up|held up|gating)\b'
 $script:MAT_WHY_GENERIC_REGEX = '(?i)^(needs attention|important issue|follow[- ]up required|see above|tbd|placeholder|no summary( available)?|refer to (context|source)|to be determined|update required|pending)[.!?\s]*$'
 
+# --- V4.0 Sprint 21 - Decision Impact Extraction (transformative T3) -------
+# Rewrites decision-impact language into standardized "X cannot proceed
+# until Y" form, producing cleaner sentences than the raw-sentence extraction
+# in Sprint 15. Runs BEFORE the plain-sentence Tier 3 fallback.
+#
+# Match patterns produce a rewritten sentence + high confidence (0.80).
+
+function Get-DecisionImpact {
+    <#
+        V4.0 Sprint 21: transformative decision-impact extraction.
+        Returns @{ text = <rewritten sentence>; confidence = <double>; source = 'decision-impact' }
+        or $null when no known pattern matches.
+    #>
+    param([string] $CombinedText, [hashtable] $Entry)
+
+    if ([string]::IsNullOrWhiteSpace($CombinedText)) { return $null }
+
+    # Normalize spacing so multi-line context reads as a single string.
+    $text = ($CombinedText -replace '\s+', ' ').Trim()
+
+    # Extract the DEPENDENT ACTIVITY from common decision-gate phrasings.
+    #   "Decision required before rollout planning"        -> rollout planning
+    #   "Approval needed before migration cutover"         -> migration cutover
+    #   "Approval required before X"                       -> X
+    #   "X is blocked pending (approval|decision)"         -> X (already in form)
+    #   "X depends on this decision"                       -> X
+    #   "Awaiting decision to proceed with X"              -> X
+    #   "X cannot proceed until this decision is made"     -> X (already in form)
+    $patterns = @(
+        @{ regex = '(?i)(?:decision\s+required|approval\s+required|approval\s+needed|sign[- ]?off\s+required|sign[- ]?off\s+needed)\s+(?:before|prior to)\s+([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)(?:[\.\;\,]|$)'
+            template = "{0} cannot proceed until this decision is made"; conf = 0.85 }
+        @{ regex = '(?i)(?:approval\s+needed|approval\s+required)\s+(?:before|prior to)\s+([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)(?:[\.\;\,]|$)'
+            template = "{0} is blocked pending approval"; conf = 0.85 }
+        @{ regex = '(?i)awaiting\s+(?:a\s+|the\s+)?decision\s+(?:to|before|on|about)\s+(?:proceed(?:\s+with)?\s+)?([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)(?:[\.\;\,]|$)'
+            template = "{0} is awaiting this decision"; conf = 0.80 }
+        @{ regex = '(?i)([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)\s+(?:is\s+)?(?:blocked|held\s+up|gated|pending)\s+(?:on|by|pending)?\s*(?:this\s+|the\s+|a\s+)?(?:decision|approval|sign[- ]?off)(?:[\.\;\,]|$)'
+            template = "{0} is blocked pending this decision"; conf = 0.85 }
+        @{ regex = '(?i)([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)\s+(?:depends|hinges)\s+on\s+(?:this\s+|the\s+|a\s+)?decision(?:[\.\;\,]|$)'
+            template = "{0} depends on this decision"; conf = 0.80 }
+        @{ regex = '(?i)(?:need|needs?)\s+(?:to\s+)?(?:decide|approve|sign[- ]?off)\s+(?:on|before)\s+([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)(?:[\.\;\,]|$)'
+            template = "{0} cannot proceed until this decision is made"; conf = 0.80 }
+        @{ regex = '(?i)this\s+decision\s+(?:unblocks|enables|drives|gates)\s+([A-Za-z][A-Za-z0-9\-\s/&]{4,80}?)(?:[\.\;\,]|$)'
+            template = "{0} depends on this decision"; conf = 0.80 }
+    )
+
+    foreach ($p in $patterns) {
+        $m = [regex]::Match($text, $p.regex)
+        if ($m.Success) {
+            $activity = ($m.Groups[1].Value -replace '\s+', ' ').Trim().TrimEnd('.', ',', ';')
+            if ($activity.Length -lt 4) { continue }
+            # Capitalize first letter of the rewritten sentence.
+            if ($activity.Length -gt 0) {
+                $activity = $activity.Substring(0, 1).ToUpperInvariant() + $activity.Substring(1)
+            }
+            $rewritten = ([string]::Format($p.template, $activity)).TrimEnd('.') + '.'
+            if ($rewritten.Length -gt 200) { $rewritten = $rewritten.Substring(0, 199) + '…' }
+            return @{ text = $rewritten; confidence = [double]$p.conf; source = 'decision-impact' }
+        }
+    }
+
+    return $null
+}
+
 function Split-IntoSentences {
     <#
         Deterministic sentence splitter. Splits on . ! ? boundaries.
@@ -3129,7 +3192,9 @@ function Get-WhyItMatters {
     # --- Assemble the source-text pool in preference order.
     $sources = [System.Collections.Generic.List[string]]::new()
     if ($Entry.contextSummary)                                       { [void]$sources.Add([string]$Entry.contextSummary) }
-    if ($Kind -eq 'risk'     -and $Entry.impact)                     { [void]$sources.Add([string]$Entry.impact) }
+    # V4.0 Sprint 21: decisions carry their rationale in `impact` too (populated
+    # by Get-ImpactFromContext scanning **Reason:** / **Request:** markers).
+    if ($Entry.impact)                                               { [void]$sources.Add([string]$Entry.impact) }
     if ($Kind -eq 'decision' -and $Entry.decisionPrompt)             { [void]$sources.Add([string]$Entry.decisionPrompt) }
     if ($Kind -eq 'decision' -and $Entry.decisionSummary)            { [void]$sources.Add([string]$Entry.decisionSummary) }
 
@@ -3140,10 +3205,32 @@ function Get-WhyItMatters {
         return @{ text = ''; confidence = 0.0; source = 'none' }
     }
 
+    # --- Sprint 21: transformative decision-impact rewrite (decisions only) ---
+    # Runs BEFORE tier 1 so a well-known decision-gate pattern gets rewritten
+    # into standardized "X cannot proceed until this decision is made" form
+    # rather than falling through to a raw source sentence.
+    if ($Kind -eq 'decision') {
+        $rewrite = Get-DecisionImpact -CombinedText $combined -Entry $Entry
+        if ($rewrite) { return $rewrite }
+    }
+
     # --- Tier 1: explicit rationale ---
     foreach ($s in $sentences) {
         if ($s -match $script:MAT_WHY_TIER1_REGEX -and -not (Test-GenericWhy -Text $s)) {
             return @{ text = $s; confidence = 0.90; source = 'explicit-rationale' }
+        }
+    }
+
+    # V4.0 Sprint 21: structured **Reason:** marker fallback (decisions only).
+    # Presence of an explicit Reason / Request / Impact marker in the source
+    # (which populates $Entry.impact per Get-ImpactFromContext) is a strong
+    # semantic signal. Pull the first meaningful sentence and return as T3.
+    if ($Kind -eq 'decision' -and $Entry.impact) {
+        $reasonSentences = @(Split-IntoSentences -Text ([string]$Entry.impact))
+        foreach ($s in $reasonSentences) {
+            if (-not (Test-GenericWhy -Text $s)) {
+                return @{ text = $s; confidence = 0.75; source = 'decision-impact' }
+            }
         }
     }
 
@@ -4538,15 +4625,22 @@ function Get-EntryConfidence {
 function Get-ImpactFromContext {
     <#
         Extracts the `**Impact:**` line body from a context block, if present.
-        Falls back to empty string.
+        V4.0 Sprint 21: also falls back to `**Reason:**` and `**Request:**`
+        markers which carry the actual decision rationale in D0xx blocks.
+        Returns empty string when no marker matches.
     #>
     param([string] $Context)
     if ([string]::IsNullOrWhiteSpace($Context)) { return '' }
-    $m = [regex]::Match($Context, '(?im)^\s*(?:[-*>]\s+)?\*\*Impact:\*\*\s*(.+?)\s*$')
-    if (-not $m.Success) { return '' }
-    $val = ($m.Groups[1].Value -replace '\s+', ' ').Trim()
-    if ($val.Length -gt 240) { $val = $val.Substring(0, 237) + '...' }
-    return $val
+    foreach ($label in @('Impact','Reason','Request')) {
+        $pattern = '(?im)^\s*(?:[-*>]\s+)?\*\*' + $label + ':\*\*\s*(.+?)\s*$'
+        $m = [regex]::Match($Context, $pattern)
+        if ($m.Success) {
+            $val = ($m.Groups[1].Value -replace '\s+', ' ').Trim()
+            if ($val.Length -gt 400) { $val = $val.Substring(0, 397) + '...' }
+            return $val
+        }
+    }
+    return ''
 }
 
 function Get-DeadlineFromContext {
