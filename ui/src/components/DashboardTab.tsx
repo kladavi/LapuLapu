@@ -223,6 +223,9 @@ type DecisionEntry = {
   // V4.0 Sprint 13b
   priorityScore?: number;
   priorityReason?: string;
+  // V4.0 Sprint 17
+  priorityReasonBullets?: string[];
+  priorityReasonDebug?: string;
   priorityFactors?: {
     impact?: number;
     ownership?: number;
@@ -298,6 +301,9 @@ type RiskEntry = {
   // V4.0 Sprint 13b
   priorityScore?: number;
   priorityReason?: string;
+  // V4.0 Sprint 17
+  priorityReasonBullets?: string[];
+  priorityReasonDebug?: string;
   priorityFactors?: {
     impact?: number;
     ownership?: number;
@@ -373,6 +379,9 @@ type InboxItem = {
   // V4.0 Sprint 13b
   priorityScore?: number;
   priorityReason?: string;
+  // V4.0 Sprint 17
+  priorityReasonBullets?: string[];
+  priorityReasonDebug?: string;
   priorityFactors?: {
     impact?: number;
     ownership?: number;
@@ -560,6 +569,37 @@ function FocusSignalPills({ signals }: { signals?: FocusSignals }): React.ReactE
         </span>
       ))}
     </span>
+  );
+}
+
+// V4.0 Sprint 17: renders a native <details> disclosure listing the reasons
+// behind a priority score. Bullets are precomputed by the generator and
+// carried on `priorityReasonBullets`. Falls back to the joined
+// `priorityReason` string when bullets are missing (older generator versions).
+function PriorityReasonPopover({
+  bullets,
+  reason,
+}: {
+  bullets?: string[];
+  reason?: string;
+}): React.ReactElement | null {
+  const items = (bullets ?? []).filter((s) => s && s.trim().length > 0);
+  const fallback = items.length === 0 && reason ? reason.trim() : "";
+  if (items.length === 0 && !fallback) return null;
+  return (
+    <details className="inline-block align-middle">
+      <summary
+        className="cursor-pointer text-[10px] uppercase tracking-wide text-th-text-muted hover:text-th-text-primary"
+        style={{ listStyle: "none" }}
+      >
+        why?
+      </summary>
+      <ul className="mt-1 max-w-md list-disc space-y-0.5 rounded border border-th-border bg-th-surface p-2 pl-4 text-[11px] text-th-text-secondary">
+        {items.length > 0
+          ? items.map((b, i) => <li key={i}>{b}</li>)
+          : <li className="list-none whitespace-pre-line">{fallback}</li>}
+      </ul>
+    </details>
   );
 }
 
@@ -1398,6 +1438,7 @@ export function DashboardTab({ onNavigate }: Props) {
                         score {it.priorityScore}
                       </span>
                     )}
+                    <PriorityReasonPopover bullets={it.priorityReasonBullets} reason={it.priorityReason} />
                     <span className="text-th-text-muted">by {it.deadline || it.dueBy || "-"}</span>
                     {typeof it.ageDays === "number" && (
                       <span className="text-th-text-faint">aging {it.ageDays}d</span>
@@ -2082,6 +2123,7 @@ export function DashboardTab({ onNavigate }: Props) {
                         score {d.priorityScore}
                       </span>
                     ) : null}
+                    <PriorityReasonPopover bullets={d.priorityReasonBullets} reason={d.priorityReason} />
                     <span className="tabular-nums text-th-text-muted">
                       Pending {d.decisionAgeDays ?? 0} days
                     </span>
@@ -2361,6 +2403,7 @@ export function DashboardTab({ onNavigate }: Props) {
                           score {r.priorityScore}
                         </span>
                       ) : null}
+                      <PriorityReasonPopover bullets={r.priorityReasonBullets} reason={r.priorityReason} />
                       <span className={`tabular-nums ${t.cls}`} title={t.label}>
                         {t.symbol} {t.label}
                       </span>

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T13:03:44",
+  "generated": "2026-07-21T13:09:56",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "executiveSnapshot": "The Lapu-Lapu operating picture shows 8 P1 workstream(s) and 2 watch item(s). 10 workstream(s) show increasing activity in the last 14 days. Top attention today is on MMM L2.",
@@ -13,7 +13,7 @@
       "activityScore": 100.0,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "deltaPercent": 246.4,
+      "deltaPercent": 262.1,
       "overrideApplied": true,
       "overrideReason": "Monitoring maturity remains a core Lapu-Lapu objective and dependency for Rapid Recovery, GOCC and GBO readiness.",
       "whyItMatters": "Monitoring maturity and observability readiness workstream.",
@@ -33,7 +33,7 @@
       "activityScore": 99.5,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "deltaPercent": 208.4,
+      "deltaPercent": 222.5,
       "overrideApplied": true,
       "overrideReason": "Recovery readiness is a core Robust Technical Core deliverable for Gold applications.",
       "whyItMatters": "Recovery readiness for Gold applications and critical operational scenarios.",
@@ -48,12 +48,12 @@
       "id": "gbo-batch-transition",
       "name": "GBO Batch Transition",
       "category": "P1",
-      "attentionScore": 95.5,
+      "attentionScore": 95.6,
       "strategicScore": 90.0,
-      "activityScore": 95.9,
+      "activityScore": 96.1,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "deltaPercent": 194.2,
+      "deltaPercent": 208.1,
       "overrideApplied": true,
       "overrideReason": "Batch transition is a strategic operational model shift with upcoming planning and execution dependencies.",
       "whyItMatters": "Transition of batch operations into the GBO operating model.",
@@ -73,7 +73,7 @@
       "activityScore": 99.5,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "deltaPercent": 208.4,
+      "deltaPercent": 222.5,
       "overrideApplied": false,
       "overrideReason": "",
       "whyItMatters": "Transition of operational support activities to GOCC.",
@@ -88,12 +88,12 @@
       "id": "cmdb-mapping",
       "name": "CMDB Mapping",
       "category": "P1",
-      "attentionScore": 79.5,
+      "attentionScore": 79.6,
       "strategicScore": 80.0,
-      "activityScore": 97.6,
+      "activityScore": 97.7,
       "trendDirection": "increasing",
       "trendSymbol": "↑",
-      "deltaPercent": 238.0,
+      "deltaPercent": 253.6,
       "overrideApplied": false,
       "overrideReason": "",
       "whyItMatters": "Ownership and service relationship foundation for operational readiness.",
@@ -110,7 +110,7 @@
       "id": "mmm-l2",
       "name": "MMM L2",
       "trendSymbol": "↑",
-      "deltaPercent": 246.4,
+      "deltaPercent": 262.1,
       "riskSignals": 42,
       "escalationSignals": 26
     },
@@ -118,7 +118,7 @@
       "id": "rapid-recovery",
       "name": "Rapid Recovery",
       "trendSymbol": "↑",
-      "deltaPercent": 208.4,
+      "deltaPercent": 222.5,
       "riskSignals": 45,
       "escalationSignals": 30
     },
@@ -126,7 +126,7 @@
       "id": "gbo-batch-transition",
       "name": "GBO Batch Transition",
       "trendSymbol": "↑",
-      "deltaPercent": 194.2,
+      "deltaPercent": 208.1,
       "riskSignals": 36,
       "escalationSignals": 21
     },
@@ -134,7 +134,7 @@
       "id": "cyberark-governance",
       "name": "CyberArk Governance",
       "trendSymbol": "↑",
-      "deltaPercent": 465.6,
+      "deltaPercent": 491.9,
       "riskSignals": 17,
       "escalationSignals": 8
     },
@@ -142,47 +142,47 @@
       "id": "gocc-transition",
       "name": "GOCC Transition",
       "trendSymbol": "↑",
-      "deltaPercent": 208.4,
+      "deltaPercent": 222.5,
       "riskSignals": 47,
       "escalationSignals": 33
-    },
-    {
-      "id": "cmdb-mapping",
-      "name": "CMDB Mapping",
-      "trendSymbol": "↑",
-      "deltaPercent": 238.0,
-      "riskSignals": 35,
-      "escalationSignals": 21
     },
     {
       "id": "capacity-management",
       "name": "Capacity Management",
       "trendSymbol": "↑",
-      "deltaPercent": 288.8,
+      "deltaPercent": 307.6,
       "riskSignals": 22,
       "escalationSignals": 12
     },
     {
-      "id": "employee-xp",
-      "name": "Employee XP Dashboard",
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
       "trendSymbol": "↑",
-      "deltaPercent": 276.3,
-      "riskSignals": 37,
-      "escalationSignals": 23
+      "deltaPercent": 253.6,
+      "riskSignals": 35,
+      "escalationSignals": 21
     },
     {
       "id": "developer-xp",
       "name": "Developer XP Dashboard",
       "trendSymbol": "↑",
-      "deltaPercent": 276.3,
+      "deltaPercent": 294.1,
       "riskSignals": 36,
       "escalationSignals": 21
+    },
+    {
+      "id": "employee-xp",
+      "name": "Employee XP Dashboard",
+      "trendSymbol": "↑",
+      "deltaPercent": 294.1,
+      "riskSignals": 37,
+      "escalationSignals": 23
     },
     {
       "id": "adx-registration",
       "name": "ADX Registration",
       "trendSymbol": "↑",
-      "deltaPercent": 276.3,
+      "deltaPercent": 294.1,
       "riskSignals": 29,
       "escalationSignals": 12
     }
@@ -240,26 +240,52 @@
       }
     },
     {
-      "riskId": "R-cd89918f9c",
-      "workstream": "Rapid Recovery",
-      "title": "Review and operationalize the vendor escalation format",
+      "riskId": "R-aa0c3f050b",
+      "workstream": "Capacity Management",
+      "title": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management",
       "owner": "Unassigned",
       "ownerConfidence": "low",
       "escalationPath": [
-        "Birger Fjaellman"
+        "Balaji Ravi"
       ],
       "severity": "High",
-      "trend": "stable",
-      "agingDays": 91,
-      "recencyDays": 91,
-      "firstSeenDate": "2026-04-21",
-      "lastSeenDate": "2026-04-21",
+      "trend": "decreasing",
+      "agingDays": 15,
+      "recencyDays": 15,
+      "firstSeenDate": "2026-07-06",
+      "lastSeenDate": "2026-07-06",
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "subject": "Review and operationalize the vendor escalation format",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "subject": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a ...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-8ad2d2ce2f",
+      "workstream": "Developer XP Dashboard",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "severity": "High",
+      "trend": "increasing",
+      "agingDays": 11,
+      "recencyDays": 11,
+      "firstSeenDate": "2026-07-10",
+      "lastSeenDate": "2026-07-10",
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -290,35 +316,31 @@
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       }
-    },
+    }
+  ],
+  "risksTrendingUp": [
     {
-      "riskId": "R-bafab65c68",
-      "workstream": "Rapid Recovery",
-      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
+      "riskId": "R-8ad2d2ce2f",
+      "workstream": "Developer XP Dashboard",
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
       "owner": "Unassigned",
       "ownerConfidence": "low",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
       "severity": "High",
-      "trend": "increasing",
-      "agingDays": 8,
-      "recencyDays": 8,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
+      "agingDays": 11,
+      "recencyDays": 11,
+      "firstSeenDate": "2026-07-10",
+      "lastSeenDate": "2026-07-10",
       "recommendedAction": {
         "priority": 2,
         "verb": "Investigate",
         "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "subject": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequenc...",
+        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+        "subject": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       }
-    }
-  ],
-  "risksTrendingUp": [
+    },
     {
       "riskId": "R-d7f568105f",
       "workstream": "ADX Registration",
@@ -336,28 +358,6 @@
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for ADX Registration risk before it can be actioned",
         "subject": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium in...",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-2fc8ec9c90",
-      "workstream": "CyberArk Governance",
-      "title": "CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts ...",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "severity": "Medium",
-      "agingDays": 8,
-      "recencyDays": 8,
-      "firstSeenDate": "2026-07-13",
-      "lastSeenDate": "2026-07-13",
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for CyberArk Governance risk before it can be actioned",
-        "subject": "CyberArk / service-account governance remains a material risk theme after a password expiration i...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -408,6 +408,50 @@
       }
     },
     {
+      "riskId": "R-b493137b8f",
+      "workstream": "Rapid Recovery",
+      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "severity": "High",
+      "agingDays": 8,
+      "recencyDays": 8,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "subject": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit e...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-59131ed59a",
+      "workstream": "Capacity Management",
+      "title": "Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f...",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "severity": "Medium",
+      "agingDays": 8,
+      "recencyDays": 8,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "subject": "Capacity Management is strategically important but should remain Watch unless delivery risk incre...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
       "riskId": "R-bafab65c68",
       "workstream": "Rapid Recovery",
       "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
@@ -424,6 +468,28 @@
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
         "subject": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequenc...",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      }
+    },
+    {
+      "riskId": "R-121760730c",
+      "workstream": "Capacity Management",
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "severity": "High",
+      "agingDays": 8,
+      "recencyDays": 8,
+      "firstSeenDate": "2026-07-13",
+      "lastSeenDate": "2026-07-13",
+      "recommendedAction": {
+        "priority": 2,
+        "verb": "Investigate",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "subject": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
@@ -472,72 +538,6 @@
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       }
-    },
-    {
-      "riskId": "R-e3dd5be6ae",
-      "workstream": "CMDB Mapping",
-      "title": "⚠️ Vendor-managed apps without clear escalation model",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "severity": "High",
-      "agingDays": 5,
-      "recencyDays": 5,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for CMDB Mapping risk before it can be actioned",
-        "subject": "⚠️ Vendor-managed apps without clear escalation model",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-601cba16b2",
-      "workstream": "",
-      "title": "⚠️ Dependency on manual URL onboarding",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "severity": "Medium",
-      "agingDays": 5,
-      "recencyDays": 5,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "subject": "⚠️ Dependency on manual URL onboarding",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
-    },
-    {
-      "riskId": "R-7af7bceb58",
-      "workstream": "MMM L2",
-      "title": "⚠️ Auditability concern",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "severity": "Medium",
-      "agingDays": 5,
-      "recencyDays": 5,
-      "firstSeenDate": "2026-07-16",
-      "lastSeenDate": "2026-07-16",
-      "recommendedAction": {
-        "priority": 2,
-        "verb": "Investigate",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
-        "subject": "⚠️ Auditability concern",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
-      }
     }
   ],
   "decisionWatch": [
@@ -567,37 +567,12 @@
       "decisionSignals": 46
     },
     {
-      "id": "cmdb-mapping",
-      "name": "CMDB Mapping",
-      "decisionSignals": 30
+      "id": "capacity-management",
+      "name": "Capacity Management",
+      "decisionSignals": 20
     }
   ],
   "decisionPressure": [
-    {
-      "decisionId": "D-fadd968d28",
-      "workstream": "ADX Registration",
-      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "medium",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "decisionAgeDays": 18,
-      "recencyDays": 18,
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "dateDetected": "2026-07-03",
-      "followUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 18 days without resolution",
-        "subject": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-21",
-        "rationale": "Pending 18 days - direct outreach to owner today."
-      }
-    },
     {
       "decisionId": "D-6f81d99006",
       "workstream": "Rapid Recovery",
@@ -621,6 +596,31 @@
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede action."
+      }
+    },
+    {
+      "decisionId": "D-e275b159e5",
+      "workstream": "GOCC Transition",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+      "owner": "Birger Fjaellman",
+      "ownerConfidence": "medium",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "dateDetected": "2026-07-03",
+      "followUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "FOLLOW_UP",
+        "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 18 days without resolution",
+        "subject": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+        "targetOwner": "Birger Fjaellman",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
@@ -649,12 +649,40 @@
       }
     },
     {
-      "decisionId": "D-9a895e8ecb",
-      "workstream": "",
-      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+      "decisionId": "D-f91314563c",
+      "workstream": "GBO Batch Transition",
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "dateDetected": "2026-07-03",
+      "followUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
+        "subject": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and Septembe...",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
+      }
+    },
+    {
+      "decisionId": "D-64c97dd4cc",
+      "workstream": "Rapid Recovery",
+      "title": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
       "owner": "Birger Fjaellman",
       "ownerConfidence": "high",
-      "escalationPath": [],
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
       "decisionAgeDays": 18,
       "recencyDays": 18,
       "firstSeenDate": "2026-07-03",
@@ -664,11 +692,36 @@
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Birger Fjaellman today - decision on this decision aged 18 days without resolution",
-        "subject": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+        "nextAction": "Contact Birger Fjaellman today - decision on Rapid Recovery aged 18 days without resolution",
+        "subject": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
         "targetOwner": "Birger Fjaellman",
         "dueBy": "2026-07-21",
         "rationale": "Pending 18 days - direct outreach to owner today."
+      }
+    },
+    {
+      "decisionId": "D-7f991874c7",
+      "workstream": "Developer XP Dashboard",
+      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "dateDetected": "2026-07-03",
+      "followUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on Developer XP Dashboard to Balaji Ravi today",
+        "subject": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
       }
     },
     {
@@ -746,32 +799,6 @@
       }
     },
     {
-      "decisionId": "D-f91314563c",
-      "workstream": "GBO Batch Transition",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "owner": "David Klan",
-      "ownerConfidence": "high",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "decisionAgeDays": 18,
-      "recencyDays": 18,
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "dateDetected": "2026-07-03",
-      "followUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
-        "subject": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and Septembe...",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-21",
-        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
-      }
-    },
-    {
       "decisionId": "D-d059b9808f",
       "workstream": "Rapid Recovery",
       "title": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
@@ -794,31 +821,6 @@
         "targetOwner": "David Klan",
         "dueBy": "2026-07-21",
         "rationale": "Pending 18 days - David to escalate to Birger Fjaellman today."
-      }
-    },
-    {
-      "decisionId": "D-3ced6cbb47",
-      "workstream": "Developer XP Dashboard",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "decisionAgeDays": 18,
-      "recencyDays": 18,
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "dateDetected": "2026-07-03",
-      "followUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
-        "subject": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede action."
       }
     }
   ],
@@ -854,21 +856,21 @@
       "category": "P1"
     },
     {
-      "id": "cmdb-mapping",
-      "name": "CMDB Mapping",
-      "escalationSignals": 21,
-      "category": "P1"
-    },
-    {
       "id": "capacity-management",
       "name": "Capacity Management",
       "escalationSignals": 12,
       "category": "Watch"
     },
     {
-      "id": "employee-xp",
-      "name": "Employee XP Dashboard",
-      "escalationSignals": 23,
+      "id": "cmdb-mapping",
+      "name": "CMDB Mapping",
+      "escalationSignals": 21,
+      "category": "P1"
+    },
+    {
+      "id": "developer-xp",
+      "name": "Developer XP Dashboard",
+      "escalationSignals": 21,
       "category": "P1"
     }
   ],

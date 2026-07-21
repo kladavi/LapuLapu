@@ -3449,11 +3449,134 @@ function Get-PriorityScore {
     }
 }
 
+function Get-PriorityReasonBullets {
+    <#
+        V4.0 Sprint 17: builds a human-readable bullet list explaining WHY an
+        item scored what it did. Combines:
+          - the semantic impact statement (whyItMatters, Sprint 15)
+          - the status ladder trigger (matryoshkaStatusReason, Phase 1c)
+          - focus signals (attentionRequired / engaged / awaitingOthers, 13a)
+          - ownership signals (unassigned / suggested owner)
+          - deadline / aging pressure
+
+        Bullets are ordered by discriminating power: whyItMatters first when
+        we have a Tier 1/2/3 extraction, then hard signals (red / breached /
+        high-severity), then engagement, then metadata.
+
+        Returns @{ bullets = <string[]>; reasonText = <bulletized string> }.
+    #>
+    param(
+        [hashtable] $Entry,
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [datetime]  $Now
+    )
+
+    $bullets = [System.Collections.Generic.List[string]]::new()
+
+    # --- WHY: the semantic impact statement (highest signal when confident) ---
+    $why     = if ($Entry.whyItMatters)          { [string]$Entry.whyItMatters }          else { '' }
+    $whyConf = if ($Entry.whyItMattersConfidence){ [double]$Entry.whyItMattersConfidence } else { 0.0 }
+    $whySrc  = if ($Entry.whyItMattersSource)    { [string]$Entry.whyItMattersSource }    else { 'none' }
+    if ($why -and $whyConf -ge 0.5) {
+        # Trim to a compact bullet; drop redundant trailing period.
+        $t = $why -replace '\s+', ' '
+        $t = $t.Trim().TrimEnd('.')
+        if ($t.Length -gt 180) { $t = $t.Substring(0, 179) + '…' }
+        [void]$bullets.Add("Why it matters: $t")
+    }
+
+    # --- HARD status signals ---
+    $status = if ($Entry.matryoshkaStatus) { [string]$Entry.matryoshkaStatus } else { 'green' }
+    $reasonText = if ($Entry.matryoshkaStatusReason) { [string]$Entry.matryoshkaStatusReason } else { '' }
+
+    if ($Kind -eq 'risk' -and $Entry.severity -eq 'High') {
+        [void]$bullets.Add('High-severity risk')
+    }
+    if ($status -eq 'red') {
+        # Surface the underlying red trigger when it's not already implied.
+        if ($reasonText -and $reasonText -notmatch '(?i)high-severity risk') {
+            $short = ($reasonText -split ';')[0].Trim()
+            if ($short) { [void]$bullets.Add("Status RED: $short") }
+        } elseif (-not ($Kind -eq 'risk' -and $Entry.severity -eq 'High')) {
+            [void]$bullets.Add('Status RED')
+        }
+    }
+
+    # --- Deadline pressure (decisions) ---
+    if ($Kind -eq 'decision' -and $Entry.decisionDeadline) {
+        $dlStr = [string]$Entry.decisionDeadline
+        if ($dlStr -match '^\d{4}-\d{2}-\d{2}') {
+            try {
+                $dl = [datetime]::ParseExact($dlStr.Substring(0,10),'yyyy-MM-dd',$null)
+                $daysTo = [int]([Math]::Round(($dl - $Now.Date).TotalDays))
+                if ($daysTo -lt 0)      { [void]$bullets.Add("Deadline breached $([Math]::Abs($daysTo))d ago ($dlStr)") }
+                elseif ($daysTo -le 3)  { [void]$bullets.Add("Deadline in ${daysTo}d ($dlStr)") }
+                elseif ($daysTo -le 7)  { [void]$bullets.Add("Deadline in ${daysTo}d") }
+            } catch { }
+        }
+    }
+
+    # --- Aging (all kinds) ---
+    $ageDays = if ($Kind -eq 'decision' -and $Entry.decisionAgeDays) {
+        [int]$Entry.decisionAgeDays
+    } elseif ($Kind -eq 'risk' -and $Entry.agingDays) {
+        [int]$Entry.agingDays
+    } else { 0 }
+    if ($ageDays -ge 14) {
+        $noun = if ($Kind -eq 'decision') { 'Decision' } else { 'Risk' }
+        [void]$bullets.Add("$noun aged $ageDays days without resolution")
+    }
+
+    # --- Ownership gap ---
+    $owner = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+    if ($owner -match '(?i)^\s*unassigned\s*$') {
+        if ($Entry.suggestedOwner) {
+            [void]$bullets.Add("Owner unassigned (suggested: $($Entry.suggestedOwner))")
+        } else {
+            [void]$bullets.Add('Owner unassigned - needs assignment')
+        }
+    }
+
+    # --- Focus signals (Sprint 13a) ---
+    $sigs = if ($Entry.focusSignals -is [System.Collections.IDictionary]) { $Entry.focusSignals } else { $null }
+    if ($sigs) {
+        if ($sigs.attentionRequired) {
+            $r = if ($sigs.reasons -and $sigs.reasons.attentionRequired) { [string]$sigs.reasons.attentionRequired } else { '' }
+            if ($r) { [void]$bullets.Add("Attention required ($r)") } else { [void]$bullets.Add('Attention required') }
+        }
+        if ($sigs.engaged) {
+            [void]$bullets.Add('Active engagement detected')
+        }
+        if ($sigs.awaitingOthers) {
+            [void]$bullets.Add('Awaiting external party')
+        }
+    }
+
+    # --- Fallback context (only if we produced nothing above) ---
+    if ($bullets.Count -eq 0 -and $why) {
+        $t = $why -replace '\s+', ' '
+        $t = $t.Trim().TrimEnd('.')
+        if ($t.Length -gt 180) { $t = $t.Substring(0, 179) + '…' }
+        [void]$bullets.Add("Context: $t (source: $whySrc)")
+    }
+    if ($bullets.Count -eq 0) {
+        [void]$bullets.Add('No specific triggers - baseline score')
+    }
+
+    $reasonText = ($bullets | ForEach-Object { "- $_" }) -join "`n"
+    return @{
+        bullets    = @($bullets)
+        reasonText = $reasonText
+    }
+}
+
 function Apply-PriorityScore {
     <#
-        V4.0 Sprint 13b orchestrator: stamps `priorityScore` + `priorityReason`
-        (+ `priorityFactors`) on every live decision + risk. Non-destructive.
-        Returns @{ min; max; mean; count } for the pipeline log.
+        V4.0 Sprint 13b + Sprint 17 orchestrator: stamps `priorityScore` +
+        `priorityReason` (human-readable bullets, Sprint 17) +
+        `priorityReasonBullets` (string[]) + `priorityReasonDebug` (raw factor
+        breakdown, Sprint 13b) + `priorityFactors` (numeric) on every live
+        decision + risk. Non-destructive. Returns @{ min; max; mean; count }.
     #>
     param(
         [object[]] $Decisions,
@@ -3467,9 +3590,13 @@ function Apply-PriorityScore {
         foreach ($e in $entries) {
             if (-not $e) { continue }
             $res = Get-PriorityScore -Entry $e -Kind $kind -Now $Now
-            $e.priorityScore   = [int]$res.score
-            $e.priorityReason  = [string]$res.reason
-            $e.priorityFactors = $res.factors
+            $e.priorityScore        = [int]$res.score
+            $e.priorityReasonDebug  = [string]$res.reason   # Sprint 13b factor breakdown
+            $e.priorityFactors      = $res.factors
+            # Sprint 17: human-readable bullets built AFTER whyItMatters + focusSignals stamped.
+            $bulletsRes = Get-PriorityReasonBullets -Entry $e -Kind $kind -Now $Now
+            $e.priorityReasonBullets = @($bulletsRes.bullets)
+            $e.priorityReason        = [string]$bulletsRes.reasonText
             $sum += $res.score
             if ($res.score -lt $min) { $min = $res.score }
             if ($res.score -gt $max) { $max = $res.score }
@@ -4076,6 +4203,8 @@ function Build-DecisionRegistryJson {
             focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
             priorityScore          = if ($e.ContainsKey('priorityScore'))   { [int]$e.priorityScore }   else { 0 }
             priorityReason         = if ($e.ContainsKey('priorityReason'))  { [string]$e.priorityReason } else { '' }
+            priorityReasonBullets  = if ($e.ContainsKey('priorityReasonBullets') -and $e.priorityReasonBullets) { @($e.priorityReasonBullets) } else { @() }
+            priorityReasonDebug    = if ($e.ContainsKey('priorityReasonDebug'))    { [string]$e.priorityReasonDebug }    else { '' }
             priorityFactors        = if ($e.ContainsKey('priorityFactors') -and $e.priorityFactors) { $e.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
             recommendedFollowUp = $e.recommendedFollowUp
         }
@@ -5072,6 +5201,8 @@ function Build-RiskRegisterJson {
             focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
             priorityScore          = if ($e.ContainsKey('priorityScore'))   { [int]$e.priorityScore }   else { 0 }
             priorityReason         = if ($e.ContainsKey('priorityReason'))  { [string]$e.priorityReason } else { '' }
+            priorityReasonBullets  = if ($e.ContainsKey('priorityReasonBullets') -and $e.priorityReasonBullets) { @($e.priorityReasonBullets) } else { @() }
+            priorityReasonDebug    = if ($e.ContainsKey('priorityReasonDebug'))    { [string]$e.priorityReasonDebug }    else { '' }
             priorityFactors        = if ($e.ContainsKey('priorityFactors') -and $e.priorityFactors) { $e.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
             recommendedAction = $e.recommendedAction
         }
@@ -5251,7 +5382,13 @@ function New-InboxItem {
         # V4.0 Sprint 13b: canonical priority score
         priorityScore   = if ($Entry.ContainsKey('priorityScore'))  { [int]$Entry.priorityScore }   else { 0 }
         priorityReason  = if ($Entry.ContainsKey('priorityReason')) { [string]$Entry.priorityReason } else { '' }
+        priorityReasonBullets = if ($Entry.ContainsKey('priorityReasonBullets') -and $Entry.priorityReasonBullets) { @($Entry.priorityReasonBullets) } else { @() }
+        priorityReasonDebug   = if ($Entry.ContainsKey('priorityReasonDebug')) { [string]$Entry.priorityReasonDebug } else { '' }
         priorityFactors = if ($Entry.ContainsKey('priorityFactors') -and $Entry.priorityFactors) { $Entry.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
+        # V4.0 Sprint 15: why_it_matters pass-through
+        whyItMatters           = if ($Entry.ContainsKey('whyItMatters'))           { [string]$Entry.whyItMatters }           else { '' }
+        whyItMattersConfidence = if ($Entry.ContainsKey('whyItMattersConfidence')) { [double]$Entry.whyItMattersConfidence } else { 0.0 }
+        whyItMattersSource     = if ($Entry.ContainsKey('whyItMattersSource'))     { [string]$Entry.whyItMattersSource }     else { 'none' }
     }
 }
 
@@ -6230,6 +6367,8 @@ foreach ($kind in @('decision','risk')) {
             focus_signals          = if ($entry.ContainsKey('focusSignals') -and $entry.focusSignals) { $entry.focusSignals } else { [ordered]@{ engaged=$false; attentionRequired=$false; awaitingOthers=$false; reasons=[ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
             priority_score         = if ($entry.ContainsKey('priorityScore'))   { [int]$entry.priorityScore }    else { 0 }
             priority_reason        = if ($entry.ContainsKey('priorityReason'))  { [string]$entry.priorityReason } else { '' }
+            priority_reason_bullets = if ($entry.ContainsKey('priorityReasonBullets') -and $entry.priorityReasonBullets) { @($entry.priorityReasonBullets) } else { @() }
+            priority_reason_debug  = if ($entry.ContainsKey('priorityReasonDebug')) { [string]$entry.priorityReasonDebug } else { '' }
             priority_factors       = if ($entry.ContainsKey('priorityFactors') -and $entry.priorityFactors) { $entry.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
             delta                  = if ($entry.ContainsKey('delta') -and $entry.delta) { $entry.delta } else { [ordered]@{ daysSinceLastTouched=0; updatedSinceYesterday=$true; changeSummary='first appearance' } }
             validated              = [bool]$result.ok
