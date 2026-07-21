@@ -2954,6 +2954,160 @@ function Apply-MatryoshkaStatus {
     return $counts
 }
 
+function Get-FocusSignals {
+    <#
+        V4.0 Phase 9 (Sprint 13a): computes three canonical focus dimensions
+        for an entry. Deterministic - derived from Phase 1c/2/3/4/5/7 fields
+        already stamped on the entry. Booleans stand alone (an item can be
+        both `engaged` AND `awaitingOthers`, or none of the three).
+
+        Returns:
+          @{
+            engaged           = <bool>   # David/team touched or owns this recently
+            attentionRequired = <bool>   # David must act (RED, or DO/DECIDE on him, or unassigned)
+            awaitingOthers    = <bool>   # blocked by an external party
+            reasons           = @{ engaged=<str>; attentionRequired=<str>; awaitingOthers=<str> }
+          }
+    #>
+    param(
+        [hashtable] $Entry,
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [datetime]  $Now
+    )
+
+    $signals = [ordered]@{
+        engaged           = $false
+        attentionRequired = $false
+        awaitingOthers    = $false
+        reasons           = [ordered]@{
+            engaged           = ''
+            attentionRequired = ''
+            awaitingOthers    = ''
+        }
+    }
+
+    # --- Pull the fields we depend on -------------------------------------
+    $owner = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+    $ownerIsDavid  = $owner -match '(?i)^\s*david(\s+klan)?\s*$'
+    $ownerUnassigned = $owner -match '(?i)^\s*unassigned\s*$'
+
+    $ownerConfidence = if ($Entry.ownerConfidence) { [string]$Entry.ownerConfidence } else { 'low' }
+    switch ($ownerConfidence) {
+        'workstream-map' { $ownerConfidence = 'low'    }
+        'name-proximity' { $ownerConfidence = 'medium' }
+        'unknown'        { $ownerConfidence = 'low'    }
+    }
+
+    $status = if ($Entry.matryoshkaStatus) { [string]$Entry.matryoshkaStatus } else { 'green' }
+
+    $act = if ($Kind -eq 'decision') { $Entry.recommendedFollowUp } else { $Entry.recommendedAction }
+    $actionClass = ''
+    $nextAction  = ''
+    if ($act -is [System.Collections.IDictionary]) {
+        if ($act.actionClass) { $actionClass = [string]$act.actionClass }
+        if ($act.nextAction)  { $nextAction  = [string]$act.nextAction  }
+    }
+
+    $ageDays = if ($Kind -eq 'decision' -and $Entry.decisionAgeDays) {
+        [int]$Entry.decisionAgeDays
+    } elseif ($Kind -eq 'risk' -and $Entry.agingDays) {
+        [int]$Entry.agingDays
+    } else { 0 }
+
+    $recencyDays = if ($Entry.recencyDays) { [int]$Entry.recencyDays } else { $ageDays }
+
+    $updatedRecently = $false
+    if ($Entry.delta -is [System.Collections.IDictionary]) {
+        if ($Entry.delta.updatedSinceYesterday) { $updatedRecently = [bool]$Entry.delta.updatedSinceYesterday }
+        $daysSince = if ($Entry.delta.daysSinceLastTouched) { [int]$Entry.delta.daysSinceLastTouched } else { 999 }
+        if ($daysSince -le 7) { $updatedRecently = $true }
+    }
+
+    $contextText = ''
+    if ($Entry.ContainsKey('contextSummary') -and $Entry.contextSummary) {
+        $contextText = [string]$Entry.contextSummary
+    }
+
+    # --- engaged ----------------------------------------------------------
+    $engagedReasons = [System.Collections.Generic.List[string]]::new()
+    if ($updatedRecently)             { $engagedReasons.Add('touched in the last 7 days') }
+    if ($recencyDays -le 7)           { $engagedReasons.Add("recency $recencyDays d") }
+    if ($ownerIsDavid -and $status -ne 'green') { $engagedReasons.Add('David owns and item not green') }
+    if ($engagedReasons.Count -gt 0) {
+        $signals.engaged = $true
+        $signals.reasons.engaged = ($engagedReasons -join '; ')
+    }
+
+    # --- attentionRequired ------------------------------------------------
+    $attnReasons = [System.Collections.Generic.List[string]]::new()
+    if ($status -eq 'red')                                    { $attnReasons.Add('matryoshka status RED') }
+    if ($ownerUnassigned)                                     { $attnReasons.Add('owner unassigned') }
+    if ($actionClass -in @('DO','DECIDE') -and ($ownerIsDavid -or $ownerUnassigned)) {
+        $attnReasons.Add("$actionClass on David/unassigned")
+    }
+    if ($ownerConfidence -eq 'low' -and $status -ne 'green')  { $attnReasons.Add('owner not confirmed') }
+    if ($Kind -eq 'decision' -and $Entry.decisionDeadline) {
+        $deadlineStr = [string]$Entry.decisionDeadline
+        if ($deadlineStr -match '^\d{4}-\d{2}-\d{2}') {
+            $todayStr = $Now.ToString('yyyy-MM-dd')
+            $soonStr  = $Now.AddDays(3).ToString('yyyy-MM-dd')
+            if ($deadlineStr -lt $todayStr) { $attnReasons.Add("deadline breached $deadlineStr") }
+            elseif ($deadlineStr -le $soonStr) { $attnReasons.Add("deadline within 3d ($deadlineStr)") }
+        }
+    }
+    if ($attnReasons.Count -gt 0) {
+        $signals.attentionRequired = $true
+        $signals.reasons.attentionRequired = ($attnReasons -join '; ')
+    }
+
+    # --- awaitingOthers ---------------------------------------------------
+    $waitReasons = [System.Collections.Generic.List[string]]::new()
+    if ($actionClass -eq 'BLOCKED') { $waitReasons.Add('BLOCKED action_class') }
+    if ($nextAction -match '(?i)\b(awaiting|waiting on|waiting for|pending response|pending vendor|pending customer|pending client)\b') {
+        $waitReasons.Add('nextAction mentions waiting')
+    }
+    if ($contextText -match '(?i)\b(awaiting|pending vendor|pending customer|pending client|escalated to (aws|vendor))\b') {
+        $waitReasons.Add('context mentions external wait')
+    }
+    if ($actionClass -eq 'FOLLOW_UP' -and -not $ownerIsDavid -and -not $ownerUnassigned) {
+        $waitReasons.Add('FOLLOW_UP with external owner')
+    }
+    if ($waitReasons.Count -gt 0) {
+        $signals.awaitingOthers = $true
+        $signals.reasons.awaitingOthers = ($waitReasons -join '; ')
+    }
+
+    return $signals
+}
+
+function Apply-FocusSignals {
+    <#
+        V4.0 Phase 9 (Sprint 13a) orchestrator: stamps `focusSignals` on every
+        live decision + risk entry. Non-destructive - existing status fields
+        untouched. Returns aggregate counts for the pipeline log.
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks,
+        [datetime] $Now
+    )
+
+    $counts = @{ engaged = 0; attentionRequired = 0; awaitingOthers = 0; total = 0 }
+    foreach ($kind in @('decision','risk')) {
+        $entries = if ($kind -eq 'decision') { $Decisions } else { $Risks }
+        foreach ($e in $entries) {
+            if (-not $e) { continue }
+            $sig = Get-FocusSignals -Entry $e -Kind $kind -Now $Now
+            $e.focusSignals = $sig
+            $counts.total += 1
+            if ($sig.engaged)           { $counts.engaged           += 1 }
+            if ($sig.attentionRequired) { $counts.attentionRequired += 1 }
+            if ($sig.awaitingOthers)    { $counts.awaitingOthers    += 1 }
+        }
+    }
+    return $counts
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -3539,6 +3693,7 @@ function Build-DecisionRegistryJson {
             contextMetadata     = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
             matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
             matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
+            focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
@@ -4528,6 +4683,7 @@ function Build-RiskRegisterJson {
             contextMetadata   = if ($e.ContainsKey('contextMetadata') -and $e.contextMetadata) { $e.contextMetadata } else { [ordered]@{ lastMention = ''; lastActivity = ''; actors = @(); primarySource = '' } }
             matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
             matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
+            focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
             recommendedAction = $e.recommendedAction
         }
     }
@@ -5520,6 +5676,13 @@ Write-Host ("Context linking: enriched {0} entries; {1} carry stakeholder actors
 $statusCounts = Apply-MatryoshkaStatus -Decisions $decisions -Risks $risks -Now (Get-Date)
 Write-Host ("Matryoshka status ladder: {0} red / {1} amber / {2} green" -f `
     $statusCounts.red, $statusCounts.amber, $statusCounts.green) -ForegroundColor Yellow
+
+# --- V4.0 Sprint 13a: Focus signals (engaged / attentionRequired / awaitingOthers) ---
+# Deterministic canonical signal dimensions derived from Phase 1c/2/3/4/5/7 fields.
+# Runs AFTER status ladder so signals can consume matryoshkaStatus directly.
+$focusCounts = Apply-FocusSignals -Decisions $decisions -Risks $risks -Now (Get-Date)
+Write-Host ("Focus signals: {0} engaged / {1} attentionRequired / {2} awaitingOthers (of {3})" -f `
+    $focusCounts.engaged, $focusCounts.attentionRequired, $focusCounts.awaitingOthers, $focusCounts.total) -ForegroundColor Yellow
 
 # --- V1.6 Decision Registry JSON/MD emit ---
 $decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated

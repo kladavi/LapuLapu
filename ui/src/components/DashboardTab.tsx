@@ -146,6 +146,18 @@ type ItemContextMetadata = {
   primarySource?: string;  // repo-relative path to the primary source file
 };
 
+// V4.0 Sprint 13a: canonical focus signals stamped on every decision + risk.
+type FocusSignals = {
+  engaged?: boolean;
+  attentionRequired?: boolean;
+  awaitingOthers?: boolean;
+  reasons?: {
+    engaged?: string;
+    attentionRequired?: string;
+    awaitingOthers?: string;
+  };
+};
+
 type LinkedAction = {
   text?: string;
   owner?: string;
@@ -202,6 +214,8 @@ type DecisionEntry = {
   // V4.0 Phase 1c
   matryoshkaStatus?: string;         // 'red' | 'amber' | 'green'
   matryoshkaStatusReason?: string;
+  // V4.0 Sprint 13a
+  focusSignals?: FocusSignals;
 };
 
 type DecisionRegistry = {
@@ -261,6 +275,8 @@ type RiskEntry = {
   // V4.0 Phase 1c
   matryoshkaStatus?: string;         // 'red' | 'amber' | 'green'
   matryoshkaStatusReason?: string;
+  // V4.0 Sprint 13a
+  focusSignals?: FocusSignals;
 };
 
 type RiskRegistry = {
@@ -462,6 +478,49 @@ function matryoshkaStatusBadgeClass(status?: string): string {
     case "green": return "bg-green-100 text-green-900 border-green-300";
     default:      return "bg-slate-100 text-slate-600 border-slate-200";
   }
+}
+
+// V4.0 Sprint 13a: renders inline pills for whichever focus signals are true.
+// Deliberately quiet - shows nothing when all three signals are false.
+function FocusSignalPills({ signals }: { signals?: FocusSignals }): React.ReactElement | null {
+  if (!signals) return null;
+  const items: Array<{ label: string; klass: string; reason?: string }> = [];
+  if (signals.engaged) {
+    items.push({
+      label: "engaged",
+      klass: "bg-sky-100 text-sky-900 border-sky-300",
+      reason: signals.reasons?.engaged,
+    });
+  }
+  if (signals.attentionRequired) {
+    items.push({
+      label: "attention",
+      klass: "bg-orange-100 text-orange-900 border-orange-300",
+      reason: signals.reasons?.attentionRequired,
+    });
+  }
+  if (signals.awaitingOthers) {
+    items.push({
+      label: "awaiting",
+      klass: "bg-purple-100 text-purple-900 border-purple-300",
+      reason: signals.reasons?.awaitingOthers,
+    });
+  }
+  if (items.length === 0) return null;
+  return (
+    <span className="inline-flex flex-wrap gap-1">
+      {items.map((it) => (
+        <span
+          key={it.label}
+          className={`inline-block rounded-full border px-1.5 py-0.5 font-medium uppercase tracking-wide ${it.klass}`}
+          title={it.reason ?? ""}
+          style={{ fontSize: "0.65rem" }}
+        >
+          {it.label}
+        </span>
+      ))}
+    </span>
+  );
 }
 
 function ContextPanel({
@@ -1958,6 +2017,7 @@ export function DashboardTab({ onNavigate }: Props) {
                         {d.matryoshkaStatus}
                       </span>
                     ) : null}
+                    <FocusSignalPills signals={d.focusSignals} />
                     <span className="tabular-nums text-th-text-muted">
                       Pending {d.decisionAgeDays ?? 0} days
                     </span>
@@ -2230,6 +2290,7 @@ export function DashboardTab({ onNavigate }: Props) {
                           {r.matryoshkaStatus}
                         </span>
                       ) : null}
+                      <FocusSignalPills signals={r.focusSignals} />
                       <span className={`tabular-nums ${t.cls}`} title={t.label}>
                         {t.symbol} {t.label}
                       </span>

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T19:28:00",
+  "generated": "2026-07-21T10:53:51",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "totals": {
@@ -26,198 +26,59 @@
   },
   "decisions": [
     {
-      "decisionId": "D-4fc5c25a1c",
-      "title": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
+      "decisionId": "D-3ced6cbb47",
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
       "status": "open",
       "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "owner": "Unassigned",
+          "status": "pending",
+          "dueBy": "2026-07-24",
+          "actionSource": "inferred",
+          "text": "Confirm status with Unassigned and record outcome"
+        }
+      ],
+      "timeToEscalationRisk": 0,
+      "outcomeQuality": "Unknown",
       "recurrenceCount": 1,
-      "owner": "David Klan",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Deb",
-        "Kelvin"
-      ],
-      "workstream": "Rapid Recovery",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. ...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "--- ## D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:moogsoft #outcome:resilience",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on Rapid Recovery to Birger Fjaellman today",
-        "subject": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to Birger Fjaellman today."
-      }
-    },
-    {
-      "decisionId": "D-ec111d7bcc",
-      "title": "D004 — Agreed: Japan Incident Documentation & CI Standards",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
-      "recurrenceCount": 1,
-      "owner": "George Francis Fermo",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Deb",
       "escalationPath": [
         "Balaji Ravi"
       ],
       "stakeholders": [
-        "Hari"
+        "Kelvin"
       ],
-      "workstream": "Employee XP Dashboard",
+      "workstream": "Developer XP Dashboard",
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Agreed to standardize Japan incident documentation using a structured template from the Knowledge Management / Base R2R deck. All documentation must be searchable by Configuration Items (CIs) and include Key Contacts and Rapid Response (...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "--- ## D004 — Agreed: Japan Incident Documentation & CI Standards tags: #project:lapu-lapu #domain:incident-management #program:r2r #system:cmdb #outcome:mttr",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact George Francis Fermo today - decision on Employee XP Dashboard aged 14 days without resolution",
-        "subject": "D004 — Agreed: Japan Incident Documentation & CI Standards",
-        "targetOwner": "George Francis Fermo",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
-      }
-    },
-    {
-      "decisionId": "D-f91314563c",
-      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [
-        {
-          "dueBy": "2026-07-17",
-          "owner": "David Klan",
-          "status": "pending",
-          "text": "Escalate to Balaji Ravi: pending 14+ days on GBO Batch Transition",
-          "actionSource": "inferred"
-        }
-      ],
-      "timeToEscalationRisk": 0,
-      "outcomeQuality": "Unknown",
-      "recurrenceCount": 1,
-      "owner": "David Klan",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Manish",
-        "Rasheersh"
-      ],
-      "workstream": "GBO Batch Transition",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "Decision: Agreed",
       "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "decisionConfidence": 0.19,
+      "unifiedConfidence": 0.32,
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
       "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
       },
-      "contextSummary": "--- ## D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline - **Date:** 2026-06-24 - **Requestor:** David Klan / Balaji Ravi / GBO (Rowena Zulueta)",
+      "contextSummary": "**Owner:** David Klan **Source:** 20260528 - Batch Non-Prod Team syncup + Japan Batch/MFT Opportunities Meeting ## D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only - **Date:** 2026-06-09 - **Requestor:** David Klan / Rae Judavar / Debamalya Das",
       "contextMetadata": {
         "lastMention": "2026-07-03",
         "lastActivity": "2026-07-03",
@@ -227,137 +88,84 @@
         ],
         "primarySource": "02-work/decisions.md"
       },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
+      "matryoshkaStatus": "amber",
+      "matryoshkaStatusReason": "low confidence (0.32); owner not confirmed",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
       "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
-        "subject": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and Septembe...",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to Balaji Ravi today."
+        "priority": 2,
+        "verb": "Confirm",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
+        "subject": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede action."
       }
     },
     {
-      "decisionId": "D-9a895e8ecb",
-      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Deferred",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
-      "recurrenceCount": 1,
-      "owner": "Birger Fjaellman",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "workstream": "",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Decision: Deferred",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "--- ## D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset tags: #project:lapu-lapu #domain:service-management #outcome:unaligned",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Birger Fjaellman today - decision on this decision aged 14 days without resolution",
-        "subject": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
-        "targetOwner": "Birger Fjaellman",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
-      }
-    },
-    {
-      "decisionId": "D-fadd968d28",
-      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "decisionId": "D-e275b159e5",
+      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
       "status": "open",
       "type": "recorded",
       "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
       "linkedActions": [
         {
-          "dueBy": "2026-07-17",
-          "owner": "Balaji Ravi",
+          "owner": "Birger Fjaellman",
           "status": "pending",
-          "text": "Escalate to Balaji Ravi: pending 14+ days on ADX Registration",
-          "actionSource": "inferred"
+          "dueBy": "2026-07-21",
+          "actionSource": "inferred",
+          "text": "Escalate to Birger Fjaellman: pending 14+ days on GOCC Transition"
         }
       ],
       "timeToEscalationRisk": 0,
       "outcomeQuality": "Unknown",
       "recurrenceCount": 1,
-      "owner": "Balaji Ravi",
+      "owner": "Birger Fjaellman",
       "ownerConfidence": "medium",
       "suggestedOwner": "",
       "escalationPath": [
-        "Balaji Ravi"
+        "Birger Fjaellman"
       ],
       "stakeholders": [
+        "Jonan",
         "Hari"
       ],
-      "workstream": "ADX Registration",
+      "workstream": "GOCC Transition",
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Decision: Agreed (parked)",
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Decision: Agreed",
       "impact": "",
       "decisionConfidence": 0.44,
-      "unifiedConfidence": 0.555,
+      "unifiedConfidence": 0.52,
       "mentionCount": 1,
       "mergedFrom": null,
-      "stale": false,
+      "stale": true,
       "delta": {
-        "daysSinceLastTouched": 14,
+        "daysSinceLastTouched": 18,
         "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "changeSummary": "next-action rephrased; became stale"
       },
-      "contextSummary": "--- ## D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes - **Date:** 2026-06-16 - **Requestor:** David Klan / Balaji Ravi / Hari Pothakamuri",
+      "contextSummary": "--- ## D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope - **Date:** 2026-06-09 - **Requestor:** David Klan / Birger Fjaellman / Aleksei Radzeveliuk",
       "contextMetadata": {
         "lastMention": "2026-07-03",
         "lastActivity": "2026-07-03",
@@ -369,82 +177,25 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 14 days without resolution",
-        "subject": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
-      }
-    },
-    {
-      "decisionId": "D-40250bb7d6",
-      "title": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
-      "recurrenceCount": 1,
-      "owner": "David Klan",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
-      "escalationPath": [
-        "Balaji Ravi",
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [],
-      "workstream": "CyberArk Governance",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Directionally agreed GOCC delivery model for Japan-based monitoring. Top monitoring priorities in order: (a) URL availability, (b) Performance / APM, (c) Rapid Recovery. GOCC handles standardised monitoring and first response. Applicatio...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "--- ## D002 — Agreed: GOCC Delivery Model for Japan Monitoring tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:cmdb #system:xmatters #outcome:resilience",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on CyberArk Governance to Balaji Ravi today",
-        "subject": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to Balaji Ravi today."
+        "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 18 days without resolution",
+        "subject": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
+        "targetOwner": "Birger Fjaellman",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
@@ -456,18 +207,18 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
       "linkedActions": [
         {
-          "dueBy": "2026-07-17",
           "owner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
           "status": "pending",
-          "text": "Escalate to Balaji Ravi: pending 14+ days on Capacity Management",
-          "actionSource": "inferred"
+          "dueBy": "2026-07-21",
+          "actionSource": "inferred",
+          "text": "Escalate to Balaji Ravi: pending 14+ days on Capacity Management"
         }
       ],
       "timeToEscalationRisk": 0,
@@ -484,19 +235,19 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "Decision: Agreed",
       "impact": "",
       "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "unifiedConfidence": 0.72,
       "mentionCount": 1,
       "mergedFrom": null,
-      "stale": false,
+      "stale": true,
       "delta": {
-        "daysSinceLastTouched": 14,
+        "daysSinceLastTouched": 18,
         "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "changeSummary": "next-action rephrased; became stale"
       },
       "contextSummary": "--- ## D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Target) - **Date:** 2026-07-01 - **Requestor:** David Klan / Debamalya Das / GOCC (aligned with CAP-48585 GRC governance record)",
       "contextMetadata": {
@@ -510,63 +261,82 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 14 days without resolution",
+        "nextAction": "Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 18 days without resolution",
         "subject": "D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingeni...",
         "targetOwner": "Debamalya Das (delivery), David Klan (Lapu-Lapu integration)",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
-      "decisionId": "D-66e0bd8e95",
-      "title": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
+      "decisionId": "D-6f81d99006",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
       "status": "open",
       "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved (locked)",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "owner": "Unassigned",
+          "status": "pending",
+          "dueBy": "2026-07-24",
+          "actionSource": "inferred",
+          "text": "Confirm status with Unassigned and record outcome"
+        }
+      ],
+      "timeToEscalationRisk": 0,
+      "outcomeQuality": "Unknown",
       "recurrenceCount": 1,
-      "owner": "Balaji Ravi",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "Balaji Ravi",
       "escalationPath": [
-        "Balaji Ravi"
+        "Birger Fjaellman"
       ],
       "stakeholders": [
+        "Deb",
         "Kelvin"
       ],
-      "workstream": "Developer XP Dashboard",
+      "workstream": "Rapid Recovery",
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Two key decisions were locked in the AQA Information Sharing Session: (1) AQA automation scripts will be onboarded into the Asia Jenkins pipeline for Ingenium CI/CD, standardizing on Jenkins as the short-term CI/CD platform; (2) Delta pr...",
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Decision: Agreed",
       "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "decisionConfidence": 0.19,
+      "unifiedConfidence": 0.32,
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
       "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
       },
-      "contextSummary": "--- ## D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon tags: #project:lapu-lapu #project:epsilon #domain:modernisation #cicd #automation #aqa",
+      "contextSummary": "--- ## D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP - **Date:** 2026-06-09 - **Requestor:** David Klan / Jonan Tan Pangan / Kiran Bonde",
       "contextMetadata": {
         "lastMention": "2026-07-03",
         "lastActivity": "2026-07-03",
@@ -576,17 +346,27 @@
         ],
         "primarySource": "02-work/decisions.md"
       },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
+      "matryoshkaStatus": "amber",
+      "matryoshkaStatusReason": "low confidence (0.32); owner not confirmed",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
       "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Balaji Ravi today - decision on Developer XP Dashboard aged 14 days without resolution",
-        "subject": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
-        "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
+        "priority": 2,
+        "verb": "Confirm",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for Rapid Recovery before this decision can move",
+        "subject": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede action."
       }
     },
     {
@@ -598,7 +378,7 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
       "decisionOutcome": "Approved",
@@ -622,19 +402,19 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "For Japan dashboard onboarding, non-standard monitoring applications should be escalated to the owning application or development team instead of creating new ad hoc workaround patterns. If Production Support already has an application I...",
       "impact": "",
       "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "unifiedConfidence": 0.72,
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
       "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
       },
       "contextSummary": "--- ## D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds tags: #project:lapu-lapu #domain:monitoring #system:newrelic #outcome:resilience",
       "contextMetadata": {
@@ -648,6 +428,16 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
@@ -655,85 +445,8 @@
         "nextAction": "Send escalation on MMM L2 to Balaji Ravi today",
         "subject": "D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds",
         "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to Balaji Ravi today."
-      }
-    },
-    {
-      "decisionId": "D-6f81d99006",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [
-        {
-          "dueBy": "2026-07-24",
-          "owner": "Unassigned",
-          "status": "pending",
-          "text": "Confirm status with Unassigned and record outcome",
-          "actionSource": "inferred"
-        }
-      ],
-      "timeToEscalationRisk": 0,
-      "outcomeQuality": "Unknown",
-      "recurrenceCount": 1,
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Balaji Ravi",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Deb",
-        "Kelvin"
-      ],
-      "workstream": "Rapid Recovery",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Decision: Agreed",
-      "impact": "",
-      "decisionConfidence": 0.19,
-      "unifiedConfidence": 0.355,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "--- ## D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP - **Date:** 2026-06-09 - **Requestor:** David Klan / Jonan Tan Pangan / Kiran Bonde",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "amber",
-      "matryoshkaStatusReason": "low confidence (0.35); owner not confirmed",
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Rapid Recovery before this decision can move",
-        "subject": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede action."
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
       }
     },
     {
@@ -745,7 +458,7 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
       "decisionOutcome": "Approved",
@@ -768,19 +481,19 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "The SRM incident review concluded that production support needs explicit validation steps, enforceable runbooks, and a clear restart or recovery path when incidents require application restart. Rapid Recovery onboarding will be used to c...",
       "impact": "",
       "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "unifiedConfidence": 0.72,
       "mentionCount": 1,
       "mergedFrom": null,
       "stale": false,
       "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
       },
       "contextSummary": "--- ## D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness tags: #project:lapu-lapu #domain:incident-management #program:r2r #outcome:resilience",
       "contextMetadata": {
@@ -794,6 +507,16 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
@@ -801,8 +524,94 @@
         "nextAction": "Send escalation on Rapid Recovery to Birger Fjaellman today",
         "subject": "D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness",
         "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to Birger Fjaellman today."
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Birger Fjaellman today."
+      }
+    },
+    {
+      "decisionId": "D-fadd968d28",
+      "title": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "owner": "Balaji Ravi",
+          "status": "pending",
+          "dueBy": "2026-07-21",
+          "actionSource": "inferred",
+          "text": "Escalate to Balaji Ravi: pending 14+ days on ADX Registration"
+        }
+      ],
+      "timeToEscalationRisk": 0,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "Balaji Ravi",
+      "ownerConfidence": "medium",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Hari"
+      ],
+      "workstream": "ADX Registration",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Decision: Agreed (parked)",
+      "impact": "",
+      "decisionConfidence": 0.44,
+      "unifiedConfidence": 0.52,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": true,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": true,
+        "changeSummary": "next-action rephrased; became stale"
+      },
+      "contextSummary": "--- ## D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes - **Date:** 2026-06-16 - **Requestor:** David Klan / Balaji Ravi / Hari Pothakamuri",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "FOLLOW_UP",
+        "nextAction": "Contact Balaji Ravi today - decision on ADX Registration aged 18 days without resolution",
+        "subject": "D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
@@ -814,7 +623,7 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
       "decisionOutcome": "Approved (directional)",
@@ -837,19 +646,19 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "Agreed that the Japan patching process should be simplified and documented so that GOCC can execute patching independently, reducing dependency on ETS engineering resources. Weekday patching is the target but currently blocked by manpowe...",
       "impact": "",
       "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "unifiedConfidence": 0.72,
       "mentionCount": 1,
       "mergedFrom": null,
-      "stale": false,
+      "stale": true,
       "delta": {
-        "daysSinceLastTouched": 14,
+        "daysSinceLastTouched": 18,
         "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "changeSummary": "next-action rephrased; became stale"
       },
       "contextSummary": "--- ## D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution tags: #project:lapu-lapu #domain:patching #system:azure #outcome:resilience #domain:gocc-handover",
       "contextMetadata": {
@@ -863,15 +672,190 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Birger Fjaellman today - decision on Rapid Recovery aged 14 days without resolution",
+        "nextAction": "Contact Birger Fjaellman today - decision on Rapid Recovery aged 18 days without resolution",
         "subject": "D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution",
         "targetOwner": "Birger Fjaellman",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
+      }
+    },
+    {
+      "decisionId": "D-40250bb7d6",
+      "title": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [],
+      "workstream": "CyberArk Governance",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Directionally agreed GOCC delivery model for Japan-based monitoring. Top monitoring priorities in order: (a) URL availability, (b) Performance / APM, (c) Rapid Recovery. GOCC handles standardised monitoring and first response. Applicatio...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "--- ## D002 — Agreed: GOCC Delivery Model for Japan Monitoring tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:cmdb #system:xmatters #outcome:resilience",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on CyberArk Governance to Balaji Ravi today",
+        "subject": "D002 — Agreed: GOCC Delivery Model for Japan Monitoring",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
+      }
+    },
+    {
+      "decisionId": "D-f91314563c",
+      "title": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "owner": "David Klan",
+          "status": "pending",
+          "dueBy": "2026-07-21",
+          "actionSource": "inferred",
+          "text": "Escalate to Balaji Ravi: pending 14+ days on GBO Batch Transition"
+        }
+      ],
+      "timeToEscalationRisk": 0,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Balaji Ravi",
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Manish",
+        "Rasheersh"
+      ],
+      "workstream": "GBO Batch Transition",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Decision: Agreed",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "--- ## D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline - **Date:** 2026-06-24 - **Requestor:** David Klan / Balaji Ravi / GBO (Rowena Zulueta)",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on GBO Batch Transition to Balaji Ravi today",
+        "subject": "D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and Septembe...",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
       }
     },
     {
@@ -883,24 +867,24 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
       "linkedActions": [
         {
-          "dueBy": "2026-07-17",
-          "owner": "Birger Fjaellman",
+          "owner": "Balaji Ravi",
           "status": "pending",
-          "text": "Escalate to Balaji Ravi: pending 14+ days on GBO Batch Transition",
-          "actionSource": "inferred"
+          "dueBy": "2026-07-21",
+          "actionSource": "inferred",
+          "text": "Escalate to Balaji Ravi: pending 14+ days on GBO Batch Transition"
         }
       ],
       "timeToEscalationRisk": 0,
       "outcomeQuality": "Unknown",
       "recurrenceCount": 1,
-      "owner": "Birger Fjaellman",
+      "owner": "Balaji Ravi",
       "ownerConfidence": "medium",
       "suggestedOwner": "",
       "escalationPath": [
@@ -915,19 +899,19 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "Decision: Agreed",
       "impact": "",
       "decisionConfidence": 0.44,
-      "unifiedConfidence": 0.555,
+      "unifiedConfidence": 0.52,
       "mentionCount": 1,
       "mergedFrom": null,
-      "stale": false,
+      "stale": true,
       "delta": {
-        "daysSinceLastTouched": 14,
+        "daysSinceLastTouched": 18,
         "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "changeSummary": "owner: Birger Fjaellman -> Balaji Ravi; next-action rephrased; became stale"
       },
       "contextSummary": "--- ## D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September - **Date:** 2026-06-18 - **Requestor:** Jonan Tan Pangan / Birger Fjaellman / Balaji Ravi",
       "contextMetadata": {
@@ -941,15 +925,482 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Birger Fjaellman today - decision on GBO Batch Transition aged 14 days without resolution",
+        "nextAction": "Contact Balaji Ravi today - decision on GBO Batch Transition aged 18 days without resolution",
         "subject": "D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
+      }
+    },
+    {
+      "decisionId": "D-02c40deef8",
+      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Deferred",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a regis...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "--- ## D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests tags: #project:lapu-lapu #domain:workflow-automation #domain:service-management #outcome:unaligned",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on this decision to the workstream lead today",
+        "subject": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to the workstream lead today."
+      }
+    },
+    {
+      "decisionId": "D-b27c5d17f9",
+      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Deferred",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Decision: Deferred",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "# Decisions Log ## D001 — Deferred: Ad-Hoc Dashboard Request from Marketing tags: #project:lapu-lapu #domain:rejected #system:newrelic #outcome:unaligned",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on this decision to the workstream lead today",
+        "subject": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to the workstream lead today."
+      }
+    },
+    {
+      "decisionId": "D-7f991874c7",
+      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved (directional)",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Kelvin"
+      ],
+      "workstream": "Developer XP Dashboard",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Confirmed direction to shift from project execution to a BAU service model for batch and file transfer operations. L0/L1 operational activities will transfer from Batch/PS/App support teams to GOCC (infrastructure + file transfer) and GB...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "--- ## D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO tags: #project:lapu-lapu #domain:batch #domain:mft #domain:gocc-handover #capability:automation",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on Developer XP Dashboard to Balaji Ravi today",
+        "subject": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Balaji Ravi today."
+      }
+    },
+    {
+      "decisionId": "D-9a895e8ecb",
+      "title": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Deferred",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "Birger Fjaellman",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Decision: Deferred",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": true,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": true,
+        "changeSummary": "next-action rephrased; became stale"
+      },
+      "contextSummary": "--- ## D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset tags: #project:lapu-lapu #domain:service-management #outcome:unaligned",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "FOLLOW_UP",
+        "nextAction": "Contact Birger Fjaellman today - decision on this decision aged 18 days without resolution",
+        "subject": "D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset",
         "targetOwner": "Birger Fjaellman",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
+      }
+    },
+    {
+      "decisionId": "D-4fc5c25a1c",
+      "title": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "David Klan",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Birger Fjaellman"
+      ],
+      "stakeholders": [
+        "Deb",
+        "Kelvin"
+      ],
+      "workstream": "Rapid Recovery",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "PS will continue parallel monitoring for a limited post-go-live period while GOCC ramps to full ownership. The Phase-1 checklist is the authoritative tracker for PS-to-GOCC handover status and the source for weekly transition reporting. ...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "--- ## D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition tags: #project:lapu-lapu #domain:gocc-handover #system:newrelic #system:moogsoft #outcome:resilience",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "DO on David/unassigned",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "DO",
+        "nextAction": "Send escalation on Rapid Recovery to Birger Fjaellman today",
+        "subject": "D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition",
+        "targetOwner": "David Klan",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - David to escalate to Birger Fjaellman today."
+      }
+    },
+    {
+      "decisionId": "D-ec111d7bcc",
+      "title": "D004 — Agreed: Japan Incident Documentation & CI Standards",
+      "dateDetected": "2026-07-03",
+      "firstSeenDate": "2026-07-03",
+      "lastSeenDate": "2026-07-03",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": false,
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Decided",
+      "decisionOutcome": "Approved",
+      "completionSignal": "completed",
+      "linkedActions": [],
+      "timeToEscalationRisk": null,
+      "outcomeQuality": "Low",
+      "recurrenceCount": 1,
+      "owner": "George Francis Fermo",
+      "ownerConfidence": "high",
+      "suggestedOwner": "",
+      "escalationPath": [
+        "Balaji Ravi"
+      ],
+      "stakeholders": [
+        "Hari"
+      ],
+      "workstream": "Employee XP Dashboard",
+      "sourceFiles": [
+        "02-work/decisions.md"
+      ],
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Agreed to standardize Japan incident documentation using a structured template from the Knowledge Management / Base R2R deck. All documentation must be searchable by Configuration Items (CIs) and include Key Contacts and Rapid Response (...",
+      "impact": "",
+      "decisionConfidence": 0.69,
+      "unifiedConfidence": 0.72,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": true,
+      "delta": {
+        "daysSinceLastTouched": 18,
+        "updatedSinceYesterday": true,
+        "changeSummary": "next-action rephrased; became stale"
+      },
+      "contextSummary": "--- ## D004 — Agreed: Japan Incident Documentation & CI Standards tags: #project:lapu-lapu #domain:incident-management #program:r2r #system:cmdb #outcome:mttr",
+      "contextMetadata": {
+        "lastMention": "2026-07-03",
+        "lastActivity": "2026-07-03",
+        "actors": [
+          "Balaji Ravi",
+          "Birger Fjaellman"
+        ],
+        "primarySource": "02-work/decisions.md"
+      },
+      "matryoshkaStatus": "green",
+      "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 1,
+        "verb": "Escalate",
+        "actionClass": "FOLLOW_UP",
+        "nextAction": "Contact George Francis Fermo today - decision on Employee XP Dashboard aged 18 days without resolution",
+        "subject": "D004 — Agreed: Japan Incident Documentation & CI Standards",
+        "targetOwner": "George Francis Fermo",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
@@ -961,7 +1412,7 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
       "decisionOutcome": "Approved",
@@ -984,19 +1435,19 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
       "decisionSummary": "All Rapid Recovery Plans must use the approved standard template covering triage steps, recovery sequences, and scenario-based documentation (3 scenario types: restart-based, workaround+restart, non-restart). No self-publishing — all RRP...",
       "impact": "",
       "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "unifiedConfidence": 0.72,
       "mentionCount": 1,
       "mergedFrom": null,
-      "stale": false,
+      "stale": true,
       "delta": {
-        "daysSinceLastTouched": 14,
+        "daysSinceLastTouched": 18,
         "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "changeSummary": "next-action rephrased; became stale"
       },
       "contextSummary": "--- ## D011 — Agreed: Mandatory RRP Template with Controlled Publishing tags: #project:lapu-lapu #program:r2r #domain:rapid-recovery #outcome:resilience #priority:regulatory",
       "contextMetadata": {
@@ -1010,176 +1461,46 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Balaji Ravi today - decision on Rapid Recovery aged 14 days without resolution",
+        "nextAction": "Contact Balaji Ravi today - decision on Rapid Recovery aged 18 days without resolution",
         "subject": "D011 — Agreed: Mandatory RRP Template with Controlled Publishing",
         "targetOwner": "Balaji Ravi",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
-      "decisionId": "D-3ced6cbb47",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [
-        {
-          "dueBy": "2026-07-24",
-          "owner": "Unassigned",
-          "status": "pending",
-          "text": "Confirm status with Unassigned and record outcome",
-          "actionSource": "inferred"
-        }
-      ],
-      "timeToEscalationRisk": 0,
-      "outcomeQuality": "Unknown",
-      "recurrenceCount": 1,
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "Deb",
-      "escalationPath": [
-        "Balaji Ravi"
-      ],
-      "stakeholders": [
-        "Kelvin"
-      ],
-      "workstream": "Developer XP Dashboard",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Decision: Agreed",
-      "impact": "",
-      "decisionConfidence": 0.19,
-      "unifiedConfidence": 0.355,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "**Owner:** David Klan **Source:** 20260528 - Batch Non-Prod Team syncup + Japan Batch/MFT Opportunities Meeting ## D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only - **Date:** 2026-06-09 - **Requestor:** David Klan / Rae Judavar / Debamalya Das",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "amber",
-      "matryoshkaStatusReason": "low confidence (0.35); owner not confirmed",
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for Developer XP Dashboard before this decision can move",
-        "subject": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede action."
-      }
-    },
-    {
-      "decisionId": "D-b27c5d17f9",
-      "title": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
+      "decisionId": "D-66e0bd8e95",
+      "title": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
       "dateDetected": "2026-07-03",
       "firstSeenDate": "2026-07-03",
       "lastSeenDate": "2026-07-03",
       "status": "open",
       "type": "recorded",
       "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 18 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Decided",
-      "decisionOutcome": "Deferred",
+      "decisionOutcome": "Approved (locked)",
       "completionSignal": "completed",
       "linkedActions": [],
       "timeToEscalationRisk": null,
       "outcomeQuality": "Low",
       "recurrenceCount": 1,
-      "owner": "David Klan",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "workstream": "",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Decision: Deferred",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "# Decisions Log ## D001 — Deferred: Ad-Hoc Dashboard Request from Marketing tags: #project:lapu-lapu #domain:rejected #system:newrelic #outcome:unaligned",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on this decision to the workstream lead today",
-        "subject": "D001 — Deferred: Ad-Hoc Dashboard Request from Marketing",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to the workstream lead today."
-      }
-    },
-    {
-      "decisionId": "D-7f991874c7",
-      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Approved (directional)",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
-      "recurrenceCount": 1,
-      "owner": "David Klan",
+      "owner": "Balaji Ravi",
       "ownerConfidence": "high",
       "suggestedOwner": "",
       "escalationPath": [
@@ -1192,21 +1513,21 @@
       "sourceFiles": [
         "02-work/decisions.md"
       ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Confirmed direction to shift from project execution to a BAU service model for batch and file transfer operations. L0/L1 operational activities will transfer from Batch/PS/App support teams to GOCC (infrastructure + file transfer) and GB...",
+      "decisionAgeDays": 18,
+      "recencyDays": 18,
+      "decisionSummary": "Two key decisions were locked in the AQA Information Sharing Session: (1) AQA automation scripts will be onboarded into the Asia Jenkins pipeline for Ingenium CI/CD, standardizing on Jenkins as the short-term CI/CD platform; (2) Delta pr...",
       "impact": "",
       "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
+      "unifiedConfidence": 0.72,
       "mentionCount": 1,
       "mergedFrom": null,
-      "stale": false,
+      "stale": true,
       "delta": {
-        "daysSinceLastTouched": 14,
+        "daysSinceLastTouched": 18,
         "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "changeSummary": "next-action rephrased; became stale"
       },
-      "contextSummary": "--- ## D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO tags: #project:lapu-lapu #domain:batch #domain:mft #domain:gocc-handover #capability:automation",
+      "contextSummary": "--- ## D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon tags: #project:lapu-lapu #project:epsilon #domain:modernisation #cicd #automation #aqa",
       "contextMetadata": {
         "lastMention": "2026-07-03",
         "lastActivity": "2026-07-03",
@@ -1218,227 +1539,25 @@
       },
       "matryoshkaStatus": "green",
       "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on Developer XP Dashboard to Balaji Ravi today",
-        "subject": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to Balaji Ravi today."
-      }
-    },
-    {
-      "decisionId": "D-e275b159e5",
-      "title": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [
-        {
-          "dueBy": "2026-07-17",
-          "owner": "Birger Fjaellman",
-          "status": "pending",
-          "text": "Escalate to Birger Fjaellman: pending 14+ days on GOCC Transition",
-          "actionSource": "inferred"
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": false,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days",
+          "attentionRequired": "",
+          "awaitingOthers": "FOLLOW_UP with external owner"
         }
-      ],
-      "timeToEscalationRisk": 0,
-      "outcomeQuality": "Unknown",
-      "recurrenceCount": 1,
-      "owner": "Birger Fjaellman",
-      "ownerConfidence": "medium",
-      "suggestedOwner": "",
-      "escalationPath": [
-        "Birger Fjaellman"
-      ],
-      "stakeholders": [
-        "Jonan",
-        "Hari"
-      ],
-      "workstream": "GOCC Transition",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "Decision: Agreed",
-      "impact": "",
-      "decisionConfidence": 0.44,
-      "unifiedConfidence": 0.555,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
       },
-      "contextSummary": "--- ## D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope - **Date:** 2026-06-09 - **Requestor:** David Klan / Birger Fjaellman / Aleksei Radzeveliuk",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
       "recommendedFollowUp": {
         "priority": 1,
         "verb": "Escalate",
         "actionClass": "FOLLOW_UP",
-        "nextAction": "Contact Birger Fjaellman today - decision on GOCC Transition aged 14 days without resolution",
-        "subject": "D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope",
-        "targetOwner": "Birger Fjaellman",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - direct outreach to owner today."
-      }
-    },
-    {
-      "decisionId": "D-02c40deef8",
-      "title": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
-      "dateDetected": "2026-07-03",
-      "firstSeenDate": "2026-07-03",
-      "lastSeenDate": "2026-07-03",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": false,
-      "decisionPrompt": "Recorded decision aged 14 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Decided",
-      "decisionOutcome": "Deferred",
-      "completionSignal": "completed",
-      "linkedActions": [],
-      "timeToEscalationRisk": null,
-      "outcomeQuality": "Low",
-      "recurrenceCount": 1,
-      "owner": "David Klan",
-      "ownerConfidence": "high",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "workstream": "",
-      "sourceFiles": [
-        "02-work/decisions.md"
-      ],
-      "decisionAgeDays": 14,
-      "recencyDays": 14,
-      "decisionSummary": "April 16 side-quest notes include SNOW or Teams approval reminders, manager escalation after 24 hours, and ownership clarification for ServerF file share and MFT activities. These ideas may be useful, but they are not yet tied to a regis...",
-      "impact": "",
-      "decisionConfidence": 0.69,
-      "unifiedConfidence": 0.755,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 14,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "--- ## D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests tags: #project:lapu-lapu #domain:workflow-automation #domain:service-management #outcome:unaligned",
-      "contextMetadata": {
-        "lastMention": "2026-07-03",
-        "lastActivity": "2026-07-03",
-        "actors": [
-          "Balaji Ravi",
-          "Birger Fjaellman"
-        ],
-        "primarySource": "02-work/decisions.md"
-      },
-      "matryoshkaStatus": "green",
-      "matryoshkaStatusReason": "active progress, no blockers",
-      "recommendedFollowUp": {
-        "priority": 1,
-        "verb": "Escalate",
-        "actionClass": "DO",
-        "nextAction": "Send escalation on this decision to the workstream lead today",
-        "subject": "D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests",
-        "targetOwner": "David Klan",
-        "dueBy": "2026-07-17",
-        "rationale": "Pending 14 days - David to escalate to the workstream lead today."
-      }
-    },
-    {
-      "decisionId": "D-8391860e44",
-      "title": "0.05",
-      "dateDetected": "2026-07-15",
-      "firstSeenDate": "2026-07-15",
-      "lastSeenDate": "2026-07-15",
-      "status": "open",
-      "type": "recorded",
-      "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 2 days - confirm status or escalate.",
-      "decisionDeadline": "",
-      "decisionStatus": "Pending",
-      "decisionOutcome": "",
-      "completionSignal": "",
-      "linkedActions": [
-        {
-          "dueBy": "2026-07-24",
-          "owner": "Unassigned",
-          "status": "pending",
-          "text": "Confirm status with Unassigned and record outcome",
-          "actionSource": "inferred"
-        }
-      ],
-      "timeToEscalationRisk": 12,
-      "outcomeQuality": "Unknown",
-      "recurrenceCount": 1,
-      "owner": "Unassigned",
-      "ownerConfidence": "low",
-      "suggestedOwner": "",
-      "escalationPath": [],
-      "stakeholders": [],
-      "workstream": "",
-      "sourceFiles": [
-        "00-context/david-preferences.yaml"
-      ],
-      "decisionAgeDays": 2,
-      "recencyDays": 2,
-      "decisionSummary": "decision: 0.05",
-      "impact": "",
-      "decisionConfidence": 0.29,
-      "unifiedConfidence": 0.366,
-      "mentionCount": 1,
-      "mergedFrom": null,
-      "stale": false,
-      "delta": {
-        "daysSinceLastTouched": 2,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "contextSummary": "\"Capacity Management\": 0.08 owner: \"Balaji Ravi\": 0.05 \"Deb\": 0.03 \"Rasheersh\": 0.03",
-      "contextMetadata": {
-        "lastMention": "2026-07-15",
-        "lastActivity": "2026-07-15",
-        "actors": [
-          "Balaji Ravi"
-        ],
-        "primarySource": "00-context/david-preferences.yaml"
-      },
-      "matryoshkaStatus": "amber",
-      "matryoshkaStatusReason": "low confidence (0.37); owner not confirmed",
-      "recommendedFollowUp": {
-        "priority": 2,
-        "verb": "Confirm",
-        "actionClass": "DECIDE",
-        "nextAction": "Assign an owner for this decision before this decision can move",
-        "subject": "0.05",
-        "targetOwner": "Unassigned",
-        "dueBy": "2026-07-24",
-        "rationale": "Owner not yet confirmed; ownership must precede action."
+        "nextAction": "Contact Balaji Ravi today - decision on Developer XP Dashboard aged 18 days without resolution",
+        "subject": "D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon",
+        "targetOwner": "Balaji Ravi",
+        "dueBy": "2026-07-21",
+        "rationale": "Pending 18 days - direct outreach to owner today."
       }
     },
     {
@@ -1450,21 +1569,21 @@
       "status": "open",
       "type": "recorded",
       "decisionRequired": true,
-      "decisionPrompt": "Recorded decision aged 2 days - confirm status or escalate.",
+      "decisionPrompt": "Recorded decision aged 6 days - confirm status or escalate.",
       "decisionDeadline": "",
       "decisionStatus": "Pending",
       "decisionOutcome": "",
       "completionSignal": "",
       "linkedActions": [
         {
-          "dueBy": "2026-07-24",
           "owner": "Unassigned",
           "status": "pending",
-          "text": "Confirm status with Unassigned and record outcome",
-          "actionSource": "inferred"
+          "dueBy": "2026-07-24",
+          "actionSource": "inferred",
+          "text": "Confirm status with Unassigned and record outcome"
         }
       ],
-      "timeToEscalationRisk": 12,
+      "timeToEscalationRisk": 8,
       "outcomeQuality": "Unknown",
       "recurrenceCount": 1,
       "owner": "Unassigned",
@@ -1476,8 +1595,8 @@
       "sourceFiles": [
         "docs/matryoshka-charter.md"
       ],
-      "decisionAgeDays": 2,
-      "recencyDays": 2,
+      "decisionAgeDays": 6,
+      "recencyDays": 6,
       "decisionSummary": "Decision: making scales without scaling management overhead",
       "impact": "",
       "decisionConfidence": 0.29,
@@ -1486,9 +1605,9 @@
       "mergedFrom": null,
       "stale": false,
       "delta": {
-        "daysSinceLastTouched": 2,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
+        "daysSinceLastTouched": 6,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
       },
       "contextSummary": "- Context is shared. - AI assists continuously. - Decision-making scales without scaling management overhead. ---",
       "contextMetadata": {
@@ -1502,12 +1621,103 @@
       },
       "matryoshkaStatus": "amber",
       "matryoshkaStatusReason": "low confidence (0.37); owner not confirmed",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 6 d",
+          "attentionRequired": "owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
       "recommendedFollowUp": {
         "priority": 2,
         "verb": "Confirm",
         "actionClass": "DECIDE",
         "nextAction": "Assign an owner for Project Matryoshka before this decision can move",
         "subject": "making scales without scaling management overhead",
+        "targetOwner": "Unassigned",
+        "dueBy": "2026-07-24",
+        "rationale": "Owner not yet confirmed; ownership must precede action."
+      }
+    },
+    {
+      "decisionId": "D-8391860e44",
+      "title": "0.05",
+      "dateDetected": "2026-07-15",
+      "firstSeenDate": "2026-07-15",
+      "lastSeenDate": "2026-07-15",
+      "status": "open",
+      "type": "recorded",
+      "decisionRequired": true,
+      "decisionPrompt": "Recorded decision aged 6 days - confirm status or escalate.",
+      "decisionDeadline": "",
+      "decisionStatus": "Pending",
+      "decisionOutcome": "",
+      "completionSignal": "",
+      "linkedActions": [
+        {
+          "owner": "Unassigned",
+          "status": "pending",
+          "dueBy": "2026-07-24",
+          "actionSource": "inferred",
+          "text": "Confirm status with Unassigned and record outcome"
+        }
+      ],
+      "timeToEscalationRisk": 8,
+      "outcomeQuality": "Unknown",
+      "recurrenceCount": 1,
+      "owner": "Unassigned",
+      "ownerConfidence": "low",
+      "suggestedOwner": "",
+      "escalationPath": [],
+      "stakeholders": [],
+      "workstream": "",
+      "sourceFiles": [
+        "00-context/david-preferences.yaml"
+      ],
+      "decisionAgeDays": 6,
+      "recencyDays": 6,
+      "decisionSummary": "decision: 0.05",
+      "impact": "",
+      "decisionConfidence": 0.29,
+      "unifiedConfidence": 0.366,
+      "mentionCount": 1,
+      "mergedFrom": null,
+      "stale": false,
+      "delta": {
+        "daysSinceLastTouched": 6,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "contextSummary": "\"Capacity Management\": 0.08 owner: \"Balaji Ravi\": 0.05 \"Deb\": 0.03 \"Rasheersh\": 0.03",
+      "contextMetadata": {
+        "lastMention": "2026-07-15",
+        "lastActivity": "2026-07-15",
+        "actors": [
+          "Balaji Ravi"
+        ],
+        "primarySource": "00-context/david-preferences.yaml"
+      },
+      "matryoshkaStatus": "amber",
+      "matryoshkaStatusReason": "low confidence (0.37); owner not confirmed",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 6 d",
+          "attentionRequired": "owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
+      "recommendedFollowUp": {
+        "priority": 2,
+        "verb": "Confirm",
+        "actionClass": "DECIDE",
+        "nextAction": "Assign an owner for this decision before this decision can move",
+        "subject": "0.05",
         "targetOwner": "Unassigned",
         "dueBy": "2026-07-24",
         "rationale": "Owner not yet confirmed; ownership must precede action."

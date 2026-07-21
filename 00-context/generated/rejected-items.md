@@ -1,78 +1,22 @@
 # V4.0 Phase 1 - Rejected Items
 
-_Generated: 2026-07-17 19:28_
+_Generated: 2026-07-21 10:53_
 
-Validated **64** live decision/risk candidates against the V4.0 canonical schema. **0** pass; **64** need fixing before the V4.0 fail-closed emitters land.
+Validated **55** live decision/risk candidates against the V4.0 canonical schema. **0** pass; **55** need fixing before the V4.0 fail-closed emitters land.
 
 ## Failure counts by field
 
 | Field | Count |
 |---|---:|
-| why_it_matters | 64 |
+| why_it_matters | 55 |
 | next_action | 1 |
 
 ## Rejections (top 30)
 
-### decision D-4fc5c25a1c - Rapid Recovery
+### decision D-3ced6cbb47 - Developer XP Dashboard
 
-- **Title:** D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition
-- **Owner:** David Klan
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-ec111d7bcc - Employee XP Dashboard
-
-- **Title:** D004 — Agreed: Japan Incident Documentation & CI Standards
-- **Owner:** George Francis Fermo
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-f91314563c - GBO Batch Transition
-
-- **Title:** D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline
-- **Owner:** David Klan
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-9a895e8ecb - 
-
-- **Title:** D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset
-- **Owner:** Birger Fjaellman
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-fadd968d28 - ADX Registration
-
-- **Title:** D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes
-- **Owner:** Balaji Ravi
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-40250bb7d6 - CyberArk Governance
-
-- **Title:** D002 — Agreed: GOCC Delivery Model for Japan Monitoring
-- **Owner:** David Klan
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-0ac2a0c612 - Capacity Management
-
-- **Title:** D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...
-- **Owner:** Debamalya Das (delivery), David Klan (Lapu-Lapu integration)
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-66e0bd8e95 - Developer XP Dashboard
-
-- **Title:** D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon
-- **Owner:** Balaji Ravi
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-ad83b89db6 - MMM L2
-
-- **Title:** D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds
-- **Owner:** David Klan
+- **Title:** D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only
+- **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
@@ -83,6 +27,13 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
+### decision D-ad83b89db6 - MMM L2
+
+- **Title:** D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds
+- **Owner:** David Klan
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+
 ### decision D-d059b9808f - Rapid Recovery
 
 - **Title:** D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness
@@ -90,31 +41,24 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-64c97dd4cc - Rapid Recovery
+### decision D-40250bb7d6 - CyberArk Governance
 
-- **Title:** D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution
-- **Owner:** Birger Fjaellman
+- **Title:** D002 — Agreed: GOCC Delivery Model for Japan Monitoring
+- **Owner:** David Klan
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-30ae77972e - GBO Batch Transition
+### decision D-f91314563c - GBO Batch Transition
 
-- **Title:** D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September
-- **Owner:** Birger Fjaellman
+- **Title:** D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline
+- **Owner:** David Klan
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-59805c75f5 - Rapid Recovery
+### decision D-02c40deef8 - 
 
-- **Title:** D011 — Agreed: Mandatory RRP Template with Controlled Publishing
-- **Owner:** Balaji Ravi
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### decision D-3ced6cbb47 - Developer XP Dashboard
-
-- **Title:** D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only
-- **Owner:** Unassigned
+- **Title:** D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests
+- **Owner:** David Klan
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
@@ -132,17 +76,17 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-e275b159e5 - GOCC Transition
+### decision D-4fc5c25a1c - Rapid Recovery
 
-- **Title:** D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope
-- **Owner:** Birger Fjaellman
+- **Title:** D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition
+- **Owner:** David Klan
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-02c40deef8 - 
+### decision D-c54ce48b2b - Project Matryoshka
 
-- **Title:** D006 — Deferred: Approval Workflow Automation and ServerF Ownership Side Quests
-- **Owner:** David Klan
+- **Title:** making scales without scaling management overhead
+- **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
@@ -153,12 +97,12 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-c54ce48b2b - Project Matryoshka
+### risk R-1c3d9c0e3b - MMM L2
 
-- **Title:** making scales without scaling management overhead
+- **Title:** Vendor Escalation
 - **Owner:** Unassigned
 - **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+  - $(System.Collections.Hashtable.field): missing required field
 
 ### risk R-cd89918f9c - Rapid Recovery
 
@@ -170,13 +114,6 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 ### risk R-f386376f94 - 
 
 - **Title:** Standardization of templates, CI identification, and escalation procedures to reduce
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): missing required field
-
-### risk R-1c3d9c0e3b - MMM L2
-
-- **Title:** Vendor Escalation
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): missing required field
@@ -209,6 +146,20 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): missing required field
 
+### risk R-b493137b8f - Rapid Recovery
+
+- **Title:** Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-2b2a241d9c - Rapid Recovery
+
+- **Title:** Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
 ### risk R-121760730c - Capacity Management
 
 - **Title:** MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
@@ -216,9 +167,58 @@ Validated **64** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): missing required field
 
-### risk R-b493137b8f - Rapid Recovery
+### risk R-27c07d48fd - GOCC Transition
 
-- **Title:** Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
+- **Title:** Team to secure **contact + escalation path
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-0dcce4bb79 - CyberArk Governance
+
+- **Title:** 🚨 Network instability (VNet) → platform readiness risk
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-b7a381d02b - CyberArk Governance
+
+- **Title:** ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-9bfa424dbf - Developer XP Dashboard
+
+- **Title:** ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-aa18501480 - Rapid Recovery
+
+- **Title:** RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-e3dd5be6ae - CMDB Mapping
+
+- **Title:** ⚠️ Vendor-managed apps without clear escalation model
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-bf28edfac4 - CyberArk Governance
+
+- **Title:** 🚨 Compliance gap (CyberArk not enforced)
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): missing required field
+
+### risk R-ca48836978 - CyberArk Governance
+
+- **Title:** 🚨 High operational risk (manual renewals + hidden dependencies)
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): missing required field
