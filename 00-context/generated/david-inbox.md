@@ -2,7 +2,7 @@
 
 # David's Priority Inbox
 
-Generated: 2026-07-21 14:05
+Generated: 2026-07-21 14:25
 
 Candidates: **29** | P1: **1 (cap 5)** | P2: **10 (cap 10)** | P3: **0 (cap 10)**
 
@@ -19,6 +19,7 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Age**: 18 days
 - **Next**: Send escalation on GBO Batch Transition to Balaji Ravi today
 - **Rationale**: Pending 18 days - David to escalate to Balaji Ravi today.
+- **Impact**: D012 set the directional shift to GBO/GOCC ownership; the 2026-06-24 level-set with GBO converts it into an executable plan. Operating principles confirmed: centralized GBO execution of batch workloads 24x7, Japan teams shift from execution to stability/input management/failure prevention, strict "No runbook = No onboarding" onboarding gate, and full alignment with the Lapu-Lapu global operatin...
 - **Linked actions**: 1
 - **Source**: decision D-f91314563c
 
@@ -47,6 +48,16 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Source**: risk R-f386376f94
 ### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
 
+- **What**: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.19
+- **Age**: 8 days
+- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-42b8e43469
+### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
+
 - **What**: Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-24
@@ -65,16 +76,6 @@ Sort: priority asc, then time to escalation, then deadline, then confidence, the
 - **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
 - **Source**: risk R-89b7b9975e
-### [DECIDE] P2 - Rapid Recovery [escalation in 0d]
-
-- **What**: The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-24
-- **Confidence**: 0.19
-- **Age**: 8 days
-- **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-42b8e43469
 ### [DECIDE] P2 - ADX Registration [escalation in 0d]
 
 - **What**: Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es (severity: High, trend: increasing)
@@ -142,7 +143,7 @@ _None._
 - **Developer XP Dashboard** / _(misc)_ - 3 item(s), P2, 0 P1, min escalation: 0d
 - **CyberArk Governance** / _cyberark_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **GOCC Transition** / _team_ - 2 item(s), P2, 0 P1, min escalation: 0d
-- **Rapid Recovery** / _rehearsal_ - 2 item(s), P2, 0 P1, min escalation: 0d
+- **Rapid Recovery** / _restart_ - 2 item(s), P2, 0 P1, min escalation: 0d
 - **ADX Registration** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
 - **Capacity Management** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 3d
 - **CMDB Mapping** / _(misc)_ - 1 item(s), P2, 0 P1, min escalation: 0d
