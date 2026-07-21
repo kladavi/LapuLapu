@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T13:09:56",
+  "generated": "2026-07-21T13:22:19",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V3.0",
   "caps": {
@@ -8,11 +8,11 @@
     "p3": 10
   },
   "totals": {
-    "candidates": 59,
+    "candidates": 69,
     "selected": 15,
     "byPriority": {
-      "p1": 24,
-      "p2": 35,
+      "p1": 20,
+      "p2": 49,
       "p3": 0,
       "p4": 0,
       "p5": 0
@@ -22,175 +22,50 @@
       "p2Shown": 10,
       "p3Shown": 0
     },
-    "clusters": 25,
-    "imminentEscalation": 57,
-    "personalized": 59,
+    "clusters": 28,
+    "imminentEscalation": 67,
+    "personalized": 69,
     "dailyDelta": {
-      "addedCount": 38,
+      "addedCount": 39,
       "changedCount": 11,
-      "removedCount": 8,
+      "removedCount": 5,
       "staleCount": 11,
       "comparedAgainst": "2026-07-17"
     }
   },
   "dailyDelta": {
-    "addedCount": 38,
+    "addedCount": 39,
     "changedCount": 11,
-    "removedCount": 8,
+    "removedCount": 5,
     "staleCount": 11,
     "comparedAgainst": "2026-07-17"
   },
   "tiers": {
     "p1": [
       {
-        "recurrenceCount": 1,
-        "ageDays": 0,
-        "priorityScore": 77,
-        "whyItMatters": "(risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) Credentials dependency — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an ow…",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": true,
-          "attentionRequired": true,
-          "awaitingOthers": true,
-          "reasons": {
-            "engaged": "touched in the last 7 days; recency 0 d",
-            "attentionRequired": "matryoshka status RED",
-            "awaitingOthers": "FOLLOW_UP with external owner"
-          }
-        },
-        "whyItMattersConfidence": 0.75,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "",
-        "severity": "High",
-        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
-        "whyItMattersSource": "risk-consequence",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "preferred owner: Balaji Ravi",
-            "delta": 0.05,
-            "source": "owner-boost"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          },
-          {
-            "reason": "workstream has delayed decisions - boost escalate confidence",
-            "delta": 0.1,
-            "source": "learning:delayed-workstream"
-          },
-          {
-            "reason": "signal is noisier when owner is over-capacity",
-            "delta": -0.05,
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-21",
-        "priorityReason": "- Why it matters: (risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) Credentials…\n- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-        "actionSource": "",
-        "ownerConfidence": "medium",
-        "rankingScore": 0.4,
-        "priority": 1,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 0.55,
-          "deadline": 0.3,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "High severity - direct outreach to owner today.",
-        "delta": {
-          "daysSinceLastTouched": 0,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "confidence": 0.54,
-        "actionClass": "FOLLOW_UP",
-        "workstream": "Rapid Recovery",
-        "impact": "",
-        "priorityReasonBullets": [
-          "Why it matters: (risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) Credentials…",
-          "High-severity risk",
-          "Attention required (matryoshka status RED)",
-          "Active engagement detected",
-          "Awaiting external party"
-        ],
-        "owner": "Balaji Ravi",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-9861cf92b0",
-        "dueBy": "2026-07-21",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "(risk/Medium) Credentials dependency — owner: Unassigned (suggested: Hari); score 68",
-        "verb": "Escalate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
-        "ageDays": 0,
-        "priorityScore": 77,
-        "whyItMatters": "**MMM L2:** [health: Red] - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); …",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": true,
-          "attentionRequired": true,
-          "awaitingOthers": true,
-          "reasons": {
-            "engaged": "touched in the last 7 days; recency 0 d",
-            "attentionRequired": "matryoshka status RED",
-            "awaitingOthers": "FOLLOW_UP with external owner"
-          }
-        },
-        "whyItMattersConfidence": 0.3,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "",
-        "severity": "High",
-        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "preferred owner: Balaji Ravi",
-            "delta": 0.05,
-            "source": "owner-boost"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          },
-          {
-            "reason": "workstream has delayed decisions - boost escalate confidence",
-            "delta": 0.1,
-            "source": "learning:delayed-workstream"
-          },
-          {
-            "reason": "signal is noisier when owner is over-capacity",
-            "delta": -0.05,
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-21",
         "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-        "actionSource": "",
-        "ownerConfidence": "medium",
-        "rankingScore": 0.4,
-        "priority": 1,
+        "suggestedOwner": "",
+        "impact": "",
+        "focusSignals": {
+          "engaged": true,
+          "attentionRequired": true,
+          "awaitingOthers": true,
+          "reasons": {
+            "engaged": "touched in the last 7 days; recency 0 d",
+            "attentionRequired": "matryoshka status RED",
+            "awaitingOthers": "FOLLOW_UP with external owner"
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+        "outcomeQuality": "Unknown",
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Attention required (matryoshka status RED)",
+          "Active engagement detected",
+          "Awaiting external party"
+        ],
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 0.55,
@@ -198,130 +73,343 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "High severity - direct outreach to owner today.",
+        "dueBy": "2026-07-21",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "FOLLOW_UP",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.54,
+        "recurrenceCount": 1,
+        "priorityScore": 77,
+        "severity": "High",
+        "whyItMattersConfidence": 0.3,
+        "priority": 1,
         "delta": {
           "daysSinceLastTouched": 0,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "confidence": 0.54,
-        "actionClass": "FOLLOW_UP",
-        "workstream": "Rapid Recovery",
+        "linkedActionCount": 0,
+        "verb": "Escalate",
+        "id": "R-68338c1cbc",
+        "deadline": "2026-07-21",
+        "decisionOutcome": "",
+        "ownerConfidence": "medium",
+        "ageDays": 0,
+        "trend": "increasing",
+        "rankingScore": 0.4,
+        "whyItMatters": "[ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 - Next: Assign an owner for MMM L2 risk before it can be actioned - [ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98…",
+        "decisionRequired": false,
+        "title": "[ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 — owner: Unassigned (suggested:...",
+        "owner": "Balaji Ravi",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "preferred owner: Balaji Ravi",
+            "source": "owner-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          },
+          {
+            "reason": "signal is noisier when owner is over-capacity",
+            "source": "learning:overloaded-owner",
+            "delta": -0.05
+          }
+        ],
+        "rationale": "High severity - direct outreach to owner today."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+        "suggestedOwner": "",
         "impact": "",
+        "focusSignals": {
+          "engaged": true,
+          "attentionRequired": true,
+          "awaitingOthers": true,
+          "reasons": {
+            "engaged": "touched in the last 7 days; recency 0 d",
+            "attentionRequired": "matryoshka status RED",
+            "awaitingOthers": "FOLLOW_UP with external owner"
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Attention required (matryoshka status RED)",
           "Active engagement detected",
           "Awaiting external party"
         ],
-        "owner": "Balaji Ravi",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-165be3d4b1",
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 0.55,
+          "deadline": 0.3,
+          "status": 1.0,
+          "engagement": 1.0
+        },
         "dueBy": "2026-07-21",
-        "decisionOutcome": "",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "FOLLOW_UP",
         "timeToEscalationRisk": 0,
-        "title": "Next: Assign an owner for MMM L2 risk before it can be actioned",
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.54,
+        "recurrenceCount": 1,
+        "priorityScore": 77,
+        "severity": "High",
+        "whyItMattersConfidence": 0.3,
+        "priority": 1,
+        "delta": {
+          "daysSinceLastTouched": 0,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "linkedActionCount": 0,
         "verb": "Escalate",
-        "decisionStatus": ""
+        "id": "R-24b9744cf5",
+        "deadline": "2026-07-21",
+        "decisionOutcome": "",
+        "ownerConfidence": "medium",
+        "ageDays": 0,
+        "trend": "increasing",
+        "rankingScore": 0.4,
+        "whyItMatters": "[ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 — owner: Unassigned (suggested: Hari); score 86 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) ⚠️ Auditability concern…",
+        "decisionRequired": false,
+        "title": "(risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68",
+        "owner": "Balaji Ravi",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "preferred owner: Balaji Ravi",
+            "source": "owner-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          },
+          {
+            "reason": "signal is noisier when owner is over-capacity",
+            "source": "learning:overloaded-owner",
+            "delta": -0.05
+          }
+        ],
+        "rationale": "High severity - direct outreach to owner today."
       },
       {
+        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+        "suggestedOwner": "",
+        "impact": "",
+        "focusSignals": {
+          "engaged": true,
+          "attentionRequired": true,
+          "awaitingOthers": true,
+          "reasons": {
+            "engaged": "touched in the last 7 days; recency 0 d",
+            "attentionRequired": "matryoshka status RED",
+            "awaitingOthers": "FOLLOW_UP with external owner"
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+        "outcomeQuality": "Unknown",
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Attention required (matryoshka status RED)",
+          "Active engagement detected",
+          "Awaiting external party"
+        ],
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 0.55,
+          "deadline": 0.3,
+          "status": 1.0,
+          "engagement": 1.0
+        },
+        "dueBy": "2026-07-21",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "FOLLOW_UP",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.54,
         "recurrenceCount": 1,
-        "ageDays": 0,
         "priorityScore": 77,
+        "severity": "High",
+        "whyItMattersConfidence": 0.3,
+        "priority": 1,
+        "delta": {
+          "daysSinceLastTouched": 0,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "linkedActionCount": 0,
+        "verb": "Escalate",
+        "id": "R-165be3d4b1",
+        "deadline": "2026-07-21",
+        "decisionOutcome": "",
+        "ownerConfidence": "medium",
+        "ageDays": 0,
+        "trend": "increasing",
+        "rankingScore": 0.4,
+        "whyItMatters": "MMM L2: [health: Red] - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 - Next: Assign an owner for MMM L2 risk before it can be actioned - [ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (su…",
+        "decisionRequired": false,
+        "title": "Next: Assign an owner for MMM L2 risk before it can be actioned",
+        "owner": "Balaji Ravi",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "preferred owner: Balaji Ravi",
+            "source": "owner-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          },
+          {
+            "reason": "signal is noisier when owner is over-capacity",
+            "source": "learning:overloaded-owner",
+            "delta": -0.05
+          }
+        ],
+        "rationale": "High severity - direct outreach to owner today."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+        "suggestedOwner": "",
+        "impact": "",
+        "focusSignals": {
+          "engaged": true,
+          "attentionRequired": true,
+          "awaitingOthers": true,
+          "reasons": {
+            "engaged": "touched in the last 7 days; recency 0 d",
+            "attentionRequired": "matryoshka status RED",
+            "awaitingOthers": "FOLLOW_UP with external owner"
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+        "outcomeQuality": "Unknown",
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Attention required (matryoshka status RED)",
+          "Active engagement detected",
+          "Awaiting external party"
+        ],
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 0.55,
+          "deadline": 0.3,
+          "status": 1.0,
+          "engagement": 1.0
+        },
+        "dueBy": "2026-07-21",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "FOLLOW_UP",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.54,
+        "recurrenceCount": 1,
+        "priorityScore": 77,
+        "severity": "High",
+        "whyItMattersConfidence": 0.3,
+        "priority": 1,
+        "delta": {
+          "daysSinceLastTouched": 0,
+          "updatedSinceYesterday": true,
+          "changeSummary": "first appearance"
+        },
+        "linkedActionCount": 0,
+        "verb": "Escalate",
+        "id": "R-f780ab9313",
+        "deadline": "2026-07-21",
+        "decisionOutcome": "",
+        "ownerConfidence": "medium",
+        "ageDays": 0,
+        "trend": "increasing",
+        "rankingScore": 0.4,
         "whyItMatters": "(decision) D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP — owner: Unassigned (suggested: Balaji Ravi); score 70 - Next: Assign an owner for Rapid Recovery before this decision can move - [ISSUE] (risk/High) Review and oper…",
         "decisionRequired": false,
-        "focusSignals": {
-          "engaged": true,
-          "attentionRequired": true,
-          "awaitingOthers": true,
-          "reasons": {
-            "engaged": "touched in the last 7 days; recency 0 d",
-            "attentionRequired": "matryoshka status RED",
-            "awaitingOthers": "FOLLOW_UP with external owner"
-          }
-        },
-        "whyItMattersConfidence": 0.3,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "",
-        "severity": "High",
-        "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
-        "whyItMattersSource": "context-fallback",
+        "title": "[ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98",
+        "owner": "Balaji Ravi",
         "personalizationSignals": [
           {
             "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
+            "source": "workstream-boost",
+            "delta": 0.15
           },
           {
             "reason": "preferred owner: Balaji Ravi",
-            "delta": 0.05,
-            "source": "owner-boost"
+            "source": "owner-boost",
+            "delta": 0.05
           },
           {
             "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
+            "source": "imminent-escalation",
+            "delta": 0.15
           },
           {
             "reason": "workstream has delayed decisions - boost escalate confidence",
-            "delta": 0.1,
-            "source": "learning:delayed-workstream"
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
           },
           {
             "reason": "signal is noisier when owner is over-capacity",
-            "delta": -0.05,
-            "source": "learning:overloaded-owner"
+            "source": "learning:overloaded-owner",
+            "delta": -0.05
           }
         ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-21",
-        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-        "actionSource": "",
-        "ownerConfidence": "medium",
-        "rankingScore": 0.4,
-        "priority": 1,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 0.55,
-          "deadline": 0.3,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "High severity - direct outreach to owner today.",
-        "delta": {
-          "daysSinceLastTouched": 0,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "confidence": 0.54,
-        "actionClass": "FOLLOW_UP",
-        "workstream": "Rapid Recovery",
-        "impact": "",
-        "priorityReasonBullets": [
-          "High-severity risk",
-          "Attention required (matryoshka status RED)",
-          "Active engagement detected",
-          "Awaiting external party"
-        ],
-        "owner": "Balaji Ravi",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-f780ab9313",
-        "dueBy": "2026-07-21",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "[ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98",
-        "verb": "Escalate",
-        "decisionStatus": ""
+        "rationale": "High severity - direct outreach to owner today."
       },
       {
-        "recurrenceCount": 1,
-        "ageDays": 0,
-        "priorityScore": 77,
-        "whyItMatters": "**GOCC Transition:** [health: Red] - [ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86 - Next: Assign an owner for GOCC Transition risk before it can be actioned - [ISSUE] (risk/High) (risk/)…",
-        "decisionRequired": false,
+        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+        "suggestedOwner": "",
+        "impact": "",
         "focusSignals": {
           "engaged": true,
           "attentionRequired": true,
@@ -332,47 +420,16 @@
             "awaitingOthers": "FOLLOW_UP with external owner"
           }
         },
-        "whyItMattersConfidence": 0.3,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "",
-        "severity": "High",
+        "decisionStatus": "",
+        "workstream": "GBO Batch Transition",
         "nextAction": "Contact Balaji Ravi today about high-severity GBO Batch Transition risk",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: GBO Batch Transition",
-            "delta": 0.1,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "preferred owner: Balaji Ravi",
-            "delta": 0.05,
-            "source": "owner-boost"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          },
-          {
-            "reason": "workstream has delayed decisions - boost escalate confidence",
-            "delta": 0.1,
-            "source": "learning:delayed-workstream"
-          },
-          {
-            "reason": "signal is noisier when owner is over-capacity",
-            "delta": -0.05,
-            "source": "learning:overloaded-owner"
-          }
+        "outcomeQuality": "Unknown",
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Attention required (matryoshka status RED)",
+          "Active engagement detected",
+          "Awaiting external party"
         ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-21",
-        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-        "actionSource": "",
-        "ownerConfidence": "medium",
-        "rankingScore": 0.35,
-        "priority": 1,
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 0.55,
@@ -380,132 +437,72 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "High severity - direct outreach to owner today.",
-        "delta": {
-          "daysSinceLastTouched": 0,
-          "updatedSinceYesterday": true,
-          "changeSummary": "first appearance"
-        },
-        "confidence": 0.54,
-        "actionClass": "FOLLOW_UP",
-        "workstream": "GBO Batch Transition",
-        "impact": "",
-        "priorityReasonBullets": [
-          "High-severity risk",
-          "Attention required (matryoshka status RED)",
-          "Active engagement detected",
-          "Awaiting external party"
-        ],
-        "owner": "Balaji Ravi",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-c1294ba1e7",
         "dueBy": "2026-07-21",
-        "decisionOutcome": "",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "FOLLOW_UP",
         "timeToEscalationRisk": 0,
-        "title": "[ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86",
-        "verb": "Escalate",
-        "decisionStatus": ""
-      },
-      {
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.54,
         "recurrenceCount": 1,
-        "ageDays": 0,
         "priorityScore": 77,
-        "whyItMatters": "**GBO Batch Transition:** [health: Red] - [ISSUE] (risk/High) [ISSUE] (risk/High) [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence.",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": true,
-          "attentionRequired": true,
-          "awaitingOthers": true,
-          "reasons": {
-            "engaged": "touched in the last 7 days; recency 0 d",
-            "attentionRequired": "matryoshka status RED",
-            "awaitingOthers": "FOLLOW_UP with external owner"
-          }
-        },
-        "whyItMattersConfidence": 0.3,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "",
         "severity": "High",
-        "nextAction": "Contact Balaji Ravi today about high-severity GBO Batch Transition risk",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: GBO Batch Transition",
-            "delta": 0.1,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "preferred owner: Balaji Ravi",
-            "delta": 0.05,
-            "source": "owner-boost"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          },
-          {
-            "reason": "workstream has delayed decisions - boost escalate confidence",
-            "delta": 0.1,
-            "source": "learning:delayed-workstream"
-          },
-          {
-            "reason": "signal is noisier when owner is over-capacity",
-            "delta": -0.05,
-            "source": "learning:overloaded-owner"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-21",
-        "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-        "actionSource": "",
-        "ownerConfidence": "medium",
-        "rankingScore": 0.35,
+        "whyItMattersConfidence": 0.3,
         "priority": 1,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 0.55,
-          "deadline": 0.3,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "High severity - direct outreach to owner today.",
         "delta": {
           "daysSinceLastTouched": 0,
           "updatedSinceYesterday": true,
           "changeSummary": "first appearance"
         },
-        "confidence": 0.54,
-        "actionClass": "FOLLOW_UP",
-        "workstream": "GBO Batch Transition",
-        "impact": "",
-        "priorityReasonBullets": [
-          "High-severity risk",
-          "Attention required (matryoshka status RED)",
-          "Active engagement detected",
-          "Awaiting external party"
-        ],
-        "owner": "Balaji Ravi",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-41ddb0a760",
-        "dueBy": "2026-07-21",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "Next: Contact Balaji Ravi today about high-severity GBO Batch Transition risk",
+        "linkedActionCount": 0,
         "verb": "Escalate",
-        "decisionStatus": ""
+        "id": "R-6ba60140e6",
+        "deadline": "2026-07-21",
+        "decisionOutcome": "",
+        "ownerConfidence": "medium",
+        "ageDays": 0,
+        "trend": "increasing",
+        "rankingScore": 0.35,
+        "whyItMatters": "[ISSUE] (risk/High) [ISSUE] (risk/High) Next: Contact Balaji Ravi today about high-severity GBO Batch Transition risk — owner: Balaji Ravi; score 77 — owner: Balaji Ravi; score 77 - Next: Contact Balaji Ravi today about high-severity GBO Batch Transition risk…",
+        "decisionRequired": false,
+        "title": "[ISSUE] (risk/High) [ISSUE] (risk/High) Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timel...",
+        "owner": "Balaji Ravi",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: GBO Batch Transition",
+            "source": "workstream-boost",
+            "delta": 0.1
+          },
+          {
+            "reason": "preferred owner: Balaji Ravi",
+            "source": "owner-boost",
+            "delta": 0.05
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          },
+          {
+            "reason": "workstream has delayed decisions - boost escalate confidence",
+            "source": "learning:delayed-workstream",
+            "delta": 0.1
+          },
+          {
+            "reason": "signal is noisier when owner is over-capacity",
+            "source": "learning:overloaded-owner",
+            "delta": -0.05
+          }
+        ],
+        "rationale": "High severity - direct outreach to owner today."
       }
     ],
     "p2": [
       {
-        "recurrenceCount": 1,
-        "ageDays": 91,
-        "priorityScore": 98,
-        "whyItMatters": "Tooling Updates o ADS and xMatters groups to be added for enhanced alerting and escalation * Vendor Escalation o A standardized escalation procedure format will be defined for application vendor support to ensure consistent, timely engagement",
-        "decisionRequired": false,
+        "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned (suggested: Hari)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Hari",
+        "impact": "",
         "focusSignals": {
           "engaged": false,
           "attentionRequired": true,
@@ -516,113 +513,16 @@
             "awaitingOthers": ""
           }
         },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Hari",
-        "severity": "High",
-        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: MMM L2",
-            "delta": 0.1,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.09 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned (suggested: Hari)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.15,
-        "priority": 2,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 1.0,
-          "deadline": 0.9,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "delta": {
-          "daysSinceLastTouched": 91,
-          "updatedSinceYesterday": false,
-          "changeSummary": ""
-        },
-        "confidence": 0.09,
-        "actionClass": "DECIDE",
+        "decisionStatus": "",
         "workstream": "MMM L2",
-        "impact": "",
+        "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Risk aged 91 days without resolution",
           "Owner unassigned (suggested: Hari)",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "owner": "Unassigned",
-        "trend": "stable",
-        "kind": "risk",
-        "id": "R-1c3d9c0e3b",
-        "dueBy": "2026-07-24",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "Vendor Escalation",
-        "verb": "Investigate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
-        "ageDays": 91,
-        "priorityScore": 98,
-        "whyItMatters": "Items discussed * Agreed to create a dedicated problem ticket for recurring Japan incident use cases.",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": false,
-          "attentionRequired": true,
-          "awaitingOthers": false,
-          "reasons": {
-            "engaged": "",
-            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-            "awaitingOthers": ""
-          }
-        },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "",
-        "severity": "High",
-        "nextAction": "Assign an owner for this risk risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "confidence 0.09 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned - needs assignment\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.05,
-        "priority": 2,
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 1.0,
@@ -630,39 +530,136 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "dueBy": "2026-07-24",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.09,
+        "recurrenceCount": 1,
+        "priorityScore": 98,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
         "delta": {
           "daysSinceLastTouched": 91,
           "updatedSinceYesterday": false,
           "changeSummary": ""
         },
-        "confidence": 0.09,
-        "actionClass": "DECIDE",
-        "workstream": "",
+        "linkedActionCount": 0,
+        "verb": "Investigate",
+        "id": "R-1c3d9c0e3b",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 91,
+        "trend": "stable",
+        "rankingScore": 0.15,
+        "whyItMatters": "Tooling Updates o ADS and xMatters groups to be added for enhanced alerting and escalation * Vendor Escalation o A standardized escalation procedure format will be defined for application vendor support to ensure consistent, timely engagement",
+        "decisionRequired": false,
+        "title": "Vendor Escalation",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: MMM L2",
+            "source": "workstream-boost",
+            "delta": 0.1
+          },
+          {
+            "reason": "confidence 0.09 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned - needs assignment\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "",
         "impact": "",
+        "focusSignals": {
+          "engaged": false,
+          "attentionRequired": true,
+          "awaitingOthers": false,
+          "reasons": {
+            "engaged": "",
+            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+            "awaitingOthers": ""
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "",
+        "nextAction": "Assign an owner for this risk risk before it can be actioned",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Risk aged 91 days without resolution",
           "Owner unassigned - needs assignment",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "owner": "Unassigned",
-        "trend": "stable",
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 1.0,
+          "deadline": 0.9,
+          "status": 1.0,
+          "engagement": 1.0
+        },
+        "dueBy": "2026-07-24",
         "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.09,
+        "recurrenceCount": 1,
+        "priorityScore": 98,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
+        "delta": {
+          "daysSinceLastTouched": 91,
+          "updatedSinceYesterday": false,
+          "changeSummary": ""
+        },
+        "linkedActionCount": 0,
+        "verb": "Investigate",
         "id": "R-f386376f94",
-        "dueBy": "2026-07-24",
+        "deadline": "2026-07-24",
         "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
+        "ownerConfidence": "low",
+        "ageDays": 91,
+        "trend": "stable",
+        "rankingScore": 0.05,
+        "whyItMatters": "Items discussed * Agreed to create a dedicated problem ticket for recurring Japan incident use cases.",
+        "decisionRequired": false,
         "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
-        "verb": "Investigate",
-        "decisionStatus": ""
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "confidence 0.09 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       },
       {
-        "recurrenceCount": 1,
-        "ageDays": 15,
-        "priorityScore": 94,
-        "whyItMatters": "**PS Team contract transition** is the single biggest constraint on throughput.",
-        "decisionRequired": false,
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Balaji Ravi",
+        "impact": "",
         "focusSignals": {
           "engaged": false,
           "attentionRequired": true,
@@ -673,118 +670,15 @@
             "awaitingOthers": ""
           }
         },
-        "whyItMattersConfidence": 0.15,
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
         "outcomeQuality": "Unknown",
-        "suggestedOwner": "Rasheersh",
-        "severity": "High",
-        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Capacity Management",
-            "delta": 0.08,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.70(aging 15d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Risk aged 15 days without resolution\n- Owner unassigned (suggested: Rasheersh)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.13,
-        "priority": 2,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 1.0,
-          "deadline": 0.7,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "delta": {
-          "daysSinceLastTouched": 15,
-          "updatedSinceYesterday": false,
-          "changeSummary": ""
-        },
-        "confidence": 0.19,
-        "actionClass": "DECIDE",
-        "workstream": "Capacity Management",
-        "impact": "",
         "priorityReasonBullets": [
           "High-severity risk",
-          "Risk aged 15 days without resolution",
-          "Owner unassigned (suggested: Rasheersh)",
+          "Owner unassigned (suggested: Balaji Ravi)",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "owner": "Unassigned",
-        "trend": "decreasing",
-        "kind": "risk",
-        "id": "R-aa0c3f050b",
-        "dueBy": "2026-07-24",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management",
-        "verb": "Investigate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
-        "ageDays": 8,
-        "priorityScore": 90,
-        "whyItMatters": "Rapid Recovery remains active through Ingenium desktop rehearsal planning and operational validation.",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": false,
-          "attentionRequired": true,
-          "awaitingOthers": false,
-          "reasons": {
-            "engaged": "",
-            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-            "awaitingOthers": ""
-          }
-        },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Balaji Ravi",
-        "severity": "High",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.2,
-        "priority": 2,
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 1.0,
@@ -792,118 +686,60 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "delta": {
-          "daysSinceLastTouched": 8,
-          "updatedSinceYesterday": false,
-          "changeSummary": ""
-        },
-        "confidence": 0.19,
-        "actionClass": "DECIDE",
-        "workstream": "Rapid Recovery",
-        "impact": "",
-        "priorityReasonBullets": [
-          "High-severity risk",
-          "Owner unassigned (suggested: Balaji Ravi)",
-          "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
-        ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-bafab65c68",
         "dueBy": "2026-07-24",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
-        "verb": "Investigate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
-        "ageDays": 8,
-        "priorityScore": 90,
-        "whyItMatters": "Recommended next action: - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidence expectations, escalation path, and output actions.",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": false,
-          "attentionRequired": true,
-          "awaitingOthers": false,
-          "reasons": {
-            "engaged": "",
-            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-            "awaitingOthers": ""
-          }
-        },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Balaji Ravi",
-        "severity": "High",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "kind": "risk",
         "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "actionClass": "DECIDE",
+        "timeToEscalationRisk": 0,
         "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.2,
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.19,
+        "recurrenceCount": 1,
+        "priorityScore": 90,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
         "priority": 2,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 1.0,
-          "deadline": 0.5,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
         "delta": {
           "daysSinceLastTouched": 8,
           "updatedSinceYesterday": false,
           "changeSummary": ""
         },
-        "confidence": 0.19,
-        "actionClass": "DECIDE",
-        "workstream": "Rapid Recovery",
-        "impact": "",
-        "priorityReasonBullets": [
-          "High-severity risk",
-          "Owner unassigned (suggested: Balaji Ravi)",
-          "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
-        ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-b493137b8f",
-        "dueBy": "2026-07-24",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+        "linkedActionCount": 0,
         "verb": "Investigate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
+        "id": "R-2b2a241d9c",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
         "ageDays": 8,
-        "priorityScore": 90,
+        "trend": "increasing",
+        "rankingScore": 0.2,
         "whyItMatters": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalation to triage / L3, MIM engagement, and evidence handoff.",
         "decisionRequired": false,
+        "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Balaji Ravi",
+        "impact": "",
         "focusSignals": {
           "engaged": false,
           "attentionRequired": true,
@@ -914,76 +750,76 @@
             "awaitingOthers": ""
           }
         },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Balaji Ravi",
-        "severity": "High",
-        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.2,
-        "priority": 2,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 1.0,
-          "deadline": 0.5,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "delta": {
-          "daysSinceLastTouched": 8,
-          "updatedSinceYesterday": false,
-          "changeSummary": ""
-        },
-        "confidence": 0.19,
-        "actionClass": "DECIDE",
+        "decisionStatus": "",
         "workstream": "Rapid Recovery",
-        "impact": "",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Owner unassigned (suggested: Balaji Ravi)",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-2b2a241d9c",
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 1.0,
+          "deadline": 0.5,
+          "status": 1.0,
+          "engagement": 1.0
+        },
         "dueBy": "2026-07-24",
-        "decisionOutcome": "",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
         "timeToEscalationRisk": 0,
-        "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.19,
+        "recurrenceCount": 1,
+        "priorityScore": 90,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
+        "delta": {
+          "daysSinceLastTouched": 8,
+          "updatedSinceYesterday": false,
+          "changeSummary": ""
+        },
+        "linkedActionCount": 0,
         "verb": "Investigate",
-        "decisionStatus": ""
+        "id": "R-b493137b8f",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 8,
+        "trend": "increasing",
+        "rankingScore": 0.2,
+        "whyItMatters": "Recommended next action: - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidence expectations, escalation path, and output actions.",
+        "decisionRequired": false,
+        "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       },
       {
-        "recurrenceCount": 1,
-        "ageDays": 11,
-        "priorityScore": 90,
-        "whyItMatters": "[Lapu-Lapu] ETS Japan, GOCC, and Observability Team, Tuesday July 7, 2026 — meeting transcript/summary covering dashboards, Dev XP monitoring, process monitoring, laptop monitoring, MMM L2/RRP, GBO transition, CyberArk/AD account management, Pulse HR monitori…",
-        "decisionRequired": false,
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Balaji Ravi",
+        "impact": "",
         "focusSignals": {
           "engaged": false,
           "attentionRequired": true,
@@ -994,37 +830,15 @@
             "awaitingOthers": ""
           }
         },
-        "whyItMattersConfidence": 0.15,
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
         "outcomeQuality": "Unknown",
-        "suggestedOwner": "Kelvin",
-        "severity": "High",
-        "nextAction": "Assign an owner for ADX Registration risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: ADX Registration",
-            "delta": 0.08,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Owner unassigned (suggested: Balaji Ravi)",
+          "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Kelvin)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.13,
-        "priority": 2,
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 1.0,
@@ -1032,79 +846,79 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "dueBy": "2026-07-24",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.19,
+        "recurrenceCount": 1,
+        "priorityScore": 90,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
         "delta": {
-          "daysSinceLastTouched": 11,
+          "daysSinceLastTouched": 8,
           "updatedSinceYesterday": false,
           "changeSummary": ""
         },
-        "confidence": 0.19,
-        "actionClass": "DECIDE",
-        "workstream": "ADX Registration",
+        "linkedActionCount": 0,
+        "verb": "Investigate",
+        "id": "R-bafab65c68",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 8,
+        "trend": "increasing",
+        "rankingScore": 0.2,
+        "whyItMatters": "Rapid Recovery remains active through Ingenium desktop rehearsal planning and operational validation.",
+        "decisionRequired": false,
+        "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Kelvin)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Kelvin",
         "impact": "",
+        "focusSignals": {
+          "engaged": false,
+          "attentionRequired": true,
+          "awaitingOthers": false,
+          "reasons": {
+            "engaged": "",
+            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+            "awaitingOthers": ""
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "ADX Registration",
+        "nextAction": "Assign an owner for ADX Registration risk before it can be actioned",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Owner unassigned (suggested: Kelvin)",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-d7f568105f",
-        "dueBy": "2026-07-24",
-        "decisionOutcome": "",
-        "timeToEscalationRisk": 0,
-        "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
-        "verb": "Investigate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
-        "ageDays": 8,
-        "priorityScore": 90,
-        "whyItMatters": "## New Risks Detected - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation.",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": false,
-          "attentionRequired": true,
-          "awaitingOthers": false,
-          "reasons": {
-            "engaged": "",
-            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-            "awaitingOthers": ""
-          }
-        },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Rasheersh",
-        "severity": "High",
-        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Capacity Management",
-            "delta": 0.08,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Rasheersh)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.13,
-        "priority": 2,
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 1.0,
@@ -1112,113 +926,215 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-        "delta": {
-          "daysSinceLastTouched": 8,
-          "updatedSinceYesterday": false,
-          "changeSummary": ""
-        },
-        "confidence": 0.19,
+        "dueBy": "2026-07-24",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
         "actionClass": "DECIDE",
-        "workstream": "Capacity Management",
-        "impact": "",
-        "priorityReasonBullets": [
-          "High-severity risk",
-          "Owner unassigned (suggested: Rasheersh)",
-          "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
-        ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-121760730c",
-        "dueBy": "2026-07-24",
-        "decisionOutcome": "",
         "timeToEscalationRisk": 0,
-        "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-        "verb": "Investigate",
-        "decisionStatus": ""
-      },
-      {
-        "recurrenceCount": 1,
-        "ageDays": 11,
-        "priorityScore": 90,
-        "whyItMatters": "CyberArk/IAM became a major risk and governance focus this week.",
-        "decisionRequired": false,
-        "focusSignals": {
-          "engaged": false,
-          "attentionRequired": true,
-          "awaitingOthers": false,
-          "reasons": {
-            "engaged": "",
-            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-            "awaitingOthers": ""
-          }
-        },
-        "whyItMattersConfidence": 0.3,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Deb",
-        "severity": "High",
-        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "confidence 0.19 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
-        ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Deb)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
         "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.05,
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.19,
+        "recurrenceCount": 1,
+        "priorityScore": 90,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
         "priority": 2,
-        "priorityFactors": {
-          "impact": 1.0,
-          "ownership": 1.0,
-          "deadline": 0.5,
-          "status": 1.0,
-          "engagement": 1.0
-        },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
         "delta": {
           "daysSinceLastTouched": 11,
           "updatedSinceYesterday": false,
           "changeSummary": ""
         },
-        "confidence": 0.19,
-        "actionClass": "DECIDE",
-        "workstream": "Developer XP Dashboard",
+        "linkedActionCount": 0,
+        "verb": "Investigate",
+        "id": "R-d7f568105f",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 11,
+        "trend": "increasing",
+        "rankingScore": 0.13,
+        "whyItMatters": "[Lapu-Lapu] ETS Japan, GOCC, and Observability Team, Tuesday July 7, 2026 — meeting transcript/summary covering dashboards, Dev XP monitoring, process monitoring, laptop monitoring, MMM L2/RRP, GBO transition, CyberArk/AD account management, Pulse HR monitori…",
+        "decisionRequired": false,
+        "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: ADX Registration",
+            "source": "workstream-boost",
+            "delta": 0.08
+          },
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Rasheersh)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Rasheersh",
         "impact": "",
+        "focusSignals": {
+          "engaged": false,
+          "attentionRequired": true,
+          "awaitingOthers": false,
+          "reasons": {
+            "engaged": "",
+            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+            "awaitingOthers": ""
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Capacity Management",
+        "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+        "outcomeQuality": "Unknown",
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Owner unassigned (suggested: Rasheersh)",
+          "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
+        ],
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 1.0,
+          "deadline": 0.5,
+          "status": 1.0,
+          "engagement": 1.0
+        },
+        "dueBy": "2026-07-24",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.19,
+        "recurrenceCount": 1,
+        "priorityScore": 90,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
+        "delta": {
+          "daysSinceLastTouched": 8,
+          "updatedSinceYesterday": false,
+          "changeSummary": ""
+        },
+        "linkedActionCount": 0,
+        "verb": "Investigate",
+        "id": "R-121760730c",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 8,
+        "trend": "increasing",
+        "rankingScore": 0.13,
+        "whyItMatters": "- RRP documents may be complete on paper but insufficiently validated without controlled operational testing and rehearsal.",
+        "decisionRequired": false,
+        "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Capacity Management",
+            "source": "workstream-boost",
+            "delta": 0.08
+          },
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Deb)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "suggestedOwner": "Deb",
+        "impact": "",
+        "focusSignals": {
+          "engaged": false,
+          "attentionRequired": true,
+          "awaitingOthers": false,
+          "reasons": {
+            "engaged": "",
+            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+            "awaitingOthers": ""
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Developer XP Dashboard",
+        "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Owner unassigned (suggested: Deb)",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
         ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-8ad2d2ce2f",
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 1.0,
+          "deadline": 0.5,
+          "status": 1.0,
+          "engagement": 1.0
+        },
         "dueBy": "2026-07-24",
-        "decisionOutcome": "",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
         "timeToEscalationRisk": 0,
-        "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.19,
+        "recurrenceCount": 1,
+        "priorityScore": 90,
+        "severity": "High",
+        "whyItMattersConfidence": 0.3,
+        "priority": 2,
+        "delta": {
+          "daysSinceLastTouched": 11,
+          "updatedSinceYesterday": false,
+          "changeSummary": ""
+        },
+        "linkedActionCount": 0,
         "verb": "Investigate",
-        "decisionStatus": ""
+        "id": "R-8ad2d2ce2f",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 11,
+        "trend": "increasing",
+        "rankingScore": 0.05,
+        "whyItMatters": "CyberArk/IAM became a major risk and governance focus this week.",
+        "decisionRequired": false,
+        "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "confidence 0.19 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       },
       {
-        "recurrenceCount": 1,
-        "ageDays": 5,
-        "priorityScore": 86,
-        "whyItMatters": "**Disaster Recovery Test and RRP Tabletop Rehearsal: **David, Dennis, Mary, and Birger discussed preparations for an upcoming DR test and the need for a tabletop rehearsal of the Rapid Recovery Plan (RRP), including application verification protocols, partici…",
-        "decisionRequired": false,
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)\n- Active engagement detected",
+        "suggestedOwner": "Balaji Ravi",
+        "impact": "",
         "focusSignals": {
           "engaged": true,
           "attentionRequired": true,
@@ -1229,37 +1145,16 @@
             "awaitingOthers": ""
           }
         },
-        "whyItMattersConfidence": 0.15,
-        "outcomeQuality": "Unknown",
-        "suggestedOwner": "Balaji Ravi",
-        "severity": "High",
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
         "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-        "whyItMattersSource": "context-fallback",
-        "personalizationSignals": [
-          {
-            "reason": "preferred workstream: Rapid Recovery",
-            "delta": 0.15,
-            "source": "workstream-boost"
-          },
-          {
-            "reason": "confidence 0.29 < 0.4",
-            "delta": -0.1,
-            "source": "low-confidence"
-          },
-          {
-            "reason": "escalates in 0d",
-            "delta": 0.15,
-            "source": "imminent-escalation"
-          }
+        "outcomeQuality": "Unknown",
+        "priorityReasonBullets": [
+          "High-severity risk",
+          "Owner unassigned (suggested: Balaji Ravi)",
+          "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+          "Active engagement detected"
         ],
-        "linkedActionCount": 0,
-        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.30(aging 5d); status=1.00(status RED); engagement=1.00(attention required)",
-        "deadline": "2026-07-24",
-        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)\n- Active engagement detected",
-        "actionSource": "",
-        "ownerConfidence": "low",
-        "rankingScore": 0.2,
-        "priority": 2,
         "priorityFactors": {
           "impact": 1.0,
           "ownership": 1.0,
@@ -1267,575 +1162,604 @@
           "status": 1.0,
           "engagement": 1.0
         },
-        "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+        "dueBy": "2026-07-24",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
+        "timeToEscalationRisk": 0,
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.30(aging 5d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.29,
+        "recurrenceCount": 1,
+        "priorityScore": 86,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
         "delta": {
           "daysSinceLastTouched": 5,
           "updatedSinceYesterday": false,
           "changeSummary": ""
         },
-        "confidence": 0.29,
-        "actionClass": "DECIDE",
-        "workstream": "Rapid Recovery",
+        "linkedActionCount": 0,
+        "verb": "Investigate",
+        "id": "R-aa18501480",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 5,
+        "trend": "increasing",
+        "rankingScore": 0.2,
+        "whyItMatters": "Disaster Recovery Test and RRP Tabletop Rehearsal: David, Dennis, Mary, and Birger discussed preparations for an upcoming DR test and the need for a tabletop rehearsal of the Rapid Recovery Plan (RRP), including application verification protocols, participant…",
+        "decisionRequired": false,
+        "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.29 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+      },
+      {
+        "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)\n- Active engagement detected",
+        "suggestedOwner": "Balaji Ravi",
         "impact": "",
+        "focusSignals": {
+          "engaged": true,
+          "attentionRequired": true,
+          "awaitingOthers": false,
+          "reasons": {
+            "engaged": "touched in the last 7 days; recency 4 d",
+            "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+            "awaitingOthers": ""
+          }
+        },
+        "decisionStatus": "",
+        "workstream": "Rapid Recovery",
+        "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+        "outcomeQuality": "Unknown",
         "priorityReasonBullets": [
           "High-severity risk",
           "Owner unassigned (suggested: Balaji Ravi)",
           "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
           "Active engagement detected"
         ],
-        "owner": "Unassigned",
-        "trend": "increasing",
-        "kind": "risk",
-        "id": "R-aa18501480",
+        "priorityFactors": {
+          "impact": 1.0,
+          "ownership": 1.0,
+          "deadline": 0.3,
+          "status": 1.0,
+          "engagement": 1.0
+        },
         "dueBy": "2026-07-24",
-        "decisionOutcome": "",
+        "kind": "risk",
+        "whyItMattersSource": "context-fallback",
+        "actionClass": "DECIDE",
         "timeToEscalationRisk": 0,
-        "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+        "actionSource": "",
+        "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.30(aging 4d); status=1.00(status RED); engagement=1.00(attention required)",
+        "confidence": 0.29,
+        "recurrenceCount": 1,
+        "priorityScore": 86,
+        "severity": "High",
+        "whyItMattersConfidence": 0.15,
+        "priority": 2,
+        "delta": {
+          "daysSinceLastTouched": 4,
+          "updatedSinceYesterday": false,
+          "changeSummary": ""
+        },
+        "linkedActionCount": 0,
         "verb": "Investigate",
-        "decisionStatus": ""
+        "id": "R-1de6e7cdee",
+        "deadline": "2026-07-24",
+        "decisionOutcome": "",
+        "ownerConfidence": "low",
+        "ageDays": 4,
+        "trend": "increasing",
+        "rankingScore": 0.2,
+        "whyItMatters": "Verification protocols - Incident simulation - Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】 ## Email Mentions",
+        "decisionRequired": false,
+        "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
+        "owner": "Unassigned",
+        "personalizationSignals": [
+          {
+            "reason": "preferred workstream: Rapid Recovery",
+            "source": "workstream-boost",
+            "delta": 0.15
+          },
+          {
+            "reason": "confidence 0.29 < 0.4",
+            "source": "low-confidence",
+            "delta": -0.1
+          },
+          {
+            "reason": "escalates in 0d",
+            "source": "imminent-escalation",
+            "delta": 0.15
+          }
+        ],
+        "rationale": "Owner not yet confirmed; ownership must precede mitigation."
       }
     ],
     "p3": []
   },
   "clusters": [
     {
-      "p1Count": 5,
-      "itemIds": [
-        "R-c30be8e292",
-        "R-667aaccc72",
-        "R-72864e4a38",
-        "R-90c533d7c0",
-        "R-66f602574a"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "Developer XP Dashboard",
       "topPriority": 1.0,
-      "theme": "owner",
-      "itemCount": 5,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 4,
-      "itemIds": [
-        "R-3875ed972b",
-        "R-0c8580b4b0",
-        "R-19dc4b0626",
-        "R-19164e7bb4"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "GOCC Transition",
-      "topPriority": 1.0,
-      "theme": "owner",
-      "itemCount": 4,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 3,
-      "itemIds": [
-        "R-9d1597768d",
-        "R-99cd314d16",
-        "R-2147a92d76"
-      ],
       "kinds": [
         "risk"
       ],
       "workstream": "Employee XP Dashboard",
-      "topPriority": 1.0,
-      "theme": "owner",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-59a3e96671",
+        "R-a64a18e013",
+        "R-7141abe2af"
+      ],
+      "p1Count": 3,
       "itemCount": 3,
-      "minEscalationRisk": 0.0
+      "theme": "(misc)"
     },
     {
-      "p1Count": 3,
-      "itemIds": [
-        "R-90872d40de",
-        "R-35dbbad7a0",
-        "D-f91314563c"
+      "topPriority": 1.0,
+      "kinds": [
+        "risk"
       ],
+      "workstream": "Rapid Recovery",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-2b2a241d9c",
+        "R-aa18501480",
+        "R-1de6e7cdee",
+        "R-4190eb0c5e",
+        "R-68338c1cbc",
+        "R-f780ab9313"
+      ],
+      "p1Count": 2,
+      "itemCount": 6,
+      "theme": "escalation"
+    },
+    {
+      "topPriority": 1.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "GBO Batch Transition",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-4881ea0aaa",
+        "R-6ba60140e6",
+        "R-83aeaa9f4d"
+      ],
+      "p1Count": 2,
+      "itemCount": 3,
+      "theme": "(misc)"
+    },
+    {
+      "topPriority": 1.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "GOCC Transition",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-c7355ab891",
+        "R-19164e7bb4",
+        "R-09209e4808"
+      ],
+      "p1Count": 2,
+      "itemCount": 3,
+      "theme": "gocc"
+    },
+    {
+      "topPriority": 1.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "Employee XP Dashboard",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-46d59f5555",
+        "R-8a21bfe12c"
+      ],
+      "p1Count": 2,
+      "itemCount": 2,
+      "theme": "owner"
+    },
+    {
+      "topPriority": 1.0,
       "kinds": [
         "decision",
         "risk"
       ],
       "workstream": "GBO Batch Transition",
-      "topPriority": 1.0,
-      "theme": "japan",
-      "itemCount": 3,
-      "minEscalationRisk": 0.0
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-41ddb0a760",
+        "D-f91314563c"
+      ],
+      "p1Count": 2,
+      "itemCount": 2,
+      "theme": "batch"
     },
     {
-      "p1Count": 2,
-      "itemIds": [
-        "R-c1294ba1e7",
-        "R-6ceb6a1d12"
-      ],
+      "topPriority": 1.0,
       "kinds": [
         "risk"
       ],
       "workstream": "GBO Batch Transition",
-      "topPriority": 1.0,
-      "theme": "team",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-c1294ba1e7",
+        "R-d2cac6f77e"
+      ],
+      "p1Count": 2,
       "itemCount": 2,
-      "minEscalationRisk": 0.0
+      "theme": "owner"
     },
     {
-      "p1Count": 2,
+      "topPriority": 1.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "Rapid Recovery",
+      "minEscalationRisk": 0.0,
       "itemIds": [
-        "R-9861cf92b0",
+        "R-24b9744cf5",
         "R-165be3d4b1"
       ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "Rapid Recovery",
-      "topPriority": 1.0,
-      "theme": "owner",
+      "p1Count": 2,
       "itemCount": 2,
-      "minEscalationRisk": 0.0
+      "theme": "owner"
     },
     {
-      "p1Count": 1,
-      "itemIds": [
-        "R-2b2a241d9c",
-        "R-aa18501480",
-        "R-1de6e7cdee",
-        "R-f780ab9313"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "Rapid Recovery",
       "topPriority": 1.0,
-      "theme": "escalation",
-      "itemCount": 4,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 1,
-      "itemIds": [
-        "R-8ad2d2ce2f",
-        "R-8d4d49e7c3"
-      ],
       "kinds": [
         "risk"
       ],
       "workstream": "Developer XP Dashboard",
-      "topPriority": 1.0,
-      "theme": "summary",
-      "itemCount": 2,
-      "minEscalationRisk": 0.0
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-e94e76233b",
+        "R-c926d39096",
+        "R-8a1ed5bee3"
+      ],
+      "p1Count": 1,
+      "itemCount": 3,
+      "theme": "severity"
     },
     {
-      "p1Count": 1,
-      "itemIds": [
-        "R-27c07d48fd",
-        "R-09209e4808"
+      "topPriority": 1.0,
+      "kinds": [
+        "decision",
+        "risk"
       ],
+      "workstream": "Developer XP Dashboard",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-c4fa7148b8",
+        "D-3ced6cbb47"
+      ],
+      "p1Count": 1,
+      "itemCount": 2,
+      "theme": "(misc)"
+    },
+    {
+      "topPriority": 1.0,
       "kinds": [
         "risk"
       ],
       "workstream": "GOCC Transition",
-      "topPriority": 1.0,
-      "theme": "contact",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-27c07d48fd",
+        "R-0c8580b4b0"
+      ],
+      "p1Count": 1,
       "itemCount": 2,
-      "minEscalationRisk": 0.0
+      "theme": "escalation"
     },
     {
-      "p1Count": 1,
-      "itemIds": [
-        "R-a952f10617"
-      ],
+      "topPriority": 2.0,
       "kinds": [
         "risk"
       ],
-      "workstream": "Employee XP Dashboard",
-      "topPriority": 1.0,
-      "theme": "(misc)",
-      "itemCount": 1,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 1,
-      "itemIds": [
-        "R-41ddb0a760"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "GBO Batch Transition",
-      "topPriority": 1.0,
-      "theme": "(misc)",
-      "itemCount": 1,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 0,
+      "workstream": "(none)",
+      "minEscalationRisk": 0.0,
       "itemIds": [
         "R-f386376f94",
         "R-b8d4414c4c",
         "R-a3a724c1be",
         "R-64c0ccc1e6"
       ],
+      "p1Count": 0,
+      "itemCount": 4,
+      "theme": "escalation"
+    },
+    {
+      "topPriority": 2.0,
       "kinds": [
+        "decision",
         "risk"
       ],
       "workstream": "(none)",
-      "topPriority": 2.0,
-      "theme": "escalation",
-      "itemCount": 4,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 0,
+      "minEscalationRisk": 0.0,
       "itemIds": [
-        "R-b2ee8b777e",
         "R-41bb9b1c39",
+        "R-b2ee8b777e",
         "R-f5518c28bc",
         "D-8391860e44"
       ],
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "workstream": "(none)",
-      "topPriority": 2.0,
-      "theme": "(misc)",
+      "p1Count": 0,
       "itemCount": 4,
-      "minEscalationRisk": 0.0
+      "theme": "(misc)"
     },
     {
-      "p1Count": 0,
-      "itemIds": [
-        "R-b7a381d02b",
-        "R-ca48836978",
-        "R-228ae1101c",
-        "R-2a93e28551"
-      ],
+      "topPriority": 2.0,
       "kinds": [
         "risk"
       ],
       "workstream": "CyberArk Governance",
-      "topPriority": 2.0,
-      "theme": "(misc)",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-0dcce4bb79",
+        "R-228ae1101c",
+        "R-b7a381d02b",
+        "R-ca48836978"
+      ],
+      "p1Count": 0,
       "itemCount": 4,
-      "minEscalationRisk": 0.0
+      "theme": "(misc)"
     },
     {
-      "p1Count": 0,
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "Capacity Management",
+      "minEscalationRisk": 0.0,
       "itemIds": [
         "R-121760730c",
-        "R-a18adafc06",
-        "R-8d9f37dcce"
+        "R-8d9f37dcce",
+        "R-a18adafc06"
       ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "Capacity Management",
-      "topPriority": 2.0,
-      "theme": "reporting",
+      "p1Count": 0,
       "itemCount": 3,
-      "minEscalationRisk": 0.0
+      "theme": "reporting"
     },
     {
-      "p1Count": 0,
-      "itemIds": [
-        "R-aa0c3f050b",
-        "R-59131ed59a"
-      ],
+      "topPriority": 2.0,
       "kinds": [
         "risk"
       ],
-      "workstream": "Capacity Management",
-      "topPriority": 2.0,
-      "theme": "capacity",
-      "itemCount": 2,
-      "minEscalationRisk": 0.0
+      "workstream": "Developer XP Dashboard",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-8ad2d2ce2f",
+        "R-d882f4717c",
+        "R-61737fb204"
+      ],
+      "p1Count": 0,
+      "itemCount": 3,
+      "theme": "review"
     },
     {
-      "p1Count": 0,
-      "itemIds": [
-        "R-e3dd5be6ae",
-        "R-ae3cccdff8"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "CMDB Mapping",
       "topPriority": 2.0,
-      "theme": "(misc)",
-      "itemCount": 2,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 0,
-      "itemIds": [
-        "R-b1cf205d0f",
-        "R-1b9a3d39d2"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "CyberArk Governance",
-      "topPriority": 2.0,
-      "theme": "cyberark",
-      "itemCount": 2,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 0,
-      "itemIds": [
-        "R-1c3d9c0e3b",
-        "R-9f520f1264"
-      ],
-      "kinds": [
-        "risk"
-      ],
-      "workstream": "MMM L2",
-      "topPriority": 2.0,
-      "theme": "vendor",
-      "itemCount": 2,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 0,
-      "itemIds": [
-        "R-bafab65c68",
-        "D-6f81d99006"
-      ],
-      "kinds": [
-        "decision",
-        "risk"
-      ],
-      "workstream": "Rapid Recovery",
-      "topPriority": 2.0,
-      "theme": "restart",
-      "itemCount": 2,
-      "minEscalationRisk": 0.0
-    },
-    {
-      "p1Count": 0,
-      "itemIds": [
-        "R-d7f568105f"
-      ],
       "kinds": [
         "risk"
       ],
       "workstream": "ADX Registration",
-      "topPriority": 2.0,
-      "theme": "(misc)",
-      "itemCount": 1,
-      "minEscalationRisk": 0.0
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-d7f568105f",
+        "R-fff605c5dd"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "japan"
     },
     {
-      "p1Count": 0,
-      "itemIds": [
-        "D-3ced6cbb47"
-      ],
+      "topPriority": 2.0,
       "kinds": [
-        "decision"
+        "risk"
+      ],
+      "workstream": "Capacity Management",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-d4b21d8aed",
+        "R-59131ed59a"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "dependency"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "Capacity Management",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-0fdd3766e6",
+        "R-b59d974bdf"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "cyberark"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "CMDB Mapping",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-e3dd5be6ae",
+        "R-ae3cccdff8"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "(misc)"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "CyberArk Governance",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-bf28edfac4",
+        "R-b1cf205d0f"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "cyberark"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
       ],
       "workstream": "Developer XP Dashboard",
-      "topPriority": 2.0,
-      "theme": "(misc)",
-      "itemCount": 1,
-      "minEscalationRisk": 0.0
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-9d0da6e60c",
+        "R-52ff893f30"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "owner"
     },
     {
-      "p1Count": 0,
-      "itemIds": [
-        "R-d57894861d"
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
       ],
+      "workstream": "MMM L2",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-1c3d9c0e3b",
+        "R-9f520f1264"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "vendor"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "decision",
+        "risk"
+      ],
+      "workstream": "Project Matryoshka",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-f83ea1c1dc",
+        "D-c54ce48b2b"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "(misc)"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "Rapid Recovery",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-b493137b8f",
+        "R-bafab65c68"
+      ],
+      "p1Count": 0,
+      "itemCount": 2,
+      "theme": "ingenium"
+    },
+    {
+      "topPriority": 2.0,
+      "kinds": [
+        "risk"
+      ],
+      "workstream": "Capacity Management",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-bdb7b6a333"
+      ],
+      "p1Count": 0,
+      "itemCount": 1,
+      "theme": "(misc)"
+    },
+    {
+      "topPriority": 2.0,
       "kinds": [
         "risk"
       ],
       "workstream": "GOCC Transition",
-      "topPriority": 2.0,
-      "theme": "(misc)",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "R-d57894861d"
+      ],
+      "p1Count": 0,
       "itemCount": 1,
-      "minEscalationRisk": 0.0
+      "theme": "(misc)"
     },
     {
-      "p1Count": 0,
-      "itemIds": [
-        "D-c54ce48b2b"
-      ],
+      "topPriority": 2.0,
       "kinds": [
         "decision"
       ],
-      "workstream": "Project Matryoshka",
-      "topPriority": 2.0,
-      "theme": "(misc)",
-      "itemCount": 1,
-      "minEscalationRisk": 8.0
-    },
-    {
-      "p1Count": 0,
-      "itemIds": [
-        "R-b493137b8f"
-      ],
-      "kinds": [
-        "risk"
-      ],
       "workstream": "Rapid Recovery",
-      "topPriority": 2.0,
-      "theme": "(misc)",
+      "minEscalationRisk": 0.0,
+      "itemIds": [
+        "D-6f81d99006"
+      ],
+      "p1Count": 0,
       "itemCount": 1,
-      "minEscalationRisk": 0.0
+      "theme": "(misc)"
     }
   ],
   "items": [
     {
-      "recurrenceCount": 1,
-      "ageDays": 0,
-      "priorityScore": 77,
-      "whyItMatters": "(risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) Credentials dependency — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an ow…",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": true,
-        "attentionRequired": true,
-        "awaitingOthers": true,
-        "reasons": {
-          "engaged": "touched in the last 7 days; recency 0 d",
-          "attentionRequired": "matryoshka status RED",
-          "awaitingOthers": "FOLLOW_UP with external owner"
-        }
-      },
-      "whyItMattersConfidence": 0.75,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "",
-      "severity": "High",
-      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
-      "whyItMattersSource": "risk-consequence",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "preferred owner: Balaji Ravi",
-          "delta": 0.05,
-          "source": "owner-boost"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        },
-        {
-          "reason": "workstream has delayed decisions - boost escalate confidence",
-          "delta": 0.1,
-          "source": "learning:delayed-workstream"
-        },
-        {
-          "reason": "signal is noisier when owner is over-capacity",
-          "delta": -0.05,
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-21",
-      "priorityReason": "- Why it matters: (risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) Credentials…\n- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-      "actionSource": "",
-      "ownerConfidence": "medium",
-      "rankingScore": 0.4,
-      "priority": 1,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 0.55,
-        "deadline": 0.3,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "High severity - direct outreach to owner today.",
-      "delta": {
-        "daysSinceLastTouched": 0,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "confidence": 0.54,
-      "actionClass": "FOLLOW_UP",
-      "workstream": "Rapid Recovery",
-      "impact": "",
-      "priorityReasonBullets": [
-        "Why it matters: (risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) Credentials…",
-        "High-severity risk",
-        "Attention required (matryoshka status RED)",
-        "Active engagement detected",
-        "Awaiting external party"
-      ],
-      "owner": "Balaji Ravi",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-9861cf92b0",
-      "dueBy": "2026-07-21",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "(risk/Medium) Credentials dependency — owner: Unassigned (suggested: Hari); score 68",
-      "verb": "Escalate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
-      "ageDays": 0,
-      "priorityScore": 77,
-      "whyItMatters": "**MMM L2:** [health: Red] - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); …",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": true,
-        "attentionRequired": true,
-        "awaitingOthers": true,
-        "reasons": {
-          "engaged": "touched in the last 7 days; recency 0 d",
-          "attentionRequired": "matryoshka status RED",
-          "awaitingOthers": "FOLLOW_UP with external owner"
-        }
-      },
-      "whyItMattersConfidence": 0.3,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "",
-      "severity": "High",
-      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "preferred owner: Balaji Ravi",
-          "delta": 0.05,
-          "source": "owner-boost"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        },
-        {
-          "reason": "workstream has delayed decisions - boost escalate confidence",
-          "delta": 0.1,
-          "source": "learning:delayed-workstream"
-        },
-        {
-          "reason": "signal is noisier when owner is over-capacity",
-          "delta": -0.05,
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-21",
       "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-      "actionSource": "",
-      "ownerConfidence": "medium",
-      "rankingScore": 0.4,
-      "priority": 1,
+      "suggestedOwner": "",
+      "impact": "",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 0 d",
+          "attentionRequired": "matryoshka status RED",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+      "outcomeQuality": "Unknown",
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Attention required (matryoshka status RED)",
+        "Active engagement detected",
+        "Awaiting external party"
+      ],
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 0.55,
@@ -1843,130 +1767,343 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "High severity - direct outreach to owner today.",
+      "dueBy": "2026-07-21",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "FOLLOW_UP",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.54,
+      "recurrenceCount": 1,
+      "priorityScore": 77,
+      "severity": "High",
+      "whyItMattersConfidence": 0.3,
+      "priority": 1,
       "delta": {
         "daysSinceLastTouched": 0,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "confidence": 0.54,
-      "actionClass": "FOLLOW_UP",
-      "workstream": "Rapid Recovery",
+      "linkedActionCount": 0,
+      "verb": "Escalate",
+      "id": "R-68338c1cbc",
+      "deadline": "2026-07-21",
+      "decisionOutcome": "",
+      "ownerConfidence": "medium",
+      "ageDays": 0,
+      "trend": "increasing",
+      "rankingScore": 0.4,
+      "whyItMatters": "[ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 - Next: Assign an owner for MMM L2 risk before it can be actioned - [ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98…",
+      "decisionRequired": false,
+      "title": "[ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 — owner: Unassigned (suggested:...",
+      "owner": "Balaji Ravi",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "preferred owner: Balaji Ravi",
+          "source": "owner-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        },
+        {
+          "reason": "signal is noisier when owner is over-capacity",
+          "source": "learning:overloaded-owner",
+          "delta": -0.05
+        }
+      ],
+      "rationale": "High severity - direct outreach to owner today."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+      "suggestedOwner": "",
       "impact": "",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 0 d",
+          "attentionRequired": "matryoshka status RED",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Attention required (matryoshka status RED)",
         "Active engagement detected",
         "Awaiting external party"
       ],
-      "owner": "Balaji Ravi",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-165be3d4b1",
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 0.55,
+        "deadline": 0.3,
+        "status": 1.0,
+        "engagement": 1.0
+      },
       "dueBy": "2026-07-21",
-      "decisionOutcome": "",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "FOLLOW_UP",
       "timeToEscalationRisk": 0,
-      "title": "Next: Assign an owner for MMM L2 risk before it can be actioned",
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.54,
+      "recurrenceCount": 1,
+      "priorityScore": 77,
+      "severity": "High",
+      "whyItMattersConfidence": 0.3,
+      "priority": 1,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "linkedActionCount": 0,
       "verb": "Escalate",
-      "decisionStatus": ""
+      "id": "R-24b9744cf5",
+      "deadline": "2026-07-21",
+      "decisionOutcome": "",
+      "ownerConfidence": "medium",
+      "ageDays": 0,
+      "trend": "increasing",
+      "rankingScore": 0.4,
+      "whyItMatters": "[ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 — owner: Unassigned (suggested: Hari); score 86 - Next: Assign an owner for MMM L2 risk before it can be actioned - (risk/Medium) ⚠️ Auditability concern…",
+      "decisionRequired": false,
+      "title": "(risk/Medium) ⚠️ Auditability concern — owner: Unassigned (suggested: Hari); score 68",
+      "owner": "Balaji Ravi",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "preferred owner: Balaji Ravi",
+          "source": "owner-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        },
+        {
+          "reason": "signal is noisier when owner is over-capacity",
+          "source": "learning:overloaded-owner",
+          "delta": -0.05
+        }
+      ],
+      "rationale": "High severity - direct outreach to owner today."
     },
     {
+      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+      "suggestedOwner": "",
+      "impact": "",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 0 d",
+          "attentionRequired": "matryoshka status RED",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+      "outcomeQuality": "Unknown",
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Attention required (matryoshka status RED)",
+        "Active engagement detected",
+        "Awaiting external party"
+      ],
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 0.55,
+        "deadline": 0.3,
+        "status": 1.0,
+        "engagement": 1.0
+      },
+      "dueBy": "2026-07-21",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "FOLLOW_UP",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.54,
       "recurrenceCount": 1,
-      "ageDays": 0,
       "priorityScore": 77,
+      "severity": "High",
+      "whyItMattersConfidence": 0.3,
+      "priority": 1,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "linkedActionCount": 0,
+      "verb": "Escalate",
+      "id": "R-165be3d4b1",
+      "deadline": "2026-07-21",
+      "decisionOutcome": "",
+      "ownerConfidence": "medium",
+      "ageDays": 0,
+      "trend": "increasing",
+      "rankingScore": 0.4,
+      "whyItMatters": "MMM L2: [health: Red] - [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Hari); score 98 - Next: Assign an owner for MMM L2 risk before it can be actioned - [ISSUE] (risk/High) [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (su…",
+      "decisionRequired": false,
+      "title": "Next: Assign an owner for MMM L2 risk before it can be actioned",
+      "owner": "Balaji Ravi",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "preferred owner: Balaji Ravi",
+          "source": "owner-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        },
+        {
+          "reason": "signal is noisier when owner is over-capacity",
+          "source": "learning:overloaded-owner",
+          "delta": -0.05
+        }
+      ],
+      "rationale": "High severity - direct outreach to owner today."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+      "suggestedOwner": "",
+      "impact": "",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": true,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 0 d",
+          "attentionRequired": "matryoshka status RED",
+          "awaitingOthers": "FOLLOW_UP with external owner"
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
+      "outcomeQuality": "Unknown",
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Attention required (matryoshka status RED)",
+        "Active engagement detected",
+        "Awaiting external party"
+      ],
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 0.55,
+        "deadline": 0.3,
+        "status": 1.0,
+        "engagement": 1.0
+      },
+      "dueBy": "2026-07-21",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "FOLLOW_UP",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.54,
+      "recurrenceCount": 1,
+      "priorityScore": 77,
+      "severity": "High",
+      "whyItMattersConfidence": 0.3,
+      "priority": 1,
+      "delta": {
+        "daysSinceLastTouched": 0,
+        "updatedSinceYesterday": true,
+        "changeSummary": "first appearance"
+      },
+      "linkedActionCount": 0,
+      "verb": "Escalate",
+      "id": "R-f780ab9313",
+      "deadline": "2026-07-21",
+      "decisionOutcome": "",
+      "ownerConfidence": "medium",
+      "ageDays": 0,
+      "trend": "increasing",
+      "rankingScore": 0.4,
       "whyItMatters": "(decision) D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP — owner: Unassigned (suggested: Balaji Ravi); score 70 - Next: Assign an owner for Rapid Recovery before this decision can move - [ISSUE] (risk/High) Review and oper…",
       "decisionRequired": false,
-      "focusSignals": {
-        "engaged": true,
-        "attentionRequired": true,
-        "awaitingOthers": true,
-        "reasons": {
-          "engaged": "touched in the last 7 days; recency 0 d",
-          "attentionRequired": "matryoshka status RED",
-          "awaitingOthers": "FOLLOW_UP with external owner"
-        }
-      },
-      "whyItMattersConfidence": 0.3,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "",
-      "severity": "High",
-      "nextAction": "Contact Balaji Ravi today about high-severity Rapid Recovery risk",
-      "whyItMattersSource": "context-fallback",
+      "title": "[ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98",
+      "owner": "Balaji Ravi",
       "personalizationSignals": [
         {
           "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
+          "source": "workstream-boost",
+          "delta": 0.15
         },
         {
           "reason": "preferred owner: Balaji Ravi",
-          "delta": 0.05,
-          "source": "owner-boost"
+          "source": "owner-boost",
+          "delta": 0.05
         },
         {
           "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
+          "source": "imminent-escalation",
+          "delta": 0.15
         },
         {
           "reason": "workstream has delayed decisions - boost escalate confidence",
-          "delta": 0.1,
-          "source": "learning:delayed-workstream"
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
         },
         {
           "reason": "signal is noisier when owner is over-capacity",
-          "delta": -0.05,
-          "source": "learning:overloaded-owner"
+          "source": "learning:overloaded-owner",
+          "delta": -0.05
         }
       ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-21",
-      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-      "actionSource": "",
-      "ownerConfidence": "medium",
-      "rankingScore": 0.4,
-      "priority": 1,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 0.55,
-        "deadline": 0.3,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "High severity - direct outreach to owner today.",
-      "delta": {
-        "daysSinceLastTouched": 0,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "confidence": 0.54,
-      "actionClass": "FOLLOW_UP",
-      "workstream": "Rapid Recovery",
-      "impact": "",
-      "priorityReasonBullets": [
-        "High-severity risk",
-        "Attention required (matryoshka status RED)",
-        "Active engagement detected",
-        "Awaiting external party"
-      ],
-      "owner": "Balaji Ravi",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-f780ab9313",
-      "dueBy": "2026-07-21",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "[ISSUE] (risk/High) Review and operationalize the vendor escalation format — owner: Unassigned (suggested: Balaji Ravi); score 98",
-      "verb": "Escalate",
-      "decisionStatus": ""
+      "rationale": "High severity - direct outreach to owner today."
     },
     {
-      "recurrenceCount": 1,
-      "ageDays": 0,
-      "priorityScore": 77,
-      "whyItMatters": "**GOCC Transition:** [health: Red] - [ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86 - Next: Assign an owner for GOCC Transition risk before it can be actioned - [ISSUE] (risk/High) (risk/)…",
-      "decisionRequired": false,
+      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
+      "suggestedOwner": "",
+      "impact": "",
       "focusSignals": {
         "engaged": true,
         "attentionRequired": true,
@@ -1977,47 +2114,16 @@
           "awaitingOthers": "FOLLOW_UP with external owner"
         }
       },
-      "whyItMattersConfidence": 0.3,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "",
-      "severity": "High",
+      "decisionStatus": "",
+      "workstream": "GBO Batch Transition",
       "nextAction": "Contact Balaji Ravi today about high-severity GBO Batch Transition risk",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: GBO Batch Transition",
-          "delta": 0.1,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "preferred owner: Balaji Ravi",
-          "delta": 0.05,
-          "source": "owner-boost"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        },
-        {
-          "reason": "workstream has delayed decisions - boost escalate confidence",
-          "delta": 0.1,
-          "source": "learning:delayed-workstream"
-        },
-        {
-          "reason": "signal is noisier when owner is over-capacity",
-          "delta": -0.05,
-          "source": "learning:overloaded-owner"
-        }
+      "outcomeQuality": "Unknown",
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Attention required (matryoshka status RED)",
+        "Active engagement detected",
+        "Awaiting external party"
       ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-21",
-      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-      "actionSource": "",
-      "ownerConfidence": "medium",
-      "rankingScore": 0.35,
-      "priority": 1,
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 0.55,
@@ -2025,130 +2131,70 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "High severity - direct outreach to owner today.",
-      "delta": {
-        "daysSinceLastTouched": 0,
-        "updatedSinceYesterday": true,
-        "changeSummary": "first appearance"
-      },
-      "confidence": 0.54,
-      "actionClass": "FOLLOW_UP",
-      "workstream": "GBO Batch Transition",
-      "impact": "",
-      "priorityReasonBullets": [
-        "High-severity risk",
-        "Attention required (matryoshka status RED)",
-        "Active engagement detected",
-        "Awaiting external party"
-      ],
-      "owner": "Balaji Ravi",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-c1294ba1e7",
       "dueBy": "2026-07-21",
-      "decisionOutcome": "",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "FOLLOW_UP",
       "timeToEscalationRisk": 0,
-      "title": "[ISSUE] (risk/High) Team to secure **contact + escalation path — owner: Unassigned (suggested: Balaji Ravi); score 86",
-      "verb": "Escalate",
-      "decisionStatus": ""
-    },
-    {
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.54,
       "recurrenceCount": 1,
-      "ageDays": 0,
       "priorityScore": 77,
-      "whyItMatters": "**GBO Batch Transition:** [health: Red] - [ISSUE] (risk/High) [ISSUE] (risk/High) [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence.",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": true,
-        "attentionRequired": true,
-        "awaitingOthers": true,
-        "reasons": {
-          "engaged": "touched in the last 7 days; recency 0 d",
-          "attentionRequired": "matryoshka status RED",
-          "awaitingOthers": "FOLLOW_UP with external owner"
-        }
-      },
-      "whyItMattersConfidence": 0.3,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "",
       "severity": "High",
-      "nextAction": "Contact Balaji Ravi today about high-severity GBO Batch Transition risk",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: GBO Batch Transition",
-          "delta": 0.1,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "preferred owner: Balaji Ravi",
-          "delta": 0.05,
-          "source": "owner-boost"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        },
-        {
-          "reason": "workstream has delayed decisions - boost escalate confidence",
-          "delta": 0.1,
-          "source": "learning:delayed-workstream"
-        },
-        {
-          "reason": "signal is noisier when owner is over-capacity",
-          "delta": -0.05,
-          "source": "learning:overloaded-owner"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=0.55(ownership inferred); deadline=0.30(aging 0d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-21",
-      "priorityReason": "- High-severity risk\n- Attention required (matryoshka status RED)\n- Active engagement detected\n- Awaiting external party",
-      "actionSource": "",
-      "ownerConfidence": "medium",
-      "rankingScore": 0.35,
+      "whyItMattersConfidence": 0.3,
       "priority": 1,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 0.55,
-        "deadline": 0.3,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "High severity - direct outreach to owner today.",
       "delta": {
         "daysSinceLastTouched": 0,
         "updatedSinceYesterday": true,
         "changeSummary": "first appearance"
       },
-      "confidence": 0.54,
-      "actionClass": "FOLLOW_UP",
-      "workstream": "GBO Batch Transition",
-      "impact": "",
-      "priorityReasonBullets": [
-        "High-severity risk",
-        "Attention required (matryoshka status RED)",
-        "Active engagement detected",
-        "Awaiting external party"
-      ],
-      "owner": "Balaji Ravi",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-41ddb0a760",
-      "dueBy": "2026-07-21",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "Next: Contact Balaji Ravi today about high-severity GBO Batch Transition risk",
+      "linkedActionCount": 0,
       "verb": "Escalate",
-      "decisionStatus": ""
+      "id": "R-6ba60140e6",
+      "deadline": "2026-07-21",
+      "decisionOutcome": "",
+      "ownerConfidence": "medium",
+      "ageDays": 0,
+      "trend": "increasing",
+      "rankingScore": 0.35,
+      "whyItMatters": "[ISSUE] (risk/High) [ISSUE] (risk/High) Next: Contact Balaji Ravi today about high-severity GBO Batch Transition risk — owner: Balaji Ravi; score 77 — owner: Balaji Ravi; score 77 - Next: Contact Balaji Ravi today about high-severity GBO Batch Transition risk…",
+      "decisionRequired": false,
+      "title": "[ISSUE] (risk/High) [ISSUE] (risk/High) Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timel...",
+      "owner": "Balaji Ravi",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: GBO Batch Transition",
+          "source": "workstream-boost",
+          "delta": 0.1
+        },
+        {
+          "reason": "preferred owner: Balaji Ravi",
+          "source": "owner-boost",
+          "delta": 0.05
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        },
+        {
+          "reason": "workstream has delayed decisions - boost escalate confidence",
+          "source": "learning:delayed-workstream",
+          "delta": 0.1
+        },
+        {
+          "reason": "signal is noisier when owner is over-capacity",
+          "source": "learning:overloaded-owner",
+          "delta": -0.05
+        }
+      ],
+      "rationale": "High severity - direct outreach to owner today."
     },
     {
-      "recurrenceCount": 1,
-      "ageDays": 91,
-      "priorityScore": 98,
-      "whyItMatters": "Tooling Updates o ADS and xMatters groups to be added for enhanced alerting and escalation * Vendor Escalation o A standardized escalation procedure format will be defined for application vendor support to ensure consistent, timely engagement",
-      "decisionRequired": false,
+      "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned (suggested: Hari)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Hari",
+      "impact": "",
       "focusSignals": {
         "engaged": false,
         "attentionRequired": true,
@@ -2159,113 +2205,16 @@
           "awaitingOthers": ""
         }
       },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Hari",
-      "severity": "High",
-      "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: MMM L2",
-          "delta": 0.1,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.09 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned (suggested: Hari)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.15,
-      "priority": 2,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 1.0,
-        "deadline": 0.9,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "delta": {
-        "daysSinceLastTouched": 91,
-        "updatedSinceYesterday": false,
-        "changeSummary": ""
-      },
-      "confidence": 0.09,
-      "actionClass": "DECIDE",
+      "decisionStatus": "",
       "workstream": "MMM L2",
-      "impact": "",
+      "nextAction": "Assign an owner for MMM L2 risk before it can be actioned",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Risk aged 91 days without resolution",
         "Owner unassigned (suggested: Hari)",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "owner": "Unassigned",
-      "trend": "stable",
-      "kind": "risk",
-      "id": "R-1c3d9c0e3b",
-      "dueBy": "2026-07-24",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "Vendor Escalation",
-      "verb": "Investigate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
-      "ageDays": 91,
-      "priorityScore": 98,
-      "whyItMatters": "Items discussed * Agreed to create a dedicated problem ticket for recurring Japan incident use cases.",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": false,
-        "attentionRequired": true,
-        "awaitingOthers": false,
-        "reasons": {
-          "engaged": "",
-          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-          "awaitingOthers": ""
-        }
-      },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "",
-      "severity": "High",
-      "nextAction": "Assign an owner for this risk risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "confidence 0.09 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned - needs assignment\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.05,
-      "priority": 2,
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 1.0,
@@ -2273,39 +2222,136 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "dueBy": "2026-07-24",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.09,
+      "recurrenceCount": 1,
+      "priorityScore": 98,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
       "delta": {
         "daysSinceLastTouched": 91,
         "updatedSinceYesterday": false,
         "changeSummary": ""
       },
-      "confidence": 0.09,
-      "actionClass": "DECIDE",
-      "workstream": "",
+      "linkedActionCount": 0,
+      "verb": "Investigate",
+      "id": "R-1c3d9c0e3b",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 91,
+      "trend": "stable",
+      "rankingScore": 0.15,
+      "whyItMatters": "Tooling Updates o ADS and xMatters groups to be added for enhanced alerting and escalation * Vendor Escalation o A standardized escalation procedure format will be defined for application vendor support to ensure consistent, timely engagement",
+      "decisionRequired": false,
+      "title": "Vendor Escalation",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: MMM L2",
+          "source": "workstream-boost",
+          "delta": 0.1
+        },
+        {
+          "reason": "confidence 0.09 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Risk aged 91 days without resolution\n- Owner unassigned - needs assignment\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "",
       "impact": "",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "",
+      "nextAction": "Assign an owner for this risk risk before it can be actioned",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Risk aged 91 days without resolution",
         "Owner unassigned - needs assignment",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "owner": "Unassigned",
-      "trend": "stable",
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 1.0,
+        "deadline": 0.9,
+        "status": 1.0,
+        "engagement": 1.0
+      },
+      "dueBy": "2026-07-24",
       "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.90(aging 91d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.09,
+      "recurrenceCount": 1,
+      "priorityScore": 98,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
+      "delta": {
+        "daysSinceLastTouched": 91,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "linkedActionCount": 0,
+      "verb": "Investigate",
       "id": "R-f386376f94",
-      "dueBy": "2026-07-24",
+      "deadline": "2026-07-24",
       "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
+      "ownerConfidence": "low",
+      "ageDays": 91,
+      "trend": "stable",
+      "rankingScore": 0.05,
+      "whyItMatters": "Items discussed * Agreed to create a dedicated problem ticket for recurring Japan incident use cases.",
+      "decisionRequired": false,
       "title": "Standardization of templates, CI identification, and escalation procedures to reduce",
-      "verb": "Investigate",
-      "decisionStatus": ""
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "confidence 0.09 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
     },
     {
-      "recurrenceCount": 1,
-      "ageDays": 15,
-      "priorityScore": 94,
-      "whyItMatters": "**PS Team contract transition** is the single biggest constraint on throughput.",
-      "decisionRequired": false,
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Balaji Ravi",
+      "impact": "",
       "focusSignals": {
         "engaged": false,
         "attentionRequired": true,
@@ -2316,118 +2362,15 @@
           "awaitingOthers": ""
         }
       },
-      "whyItMattersConfidence": 0.15,
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
       "outcomeQuality": "Unknown",
-      "suggestedOwner": "Rasheersh",
-      "severity": "High",
-      "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Capacity Management",
-          "delta": 0.08,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.70(aging 15d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Risk aged 15 days without resolution\n- Owner unassigned (suggested: Rasheersh)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.13,
-      "priority": 2,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 1.0,
-        "deadline": 0.7,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "delta": {
-        "daysSinceLastTouched": 15,
-        "updatedSinceYesterday": false,
-        "changeSummary": ""
-      },
-      "confidence": 0.19,
-      "actionClass": "DECIDE",
-      "workstream": "Capacity Management",
-      "impact": "",
       "priorityReasonBullets": [
         "High-severity risk",
-        "Risk aged 15 days without resolution",
-        "Owner unassigned (suggested: Rasheersh)",
+        "Owner unassigned (suggested: Balaji Ravi)",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "owner": "Unassigned",
-      "trend": "decreasing",
-      "kind": "risk",
-      "id": "R-aa0c3f050b",
-      "dueBy": "2026-07-24",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management",
-      "verb": "Investigate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
-      "ageDays": 8,
-      "priorityScore": 90,
-      "whyItMatters": "Rapid Recovery remains active through Ingenium desktop rehearsal planning and operational validation.",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": false,
-        "attentionRequired": true,
-        "awaitingOthers": false,
-        "reasons": {
-          "engaged": "",
-          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-          "awaitingOthers": ""
-        }
-      },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Balaji Ravi",
-      "severity": "High",
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.2,
-      "priority": 2,
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 1.0,
@@ -2435,118 +2378,60 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "delta": {
-        "daysSinceLastTouched": 8,
-        "updatedSinceYesterday": false,
-        "changeSummary": ""
-      },
-      "confidence": 0.19,
-      "actionClass": "DECIDE",
-      "workstream": "Rapid Recovery",
-      "impact": "",
-      "priorityReasonBullets": [
-        "High-severity risk",
-        "Owner unassigned (suggested: Balaji Ravi)",
-        "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
-      ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-bafab65c68",
       "dueBy": "2026-07-24",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
-      "verb": "Investigate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
-      "ageDays": 8,
-      "priorityScore": 90,
-      "whyItMatters": "Recommended next action: - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidence expectations, escalation path, and output actions.",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": false,
-        "attentionRequired": true,
-        "awaitingOthers": false,
-        "reasons": {
-          "engaged": "",
-          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-          "awaitingOthers": ""
-        }
-      },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Balaji Ravi",
-      "severity": "High",
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "kind": "risk",
       "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "actionClass": "DECIDE",
+      "timeToEscalationRisk": 0,
       "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.2,
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.19,
+      "recurrenceCount": 1,
+      "priorityScore": 90,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
       "priority": 2,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 1.0,
-        "deadline": 0.5,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
       "delta": {
         "daysSinceLastTouched": 8,
         "updatedSinceYesterday": false,
         "changeSummary": ""
       },
-      "confidence": 0.19,
-      "actionClass": "DECIDE",
-      "workstream": "Rapid Recovery",
-      "impact": "",
-      "priorityReasonBullets": [
-        "High-severity risk",
-        "Owner unassigned (suggested: Balaji Ravi)",
-        "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
-      ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-b493137b8f",
-      "dueBy": "2026-07-24",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "linkedActionCount": 0,
       "verb": "Investigate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
+      "id": "R-2b2a241d9c",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
       "ageDays": 8,
-      "priorityScore": 90,
+      "trend": "increasing",
+      "rankingScore": 0.2,
       "whyItMatters": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalation to triage / L3, MIM engagement, and evidence handoff.",
       "decisionRequired": false,
+      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Balaji Ravi",
+      "impact": "",
       "focusSignals": {
         "engaged": false,
         "attentionRequired": true,
@@ -2557,76 +2442,76 @@
           "awaitingOthers": ""
         }
       },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Balaji Ravi",
-      "severity": "High",
-      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.2,
-      "priority": 2,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 1.0,
-        "deadline": 0.5,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "delta": {
-        "daysSinceLastTouched": 8,
-        "updatedSinceYesterday": false,
-        "changeSummary": ""
-      },
-      "confidence": 0.19,
-      "actionClass": "DECIDE",
+      "decisionStatus": "",
       "workstream": "Rapid Recovery",
-      "impact": "",
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Owner unassigned (suggested: Balaji Ravi)",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-2b2a241d9c",
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 1.0,
+        "deadline": 0.5,
+        "status": 1.0,
+        "engagement": 1.0
+      },
       "dueBy": "2026-07-24",
-      "decisionOutcome": "",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
       "timeToEscalationRisk": 0,
-      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...",
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.19,
+      "recurrenceCount": 1,
+      "priorityScore": 90,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
+      "delta": {
+        "daysSinceLastTouched": 8,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "linkedActionCount": 0,
       "verb": "Investigate",
-      "decisionStatus": ""
+      "id": "R-b493137b8f",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 8,
+      "trend": "increasing",
+      "rankingScore": 0.2,
+      "whyItMatters": "Recommended next action: - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidence expectations, escalation path, and output actions.",
+      "decisionRequired": false,
+      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
     },
     {
-      "recurrenceCount": 1,
-      "ageDays": 11,
-      "priorityScore": 90,
-      "whyItMatters": "[Lapu-Lapu] ETS Japan, GOCC, and Observability Team, Tuesday July 7, 2026 — meeting transcript/summary covering dashboards, Dev XP monitoring, process monitoring, laptop monitoring, MMM L2/RRP, GBO transition, CyberArk/AD account management, Pulse HR monitori…",
-      "decisionRequired": false,
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Balaji Ravi",
+      "impact": "",
       "focusSignals": {
         "engaged": false,
         "attentionRequired": true,
@@ -2637,37 +2522,15 @@
           "awaitingOthers": ""
         }
       },
-      "whyItMattersConfidence": 0.15,
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
       "outcomeQuality": "Unknown",
-      "suggestedOwner": "Kelvin",
-      "severity": "High",
-      "nextAction": "Assign an owner for ADX Registration risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: ADX Registration",
-          "delta": 0.08,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Owner unassigned (suggested: Balaji Ravi)",
+        "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Kelvin)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.13,
-      "priority": 2,
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 1.0,
@@ -2675,79 +2538,79 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "dueBy": "2026-07-24",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.19,
+      "recurrenceCount": 1,
+      "priorityScore": 90,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
       "delta": {
-        "daysSinceLastTouched": 11,
+        "daysSinceLastTouched": 8,
         "updatedSinceYesterday": false,
         "changeSummary": ""
       },
-      "confidence": 0.19,
-      "actionClass": "DECIDE",
-      "workstream": "ADX Registration",
+      "linkedActionCount": 0,
+      "verb": "Investigate",
+      "id": "R-bafab65c68",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 8,
+      "trend": "increasing",
+      "rankingScore": 0.2,
+      "whyItMatters": "Rapid Recovery remains active through Ingenium desktop rehearsal planning and operational validation.",
+      "decisionRequired": false,
+      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati...",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Kelvin)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Kelvin",
       "impact": "",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "ADX Registration",
+      "nextAction": "Assign an owner for ADX Registration risk before it can be actioned",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Owner unassigned (suggested: Kelvin)",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-d7f568105f",
-      "dueBy": "2026-07-24",
-      "decisionOutcome": "",
-      "timeToEscalationRisk": 0,
-      "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
-      "verb": "Investigate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
-      "ageDays": 8,
-      "priorityScore": 90,
-      "whyItMatters": "## New Risks Detected - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation.",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": false,
-        "attentionRequired": true,
-        "awaitingOthers": false,
-        "reasons": {
-          "engaged": "",
-          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-          "awaitingOthers": ""
-        }
-      },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Rasheersh",
-      "severity": "High",
-      "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Capacity Management",
-          "delta": 0.08,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Rasheersh)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.13,
-      "priority": 2,
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 1.0,
@@ -2755,113 +2618,215 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
-      "delta": {
-        "daysSinceLastTouched": 8,
-        "updatedSinceYesterday": false,
-        "changeSummary": ""
-      },
-      "confidence": 0.19,
+      "dueBy": "2026-07-24",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
       "actionClass": "DECIDE",
-      "workstream": "Capacity Management",
-      "impact": "",
-      "priorityReasonBullets": [
-        "High-severity risk",
-        "Owner unassigned (suggested: Rasheersh)",
-        "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
-      ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-121760730c",
-      "dueBy": "2026-07-24",
-      "decisionOutcome": "",
       "timeToEscalationRisk": 0,
-      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-      "verb": "Investigate",
-      "decisionStatus": ""
-    },
-    {
-      "recurrenceCount": 1,
-      "ageDays": 11,
-      "priorityScore": 90,
-      "whyItMatters": "CyberArk/IAM became a major risk and governance focus this week.",
-      "decisionRequired": false,
-      "focusSignals": {
-        "engaged": false,
-        "attentionRequired": true,
-        "awaitingOthers": false,
-        "reasons": {
-          "engaged": "",
-          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
-          "awaitingOthers": ""
-        }
-      },
-      "whyItMattersConfidence": 0.3,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Deb",
-      "severity": "High",
-      "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "confidence 0.19 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
-      ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Deb)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
       "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.05,
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.19,
+      "recurrenceCount": 1,
+      "priorityScore": 90,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
       "priority": 2,
-      "priorityFactors": {
-        "impact": 1.0,
-        "ownership": 1.0,
-        "deadline": 0.5,
-        "status": 1.0,
-        "engagement": 1.0
-      },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
       "delta": {
         "daysSinceLastTouched": 11,
         "updatedSinceYesterday": false,
         "changeSummary": ""
       },
-      "confidence": 0.19,
-      "actionClass": "DECIDE",
-      "workstream": "Developer XP Dashboard",
+      "linkedActionCount": 0,
+      "verb": "Investigate",
+      "id": "R-d7f568105f",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 11,
+      "trend": "increasing",
+      "rankingScore": 0.13,
+      "whyItMatters": "[Lapu-Lapu] ETS Japan, GOCC, and Observability Team, Tuesday July 7, 2026 — meeting transcript/summary covering dashboards, Dev XP monitoring, process monitoring, laptop monitoring, MMM L2/RRP, GBO transition, CyberArk/AD account management, Pulse HR monitori…",
+      "decisionRequired": false,
+      "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehearsal planning and es...",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: ADX Registration",
+          "source": "workstream-boost",
+          "delta": 0.08
+        },
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Rasheersh)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Rasheersh",
       "impact": "",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Capacity Management",
+      "nextAction": "Assign an owner for Capacity Management risk before it can be actioned",
+      "outcomeQuality": "Unknown",
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Owner unassigned (suggested: Rasheersh)",
+        "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
+      ],
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 1.0,
+        "deadline": 0.5,
+        "status": 1.0,
+        "engagement": 1.0
+      },
+      "dueBy": "2026-07-24",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 8d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.19,
+      "recurrenceCount": 1,
+      "priorityScore": 90,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
+      "delta": {
+        "daysSinceLastTouched": 8,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "linkedActionCount": 0,
+      "verb": "Investigate",
+      "id": "R-121760730c",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 8,
+      "trend": "increasing",
+      "rankingScore": 0.13,
+      "whyItMatters": "- RRP documents may be complete on paper but insufficiently validated without controlled operational testing and rehearsal.",
+      "decisionRequired": false,
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Capacity Management",
+          "source": "workstream-boost",
+          "delta": 0.08
+        },
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Deb)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+      "suggestedOwner": "Deb",
+      "impact": "",
+      "focusSignals": {
+        "engaged": false,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "",
+          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Developer XP Dashboard",
+      "nextAction": "Assign an owner for Developer XP Dashboard risk before it can be actioned",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Owner unassigned (suggested: Deb)",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)"
       ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-8ad2d2ce2f",
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 1.0,
+        "deadline": 0.5,
+        "status": 1.0,
+        "engagement": 1.0
+      },
       "dueBy": "2026-07-24",
-      "decisionOutcome": "",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
       "timeToEscalationRisk": 0,
-      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.50(aging 11d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.19,
+      "recurrenceCount": 1,
+      "priorityScore": 90,
+      "severity": "High",
+      "whyItMattersConfidence": 0.3,
+      "priority": 2,
+      "delta": {
+        "daysSinceLastTouched": 11,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "linkedActionCount": 0,
       "verb": "Investigate",
-      "decisionStatus": ""
+      "id": "R-8ad2d2ce2f",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 11,
+      "trend": "increasing",
+      "rankingScore": 0.05,
+      "whyItMatters": "CyberArk/IAM became a major risk and governance focus this week.",
+      "decisionRequired": false,
+      "title": "Re: CyberArk Privileged Access Review — Summary of Findings and Governance Concern, received July 9, 2026 — privileged-access governance ...",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "confidence 0.19 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
     },
     {
-      "recurrenceCount": 1,
-      "ageDays": 5,
-      "priorityScore": 86,
-      "whyItMatters": "**Disaster Recovery Test and RRP Tabletop Rehearsal: **David, Dennis, Mary, and Birger discussed preparations for an upcoming DR test and the need for a tabletop rehearsal of the Rapid Recovery Plan (RRP), including application verification protocols, partici…",
-      "decisionRequired": false,
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)\n- Active engagement detected",
+      "suggestedOwner": "Balaji Ravi",
+      "impact": "",
       "focusSignals": {
         "engaged": true,
         "attentionRequired": true,
@@ -2872,37 +2837,16 @@
           "awaitingOthers": ""
         }
       },
-      "whyItMattersConfidence": 0.15,
-      "outcomeQuality": "Unknown",
-      "suggestedOwner": "Balaji Ravi",
-      "severity": "High",
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
       "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
-      "whyItMattersSource": "context-fallback",
-      "personalizationSignals": [
-        {
-          "reason": "preferred workstream: Rapid Recovery",
-          "delta": 0.15,
-          "source": "workstream-boost"
-        },
-        {
-          "reason": "confidence 0.29 < 0.4",
-          "delta": -0.1,
-          "source": "low-confidence"
-        },
-        {
-          "reason": "escalates in 0d",
-          "delta": 0.15,
-          "source": "imminent-escalation"
-        }
+      "outcomeQuality": "Unknown",
+      "priorityReasonBullets": [
+        "High-severity risk",
+        "Owner unassigned (suggested: Balaji Ravi)",
+        "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
+        "Active engagement detected"
       ],
-      "linkedActionCount": 0,
-      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.30(aging 5d); status=1.00(status RED); engagement=1.00(attention required)",
-      "deadline": "2026-07-24",
-      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)\n- Active engagement detected",
-      "actionSource": "",
-      "ownerConfidence": "low",
-      "rankingScore": 0.2,
-      "priority": 2,
       "priorityFactors": {
         "impact": 1.0,
         "ownership": 1.0,
@@ -2910,32 +2854,136 @@
         "status": 1.0,
         "engagement": 1.0
       },
-      "rationale": "Owner not yet confirmed; ownership must precede mitigation.",
+      "dueBy": "2026-07-24",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
+      "timeToEscalationRisk": 0,
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.30(aging 5d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.29,
+      "recurrenceCount": 1,
+      "priorityScore": 86,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
       "delta": {
         "daysSinceLastTouched": 5,
         "updatedSinceYesterday": false,
         "changeSummary": ""
       },
-      "confidence": 0.29,
-      "actionClass": "DECIDE",
-      "workstream": "Rapid Recovery",
+      "linkedActionCount": 0,
+      "verb": "Investigate",
+      "id": "R-aa18501480",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 5,
+      "trend": "increasing",
+      "rankingScore": 0.2,
+      "whyItMatters": "Disaster Recovery Test and RRP Tabletop Rehearsal: David, Dennis, Mary, and Birger discussed preparations for an upcoming DR test and the need for a tabletop rehearsal of the Rapid Recovery Plan (RRP), including application verification protocols, participant…",
+      "decisionRequired": false,
+      "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.29 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
+    },
+    {
+      "priorityReason": "- High-severity risk\n- Owner unassigned (suggested: Balaji Ravi)\n- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)\n- Active engagement detected",
+      "suggestedOwner": "Balaji Ravi",
       "impact": "",
+      "focusSignals": {
+        "engaged": true,
+        "attentionRequired": true,
+        "awaitingOthers": false,
+        "reasons": {
+          "engaged": "touched in the last 7 days; recency 4 d",
+          "attentionRequired": "matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed",
+          "awaitingOthers": ""
+        }
+      },
+      "decisionStatus": "",
+      "workstream": "Rapid Recovery",
+      "nextAction": "Assign an owner for Rapid Recovery risk before it can be actioned",
+      "outcomeQuality": "Unknown",
       "priorityReasonBullets": [
         "High-severity risk",
         "Owner unassigned (suggested: Balaji Ravi)",
         "Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)",
         "Active engagement detected"
       ],
-      "owner": "Unassigned",
-      "trend": "increasing",
-      "kind": "risk",
-      "id": "R-aa18501480",
+      "priorityFactors": {
+        "impact": 1.0,
+        "ownership": 1.0,
+        "deadline": 0.3,
+        "status": 1.0,
+        "engagement": 1.0
+      },
       "dueBy": "2026-07-24",
-      "decisionOutcome": "",
+      "kind": "risk",
+      "whyItMattersSource": "context-fallback",
+      "actionClass": "DECIDE",
       "timeToEscalationRisk": 0,
-      "title": "RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...",
+      "actionSource": "",
+      "priorityReasonDebug": "impact=1.00(high severity); ownership=1.00(needs owner); deadline=0.30(aging 4d); status=1.00(status RED); engagement=1.00(attention required)",
+      "confidence": 0.29,
+      "recurrenceCount": 1,
+      "priorityScore": 86,
+      "severity": "High",
+      "whyItMattersConfidence": 0.15,
+      "priority": 2,
+      "delta": {
+        "daysSinceLastTouched": 4,
+        "updatedSinceYesterday": false,
+        "changeSummary": ""
+      },
+      "linkedActionCount": 0,
       "verb": "Investigate",
-      "decisionStatus": ""
+      "id": "R-1de6e7cdee",
+      "deadline": "2026-07-24",
+      "decisionOutcome": "",
+      "ownerConfidence": "low",
+      "ageDays": 4,
+      "trend": "increasing",
+      "rankingScore": 0.2,
+      "whyItMatters": "Verification protocols - Incident simulation - Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】 ## Email Mentions",
+      "decisionRequired": false,
+      "title": "Escalation flow reviews 【1-33de2e】【2-3f7a2c】【23-e819ee】【24-c39225】",
+      "owner": "Unassigned",
+      "personalizationSignals": [
+        {
+          "reason": "preferred workstream: Rapid Recovery",
+          "source": "workstream-boost",
+          "delta": 0.15
+        },
+        {
+          "reason": "confidence 0.29 < 0.4",
+          "source": "low-confidence",
+          "delta": -0.1
+        },
+        {
+          "reason": "escalates in 0d",
+          "source": "imminent-escalation",
+          "delta": 0.15
+        }
+      ],
+      "rationale": "Owner not yet confirmed; ownership must precede mitigation."
     }
   ]
 }

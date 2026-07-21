@@ -1206,6 +1206,9 @@ function Build-Json($finalResults, $meta) {
             override_reason         = $_.override_reason
             mention_count           = $_.mention_count
             evidence_files          = @($_.evidence_files | Select-Object -First 5)
+            # V4.0 Sprint 18: primary objective mapping - consumed by weekly-report
+            # generator's automated executive-summary composer.
+            primary_objectives      = if ($_.workstream.primary_objectives) { @($_.workstream.primary_objectives) } else { @() }
             # V1.2 additions (never remove keys above; UI depends on them)
             attention_score         = if ($_.ContainsKey('attention_score'))         { $_.attention_score }         else { $_.score }
             strategic_score         = if ($_.ContainsKey('strategic_score'))         { $_.strategic_score }         else { $null }
@@ -2883,6 +2886,11 @@ function Split-IntoSentences {
         Preserves in-sentence punctuation like Mr./Dr. only imperfectly;
         that's acceptable for impact extraction (we favour a slightly-long
         sentence over a broken one).
+
+        V4.0 Sprint 18 tightening: strips inline bold markers and rejects
+        sentences that are pure markdown noise. Kept intentionally forgiving
+        so downstream validator acceptance isn't gutted - the executive-summary
+        composer applies stricter filtering separately.
     #>
     param([string] $Text)
     if ([string]::IsNullOrWhiteSpace($Text)) { return @() }
@@ -2896,7 +2904,14 @@ function Split-IntoSentences {
         if ([string]::IsNullOrWhiteSpace($s)) { continue }
         # Strip trailing punctuation duplicates but keep one.
         $s = $s -replace '\s*[.!?]+\s*$', '.'
-        if ($s.Length -lt 8) { continue }              # too short to be an impact sentence
+        # Strip inline bold markers - they read poorly in narrative slots.
+        $s = $s -replace '\*\*', ''
+        if ($s.Length -lt 10) { continue }              # too short to be an impact sentence
+        # Reject sentences that start with pure markup punctuation.
+        if ($s -match '^\s*(?:##+|`|\||:)') { continue }
+        # Reject if fewer than 8 alphabetic characters (emoji-only / punctuation soup).
+        $letterCount = ([regex]::Matches($s, '[A-Za-z]')).Count
+        if ($letterCount -lt 8) { continue }
         if ($s.Length -gt 260) { $s = $s.Substring(0, 259) + '…' }
         [void]$out.Add($s)
     }
