@@ -1,42 +1,27 @@
 {
-  "generated": "2026-07-21T13:58:09",
+  "generated": "2026-07-21T14:05:43",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V4.0-phase1-validator",
   "totals": {
-    "candidates": 74,
-    "accepted": 26,
-    "rejected": 48,
+    "candidates": 40,
+    "accepted": 16,
+    "rejected": 24,
     "byField": {
-      "weak_why_it_matters": 39,
-      "duplicate_why_it_matters": 23,
-      "why_it_matters": 4,
-      "next_action": 1
+      "weak_why_it_matters": 23,
+      "next_action": 1,
+      "missing_why_it_matters": 1
     }
   },
   "rejections": [
     {
-      "itemId": "D-7f991874c7",
+      "itemId": "D-3ced6cbb47",
       "itemKind": "decision",
-      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
       "workstream": "Developer XP Dashboard",
-      "owner": "David Klan",
-      "errors": [
-        {
-          "itemId": "D-7f991874c7",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "D-6f81d99006",
-      "itemKind": "decision",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "D-6f81d99006",
+          "itemId": "D-3ced6cbb47",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -57,28 +42,28 @@
       ]
     },
     {
-      "itemId": "D-3ced6cbb47",
+      "itemId": "D-6f81d99006",
       "itemKind": "decision",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "workstream": "Developer XP Dashboard",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "D-3ced6cbb47",
+          "itemId": "D-6f81d99006",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
       ]
     },
     {
-      "itemId": "D-c54ce48b2b",
+      "itemId": "D-7f991874c7",
       "itemKind": "decision",
-      "title": "making scales without scaling management overhead",
-      "workstream": "Project Matryoshka",
-      "owner": "Unassigned",
+      "title": "D012 — Agreed: Shift Batch & MFT L0/L1 Operations to GOCC/GBO",
+      "workstream": "Developer XP Dashboard",
+      "owner": "David Klan",
       "errors": [
         {
-          "itemId": "D-c54ce48b2b",
+          "itemId": "D-7f991874c7",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -127,14 +112,14 @@
       ]
     },
     {
-      "itemId": "R-42b8e43469",
+      "itemId": "R-121760730c",
       "itemKind": "risk",
-      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati",
-      "workstream": "Rapid Recovery",
+      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
+      "workstream": "Capacity Management",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-42b8e43469",
+          "itemId": "R-121760730c",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -149,6 +134,48 @@
       "errors": [
         {
           "itemId": "R-2795887f0e",
+          "field": "weak_why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "R-89b7b9975e",
+      "itemKind": "risk",
+      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-89b7b9975e",
+          "field": "weak_why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "R-42b8e43469",
+      "itemKind": "risk",
+      "title": "The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati",
+      "workstream": "Rapid Recovery",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-42b8e43469",
+          "field": "weak_why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "R-9bfa424dbf",
+      "itemKind": "risk",
+      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-9bfa424dbf",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -183,14 +210,14 @@
       ]
     },
     {
-      "itemId": "R-9bfa424dbf",
+      "itemId": "R-99ac5e814c",
       "itemKind": "risk",
-      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
-      "workstream": "Developer XP Dashboard",
+      "title": "RRP Tabletop Exercise Planning: David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-9bfa424dbf",
+          "itemId": "R-99ac5e814c",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -211,44 +238,6 @@
       ]
     },
     {
-      "itemId": "R-99ac5e814c",
-      "itemKind": "risk",
-      "title": "RRP Tabletop Exercise Planning: David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a",
-      "workstream": "Rapid Recovery",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-99ac5e814c",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "R-e9abf3f582",
-      "itemKind": "risk",
-      "title": "The escalation keyword was intentionally REMOVED from the blocker keyword list (Gap 3 clarification): everything trigged \"red\" under V3",
-      "workstream": "",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-e9abf3f582",
-          "field": "why_it_matters",
-          "reason": "must be exactly 1 sentence"
-        },
-        {
-          "itemId": "R-e9abf3f582",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-e9abf3f582",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 2 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
       "itemId": "R-a3a724c1be",
       "itemKind": "risk",
       "title": "Validate escalation paths",
@@ -259,30 +248,6 @@
           "itemId": "R-a3a724c1be",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "R-6f75864d1d",
-      "itemKind": "risk",
-      "title": "Stale items are collapsed on Decision Watch / Risk Register under a Stale (N) disclosure — one click to expand for context, but not",
-      "workstream": "",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-6f75864d1d",
-          "field": "why_it_matters",
-          "reason": "must be exactly 1 sentence"
-        },
-        {
-          "itemId": "R-6f75864d1d",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-6f75864d1d",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 2 other item(s) - each item needs a specific impact statement"
         }
       ]
     },
@@ -301,328 +266,16 @@
       ]
     },
     {
-      "itemId": "R-caafa39f49",
+      "itemId": "R-c7355ab891",
       "itemKind": "risk",
-      "title": "[] Standardization of templates, CI identification, and escalation procedures to reduce",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-caafa39f49",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-caafa39f49",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-632f15dc4a",
-      "itemKind": "risk",
-      "title": "CMDB data quality remains a named dependency for every downstream workstrea",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-632f15dc4a",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-632f15dc4a",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 4 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-31e3e80ea0",
-      "itemKind": "risk",
-      "title": "Weekly project status, CR review, and risk review governance forums",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-31e3e80ea0",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-fb54749c62",
-      "itemKind": "risk",
-      "title": "[Rapid Recovery] Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and r",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-fb54749c62",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-fb54749c62",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 2 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-7eb0f6d702",
-      "itemKind": "risk",
-      "title": "Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, parti",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-7eb0f6d702",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "R-79128c3f95",
-      "itemKind": "risk",
-      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted e",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-79128c3f95",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-79128c3f95",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 2 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-1e45ef40a9",
-      "itemKind": "risk",
-      "title": "Rapid Recovery (P1) — 10 high-severity open risk(s); 5 decision(s) open 14+ days",
-      "workstream": "Employee XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-1e45ef40a9",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-1e45ef40a9",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 4 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-eec866fee2",
-      "itemKind": "risk",
-      "title": "MMM L2 (P1) — 2 high-severity open risk(s); 1 decision(s) open 14+ days; sc",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-eec866fee2",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-eec866fee2",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 4 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-6c71dca271",
-      "itemKind": "risk",
-      "title": "Team to secure contact + escalation path",
-      "workstream": "GBO Batch Transition",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-6c71dca271",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-6c71dca271",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 4 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-a96e23723b",
-      "itemKind": "risk",
-      "title": "CMDB Mapping (P1) — 1 high-severity open risk(s)",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-a96e23723b",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-a96e23723b",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 4 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-30ba611a1b",
-      "itemKind": "risk",
-      "title": "🚨 High operational risk (manual renewals + hidden dependencies)",
-      "workstream": "CyberArk Governance",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-30ba611a1b",
-          "field": "why_it_matters",
-          "reason": "must be exactly 1 sentence"
-        }
-      ]
-    },
-    {
-      "itemId": "R-c12886d7af",
-      "itemKind": "risk",
-      "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium in",
-      "workstream": "Employee XP Dashboard",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-c12886d7af",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-fca00ab56c",
-      "itemKind": "risk",
-      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
-      "workstream": "Employee XP Dashboard",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-fca00ab56c",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-9af6b47042",
-      "itemKind": "risk",
-      "title": "MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-9af6b47042",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-9af6b47042",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-2e3d754619",
-      "itemKind": "risk",
-      "title": "[MMM L2] Vendor Escalation",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-2e3d754619",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-2e3d754619",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-31997c6a23",
-      "itemKind": "risk",
-      "title": "Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback an",
-      "workstream": "Rapid Recovery",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-31997c6a23",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-31997c6a23",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 2 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-307a166dad",
-      "itemKind": "risk",
-      "title": "Weekly project status, CR review, and risk review governance forums",
+      "title": "Strong dependency on cross-team alignment (GOCC, PS, GBO)",
       "workstream": "GOCC Transition",
-      "owner": "Balaji Ravi",
-      "errors": [
-        {
-          "itemId": "R-307a166dad",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-990b6f4d81",
-      "itemKind": "risk",
-      "title": "[Capacity Management] MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalatio",
-      "workstream": "Developer XP Dashboard",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-990b6f4d81",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-990b6f4d81",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-ae3cccdff8",
-      "itemKind": "risk",
-      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)",
-      "workstream": "CMDB Mapping",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-ae3cccdff8",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+          "itemId": "R-c7355ab891",
+          "field": "missing_why_it_matters",
+          "reason": "missing required field"
         }
       ]
     },
@@ -669,26 +322,16 @@
       ]
     },
     {
-      "itemId": "R-efff93fe0c",
+      "itemId": "R-2884ed4872",
       "itemKind": "risk",
-      "title": "BLOCKED items → Blockers panel (visible but grouped; David watches for state changes)",
-      "workstream": "",
+      "title": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
+      "workstream": "Developer XP Dashboard",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "R-efff93fe0c",
-          "field": "why_it_matters",
-          "reason": "must be exactly 1 sentence"
-        },
-        {
-          "itemId": "R-efff93fe0c",
+          "itemId": "R-2884ed4872",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        },
-        {
-          "itemId": "R-efff93fe0c",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 2 other item(s) - each item needs a specific impact statement"
         }
       ]
     },
@@ -708,76 +351,6 @@
           "itemId": "R-e20994c167",
           "field": "next_action",
           "reason": "must start with an approved imperative verb (Send/Ask/Confirm/Decide/Investigate/Deploy/Create/Publish/Write/Complete/Finish/Implement/Escalate/Contact/Choose/Approve/Assign/Close/Draft/Schedule/Present/Sign/Verify)"
-        }
-      ]
-    },
-    {
-      "itemId": "R-2884ed4872",
-      "itemKind": "risk",
-      "title": "CMDB Mapping appears to be the strongest dependency across nearly every other workstream",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-2884ed4872",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
-      "itemId": "R-192d5abf8c",
-      "itemKind": "risk",
-      "title": "[CMDB Mapping] Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts) (risk",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-192d5abf8c",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-ac5d39385a",
-      "itemKind": "risk",
-      "title": "Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong ho",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-ac5d39385a",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-478e3c51b2",
-      "itemKind": "risk",
-      "title": "[GOCC Transition] Strong dependency on cross-team alignment (GOCC, PS, GBO) (risk",
-      "workstream": "Capacity Management",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-478e3c51b2",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
-        }
-      ]
-    },
-    {
-      "itemId": "R-3ad4c84fb3",
-      "itemKind": "risk",
-      "title": "Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehea",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-3ad4c84fb3",
-          "field": "duplicate_why_it_matters",
-          "reason": "shares why_it_matters with 1 other item(s) - each item needs a specific impact statement"
         }
       ]
     }
