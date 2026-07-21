@@ -114,6 +114,10 @@ function Test-ConfidenceGate {
     # Always let red-status items through: they are the [ISSUE] blocks the
     # weekly report is built around.
     if ($Item.PSObject.Properties['matryoshkaStatus'] -and $Item.matryoshkaStatus -eq 'red') { return $true }
+    # V4.0 Sprint 16: priorityScore >= 60 is a stronger corroborated signal
+    # than raw confidence (it already accounts for status, ownership, deadline,
+    # engagement). Let those items through even when raw confidence is low.
+    if ($Item.PSObject.Properties['priorityScore'] -and [int]$Item.priorityScore -ge 60) { return $true }
 
     $c = 0.0
     if ($Item.PSObject.Properties['unifiedConfidence'] -and $null -ne $Item.unifiedConfidence) {
@@ -182,13 +186,82 @@ function Get-ShortContext {
 $iso = Get-IsoWeek -Date $WeekOf
 Write-Host ("Generating weekly report draft: {0} ({1})" -f $iso.label, (Format-Period $iso.monday $iso.friday)) -ForegroundColor Cyan
 
-$focus     = Read-Json (Join-Path $GEN 'current-focus.json')
-$decReg    = Read-Json (Join-Path $GEN 'decision-registry.json')
-$riskReg   = Read-Json (Join-Path $GEN 'risk-register.json')
-$inbox     = Read-Json (Join-Path $GEN 'david-inbox.json')
+$focus = Read-Json (Join-Path $GEN 'current-focus.json')
+$inbox = Read-Json (Join-Path $GEN 'david-inbox.json')
 
-$allDecisions = @($decReg.decisions) | Where-Object { $_ -and $_.status -ne 'closed' }
-$allRisks     = @($riskReg.risks)    | Where-Object { $_ -and $_.status -ne 'closed' }
+# V4.0 Sprint 16: prefer the canonical matryoshka-items.json as the primary
+# source of decision + risk records. Falls back to the V3 registries when the
+# canonical file is missing (older generator versions).
+$canonicalPath = Join-Path $GEN 'matryoshka-items.json'
+$useCanonical  = Test-Path $canonicalPath
+
+function ConvertFrom-CanonicalItem {
+    <#
+        Translates a canonical MatryoshkaItem (snake_case schema) back into a
+        V3-registry-shaped object (camelCase) so the rest of this report
+        generator can render both source types uniformly.
+    #>
+    param($Item, [string] $Kind)
+
+    $out = [ordered]@{
+        title             = [string]$Item.title
+        workstream        = [string]$Item.workstream
+        owner             = [string]$Item.owner
+        suggestedOwner    = if ($Item.PSObject.Properties['suggested_owner']) { [string]$Item.suggested_owner } else { '' }
+        ownerConfidence   = [string]$Item.owner_confidence
+        status            = [string]$Item.status
+        contextSummary    = [string]$Item.context_summary
+        whyItMatters           = [string]$Item.why_it_matters
+        whyItMattersConfidence = if ($Item.PSObject.Properties['why_it_matters_confidence']) { [double]$Item.why_it_matters_confidence } else { 0.0 }
+        whyItMattersSource     = if ($Item.PSObject.Properties['why_it_matters_source'])     { [string]$Item.why_it_matters_source }     else { 'none' }
+        matryoshkaStatus       = [string]$Item.status
+        matryoshkaStatusReason = [string]$Item.status_reason
+        focusSignals      = $Item.focus_signals
+        priorityScore     = [int]$Item.priority_score
+        priorityReason    = [string]$Item.priority_reason
+        priorityFactors   = $Item.priority_factors
+        delta             = $Item.delta
+        stale             = [bool]$Item.stale
+        unifiedConfidence = [double]$Item.confidence_score
+        # Synthesize an action shape so Get-BestNextAction still works
+        recommendedFollowUp = if ($Kind -eq 'decision') { [ordered]@{ nextAction=[string]$Item.next_action; actionClass=[string]$Item.action_class } } else { $null }
+        recommendedAction   = if ($Kind -eq 'risk')     { [ordered]@{ nextAction=[string]$Item.next_action; actionClass=[string]$Item.action_class } } else { $null }
+    }
+    if ($Kind -eq 'decision') {
+        $out.decisionId       = [string]$Item.id
+        $out.decisionAgeDays  = [int]$Item.aging_days
+        $out.decisionSummary  = [string]$Item.context_summary
+        # V4.0 Sprint 16: canonical items preserve deadline + lifecycle status.
+        $out.decisionDeadline = if ($Item.PSObject.Properties['decision_deadline'] -and $Item.decision_deadline) { [string]$Item.decision_deadline } else { '' }
+        $out.decisionStatus   = if ($Item.PSObject.Properties['decision_status']   -and $Item.decision_status)   { [string]$Item.decision_status }   else { '' }
+    } else {
+        $out.riskId    = [string]$Item.id
+        $out.agingDays = [int]$Item.aging_days
+        $out.impact    = [string]$Item.context_summary
+        # V4.0 Sprint 16: canonical items preserve type-specific fields (severity, trend).
+        $out.severity  = if ($Item.PSObject.Properties['severity'] -and $Item.severity) { [string]$Item.severity } else { '' }
+        $out.trend     = if ($Item.PSObject.Properties['trend']    -and $Item.trend)    { [string]$Item.trend }    else { '' }
+        # Only synthesize severity from status when not carried through.
+        if (-not $out.severity -and $Item.status -eq 'red') { $out.severity = 'High' }
+    }
+    return [PSCustomObject]$out
+}
+
+$allDecisions = @()
+$allRisks     = @()
+
+if ($useCanonical) {
+    $items = Read-Json $canonicalPath
+    $allDecisions = @(@($items.items) | Where-Object { $_ -and $_.type -eq 'decision' } | ForEach-Object { ConvertFrom-CanonicalItem -Item $_ -Kind 'decision' })
+    $allRisks     = @(@($items.items) | Where-Object { $_ -and $_.type -eq 'risk'     } | ForEach-Object { ConvertFrom-CanonicalItem -Item $_ -Kind 'risk' })
+    Write-Host ("  Source: matryoshka-items.json (canonical) - {0} decisions, {1} risks" -f $allDecisions.Count, $allRisks.Count) -ForegroundColor Cyan
+} else {
+    $decReg  = Read-Json (Join-Path $GEN 'decision-registry.json')
+    $riskReg = Read-Json (Join-Path $GEN 'risk-register.json')
+    $allDecisions = @($decReg.decisions) | Where-Object { $_ -and $_.status -ne 'closed' }
+    $allRisks     = @($riskReg.risks)    | Where-Object { $_ -and $_.status -ne 'closed' }
+    Write-Host ("  Source: V3 registries (fallback) - {0} decisions, {1} risks" -f $allDecisions.Count, $allRisks.Count) -ForegroundColor Yellow
+}
 
 # Apply confidence gate uniformly
 $decisions = @($allDecisions | Where-Object { Test-ConfidenceGate -Item $_ -Gate $ConfidenceGate })

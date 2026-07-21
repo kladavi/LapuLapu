@@ -2,20 +2,20 @@
 
 # Execution Insights
 
-Generated: 2026-07-21 12:47
+Generated: 2026-07-21 13:03
 
 Cross-cutting patterns detected across the decision registry and risk register.
 These signals feed the priority-inbox re-ranking and the confidence-tuning learning loop.
 
 ## Delayed Decisions (Pending 14+ days)
 
-- **D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope** - GOCC Transition - owner Birger Fjaellman - aged **18d** (D-e275b159e5)
-- **D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline** - GBO Batch Transition - owner David Klan - aged **18d** (D-f91314563c)
-- **D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...** - Capacity Management - owner Debamalya Das (delivery), David Klan (Lapu-Lapu integration) - aged **18d** (D-0ac2a0c612)
-- **D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September** - GBO Batch Transition - owner Birger Fjaellman - aged **18d** (D-30ae77972e)
-- **D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only** - Developer XP Dashboard - owner Unassigned - aged **18d** (D-3ced6cbb47)
 - **D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes** - ADX Registration - owner Balaji Ravi - aged **18d** (D-fadd968d28)
 - **D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP** - Rapid Recovery - owner Unassigned - aged **18d** (D-6f81d99006)
+- **D018 — Agreed: Lock GBO Japan Batch Transition Execution Plan, Operating Principles, and September Pilot Timeline** - GBO Batch Transition - owner David Klan - aged **18d** (D-f91314563c)
+- **D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only** - Developer XP Dashboard - owner Unassigned - aged **18d** (D-3ced6cbb47)
+- **D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September** - GBO Batch Transition - owner Balaji Ravi - aged **18d** (D-30ae77972e)
+- **D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope** - GOCC Transition - owner Birger Fjaellman - aged **18d** (D-e275b159e5)
+- **D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar...** - Capacity Management - owner Debamalya Das (delivery), David Klan (Lapu-Lapu integration) - aged **18d** (D-0ac2a0c612)
 
 ## Missed Deadlines (past decisionDeadline, still Pending)
 
@@ -23,8 +23,7 @@ _None._
 
 ## Overloaded Owners (>= 3 open items)
 
-- **Balaji Ravi** - 11 open items (1 decisions / 10 risks, 11 P1), avg confidence 0.53
-- **Birger Fjaellman** - 10 open items (2 decisions / 8 risks, 7 P1), avg confidence 0.48
+- **Balaji Ravi** - 24 open items (2 decisions / 22 risks, 20 P1), avg confidence 0.52
 
 ## Recurring Decisions (same normalized title 2+ times)
 
@@ -36,8 +35,9 @@ _None._
 
 ## High-Severity Aged Risks (14+ days)
 
-- **Vendor Escalation** - MMM L2 - owner Unassigned - aged **91d** (R-1c3d9c0e3b)
 - **Standardization of templates, CI identification, and escalation procedures to reduce** -  - owner Unassigned - aged **91d** (R-f386376f94)
+- **Vendor Escalation** - MMM L2 - owner Unassigned - aged **91d** (R-1c3d9c0e3b)
+- **Review and operationalize the vendor escalation format** - Rapid Recovery - owner Unassigned - aged **91d** (R-cd89918f9c)
 
 ## Notes
 

@@ -1,19 +1,26 @@
 # V4.0 Phase 1 - Rejected Items
 
-_Generated: 2026-07-21 12:47_
+_Generated: 2026-07-21 13:03_
 
-Validated **71** live decision/risk candidates against the V4.0 canonical schema. **36** pass; **35** need fixing before the V4.0 fail-closed emitters land.
+Validated **84** live decision/risk candidates against the V4.0 canonical schema. **37** pass; **47** need fixing before the V4.0 fail-closed emitters land.
 
 ## Failure counts by field
 
 | Field | Count |
 |---|---:|
-| weak_why_it_matters | 33 |
-| why_it_matters | 2 |
-| duplicate_why_it_matters | 2 |
-| next_action | 1 |
+| weak_why_it_matters | 29 |
+| duplicate_why_it_matters | 15 |
+| why_it_matters | 4 |
+| next_action | 4 |
 
 ## Rejections (top 30)
+
+### decision D-6f81d99006 - Rapid Recovery
+
+- **Title:** D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
 ### decision D-f91314563c - GBO Batch Transition
 
@@ -36,13 +43,6 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### decision D-6f81d99006 - Rapid Recovery
-
-- **Title:** D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
 ### decision D-8391860e44 - 
 
 - **Title:** 0.05
@@ -58,6 +58,13 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
+### risk R-f386376f94 - 
+
+- **Title:** Standardization of templates, CI identification, and escalation procedures to reduce
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+
 ### risk R-1c3d9c0e3b - MMM L2
 
 - **Title:** Vendor Escalation
@@ -65,9 +72,9 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-f386376f94 - 
+### risk R-cd89918f9c - Rapid Recovery
 
-- **Title:** Standardization of templates, CI identification, and escalation procedures to reduce
+- **Title:** Review and operationalize the vendor escalation format
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -86,20 +93,6 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-121760730c - Capacity Management
-
-- **Title:** MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-b493137b8f - Rapid Recovery
-
-- **Title:** Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc...
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
 ### risk R-2b2a241d9c - Rapid Recovery
 
 - **Title:** Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement...
@@ -107,9 +100,9 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-b8d4414c4c - 
+### risk R-9bfa424dbf - Developer XP Dashboard
 
-- **Title:** Continue escalation on VNet issues
+- **Title:** ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -121,9 +114,9 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-27c07d48fd - GOCC Transition
+### risk R-b8d4414c4c - 
 
-- **Title:** Team to secure **contact + escalation path
+- **Title:** Continue escalation on VNet issues
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -131,6 +124,13 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 ### risk R-aa18501480 - Rapid Recovery
 
 - **Title:** RRP Tabletop Exercise Planning: **David proposed a step-by-step rehearsal of the RRP process, simulating alert handling and escalation, a...
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+
+### risk R-27c07d48fd - GOCC Transition
+
+- **Title:** Team to secure **contact + escalation path
 - **Owner:** Unassigned
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
@@ -149,79 +149,81 @@ Validated **71** live decision/risk candidates against the V4.0 canonical schema
 - **Errors:**
   - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
 
-### risk R-ee800eb07c - GBO Batch Transition
+### risk R-b59d974bdf - Capacity Management
 
-- **Title:** Next: Send escalation on GBO Batch Transition to Balaji Ravi today
+- **Title:** [ISSUE] (risk/High) Source:** Inbox — archive/W28_copilot.md (CyberArk Privileged Access Review — Summary of Findings and Governance Conc...
+- **Owner:** Unassigned
+- **Errors:**
+  - $(System.Collections.Hashtable.field): must be exactly 1 sentence
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
+
+### risk R-8a21bfe12c - Employee XP Dashboard
+
+- **Title:** Next: Assign an owner for Employee XP Dashboard risk before it can be actioned
 - **Owner:** Balaji Ravi
 - **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
 
-### risk R-4650d3f155 - Developer XP Dashboard
+### risk R-499b888e83 - Developer XP Dashboard
 
-- **Title:** Next: Send escalation on Developer XP Dashboard to Balaji Ravi today
+- **Title:** [ISSUE] (risk/High) [ISSUE] (risk/High) ⚠️ Vendor-managed apps without clear escalation model — owner: Unassigned (suggested: Rasheersh);...
 - **Owner:** Balaji Ravi
 - **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
 
-### risk R-ae3cccdff8 - CMDB Mapping
+### risk R-a64a18e013 - Employee XP Dashboard
 
-- **Title:** Check network traffic (cloud and non-cloud) for misconfigurations (blocked traffic, traffic to wrong hosts)
+- **Title:** [ISSUE] (risk/High) Lapu-Lapu GOCC and Japan, Thursday July 9, 2026 — meeting transcript/summary covering Ingenium incident desktop rehea...
+- **Owner:** Balaji Ravi
+- **Errors:**
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 2 other item(s) - each item needs a specific impact statement
+
+### risk R-367694fd2b - Capacity Management
+
+- **Title:** [ISSUE] (risk/High) Required escalation to GAM — score 86
 - **Owner:** Unassigned
 - **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+  - $(System.Collections.Hashtable.field): must be exactly 1 sentence
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
 
-### risk R-c7355ab891 - GOCC Transition
+### risk R-3834cf7ebb - GBO Batch Transition
 
-- **Title:** Strong dependency on cross-team alignment (GOCC, PS, GBO)
+- **Title:** [ISSUE] (risk/High) [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence ...
+- **Owner:** Balaji Ravi
+- **Errors:**
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
+
+### risk R-52ff893f30 - Developer XP Dashboard
+
+- **Title:** Next: Assign an owner for CMDB Mapping risk before it can be actioned
+- **Owner:** Balaji Ravi
+- **Errors:**
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
+
+### risk R-0c8580b4b0 - GOCC Transition
+
+- **Title:** [ISSUE] (risk/High) ⚠️ Vendor-managed apps without clear escalation model — owner: Unassigned (suggested: Rasheersh); score 86
+- **Owner:** Birger Fjaellman
+- **Errors:**
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
+
+### risk R-21ba1c6e72 - GBO Batch Transition
+
+- **Title:** Next: Assign an owner for GBO Batch Transition risk before it can be actioned
+- **Owner:** Balaji Ravi
+- **Errors:**
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
+
+### risk R-4fa8313851 - GBO Batch Transition
+
+- **Title:** [ISSUE] (risk/High) Vendor Escalation — owner: Unassigned (suggested: Rowena); score 98
+- **Owner:** Balaji Ravi
+- **Errors:**
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement
+
+### risk R-253f5e40dc - Capacity Management
+
+- **Title:** [ISSUE] (risk/High) MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation ...
 - **Owner:** Unassigned
 - **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-b882fa398a - GBO Batch Transition
-
-- **Title:** Decision this week (D018): The GBO Japan Batch Transition execution plan, operating principles, and September pilot timeline are locked; ...
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-8d9f37dcce - Capacity Management
-
-- **Title:** Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu...
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-5a110d3d32 - CMDB Mapping
-
-- **Title:** CMDB serves as a foundational dependency for downstream operational initiatives. 【6-0fbe0a】
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-d5365064d3 - MMM L2
-
-- **Title:** Credentials dependency
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-7af7bceb58 - MMM L2
-
-- **Title:** ⚠️ Auditability concern
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-601cba16b2 - 
-
-- **Title:** ⚠️ Dependency on manual URL onboarding
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
-
-### risk R-ad7b2a1025 - 
-
-- **Title:** `BLOCKED` items → Blockers panel (visible but grouped; David watches for state changes)
-- **Owner:** Unassigned
-- **Errors:**
-  - $(System.Collections.Hashtable.field): must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)
+  - $(System.Collections.Hashtable.field): shares why_it_matters with 1 other item(s) - each item needs a specific impact statement

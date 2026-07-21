@@ -37,6 +37,8 @@ $OUT_INSIGHTS_JSON = Join-Path $GEN 'execution-insights.json'
 # V4.0 Phase 1: quality-gate rejection log
 $OUT_REJECTED_MD   = Join-Path $GEN 'rejected-items.md'
 $OUT_REJECTED_JSON = Join-Path $GEN 'rejected-items.json'
+# V4.0 Sprint 16: canonical MatryoshkaItem system-of-record
+$OUT_ITEMS_JSON    = Join-Path $GEN 'matryoshka-items.json'
 
 $SCAN_FOLDERS = @(
     '00-context',
@@ -469,6 +471,7 @@ $script:GENERATED_ARTIFACTS = @(
     'david-inbox.json',
     'rejected-items.md',
     'rejected-items.json',
+    'matryoshka-items.json',
     'pipeline-health.json'
 )
 
@@ -6161,6 +6164,10 @@ $acceptedCount = 0
 $candidateCount = 0
 $fieldFailures = @{}
 
+# V4.0 Sprint 16: collect every candidate (accepted + rejected) so we can
+# emit matryoshka-items.json as the canonical system-of-record output.
+$script:MAT_CANONICAL_ITEMS = [System.Collections.Generic.List[object]]::new()
+
 # V4.0 Sprint 15: pre-compute why_it_matters fingerprint counts so
 # Test-MatryoshkaItem can flag duplicates (validator v2 new check).
 $script:MAT_WHY_FINGERPRINTS = @{}
@@ -6193,6 +6200,53 @@ foreach ($kind in @('decision','risk')) {
         $candidateCount++
         $candidate = ConvertTo-MatryoshkaCandidate -Kind $kind -Entry $entry
         $result = Test-MatryoshkaItem -Candidate $candidate
+
+        # V4.0 Sprint 16: collect the canonical item + validation outcome +
+        # enriched V4 fields for the matryoshka-items.json emit below.
+        $canonical = [ordered]@{
+            id                     = [string]$candidate.id
+            type                   = [string]$candidate.type
+            title                  = [string]$candidate.title
+            owner                  = [string]$candidate.owner
+            suggested_owner        = if ($candidate.ContainsKey('suggested_owner')) { [string]$candidate.suggested_owner } else { '' }
+            owner_confidence       = [string]$candidate.owner_confidence
+            why_it_matters         = [string]$candidate.why_it_matters
+            why_it_matters_confidence = if ($entry.ContainsKey('whyItMattersConfidence')) { [double]$entry.whyItMattersConfidence } else { 0.0 }
+            why_it_matters_source     = if ($entry.ContainsKey('whyItMattersSource'))     { [string]$entry.whyItMattersSource }     else { 'none' }
+            next_action            = [string]$candidate.next_action
+            action_class           = [string]$candidate.action_class
+            workstream             = [string]$candidate.workstream
+            status                 = [string]$candidate.status
+            status_reason          = [string]$candidate.status_reason
+            aging_days             = [int]$candidate.aging_days
+            stale                  = [bool]$candidate.stale
+            source                 = [string]$candidate.source
+            context_summary        = [string]$candidate.context_summary
+            context_metadata       = if ($entry.ContainsKey('contextMetadata') -and $entry.contextMetadata) { $entry.contextMetadata } else { [ordered]@{ lastMention=''; lastActivity=''; actors=@(); primarySource='' } }
+            confidence_score       = [double]$candidate.confidence_score
+            merged_from            = @($candidate.merged_from)
+            first_seen             = [string]$candidate.first_seen
+            last_updated           = [string]$candidate.last_updated
+            focus_signals          = if ($entry.ContainsKey('focusSignals') -and $entry.focusSignals) { $entry.focusSignals } else { [ordered]@{ engaged=$false; attentionRequired=$false; awaitingOthers=$false; reasons=[ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
+            priority_score         = if ($entry.ContainsKey('priorityScore'))   { [int]$entry.priorityScore }    else { 0 }
+            priority_reason        = if ($entry.ContainsKey('priorityReason'))  { [string]$entry.priorityReason } else { '' }
+            priority_factors       = if ($entry.ContainsKey('priorityFactors') -and $entry.priorityFactors) { $entry.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
+            delta                  = if ($entry.ContainsKey('delta') -and $entry.delta) { $entry.delta } else { [ordered]@{ daysSinceLastTouched=0; updatedSinceYesterday=$true; changeSummary='first appearance' } }
+            validated              = [bool]$result.ok
+            validation_errors      = if ($result.ok) { @() } else { @($result.errors | ForEach-Object { [ordered]@{ field=[string]$_.field; reason=[string]$_.reason } }) }
+        }
+        # V4.0 Sprint 16: preserve type-specific fields the canonical schema doesn't yet name
+        # (severity for risks, decision deadline for decisions) so downstream consumers don't
+        # need a fallback to the V3 registries just to render one field.
+        if ($kind -eq 'risk') {
+            $canonical.severity = if ($entry.severity) { [string]$entry.severity } else { '' }
+            $canonical.trend    = if ($entry.trend)    { [string]$entry.trend }    else { '' }
+        } else {
+            $canonical.decision_deadline = if ($entry.decisionDeadline) { [string]$entry.decisionDeadline } else { '' }
+            $canonical.decision_status   = if ($entry.decisionStatus)   { [string]$entry.decisionStatus }   else { '' }
+        }
+        [void]$script:MAT_CANONICAL_ITEMS.Add($canonical)
+
         if ($result.ok) {
             $acceptedCount++
             continue
@@ -6291,6 +6345,51 @@ $rejectedMd = ($rejectedMdLines -join "`n")
 Write-Host "Written: $($OUT_REJECTED_MD.Replace($ROOT,'').TrimStart('\'))"   -ForegroundColor Green
 Write-Host "Written: $($OUT_REJECTED_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
 Write-Host "V4.0 validation: $acceptedCount accepted, $($rejectionRecords.Count) rejected of $candidateCount live candidates" -ForegroundColor Yellow
+
+# --- V4.0 Sprint 16: canonical system-of-record emit ----------------------
+# matryoshka-items.json becomes the primary consumption contract. Every live
+# item is emitted (validated OR not) with the `validated` flag telling
+# downstream consumers whether it passed all quality gates. The weekly-report
+# generator + future dashboard code can prefer this file over the V3 registry
+# emitters - reducing drift as those older artifacts get phased out.
+$canonicalItems  = @($script:MAT_CANONICAL_ITEMS)
+$validatedItems  = @($canonicalItems | Where-Object { $_.validated })
+$rejectedItems   = @($canonicalItems | Where-Object { -not $_.validated })
+$byActionClass   = @{}
+foreach ($it in $canonicalItems) {
+    $ac = if ($it.action_class) { [string]$it.action_class } else { '(none)' }
+    if (-not $byActionClass.ContainsKey($ac)) { $byActionClass[$ac] = 0 }
+    $byActionClass[$ac] += 1
+}
+$byActionClassOrdered = [ordered]@{}
+foreach ($k in ($byActionClass.Keys | Sort-Object)) { $byActionClassOrdered[$k] = [int]$byActionClass[$k] }
+
+$itemsReport = [ordered]@{
+    generated = $generatedIso
+    generator = 'scripts/generate-current-focus.ps1'
+    version   = 'V4.0-sprint16'
+    schema    = 'ui/src/lib/matryoshka-item.ts (MatryoshkaItem)'
+    totals    = [ordered]@{
+        total         = $canonicalItems.Count
+        validated     = $validatedItems.Count
+        rejected      = $rejectedItems.Count
+        byType        = [ordered]@{
+            decision = @($canonicalItems | Where-Object { $_.type -eq 'decision' }).Count
+            risk     = @($canonicalItems | Where-Object { $_.type -eq 'risk' }).Count
+        }
+        byActionClass = $byActionClassOrdered
+        byStatus      = [ordered]@{
+            red   = @($canonicalItems | Where-Object { $_.status -eq 'red' }).Count
+            amber = @($canonicalItems | Where-Object { $_.status -eq 'amber' }).Count
+            green = @($canonicalItems | Where-Object { $_.status -eq 'green' }).Count
+        }
+    }
+    items = @($canonicalItems | Sort-Object { -[int]$_.priority_score })
+}
+$itemsJson = $itemsReport | ConvertTo-Json -Depth 8
+[System.IO.File]::WriteAllText($OUT_ITEMS_JSON, $itemsJson, (New-Object System.Text.UTF8Encoding($false)))
+Write-Host "Written: $($OUT_ITEMS_JSON.Replace($ROOT,'').TrimStart('\'))" -ForegroundColor Green
+Write-Host ("Canonical items: {0} total ({1} validated / {2} rejected)" -f $canonicalItems.Count, $validatedItems.Count, $rejectedItems.Count) -ForegroundColor Yellow
 
 # Summary to console
 Write-Host ""
