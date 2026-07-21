@@ -2,7 +2,7 @@
 type: execution-insights
 title: "Execution Insights"
 generator: scripts/generate-current-focus.ps1
-generated: 2026-07-21T16:00:40
+generated: 2026-07-22T07:34:04
 version: V4.0-sprint23a
 schema: ui/src/lib/matryoshka-item.ts
 ---
@@ -10,18 +10,18 @@ schema: ui/src/lib/matryoshka-item.ts
 
 # Execution Insights
 
-Generated: 2026-07-21 16:00
+Generated: 2026-07-22 07:33
 
 Cross-cutting patterns detected across the decision registry and risk register.
 These signals feed the priority-inbox re-ranking and the confidence-tuning learning loop.
 
 ## Delayed Decisions (Pending 14+ days)
 
-- **D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope** - GOCC Transition - owner Birger Fjaellman - aged **18d** (D-e275b159e5)
-- **D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September** - GBO Batch Transition - owner Balaji Ravi - aged **18d** (D-30ae77972e)
-- **D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP** - Rapid Recovery - owner Unassigned - aged **18d** (D-6f81d99006)
-- **D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only** - Developer XP Dashboard - owner Unassigned - aged **18d** (D-3ced6cbb47)
-- **D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes** - ADX Registration - owner Balaji Ravi - aged **18d** (D-fadd968d28)
+- **D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only** - Developer XP Dashboard - owner Unassigned - aged **19d** (D-3ced6cbb47)
+- **D017 — Agreed: GOCC Transitions to Unified Operating Model Without L1/L2 Silos in September** - GBO Batch Transition - owner Birger Fjaellman - aged **19d** (D-30ae77972e)
+- **D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope** - GOCC Transition - owner Birger Fjaellman - aged **19d** (D-e275b159e5)
+- **D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP** - Rapid Recovery - owner Unassigned - aged **19d** (D-6f81d99006)
+- **D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes** - ADX Registration - owner Balaji Ravi - aged **19d** (D-fadd968d28)
 
 ## Missed Deadlines (past decisionDeadline, still Pending)
 
@@ -41,8 +41,8 @@ _None._
 
 ## High-Severity Aged Risks (14+ days)
 
-- **Review and operationalize the vendor escalation format** - Rapid Recovery - owner Unassigned - aged **91d** (R-cd89918f9c)
-- **Standardization of templates, CI identification, and escalation procedures to reduce** -  - owner Unassigned - aged **91d** (R-f386376f94)
+- **Review and operationalize the vendor escalation format** - Rapid Recovery - owner Unassigned - aged **92d** (R-cd89918f9c)
+- **Standardization of templates, CI identification, and escalation procedures to reduce** -  - owner Unassigned - aged **92d** (R-f386376f94)
 
 ## Notes
 
