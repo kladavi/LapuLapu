@@ -1,0 +1,57 @@
+---
+type: "risk"
+id: "R-bf28edfac4"
+title: "🚨 Compliance gap (CyberArk not enforced)"
+workstream: "CyberArk Governance"
+owner: "Unassigned"
+status: "red"
+weight: 86
+aging_days: 5
+updated: "2026-07-16"
+created: "2026-07-16"
+tags: ["type/risk", "workstream/cyberark-governance", "status/red", "action/decide", "engaged", "attention-required"]
+people: ["Balaji Ravi", "Birger Fjaellman"]
+severity: "High"
+---
+
+# 🚨 Compliance gap (CyberArk not enforced)
+
+**Status:** RED  ·  **Score:** 86  ·  **Owner:** Unassigned
+_Suggested owner: Manish_
+**Workstream:** [[workstreams/cyberark-governance|CyberArk Governance]]
+
+> [!info] Why it matters
+> Risk / Gap - 🚨 Compliance gap (CyberArk not enforced) - 🚨 High operational risk (manual renewals + hidden dependencies) - ⚠️ No unified ownership model for service accounts
+> _source: risk-consequence  ·  confidence: 0.75_
+
+> [!todo] Next action
+> Assign an owner for CyberArk Governance risk before it can be actioned
+> _class: **DECIDE**_
+
+## Why this scored 86
+
+- Why it matters: Risk / Gap - 🚨 Compliance gap (CyberArk not enforced) - 🚨 High operational risk (manual renewals + hidden dependencies) - ⚠️ No unified ownership model for service accounts
+- High-severity risk
+- Owner unassigned (suggested: Manish)
+- Attention required (matryoshka status RED; owner unassigned; DECIDE on David/unassigned; owner not confirmed)
+- Active engagement detected
+
+## Timeline
+
+- First seen: 2026-07-16
+- Last updated: 2026-07-16
+- Aging: 5 day(s)
+
+## Context
+
+**Risk / Gap** - 🚨 Compliance gap (CyberArk not enforced) - 🚨 High operational risk (manual renewals + hidden dependencies) - ⚠️ No unified ownership model for service accounts
+
+## Actors
+
+- Balaji Ravi
+- Birger Fjaellman
+
+## Source
+
+- `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+

@@ -2,7 +2,7 @@
 type: phase10-verification
 title: "Phase 10 Verification Report"
 generator: scripts/verify-phase10.ps1
-generated: 2026-07-21T16:02:10
+generated: 2026-07-21T16:19:18
 version: V4.0-sprint23a
 schema: ui/src/lib/matryoshka-item.ts
 checks_passed: 8
@@ -12,7 +12,7 @@ overall_status: PASS
 
 # Phase 10 Verification
 
-Generated at 2026-07-21T16:02:10 against canonical artifacts:
+Generated at 2026-07-21T16:19:18 against canonical artifacts:
 - `00-context/generated/matryoshka-items.json`
 - `00-context/generated/matryoshka-index.json`
 
