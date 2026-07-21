@@ -121,14 +121,19 @@ const IMPACT_SIGNAL_WORDS = new RegExp(
 
 const BANNED_TITLE_PREFIX = /^\s*(escalate|todo|fix)\s*:/i;
 
-export function validateItem(candidate: Partial<MatryoshkaItem>): MatryoshkaValidationResult {
+// V4.0 Sprint 15: reject vague/placeholder why_it_matters strings.
+const GENERIC_WHY = /^(needs attention|important issue|follow[- ]up required|see above|tbd|placeholder|no summary( available)?|refer to (context|source)|to be determined|update required|pending)[.!?\s]*$/i;
+
+export function validateItem(candidate: Partial<MatryoshkaItem>, opts?: { whyFingerprints?: Map<string, number> }): MatryoshkaValidationResult {
   const errors: MatryoshkaValidationError[] = [];
   const id = candidate.id ?? "(no-id)";
 
   for (const f of REQUIRED_FIELDS) {
     const v = (candidate as Record<string, unknown>)[f];
     if (v === undefined || v === null || v === "") {
-      errors.push({ itemId: id, field: String(f), reason: "missing required field" });
+      // V4.0 Sprint 15: split the missing-why gap into its own error code.
+      const fieldLabel = f === "why_it_matters" ? "missing_why_it_matters" : String(f);
+      errors.push({ itemId: id, field: fieldLabel, reason: "missing required field" });
     }
   }
 
@@ -144,16 +149,40 @@ export function validateItem(candidate: Partial<MatryoshkaItem>): MatryoshkaVali
   }
 
   if (candidate.why_it_matters) {
-    const sentences = candidate.why_it_matters.split(/[.!?]/).filter((s) => s.trim().length > 0);
+    const why = candidate.why_it_matters;
+    // V4.0 Sprint 15 validator v2: split single 'why_it_matters' error into
+    // generic / weak / duplicate sub-categories so the rejection report
+    // pinpoints exactly which quality gate failed.
+    const isGeneric = GENERIC_WHY.test(why) || why.trim().length < 15;
+    if (isGeneric) {
+      errors.push({
+        itemId: id,
+        field: "generic_why_it_matters",
+        reason: "matches generic pattern (needs attention / tbd / follow up required) — replace with concrete impact statement",
+      });
+    }
+    const sentences = why.split(/[.!?]/).filter((s) => s.trim().length > 0);
     if (sentences.length > 1) {
       errors.push({ itemId: id, field: "why_it_matters", reason: "must be exactly 1 sentence" });
     }
-    if (!IMPACT_SIGNAL_WORDS.test(candidate.why_it_matters)) {
+    if (!isGeneric && !IMPACT_SIGNAL_WORDS.test(why)) {
       errors.push({
         itemId: id,
-        field: "why_it_matters",
+        field: "weak_why_it_matters",
         reason: "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)",
       });
+    }
+    // Duplicate check: was this exact string seen 2+ times in the corpus?
+    if (opts?.whyFingerprints) {
+      const fp = why.trim().toLowerCase();
+      const count = opts.whyFingerprints.get(fp) ?? 0;
+      if (count >= 2) {
+        errors.push({
+          itemId: id,
+          field: "duplicate_why_it_matters",
+          reason: `shares why_it_matters with ${count - 1} other item(s) — each item needs a specific impact statement`,
+        });
+      }
     }
   }
 
