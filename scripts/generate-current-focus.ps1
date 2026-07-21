@@ -3108,6 +3108,179 @@ function Apply-FocusSignals {
     return $counts
 }
 
+function Get-PriorityScore {
+    <#
+        V4.0 Sprint 13b: canonical priority score for a single decision or risk.
+        Returns @{ score = <int 0..100>; reason = <string> }.
+
+        Weighted sum of five bounded factors (each 0..1):
+          - impact         (weight 0.25)
+          - ownership      (weight 0.20)
+          - deadline       (weight 0.20)
+          - status         (weight 0.20)
+          - engagement     (weight 0.15)
+
+        Consumes Phase 1c (matryoshkaStatus), Phase 2 (actionClass), Phase 7
+        (ownerConfidence), Sprint 13a (focusSignals) directly. Deterministic.
+    #>
+    param(
+        [hashtable] $Entry,
+        [ValidateSet('decision','risk')] [string] $Kind,
+        [datetime]  $Now
+    )
+
+    # --- pulled fields ---------------------------------------------------
+    $owner = if ($Entry.owner) { [string]$Entry.owner } else { 'unassigned' }
+    $ownerIsDavid  = $owner -match '(?i)^\s*david(\s+klan)?\s*$'
+    $ownerUnassigned = $owner -match '(?i)^\s*unassigned\s*$'
+
+    $ownerConfidence = if ($Entry.ownerConfidence) { [string]$Entry.ownerConfidence } else { 'low' }
+    switch ($ownerConfidence) {
+        'workstream-map' { $ownerConfidence = 'low'    }
+        'name-proximity' { $ownerConfidence = 'medium' }
+        'unknown'        { $ownerConfidence = 'low'    }
+    }
+
+    $status = if ($Entry.matryoshkaStatus) { [string]$Entry.matryoshkaStatus } else { 'green' }
+
+    $signals = if ($Entry.focusSignals -is [System.Collections.IDictionary]) { $Entry.focusSignals } else { @{} }
+
+    # --- impact ----------------------------------------------------------
+    $impact = 0.5
+    $impactReason = ''
+    if ($Kind -eq 'risk') {
+        switch ($Entry.severity) {
+            'High'   { $impact = 1.0; $impactReason = 'high severity' }
+            'Medium' { $impact = 0.6; $impactReason = 'medium severity' }
+            'Low'    { $impact = 0.3; $impactReason = 'low severity' }
+            default  { $impact = 0.4 }
+        }
+    } else {
+        # Decision impact proxy (no per-decision impact field yet):
+        #   decisionRequired + not-yet-Decided  -> 0.75 (needs a real call)
+        #   Decided / closed                    -> 0.25 (housekeeping only)
+        #   otherwise                           -> 0.55
+        $lifecycle = if ($Entry.decisionStatus) { [string]$Entry.decisionStatus } else { '' }
+        if ($Entry.status -eq 'closed' -or $lifecycle -eq 'Decided') {
+            $impact = 0.25; $impactReason = 'decided / closed'
+        } elseif ($Entry.decisionRequired) {
+            $impact = 0.75; $impactReason = 'decision required'
+        } else {
+            $impact = 0.55; $impactReason = 'informational decision'
+        }
+    }
+
+    # --- ownership -------------------------------------------------------
+    $ownershipReason = ''
+    if ($ownerUnassigned)              { $ownership = 1.00; $ownershipReason = 'needs owner' }
+    elseif ($ownerIsDavid)             { $ownership = 0.85; $ownershipReason = 'David owns' }
+    elseif ($ownerConfidence -eq 'low'){ $ownership = 0.70; $ownershipReason = 'owner unconfirmed' }
+    elseif ($ownerConfidence -eq 'medium') { $ownership = 0.55; $ownershipReason = 'ownership inferred' }
+    else                                { $ownership = 0.40; $ownershipReason = 'owner confirmed' }
+
+    # --- deadline --------------------------------------------------------
+    $deadline = 0.2
+    $deadlineReason = 'no deadline'
+    $deadlineStr = ''
+    if ($Kind -eq 'decision' -and $Entry.decisionDeadline) { $deadlineStr = [string]$Entry.decisionDeadline }
+    if ($deadlineStr -match '^\d{4}-\d{2}-\d{2}') {
+        $todayStr = $Now.ToString('yyyy-MM-dd')
+        try {
+            $dl = [datetime]::ParseExact($deadlineStr.Substring(0,10),'yyyy-MM-dd',$null)
+            $daysToDeadline = [int]([Math]::Round(($dl - $Now.Date).TotalDays))
+            if ($deadlineStr -lt $todayStr) { $deadline = 1.00; $deadlineReason = "breached $deadlineStr" }
+            elseif ($daysToDeadline -le 3)  { $deadline = 0.90; $deadlineReason = "due in ${daysToDeadline}d" }
+            elseif ($daysToDeadline -le 7)  { $deadline = 0.75; $deadlineReason = "due in ${daysToDeadline}d" }
+            elseif ($daysToDeadline -le 14) { $deadline = 0.55; $deadlineReason = "due in ${daysToDeadline}d" }
+            else                            { $deadline = 0.35; $deadlineReason = "due in ${daysToDeadline}d" }
+        } catch { $deadline = 0.35; $deadlineReason = "deadline $deadlineStr" }
+    }
+    # aging fallback for risks (no deadline field on risks)
+    if ($Kind -eq 'risk') {
+        $agingDays = if ($Entry.agingDays) { [int]$Entry.agingDays } else { 0 }
+        $agingFactor = if ($agingDays -ge 30) { 0.9 } elseif ($agingDays -ge 14) { 0.7 } elseif ($agingDays -ge 7) { 0.5 } else { 0.3 }
+        if ($agingFactor -gt $deadline) { $deadline = $agingFactor; $deadlineReason = "aging ${agingDays}d" }
+    }
+
+    # --- status ----------------------------------------------------------
+    switch ($status) {
+        'red'   { $statusF = 1.00; $statusReason = 'status RED' }
+        'amber' { $statusF = 0.60; $statusReason = 'status AMBER' }
+        'green' { $statusF = 0.20; $statusReason = 'status GREEN' }
+        default { $statusF = 0.40; $statusReason = 'status unknown' }
+    }
+
+    # --- engagement ------------------------------------------------------
+    $engagement = 0.40
+    $engagementReason = 'neutral'
+    if ($signals.attentionRequired) { $engagement = 1.00; $engagementReason = 'attention required' }
+    elseif ($signals.engaged -and -not $signals.awaitingOthers) { $engagement = 0.75; $engagementReason = 'active engagement' }
+    elseif ($signals.awaitingOthers -and -not $signals.attentionRequired) { $engagement = 0.30; $engagementReason = 'awaiting others (dampened)' }
+
+    # --- weighted sum ----------------------------------------------------
+    $wImpact     = 0.25
+    $wOwnership  = 0.20
+    $wDeadline   = 0.20
+    $wStatus     = 0.20
+    $wEngagement = 0.15
+
+    $raw = ($impact * $wImpact) + ($ownership * $wOwnership) + ($deadline * $wDeadline) + ($statusF * $wStatus) + ($engagement * $wEngagement)
+    $score = [int][Math]::Round($raw * 100)
+    if ($score -lt 0)   { $score = 0 }
+    if ($score -gt 100) { $score = 100 }
+
+    $reason = ("impact={0:F2}({1}); ownership={2:F2}({3}); deadline={4:F2}({5}); status={6:F2}({7}); engagement={8:F2}({9})" -f `
+        $impact, $impactReason, $ownership, $ownershipReason, $deadline, $deadlineReason, $statusF, $statusReason, $engagement, $engagementReason)
+
+    return @{
+        score  = $score
+        reason = $reason
+        factors = [ordered]@{
+            impact     = [Math]::Round($impact, 2)
+            ownership  = [Math]::Round($ownership, 2)
+            deadline   = [Math]::Round($deadline, 2)
+            status     = [Math]::Round($statusF, 2)
+            engagement = [Math]::Round($engagement, 2)
+        }
+    }
+}
+
+function Apply-PriorityScore {
+    <#
+        V4.0 Sprint 13b orchestrator: stamps `priorityScore` + `priorityReason`
+        (+ `priorityFactors`) on every live decision + risk. Non-destructive.
+        Returns @{ min; max; mean; count } for the pipeline log.
+    #>
+    param(
+        [object[]] $Decisions,
+        [object[]] $Risks,
+        [datetime] $Now
+    )
+
+    $sum = 0.0; $min = 101; $max = -1; $count = 0
+    foreach ($kind in @('decision','risk')) {
+        $entries = if ($kind -eq 'decision') { $Decisions } else { $Risks }
+        foreach ($e in $entries) {
+            if (-not $e) { continue }
+            $res = Get-PriorityScore -Entry $e -Kind $kind -Now $Now
+            $e.priorityScore   = [int]$res.score
+            $e.priorityReason  = [string]$res.reason
+            $e.priorityFactors = $res.factors
+            $sum += $res.score
+            if ($res.score -lt $min) { $min = $res.score }
+            if ($res.score -gt $max) { $max = $res.score }
+            $count += 1
+        }
+    }
+    if ($count -eq 0) { return @{ min = 0; max = 0; mean = 0; count = 0 } }
+    return @{
+        min   = $min
+        max   = $max
+        mean  = [Math]::Round($sum / $count, 1)
+        count = $count
+    }
+}
+
 function Get-StructuredDecisionAction {
     <#
         Converts the ad-hoc `recommendedFollowUp` string into a structured object.
@@ -3694,6 +3867,9 @@ function Build-DecisionRegistryJson {
             matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
             matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
             focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
+            priorityScore          = if ($e.ContainsKey('priorityScore'))   { [int]$e.priorityScore }   else { 0 }
+            priorityReason         = if ($e.ContainsKey('priorityReason'))  { [string]$e.priorityReason } else { '' }
+            priorityFactors        = if ($e.ContainsKey('priorityFactors') -and $e.priorityFactors) { $e.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
             recommendedFollowUp = $e.recommendedFollowUp
         }
     }
@@ -4684,6 +4860,9 @@ function Build-RiskRegisterJson {
             matryoshkaStatus       = if ($e.ContainsKey('matryoshkaStatus'))       { [string]$e.matryoshkaStatus }       else { '' }
             matryoshkaStatusReason = if ($e.ContainsKey('matryoshkaStatusReason')) { [string]$e.matryoshkaStatusReason } else { '' }
             focusSignals           = if ($e.ContainsKey('focusSignals') -and $e.focusSignals) { $e.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
+            priorityScore          = if ($e.ContainsKey('priorityScore'))   { [int]$e.priorityScore }   else { 0 }
+            priorityReason         = if ($e.ContainsKey('priorityReason'))  { [string]$e.priorityReason } else { '' }
+            priorityFactors        = if ($e.ContainsKey('priorityFactors') -and $e.priorityFactors) { $e.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
             recommendedAction = $e.recommendedAction
         }
     }
@@ -4857,6 +5036,12 @@ function New-InboxItem {
         rationale       = if ($act -is [System.Collections.IDictionary]) { [string]$act.rationale } else { '' }
         # V4.0 Phase 4: daily-delta pass-through
         delta           = if ($Entry.ContainsKey('delta') -and $Entry.delta) { $Entry.delta } else { [ordered]@{ daysSinceLastTouched = 0; updatedSinceYesterday = $true; changeSummary = 'first appearance' } }
+        # V4.0 Sprint 13a: focus signals pass-through
+        focusSignals    = if ($Entry.ContainsKey('focusSignals') -and $Entry.focusSignals) { $Entry.focusSignals } else { [ordered]@{ engaged = $false; attentionRequired = $false; awaitingOthers = $false; reasons = [ordered]@{ engaged=''; attentionRequired=''; awaitingOthers='' } } }
+        # V4.0 Sprint 13b: canonical priority score
+        priorityScore   = if ($Entry.ContainsKey('priorityScore'))  { [int]$Entry.priorityScore }   else { 0 }
+        priorityReason  = if ($Entry.ContainsKey('priorityReason')) { [string]$Entry.priorityReason } else { '' }
+        priorityFactors = if ($Entry.ContainsKey('priorityFactors') -and $Entry.priorityFactors) { $Entry.priorityFactors } else { [ordered]@{ impact=0.0; ownership=0.0; deadline=0.0; status=0.0; engagement=0.0 } }
     }
 }
 
@@ -5003,6 +5188,7 @@ function Get-DavidInbox {
     }
 
     return @($items | Sort-Object `
+        @{ Expression = { -[int]$_.priorityScore }; Ascending = $true },
         @{ Expression = { [int]$_.priority }; Ascending = $true },
         @{ Expression = { -[double]$_.rankingScore }; Ascending = $true },
         @{ Expression = { if ($null -ne $_.timeToEscalationRisk) { [int]$_.timeToEscalationRisk } else { 9999 } }; Ascending = $true },
@@ -5683,6 +5869,13 @@ Write-Host ("Matryoshka status ladder: {0} red / {1} amber / {2} green" -f `
 $focusCounts = Apply-FocusSignals -Decisions $decisions -Risks $risks -Now (Get-Date)
 Write-Host ("Focus signals: {0} engaged / {1} attentionRequired / {2} awaitingOthers (of {3})" -f `
     $focusCounts.engaged, $focusCounts.attentionRequired, $focusCounts.awaitingOthers, $focusCounts.total) -ForegroundColor Yellow
+
+# --- V4.0 Sprint 13b: Priority score ---------------------------------------
+# Deterministic weighted-sum ranking (impact / ownership / deadline / status /
+# engagement) stamped on every decision + risk. Consumes Phase 1c + Sprint 13a.
+$priorityStats = Apply-PriorityScore -Decisions $decisions -Risks $risks -Now (Get-Date)
+Write-Host ("Priority score: min={0} / mean={1} / max={2} across {3} items" -f `
+    $priorityStats.min, $priorityStats.mean, $priorityStats.max, $priorityStats.count) -ForegroundColor Yellow
 
 # --- V1.6 Decision Registry JSON/MD emit ---
 $decRegMd        = Build-DecisionRegistryMarkdown -Decisions $decisions -NowStamp $meta.generated

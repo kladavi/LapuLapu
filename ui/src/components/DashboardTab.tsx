@@ -216,6 +216,16 @@ type DecisionEntry = {
   matryoshkaStatusReason?: string;
   // V4.0 Sprint 13a
   focusSignals?: FocusSignals;
+  // V4.0 Sprint 13b
+  priorityScore?: number;
+  priorityReason?: string;
+  priorityFactors?: {
+    impact?: number;
+    ownership?: number;
+    deadline?: number;
+    status?: number;
+    engagement?: number;
+  };
 };
 
 type DecisionRegistry = {
@@ -277,6 +287,16 @@ type RiskEntry = {
   matryoshkaStatusReason?: string;
   // V4.0 Sprint 13a
   focusSignals?: FocusSignals;
+  // V4.0 Sprint 13b
+  priorityScore?: number;
+  priorityReason?: string;
+  priorityFactors?: {
+    impact?: number;
+    ownership?: number;
+    deadline?: number;
+    status?: number;
+    engagement?: number;
+  };
 };
 
 type RiskRegistry = {
@@ -340,6 +360,18 @@ type InboxItem = {
   personalizationSignals?: PersonalizationSignal[];
   // V4.0 Phase 4
   delta?: ItemDelta;
+  // V4.0 Sprint 13a
+  focusSignals?: FocusSignals;
+  // V4.0 Sprint 13b
+  priorityScore?: number;
+  priorityReason?: string;
+  priorityFactors?: {
+    impact?: number;
+    ownership?: number;
+    deadline?: number;
+    status?: number;
+    engagement?: number;
+  };
 };
 
 type PersonalizationSignal = {
@@ -639,6 +671,15 @@ function rankingScoreBadgeClass(score?: number): string {
   if (typeof score !== "number" || score === 0) return "bg-slate-100 text-slate-500 border-slate-200";
   if (score > 0) return "bg-green-50 text-green-800 border-green-200";
   return "bg-amber-50 text-amber-800 border-amber-200";
+}
+
+// V4.0 Sprint 13b: colour-code the canonical priority score (0..100).
+function priorityScoreBadgeClass(score?: number): string {
+  if (typeof score !== "number") return "bg-slate-100 text-slate-500 border-slate-200";
+  if (score >= 85) return "bg-red-100 text-red-900 border-red-300";
+  if (score >= 65) return "bg-orange-100 text-orange-900 border-orange-300";
+  if (score >= 45) return "bg-amber-100 text-amber-900 border-amber-300";
+  return "bg-slate-100 text-slate-700 border-slate-300";
 }
 
 function confidenceLabel(confidence?: number): string {
@@ -1334,12 +1375,21 @@ export function DashboardTab({ onNavigate }: Props) {
                           {it.rankingScore.toFixed(2)}
                         </span>
                       )}
+                      <FocusSignalPills signals={it.focusSignals} />
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-1 shrink-0 text-xs tabular-nums">
                     <span className={`inline-block rounded-full border px-2 py-0.5 font-mono ${priorityBadgeClass(it.priority)}`}>
                       P{it.priority ?? "?"}
                     </span>
+                    {typeof it.priorityScore === "number" && (
+                      <span
+                        className={`inline-block rounded-full border px-1.5 py-0.5 font-mono font-medium ${priorityScoreBadgeClass(it.priorityScore)}`}
+                        title={it.priorityReason ?? "V4.0 Sprint 13b canonical priority"}
+                      >
+                        score {it.priorityScore}
+                      </span>
+                    )}
                     <span className="text-th-text-muted">by {it.deadline || it.dueBy || "-"}</span>
                     {typeof it.ageDays === "number" && (
                       <span className="text-th-text-faint">aging {it.ageDays}d</span>
@@ -2018,6 +2068,12 @@ export function DashboardTab({ onNavigate }: Props) {
                       </span>
                     ) : null}
                     <FocusSignalPills signals={d.focusSignals} />
+                    {typeof d.priorityScore === "number" ? (
+                      <span className={`inline-block rounded-full border px-1.5 py-0.5 font-mono font-medium ${priorityScoreBadgeClass(d.priorityScore)}`}
+                            title={d.priorityReason ?? "V4.0 Sprint 13b canonical priority"}>
+                        score {d.priorityScore}
+                      </span>
+                    ) : null}
                     <span className="tabular-nums text-th-text-muted">
                       Pending {d.decisionAgeDays ?? 0} days
                     </span>
@@ -2291,6 +2347,12 @@ export function DashboardTab({ onNavigate }: Props) {
                         </span>
                       ) : null}
                       <FocusSignalPills signals={r.focusSignals} />
+                      {typeof r.priorityScore === "number" ? (
+                        <span className={`inline-block rounded-full border px-1.5 py-0.5 font-mono font-medium ${priorityScoreBadgeClass(r.priorityScore)}`}
+                              title={r.priorityReason ?? "V4.0 Sprint 13b canonical priority"}>
+                          score {r.priorityScore}
+                        </span>
+                      ) : null}
                       <span className={`tabular-nums ${t.cls}`} title={t.label}>
                         {t.symbol} {t.label}
                       </span>

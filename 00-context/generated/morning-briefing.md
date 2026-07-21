@@ -2,7 +2,7 @@
 
 # Lapu-Lapu Morning Briefing
 
-Generated: 2026-07-21 10:53
+Generated: 2026-07-21 12:14
 
 ## Executive Snapshot
 
@@ -20,7 +20,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (189% vs prior 14 days).
+- Trend: ↑ increasing (187.4% vs prior 14 days).
 - Activity score: 100 (current window).
 - Previous-window activity: 204.7.
 
@@ -36,7 +36,7 @@ Why it matters:
 - High strategic weight (10/10).
 
 What changed:
-- Trend: ↑ increasing (157% vs prior 14 days).
+- Trend: ↑ increasing (155.6% vs prior 14 days).
 - Activity score: 99.4 (current window).
 - Previous-window activity: 228.7.
 
@@ -52,7 +52,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (149.2% vs prior 14 days).
+- Trend: ↑ increasing (147.8% vs prior 14 days).
 - Activity score: 97.4 (current window).
 - Previous-window activity: 231.1.
 
@@ -67,7 +67,7 @@ Why it matters:
 - High strategic weight (9/10).
 
 What changed:
-- Trend: ↑ increasing (157% vs prior 14 days).
+- Trend: ↑ increasing (155.6% vs prior 14 days).
 - Activity score: 99.4 (current window).
 - Previous-window activity: 228.7.
 
@@ -82,7 +82,7 @@ Why it matters:
 - High strategic weight (8/10).
 
 What changed:
-- Trend: ↑ increasing (187.2% vs prior 14 days).
+- Trend: ↑ increasing (185.6% vs prior 14 days).
 - Activity score: 99.4 (current window).
 - Previous-window activity: 204.7.
 
@@ -92,15 +92,15 @@ Recommended next action:
 
 ## Top 5 Risks
 
+- **(no workstream)** - High severity, stable trend, aging 91 days, owner: Unassigned
+  - Standardization of templates, CI identification, and escalation procedures to reduce [R-f386376f94]
+  - [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned
 - **MMM L2** - High severity, stable trend, aging 91 days, owner: Unassigned
   - Vendor Escalation [R-1c3d9c0e3b]
   - [DECIDE] P2 - Assign an owner for MMM L2 risk before it can be actioned
 - **Rapid Recovery** - High severity, stable trend, aging 91 days, owner: Unassigned
   - Review and operationalize the vendor escalation format [R-cd89918f9c]
   - [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned
-- **(no workstream)** - High severity, stable trend, aging 91 days, owner: Unassigned
-  - Standardization of templates, CI identification, and escalation procedures to reduce [R-f386376f94]
-  - [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned
 - **Capacity Management** - High severity, decreasing trend, aging 15 days, owner: Unassigned
   - CMDB data quality** remains a named dependency for every downstream workstream and is now also a prerequisite for capacity management [R-aa0c3f050b]
   - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
@@ -123,44 +123,44 @@ Recommended next action:
   - Weekly and H1 reporting state that the plan is split into six work packages and that capacity risk should integrate into RRP and MMM L2 d... [R-a18adafc06]
   - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
 - **Capacity Management** - Medium severity, aging 8 days, owner: Unassigned
-  - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu... [R-8d9f37dcce]
-  - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
-- **Capacity Management** - Medium severity, aging 8 days, owner: Unassigned
   - Capacity Management is strategically important but should remain Watch unless delivery risk increases or it becomes a direct dependency f... [R-59131ed59a]
   - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
+- **Capacity Management** - Medium severity, aging 8 days, owner: Unassigned
+  - Weekly reporting states that service-mapping cleanup advanced for EDL, Vantage, IACB-WFI, Magellan, Agent Web, and SSW; Apollo is done bu... [R-8d9f37dcce]
+  - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
+- **Capacity Management** - High severity, aging 8 days, owner: Unassigned
+  - MMM L2 dashboard/reporting ambiguity may misrepresent Japan progress and create false confidence or false escalation [R-121760730c]
+  - [DECIDE] P2 - Assign an owner for Capacity Management risk before it can be actioned
 - **Rapid Recovery** - High severity, aging 8 days, owner: Unassigned
-  - The Ingenium rehearsal scope includes monitoring, team handoffs, troubleshooting, restart sequence, access to RRP documentation, escalati... [R-bafab65c68]
-  - [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned
-- **Rapid Recovery** - High severity, aging 8 days, owner: Unassigned
-  - Convert Ingenium desktop rehearsal into a tracked Rapid Recovery validation event with explicit entry criteria, participant list, evidenc... [R-b493137b8f]
+  - Weekly reporting states Japan Gold Application teams engaged after targeted escalation, but timely review feedback and regular engagement... [R-2b2a241d9c]
   - [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned
 
 ## Decision Watch
 
-- **Developer XP Dashboard** - Pending 18 days, owner: Unassigned
-  - D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only [D-3ced6cbb47]
-  - [DECIDE] P2 - Assign an owner for Developer XP Dashboard before this decision can move
-- **GOCC Transition** - Pending 18 days, owner: Birger Fjaellman
-  - D014 — Agreed: Include Shared-Folder ACL Compliance Monitoring in Lapu-Lapu Scope [D-e275b159e5]
-  - [FOLLOW_UP] P1 - Contact Birger Fjaellman today - decision on GOCC Transition aged 18 days without resolution
-- **Capacity Management** - Pending 18 days, owner: Debamalya Das (delivery), David Klan (Lapu-Lapu integration)
-  - D019 — Agreed: Adopt CAP-48585 Capacity Management Delivery Plan (WP1–WP6, GOCC/ETS Split, Ingenium/NDM/ServerF Pilot, September 2026 Tar... [D-0ac2a0c612]
-  - [FOLLOW_UP] P1 - Contact Debamalya Das (delivery), David Klan (Lapu-Lapu integration) today - decision on Capacity Management aged 18 days without resolution
-- **Rapid Recovery** - Pending 18 days, owner: Unassigned
-  - D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP [D-6f81d99006]
-  - [DECIDE] P2 - Assign an owner for Rapid Recovery before this decision can move
+- **Rapid Recovery** - Pending 18 days, owner: Balaji Ravi
+  - D011 — Agreed: Mandatory RRP Template with Controlled Publishing [D-59805c75f5]
+  - [FOLLOW_UP] P1 - Contact Balaji Ravi today - decision on Rapid Recovery aged 18 days without resolution
 - **MMM L2** - Pending 18 days, owner: David Klan
   - D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds [D-ad83b89db6]
   - [DO] P1 - Send escalation on MMM L2 to Balaji Ravi today
 - **Rapid Recovery** - Pending 18 days, owner: David Klan
-  - D009 — Agreed: SRM Incident Requires Explicit Validation and Recovery Readiness [D-d059b9808f]
+  - D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition [D-4fc5c25a1c]
   - [DO] P1 - Send escalation on Rapid Recovery to Birger Fjaellman today
+- **Developer XP Dashboard** - Pending 18 days, owner: Balaji Ravi
+  - D010 — Agreed: AQA Automation into Jenkins and Delta Test Case Reuse for Epsilon [D-66e0bd8e95]
+  - [FOLLOW_UP] P1 - Contact Balaji Ravi today - decision on Developer XP Dashboard aged 18 days without resolution
+- **(no workstream)** - Pending 18 days, owner: Birger Fjaellman
+  - D008 — Deferred: Gopher PRD POC Remains Outside the Current Objective-Scoped Workset [D-9a895e8ecb]
+  - [FOLLOW_UP] P1 - Contact Birger Fjaellman today - decision on this decision aged 18 days without resolution
+- **Employee XP Dashboard** - Pending 18 days, owner: George Francis Fermo
+  - D004 — Agreed: Japan Incident Documentation & CI Standards [D-ec111d7bcc]
+  - [FOLLOW_UP] P1 - Contact George Francis Fermo today - decision on Employee XP Dashboard aged 18 days without resolution
 - **ADX Registration** - Pending 18 days, owner: Balaji Ravi
   - D016 — Agreed: Park R2R-Scope ADX Onboarding Push Until App-Driven Demand Materializes [D-fadd968d28]
   - [FOLLOW_UP] P1 - Contact Balaji Ravi today - decision on ADX Registration aged 18 days without resolution
-- **Rapid Recovery** - Pending 18 days, owner: Birger Fjaellman
-  - D003 — Agreed: Simplify Patching for GOCC Handover and Weekday Execution [D-64c97dd4cc]
-  - [FOLLOW_UP] P1 - Contact Birger Fjaellman today - decision on Rapid Recovery aged 18 days without resolution
+- **Rapid Recovery** - Pending 18 days, owner: Unassigned
+  - D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP [D-6f81d99006]
+  - [DECIDE] P2 - Assign an owner for Rapid Recovery before this decision can move
 
 ## Blocked / Escalation Candidates
 
@@ -171,7 +171,7 @@ Recommended next action:
 - **GOCC Transition** - escalation signal detected.
 - **CMDB Mapping** - escalation signal detected.
 - **Capacity Management** - escalation signal detected.
-- **Developer XP Dashboard** - escalation signal detected.
+- **Employee XP Dashboard** - escalation signal detected.
 
 ## Recommended Actions for David
 
