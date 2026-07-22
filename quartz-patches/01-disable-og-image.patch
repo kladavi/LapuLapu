@@ -1,0 +1,13 @@
+diff --git a/quartz.config.default.yaml b/quartz.config.default.yaml
+index 771725d..d9a53e9 100644
+--- a/quartz.config.default.yaml
++++ b/quartz.config.default.yaml
+@@ -114,7 +114,7 @@ plugins:
+   - source: github:quartz-community/favicon
+     enabled: true
+   - source: github:quartz-community/og-image
+-    enabled: true
++    enabled: false
+   - source: github:quartz-community/cname
+     enabled: true
+   - source: github:quartz-community/canvas-page

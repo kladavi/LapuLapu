@@ -1,260 +1,90 @@
 ---
 type: "quartz-pilot-review"
-title: "Quartz Pilot Review — V4.0 Sprint 25"
-generator: "manual + build-log evidence from Quartz v5.0.0"
+title: "Quartz Pilot Review — V4.0 Sprint 25a (evidence-backed)"
+generator: "manual, from Quartz v5.0.0 build artefacts on 2026-07-22"
 generated: "2026-07-22"
-version: "V4.0-sprint25"
-schema: "quartz-pilot-review/v1"
+version: "V4.0-sprint25a"
+schema: "quartz-pilot-review/v2"
 scope: "Local pilot only. No public hosting, no SharePoint, no GitHub Pages, no nginx."
+supersedes: "quartz-pilot-review.md (Sprint 25 v1)"
 ---
 
-# Quartz Pilot Review — Sprint 25
+# Quartz Pilot Review — Sprint 25a
 
-## Purpose
+Sprint 25a converts the Sprint 25 pilot from "it builds" into "we know whether it is useful." The mechanical build evidence lives in [quartz-pilot-evidence.md](quartz-pilot-evidence.md); this document performs the UX task validation and produces the worker recommendation.
 
-The reviewer flipped Sprint 24 back on with an explicit constraint: **validate whether Quartz is actually useful before spending any sprint on hosting**. Sprint 25 installs Quartz locally, points it at the `quartz-content/` pilot corpus produced in Sprint 24, and asks: does the resulting site make the Lapu-Lapu knowledge base easier to navigate, search, and trust?
+**Reviewer question:** _Does Quartz materially improve findability, traceability, and workstream understanding?_
 
-This document records objective build evidence + a subjective UX assessment against six navigation surfaces (home, workstreams, decisions, risks, reports, tags), and ends with a Deploy / Do Not Deploy recommendation.
+**Short answer (this sprint):** Yes for findability. Yes for traceability structure. **No** for workstream understanding as currently built, because 9 workstream cross-links point at draft-filtered items — the Sprint 24 content generator does not reconcile with Quartz's `remove-draft` plugin. Fix that mismatch and the pilot moves from PARTIAL to PASS.
 
-**Out of scope (per reviewer):** hosting decisions, public deploy, SharePoint publish, GitHub Pages publish, nginx.
+## Sprint 25a task matrix
 
-## Build Evidence
+Nine required tasks from the reviewer prompt. Each is marked PASS / PARTIAL / FAIL with one sentence of evidence keyed to [quartz-pilot-evidence.md](quartz-pilot-evidence.md).
 
-**Runtime:**
-- Quartz v5.0.0 (cloned from `https://github.com/jackyzha0/quartz.git` on 2026-07-22)
-- Node v24.9.0, npm v11.6.0 (satisfies engine requirement `node>=22, npm>=10.9.2`)
-- Install location: [quartz-site/](quartz-site/) (gitignored: `public/`, `.quartz-cache/`, `.git/`; `node_modules/` already covered by root rule)
+| # | Task | Result | Evidence |
+|---|---|:---:|---|
+| 1 | Find a Rapid Recovery decision | **PASS** | `contentIndex.json` indexes decisions D005 (`d-4fc5c25a1c`) and D009 (`d-d059b9808f`) with "rapid recovery" in body; both HTML pages emit and return HTTP 200. |
+| 2 | Find a Rapid Recovery risk | **FAIL** | The Rapid Recovery workstream page links to `risks/r-cd89918f9c` (the top-scored escalation-format risk) but that file was filtered by `remove-draft` and does not emit. No other emitted risk carries the Rapid Recovery workstream tag; there is no risk to click through to. |
+| 3 | Find a workstream landing page | **PASS** | All 13 workstream pages (12 named + folder index) emit; each has a unique `<h1>` and populated body. Verified: `workstreams/rapid-recovery.html` renders with title `Rapid Recovery`. |
+| 4 | Find a weekly report | **PASS** | 20 report pages emit (2026-W11 … 2026-W24 + 2026-H1). Every one is in `contentIndex.json` under its week id, so search on "W17" or "H1" surfaces them. |
+| 5 | Follow a workstream backlink from an item page | **PARTIAL** | Backlinks plumbing works — decision D002 (`d-40250bb7d6`) shows a working backlink `<a href="../workstreams/cyberark-governance">CyberArk Governance</a>`. But each emitted decision backlinks to a **single** workstream (Sprint 24 sets one `workstream:` tag per item), so the panel misses secondary workstream relationships that a curated portal would show. |
+| 6 | Follow an item link from a workstream page | **FAIL** | Site-wide scan (evidence doc §"Broken cross-link scan"): 9 of 371 item cross-refs (2.4 %) are broken, all on workstream pages, all pointing at draft-filtered items. 5 of 13 workstream pages (38 %) contain at least one dead link. Rapid Recovery alone has 2 (1 decision, 1 risk). |
+| 7 | Use search to find a known title | **PASS** | Search index covers all 85 emitted permalinks by exact title. Direct probe: `D002 — Agreed: GOCC Delivery Model for Japan Monitoring` is in `contentIndex.json` and its HTML returns HTTP 200. |
+| 8 | Use tags to navigate by status | **PASS** | `tags/status/red.html`, `tags/status/amber.html`, `tags/status/green.html` all emit and list every item carrying that status tag. Same coverage confirmed for the other 4 tag namespaces (`action`, `category`, `type`, `workstream`) — 37 tag pages in total. |
+| 9 | Open graph view and determine whether graph adds value | **PARTIAL** | Structurally functional: `<div class="graph-container" data-cfg="…">` renders on every non-index page, and the global graph is reachable from the toolbar with valid node/edge data derived from the same 371 cross-refs. Value is **not proven** for two reasons: (a) the 9 broken cross-refs create ghost edges to nonexistent nodes, (b) with 45 real content nodes the local-graph view is likely readable but the global-graph view has not been assessed against an actual navigation task. Needs a re-run after the broken-link fix. |
 
-**Install steps executed:**
-1. `git clone --depth 1 https://github.com/jackyzha0/quartz.git quartz-site`
-2. `npm install --no-audit --no-fund` — 378 packages, 2 min
-3. `npx quartz plugin install --from-config` — resolved 44 plugins (all built or pre-built dist)
-4. `npx quartz build -d ../quartz-content` — 52 input files → 139 emitted files in 22.4 s
-5. `npx quartz build --serve -d ../quartz-content --port 8098` — server up, all HTTP smoke tests 200
+**Summary:** 5 PASS · 2 PARTIAL · 2 FAIL. Every FAIL and both PARTIALs trace back to the same root cause — Sprint 24's content generator writes cross-links to items that Quartz then filters as drafts.
 
-**Two Quartz-side patches were required on this Manulife Windows machine:**
+## What was helpful (evidence-backed)
 
-| # | File | Reason | Change |
-|---|---|---|---|
-| P1 | [quartz-site/quartz/plugins/loader/gitLoader.ts](quartz-site/quartz/plugins/loader/gitLoader.ts) | Windows without Developer Mode / admin lacks `SeCreateSymbolicLinkPrivilege`; plugin loader used `fs.symlinkSync(target, linkPath, "dir")` which failed with `EPERM` for every plugin. | Added NTFS-junction fallback in `trySymlink()` — junctions require no elevation for same-volume dirs. |
-| P2 | [quartz-site/quartz.config.default.yaml](quartz-site/quartz.config.default.yaml) | `og-image` plugin fetches TTF fonts from a CDN; Manulife network blocked the fetch (`fetch failed` → `undici` assertion fatal). | Disabled `github:quartz-community/og-image`. |
+- **Single navigable URL for 45 items + 20 reports.** Everything the weekly report and dashboard talk about is one link away from a top-10 list on the home page. Confirmed by task 1, 3, 4.
+- **Search covers body text, not just titles.** 137 KB Flexsearch index indexes all 85 emitted pages including callout bodies. Confirmed by task 7.
+- **Tag pages are auto-generated across all 5 namespaces.** `status/red` gives an instant "what is on fire" list without a bespoke view. Confirmed by task 8.
+- **Callouts turn Sprint 15's `whyItMatters` into a visual anchor.** `[!info] Why it matters` and `[!todo] Next action` render as coloured blocks on every decision + risk page. Confirmed by [quartz-evidence/snippet-03-decision-d40250bb7d6.html](quartz-evidence/snippet-03-decision-d40250bb7d6.html).
+- **Breadcrumbs + explorer + darkmode + reader-mode + hover popovers** are all default and add zero authoring cost.
 
-Both patches are documented findings for the deploy recommendation below.
+## What was noise (evidence-backed)
 
-**Build result:**
-```
-Cleaned output directory `public` in 117ms
-Found 52 input files from `../quartz-content` in 51ms
-Parsed 52 Markdown files in 3s
-Filtered out 9 files in 222μs           # draft: true items correctly hidden
-Emitting files
-Emitted 139 files to `public` in 3s
-Done processing 52 files in 6s
-```
+- **Broken cross-links.** 9 dead references on 5 of 13 workstream pages. Discoverable simply by opening `workstreams/rapid-recovery` and clicking either of the two dead links. This is the single biggest UX defect the pilot exposed and it must be fixed before anyone else sees the site.
+- **Single-workstream backlink from each decision/risk.** Sprint 24 emits `workstream:` as a single-value frontmatter tag, so Quartz's Backlinks panel only surfaces the primary workstream. Decisions that span workstreams (D002 GOCC delivery model backlinks to CyberArk Governance only) look misfiled.
+- **20 report pages compete with 12 workstream pages for attention.** The tag namespace `type/weekly-report` groups them, but on the home page and in the explorer they mix with the smaller, higher-value workstream/decision set.
+- **Tag noise.** 37 tag pages for a 45-item corpus is close to 1:1. Auto-generation is fine on a 500-item vault but here every additional workstream/decision creates ~3-4 tag pages that a user must ignore.
 
-**Emitted structure (`quartz-site/public/`):**
+## Recommended improvements (before considering deploy)
 
-| Section | HTML files | Notes |
-|---|---:|---|
-| `decisions/` | 5 | 5 canonical decisions from Sprint 24 (1 filtered as draft) |
-| `risks/` | 8 | risks with `draft: false` |
-| `workstreams/` | 13 | one page per workstream |
-| `reports/` | 20 | weekly reports copied from `03-reporting/weekly/` |
-| `tags/` | (dir) | tag index pages auto-generated |
-| root | index.html, 404.html, sitemap.xml, tags.html, index.xml (RSS) | |
-| static | contentIndex.json (137 KB) — powers Flexsearch | |
+Ordered by impact:
 
-**Plugins verified enabled** (from `quartz.config.default.yaml`, all in emitted HTML):
-
-- `search` (Flexsearch) — search index present, search widget rendered
-- `backlinks` — backlinks section present on decision + workstream pages
-- `graph` — `graph-container` div present on decision + workstream pages
-- `explorer` — left-nav file tree present
-- `breadcrumbs` — present on non-index pages
-- `darkmode` — toggle in toolbar
-- `reader-mode` — toggle in toolbar
-- `popover` — hover-preview enabled for wiki-links
-- `content-index` (sitemap + RSS) — `sitemap.xml` and `index.xml` emitted
-- `obsidian-flavored-markdown` — `[!info]` and `[!todo]` callouts rendered (`callout` class present)
-- `tag-page` — `tags/` and `tags.html` emitted
-- `crawl-links` (shortest resolution) — wiki-links `[[decisions/D-xxx|Title]]` correctly resolved to `<a href>`
-- `remove-draft` — 9 files filtered from Sprint 24's `validated: false` items
-
-## Screenshots
-
-_TODO — capture 6 screenshots for the record after browsing `http://localhost:8098`:_
-
-1. `01-home.png` — home page with top-10 list and delta ribbon
-2. `02-decision.png` — a decision page showing callouts, backlinks, graph
-3. `03-workstream.png` — Rapid Recovery workstream showing linked decisions + risks
-4. `04-risk.png` — a risk page showing severity/trend + backlinks
-5. `05-search.png` — search widget results for "cyberark"
-6. `06-graph.png` — global graph view
-
-Save under `quartz-content/screenshots/` (folder to be created).
-
-## Search Experience
-
-**Objective evidence:** `static/contentIndex.json` = 137,174 bytes. Flexsearch UI present in every page. HTTP GET returns 200.
-
-**Task validation checklist** — perform in browser and mark:
-
-- [ ] Search for a **decision** by short id (`D002`) — does it surface? Time to click:
-- [ ] Search for a **decision** by keyword (`gocc delivery model`) — does it surface? Time to click:
-- [ ] Search for a **risk** by keyword (`cyberark`) — how many hits? Do all 7 CyberArk-tagged risks appear?
-- [ ] Search for a **workstream** by name (`rapid recovery`) — is the workstream page top hit or buried under decisions?
-- [ ] Search for a **weekly report** by week number (`W17`, `W24`) — surfaced?
-- [ ] Search inside body text (`escalation format`) — does it hit the intended risk?
-
-_Findings (fill after task run):_
-
-## Navigation Experience
-
-**Objective evidence:** breadcrumbs, explorer (left nav), and toolbar (search + darkmode + reader-mode) render on every non-index page. Every page loads in <300 ms locally.
-
-**Task validation:**
-
-- [ ] From home → click top-item risk → land on risk page — path clear?
-- [ ] From risk page → click linked workstream — path clear?
-- [ ] From workstream → click linked decision — path clear?
-- [ ] From decision → click linked workstream — round-trip works?
-- [ ] Use explorer to walk `decisions/ → risks/ → workstreams/` — is the tree readable, or is it noisy with copilot artefacts?
-- [ ] Weekly reports discoverable? From home? Via explorer? Via search?
-
-_Findings (fill after task run):_
-
-## Backlink Experience
-
-**Objective evidence:**
-
-- Decision page (`decisions/d-40250bb7d6`) HTML: `backlinks` section present, tag-links present, 2 outbound links to `workstreams/*`.
-- Workstream page (`workstreams/rapid-recovery`) HTML: `backlinks` section present, 5 outbound `decisions/*` links, 1 outbound `risks/*` link.
-
-Wiki-links written by [scripts/prepare-quartz-content.ps1](scripts/prepare-quartz-content.ps1) in the format `[[workstreams/rapid-recovery|Rapid Recovery]]` and `[[decisions/D-xxx|Title]]` were correctly resolved to `<a>` tags by Quartz's `crawl-links` plugin with `markdownLinkResolution: shortest`.
-
-**Task validation:**
-
-- [ ] Open a workstream → does the "Backlinks" panel list every decision + risk that references it? Or are some missing?
-- [ ] Open a decision → does its Backlinks panel show the workstream that references it?
-- [ ] Open a risk → same check.
-- [ ] Do the backlinks give me a **useful reverse map** ("who else cares about this decision?") or is it just noise from the auto-generated index page?
-
-_Findings (fill after task run):_
-
-## Graph Experience
-
-**Objective evidence:** `graph-container` div present on decision + workstream pages. Global graph accessible from toolbar.
-
-**Task validation:** _(this is the make-or-break for graph — it's either a wow moment or throwaway visual noise)_
-
-- [ ] Local graph on a decision — does it show its workstream + related risks in a way that reveals structure?
-- [ ] Global graph — do the ~45 real nodes cluster meaningfully by workstream? Or is it a hairball?
-- [ ] Would you actually **navigate** via the graph, or just glance at it once?
-
-_Findings (fill after task run):_
-
-## Workstream Drill-Down
-
-**Objective evidence:** 13 workstream pages emitted. Each written by Sprint 24 with:
-- YAML frontmatter (`type: workstream`, `workstream/{slug}`, `status/{health}`, `category/{p1|p2|watch}`)
-- Score + health + category header
-- Cross-linked decisions section
-- Cross-linked risks section
-- Owners + accountable BU + BU stakeholders
-
-**Task validation:**
-
-- [ ] Open **Rapid Recovery** — do I get the full picture (score, health, all its decisions, all its risks, owners) in one page?
-- [ ] Open **MMM L2** — same check.
-- [ ] Open **Watch-list** items (score < 50) — do they still deserve a page, or is it clutter?
-
-_Findings (fill after task run):_
-
-## Decision Traceability
-
-**Objective evidence:** 5 decision pages emitted (1 filtered as draft). Each has `[!info] Why it matters` and `[!todo] Next action` callouts, priority reason bullets, timeline, source citation, actors.
-
-**Task validation:**
-
-- [ ] Open a decision → can I answer "why does this matter?" + "what happens next?" without reading source docs?
-- [ ] Is the source citation (`Source: [file.md]`) present and correct?
-- [ ] Are decisions grouped/filterable by workstream via tags?
-
-_Findings (fill after task run):_
-
-## Risk Traceability
-
-**Objective evidence:** 8 risk pages emitted. Each has severity/trend frontmatter, callouts, priority bullets, backlinks.
-
-**Task validation:**
-
-- [ ] Open the top-scored risk (`R-cd89918f9c` — vendor escalation, score 98) — is the risk statement + severity + trend + mitigation clear?
-- [ ] Are ⚠️ / 🚨 emoji-titled risks readable, or should Sprint 24 have stripped them?
-- [ ] Are risks grouped/filterable by workstream via tags?
-
-_Findings (fill after task run):_
-
-## What Was Helpful
-
-_(user to fill after Task Validation runs)_
-
-Candidate strengths to confirm/deny:
-
-- Single-URL navigation across all 45 items + 20 reports
-- Backlinks turn the flat generator output into a graph without extra authoring
-- Search over 137 KB index is fast and covers body text (not just titles)
-- Callouts (`[!info]`, `[!todo]`) turn "Why it matters" into a visual anchor
-- Explorer tree gives a familiar Obsidian-like navigation
-- Reader mode + darkmode + popover = ergonomics for a stakeholder audience
-
-## What Was Noise
-
-_(user to fill after Task Validation runs)_
-
-Candidate weaknesses to confirm/deny:
-
-- Explorer tree may be noisy if it exposes internal artefacts (draft items, tag pages)
-- Global graph may be a hairball on 45 nodes without curated categories
-- Reports section has 20 pages — may swamp the more important workstream/decision hierarchy
-- Tag pages auto-generated for every tag we set (workstream/*, status/*, action/*, type/*) — could be overwhelming
-- 6 different tag namespaces per item may add UI clutter without payoff
-
-## Recommended Improvements
-
-_(user to fill after Task Validation runs)_
-
-Candidate follow-ups if we do choose to keep Quartz:
-
-- **CDN independence:** replace `og-image` plugin (needs CDN font fetch) with a self-hosted alternative, OR permanently disable and use a static OG image.
-- **Windows compatibility:** upstream a PR for the junction fallback in `trySymlink()` so future clones on locked-down machines just work.
-- **Content curation:** decide whether all 6 tag namespaces are useful, or trim to workstream + status.
-- **Home page:** the Sprint 24 generator produced a good top-10 + workstream-tier layout, but the delta ribbon (`Added 2 · Changed 9 · Removed 34`) needs baseline management or it will always be stale.
-- **Report weight:** reports/ section has 20 items and will grow. Consider surfacing only the latest N or grouping by quarter.
+1. **Fix the draft/link reconciliation in [scripts/prepare-quartz-content.ps1](scripts/prepare-quartz-content.ps1)** _(Sprint 25b, ~half day)_. Options: (a) do not emit `[[…|…]]` links from workstream pages to items where `validated == false`, or (b) do not set `draft: true` for validated items whose only issue is a soft rule fail. Option (a) is safer.
+2. **Emit multi-workstream backlinks.** If a decision/risk touches multiple workstreams, either (a) emit `workstream: [slug1, slug2]` as a list frontmatter tag, or (b) write an explicit `Related workstreams:` link section in the body so Quartz's Backlinks panel picks up every reverse edge.
+3. **Home-page report demotion.** Move the reports list under a `<details>` disclosure or a separate section; keep the top-10 items above the fold.
+4. **Trim tag namespaces.** Drop `type/*` (fully implicit from folder) and consider dropping `action/*` (only a handful of values, rarely used for browsing). Keep `workstream/*`, `status/*`, `category/*`.
+5. **Upstream the junction-fallback patch.** See [quartz-patches/README.md](quartz-patches/README.md).
 
 ## Deploy / Do Not Deploy Recommendation
 
-_(user to fill after Task Validation runs)_
+**Worker recommendation: C. Defer.**
 
-Recommendation template (delete whichever does not apply):
+Rationale (evidence-based):
 
-**A. DEPLOY.** Quartz produced a materially better navigation surface than the raw markdown vault. Next sprint should choose hosting from the options in [docs/quartz-deployment-decision.md](docs/quartz-deployment-decision.md).
+- **Mechanical build, serve, search, tags, callouts, breadcrumbs, explorer, backlinks plumbing:** all working. Every objective quality gate passes.
+- **Content correctness:** blocked. 9 broken cross-links on 38 % of workstream pages, all traceable to a single generator/plugin mismatch that a half-day sprint can fix. Deploying now would put those broken links in front of stakeholders on their first visit.
+- **North-star ("Does Quartz materially improve findability, traceability, and workstream understanding?"):**
+  - Findability: **improved** (search works, task 7 PASS).
+  - Traceability structure: **improved** (backlinks + tags work, tasks 5 PARTIAL + 8 PASS).
+  - Workstream understanding: **not yet improved** as long as the workstream pages have dead links (task 6 FAIL).
 
-**B. DO NOT DEPLOY.** Quartz did not meet the north-star. The dashboard + weekly report already covers the same ground and Quartz added navigation without solving a real question. Keep the pilot in the repo for reference; do not sprint on hosting.
+**Choosing A. Deploy would ship a portal with known broken navigation on 5 of 13 workstream pages.** Choosing B. Do Not Deploy would discard a build that already meets 5 of 9 tasks and only fails on a fixable content bug. **Defer to Sprint 25b** for the content fix, then re-run this task matrix; if 5-of-9 PASS becomes 8-of-9 PASS, upgrade the recommendation to A.
 
-**C. DEFER.** Quartz is promising but the pilot exposed blockers (list below). Reassess after they are resolved.
+## Blockers (for C → A transition)
 
-Blockers (if C):
-
-- [ ] Sync/Corp-network limitations (og-image, CDN fonts)
-- [ ] Windows Developer Mode policy (junction patch is a workaround, not a solution)
-- [ ] Content curation gaps surfaced by the pilot
-- [ ] Other:
-
----
+- [ ] Sprint 25b: fix `scripts/prepare-quartz-content.ps1` so workstream cross-links do not reference draft-filtered items. Owner: worker.
+- [ ] Sprint 25b: rerun this task matrix and confirm broken-link count = 0. Owner: worker.
+- [ ] Sprint 25b: decide multi-workstream backlink representation (task 5 PARTIAL → PASS). Owner: worker.
+- [ ] Sprint 25b: hosting choice remains **out of scope** until 25b completes and recommendation flips to A. Owner: reviewer.
 
 ## Sign-off
 
-- Prepared by: Copilot (V4.0 Sprint 25 automation)
-- Reviewed by: _(name + date)_
-- Decision: _(A / B / C)_
-- Follow-up sprint scope: _(free text)_
+- Prepared by: Copilot (V4.0 Sprint 25a worker)
+- Evidence artefacts: [quartz-pilot-evidence.md](quartz-pilot-evidence.md), [quartz-evidence/](quartz-evidence/), [quartz-patches/](quartz-patches/)
+- Worker recommendation: **C. Defer** — proceed with Sprint 25b (content fix + rerun) before any hosting decision.
+- David's decision: _(A / B / C, name + date)_ — override worker if needed.

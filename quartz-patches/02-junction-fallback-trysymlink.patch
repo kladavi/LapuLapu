@@ -1,0 +1,27 @@
+diff --git a/quartz/plugins/loader/gitLoader.ts b/quartz/plugins/loader/gitLoader.ts
+index 20fbb43..fa116c1 100644
+--- a/quartz/plugins/loader/gitLoader.ts
++++ b/quartz/plugins/loader/gitLoader.ts
+@@ -310,7 +310,21 @@ function trySymlink(target: string, linkPath: string): void {
+   try {
+     fs.symlinkSync(target, linkPath, "dir")
+   } catch (err: unknown) {
+-    if ((err as NodeJS.ErrnoException).code === "EEXIST") return
++    const code = (err as NodeJS.ErrnoException).code
++    if (code === "EEXIST") return
++    // Sprint 25 pilot patch: on Windows without Developer Mode / admin,
++    // symlinks require SeCreateSymbolicLinkPrivilege. Fall back to NTFS
++    // junctions, which work without elevation for same-volume directories.
++    if (code === "EPERM" || code === "UNKNOWN") {
++      try {
++        const absTarget = path.resolve(path.dirname(linkPath), target)
++        fs.symlinkSync(absTarget, linkPath, "junction")
++        return
++      } catch (junctionErr: unknown) {
++        if ((junctionErr as NodeJS.ErrnoException).code === "EEXIST") return
++        throw junctionErr
++      }
++    }
+     throw err
+   }
+ }
