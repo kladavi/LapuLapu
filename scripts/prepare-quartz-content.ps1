@@ -115,7 +115,22 @@ $decisions = @($allItems | Where-Object { $_.type -eq 'decision' })
 $risks     = @($allItems | Where-Object { $_.type -eq 'risk' })
 $workstreams = @($focus.workstreams | Where-Object { $_ -and $_.name })
 
+# V4.0 Sprint 25b: draft-aware navigation. An item is eligible for cross-link
+# generation only if it is validated. Draft items are still emitted as pages
+# (with draft:true frontmatter) but every workstream/home/backlink surface
+# filters them out so that Quartz's remove-draft plugin does not create dead
+# links. See quartz-pilot-review.md task 6 for the pre-fix failure mode.
+$publishedIds = @{}
+foreach ($it in $allItems) {
+    if ($it.validated) { $publishedIds[[string]$it.id] = $true }
+}
+$publishedItems     = @($allItems  | Where-Object { $publishedIds.ContainsKey([string]$_.id) })
+$publishedDecisions = @($decisions | Where-Object { $publishedIds.ContainsKey([string]$_.id) })
+$publishedRisks     = @($risks     | Where-Object { $publishedIds.ContainsKey([string]$_.id) })
+$draftCount         = $allItems.Count - $publishedItems.Count
+
 Write-Host ("  items: {0} ({1} decisions, {2} risks)" -f $allItems.Count, $decisions.Count, $risks.Count) -ForegroundColor Cyan
+Write-Host ("  published (link-eligible): {0} · draft (link-excluded): {1}" -f $publishedItems.Count, $draftCount) -ForegroundColor Cyan
 Write-Host ("  workstreams: {0}" -f $workstreams.Count) -ForegroundColor Cyan
 
 # --- Clean previous output --------------------------------------------------
@@ -301,8 +316,11 @@ $emittedWs = 0
 foreach ($ws in $workstreams) {
     $wsName = [string]$ws.name
     $wsSlug = Get-WorkstreamSlug -Name $wsName
-    $wsDec  = @($decisions | Where-Object { [string]$_.workstream -eq $wsName } | Sort-Object { -[int]$_.priority_score })
-    $wsRisk = @($risks     | Where-Object { [string]$_.workstream -eq $wsName } | Sort-Object { -[int]$_.priority_score })
+    # V4.0 Sprint 25b: only published items are eligible for cross-links.
+    $wsDec  = @($publishedDecisions | Where-Object { [string]$_.workstream -eq $wsName } | Sort-Object { -[int]$_.priority_score })
+    $wsRisk = @($publishedRisks     | Where-Object { [string]$_.workstream -eq $wsName } | Sort-Object { -[int]$_.priority_score })
+    $wsDecDraft  = @($decisions | Where-Object { [string]$_.workstream -eq $wsName -and -not $publishedIds.ContainsKey([string]$_.id) })
+    $wsRiskDraft = @($risks     | Where-Object { [string]$_.workstream -eq $wsName -and -not $publishedIds.ContainsKey([string]$_.id) })
 
     $tags = [System.Collections.Generic.List[string]]::new()
     [void]$tags.Add('type/workstream')
@@ -358,6 +376,21 @@ foreach ($ws in $workstreams) {
         [void]$sb.AppendLine('_No open decisions or risks._')
         [void]$sb.AppendLine('')
     }
+    # V4.0 Sprint 25b: surface (but do not link to) draft items so a reader
+    # knows the workstream has more in-flight material without seeing dead links.
+    if ($wsDecDraft.Count -gt 0 -or $wsRiskDraft.Count -gt 0) {
+        [void]$sb.AppendLine('## Draft items (excluded from links)')
+        [void]$sb.AppendLine('')
+        [void]$sb.AppendLine('_The following items exist in the canonical model but have `validated: false` and are excluded from published navigation. They will surface once they pass validation._')
+        [void]$sb.AppendLine('')
+        foreach ($d in $wsDecDraft) {
+            [void]$sb.AppendLine(('- **decision** `' + [string]$d.id + '` — ' + [string]$d.title))
+        }
+        foreach ($r in $wsRiskDraft) {
+            [void]$sb.AppendLine(('- **risk** `' + [string]$r.id + '` — ' + [string]$r.title))
+        }
+        [void]$sb.AppendLine('')
+    }
 
     $path = Join-Path $OUT_DIR (Join-Path 'workstreams' ($wsSlug + '.md'))
     Write-Utf8 -Path $path -Content $sb.ToString()
@@ -383,7 +416,9 @@ Write-Host ("Copied {0} weekly reports into quartz-content/reports/" -f $emitted
 
 # --- Emit: home page --------------------------------------------------------
 
-$topItems = @($allItems | Sort-Object { -[int]$_.priority_score } | Select-Object -First 10)
+# V4.0 Sprint 25b: top-10 draws from published items only. Draft items are
+# not linkable and must not appear on the home page.
+$topItems = @($publishedItems | Sort-Object { -[int]$_.priority_score } | Select-Object -First 10)
 $p1Ws = @($workstreams | Where-Object { $_.category -eq 'P1' } | Sort-Object { -[double]$_.score })
 $p2Ws = @($workstreams | Where-Object { $_.category -eq 'P2' } | Sort-Object { -[double]$_.score })
 $watchWs = @($workstreams | Where-Object { $_.category -eq 'Watch' } | Sort-Object { -[double]$_.score })

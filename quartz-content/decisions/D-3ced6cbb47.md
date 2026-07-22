@@ -6,7 +6,7 @@ workstream: "Developer XP Dashboard"
 owner: "Unassigned"
 status: "amber"
 weight: 70
-aging_days: 18
+aging_days: 19
 updated: "2026-07-03"
 created: "2026-07-03"
 tags: ["type/decision", "workstream/developer-xp-dashboard", "status/amber", "action/decide", "attention-required"]
@@ -31,7 +31,7 @@ _Suggested owner: Deb_
 ## Why this scored 70
 
 - Why it matters: AQA beta and operational experience show non-actionable notifications dilute responder attention; we will route only actionable signals (red) to responders via push/real-time aler…
-- Decision aged 18 days without resolution
+- Decision aged 19 days without resolution
 - Owner unassigned (suggested: Deb)
 - Attention required (owner unassigned; DECIDE on David/unassigned; owner not confirmed)
 
@@ -39,7 +39,7 @@ _Suggested owner: Deb_
 
 - First seen: 2026-07-03
 - Last updated: 2026-07-03
-- Aging: 18 day(s)
+- Aging: 19 day(s)
 
 ## Context
 

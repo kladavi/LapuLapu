@@ -1,44 +1,44 @@
 ---
 type: "home"
 title: "Lapu-Lapu — Knowledge Portal"
-updated: "2026-07-21 16:00"
+updated: "2026-07-22 07:33"
 tags: ["type/home"]
 ---
 
 # Lapu-Lapu — Knowledge Portal
 
-_Generated at 2026-07-21 16:00 from `matryoshka-items.json`._
+_Generated at 2026-07-22 07:33 from `matryoshka-items.json`._
 
-**Daily delta**: Added 2 · Changed 9 · Removed 34 · Stale 9 (baseline: 2026-07-17)
+**Daily delta**: Added 0 · Changed 9 · Removed 0 · Stale 9 (baseline: 2026-07-21)
 
 ## Top 10 open items
 
-- [[risks/R-cd89918f9c|Review and operationalize the vendor escalation format]] · **98** · red · Rapid Recovery
-- [[risks/R-38e1cf13ff|Team to secure contact + escalation path]] · **86** · red · GOCC Transition
-- [[risks/R-bf28edfac4|🚨 Compliance gap (CyberArk not enforced)]] · **86** · red · CyberArk Governance
 - [[risks/R-b7a381d02b|⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk]] · **86** · red · CyberArk Governance
-- [[risks/R-e3dd5be6ae|⚠️ Vendor-managed apps without clear escalation model]] · **86** · red · CMDB Mapping
 - [[risks/R-0dcce4bb79|🚨 Network instability (VNet) → platform readiness risk]] · **86** · red · CyberArk Governance
-- [[risks/R-9bfa424dbf|⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined]] · **86** · red · Developer XP Dashboard
-- [[risks/R-228ae1101c|Required escalation to GAM]] · **86** · red · CyberArk Governance
 - [[risks/R-ca48836978|🚨 High operational risk (manual renewals + hidden dependencies)]] · **86** · red · CyberArk Governance
-- [[risks/R-c7355ab891|Strong dependency on cross-team alignment (GOCC, PS, GBO)]] · **80** · amber · GOCC Transition
+- [[risks/R-bf28edfac4|🚨 Compliance gap (CyberArk not enforced)]] · **86** · red · CyberArk Governance
+- [[risks/R-e3dd5be6ae|⚠️ Vendor-managed apps without clear escalation model]] · **86** · red · CMDB Mapping
+- [[risks/R-f02ad44a72|Weekly project status, CR review, and risk review governance forums]] · **80** · amber · CMDB Mapping
+- [[risks/R-5433e80f53|CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts]] · **72** · amber · CyberArk Governance
+- [[decisions/D-4fc5c25a1c|D005 — Agreed: Phase-1 Checklist and Impact-Based Alerting Govern PS-to-GOCC Transition]] · **46** · green · Rapid Recovery
+- [[decisions/D-40250bb7d6|D002 — Agreed: GOCC Delivery Model for Japan Monitoring]] · **46** · green · CyberArk Governance
+- [[decisions/D-ad83b89db6|D007 — Agreed: Escalate Non-Standard Monitoring Apps Instead of Building Workarounds]] · **46** · green · MMM L2
 
 ## P1 workstreams
 
 - [[workstreams/mmm-l2|MMM L2]] · score 100 · Red
 - [[workstreams/rapid-recovery|Rapid Recovery]] · score 99.7 · Red
-- [[workstreams/gbo-batch-transition|GBO Batch Transition]] · score 95.4 · Red
+- [[workstreams/gbo-batch-transition|GBO Batch Transition]] · score 95.3 · Red
 - [[workstreams/gocc-transition|GOCC Transition]] · score 82.7 · Red
 - [[workstreams/cmdb-mapping|CMDB Mapping]] · score 77.5 · Red
-- [[workstreams/developer-xp-dashboard|Developer XP Dashboard]] · score 74.4 · Red
-- [[workstreams/employee-xp-dashboard|Employee XP Dashboard]] · score 74.4 · Red
-- [[workstreams/adx-registration|ADX Registration]] · score 72.4 · Red
+- [[workstreams/employee-xp-dashboard|Employee XP Dashboard]] · score 74.3 · Red
+- [[workstreams/developer-xp-dashboard|Developer XP Dashboard]] · score 74.3 · Red
+- [[workstreams/adx-registration|ADX Registration]] · score 72.3 · Red
 
 ## Watch workstreams
 
 - [[workstreams/cyberark-governance|CyberArk Governance]] · score 83.9
-- [[workstreams/capacity-management|Capacity Management]] · score 77.4
+- [[workstreams/capacity-management|Capacity Management]] · score 74.6
 
 ## Reports
 

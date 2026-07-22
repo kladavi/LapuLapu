@@ -4,7 +4,7 @@ id: "cmdb-mapping"
 title: "CMDB Mapping"
 category: "P1"
 weight: 78
-updated: "2026-07-21 16:00"
+updated: "2026-07-22 07:33"
 tags: ["type/workstream", "workstream/cmdb-mapping", "category/p1"]
 health: "Red"
 ---
