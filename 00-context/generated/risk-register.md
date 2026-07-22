@@ -2,7 +2,7 @@
 type: risk-register
 title: "Risk Register"
 generator: scripts/generate-current-focus.ps1
-generated: 2026-07-21T16:00:40
+generated: 2026-07-22T07:34:04
 version: V4.0-sprint23a
 schema: ui/src/lib/matryoshka-item.ts
 high_count: 12
@@ -13,7 +13,7 @@ total_count: 18
 
 # Risk Register
 
-Generated: 2026-07-21 16:00
+Generated: 2026-07-22 07:33
 
 Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 
@@ -29,8 +29,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
+- First seen: **2026-04-21** (92 days ago)
+- Last seen: **2026-04-21** (92 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
@@ -44,39 +44,24 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
+- First seen: **2026-04-21** (92 days ago)
+- Last seen: **2026-04-21** (92 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-e3dd5be6ae - ⚠️ Vendor-managed apps without clear escalation model
+### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
 
-- Workstream: **CMDB Mapping**
+- Workstream: **CyberArk Governance**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b8d4414c4c - Continue escalation on VNet issues
-
-- Workstream: **-**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **High**
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-38e1cf13ff - Team to secure contact + escalation path
@@ -89,39 +74,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-228ae1101c - Required escalation to GAM
@@ -134,38 +89,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -179,8 +104,83 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-e3dd5be6ae - ⚠️ Vendor-managed apps without clear escalation model
+
+- Workstream: **CMDB Mapping**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-b8d4414c4c - Continue escalation on VNet issues
+
+- Workstream: **-**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -194,8 +194,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
+- First seen: **2026-07-17** (5 days ago)
+- Last seen: **2026-07-17** (5 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
@@ -203,34 +203,19 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 
 ## Fastest Growing Risks (increasing trend)
 
-### R-e3dd5be6ae - ⚠️ Vendor-managed apps without clear escalation model
+### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
 
-- Workstream: **CMDB Mapping**
+- Workstream: **CyberArk Governance**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b8d4414c4c - Continue escalation on VNet issues
-
-- Workstream: **-**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **High**
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-38e1cf13ff - Team to secure contact + escalation path
@@ -243,39 +228,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-228ae1101c - Required escalation to GAM
@@ -288,38 +243,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -333,8 +258,83 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-e3dd5be6ae - ⚠️ Vendor-managed apps without clear escalation model
+
+- Workstream: **CMDB Mapping**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-b8d4414c4c - Continue escalation on VNet issues
+
+- Workstream: **-**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -348,8 +348,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
+- First seen: **2026-07-17** (5 days ago)
+- Last seen: **2026-07-17** (5 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
@@ -362,9 +362,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Severity: **Medium**
 - Status: **open**
 - Trend: **increasing**
-- Time to escalation: **3 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
+- Time to escalation: **2 day(s)**
+- First seen: **2026-07-13** (9 days ago)
+- Last seen: **2026-07-13** (9 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
@@ -378,8 +378,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **4 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -392,9 +392,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Severity: **Medium**
 - Status: **open**
 - Trend: **increasing**
-- Time to escalation: **5 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
+- Time to escalation: **4 day(s)**
+- First seen: **2026-07-17** (5 days ago)
+- Last seen: **2026-07-17** (5 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
@@ -412,8 +412,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
+- First seen: **2026-04-21** (92 days ago)
+- Last seen: **2026-04-21** (92 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
@@ -427,26 +427,11 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
+- First seen: **2026-04-21** (92 days ago)
+- Last seen: **2026-04-21** (92 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
-
-- Workstream: **GOCC Transition**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
-- Severity: **Medium**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W25_copilot.md`
 ### R-f02ad44a72 - Weekly project status, CR review, and risk review governance forums
 
 - Workstream: **CMDB Mapping**
@@ -457,24 +442,39 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
+- First seen: **2026-06-19** (33 days ago)
+- Last seen: **2026-06-19** (33 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-f1afae75e8 - Weekly project governance forums (status, CR review, risk review)
 
 - Workstream: **GBO Batch Transition**
-- Owner: **Balaji Ravi** _(confidence: medium)_
+- Owner: **Birger Fjaellman** _(confidence: medium)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: Manish, Rasheersh
 - Severity: **Medium**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [FOLLOW_UP] P2 - Confirm with Balaji Ravi why GBO Batch Transition remains unresolved after 32 days (owner: Balaji Ravi, by 2026-07-24)
+- First seen: **2026-06-19** (33 days ago)
+- Last seen: **2026-06-19** (33 days ago)
+- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why GBO Batch Transition remains unresolved after 33 days (owner: Birger Fjaellman, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/W25_copilot.md`
+### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
+
+- Workstream: **GOCC Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-06-19** (33 days ago)
+- Last seen: **2026-06-19** (33 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 
@@ -491,8 +491,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
+- First seen: **2026-04-21** (92 days ago)
+- Last seen: **2026-04-21** (92 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Rapid Recovery risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
@@ -506,39 +506,24 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-04-21** (91 days ago)
-- Last seen: **2026-04-21** (91 days ago)
+- First seen: **2026-04-21** (92 days ago)
+- Last seen: **2026-04-21** (92 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/RE Japan Team - Global Incident Management w Rohina (Placeholder).txt`
-### R-e3dd5be6ae - ⚠️ Vendor-managed apps without clear escalation model
+### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
 
-- Workstream: **CMDB Mapping**
+- Workstream: **CyberArk Governance**
 - Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Hari, Manish
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b8d4414c4c - Continue escalation on VNet issues
-
-- Workstream: **-**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: -
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: -
 - Severity: **High**
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-38e1cf13ff - Team to secure contact + escalation path
@@ -551,39 +536,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
-
-- Workstream: **Developer XP Dashboard**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi
-- Stakeholders: Kelvin
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
 ### R-228ae1101c - Required escalation to GAM
@@ -596,38 +551,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-ca48836978 - 🚨 High operational risk (manual renewals + hidden dependencies)
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
-### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
-
-- Workstream: **CyberArk Governance**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Balaji Ravi -> Birger Fjaellman
-- Stakeholders: -
-- Severity: **High**
-- Status: **open**
-- Trend: **increasing**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -641,8 +566,83 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-e3dd5be6ae - ⚠️ Vendor-managed apps without clear escalation model
+
+- Workstream: **CMDB Mapping**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Hari, Manish
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-9bfa424dbf - ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined
+
+- Workstream: **Developer XP Dashboard**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi
+- Stakeholders: Kelvin
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-0dcce4bb79 - 🚨 Network instability (VNet) → platform readiness risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-b8d4414c4c - Continue escalation on VNet issues
+
+- Workstream: **-**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: -
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
+### R-b7a381d02b - ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk
+
+- Workstream: **CyberArk Governance**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Balaji Ravi -> Birger Fjaellman
+- Stakeholders: -
+- Severity: **High**
+- Status: **open**
+- Trend: **increasing**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -656,26 +656,11 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
+- First seen: **2026-07-17** (5 days ago)
+- Last seen: **2026-07-17** (5 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`
-### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
-
-- Workstream: **GOCC Transition**
-- Owner: **Unassigned** _(confidence: low)_
-- Escalation Path: Birger Fjaellman
-- Stakeholders: Jonan, Hari
-- Severity: **Medium**
-- Status: **open**
-- Trend: **stable**
-- Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
-- Sources:
-  - `01-inbox/archive/W25_copilot.md`
 ### R-f02ad44a72 - Weekly project status, CR review, and risk review governance forums
 
 - Workstream: **CMDB Mapping**
@@ -686,24 +671,39 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
+- First seen: **2026-06-19** (33 days ago)
+- Last seen: **2026-06-19** (33 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CMDB Mapping risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-f1afae75e8 - Weekly project governance forums (status, CR review, risk review)
 
 - Workstream: **GBO Batch Transition**
-- Owner: **Balaji Ravi** _(confidence: medium)_
+- Owner: **Birger Fjaellman** _(confidence: medium)_
 - Escalation Path: Balaji Ravi -> Birger Fjaellman
 - Stakeholders: Manish, Rasheersh
 - Severity: **Medium**
 - Status: **open**
 - Trend: **stable**
 - Time to escalation: **0 day(s)**
-- First seen: **2026-06-19** (32 days ago)
-- Last seen: **2026-06-19** (32 days ago)
-- Recommended action: [FOLLOW_UP] P2 - Confirm with Balaji Ravi why GBO Batch Transition remains unresolved after 32 days (owner: Balaji Ravi, by 2026-07-24)
+- First seen: **2026-06-19** (33 days ago)
+- Last seen: **2026-06-19** (33 days ago)
+- Recommended action: [FOLLOW_UP] P2 - Confirm with Birger Fjaellman why GBO Batch Transition remains unresolved after 33 days (owner: Birger Fjaellman, by 2026-07-24)
+- Sources:
+  - `01-inbox/archive/W25_copilot.md`
+### R-c7355ab891 - Strong dependency on cross-team alignment (GOCC, PS, GBO)
+
+- Workstream: **GOCC Transition**
+- Owner: **Unassigned** _(confidence: low)_
+- Escalation Path: Birger Fjaellman
+- Stakeholders: Jonan, Hari
+- Severity: **Medium**
+- Status: **open**
+- Trend: **stable**
+- Time to escalation: **0 day(s)**
+- First seen: **2026-06-19** (33 days ago)
+- Last seen: **2026-06-19** (33 days ago)
+- Recommended action: [DECIDE] P2 - Assign an owner for GOCC Transition risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/W25_copilot.md`
 ### R-5433e80f53 - CyberArk / service-account governance remains a material risk theme after a password expiration incident involving Semi-Managed accounts
@@ -715,9 +715,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Severity: **Medium**
 - Status: **open**
 - Trend: **increasing**
-- Time to escalation: **3 day(s)**
-- First seen: **2026-07-13** (8 days ago)
-- Last seen: **2026-07-13** (8 days ago)
+- Time to escalation: **2 day(s)**
+- First seen: **2026-07-13** (9 days ago)
+- Last seen: **2026-07-13** (9 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for CyberArk Governance risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-13-14-day-activity.md`
@@ -731,8 +731,8 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Status: **open**
 - Trend: **increasing**
 - Time to escalation: **4 day(s)**
-- First seen: **2026-07-16** (5 days ago)
-- Last seen: **2026-07-16** (5 days ago)
+- First seen: **2026-07-16** (6 days ago)
+- Last seen: **2026-07-16** (6 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for this risk risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/archive/20260714 Lapu-Lapu ETS, GOCC and Obs.md`
@@ -745,9 +745,9 @@ Total: **18** risks (18 open / 0 closed / 12 high-severity / 13 rising)
 - Severity: **Medium**
 - Status: **open**
 - Trend: **increasing**
-- Time to escalation: **5 day(s)**
-- First seen: **2026-07-17** (4 days ago)
-- Last seen: **2026-07-17** (4 days ago)
+- Time to escalation: **4 day(s)**
+- First seen: **2026-07-17** (5 days ago)
+- Last seen: **2026-07-17** (5 days ago)
 - Recommended action: [DECIDE] P2 - Assign an owner for Developer XP Dashboard risk before it can be actioned (owner: Unassigned, by 2026-07-24)
 - Sources:
   - `01-inbox/copilot-activity/2026-07-17-14-day-activity.md`

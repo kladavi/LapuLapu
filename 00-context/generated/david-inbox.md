@@ -2,7 +2,7 @@
 type: david-inbox
 title: "David's Priority Inbox"
 generator: scripts/generate-current-focus.ps1
-generated: 2026-07-21T16:00:40
+generated: 2026-07-22T07:34:04
 version: V4.0-sprint23a
 schema: ui/src/lib/matryoshka-item.ts
 item_count: 17
@@ -11,7 +11,7 @@ item_count: 17
 
 # David's Priority Inbox
 
-Generated: 2026-07-21 16:00
+Generated: 2026-07-22 07:33
 
 Candidates: **17** | P1: **0 (cap 5)** | P2: **10 (cap 10)** | P3: **0 (cap 10)**
 
@@ -30,7 +30,7 @@ _None._
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-24
 - **Confidence**: 0.09
-- **Age**: 91 days
+- **Age**: 92 days
 - **Next**: Assign an owner for Rapid Recovery risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
 - **Source**: risk R-cd89918f9c
@@ -40,90 +40,90 @@ _None._
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-24
 - **Confidence**: 0.09
-- **Age**: 91 days
+- **Age**: 92 days
 - **Next**: Assign an owner for this risk risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
 - **Source**: risk R-f386376f94
-### [DECIDE] P2 - Developer XP Dashboard [escalation in 0d]
-
-- **What**: ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-24
-- **Confidence**: 0.29
-- **Age**: 5 days
-- **Next**: Assign an owner for Developer XP Dashboard risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-9bfa424dbf
 ### [DECIDE] P2 - CMDB Mapping [escalation in 0d]
 
 - **What**: ⚠️ Vendor-managed apps without clear escalation model (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-24
 - **Confidence**: 0.29
-- **Age**: 5 days
+- **Age**: 6 days
 - **Next**: Assign an owner for CMDB Mapping risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
 - **Source**: risk R-e3dd5be6ae
-### [DECIDE] P2 - (no workstream) [escalation in 0d]
-
-- **What**: Continue escalation on VNet issues (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-24
-- **Confidence**: 0.29
-- **Age**: 5 days
-- **Next**: Assign an owner for this risk risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-b8d4414c4c
-### [DECIDE] P2 - GOCC Transition [escalation in 0d]
-
-- **What**: Team to secure contact + escalation path (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-24
-- **Confidence**: 0.29
-- **Age**: 5 days
-- **Next**: Assign an owner for GOCC Transition risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-38e1cf13ff
-### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
-
-- **What**: 🚨 Network instability (VNet) → platform readiness risk (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-24
-- **Confidence**: 0.29
-- **Age**: 5 days
-- **Next**: Assign an owner for CyberArk Governance risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-0dcce4bb79
-### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
-
-- **What**: Required escalation to GAM (severity: High, trend: increasing)
-- **Owner**: Unassigned (low)
-- **Deadline**: 2026-07-24
-- **Confidence**: 0.29
-- **Age**: 5 days
-- **Next**: Assign an owner for CyberArk Governance risk before it can be actioned
-- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-228ae1101c
 ### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
 
 - **What**: 🚨 High operational risk (manual renewals + hidden dependencies) (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-24
 - **Confidence**: 0.29
-- **Age**: 5 days
+- **Age**: 6 days
 - **Next**: Assign an owner for CyberArk Governance risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
 - **Source**: risk R-ca48836978
-### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
+### [DECIDE] P2 - GOCC Transition [escalation in 0d]
 
-- **What**: ⚠️ CMDB / LeanIX inconsistencies → traceability + onboarding risk (severity: High, trend: increasing)
+- **What**: Team to secure contact + escalation path (severity: High, trend: increasing)
 - **Owner**: Unassigned (low)
 - **Deadline**: 2026-07-24
 - **Confidence**: 0.29
-- **Age**: 5 days
+- **Age**: 6 days
+- **Next**: Assign an owner for GOCC Transition risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-38e1cf13ff
+### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
+
+- **What**: Required escalation to GAM (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 6 days
 - **Next**: Assign an owner for CyberArk Governance risk before it can be actioned
 - **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
-- **Source**: risk R-b7a381d02b
+- **Source**: risk R-228ae1101c
+### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
+
+- **What**: 🚨 Compliance gap (CyberArk not enforced) (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 6 days
+- **Next**: Assign an owner for CyberArk Governance risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-bf28edfac4
+### [DECIDE] P2 - Developer XP Dashboard [escalation in 0d]
+
+- **What**: ⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 6 days
+- **Next**: Assign an owner for Developer XP Dashboard risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-9bfa424dbf
+### [DECIDE] P2 - CyberArk Governance [escalation in 0d]
+
+- **What**: 🚨 Network instability (VNet) → platform readiness risk (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 6 days
+- **Next**: Assign an owner for CyberArk Governance risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-0dcce4bb79
+### [DECIDE] P2 - (no workstream) [escalation in 0d]
+
+- **What**: Continue escalation on VNet issues (severity: High, trend: increasing)
+- **Owner**: Unassigned (low)
+- **Deadline**: 2026-07-24
+- **Confidence**: 0.29
+- **Age**: 6 days
+- **Next**: Assign an owner for this risk risk before it can be actioned
+- **Rationale**: Owner not yet confirmed; ownership must precede mitigation.
+- **Source**: risk R-b8d4414c4c
 
 
 ## P3 - Review this week (top 10)

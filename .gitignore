@@ -4,6 +4,12 @@
 node_modules/
 .next/
 
+# V4.0 Sprint 25 - Quartz pilot install (vendored third-party repo, not committed).
+# The two pilot patches (Windows junction fallback + og-image disable) are documented
+# in quartz-pilot-review.md. If Sprint 25 review recommends DEPLOY, a follow-up sprint
+# will decide vendor vs. submodule strategy for tracking Quartz in git.
+quartz-site/
+
 # Pipeline transcripts (local audit only)
 logs/
 

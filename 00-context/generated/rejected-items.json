@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21T16:00:40",
+  "generated": "2026-07-22T07:34:04",
   "generator": "scripts/generate-current-focus.ps1",
   "version": "V4.0-phase1-validator",
   "totals": {
@@ -13,14 +13,14 @@
   },
   "rejections": [
     {
-      "itemId": "D-6f81d99006",
+      "itemId": "D-3ced6cbb47",
       "itemKind": "decision",
-      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
-      "workstream": "Rapid Recovery",
+      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
+      "workstream": "Developer XP Dashboard",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "D-6f81d99006",
+          "itemId": "D-3ced6cbb47",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -41,14 +41,14 @@
       ]
     },
     {
-      "itemId": "D-3ced6cbb47",
+      "itemId": "D-6f81d99006",
       "itemKind": "decision",
-      "title": "D013 — Agreed: Trim Developer Experience Dashboard Alerting to Actionable Signals Only",
-      "workstream": "Developer XP Dashboard",
+      "title": "D015 — Agreed: Mandatory Server Restart Authorization Decision Matrix in Every RRP",
+      "workstream": "Rapid Recovery",
       "owner": "Unassigned",
       "errors": [
         {
-          "itemId": "D-3ced6cbb47",
+          "itemId": "D-6f81d99006",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
@@ -83,20 +83,6 @@
       ]
     },
     {
-      "itemId": "R-9bfa424dbf",
-      "itemKind": "risk",
-      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
-      "workstream": "Developer XP Dashboard",
-      "owner": "Unassigned",
-      "errors": [
-        {
-          "itemId": "R-9bfa424dbf",
-          "field": "weak_why_it_matters",
-          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
-        }
-      ]
-    },
-    {
       "itemId": "R-228ae1101c",
       "itemKind": "risk",
       "title": "Required escalation to GAM",
@@ -105,6 +91,20 @@
       "errors": [
         {
           "itemId": "R-228ae1101c",
+          "field": "weak_why_it_matters",
+          "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
+        }
+      ]
+    },
+    {
+      "itemId": "R-9bfa424dbf",
+      "itemKind": "risk",
+      "title": "⚠️ Vendor dependency → slower MTTR unless escalation model is clearly defined",
+      "workstream": "Developer XP Dashboard",
+      "owner": "Unassigned",
+      "errors": [
+        {
+          "itemId": "R-9bfa424dbf",
           "field": "weak_why_it_matters",
           "reason": "must contain an impact/dependency signal word (because / so that / otherwise / risk / impact / blocks / delays / outcome)"
         }
