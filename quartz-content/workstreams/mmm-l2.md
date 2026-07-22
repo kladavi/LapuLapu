@@ -4,7 +4,7 @@ id: "mmm-l2"
 title: "MMM L2"
 category: "P1"
 weight: 100
-updated: "2026-07-21 16:00"
+updated: "2026-07-22 07:33"
 tags: ["type/workstream", "workstream/mmm-l2", "category/p1"]
 health: "Red"
 ---

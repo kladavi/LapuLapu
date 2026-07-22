@@ -6,7 +6,7 @@ workstream: "GOCC Transition"
 owner: "Unassigned"
 status: "red"
 weight: 86
-aging_days: 5
+aging_days: 6
 updated: "2026-07-16"
 created: "2026-07-16"
 tags: ["type/risk", "workstream/gocc-transition", "status/red", "action/decide", "engaged", "attention-required"]
@@ -40,8 +40,7 @@ _Suggested owner: Balaji Ravi_
 
 - First seen: 2026-07-16
 - Last updated: 2026-07-16
-- Aging: 5 day(s)
-- Latest change: first appearance
+- Aging: 6 day(s)
 
 ## Context
 
