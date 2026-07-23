@@ -37,6 +37,27 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Startup behaviour
+
+On every mount, the Dashboard (`src/app/page.tsx`) auto-loads the current
+project from disk via the `/api/load-local` route. The default project root is
+the LapuLapu vault:
+
+- Route: [`ui/src/app/api/load-local/route.ts`](src/app/api/load-local/route.ts)
+- Default: `C:\Users\kladavi\OneDrive - Manulife\Projects\LapuLapu`
+- Override: set the `LAPU_ROOT` environment variable before `npm run dev` / `next start`.
+
+While the auto-load is in flight the app shows a **"Loading LapuLapu…"**
+spinner. The **"Select Folder"** landing screen only appears when the
+auto-load explicitly fails (network error, missing directory, permission
+issue). This means navigating from the Quartz portal (`/quartz/`) back to the
+Dashboard — which is a full-page navigation and therefore resets React state —
+takes you straight back to the current project instead of the folder picker.
+
+Use the header's **📁 Change Folder** button (browsers that support the File
+System Access API) if you need to point the Dashboard at a different vault
+after startup.
+
 ## Dashboard data sources
 
 The Dashboard tab (see `src/components/DashboardTab.tsx`) reads three generated
