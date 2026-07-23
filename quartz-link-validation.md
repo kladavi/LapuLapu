@@ -2,7 +2,7 @@
 type: "quartz-link-validation"
 title: "Quartz Link Validation Report"
 generator: "scripts/test-quartz-links.ps1"
-generated: "2026-07-22 10:37"
+generated: "2026-07-22 13:45"
 version: "V4.0-sprint25b"
 schema: "quartz-link-validation/v1"
 verdict: "PASS"

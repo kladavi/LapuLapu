@@ -96,6 +96,24 @@ finally {
 $emittedCount = (Get-ChildItem $outDir -Recurse -File | Measure-Object).Count
 Write-Host "      Emitted files: $emittedCount"
 
+# --- Step 2b: inject "Back to Dashboard" banner ------------------------------
+# Quartz emits fully static HTML with no built-in way to link back to a hosting
+# app. Rather than patch Quartz internals, we prepend a small fixed banner to
+# every <body> so every portal page has a one-click return to the dashboard.
+Write-Host ""
+Write-Host "[2b] Injecting dashboard crosslink banner into emitted HTML ..." -ForegroundColor Cyan
+$banner = '<div id="lapu-back-banner" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#284b63;color:#faf8f8;font:600 13px/1.4 system-ui,-apple-system,''Segoe UI'',sans-serif;padding:6px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 4px rgba(0,0,0,0.15);"><a href="/" style="color:#faf8f8;text-decoration:none;border:1px solid rgba(250,248,248,0.35);border-radius:4px;padding:2px 10px;">&larr; Dashboard</a><span style="opacity:0.85;">Lapu-Lapu Knowledge Portal</span></div><style>body{padding-top:34px !important;}</style>'
+$injectCount = 0
+Get-ChildItem $outDir -Recurse -Filter '*.html' -File | ForEach-Object {
+    $content = Get-Content $_.FullName -Raw
+    if ($content -notmatch 'id="lapu-back-banner"' -and $content -match '<body[^>]*>') {
+        $newContent = [regex]::Replace($content, '(<body[^>]*>)', ('$1' + $banner.Replace('$', '$$')), 1)
+        Set-Content -Path $_.FullName -Value $newContent -NoNewline
+        $injectCount++
+    }
+}
+Write-Host "      Injected banner into $injectCount HTML files."
+
 # --- Step 3: integrity gate -------------------------------------------------
 if ($SkipValidator) {
     Write-Host ""

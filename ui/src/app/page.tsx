@@ -38,6 +38,8 @@ export default function Home() {
   const [dragOver, setDragOver] = useState(false);
   const [hasFolderPicker, setHasFolderPicker] = useState(false);
   const [autoLoadAttempted, setAutoLoadAttempted] = useState(false);
+  const [autoLoading, setAutoLoading] = useState(true);
+  const [autoLoadFailed, setAutoLoadFailed] = useState(false);
 
   const handleNavigate = useCallback((tab: TabId, filter: NavFilter = {}) => {
     setNavFilter(filter);
@@ -49,10 +51,14 @@ export default function Home() {
     setHasFolderPicker(supportsFileSystemAccess());
   }, []);
 
-  // Auto-load from the default local directory via API route on startup
+  // Auto-load from the default local directory (LapuLapu) via API route on startup.
+  // This runs every time the page mounts — including when returning from /quartz/ —
+  // so users land directly on the Dashboard for the current project instead of the
+  // folder-selection screen.
   useEffect(() => {
     if (data || loading || autoLoadAttempted) return;
     setAutoLoadAttempted(true);
+    setAutoLoading(true);
 
     fetch("/api/load-local")
       .then((res) => {
@@ -64,6 +70,10 @@ export default function Home() {
       })
       .catch((err) => {
         console.warn("Auto-load from default directory failed:", err);
+        setAutoLoadFailed(true);
+      })
+      .finally(() => {
+        setAutoLoading(false);
       });
   }, [data, loading, autoLoadAttempted, loadFiles]);
 
@@ -110,8 +120,10 @@ export default function Home() {
     setDragOver(false);
   }, []);
 
-  // Landing screen — no data loaded
-  if (!data && !loading) {
+  // Landing screen — only shown when the default LapuLapu auto-load has failed.
+  // While auto-load is in flight (or hasn't started yet), fall through to the
+  // loading spinner so returning from /quartz/ never flashes the picker.
+  if (!data && !loading && autoLoadAttempted && autoLoadFailed) {
     return (
       <div
         className="flex-1 flex items-center justify-center p-8"
@@ -131,7 +143,7 @@ export default function Home() {
             LapuLapu PM Dashboard
           </h1>
           <p className="text-th-text-muted">
-            Load your objective-driven PM repo to get started.
+            Could not auto-load the default LapuLapu project. Load a repo to get started.
           </p>
 
           {hasFolderPicker && (
@@ -153,12 +165,12 @@ export default function Home() {
     );
   }
 
-  if (loading) {
+  if (loading || autoLoading || !data) {
     return (
       <div className="flex-1 flex items-center justify-center">
         <div className="text-center space-y-4">
           <div className="text-4xl animate-spin">⏳</div>
-          <p className="text-th-text-muted">Loading and parsing files…</p>
+          <p className="text-th-text-muted">Loading LapuLapu…</p>
         </div>
       </div>
     );
@@ -209,6 +221,13 @@ export default function Home() {
           >
             ⚙️ Settings
           </Link>
+          <a
+            href="/quartz/"
+            className="text-sm text-th-accent hover:text-th-accent-hover font-medium"
+            title="Open the Quartz knowledge portal"
+          >
+            📖 Portal
+          </a>
         </div>
       </header>
 

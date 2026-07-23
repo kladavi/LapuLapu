@@ -4,6 +4,68 @@ Items below are raw and unprocessed. Run the intake prompt to extract, classify,
 
 ---
 
+- **2026-07-21 — Lapu-Lapu ETS, GOCC and Obs Meeting: Raj Onboarding, CAWLA Batch Reduction, RRP Re-Engagement, Ansible Rollout, NRQL→Power BI, Dev XP Triage, Process Monitoring, CyberArk Governance** #processed
+  - **Source:** archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+  - **From:** Meeting agenda + AI-generated notes + follow-up task list covering GBO transition, Observability, GOCC dashboards, FireFighting, and side quests (David, Jonan, Balaji, Harish, Mary, Angelito, Angelo, Mark; new: Rajganesh Manohara)
+  - **Focus:** Introduction of Rajganesh (Raj) Manohara as dedicated GBO transition lead; CAWLA batch job inventory (600→200 YoY reduction) and Rowena's Japan job list ask; NR Minions JPE/JPW VNet + DEV/PROD provisioning still open (feeds T150); MMM L2 entity mapping complete, APM Ingenium implementation complete, ADX Ingenium in-progress with app teams defining thresholds; RRP quality/ownership gap — app teams disengaged, no KB for Gold apps other than Ingenium, no cross-link from Ingenium to RRP, Jonan discussing with Rohina; NRQL→Python→Power BI draft (Mary, this week); Dev XP incident triage cadence with Mark Adriel; Employee XP feedback + potential Power BI export; Process Monitoring via Patrick's DB2 pattern + Deb's process graph; MPS Guardia (feeds T147); Laptop monitoring (JP 18 laptops, PH 2nd laptop); side quests — password expiry investigation (feeds T143/T144), Pulse restart/reboot test (feeds T151); Firefighting tabletop rehearsal Wed 11am HKT with MIM (same event as `Tabletop exercise for Ingenium .msg`, feeds T145); CyberArk unmanaged/semi-managed accounts, WAS admin LDAP conflict, Ingenium role standardization rollout to other apps, SOX compliance scan gap (feeds T143/T144/T146).
+  - **Key outcomes:**
+    1. GBO Transition — Raj Manohara joins as dedicated GBO lead (15 yrs mainframe/batch; 11 yrs Manulife; prior GPO + Cognizant lead). First priority: JH → Manulife user ID transition. Batch jobs reduced from 600 to 200 YoY; Rowena to send Japan CAWLA jobs to Jonan and request access to analyze the batch job incident reduction data. Goal chain: transition non-prod first, then prod; implement a turnkey process for file share/transfer/ACL/ID provisioning.
+    2. Observability — JPE/JPW VNet + DEV/PROD server provisioning still open (RITM09472830 subnet complete; Kyle's SR pending; end-to-end DoD for Japan onboarding still needed) — remains under T150. MMM L2 entity mapping complete; Japan validation session scheduled; APM rollout to non-AKS starting with Ingenium implementation complete; ADX Ingenium lower env forwarding logs, app teams defining thresholds.
+    3. Rapid Recovery re-engagement — App teams disengaged from RRP review; KB not created for other Gold applications and Ingenium page has no link to its RRP; ownership questions (who reviews/updates RRPs regularly; whether IM team owns testing/maintenance) — Jonan discussing with Rohina. MK completed Ingenium Ansible playbook; other Gold Ansible playbooks not yet confirmed.
+    4. GOCC Dashboards — Mary drafting GOCC production alerts + incidents dashboard via NerdGraph API → Python → Power BI, refreshes every 12 hrs, draft to David this week. Dev XP: biggest AQA ask is a regular incident triage / proactive-policy cadence with Mark Adriel; Ingenium credentials still in talks with ING team; firewall complete for remaining Ingenium+ server setup. Employee XP: positive Business/IS feedback, exploring Power BI export to remove NR ACL dependency (folds into T128). Process Monitoring: Patrick built custom DB2 solution, Deb has custom process graph, Angelito to work with Rae; compare NR process monitoring vs. APM coverage; may live in Employee XP Dashboard.
+    5. Laptop Monitoring — JP Branch 18 laptops in service; PH branch working on 2nd laptop and dashboard next steps (Singapore + other markets); MPS Guardia advanced monitoring in dev (feeds T147); Alex Osama identified as MPS Guardia team contact.
+    6. FireFighting — Tabletop rehearsal Wed 11am–12pm HKT with MIM (Angelo arranging validation/scenarios) — matches Jonan's 2026-07-20 invite to Max Canino, Beverly Vergara San Jose, Yam Villanueva, Cloyd Llyl Arcilla (cc Angelo, David); reinforces T145 and D015. Non-prod incident analysis collaboration with Mark, Rupesh, Sangram (environment management team) — refines GOCC support model for lower environments (see GOCC_LowerEnv item below).
+    7. Side quests — Password expiry investigation in AD + CyberArk continues under T143/T144; Pulse restart/reboot GOCC-response test folds into T151; Gopher unchanged.
+    8. CyberArk — Unmanaged / Semi-Managed responsibilities re-affirmed (T143/T144); Ingenium role standardization (user + approver groups only, CyberArk-managed audit + password rotation) is the pattern to roll out to other apps (feeds T144); risk management's yearly SOX scan flagged as low-signal — David advocating more proactive scans and enforcement (feeds T146); Jonan raised recent WAS admin LDAP-integration incident as evidence that legacy account setup instructions need to be standardized (folds into T144/T146).
+  - **Actions extracted → T154, T155, T156, T157, T158, T159**
+  - **Actions referenced → T005, T077, T118, T121, T126, T128, T135, T136, T137, T138, T143, T144, T145, T146, T147, T148, T150, T151, T153**
+  - **Decisions referenced → D011, D015, D017, D018**
+
+- **2026-07-20 — Tabletop Exercise for Ingenium (Jonan → MIM Team Invite for Wednesday 11am HKT RRP/MIM Tabletop)** #processed
+  - **Source:** archive/20260720 Tabletop exercise for Ingenium.msg
+  - **From:** Jonan Tan Pangan → Maximo Ian Canino, Beverly Vergara San Jose, Yam Villanueva, Cloyd Llyl Arcilla (cc: Angelo Tiu Mariano, David Klan)
+  - **Focus:** Formal invitation to the Rapid Recovery / Major Incident Management tabletop rehearsal for Ingenium, scheduled Wednesday 11am–12pm HKT, requesting MIM team availability. Executive summary flow attached (referenced but not extracted from the .msg header content).
+  - **Key outcomes:**
+    1. Confirms the tabletop rehearsal already tracked under T145 is scheduled for Wednesday 2026-07-22 (11am–12pm HKT) with the MIM team (Max Canino as MIM lead) and Ingenium execution stakeholders.
+    2. Angelo Tiu Mariano is the co-organizer arranging validation and scenario discussions.
+    3. Recipients include Yam Villanueva (leaving GOCC role — reference to T077 handover) and Beverly Vergara San Jose + Cloyd Llyl Arcilla as MIM/roleplay participants.
+    4. No new actionable content beyond T145 — reinforces the execution date and MIM participant list.
+  - **Actions extracted → none (reinforces T145)**
+  - **Actions referenced → T077, T145**
+  - **Decision referenced → D015**
+
+- **2026-07-14 — GOCC Lower Environment Support: Incident Analysis & Drill-Down (7 Issues, 86% Unresolved, Systemic Ansible Gap for iWIN/PaWEB/AGW/SCV Test Environments)** #processed
+  - **Source:** archive/GOCC_LowerEnv_Support_Incident_Details 1.pptx
+  - **From:** Manulife Japan | GOCC Lower Environment Support Analysis | July 2026 (Confidential) — internal executive drill-down deck
+  - **Focus:** Two-week analysis (30 Jun – 14 Jul 2026) of 7 lower-environment support incidents, of which 6 remain open (86% unresolved) and 5 involve Ansible restart failures (71%). Deck frames a systemic capability gap: GOCC was structured for production support and does not hold Ansible templates for 4 critical test systems (iWIN, PaWEB, AGW, SCV), forcing MW dependency on every lower-env outage. Presents 8 executive drill-down questions and 4 immediate actions.
+  - **Key outcomes:**
+    1. Incident inventory (7): INC08677136 SCV iPAD context-root missing (30 Jun, RESOLVED); TEM Dashboard iWIN URLs down — Ansible restart failed, needs MW (06 Jul, OPEN); TEM Dashboard SCV UAT — Ansible restart attempted, still failed (09 Jul, OPEN); INC08707795 SCV/SSW high CPU, server restart done, on-call unavailable (13 Jul, PARTIAL); TEM Dashboard PaWEB SIT2 URLs down — GOCC has no Ansible template (14 Jul, OPEN); TEM Dashboard iWIN URLs not up even after Ansible job triggered (14 Jul, OPEN); INC08714334 AGW SIT1-6 all environments down — no Ansible template exists (14 Jul, OPEN).
+    2. Systemic root cause named: GOCC was set up to support production; lower-env tooling (Ansible templates) never provisioned; no defined ownership model for lower-env availability across GOCC / MW / Project teams; Ansible restart is single recovery mechanism with no self-service fallback; TEM Dashboard alerts have no escalation timer or auto-routing to MW.
+    3. Executive drill-down questions surface eight explicit governance gaps: capability transfer timeline; lower-env SLA definition; weekend on-call ownership; test-hour impact quantification; MW single-point-of-failure risk; recurrence/trend pattern; accountability for equipping GOCC with full restart capability; cost of inaction over next 4 weeks.
+    4. Executive Call to Action: "GOCC is structurally unable to recover 4 out of 5 affected systems independently. This is not a performance issue — it is a capability gap. Until Ansible templates are transferred, every lower env outage will require MW intervention, creating an unacceptable dependency for project delivery timelines."
+    5. Four immediate actions (next 2 weeks): (a) MW to transfer ALL Ansible templates for lower envs to GOCC (iWIN, PaWEB, AGW, SCV); (b) define and publish Lower Env SLA (target <4hr recovery for critical test systems); (c) establish auto-escalation from TEM Dashboard to MW if unresolved within 2 hours; (d) assign clear ownership — GOCC owns restart, MW owns template maintenance, Project owns priority call.
+    6. Aligns with the 2026-07-21 meeting's "Incident Analysis Collaboration" note (David + Mark + Rupesh + Sangram from environment management analysing non-prod incidents to refine the GOCC support model) — this deck is the analysis artefact behind that discussion.
+  - **Actions extracted → T160**
+  - **Actions referenced → T077, T106, T118, T121**
+  - **Decision referenced → D017**
+
+- **2026-07-10 — OAR Community of Practice Kickoff (OAR Team Structure, Support Paths, Capabilities, Current Focus)** #processed
+  - **Source:** archive/OAR CoE Presentation_July 10 2026.pdf
+  - **From:** OAR CoE Presentation, 10 July 2026 — internal deck introducing the OAR Community of Practice (29 pages)
+  - **Focus:** Formal introduction of the OAR (Observability & Reliability) Community of Practice — purpose, meeting cadence, topic submission methods, team structure, support model, and current capability focus (Synthetics, Moogsoft AIOps, MMM L2, Observability Tooling Consolidation).
+  - **Key outcomes:**
+    1. Global Technology Operations leadership map confirmed (Hari Pothakamuri VP; direct reports include Joan Lee GTO, Rohina Emerson GSM, Jonan Tan Pangan GOCC Platform Ops, Peter Yen Ops Insight/Intelligence, Jason Andrews O&R Product, Debamalya Das O&R Ops HK, Eric Vaughan GBO, George Fermo Service Delivery, Izza Ilagan Op Excellence, Carrie Elg Problem Mgmt) — reference for stakeholder mapping.
+    2. OAR Engineering team decomposition — Automation & Innovation (Kyle Moyer, Ansible/OAC/DSC/AI Bots/Agents); AI Ops & Event Correlation (Adrian Velasco, Moogsoft/R2R/Cert monitoring/Chaos); Telemetry (Jeremy Page, New Relic/Azure Health/Policies/Audits/Accounts); Operations & KLO (Edward Ian, KLO/Synthetics/GBO batch/GOCC Asks/R2R/Segment Asks/KPIs).
+    3. OAR support paths: (a) email `ETS_OAR@manulife.ca`; (b) Viva Engage "Observability and Resiliency"; (c) ServiceNow Catalog "Observability Tool Support (Global)". Scope covers standard observability tooling, API key/access guidance, synthetics help, ingestion investigation, monitoring-coverage consultation, automated synthetics cleanup, GOCC onboarding assistance, Ansible tagging support, plus custom tooling/reporting/solutions for gaps out-of-the-box tools cannot address.
+    4. Current OAR focus areas: (a) Synthetics Development (Synthetics Bot for standard/simple monitors, Compass training available); (b) MMM Level 2 (uplifting Gold apps to standardized model — APM, Browser, Infra, Synthetic Journey, Logs (ADX)); (c) Observability Tooling Consolidation (OEM, PRTG, Asia Network); (d) Moogsoft AIOps signal flow (Ingestion → Event Correlation → Pattern-based Healing via Ansible).
+    5. Meeting cadence — third week of each month, dual timezone sessions for Asia + North America.
+    6. Reference artefact only — reinforces existing OAR/observability workstream context; supports stakeholder mapping for future intake and escalation routing; no new discrete action.
+  - **Actions extracted → none (reference/kickoff artefact)**
+  - **Actions referenced → T005, T077, T118, T121, T128**
+  - **Decision referenced → D013, D017**
+
+---
+
 - **2026-07-16 — Lapu-Lapu and GOCC Meeting: CMDB Mapping, GOCC IDs, File-System Alerting, DR/RRP, Delta Interfaces** #processed
   - **Source:** archive/20260716 - Lapu-Lapu and GOCC.md
   - **From:** Meeting notes (David, Yegor, Birger, Jonan, Dennis, Balaji, Mark, Mary, Rae) plus AI-generated summary and follow-up task list

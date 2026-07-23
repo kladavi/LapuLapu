@@ -2075,3 +2075,102 @@
 - **Tags:** #project:lapu-lapu #area:gocc-transition #domain:identity #domain:cyberark #worktype:access #owner-unconfirmed
 - **Description:** Ingenium health checks today rely on individuals using their own accounts via ServiceNowAppMgmt requests — this does not scale to GOCC 24/7 operations. Balaji to confirm with Sai and Engineering Infrastructure the creation of a common Ingenium application-access ID that is CyberArk-managed with reduced privileges, extracted from ServiceNow user data cross-referenced against application access lists. Runbook must precede full GOCC application ownership. Complements T143/T144 (semi-managed CyberArk sweep) by adding the affirmative GOCC-side identity.
 - **Source:** Inbox — archive/20260716 - Lapu-Lapu and GOCC.md
+
+
+---
+
+## T154 — Publish RRP KB Articles for Other Gold Applications + Clarify RRP Maintenance Ownership with Rohina
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** T003 (Rapid Recovery Plan) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to Jonan Tan Pangan / David Klan — confirm before mobilising)_
+- **Systems:** #system:ingenium #system:newrelic #system:servicenow
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #domain:knowledge-base #domain:governance #worktype:documentation #owner-unconfirmed
+- **Description:** Close the RRP re-engagement gap surfaced at the 2026-07-21 meeting: (a) publish RRP KB articles for the remaining Gold applications (Ingenium KB exists but other Gold-app KBs are missing); (b) cross-link the Ingenium confluence page to its RRP so operators can navigate KB ↔ RRP without hunting; (c) resolve the ownership question with Rohina — clarify whether Incident Management owns testing and maintenance of RRPs or whether responsibility stays with app teams / PS Team, and codify a review-and-update cadence so RRPs do not go stale between DR tests. Jonan to close the loop with Rohina; David to confirm QC gate stays with the T139 workflow. Extends T106 (Gold RRP standardization) from drafting into published, discoverable, and maintained RRPs.
+- **Source:** Inbox — archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T155 — Confirm and Deliver Ansible Restart Playbooks for Remaining Gold Applications (Extend MK's Ingenium Pattern)
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** T003 (Rapid Recovery Plan) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to Balaji Ravi / MK — confirm before mobilising)_
+- **Systems:** #system:ingenium #system:ansible
+- **Relevance:** 82/100
+- **Tags:** #project:lapu-lapu #area:rapid-recovery #domain:automation #domain:ansible #worktype:automation #owner-unconfirmed
+- **Description:** MK has completed the Ingenium Ansible playbook (service restart and stop) — extend that pattern to the remaining Gold applications. Confirm current playbook status per Gold app, identify gaps, prioritise builds, and align the runbook + Ansible template pair (WP1 for restart, WP2 for stop where applicable) with the mandatory server-restart authorization decision matrix (D015). Coordinate with OAR Automation & Innovation (Kyle Moyer per the OAR CoE deck) for standard tagging and reusable modules. Feeds T106 (RRP standardization) and T129/T130 (Moogsoft auto-restart integration).
+- **Source:** Inbox — archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T156 — Deliver GOCC Production Alerts + Incidents Dashboard via NRQL → Python → Power BI (Draft This Week)
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** T005 (MMM L2 Dashboard) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc
+- **Assigned:** Mary Kris Cabunilas
+- **Systems:** #system:newrelic #system:powerbi #system:servicenow
+- **Relevance:** 80/100
+- **Tags:** #project:lapu-lapu #area:reporting #artifact:dashboard #capability:automation #worktype:build
+- **Description:** Build the GOCC production alerts and incidents dashboard as a Power BI consumer of New Relic data via the NerdGraph API and a Python export pipeline, refreshing at least every 12 hours. Scope: consolidate server, middleware, and database alerts and compare to service incidents for Japan visibility in production. Deliverable: draft dashboard for David Klan's review by end of week; iterate on feedback for additional data/features. Removes NR ACL dependency for Business/IS consumers, unlocks reporting consistency with the Employee XP Power BI direction, and complements T128 (Employee XP dashboard evolution).
+- **Source:** Inbox — archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T157 — Establish AQA / Dev XP Incident Triage Cadence with Mark Adriel (Proactive Policy & Monitoring Definition)
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** B-1 (Endpoint Monitoring & Post-Change Verification) → O1 (Frictionless Customer Experience)
+- **Team:** #team:ets-japan
+- **Assigned:** _Unassigned (meeting attributed to David Klan + Mark Adriel Manuel — confirm before mobilising)_
+- **Systems:** #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #area:developer-xp #domain:incident-management #worktype:governance #owner-unconfirmed
+- **Description:** Respond to AQA's biggest ask on the Developer Experience Dashboard: liaise with Mark Adriel to establish a regular incident-triage cadence that turns Dev XP synthetic + alert data into proactive monitoring policies. Scope: review recurring alert patterns (e.g., sleeping-system false positives, ePOS DEV ping-check alerts under Policy 7316475), classify actionable vs. noise, tune alert thresholds, and codify policies so non-AQA app teams inherit consistent monitoring signals. Complements T118 (Dev XP alert tuning) and T127 (incident analysis loop).
+- **Source:** Inbox — archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T158 — Roll Out Custom Process Monitoring to GOCC Dashboard (DB2 Pattern + Process Graph via Angelito + Rae)
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** T005 (MMM L2 Dashboard) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc
+- **Assigned:** _Unassigned (meeting attributed to Angelito Darjuan + Rae Judavar — confirm before mobilising)_
+- **Systems:** #system:newrelic
+- **Relevance:** 78/100
+- **Tags:** #project:lapu-lapu #area:process-monitoring #artifact:dashboard #worktype:monitoring #owner-unconfirmed
+- **Description:** Operationalise process monitoring as a troubleshooting drill-down inside the GOCC/Employee XP dashboards. Angelito to work with Rae on Deb's custom process graph, adapting Patrick's DB2 custom process monitoring solution as the reference pattern; identify critical processes per server, define baselines and NRQL queries, and evaluate whether process health belongs in the Employee XP dashboard. Compare NR process monitoring coverage against APM to avoid duplicate signal and focus on gaps APM cannot see. Feeds T118 (Dev XP alert tuning) and T128 (Employee XP dashboard evolution).
+- **Source:** Inbox — archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T159 — Provide CAWLA Japan Job Inventory + Batch Incident Reduction Data (Rowena → Jonan / David)
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** T108 (Batch Operations Transition) → H-1 (Batch Automation) → O2 (Dynamic Delivery Experience)
+- **Team:** #team:gbo
+- **Assigned:** Rowena Zulueta
+- **Systems:** #system:cawla
+- **Relevance:** 75/100
+- **Tags:** #project:lapu-lapu #area:gbo-batch-transition #domain:inventory #worktype:data-request
+- **Description:** Rowena to (a) send Jonan Tan Pangan the current Japan CAWLA job inventory so it can be filtered into the GBO transition batch scope, and (b) submit an access request to David Klan so she can analyze the batch job incident reduction data (600 → 200 jobs YoY). Provides the source data needed for WP2 (Inventory Baseline) under the GBO Japan Batch Transition (T108, T135) and confirms whether the reduction reflects genuine consolidation vs. inventory drift.
+- **Source:** Inbox — archive/20260721 Lapu-Lapu ETS, GOCC and Obs.md
+
+---
+
+## T160 — Transfer Lower-Environment Ansible Templates from MW to GOCC + Publish Lower-Env SLA + TEM Dashboard Auto-Escalation
+- **Status:** Open
+- **Created:** 2026-07-22
+- **Objective Chain:** T003 (Rapid Recovery Plan) → B-4 (Infrastructure Resilience & Disaster Recovery) → O4 (Robust Technical Core)
+- **Team:** #team:gocc
+- **Assigned:** _Unassigned (deck sponsor implied David Klan — confirm sponsor + owners before mobilising)_
+- **Systems:** #system:ansible #system:newrelic #system:servicenow
+- **Relevance:** 90/100
+- **Tags:** #project:lapu-lapu #area:lower-env-support #area:rapid-recovery #domain:automation #domain:ownership #severity:high #owner-unconfirmed
+- **Description:** Close the systemic lower-environment capability gap surfaced in the "GOCC Lower Environment Support — Incident Analysis & Drill-Down" deck (7 incidents 30 Jun – 14 Jul 2026, 86% unresolved, 5/7 Ansible-related). Four immediate actions locked as scope: (a) MW to transfer all lower-env Ansible templates to GOCC for iWIN, PaWEB, AGW, and SCV; (b) define and publish a Lower Environment SLA targeting <4hr recovery for critical test systems; (c) establish auto-escalation from the TEM Dashboard to MW if an incident is unresolved within 2 hours; (d) assign clear ownership — GOCC owns restart execution, MW owns Ansible template maintenance, Project team owns priority calls. Also answer the deck's 8 executive drill-down questions (capability gap, SLA & coverage, on-call model, impact quantification, dependency risk, recurring pattern, accountability, cost of inaction) as governance evidence for the transition. Escalation path: David + Mark Adriel + Rupesh + Sangram (environment management) → MW leadership. Blocks lower-env GOCC self-sufficiency and directly impacts test-hour productivity for project delivery.
+- **Source:** Inbox — archive/GOCC_LowerEnv_Support_Incident_Details 1.pptx
