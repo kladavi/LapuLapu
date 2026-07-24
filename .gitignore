@@ -38,3 +38,13 @@ Thumbs.db
 
 # NOTE: 00-context/generated/current-focus.md and current-focus.json
 # are intentionally NOT ignored — they must be Git-tracked for traceability.
+
+# ── Confluence integration ─────────────────────────────────────────
+# Secrets and generated exports never enter git.
+config/.env
+config/*.env
+exports/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/

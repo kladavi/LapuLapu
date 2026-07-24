@@ -1,0 +1,37 @@
+# Non-secret application settings for the Confluence integration.
+# Secrets live in config/.env (gitignored).
+
+http:
+  # Request timeout in seconds
+  timeout: 30
+  # Maximum retries on transient errors (429, 5xx)
+  max_retries: 5
+  # Base delay in seconds for exponential backoff (delay = base * 2**attempt)
+  backoff_base: 1.5
+  # User-Agent identifying the exporter to the Confluence API
+  user_agent: "LapuLapu-Confluence-Exporter/1.0"
+
+export:
+  # Page size for child-page pagination (Confluence caps at 250; 100 is safe)
+  page_size: 100
+  # Include page attachments metadata in the frontmatter (does not download files)
+  include_attachment_metadata: false
+  # Sanitised filename max length (excluding page id + extension)
+  max_title_length: 80
+  # Manifest filename written into the output directory
+  manifest_filename: export-manifest.json
+
+converter:
+  # html2text tuning
+  body_width: 0            # 0 disables line wrapping
+  ignore_links: false
+  ignore_images: false
+  bypass_tables: false
+  # Strip Confluence-specific noise (macros without value, layout wrappers)
+  strip_layout_macros: true
+
+logging:
+  level: INFO
+  # Path (relative to repo root or absolute) for the export log file.
+  # Set to null to log only to stderr.
+  file: logs/confluence-export.log
